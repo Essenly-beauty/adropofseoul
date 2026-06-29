@@ -5,6 +5,8 @@
 // passthrough (exactly what the spec describes as the test-safe expectation).
 import { cache as reactCache } from "react";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const cache: typeof reactCache =
-  typeof reactCache === "function" ? reactCache : (fn: any) => fn;
+  typeof reactCache === "function"
+    ? reactCache
+    : // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (fn: any) => fn;
