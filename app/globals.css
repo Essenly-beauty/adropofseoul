@@ -2,11 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  color-scheme: light;
-}
-
-body {
-  background-color: #faf8f4;
-  color: #1c1c1c;
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+  body {
+    @apply bg-bg text-text;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-serif;
+  }
 }
