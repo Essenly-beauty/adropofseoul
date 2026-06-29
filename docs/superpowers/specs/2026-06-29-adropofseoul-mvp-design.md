@@ -149,7 +149,8 @@ pre-provisioned, to keep the schema lean.
 | `/contact` | Contact |
 | `/privacy` | Privacy policy |
 
-**Primary nav:** Home · Beauty · Hair · Places · Head Spa · Guides · Picks · About · Search.
+**Primary nav:** Home · Beauty · Hair · Places · Head Spa · Guides · Picks · About.
+(Site-wide Search is P2 — see §8 — and is intentionally absent from P0 nav.)
 
 All listing queries are paginated/limited (no unbounded `select *`). Detail
 routes return `notFound()` for unknown or unpublished slugs.
