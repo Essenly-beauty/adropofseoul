@@ -1,3 +1,4 @@
+import { cache } from "@/lib/react-cache";
 import { createClient } from "@/lib/supabase/server";
 import type { Place } from "./types";
 
@@ -60,14 +61,16 @@ export async function listPlaces(
   return (data as PlaceRow[] | null)?.map(mapPlaceRow) ?? [];
 }
 
-export async function getPlaceBySlug(slug: string): Promise<Place | null> {
-  const supabase = await createClient();
-  const { data, error } = await supabase
-    .from("places")
-    .select(COLUMNS)
-    .eq("slug", slug)
-    .eq("is_published", true)
-    .maybeSingle();
-  if (error) throw error;
-  return data ? mapPlaceRow(data as PlaceRow) : null;
-}
+export const getPlaceBySlug = cache(
+  async (slug: string): Promise<Place | null> => {
+    const supabase = await createClient();
+    const { data, error } = await supabase
+      .from("places")
+      .select(COLUMNS)
+      .eq("slug", slug)
+      .eq("is_published", true)
+      .maybeSingle();
+    if (error) throw error;
+    return data ? mapPlaceRow(data as PlaceRow) : null;
+  }
+);

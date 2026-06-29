@@ -1,3 +1,4 @@
+import { cache } from "@/lib/react-cache";
 import { createClient } from "@/lib/supabase/server";
 import type { Post } from "./types";
 
@@ -54,14 +55,16 @@ export async function listPublishedPosts(
   return (data as PostRow[] | null)?.map(mapPostRow) ?? [];
 }
 
-export async function getPostBySlug(slug: string): Promise<Post | null> {
-  const supabase = await createClient();
-  const { data, error } = await supabase
-    .from("posts")
-    .select(COLUMNS)
-    .eq("slug", slug)
-    .eq("status", "published")
-    .maybeSingle();
-  if (error) throw error;
-  return data ? mapPostRow(data as PostRow) : null;
-}
+export const getPostBySlug = cache(
+  async (slug: string): Promise<Post | null> => {
+    const supabase = await createClient();
+    const { data, error } = await supabase
+      .from("posts")
+      .select(COLUMNS)
+      .eq("slug", slug)
+      .eq("status", "published")
+      .maybeSingle();
+    if (error) throw error;
+    return data ? mapPostRow(data as PostRow) : null;
+  }
+);

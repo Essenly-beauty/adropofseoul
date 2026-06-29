@@ -1,3 +1,4 @@
+import { cache } from "@/lib/react-cache";
 import { createClient } from "@/lib/supabase/server";
 import type { Product } from "./types";
 
@@ -54,14 +55,16 @@ export async function listProducts(
   return (data as ProductRow[] | null)?.map(mapProductRow) ?? [];
 }
 
-export async function getProductBySlug(slug: string): Promise<Product | null> {
-  const supabase = await createClient();
-  const { data, error } = await supabase
-    .from("products")
-    .select(COLUMNS)
-    .eq("slug", slug)
-    .eq("is_published", true)
-    .maybeSingle();
-  if (error) throw error;
-  return data ? mapProductRow(data as ProductRow) : null;
-}
+export const getProductBySlug = cache(
+  async (slug: string): Promise<Product | null> => {
+    const supabase = await createClient();
+    const { data, error } = await supabase
+      .from("products")
+      .select(COLUMNS)
+      .eq("slug", slug)
+      .eq("is_published", true)
+      .maybeSingle();
+    if (error) throw error;
+    return data ? mapProductRow(data as ProductRow) : null;
+  }
+);
