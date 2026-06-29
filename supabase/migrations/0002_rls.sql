@@ -5,10 +5,10 @@ alter table products enable row level security;
 alter table media enable row level security;
 alter table newsletter_subscribers enable row level security;
 
--- Admin check: email present in app.admin_emails GUC (set per-request) OR
--- simpler: rely on authenticated role for writes. For MVP, writes require an
--- authenticated session; the app-layer allowlist (lib/auth.ts) is the gate.
--- Public read policies expose only published rows.
+-- Access model (MVP): writes require an authenticated session; the real admin
+-- restriction is the app-layer email allowlist (lib/auth.ts + app/admin/layout.tsx),
+-- safe only while Supabase email signups are disabled (see docs/PROVISIONING.md).
+-- Public reads are scoped to the anon role and expose only published rows.
 
 -- posts: public reads published; authenticated users full access
 create policy posts_public_read on posts
