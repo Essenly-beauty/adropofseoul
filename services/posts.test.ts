@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from "vitest";
-import { mapPostRow, getPostBySlug } from "./posts";
+import { mapPostRow, getPostBySlug, listPublishedPosts } from "./posts";
 import { fakeClient } from "./_fake-supabase";
 
 const row = {
@@ -28,6 +28,18 @@ describe("mapPostRow", () => {
     const post = mapPostRow(row as never);
     expect(post.featuredImage).toBe("img.jpg");
     expect(post.tags).toEqual(["k-beauty"]);
+  });
+});
+
+describe("listPublishedPosts", () => {
+  it("returns mapped rows and records a .limit() call", async () => {
+    const theFake = fakeClient({ data: [row], error: null });
+    (createClient as ReturnType<typeof vi.fn>).mockResolvedValue(theFake);
+    const result = await listPublishedPosts();
+    expect(result).toHaveLength(1);
+    expect(result[0].slug).toBe("hello");
+    expect(result[0].featuredImage).toBe("img.jpg");
+    expect(theFake.calls).toContain("limit");
   });
 });
 
