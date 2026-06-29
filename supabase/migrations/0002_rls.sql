@@ -12,19 +12,19 @@ alter table newsletter_subscribers enable row level security;
 
 -- posts: public reads published; authenticated users full access
 create policy posts_public_read on posts
-  for select using (status = 'published');
+  for select to anon using (status = 'published');
 create policy posts_admin_all on posts
   for all to authenticated using (true) with check (true);
 
 -- places
 create policy places_public_read on places
-  for select using (is_published = true);
+  for select to anon using (is_published = true);
 create policy places_admin_all on places
   for all to authenticated using (true) with check (true);
 
 -- products
 create policy products_public_read on products
-  for select using (is_published = true);
+  for select to anon using (is_published = true);
 create policy products_admin_all on products
   for all to authenticated using (true) with check (true);
 

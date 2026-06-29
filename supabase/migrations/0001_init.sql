@@ -90,7 +90,7 @@ create table products (
   where_to_buy text,
   best_for text,
   ingredients text,
-  rating numeric(2,1),
+  rating numeric(3,1),
   disclosure_required boolean not null default false,
   is_published boolean not null default false,
   created_at timestamptz not null default now(),
