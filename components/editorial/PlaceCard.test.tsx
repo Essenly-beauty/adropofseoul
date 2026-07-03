@@ -5,11 +5,11 @@ import type { Place } from "@/services/types";
 
 const place = {
   id: "1",
-  name: "Sool Loft",
-  slug: "sool-loft",
+  name: "Sool Loft Head Spa",
+  slug: "sool-loft-head-spa",
   category: "head_spa",
   area: "Seongsu",
-  shortDescription: "A minimalist scalp studio.",
+  shortDescription: "A minimalist scalp-care studio.",
   longDescription: null,
   whyWeLikeIt: null,
   bestFor: null,
@@ -23,10 +23,11 @@ const place = {
 } as Place;
 
 describe("PlaceCard", () => {
-  it("links to the place and shows name + area", () => {
+  it("links to the place and shows name, area, description", () => {
     render(<PlaceCard place={place} />);
-    const link = screen.getByRole("link", { name: /Sool Loft/ });
-    expect(link.getAttribute("href")).toBe("/places/sool-loft");
-    expect(screen.getByText("Seongsu")).toBeTruthy();
+    const link = screen.getByRole("link", { name: /Sool Loft Head Spa/ });
+    expect(link.getAttribute("href")).toBe("/places/sool-loft-head-spa");
+    expect(screen.getAllByText("Seongsu").length).toBeGreaterThan(0);
+    expect(screen.getByText(/minimalist scalp-care studio/)).toBeTruthy();
   });
 });
