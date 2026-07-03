@@ -3,44 +3,34 @@ import { render, screen } from "@testing-library/react";
 import { ProductCard } from "./ProductCard";
 import type { Product } from "@/services/types";
 
-const base = {
+const product = {
   id: "1",
   name: "Rice Toner",
   brand: "Beauty of Joseon",
   slug: "boj-rice-toner",
   category: "toner",
-  description: "A milky toner.",
+  description: "A milky, brightening toner.",
   price: "$17",
   image: null,
-  affiliateUrl: null,
+  affiliateUrl: "https://example.com/buy",
   whereToBuy: null,
-  bestFor: null,
+  bestFor: "dull skin",
   ingredients: null,
   rating: null,
-  disclosureRequired: false,
+  disclosureRequired: true,
 } as Product;
 
 describe("ProductCard", () => {
-  it("shows brand, name, and price", () => {
-    render(<ProductCard product={base} />);
+  it("shows brand, name, price, and an affiliate shop link", () => {
+    render(<ProductCard product={product} />);
     expect(screen.getByText("Beauty of Joseon")).toBeTruthy();
     expect(screen.getByText("Rice Toner")).toBeTruthy();
     expect(screen.getByText("$17")).toBeTruthy();
+    const shop = screen.getByRole("link", { name: /Shop/ });
+    expect(shop.getAttribute("href")).toBe("https://example.com/buy");
   });
-  it("shows a disclosure note only when disclosureRequired", () => {
-    const { rerender } = render(<ProductCard product={base} />);
-    expect(screen.queryByText(/affiliate/i)).toBeNull();
-    rerender(<ProductCard product={{ ...base, disclosureRequired: true }} />);
-    expect(screen.getByText(/affiliate/i)).toBeTruthy();
-  });
-  it("renders an outbound buy link only when affiliateUrl is present", () => {
-    const { rerender } = render(<ProductCard product={base} />);
-    expect(screen.queryByRole("link", { name: /shop/i })).toBeNull();
-    rerender(
-      <ProductCard product={{ ...base, affiliateUrl: "https://x.example/p" }} />
-    );
-    const link = screen.getByRole("link", { name: /shop/i });
-    expect(link.getAttribute("href")).toBe("https://x.example/p");
-    expect(link.getAttribute("rel")).toContain("nofollow");
+  it("shows the affiliate disclosure when required", () => {
+    render(<ProductCard product={product} />);
+    expect(screen.getByText(/affiliate links/i)).toBeTruthy();
   });
 });

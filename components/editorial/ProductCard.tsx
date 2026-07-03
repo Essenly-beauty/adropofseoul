@@ -1,34 +1,32 @@
-import Image from "next/image";
 import type { Product } from "@/services/types";
+import { TonalFrame } from "./TonalFrame";
 
 export function ProductCard({ product }: { product: Product }) {
   return (
-    <div className="rounded-lg border border-soft-gray bg-white p-4">
-      {product.image && (
-        <div className="relative mb-3 aspect-square overflow-hidden rounded-md bg-soft-gray">
-          <Image
-            src={product.image}
-            alt={product.name}
-            fill
-            className="object-cover"
-            sizes="(max-width: 768px) 50vw, 25vw"
-          />
-        </div>
-      )}
+    <div className="group">
+      <TonalFrame
+        src={product.image}
+        alt={product.name}
+        label={product.category ?? undefined}
+        ratio="aspect-square"
+        sizes="(max-width: 768px) 50vw, 25vw"
+      />
       {product.brand && (
-        <p className="text-xs uppercase tracking-wide text-text-muted">
+        <p className="mt-3.5 text-[10.5px] uppercase tracking-label text-text-muted">
           {product.brand}
         </p>
       )}
-      <h3 className="font-serif text-lg">{product.name}</h3>
-      <div className="mt-1 flex items-center justify-between">
-        {product.price && <span className="text-sm">{product.price}</span>}
+      <h3 className="mt-1 font-serif text-lg leading-tight">{product.name}</h3>
+      <div className="mt-2 flex items-center justify-between">
+        {product.price && (
+          <span className="text-sm tabular-nums">{product.price}</span>
+        )}
         {product.affiliateUrl && (
           <a
             href={product.affiliateUrl}
             target="_blank"
             rel="nofollow noopener noreferrer"
-            className="text-sm text-accent hover:text-accent-hover"
+            className="text-[11px] uppercase tracking-label text-accent transition-colors duration-medium ease-editorial hover:text-accent-hover"
           >
             Shop →
           </a>
