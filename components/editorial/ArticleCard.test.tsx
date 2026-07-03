@@ -12,7 +12,8 @@ const post = {
   body: null,
   category: "head_spa",
   tags: [],
-  featuredImage: null,
+  featuredImage:
+    "https://images.unsplash.com/photo-1584467535330-73a3b3d519d6?w=600&h=400",
   author: "Team",
   seoTitle: null,
   metaDescription: null,
@@ -20,10 +21,11 @@ const post = {
 } as Post;
 
 describe("ArticleCard", () => {
-  it("links to the article and shows title + excerpt", () => {
+  it("links to the article and shows category, title + excerpt", () => {
     render(<ArticleCard post={post} />);
     const link = screen.getByRole("link", { name: /Seoul Head Spa Ritual/ });
     expect(link.getAttribute("href")).toBe("/articles/seoul-head-spa-ritual");
+    expect(screen.getByText("Head Spa")).toBeTruthy();
     expect(screen.getByText(/slow world of scalp care/)).toBeTruthy();
   });
 });
