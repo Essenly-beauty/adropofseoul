@@ -12,11 +12,23 @@ import { NewsletterForm } from "@/components/editorial/NewsletterForm";
 import { Reveal } from "@/components/editorial/Reveal";
 import { Eyebrow } from "@/components/editorial/Eyebrow";
 
+// The home page renders gracefully even if the data backend is unreachable:
+// each fetch falls back to an empty list (logged), and the empty-state guards
+// below hide those sections — so the editorial layout still stands on its own.
+async function safe<T>(p: Promise<T[]>, label: string): Promise<T[]> {
+  try {
+    return await p;
+  } catch (err) {
+    console.error(`home: ${label} fetch failed`, err);
+    return [];
+  }
+}
+
 export default async function HomePage() {
   const [posts, places, products] = await Promise.all([
-    listPublishedPosts({ limit: 7 }),
-    listPlaces({ limit: 3 }),
-    listProducts({ limit: 4 }),
+    safe(listPublishedPosts({ limit: 7 }), "posts"),
+    safe(listPlaces({ limit: 3 }), "places"),
+    safe(listProducts({ limit: 4 }), "products"),
   ]);
   const [featured, ...latest] = posts;
 
