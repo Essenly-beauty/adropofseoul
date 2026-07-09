@@ -11,6 +11,8 @@ export const metadata: Metadata = {
   alternates: { canonical: canonical("/places") },
 };
 
+export const dynamic = "force-dynamic";
+
 export default async function PlacesPage() {
   let places: Awaited<ReturnType<typeof listPlaces>> = [];
   try {

@@ -12,6 +12,8 @@ import { NewsletterForm } from "@/components/editorial/NewsletterForm";
 import { Reveal } from "@/components/editorial/Reveal";
 import { Eyebrow } from "@/components/editorial/Eyebrow";
 
+export const dynamic = "force-dynamic";
+
 // The home page renders gracefully even if the data backend is unreachable:
 // each fetch falls back to an empty list (logged), and the empty-state guards
 // below hide those sections — so the editorial layout still stands on its own.

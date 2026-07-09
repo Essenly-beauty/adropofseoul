@@ -11,6 +11,8 @@ export const metadata: Metadata = {
   alternates: { canonical: canonical("/articles") },
 };
 
+export const dynamic = "force-dynamic";
+
 export default async function ArticlesPage() {
   let posts: Awaited<ReturnType<typeof listPublishedPosts>> = [];
   try {
