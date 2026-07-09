@@ -15,6 +15,7 @@ const config: Config = {
         accent: { DEFAULT: "#B78B62", hover: "#A2774F" },
         "soft-gray": "#E8E2DA",
         "muted-pink": "#E9D6CF",
+        porcelain: "#F2EDE5",
       },
       fontFamily: {
         serif: ["var(--font-serif)", "Georgia", "serif"],
@@ -27,6 +28,11 @@ const config: Config = {
       },
       borderRadius: { sm: "4px", md: "8px", lg: "16px" },
       maxWidth: { content: "72rem" },
+      letterSpacing: { label: "0.2em" },
+      transitionDuration: { fast: "200ms", medium: "350ms", slow: "500ms" },
+      transitionTimingFunction: {
+        editorial: "cubic-bezier(0.22, 0.61, 0.36, 1)",
+      },
     },
   },
   plugins: [typography],

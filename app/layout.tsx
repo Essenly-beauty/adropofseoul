@@ -31,6 +31,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${serif.variable} ${sans.variable}`}>
       <body className="font-sans antialiased">
+        <noscript>
+          <style>{`[data-reveal]{opacity:1!important;transform:none!important}`}</style>
+        </noscript>
         <SiteHeader />
         <div className="min-h-screen">{children}</div>
         <SiteFooter />

@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import { SiteHeader } from "./SiteHeader";
 
 describe("SiteHeader", () => {
@@ -21,5 +21,14 @@ describe("SiteHeader", () => {
     ]) {
       expect(screen.getByRole("link", { name: label })).toBeTruthy();
     }
+  });
+  it("toggles the mobile menu panel", () => {
+    render(<SiteHeader />);
+    expect(screen.queryByRole("navigation", { name: "Mobile" })).toBe(null);
+    const button = screen.getByRole("button", { name: /menu/i });
+    expect(button.getAttribute("aria-expanded")).toBe("false");
+    fireEvent.click(button);
+    expect(screen.getByRole("navigation", { name: "Mobile" })).toBeTruthy();
+    expect(button.getAttribute("aria-expanded")).toBe("true");
   });
 });

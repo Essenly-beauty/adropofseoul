@@ -1,26 +1,34 @@
 import Link from "next/link";
-import Image from "next/image";
 import type { Post } from "@/services/types";
+import { categoryLabel } from "@/lib/categories";
+import { readingTime } from "@/lib/reading-time";
+import { TonalFrame } from "./TonalFrame";
 
 export function ArticleCard({ post }: { post: Post }) {
+  const minutes = readingTime(post.body);
   return (
     <Link href={`/articles/${post.slug}`} className="group block">
-      {post.featuredImage && (
-        <div className="relative aspect-[4/3] overflow-hidden rounded-lg bg-soft-gray">
-          <Image
-            src={post.featuredImage}
-            alt={post.title}
-            fill
-            className="object-cover transition-transform duration-medium group-hover:scale-105"
-            sizes="(max-width: 768px) 100vw, 33vw"
-          />
-        </div>
-      )}
-      <h3 className="mt-4 font-serif text-xl group-hover:text-accent">
+      <TonalFrame
+        src={post.featuredImage}
+        alt={post.title}
+        label={categoryLabel(post.category)}
+        ratio="aspect-[3/2]"
+        sizes="(max-width: 768px) 100vw, 33vw"
+      />
+      <div className="mt-4 flex items-center gap-2.5 text-[11px] uppercase tracking-label text-text-muted">
+        <span>{categoryLabel(post.category)}</span>
+        {minutes && (
+          <>
+            <span className="h-[3px] w-[3px] rounded-full bg-text/40" />
+            <span>{minutes} min</span>
+          </>
+        )}
+      </div>
+      <h3 className="mt-2 font-serif text-2xl leading-snug transition-colors duration-medium ease-editorial group-hover:text-accent">
         {post.title}
       </h3>
       {post.excerpt && (
-        <p className="mt-1 text-sm text-text-muted line-clamp-2">
+        <p className="mt-2 text-sm text-text-muted line-clamp-2">
           {post.excerpt}
         </p>
       )}

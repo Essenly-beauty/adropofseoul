@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
-import { ArticleCard } from "./ArticleCard";
+import { FeaturedStory } from "./FeaturedStory";
 import type { Post } from "@/services/types";
 
 const post = {
@@ -19,12 +19,12 @@ const post = {
   publishedAt: "2026-01-01T00:00:00Z",
 } as Post;
 
-describe("ArticleCard", () => {
-  it("links to the article and shows category, title + excerpt", () => {
-    render(<ArticleCard post={post} />);
-    const link = screen.getByRole("link", { name: /Seoul Head Spa Ritual/ });
-    expect(link.getAttribute("href")).toBe("/articles/seoul-head-spa-ritual");
+describe("FeaturedStory", () => {
+  it("shows the category tag, title, excerpt, and a read link", () => {
+    render(<FeaturedStory post={post} />);
     expect(screen.getAllByText("Head Spa").length).toBeGreaterThan(0);
-    expect(screen.getByText(/slow world of scalp care/)).toBeTruthy();
+    expect(screen.getByText(/Seoul Head Spa Ritual/)).toBeTruthy();
+    const read = screen.getByRole("link", { name: /Read the story/ });
+    expect(read.getAttribute("href")).toBe("/articles/seoul-head-spa-ritual");
   });
 });
