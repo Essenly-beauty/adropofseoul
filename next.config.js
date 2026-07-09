@@ -1,19 +1,13 @@
-const SUPABASE_HOSTNAME = (() => {
-  try {
-    return new URL(process.env.NEXT_PUBLIC_SUPABASE_URL || "").hostname;
-  } catch {
-    return null;
-  }
-})();
-
-const remotePatterns = [];
-if (SUPABASE_HOSTNAME) {
-  remotePatterns.push({ protocol: "https", hostname: SUPABASE_HOSTNAME });
-}
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  images: { remotePatterns },
+  images: {
+    // Allow next/image to load images served over HTTPS from any host —
+    // Supabase Storage, brand sites, and affiliate CDNs alike. This is broad by
+    // design for editorial/affiliate content. To lock the image optimizer down
+    // later, replace the wildcard with explicit { protocol, hostname } entries
+    // (e.g. your Supabase Storage host and each known CDN).
+    remotePatterns: [{ protocol: "https", hostname: "**" }],
+  },
 };
 
 module.exports = nextConfig;
