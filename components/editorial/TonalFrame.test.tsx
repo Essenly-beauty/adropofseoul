@@ -15,4 +15,23 @@ describe("TonalFrame", () => {
     expect(screen.getByAltText("Head spa")).toBeTruthy();
     expect(screen.queryByText("Seongsu")).toBe(null);
   });
+  it("applies the brand tint only when branded", () => {
+    const plain = render(<TonalFrame src="/x.jpg" alt="Serum" sizes="25vw" />);
+    expect(plain.container.querySelector("[data-brand-tint]")).toBe(null);
+    expect(
+      (plain.getByAltText("Serum").getAttribute("style") || "").includes(
+        "sepia"
+      )
+    ).toBe(false);
+
+    const branded = render(
+      <TonalFrame src="/y.jpg" alt="Head spa" sizes="55vw" branded />
+    );
+    expect(branded.container.querySelector("[data-brand-tint]")).toBeTruthy();
+    expect(
+      (branded.getByAltText("Head spa").getAttribute("style") || "").includes(
+        "sepia"
+      )
+    ).toBe(true);
+  });
 });

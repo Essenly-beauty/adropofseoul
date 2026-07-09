@@ -11,6 +11,7 @@ export function PlaceCard({ place }: { place: Place }) {
         label={place.area ?? undefined}
         ratio="aspect-[4/5]"
         sizes="(max-width: 768px) 100vw, 33vw"
+        branded
       />
       <div className="mt-4 flex items-baseline justify-between gap-3">
         <h3 className="font-serif text-2xl transition-colors duration-medium ease-editorial group-hover:text-accent">

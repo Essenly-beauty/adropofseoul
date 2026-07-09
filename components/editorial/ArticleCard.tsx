@@ -14,6 +14,7 @@ export function ArticleCard({ post }: { post: Post }) {
         label={categoryLabel(post.category)}
         ratio="aspect-[3/2]"
         sizes="(max-width: 768px) 100vw, 33vw"
+        branded
       />
       <div className="mt-4 flex items-center gap-2.5 text-[11px] uppercase tracking-label text-text-muted">
         <span>{categoryLabel(post.category)}</span>

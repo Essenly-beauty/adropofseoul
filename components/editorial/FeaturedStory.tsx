@@ -21,6 +21,7 @@ export function FeaturedStory({ post }: { post: Post }) {
           ratio="aspect-[5/6]"
           sizes="(max-width: 768px) 100vw, 55vw"
           priority
+          branded
         />
       </Link>
       <div>
