@@ -12,7 +12,12 @@ export const metadata: Metadata = {
 };
 
 export default async function ArticlesPage() {
-  const posts = await listPublishedPosts({ limit: 48 });
+  let posts: Awaited<ReturnType<typeof listPublishedPosts>> = [];
+  try {
+    posts = await listPublishedPosts({ limit: 48 });
+  } catch (err) {
+    console.error("articles: posts fetch failed", err);
+  }
   return (
     <main className="mx-auto max-w-content px-6 py-16">
       <SectionHeading title="Stories" eyebrow="The Journal" />

@@ -12,7 +12,12 @@ export const metadata: Metadata = {
 };
 
 export default async function PlacesPage() {
-  const places = await listPlaces({ limit: 96 });
+  let places: Awaited<ReturnType<typeof listPlaces>> = [];
+  try {
+    places = await listPlaces({ limit: 96 });
+  } catch (err) {
+    console.error("places: places fetch failed", err);
+  }
   return (
     <main className="mx-auto max-w-content px-6 py-16">
       <SectionHeading title="Seoul Directory" eyebrow="Places" />
