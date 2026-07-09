@@ -14,7 +14,7 @@ function SubmitButton() {
     <button
       type="submit"
       disabled={pending}
-      className="rounded-md bg-accent px-5 py-2.5 text-sm text-white hover:bg-accent-hover disabled:opacity-60"
+      className="text-[12px] uppercase tracking-label text-text transition-colors duration-medium ease-editorial hover:text-accent disabled:opacity-60"
     >
       {pending ? "Subscribing…" : "Subscribe"}
     </button>
@@ -24,8 +24,8 @@ function SubmitButton() {
 export function NewsletterForm() {
   const [state, formAction] = useFormState(subscribeToNewsletter, initial);
   return (
-    <form action={formAction} className="mt-4">
-      <div className="flex flex-col gap-3 sm:flex-row">
+    <form action={formAction} className="mx-auto mt-9 max-w-[460px]">
+      <div className="flex items-center gap-3 border-b border-text pb-2">
         <label htmlFor="newsletter-email" className="sr-only">
           Email address
         </label>
@@ -35,14 +35,14 @@ export function NewsletterForm() {
           type="email"
           required
           placeholder="you@example.com"
-          className="w-full rounded-md border border-soft-gray bg-white px-3 py-2.5 sm:max-w-xs"
+          className="w-full bg-transparent px-0.5 py-1.5 text-[15px] outline-none placeholder:text-text-muted/60"
         />
         <SubmitButton />
       </div>
       {state.message && (
         <p
           role="status"
-          className={`mt-2 text-sm ${state.ok ? "text-accent" : "text-red-600"}`}
+          className={`mt-3 text-sm ${state.ok ? "text-accent" : "text-red-600"}`}
         >
           {state.message}
         </p>
