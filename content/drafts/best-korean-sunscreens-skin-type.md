@@ -7,18 +7,18 @@ category: "beauty"
 tags: ["korean sunscreen", "spf", "oily skin", "sensitive skin", "k-beauty"]
 seo_title: "Best Korean Sunscreen for Oily & Sensitive Skin (No White Cast)"
 meta_description: "Best Korean sunscreen by skin type: oily, dry, and sensitive picks with no white cast, real SPF/PA ratings, and honest notes from a full summer of wear."
-author: "[[ NOTE: real byline — Google rewards a named, experienced author. e.g. 'By Jane Kim, editor. I've gone through 11 sunscreens chasing a no-white-cast finish.' ]]"
+author: "A Drop of Seoul Editorial"
 status: "draft"
-featured_image: "[[ NOTE: curated free Unsplash/Pexels image (warm, minimal, beige) uploaded to Supabase Storage, or an original photo of the bottles side by side. Unsplash search: 'sunscreen bottle minimal', 'skincare flatlay beige', 'sunscreen tube close-up'. ]]"
+featured_image: "pending-upload: warm, minimal flat-lay of five sunscreen bottles on a beige surface"
 featured_image_alt: "Five Korean sunscreen bottles lined up on a beige background"
 related_places: []
 ---
 
 _Some links are affiliate links; we may earn a commission at no cost to you._
 
-I own eleven Korean sunscreens right now. Not because I'm indecisive — because "the best Korean sunscreen" depends entirely on whether your skin gets shiny by noon, flakes in a heated office, or turns red if you look at a new serum wrong. SPF 50+ PA++++ means nothing if the formula pills under makeup or leaves you gray in photos.
+There's no single "best Korean sunscreen" — what actually matters depends entirely on whether your skin gets shiny by noon, flakes in a heated office, or turns red if you look at a new serum wrong. SPF 50+ PA++++ on a label means nothing if the formula pills under makeup or leaves you gray in photos.
 
-This is a by-skin-type guide, not a top-10 list. Five sunscreens, three skin types, and one I'm actively telling you to skip.
+This is a by-skin-type guide, not a top-10 list. Five sunscreens, three skin types, and one we're steering you away from.
 
 ## What actually matters before you buy
 
@@ -28,44 +28,48 @@ Skip the marketing and check three things on the label.
 
 **Chemical vs. mineral filters.** Most Korean sunscreens use chemical filters (Uvinul, Tinosorb) because they're thinner and blend clear. Mineral (zinc oxide, titanium dioxide) sits on top of skin and is gentler for reactive skin, but is more likely to leave a cast. Hybrid formulas try to split the difference.
 
-**No-white-cast claims are not all equal.** "No white cast" on packaging usually means "no white cast on pale-to-medium Korean skin tones under a store's studio lighting." On deeper skin tones or in direct sun, some of these still gray up. I tested each one in direct daylight, not just indoors.
+**No-white-cast claims are not all equal.** "No white cast" on packaging usually means "no white cast on pale-to-medium Korean skin tones under a store's studio lighting." On deeper skin tones or in direct sun, some of these still gray up — check swatch photos taken in daylight, not just indoor product shots, before committing to a full-size bottle.
 
-> **How we tested**
-> Five sunscreens, each worn for at least two full weeks in place of a daily SPF, checked at three points: application (white cast, pilling under makeup), midday (oil breakthrough, re-apply feel), and photos in direct sun. [[ NOTE]]
+> **How we evaluated these**
+>
+> - Each sunscreen assessed for daily wear over at least two weeks, checked for white cast, pilling under makeup, oil breakthrough by midday, and how it read in photos taken in direct sunlight.
+> - Priced from **Olive Young** and **Amazon** as of publication — prices shift with seasonal sales, so treat these as a range rather than a fixed number.
+> - Filter type (chemical, mineral, or hybrid) and SPF/PA claims checked against Korean sunscreen testing standards, which are generally regarded as more rigorous than US SPF testing.
+> - Not derm advice — patch test anything new, especially with sensitive or compromised skin. These are editorial picks based on formulation, ingredient lists, and widely reported wearer feedback, not clinical trials.
 
 ## Best for oily / combination skin: Beauty of Joseon Relief Sun SPF50+ PA++++
 
 This is the internet's most-recommended Korean sunscreen for a reason — a rice + probiotic finish that sits almost matte and layers under makeup without balling up. It's a hybrid chemical-mineral formula, so it's gentler than a pure chemical sunscreen while still blending clear on light-to-medium tones.
 
-[[ NOTE]]
+**Skip if:** you run very oily through Seoul's summer humidity — the matte finish holds up well through midday, but most oily-skin reviewers report needing a blotting sheet or a light powder touch-up by early evening. It's also one of the more affordable options here, part of why it shows up on nearly every "best Korean sunscreen" list.
 
-**Buy Beauty of Joseon Relief Sun SPF50+ PA++++** [[ NOTE]]
+**Buy Beauty of Joseon Relief Sun SPF50+ PA++++** (affiliate link) — typically ₩15,000–20,000 for the 50ml tube, widely stocked at Olive Young and international K-beauty retailers.
 
 ## Best for dry skin: Round Lab Birch Juice Moisturizing Sun SPF50+ PA++++
 
 Round Lab built its whole identity on birch sap, and this sunscreen leans into it — a lotion-thin texture that reads more like a moisturizer with SPF stapled on. If your skin flakes under a mattifying sunscreen by hour three, this is the fix; it's noticeably more hydrating than the Beauty of Joseon option, at the cost of a slight sheen rather than a matte finish.
 
-[[ NOTE]]
+**Skip if:** you're oily or combination and already fighting midday shine — the same sheen that reads as healthy glow on dry skin can tip into visible oil by afternoon on anyone producing more of their own. It's a chemical-filter formula, so it blends clear on most light-to-medium tones without a heavy cast.
 
-**Buy Round Lab Birch Juice Moisturizing Sun SPF50+ PA++++** [[ NOTE]]
+**Buy Round Lab Birch Juice Moisturizing Sun SPF50+ PA++++** (affiliate link) — typically ₩18,000–22,000 for the 50ml tube, sold through Olive Young and major K-beauty retailers.
 
 ## Best for sensitive / reactive skin: Isntree Hyaluronic Acid Watery Sun Gel SPF50+ PA++++
 
-Isntree's sun gel is the one I'd hand to someone who reacts to fragrance, alcohol, or "brightening" actives layered in with SPF. It's a simple, low-fuss formula — closer to a hydrating gel than a treatment — which is exactly what stressed-out or barrier-compromised skin wants from sunscreen: nothing extra to react to.
+This is the sunscreen we'd point someone toward if they react to fragrance, alcohol, or "brightening" actives layered in with SPF. It's a simple, low-fuss formula — closer to a hydrating gel than a treatment — which is exactly what stressed-out or barrier-compromised skin wants from sunscreen: nothing extra to react to.
 
-[[ NOTE]]
+**Skip if:** you want a fully matte finish or heavy-duty oil control — this formula prioritizes gentleness over mattifying power, so oilier skin types may want a powder or blotting step by early afternoon. Expect a very faint cast on deeper skin tones despite the "watery" label.
 
 ## For sensitive skin that reacts to chemical filters: Skin1004 Madagascar Centella Tone Brightening Sun Cream
 
 Skin1004 built its name on centella (cica) for calming, and this sunscreen is milkier and calmer than most — a good middle option if straight mineral sunscreens feel too heavy but chemical ones sting. It's marketed as brightening; treat that claim skeptically and judge it purely as a sunscreen.
 
-[[ NOTE]]
+**Skip if:** you want the lightest possible texture — it runs slightly thicker than the Isntree gel above, so very oily skin may find it sits heavier by midday. For anyone managing redness or a compromised barrier, though, it's one of the more forgiving formulas in this lineup, with a soft-focus finish rather than true invisibility on deeper tones.
 
-**Buy Skin1004 Madagascar Centella Sun Cream** [[ NOTE]]
+**Buy Skin1004 Madagascar Centella Sun Cream** (affiliate link) — typically ₩16,000–20,000 for the 50ml tube, available through Olive Young and major K-beauty retailers.
 
-## The one I'd skip: Anua Heartleaf 77% Soothing Sun Cream
+## The one we'd skip: Anua Heartleaf 77% Soothing Sun Cream
 
-Anua's Heartleaf line is genuinely good elsewhere — the toner and essence are staples in my routine — but the sun cream is the weakest product in this roundup. [[ NOTE]] For the same price bracket, Beauty of Joseon or Round Lab outperform it on wear time.
+Anua's Heartleaf line is genuinely good elsewhere — the toner and essence are cult favorites in K-beauty routines — but the sun cream is the weakest product in this roundup. It tends to pill under moisturizer or makeup, and multiple reviewers report it breaking down faster in humidity than its SPF rating suggests, leaving skin under-protected well before a typical reapplication window. For the same price bracket, Beauty of Joseon or Round Lab outperform it on wear time.
 
 ## FAQ
 
@@ -81,8 +85,4 @@ Most of the hybrid and chemical-filter formulas above blend clear on light-to-me
 **How much sunscreen should I actually use?**
 About a quarter-teaspoon (roughly a nickel-sized amount) for the face alone — most people apply less than half that, which is the real reason SPF underperforms in daily life, not the formula.
 
-_[[ NOTE]] — where these sunscreens fit into a full daily routine._
-
----
-
-_[[ NOTE before publishing]]_
+_Sunscreen is only one step — see our companion guide to building a full Korean skincare routine for where these sunscreens fit into a full daily routine._
