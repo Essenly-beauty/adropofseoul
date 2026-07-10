@@ -49,3 +49,20 @@ export type Product = {
   rating: number | null;
   disclosureRequired: boolean;
 };
+
+export type Ingredient = {
+  id: string;
+  slug: string;
+  name: string;
+  inciName: string | null;
+  alsoKnownAs: string[];
+  functions: string[];
+  summary: string | null;
+  description: string | null;
+  benefits: string | null;
+  goodForSkinTypes: string[];
+  targetsConcerns: string[];
+  caution: string | null;
+  seoTitle: string | null;
+  metaDescription: string | null;
+};

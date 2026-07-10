@@ -13,6 +13,7 @@ export function fakeClient(result: Result) {
   builder.eq = chain("eq");
   builder.order = chain("order");
   builder.limit = chain("limit");
+  builder.contains = chain("contains");
   builder.range = chain("range");
   builder.maybeSingle = () => Promise.resolve(result);
   // Awaiting the builder itself resolves the result (for list queries).
