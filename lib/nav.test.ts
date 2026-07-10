@@ -8,6 +8,7 @@ describe("NAV_ITEMS", () => {
       "Beauty",
       "Hair",
       "Places",
+      "Ingredients",
       "Head Spa",
       "Guides",
       "Picks",
