@@ -27,19 +27,26 @@ function Chip({
 export function AreaFilter({
   areas,
   active,
+  basePath = "/places",
+  param = "area",
+  options,
 }: {
-  areas: string[];
+  areas?: string[];
   active?: string;
+  basePath?: string;
+  param?: string;
+  options?: { value: string; label: string }[];
 }) {
+  const opts = options ?? (areas ?? []).map((a) => ({ value: a, label: a }));
   return (
-    <nav aria-label="Filter by area" className="mb-10 flex flex-wrap gap-2.5">
-      <Chip label="All" href="/places" active={!active} />
-      {areas.map((area) => (
+    <nav aria-label="Filter" className="mb-10 flex flex-wrap gap-2.5">
+      <Chip label="All" href={basePath} active={!active} />
+      {opts.map((o) => (
         <Chip
-          key={area}
-          label={area}
-          href={`/places?area=${encodeURIComponent(area)}`}
-          active={active === area}
+          key={o.value}
+          label={o.label}
+          href={`${basePath}?${param}=${encodeURIComponent(o.value)}`}
+          active={active === o.value}
         />
       ))}
     </nav>
