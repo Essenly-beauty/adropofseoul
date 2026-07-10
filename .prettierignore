@@ -1,0 +1,4 @@
+# Editorial content is prose, not code — Prettier's markdown link handling
+# mangles our [[ NOTE: ... ]] editor slots (turns them into [[ NOTE]]).
+# Keep drafts out of the formatter entirely.
+content/
