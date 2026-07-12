@@ -10,6 +10,7 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
+    "content:seed-posts": "node scripts/seed-posts.mjs",
     "db:push": "npx supabase db push",
     "db:diff": "npx supabase db diff",
     "db:types": "npx supabase gen types typescript --project-id $SUPABASE_PROJECT_ID > types/database.types.ts",
