@@ -1,0 +1,719 @@
+{
+  "generated_at": "2026-07-12T05:02:18.754Z",
+  "input_dir": "/Users/jj_whatap/Downloads/아카이브 3",
+  "output_dir": "content/source-archives/archive-3",
+  "source_files": {
+    "brands": "brands_rows.json",
+    "clinics": "clinics_rows.json",
+    "clinicTreatments": "clinic_treatments_rows.json",
+    "ingredients": "ingredients_rows.json",
+    "productIngredients": "product_ingredients_rows.json",
+    "productStores": "product_stores_rows.json",
+    "products": "products_rows.json",
+    "stores": "stores_rows.json",
+    "treatments": "treatments_rows.json"
+  },
+  "tables": {
+    "brands": {
+      "rows": 100,
+      "keys": [
+        "created_at",
+        "id",
+        "is_essenly",
+        "name",
+        "origin",
+        "specialties",
+        "status",
+        "tier",
+        "updated_at"
+      ],
+      "nonempty": {
+        "id": 100,
+        "name": 100,
+        "origin": 100,
+        "tier": 100,
+        "is_essenly": 100,
+        "specialties": 100,
+        "created_at": 100,
+        "status": 100,
+        "updated_at": 100
+      },
+      "statuses": [
+        "active"
+      ],
+      "duplicate_names": [
+        {
+          "name": "APLB",
+          "count": 2
+        },
+        {
+          "name": "AROMATICA",
+          "count": 2
+        },
+        {
+          "name": "epais",
+          "count": 2
+        },
+        {
+          "name": "FOODOLOGY",
+          "count": 2
+        },
+        {
+          "name": "GLOW",
+          "count": 2
+        },
+        {
+          "name": "haming",
+          "count": 2
+        },
+        {
+          "name": "ilso",
+          "count": 2
+        },
+        {
+          "name": "Isntree",
+          "count": 2
+        },
+        {
+          "name": "LABO-H",
+          "count": 2
+        },
+        {
+          "name": "MECHAI",
+          "count": 2
+        },
+        {
+          "name": "ON:THE BODY",
+          "count": 2
+        },
+        {
+          "name": "S.NATURE",
+          "count": 2
+        }
+      ]
+    },
+    "clinics": {
+      "rows": 100,
+      "keys": [
+        "address",
+        "booking_url",
+        "city",
+        "clinic_type",
+        "consultation_type",
+        "country",
+        "created_at",
+        "description",
+        "district",
+        "embedding",
+        "english_support",
+        "external_links",
+        "foreigner_friendly",
+        "highlight_badge",
+        "id",
+        "images",
+        "is_highlighted",
+        "license_verified",
+        "location",
+        "name",
+        "operating_hours",
+        "rating",
+        "review_count",
+        "status",
+        "tags",
+        "updated_at"
+      ],
+      "nonempty": {
+        "id": 100,
+        "name": 100,
+        "description": 100,
+        "country": 100,
+        "city": 100,
+        "district": 100,
+        "location": 0,
+        "address": 100,
+        "operating_hours": 0,
+        "english_support": 100,
+        "clinic_type": 100,
+        "license_verified": 100,
+        "consultation_type": 100,
+        "foreigner_friendly": 0,
+        "booking_url": 0,
+        "external_links": 0,
+        "is_highlighted": 100,
+        "highlight_badge": 0,
+        "rating": 0,
+        "review_count": 100,
+        "images": 100,
+        "tags": 100,
+        "status": 100,
+        "embedding": 100,
+        "created_at": 100,
+        "updated_at": 100
+      },
+      "statuses": [
+        "active"
+      ],
+      "duplicate_names": []
+    },
+    "clinicTreatments": {
+      "rows": 100,
+      "keys": [
+        "clinic_id",
+        "treatment_id"
+      ],
+      "nonempty": {
+        "clinic_id": 100,
+        "treatment_id": 100
+      },
+      "statuses": [],
+      "duplicate_names": []
+    },
+    "ingredients": {
+      "rows": 100,
+      "keys": [
+        "caution_skin_types",
+        "common_in",
+        "created_at",
+        "function",
+        "id",
+        "inci_name",
+        "name",
+        "status",
+        "updated_at"
+      ],
+      "nonempty": {
+        "id": 100,
+        "name": 100,
+        "inci_name": 100,
+        "function": 100,
+        "caution_skin_types": 100,
+        "common_in": 100,
+        "created_at": 100,
+        "status": 100,
+        "updated_at": 100
+      },
+      "statuses": [
+        "active"
+      ],
+      "duplicate_names": [
+        {
+          "name": "Mugwort Extract",
+          "count": 2
+        }
+      ]
+    },
+    "productIngredients": {
+      "rows": 100,
+      "keys": [
+        "ingredient_id",
+        "product_id",
+        "type"
+      ],
+      "nonempty": {
+        "product_id": 100,
+        "ingredient_id": 100,
+        "type": 100
+      },
+      "statuses": [],
+      "duplicate_names": []
+    },
+    "productStores": {
+      "rows": 100,
+      "keys": [
+        "product_id",
+        "store_id"
+      ],
+      "nonempty": {
+        "product_id": 100,
+        "store_id": 100
+      },
+      "statuses": [],
+      "duplicate_names": []
+    },
+    "products": {
+      "rows": 100,
+      "keys": [
+        "brand_id",
+        "category",
+        "concerns",
+        "created_at",
+        "description",
+        "embedding",
+        "english_label",
+        "hair_types",
+        "highlight_badge",
+        "id",
+        "images",
+        "is_highlighted",
+        "key_ingredients",
+        "name",
+        "price",
+        "price_currency",
+        "price_max",
+        "price_min",
+        "price_source",
+        "price_source_url",
+        "price_updated_at",
+        "purchase_links",
+        "range_source",
+        "rating",
+        "review_count",
+        "review_summary",
+        "skin_types",
+        "status",
+        "subcategory",
+        "tags",
+        "tourist_popular",
+        "updated_at",
+        "volume"
+      ],
+      "nonempty": {
+        "id": 100,
+        "name": 100,
+        "description": 32,
+        "brand_id": 66,
+        "category": 100,
+        "subcategory": 100,
+        "skin_types": 100,
+        "hair_types": 100,
+        "concerns": 100,
+        "key_ingredients": 68,
+        "price": 100,
+        "volume": 0,
+        "english_label": 100,
+        "tourist_popular": 100,
+        "is_highlighted": 100,
+        "highlight_badge": 0,
+        "rating": 0,
+        "review_count": 100,
+        "review_summary": 32,
+        "images": 100,
+        "tags": 100,
+        "status": 100,
+        "embedding": 32,
+        "created_at": 100,
+        "updated_at": 100,
+        "purchase_links": 100,
+        "price_min": 82,
+        "price_max": 82,
+        "price_currency": 100,
+        "price_source": 100,
+        "range_source": 82,
+        "price_updated_at": 82,
+        "price_source_url": 82
+      },
+      "statuses": [
+        "active"
+      ],
+      "duplicate_names": [
+        {
+          "name": "AESTURA Regederm365 Retinoid Eye Serum 15ml",
+          "count": 2
+        },
+        {
+          "name": "epais Scalp Boosting Ampoule 150ml",
+          "count": 2
+        },
+        {
+          "name": "espoir Fresh Setting Powder Puff 4P",
+          "count": 2
+        },
+        {
+          "name": "ETUDE Curl Fix Mascara 1+1 Set (4 Options)",
+          "count": 2
+        },
+        {
+          "name": "haming Rice Water Glow BB Lotion 30ml (3 Shades)",
+          "count": 2
+        },
+        {
+          "name": "STRIDEX Sensitive Pad 55 Sheets",
+          "count": 2
+        }
+      ]
+    },
+    "stores": {
+      "rows": 100,
+      "keys": [
+        "address",
+        "city",
+        "country",
+        "created_at",
+        "description",
+        "district",
+        "embedding",
+        "english_support",
+        "external_links",
+        "highlight_badge",
+        "id",
+        "images",
+        "is_highlighted",
+        "location",
+        "name",
+        "nearby_landmarks",
+        "operating_hours",
+        "payment_methods",
+        "rating",
+        "review_count",
+        "status",
+        "store_type",
+        "tags",
+        "tourist_services",
+        "updated_at"
+      ],
+      "nonempty": {
+        "id": 100,
+        "name": 100,
+        "description": 100,
+        "country": 100,
+        "city": 100,
+        "district": 100,
+        "location": 0,
+        "address": 100,
+        "operating_hours": 72,
+        "english_support": 100,
+        "store_type": 100,
+        "tourist_services": 100,
+        "payment_methods": 100,
+        "nearby_landmarks": 100,
+        "is_highlighted": 100,
+        "highlight_badge": 0,
+        "rating": 0,
+        "review_count": 100,
+        "images": 100,
+        "tags": 100,
+        "status": 100,
+        "embedding": 100,
+        "created_at": 100,
+        "updated_at": 100,
+        "external_links": 0
+      },
+      "statuses": [
+        "active"
+      ],
+      "duplicate_names": []
+    },
+    "treatments": {
+      "rows": 53,
+      "keys": [
+        "aftercare",
+        "category",
+        "created_at",
+        "description",
+        "downtime_days",
+        "duration_minutes",
+        "embedding",
+        "highlight_badge",
+        "id",
+        "images",
+        "is_highlighted",
+        "name",
+        "precautions",
+        "price",
+        "price_currency",
+        "price_max",
+        "price_min",
+        "price_source",
+        "price_source_url",
+        "price_updated_at",
+        "range_source",
+        "rating",
+        "review_count",
+        "session_count",
+        "status",
+        "subcategory",
+        "suitable_skin_types",
+        "tags",
+        "target_concerns",
+        "updated_at"
+      ],
+      "nonempty": {
+        "id": 53,
+        "name": 53,
+        "description": 53,
+        "category": 53,
+        "subcategory": 0,
+        "target_concerns": 53,
+        "suitable_skin_types": 53,
+        "duration_minutes": 53,
+        "downtime_days": 53,
+        "session_count": 53,
+        "precautions": 53,
+        "aftercare": 53,
+        "is_highlighted": 53,
+        "highlight_badge": 0,
+        "rating": 0,
+        "review_count": 53,
+        "images": 53,
+        "tags": 53,
+        "status": 53,
+        "embedding": 53,
+        "created_at": 53,
+        "updated_at": 53,
+        "price_min": 53,
+        "price_max": 53,
+        "price_currency": 53,
+        "price": 0,
+        "price_source": 53,
+        "range_source": 53,
+        "price_updated_at": 0,
+        "price_source_url": 0
+      },
+      "statuses": [
+        "active"
+      ],
+      "duplicate_names": []
+    }
+  },
+  "vocabularies": {
+    "product_categories": [
+      "bodycare",
+      "haircare",
+      "makeup",
+      "skincare",
+      "tools"
+    ],
+    "product_subcategories": [
+      "application_sponge",
+      "beauty_device",
+      "body_lotion",
+      "body_scrub",
+      "body_sunscreen",
+      "body_wash",
+      "cleanser",
+      "cleansing_brush",
+      "cleansing_tool",
+      "cushion",
+      "eye_care",
+      "eye_liner",
+      "eye_shadow",
+      "foundation",
+      "hair_essence",
+      "hair_oil",
+      "hair_serum",
+      "hand_cream",
+      "lip_gloss",
+      "lip_tint",
+      "makeup_brush",
+      "makeup_tool",
+      "mascara",
+      "mask",
+      "mask_accessory",
+      "moisturizer",
+      "primer",
+      "serum",
+      "setting_powder",
+      "shampoo",
+      "styling",
+      "sunscreen",
+      "toner",
+      "treatment"
+    ],
+    "store_types": [
+      "brand_store",
+      "chicor",
+      "daiso",
+      "department_store",
+      "olive_young",
+      "other"
+    ],
+    "clinic_types": [
+      "dermatology",
+      "plastic_surgery"
+    ],
+    "treatment_categories": [
+      "body",
+      "facial",
+      "hair",
+      "injection",
+      "laser",
+      "skin"
+    ],
+    "ingredient_functions": [
+      "UV absorber",
+      "UV-protection",
+      "anti-aging",
+      "anti-inflammatory",
+      "anti-seborrheic",
+      "anti-wrinkle",
+      "antimicrobial",
+      "antioxidant",
+      "antistatic",
+      "astringent",
+      "barrier repair",
+      "barrier strengthening",
+      "brightening",
+      "buffering",
+      "cell energy",
+      "cell turnover",
+      "chelating",
+      "cleansing",
+      "collagen-boosting",
+      "dark spot reduction",
+      "deodorant",
+      "emollient",
+      "emulsifying",
+      "emulsion stabilizer",
+      "emulsion stabilizing",
+      "exfoliation",
+      "foam boosting",
+      "foaming",
+      "fragrance",
+      "gel forming",
+      "hair conditioning",
+      "healing",
+      "humectant",
+      "hydration",
+      "light stabilizer",
+      "moisture retention",
+      "moisturizing",
+      "oil-control",
+      "opacifying",
+      "perfuming",
+      "plumping",
+      "pore cleansing",
+      "preservative",
+      "refreshing",
+      "repair",
+      "skin conditioning",
+      "skin protecting",
+      "skin smoothing",
+      "skin strengthening",
+      "skin-conditioning",
+      "solvent",
+      "soothing",
+      "surfactant",
+      "tone-evening",
+      "tyrosinase inhibition",
+      "viscosity controlling",
+      "wrinkle reduction"
+    ],
+    "product_price_sources": [
+      "real"
+    ],
+    "treatment_price_sources": [
+      "manual"
+    ],
+    "product_source_domains": [
+      "global.oliveyoung.com"
+    ]
+  },
+  "references": {
+    "missing_product_brand_ids": [
+      "e2cdad34-1d44-43eb-a949-1996b72993dd",
+      "fc733a89-b143-4111-a593-a0b0be72ea51",
+      "8a58e9e2-201e-41e0-91af-50d70bcc9ec2",
+      "a83c888f-3f77-59e1-a973-84e21ff1d4af",
+      "cdc97d05-8101-4b33-a40c-8c8028052dd2",
+      "f99455d6-1f51-544c-99c7-19a9f9159609",
+      "b5355d4e-c43d-515e-a470-012e625a1190",
+      "b5355d4e-c43d-515e-a470-012e625a1190",
+      "ca92dab3-1f6a-5fdc-bede-b02abc8f340a",
+      "ca92dab3-1f6a-5fdc-bede-b02abc8f340a",
+      "978acb93-0e9b-5b4c-a06f-85af32f9c879",
+      "d0d12beb-ad6f-4b98-9659-80c62e3fbe0a",
+      "cdecac6e-6a52-5ae2-b10b-9a7b57ecc455",
+      "cdecac6e-6a52-5ae2-b10b-9a7b57ecc455",
+      "f106ebb7-829b-5f3c-aeab-009f3848532a",
+      "f4f9081a-cac1-5388-b5ec-c86213241927",
+      "a83c888f-3f77-59e1-a973-84e21ff1d4af",
+      "bb2680ce-040b-52e5-bead-24ea4ef656f4",
+      "f106ebb7-829b-5f3c-aeab-009f3848532a",
+      "cdecac6e-6a52-5ae2-b10b-9a7b57ecc455",
+      "ca92dab3-1f6a-5fdc-bede-b02abc8f340a",
+      "b3b18e2c-a2c3-5f1b-a516-7356612bcc95",
+      "d92e6668-191d-43b8-b876-61e26a3ecfd0"
+    ],
+    "missing_product_ingredient_product_ids": [],
+    "missing_product_ingredient_ingredient_ids": [
+      "f56d741c-2dfb-5eb0-b195-a7e11ea1ca77",
+      "f56d741c-2dfb-5eb0-b195-a7e11ea1ca77",
+      "f56d741c-2dfb-5eb0-b195-a7e11ea1ca77",
+      "f56d741c-2dfb-5eb0-b195-a7e11ea1ca77",
+      "edc1c6e6-b281-59b5-88df-9538ef2bead7",
+      "edc1c6e6-b281-59b5-88df-9538ef2bead7",
+      "f56d741c-2dfb-5eb0-b195-a7e11ea1ca77",
+      "edc1c6e6-b281-59b5-88df-9538ef2bead7",
+      "f56d741c-2dfb-5eb0-b195-a7e11ea1ca77"
+    ],
+    "missing_product_store_product_ids": [],
+    "missing_product_store_store_ids": [
+      "50bae4c2-32b9-5044-950f-e7641dba5e7a",
+      "51ab56e5-7a4c-558f-8ec6-4abad488d22a",
+      "52d7e6d7-a888-5405-909c-9b8305e4df4e",
+      "552e8672-0723-51b0-a432-1b97a7c14920",
+      "572351a1-4dbc-5ddc-a4d8-48b688d2302a",
+      "5d84c5fb-0b63-5cef-b20b-681d9031f06b",
+      "61ce2826-e046-5023-9a8a-f59fd3f28fc1",
+      "688b807a-54d9-551c-a080-f0b6bec3d09a",
+      "75436778-ca3b-5f64-b33a-6163de9109a2",
+      "87d94446-1a10-5bb3-9d8c-6c1346745644",
+      "8e62290c-40d4-5ca9-8e9c-de3c53e6c072",
+      "92542f1c-593d-57f9-837b-a32d16f9e200",
+      "9351e98a-bd30-51ee-9d15-01f55e8f9d8b",
+      "9b65325c-d6c2-53d7-9491-ef3e10418e7c",
+      "a76fe423-244d-547a-b15f-be9b534faeb9",
+      "a919413b-b2a3-51d6-82a7-fd20a3453e25",
+      "aa6f4b32-fe5f-5e1e-9f89-180c091449ea",
+      "b2a2ab97-66f0-515b-bb4d-5addce457de5",
+      "b2c80a2f-dbc1-53bc-818c-1054e846510f",
+      "b68ad52c-398e-5299-b977-04d0e2be0f27",
+      "be70c375-3987-5613-90f6-90df6d289f3a",
+      "c34ea5a4-aa32-50f2-b86b-4540d2e747a6",
+      "c5af9cfb-ebe7-5769-9950-438cbb566c04",
+      "c862b8ba-5680-5d54-95d3-cae2eeddfe6e",
+      "d0b6f2f4-50f5-558c-b9db-83a51c630da6",
+      "d13ab9ea-9d13-5229-b61f-24f13992e6d6",
+      "d635a76d-ad9c-55fc-884d-b6112179fcca",
+      "ddbc8daa-cb87-54d0-a89b-bacfe1dfbcb3",
+      "ea8e1b1c-929d-51a4-97f8-6073037b635c",
+      "edcdd34a-d4e7-51e9-83b3-094aab6d1120",
+      "ee8124bb-db75-5cce-a5ff-a1a4da49d088",
+      "fb0ca34b-d0ef-5e4c-81ca-551939cb3d86",
+      "50bae4c2-32b9-5044-950f-e7641dba5e7a",
+      "51ab56e5-7a4c-558f-8ec6-4abad488d22a",
+      "52d7e6d7-a888-5405-909c-9b8305e4df4e",
+      "552e8672-0723-51b0-a432-1b97a7c14920",
+      "572351a1-4dbc-5ddc-a4d8-48b688d2302a",
+      "5d84c5fb-0b63-5cef-b20b-681d9031f06b",
+      "61ce2826-e046-5023-9a8a-f59fd3f28fc1",
+      "688b807a-54d9-551c-a080-f0b6bec3d09a",
+      "75436778-ca3b-5f64-b33a-6163de9109a2",
+      "87d94446-1a10-5bb3-9d8c-6c1346745644",
+      "8e62290c-40d4-5ca9-8e9c-de3c53e6c072",
+      "92542f1c-593d-57f9-837b-a32d16f9e200",
+      "9351e98a-bd30-51ee-9d15-01f55e8f9d8b",
+      "9b65325c-d6c2-53d7-9491-ef3e10418e7c",
+      "a76fe423-244d-547a-b15f-be9b534faeb9",
+      "a919413b-b2a3-51d6-82a7-fd20a3453e25",
+      "aa6f4b32-fe5f-5e1e-9f89-180c091449ea",
+      "b2a2ab97-66f0-515b-bb4d-5addce457de5",
+      "b2c80a2f-dbc1-53bc-818c-1054e846510f",
+      "b68ad52c-398e-5299-b977-04d0e2be0f27",
+      "be70c375-3987-5613-90f6-90df6d289f3a",
+      "c34ea5a4-aa32-50f2-b86b-4540d2e747a6",
+      "c5af9cfb-ebe7-5769-9950-438cbb566c04",
+      "c862b8ba-5680-5d54-95d3-cae2eeddfe6e",
+      "d0b6f2f4-50f5-558c-b9db-83a51c630da6",
+      "d13ab9ea-9d13-5229-b61f-24f13992e6d6",
+      "d635a76d-ad9c-55fc-884d-b6112179fcca",
+      "ddbc8daa-cb87-54d0-a89b-bacfe1dfbcb3",
+      "ea8e1b1c-929d-51a4-97f8-6073037b635c",
+      "edcdd34a-d4e7-51e9-83b3-094aab6d1120",
+      "ee8124bb-db75-5cce-a5ff-a1a4da49d088",
+      "fb0ca34b-d0ef-5e4c-81ca-551939cb3d86"
+    ],
+    "missing_clinic_treatment_clinic_ids": [],
+    "missing_clinic_treatment_treatment_ids": []
+  },
+  "recommendation": {
+    "import_mode": "staging_only",
+    "first_public_slice": "ingredient_glossary_drafts_with_product_source_support",
+    "notes": [
+      "Do not overwrite public products or ingredients from this archive.",
+      "Promote rows only after source verification and editorial rewriting.",
+      "Products with Olive Young source URLs are the strongest immediate evidence set.",
+      "Clinic and treatment rows require higher verification before publication."
+    ]
+  }
+}
