@@ -8,6 +8,7 @@ import { Prose } from "@/components/editorial/Prose";
 import { Eyebrow } from "@/components/editorial/Eyebrow";
 import { TagChips } from "@/components/editorial/TagChips";
 import { ProductCard } from "@/components/editorial/ProductCard";
+import { IngredientVisual } from "@/components/editorial/IngredientVisual";
 import { JsonLd } from "@/components/editorial/JsonLd";
 import { skinTypeLabel, concernLabel, functionLabel } from "@/lib/taxonomy";
 import { canonical, definedTermJsonLd, breadcrumbJsonLd } from "@/lib/seo";
@@ -52,6 +53,12 @@ export default async function IngredientPage({
           { name: "Ingredients", path: "/ingredients" },
           { name: ing.name, path: `/ingredients/${ing.slug}` },
         ])}
+      />
+
+      <IngredientVisual
+        ingredient={ing}
+        ratio="aspect-[5/3]"
+        className="mb-8"
       />
 
       <Eyebrow>
@@ -122,6 +129,37 @@ export default async function IngredientPage({
           </div>
         </section>
       )}
+
+      <section className="mt-12 border-y border-soft-gray py-8">
+        <p className="text-[11px] uppercase tracking-label text-accent">
+          Keep exploring
+        </p>
+        <h2 className="mt-2 font-serif text-3xl">Build the next layer.</h2>
+        <p className="mt-3 max-w-2xl text-text-muted">
+          Use this ingredient as a starting point, then compare it with nearby
+          actives, skin concerns, and product guides before you buy anything.
+        </p>
+        <div className="mt-5 flex flex-wrap gap-3">
+          <a
+            href="/ingredients"
+            className="rounded-full border border-text bg-text px-4 py-2 text-[11px] uppercase tracking-label text-bg"
+          >
+            Browse ingredients
+          </a>
+          <a
+            href="/beauty/skin-concerns"
+            className="rounded-full border border-soft-gray px-4 py-2 text-[11px] uppercase tracking-label text-text-muted transition-colors duration-medium ease-editorial hover:border-accent hover:text-text"
+          >
+            Match a concern
+          </a>
+          <a
+            href="/beauty/products"
+            className="rounded-full border border-soft-gray px-4 py-2 text-[11px] uppercase tracking-label text-text-muted transition-colors duration-medium ease-editorial hover:border-accent hover:text-text"
+          >
+            Product context
+          </a>
+        </div>
+      </section>
     </main>
   );
 }

@@ -7,7 +7,9 @@ import { SectionHeading } from "@/components/editorial/SectionHeading";
 import { canonical } from "@/lib/seo";
 
 export function generateStaticParams() {
-  return CATEGORY_SLUGS.map((category) => ({ category }));
+  return CATEGORY_SLUGS.filter((category) => category !== "beauty").map(
+    (category) => ({ category })
+  );
 }
 
 export async function generateMetadata({

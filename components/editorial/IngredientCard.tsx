@@ -1,16 +1,18 @@
 import Link from "next/link";
 import type { Ingredient } from "@/services/types";
 import { functionLabel } from "@/lib/taxonomy";
+import { IngredientVisual } from "./IngredientVisual";
 
 export function IngredientCard({ ingredient }: { ingredient: Ingredient }) {
   const primary = ingredient.functions[0];
   return (
     <Link
       href={`/ingredients/${ingredient.slug}`}
-      className="group block border-t border-soft-gray py-6"
+      className="group block border-t border-soft-gray py-6 md:border md:border-soft-gray md:p-4"
     >
+      <IngredientVisual ingredient={ingredient} />
       {primary && (
-        <p className="text-[11px] uppercase tracking-label text-accent">
+        <p className="mt-4 text-[11px] uppercase tracking-label text-accent">
           {functionLabel(primary)}
         </p>
       )}

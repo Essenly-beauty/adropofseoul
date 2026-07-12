@@ -57,7 +57,7 @@ export default async function IngredientsPage({
           Ingredients are being added — check back soon.
         </p>
       ) : (
-        <div className="border-b border-soft-gray">
+        <div className="grid gap-6 border-b border-soft-gray md:grid-cols-3 md:border-b-0">
           {visible.map((i) => (
             <IngredientCard key={i.id} ingredient={i} />
           ))}

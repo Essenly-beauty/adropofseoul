@@ -26,6 +26,6 @@ describe("IngredientCard", () => {
     const link = screen.getByRole("link", { name: /Niacinamide/ });
     expect(link.getAttribute("href")).toBe("/ingredients/niacinamide");
     expect(screen.getByText(/vitamin B3 derivative/)).toBeTruthy();
-    expect(screen.getByText("Brightening")).toBeTruthy();
+    expect(screen.getAllByText("Brightening").length).toBeGreaterThan(0);
   });
 });
