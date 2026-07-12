@@ -15,6 +15,7 @@ type PlaceRow = {
   price_range: string | null;
   instagram_url: string | null;
   naver_map_url: string | null;
+  kakao_map_url: string | null;
   google_map_url: string | null;
   booking_url: string | null;
   languages: string[];
@@ -22,7 +23,7 @@ type PlaceRow = {
 };
 
 const COLUMNS =
-  "id,name,slug,category,area,short_description,long_description,why_we_like_it,best_for,price_range,instagram_url,naver_map_url,google_map_url,booking_url,languages,images";
+  "id,name,slug,category,area,short_description,long_description,why_we_like_it,best_for,price_range,instagram_url,naver_map_url,kakao_map_url,google_map_url,booking_url,languages,images";
 
 export function mapPlaceRow(row: PlaceRow): Place {
   return {
@@ -38,6 +39,7 @@ export function mapPlaceRow(row: PlaceRow): Place {
     priceRange: row.price_range,
     instagramUrl: row.instagram_url,
     naverMapUrl: row.naver_map_url,
+    kakaoMapUrl: row.kakao_map_url,
     googleMapUrl: row.google_map_url,
     bookingUrl: row.booking_url,
     languages: row.languages ?? [],

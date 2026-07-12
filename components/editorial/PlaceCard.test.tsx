@@ -16,6 +16,7 @@ const place = {
   priceRange: null,
   instagramUrl: null,
   naverMapUrl: null,
+  kakaoMapUrl: null,
   googleMapUrl: null,
   bookingUrl: null,
   languages: [],

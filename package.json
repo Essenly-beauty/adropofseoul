@@ -11,6 +11,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "content:prepare-images": "node scripts/prepare-article-images.mjs",
+    "content:seed-place-candidates": "node scripts/seed-place-candidates.mjs",
     "content:seed-source-accounts": "node scripts/seed-source-accounts.mjs",
     "content:seed-posts": "node scripts/seed-posts.mjs",
     "db:push": "npx supabase db push",

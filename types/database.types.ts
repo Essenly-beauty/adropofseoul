@@ -105,6 +105,7 @@ export type Database = {
           images: Json;
           instagram_url: string | null;
           is_published: boolean;
+          kakao_map_url: string | null;
           languages: string[];
           long_description: string | null;
           name: string;
@@ -131,6 +132,7 @@ export type Database = {
           images?: Json;
           instagram_url?: string | null;
           is_published?: boolean;
+          kakao_map_url?: string | null;
           languages?: string[];
           long_description?: string | null;
           name: string;
@@ -157,6 +159,7 @@ export type Database = {
           images?: Json;
           instagram_url?: string | null;
           is_published?: boolean;
+          kakao_map_url?: string | null;
           languages?: string[];
           long_description?: string | null;
           name?: string;

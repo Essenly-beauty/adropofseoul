@@ -3,6 +3,13 @@ export type DiscoveryLink = {
   href: string;
 };
 
+export type GuideSeriesLink = {
+  title: string;
+  deck: string;
+  href: string;
+  status: "planned" | "researching" | "draft" | "published";
+};
+
 export type PlaceType =
   "hair-salon" | "head-spa" | "skin-clinic" | "beauty-store";
 
@@ -24,6 +31,9 @@ export type Place = {
   websiteUrl?: string;
   instagramUrl?: string;
   mapUrl?: string;
+  googleMapUrl?: string;
+  naverMapUrl?: string;
+  kakaoMapUrl?: string;
   image: string | null;
   imageAlt: string;
   practicalTips: string[];
@@ -64,6 +74,8 @@ export type Guide = {
   title: string;
   deck: string;
   intro: string;
+  sections?: { title: string; body: string[] }[];
+  relatedSeries?: GuideSeriesLink[];
   lastUpdated: string;
   heroImage: string | null;
   heroAlt: string;
@@ -345,19 +357,19 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     name: "Seongsu",
     image: null,
     imageAlt: "Summer beauty essentials arranged on a bright surface",
-    positioning: "Independent beauty studios and emerging trends",
+    positioning: "Beauty flagships, pop-ups, coffee, and design-led browsing",
     introduction:
-      "Seongsu is where beauty browsing feels close to design, coffee, and small discoveries rather than a checklist.",
-    whyVisit: [
-      "Emerging brands",
-      "Head spa stops",
-      "Cafe-friendly itineraries",
+      "Seongsu is where beauty browsing sits beside design stores, coffee, fragrance, pop-ups, and slower side streets rather than a single checklist stop.",
+    whyVisit: ["Beauty pop-ups", "Concept stores", "Cafe-friendly routes"],
+    bestExperiences: [
+      "One beauty anchor",
+      "Concept-store browsing",
+      "Seoul Forest finish",
     ],
-    bestExperiences: ["Head spa", "Indie beauty store", "Trend browsing"],
     itinerary: [
-      "Start with a head spa.",
-      "Browse a small beauty studio.",
-      "End with a cafe stop nearby.",
+      "Start near Seongsu Station.",
+      "Browse concept stores before peak crowds.",
+      "Drift toward Seoul Forest after one beauty anchor.",
     ],
     featuredPlaceSlugs: [
       "sool-loft-head-spa-seongsu",
@@ -579,48 +591,127 @@ export const GUIDES: Guide[] = [
   {
     slug: "seongsu-beauty-guide",
     category: "neighborhoods",
-    title: "Seongsu Beauty Guide: Studios, Head Spas, and Emerging Trends",
-    deck: "A neighborhood guide for turning Seongsu into a beauty afternoon rather than a rushed checklist.",
+    title: "Where to Go in Seongsu: Beauty, Coffee & Concept Stores",
+    deck: "A walkable neighborhood guide to Seoul's warehouse district: beauty flagships, pop-ups, coffee, design stores, and the slower side streets locals actually use.",
     intro:
-      "Seongsu works best when beauty discovery sits beside design shops, cafes, and slower browsing. Use this guide as a first pass before verified listings expand.",
+      "Seongsu is not best understood as one place to pin on a map. It is a neighborhood to move through: old factory blocks, beauty flagships, pop-ups that change by the month, design stores, coffee spaces big enough to feel like galleries, and quieter side streets where the day suddenly gets better.",
+    sections: [
+      {
+        title: "Why Seongsu works for beauty",
+        body: [
+          "Seongsu rewards people who like to browse. It is flatter and more walkable than Hongdae, less clinic-coded than Gangnam, and more design-led than Myeongdong. Beauty here usually does not feel like a pure shopping errand. It sits beside fashion, fragrance, coffee, lifestyle stores, and pop-ups, which makes it one of the easiest neighborhoods for seeing how Korean beauty culture actually lives in Seoul.",
+          "The trade-off is that Seongsu is no longer hidden. Weekend afternoons can feel like a slow parade. The most posted cafes and flagship stores often have lines, and the neighborhood is not especially cheap. Come for the full route and the mood of discovery, not for bargain hunting.",
+        ],
+      },
+      {
+        title: "How to walk Seongsu",
+        body: [
+          "The easiest mistake is treating Seongsu like a checklist. Start around Seongsu Station, walk the concept-store and pop-up streets before the crowd builds, add one beauty anchor instead of five, take a coffee break, then drift toward Seoul Forest if you want the calmer version of the neighborhood.",
+          "This keeps the day from becoming a shopping marathon. Seongsu is strongest when you let beauty, coffee, design, and wandering sit together.",
+        ],
+      },
+      {
+        title: "Add one beauty anchor",
+        body: [
+          "For beauty, Seongsu works best with one intentional stop. That might be a brand showroom, a multi-brand store near Seoul Forest, a temporary product pop-up, or a scalp-care appointment if you want the slower version of the day.",
+          "Our internal research queue currently flags Amore Seongsu, Olive Young Seoul Forest Station Branch, and Banila Co Seongsu Branch for verification. The public guide should not overpromise any of them until official pages, map listings, hours, and recent local signals are checked.",
+        ],
+      },
+      {
+        title: "Coffee is part of the route",
+        body: [
+          "Seongsu has one of Seoul's densest cafe scenes, and the cafes are not just resting points. They are part of the neighborhood's identity: converted warehouses, concrete interiors, large-format spaces, and queues that can become the defining experience if you arrive too late.",
+          "Many famous Seongsu cafes are worth visiting for the room more than the menu. If you only have time for one, pick the space that fits your route instead of chasing the most viral dessert.",
+        ],
+      },
+      {
+        title: "A half-day Seongsu route",
+        body: [
+          "10:30am: arrive at Seongsu Station and walk the main concept-store streets before the crowds build. 11:00am-12:15pm: browse one flagship or pop-up, then spend the rest of the time on side streets. 12:15pm-1:15pm: choose one cafe for the space and location. 1:30pm-2:15pm: add one beauty anchor. 2:15pm-3:30pm: walk toward Seoul Forest for a calmer finish.",
+          "If you want the full beauty-day version, book a scalp, hair, or skin-care appointment for late afternoon, not the beginning of the day.",
+        ],
+      },
+    ],
+    relatedSeries: [
+      {
+        title: "Seongsu Beauty Spots",
+        deck: "A verified shortlist of beauty flagships, pop-ups, fragrance stops, scalp care, and practical product browsing around Seongsu.",
+        href: "/guides/seongsu-beauty-spots",
+        status: "researching",
+      },
+      {
+        title: "Seongsu Cafes For A Beauty Break",
+        deck: "Cafes chosen for route usefulness: where to pause, sit, reset your feet, and keep the day from becoming a queue marathon.",
+        href: "/guides/seongsu-cafes-beauty-break",
+        status: "planned",
+      },
+      {
+        title: "Seongsu Concept Stores And Pop-Ups",
+        deck: "A rotating guide to design-led stores and temporary brand spaces that explain why Seongsu feels like Seoul's retail lab.",
+        href: "/guides/seongsu-concept-stores-popups",
+        status: "planned",
+      },
+      {
+        title: "What's New In Seongsu",
+        deck: "A monthly or seasonal update powered by source accounts, local map checks, and traveler-friction review.",
+        href: "/guides/whats-new-in-seongsu",
+        status: "planned",
+      },
+    ],
     lastUpdated: "2026-07-12",
     heroImage: null,
     heroAlt: "Bright summer beauty objects for a Seongsu guide",
     whoFor: [
       "First-time Seongsu visitors",
-      "Readers looking for indie beauty mood",
-      "Travelers building a half-day itinerary",
+      "Readers who want a neighborhood route, not one famous stop",
+      "Travelers curious about beauty, coffee, pop-ups, and design stores",
     ],
     quickRecommendations: [
-      "Plan a half day.",
-      "Book one anchor service.",
-      "Leave room for browsing.",
+      "Start near Seongsu Station and drift toward Seoul Forest.",
+      "Choose one beauty anchor instead of trying to complete every stop.",
+      "Avoid weekend afternoons if you want the neighborhood to feel enjoyable.",
     ],
     recommendations: [
       {
         placeSlug: "sool-loft-head-spa-seongsu",
-        editorNote: "Use as the anchor for a calm afternoon.",
+        editorNote:
+          "Optional late-afternoon reset, not the whole reason to visit.",
       },
       {
         placeSlug: "seongsu-indie-beauty-studio",
-        editorNote: "Use for beauty browsing after the appointment.",
+        editorNote:
+          "Use as a placeholder for the kind of verified beauty anchor this guide should support.",
       },
     ],
     comparison: [
-      { label: "Best for", value: "Indie discovery and slower beauty days" },
-      { label: "Pair with", value: "Cafe stops and design browsing" },
-      { label: "Pace", value: "Half-day" },
+      {
+        label: "Best for",
+        value: "Beauty browsing, pop-ups, fragrance, design, and coffee",
+      },
+      { label: "Best starting point", value: "Seongsu Station" },
+      { label: "Best finish", value: "Seoul Forest side streets" },
+      { label: "Pace", value: "Half-day, 3-4 hours" },
     ],
     faqs: [
       {
-        question: "Is Seongsu good for beauty shopping?",
+        question: "How much time do you need in Seongsu?",
         answer:
-          "Yes, Seongsu is useful for discovering smaller beauty studios, pop-ups, and trend-led concepts rather than only large flagship stores.",
+          "Half a day is enough for the main concept-store streets, one cafe, one beauty stop, and a walk toward Seoul Forest. A full day only makes sense if you add a booked treatment, a longer lunch, or several pop-ups.",
       },
       {
-        question: "How much time should I spend in Seongsu?",
+        question: "Is Seongsu worth it if I have already done Hongdae?",
         answer:
-          "A half day is enough for one beauty appointment, one or two stores, and a cafe stop without rushing.",
+          "Yes. Hongdae is louder, younger, and better for music, street fashion, and budget browsing. Seongsu is more design-led and brand-experience focused, with beauty, fragrance, coffee, and lifestyle retail sitting close together.",
+      },
+      {
+        question: "Is Seongsu good for K-beauty shopping?",
+        answer:
+          "Yes, but not in the same way as Myeongdong. Seongsu is better for brand experiences, pop-ups, fragrance, design-led retail, and a few practical product stops. Myeongdong is better if your goal is a fast product haul.",
+      },
+      {
+        question: "Should I book a beauty treatment in Seongsu?",
+        answer:
+          "Only if it fits the day. A scalp, hair, or skin-care appointment can be a good ending to a Seongsu route, but the neighborhood guide should still work without one.",
       },
     ],
     relatedNeighborhoodSlugs: ["seongsu", "hannam"],

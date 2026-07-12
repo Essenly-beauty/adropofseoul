@@ -125,6 +125,15 @@ export default async function PlaceRoutePage({
           <Prose markdown={dbPlace.longDescription} />
         </div>
       )}
+      <div className="mt-8">
+        <MapButtons
+          links={[
+            { label: "Google Maps", href: dbPlace.googleMapUrl },
+            { label: "Naver Map", href: dbPlace.naverMapUrl },
+            { label: "Kakao Map", href: dbPlace.kakaoMapUrl },
+          ]}
+        />
+      </div>
     </main>
   );
 }
@@ -182,7 +191,13 @@ function DiscoveryPlaceDetail({
       Boolean(guide)
     );
   const primaryCtaUrl =
-    place.ctaUrl ?? place.bookingUrl ?? place.websiteUrl ?? place.mapUrl;
+    place.ctaUrl ??
+    place.bookingUrl ??
+    place.websiteUrl ??
+    place.googleMapUrl ??
+    place.naverMapUrl ??
+    place.kakaoMapUrl ??
+    place.mapUrl;
 
   return (
     <main className="mx-auto max-w-content px-6 py-16">
@@ -297,6 +312,13 @@ function DiscoveryPlaceDetail({
               Booking and map links are pending verification.
             </p>
           )}
+          <MapButtons
+            links={[
+              { label: "Google Maps", href: place.googleMapUrl },
+              { label: "Naver Map", href: place.naverMapUrl ?? place.mapUrl },
+              { label: "Kakao Map", href: place.kakaoMapUrl },
+            ]}
+          />
           <p className="mt-5 text-xs leading-5 text-text-muted">
             Inclusion is editorial and selective. Paid placement, if present in
             the future, will be disclosed clearly.
@@ -328,6 +350,38 @@ function InfoRow({ label, value }: { label: string; value?: string }) {
         {label}
       </dt>
       <dd className="mt-1">{value}</dd>
+    </div>
+  );
+}
+
+function MapButtons({
+  links,
+}: {
+  links: { label: string; href?: string | null }[];
+}) {
+  const availableLinks = links.filter(
+    (link): link is { label: string; href: string } => Boolean(link.href)
+  );
+  if (availableLinks.length === 0) return null;
+
+  return (
+    <div className="mt-5">
+      <p className="text-[11px] uppercase tracking-label text-text-muted">
+        Open in maps
+      </p>
+      <div className="mt-2 grid gap-2">
+        {availableLinks.map((link) => (
+          <a
+            key={link.label}
+            href={link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block border border-soft-gray px-4 py-2 text-center text-[11px] uppercase tracking-label transition-colors duration-medium ease-editorial hover:border-text hover:bg-text hover:text-bg"
+          >
+            {link.label}
+          </a>
+        ))}
+      </div>
     </div>
   );
 }

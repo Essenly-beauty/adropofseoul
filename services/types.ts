@@ -27,6 +27,7 @@ export type Place = {
   priceRange: string | null;
   instagramUrl: string | null;
   naverMapUrl: string | null;
+  kakaoMapUrl: string | null;
   googleMapUrl: string | null;
   bookingUrl: string | null;
   languages: string[];

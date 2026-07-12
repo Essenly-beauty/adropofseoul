@@ -172,6 +172,23 @@ export default function GuideRoutePage({
           <p className="mt-4 leading-8 text-text-muted">{guide.intro}</p>
         </section>
 
+        {guide.sections && guide.sections.length > 0 && (
+          <section className="mt-10 space-y-9 border-t border-soft-gray pt-8">
+            {guide.sections.map((section) => (
+              <div key={section.title}>
+                <h2 className="font-serif text-3xl">{section.title}</h2>
+                <div className="mt-4 space-y-4">
+                  {section.body.map((paragraph) => (
+                    <p key={paragraph} className="leading-8 text-text-muted">
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </section>
+        )}
+
         <section className="mt-10 border-t border-soft-gray pt-8">
           <h2 className="font-serif text-3xl">Who this guide is for</h2>
           <ul className="mt-4 grid gap-3 text-sm leading-6 text-text-muted md:grid-cols-2">
@@ -189,6 +206,25 @@ export default function GuideRoutePage({
             ))}
           </ul>
         </section>
+
+        {guide.relatedSeries && guide.relatedSeries.length > 0 && (
+          <section className="mt-10 border-t border-soft-gray pt-8">
+            <h2 className="font-serif text-3xl">Related Seongsu series</h2>
+            <div className="mt-5 grid gap-px overflow-hidden border-y border-soft-gray bg-soft-gray md:grid-cols-2">
+              {guide.relatedSeries.map((item) => (
+                <div key={item.href} className="bg-bg p-5">
+                  <p className="text-[11px] uppercase tracking-label text-accent">
+                    {item.status}
+                  </p>
+                  <h3 className="mt-2 font-serif text-2xl">{item.title}</h3>
+                  <p className="mt-3 text-sm leading-6 text-text-muted">
+                    {item.deck}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
       </article>
 
       {recommendations.length > 0 && (

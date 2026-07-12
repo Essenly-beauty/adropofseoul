@@ -110,6 +110,12 @@ Seed source accounts with:
 npm run content:seed-source-accounts
 ```
 
+Seed place candidates with:
+
+```sh
+npm run content:seed-place-candidates
+```
+
 The seed command requires `NEXT_PUBLIC_SUPABASE_URL` and
 `SUPABASE_SERVICE_ROLE_KEY`, either in the shell or `.env.local`.
 
@@ -164,6 +170,43 @@ places in Seoul" lists.
   buys"
 - "Gangnam clinic research checklist before you book"
 - "Hongdae beauty route for younger brands, color, and hair"
+
+## Neighborhood Series Structure
+
+Use neighborhood pillar guides as the top of the internal-link structure. The
+pillar page should explain how to move through the area; supporting articles can
+then cover narrower lists without making the pillar feel like a directory dump.
+
+For Seongsu, the recommended cluster is:
+
+- Pillar: `Where to Go in Seongsu: Beauty, Coffee & Concept Stores`
+- Series 1: `Seongsu Beauty Spots`
+- Series 2: `Seongsu Cafes For A Beauty Break`
+- Series 3: `Seongsu Concept Stores And Pop-Ups`
+- Series 4: `What's New In Seongsu`
+
+Each supporting article should link back to the pillar guide and to verified
+place pages when available. The pillar guide should link out to the supporting
+series, but it should remain useful even before every individual place has been
+verified.
+
+## Map Link Rules
+
+Verified public place pages should support three outbound map actions when
+available:
+
+- Google Maps
+- Naver Map
+- Kakao Map
+
+Do not add exact map buttons from guesswork. For each place, fill map URLs only
+after verifying the branch/location through official pages or the map provider
+itself. Search-result links can be stored in evidence as a validation queue, but
+public place pages should prefer exact place URLs.
+
+Long-term, these buttons can sit beside an A Drop of Seoul-native map, itinerary,
+or booking CTA. The current role of the buttons is practical traveler utility and
+source transparency.
 
 ## Review Workflow
 
