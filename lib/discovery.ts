@@ -636,8 +636,8 @@ export const GUIDES: Guide[] = [
       {
         title: "Seongsu Beauty Spots",
         deck: "A verified shortlist of beauty flagships, pop-ups, fragrance stops, scalp care, and practical product browsing around Seongsu.",
-        href: "/guides/seongsu-beauty-spots",
-        status: "researching",
+        href: "/articles/seongsu-beauty-spots",
+        status: "published",
       },
       {
         title: "Seongsu Cafes For A Beauty Break",

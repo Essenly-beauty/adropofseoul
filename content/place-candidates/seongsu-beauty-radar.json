@@ -49,6 +49,14 @@
           "evidenceKind": "global_validation_queue",
           "observedValue": "Use for English-language traveler visibility and source discovery.",
           "confidence": 2
+        },
+        {
+          "sourceType": "instagram",
+          "sourceName": "Amore Seongsu Instagram",
+          "url": "https://www.instagram.com/amore_seongsu/",
+          "evidenceKind": "official_social_profile",
+          "observedValue": "Public Instagram profile responded successfully during review on 2026-07-13.",
+          "confidence": 4
         }
       ]
     },
