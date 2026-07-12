@@ -67,14 +67,17 @@ For night layering, read [The 7-Step Korean Evening Routine](/articles/korean-7-
 
 ## FAQ
 
-**Do Koreans use five skincare steps every morning?**  
-Some do, many do not. Five steps is a practical editorial framework, not a rule. Korean routines are often adjusted by season, skin condition, and how much makeup or sunscreen will be worn.
+**What is the correct order for a 5-step Korean morning routine?**  
+The usual order is cleanse, hydrating toner or essence, serum, moisturizer, then sunscreen. Apply from thinnest to thickest texture, and keep sunscreen last. If products pill, remove one layer and rebuild slowly.
 
-**Can I use vitamin C in the morning?**  
-Yes, many people do. Pair it with sunscreen, start slowly if sensitive, and avoid stacking it with irritating exfoliants in the same morning routine.
+**Should sunscreen go before or after moisturizer?**  
+Sunscreen should usually go after moisturizer as the final skincare step. Moisturizer supports comfort and barrier function; sunscreen forms the protective daytime layer. If your sunscreen is moisturizing enough and your skin is oily, you may use a lighter moisturizer underneath.
 
-**Should moisturizer come before sunscreen?**  
-Usually yes. Sunscreen should be the final skincare layer before makeup. If your sunscreen is moisturizing enough, oily skin may use a very light moisturizer or skip it.
+**Do I need both essence and serum in the morning?**  
+Not always. Essence usually adds hydration, while serum usually targets a concern such as dull tone, redness, or oiliness. If your routine feels heavy, choose one: hydrating essence for comfort, or serum for a specific goal.
 
-**How long should I wait between steps?**  
-Long enough that the previous layer is no longer wet or slippery. You do not need a stopwatch. Texture tells you.
+**Can I use vitamin C and niacinamide in a Korean morning routine?**  
+Many people can use vitamin C and [niacinamide](/ingredients/niacinamide) in the morning, especially under sunscreen. Sensitive skin should introduce one active at a time. If the combination stings or pills, separate them into different routines.
+
+**How long should I wait between skincare steps?**  
+Wait until each layer stops feeling wet or slippery. You do not need a strict timer. In a real morning routine, 20-60 seconds between watery layers and sunscreen is usually more useful than rushing everything onto damp skin.

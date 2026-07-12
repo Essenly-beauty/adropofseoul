@@ -66,14 +66,17 @@ For a minimalist reset, read [Skip-Care Explained](/articles/korean-skip-care-ex
 
 ## FAQ
 
-**How long does skin barrier repair take?**  
-Mild irritation may calm in a few days. A more compromised barrier can take several weeks. If it does not improve, get medical advice.
+**How do I know if my skin barrier is damaged?**  
+Common signs include stinging from products that used to feel fine, tightness after cleansing, shiny but dry-looking skin, redness, flaking, and sudden sensitivity. If symptoms are severe, painful, or persistent, see a dermatologist.
 
-**Can I use niacinamide while repairing my barrier?**  
-Some people tolerate niacinamide well, but irritated skin can react to almost anything. If it stings, pause it and focus on bland moisturizer.
+**How long does it take to repair a damaged skin barrier?**  
+Mild barrier irritation may improve in a few days, but deeper irritation can take several weeks. The timeline depends on what caused it, how quickly you stop irritating products, and whether you keep the routine gentle.
 
-**Should I stop sunscreen?**  
-No, but choose the gentlest sunscreen you can tolerate. UV exposure can worsen irritation and pigmentation.
+**What should I stop using when my barrier is damaged?**  
+Pause retinol, exfoliating acids, scrubs, strong vitamin C, peel pads, spicule products, and fragranced masks. Keep the routine bland: gentle cleanser, calming hydration, moisturizer, and sunscreen.
 
-**Is centella enough to repair the barrier?**  
-Centella can help calm the look of stressed skin, but barrier repair usually needs moisturizing lipids and reduced irritation too.
+**What ingredients help repair the skin barrier?**  
+Look for [ceramide NP](/ingredients/ceramide-np), [panthenol](/ingredients/panthenol), [glycerin](/ingredients/glycerin), [squalane](/ingredients/squalane), [allantoin](/ingredients/allantoin), and centella. These support comfort and moisture while the skin calms down.
+
+**Should I still wear sunscreen with a damaged barrier?**  
+Yes, during the day you still need sunscreen if your skin can tolerate it. Choose the gentlest formula you can wear comfortably. UV exposure can worsen redness and post-inflammatory pigmentation.

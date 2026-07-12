@@ -61,14 +61,17 @@ For a slow-aging routine that borrows carefully from this world, read [Korean Sk
 
 ## FAQ
 
-**Is clinic-to-home skincare the same as a procedure?**  
-No. At-home skincare can support hydration, barrier repair, and glow, but it does not replicate lasers, injectables, or prescription treatments.
+**What does clinic-to-home skincare mean?**  
+Clinic-to-home skincare means at-home products inspired by professional treatment culture, recovery care, or clinic ingredients. It includes PDRN-inspired creams, spicule products, calming masks, and barrier creams. These products can support a routine but do not replace procedures.
 
-**Is PDRN skincare worth trying?**  
-It can be interesting if the overall formula suits your skin, but do not buy it only because the ingredient is trendy. Texture, irritation risk, and sunscreen habits matter more.
+**Is PDRN skincare the same as Rejuran?**  
+No. PDRN skincare products are topical formulas, while Rejuran and similar treatments are professional procedures. A cream or serum may borrow the ingredient story, but it cannot deliver the same result as an in-clinic treatment.
 
-**Are spicule products safe?**  
-Some people tolerate them, others find them irritating. Avoid them if your barrier is damaged, your skin is very sensitive, or you are already using strong actives.
+**Are spicule skincare products safe to use at home?**  
+Some people tolerate spicule products, but they can irritate sensitive or damaged skin. Avoid combining them casually with retinol, exfoliating acids, or strong vitamin C. Patch test and start slowly.
 
-**What should I buy after a clinic treatment?**  
-Follow your provider's instructions first. In general, gentle cleanser, calming hydration, barrier moisturizer, and sunscreen are the safest categories.
+**What should I use after a Korean skin clinic treatment?**  
+Follow your provider's instructions first. In general, the safest categories are gentle cleanser, calming hydration, barrier moisturizer, and sunscreen. Avoid strong actives until your skin is clearly recovered.
+
+**Why do Korean skincare products talk about clinics so much?**  
+Korea has a visible skin clinic culture, so retail skincare often borrows clinic language around glow, recovery, and boosters. The important question is what the product actually does at home: hydrate, calm, exfoliate, or support the barrier.

@@ -64,14 +64,17 @@ For a simple base, read [The 5-Step Seoul Morning Routine](/articles/korean-5-st
 
 ## FAQ
 
-**Should I start retinol in my 30s?**  
-Many people do, but start slowly and avoid using it on the same nights as strong exfoliating acids. If pregnant, trying to conceive, breastfeeding, or under medical care, ask a clinician first.
+**What skincare should I start in my 30s?**  
+Start with daily sunscreen, a gentle cleanser, moisturizer, and one or two actives that match your skin. Common 30s choices include vitamin C or niacinamide by day and retinol, peptides, or barrier repair at night.
 
-**Is Korean skincare enough for wrinkles?**  
-Skincare can improve hydration, texture, and the look of fine lines. It cannot replace procedures or prescription treatments when those are needed.
+**Is retinol worth using in your 30s?**  
+Retinol can be useful in your 30s for texture, fine lines, and uneven tone, but it should be introduced slowly. Use it one or two nights a week at first and avoid pairing it with strong exfoliating acids. If pregnant, trying to conceive, breastfeeding, or under medical care, ask a clinician first.
 
-**What is slow aging?**  
-Slow aging focuses on prevention, sun protection, barrier health, and steady actives rather than aggressive correction.
+**What does slow aging mean in Korean skincare?**  
+Slow aging means supporting skin before visible changes feel urgent. It focuses on SPF, hydration, antioxidant support, barrier care, and gentle actives instead of aggressive correction.
 
-**Do I need eye cream?**  
-Not always. A gentle moisturizer can be enough for many people. Eye cream is useful if you prefer a lighter texture or specific packaging for the area.
+**Do I need eye cream in my 30s?**  
+Not always. A gentle moisturizer can work around the eye area if tolerated. Eye cream is useful if you want a lighter texture, less migration into the eyes, or specific concerns like dryness or puffiness.
+
+**What ingredients are best for a slow-aging routine?**  
+Consider [retinol](/ingredients/retinol), [peptides](/ingredients/peptides), [adenosine](/ingredients/adenosine), [niacinamide](/ingredients/niacinamide), [vitamin C](/ingredients/vitamin-c), and ceramides. Introduce them gradually rather than all at once.

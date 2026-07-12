@@ -68,14 +68,17 @@ If this feels too minimal, move to [The 5-Step Seoul Morning Routine](/articles/
 
 ## FAQ
 
-**Is a 3-step Korean skincare routine enough?**  
-Yes, if the three steps match your skin. Cleanser, moisturizer, and sunscreen cover the basics by day. At night, cleanser, one useful treatment or hydrating layer, and moisturizer are enough for many people.
+**Is a 3-step skincare routine enough for Korean skincare?**  
+Yes, a 3-step routine can be enough if it covers cleanser, moisturizer, and sunscreen by day or cleanser, treatment, and moisturizer at night. Korean skincare is more about consistency and skin condition than hitting a fixed step count. Start here before adding toner pads, essences, or actives.
+
+**What are the only skincare steps I really need?**  
+The non-negotiable basics are gentle cleansing, moisturizer, and daily sunscreen. At night, sunscreen drops out and one targeted treatment can come in if your skin is stable. If your barrier is irritated, keep the treatment step calming with [panthenol](/ingredients/panthenol), [ceramide NP](/ingredients/ceramide-np), or [centella asiatica](/ingredients/centella-asiatica).
+
+**Do I need toner in a simple Korean skincare routine?**  
+No, toner is optional in a 3-step routine. Use it only if it solves something specific: hydration, calming, or light exfoliation. If your moisturizer and sunscreen already sit well, a toner is a nice extra, not a requirement.
 
 **Can I skip cleanser in the morning?**  
-Yes, if your skin is dry or normal and you did not use a heavy overnight product. Oily skin may still prefer a gentle cleanse.
+You can skip morning cleanser if your skin is dry, comfortable, and you did not use a heavy overnight product. Oily or acne-prone skin may still prefer a gentle cleanse. The better rule is to avoid washing until your face feels tight.
 
-**Where does toner go in a 3-step routine?**  
-Use toner as the treatment or hydration step at night. In the morning, toner can replace moisturizer only if your sunscreen is hydrating enough and your skin feels comfortable.
-
-**Is this routine good for acne-prone skin?**  
-It can be. Keep the cleanser gentle, avoid heavy creams if they clog you, and use acne actives slowly. Persistent acne should be handled with a dermatologist.
+**Is the 3-step routine good for acne-prone skin?**  
+It can be, because fewer products often mean fewer clogging or irritating variables. Keep textures light, cleanse sunscreen well at night, and add acne actives slowly. Persistent acne should be treated with help from a dermatologist.

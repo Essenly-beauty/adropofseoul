@@ -68,14 +68,17 @@ For the fuller evening ritual, read [The 7-Step Korean Evening Routine](/article
 
 ## FAQ
 
-**Can I get glass skin with only three products?**  
-You can get healthier, more luminous skin with cleanser, moisturizer, and sunscreen. For a stronger glass effect, most people also need hydration and occasional gentle exfoliation.
+**How do you get Korean glass skin without 10 steps?**  
+Focus on hydration, smooth texture, barrier comfort, and sunscreen. You do not need 10 products to create a glassy finish. A gentle cleanser, hydrating layer, moisturizer, occasional exfoliation, and SPF cover most of the real work.
 
-**How fast does glass skin happen?**  
-Hydration can improve the look in days. Texture and tone take weeks to months. Filters take one second, which is why expectations get strange.
+**How long does it take to get glass skin?**  
+Hydration can make skin look plumper in a few days, but smoother texture and more even tone usually take weeks to months. If a routine promises overnight glass skin, it is probably selling finish, not long-term skin change.
 
-**Is glass skin good for oily skin?**  
-Yes, but oily skin should aim for clarity and light reflection, not extra shine. Use gel textures and lightweight sunscreen.
+**Is glass skin just oily skin?**  
+No. Glass skin should look hydrated and smooth, not greasy. Oily skin often needs lightweight hydration, oil control, and regular sunscreen rather than heavy creams or facial oils.
 
-**Do I need Korean products?**  
-No. Korean products are often excellent for this style because they prioritize light layers and barrier-friendly textures, but the logic matters more than the passport.
+**Can acne-prone skin get glass skin?**  
+Acne-prone skin can look clearer and more luminous, but active breakouts should be treated first. Avoid chasing glow with daily exfoliation or heavy layers. Start with barrier care and targeted acne support.
+
+**What ingredients help with glass skin?**  
+Useful ingredients include [glycerin](/ingredients/glycerin), [hyaluronic acid](/ingredients/hyaluronic-acid), [niacinamide](/ingredients/niacinamide), [panthenol](/ingredients/panthenol), and gentle exfoliating acids. The ingredient matters less than using it consistently without irritation.

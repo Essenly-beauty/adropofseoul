@@ -69,14 +69,17 @@ For day-to-day irritated skin, read [A Korean Barrier-Repair Routine](/articles/
 
 ## FAQ
 
-**Can I use sheet masks after a laser treatment?**  
-Only if your provider says it is okay. Choose simple calming masks and avoid fragrance, acids, retinoids, and strong actives.
+**What should I put on my face after laser treatment?**  
+Follow your clinic's aftercare first. Generally, post-laser skin needs gentle cleansing, calming hydration, barrier moisturizer, and sunscreen when cleared. Avoid experimenting with new actives during recovery.
 
-**When can I use retinol again?**  
-It depends on the treatment. Wait until the skin is fully calm and follow professional guidance. Restart slowly.
+**What skincare should I avoid after a facial or laser?**  
+Avoid retinol, exfoliating acids, scrubs, peel pads, spicule products, strong vitamin C, and fragranced masks until your skin is fully calm or your provider clears them. Recovery is not the time to test a new trend.
 
-**Is sunscreen necessary after treatments?**  
-Usually yes, once appropriate for the treatment. UV exposure can worsen post-treatment pigmentation risk.
+**When can I use retinol again after a treatment?**  
+The timing depends on the treatment and your provider's instructions. Restart only when redness, heat, peeling, or sensitivity has settled. Begin with a low frequency rather than returning to nightly use.
 
 **Can I use toner pads after a facial?**  
-Avoid exfoliating pads immediately after treatments. Calming pads may be fine later, but only if the skin is not raw or reactive.
+Avoid exfoliating toner pads immediately after a facial or clinic treatment. Calming pads may be fine later if the skin is not raw, hot, or reactive. When unsure, wait.
+
+**Is sunscreen necessary after laser or skin treatments?**  
+Yes, sunscreen is usually essential once your provider says it is appropriate. Treated skin can be more vulnerable to UV-triggered redness and pigmentation, so protection matters.

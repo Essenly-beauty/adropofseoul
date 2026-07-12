@@ -73,14 +73,17 @@ For the glow version of this logic, read [Glass Skin Without 10 Steps](/articles
 
 ## FAQ
 
-**Do I need a 7-step routine every night?**  
-No. Use it when your skin benefits from layering. On tired or irritated nights, shorten the routine.
+**What is the right order for a 7-step Korean night routine?**  
+A practical order is oil cleanser, water cleanser, toner, essence or serum, treatment, moisturizer, and optional sleeping mask. The treatment step should have one job, such as retinol, exfoliation, brightening, or calming.
 
-**Can I exfoliate in a 7-step routine?**  
-Yes, but make exfoliation the treatment step and keep the rest gentle. Do not pair strong acids with retinol in the same routine.
+**Do I need to double cleanse every night?**  
+Double cleanse when you wore sunscreen, makeup, or a water-resistant formula. If you stayed indoors with minimal product, one gentle cleanser may be enough. The goal is clean skin without a tight, stripped feeling.
 
-**Where does sheet mask go?**  
-After toner and before serum or moisturizer. If the sheet mask already acts like a serum, skip your separate serum that night.
+**Can I use retinol and exfoliating acids in the same night routine?**  
+Most beginners should not use [retinol](/ingredients/retinol) and exfoliating acids in the same night. Choose one active theme per night and keep the rest of the routine calming. This lowers the chance of redness, peeling, and barrier damage.
 
-**Is a sleeping mask the same as moisturizer?**  
-Sometimes. Many sleeping masks are simply richer moisturizers. Use one if your skin needs a final comfort layer.
+**Where does a sheet mask go in a Korean routine?**  
+Use a sheet mask after toner and before moisturizer. If the mask is rich in serum, skip your separate serum that night. Remove it before it dries so it does not pull moisture back from the skin.
+
+**Is a sleeping mask necessary?**  
+No, a sleeping mask is optional. Use one when your skin feels dehydrated, winter-dry, or post-flight. Skip it if you are congested, oily, or already using a rich moisturizer.

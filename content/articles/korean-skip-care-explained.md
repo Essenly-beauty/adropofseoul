@@ -74,14 +74,17 @@ If you want glow without a product pile-up, read [Glass Skin Without 10 Steps](/
 
 ## FAQ
 
+**What is skip-care in Korean skincare?**  
+Skip-care is a minimalist K-beauty approach that uses fewer products with clearer jobs. It keeps the essentials and removes duplicate layers. The goal is not to do nothing; it is to stop using products your skin does not need today.
+
+**Is skip-care better than a 10-step Korean routine?**  
+Skip-care can be better if your skin is irritated, busy, or overwhelmed by too many products. A longer routine can still work when each step has a purpose. Korean skincare is not a contest of step counts; it is a habit of adjusting to your skin.
+
+**What products should I keep in a skip-care routine?**  
+Keep cleanser, moisturizer, and sunscreen. Add one flexible product only when needed: a hydrating toner, calming serum, retinol, BHA, or brightening treatment. For a shorter base, use [the Korean 3-step routine](/articles/korean-3-step-skincare-routine).
+
+**Can skip-care help a damaged skin barrier?**  
+Yes, skip-care can help by reducing irritation and product overload. Pause strong actives and focus on barrier ingredients like [ceramide NP](/ingredients/ceramide-np), [panthenol](/ingredients/panthenol), and [squalane](/ingredients/squalane). If irritation persists, get medical advice.
+
 **Is skip-care the same as skin fasting?**  
-No. Skin fasting often means stopping many products at once. Skip-care is a curated routine with fewer products, not a total pause.
-
-**Can skip-care still feel like K-beauty?**  
-Yes. The Korean part is the attention to hydration, barrier support, texture, and prevention, not the number of bottles.
-
-**What product should I never skip?**  
-Sunscreen in the morning. At night, do not skip cleansing if you wore sunscreen or makeup.
-
-**Can I use actives in skip-care?**  
-Yes, but use one active at a time and give it space. A routine can be minimal and still effective.
+No. Skin fasting usually means stopping many products temporarily. Skip-care is more deliberate: you still use the essentials, but you remove unnecessary layers.

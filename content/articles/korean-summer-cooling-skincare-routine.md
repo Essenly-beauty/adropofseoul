@@ -68,14 +68,17 @@ For the daily SPF piece, read [Sunscreen as Skincare](/articles/sunscreen-as-ski
 
 ## FAQ
 
-**Should I moisturize in humid weather?**  
-Usually yes, but choose a lighter texture. Dehydrated oily skin is common in summer.
+**How should I change my skincare routine in hot humid weather?**  
+Use lighter layers, cleanse sweat and sunscreen gently, and keep moisturizer breathable. Humid weather does not mean skipping hydration; it means choosing gel creams, watery toners, and sunscreen that does not feel heavy.
 
-**Are cooling products good for sensitive skin?**  
-They can be, but avoid strong menthol or fragrance if you are reactive. Look for calming ingredients, not just a cold sensation.
+**What is cooling skincare in Korea?**  
+Cooling skincare refers to products designed to calm heat, sweat, and discomfort, such as cooling toners, gel creams, masks, and scalp or body products. It is practical in hot Korean summers, not just a trend.
 
-**How often should I exfoliate in summer?**  
-Start once or twice a week. Sweat and sunscreen can make skin feel congested, but over-exfoliation makes irritation worse.
+**Should I exfoliate more in summer if my skin feels oily?**  
+Not automatically. Sweat and sunscreen can make skin feel congested, but over-exfoliation can damage the barrier. Start with one or two exfoliation nights a week and adjust slowly.
 
-**Can I keep toner pads in the fridge?**  
-Often yes, if the product packaging allows it. Do not freeze them, and avoid contamination.
+**Are toner pads good for summer skin?**  
+Hydrating or calming toner pads can be useful in summer, especially as short mini masks on hot cheeks. Exfoliating pads should be used carefully and followed with sunscreen.
+
+**What sunscreen texture is best for humid weather?**  
+Look for lightweight gel, essence, fluid, or milk textures that dry comfortably. The best summer sunscreen is not the strongest-looking product; it is the one you will actually apply enough of.

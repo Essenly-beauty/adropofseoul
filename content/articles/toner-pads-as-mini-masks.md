@@ -67,14 +67,17 @@ For a morning structure, read [The 5-Step Seoul Morning Routine](/articles/korea
 
 ## FAQ
 
-**Can I use toner pads every day?**  
-Hydrating or calming pads may be fine daily for many people. Exfoliating pads should be used less often, especially if you are sensitive.
+**Can I use Korean toner pads every day?**  
+You can use gentle hydrating or calming toner pads daily if your skin tolerates them. Exfoliating toner pads with AHA, BHA, or PHA should usually be used less often, especially on sensitive skin. Overusing exfoliating pads can damage the barrier.
 
-**Should I rinse after toner pads?**  
-Usually no. Leave the essence on unless the product instructions say otherwise or your skin feels irritated.
+**Are toner pads supposed to be wiped or left on?**  
+Both methods exist. Swipe gently when the pad is meant for light exfoliation or residue removal. Place pads on the cheeks, chin, or forehead for a few minutes when the formula is hydrating or calming.
 
-**Are toner pads better than toner?**  
-Not always. Pads are convenient and targeted. Bottled toner is often better value and creates less waste.
+**Do toner pads replace toner or serum?**  
+Toner pads can replace toner, and some treatment pads can act like a light serum step. They do not replace every serum, especially stronger actives that need controlled dosing. Use them for convenience, not as a reason to stack more products.
 
-**Can toner pads replace sheet masks?**  
-For targeted quick hydration or calming, yes. For a full-face soak before an event, a sheet mask still gives more coverage.
+**Should I use toner pads before or after cleansing?**  
+Use toner pads after cleansing on clean skin. In the morning, follow with moisturizer and sunscreen. At night, follow with serum or moisturizer depending on the pad's purpose.
+
+**Can toner pads irritate sensitive skin?**  
+Yes, especially if they are textured, acidic, fragranced, or used too often. Sensitive skin should start with soft hydrating or calming pads and avoid scrubbing. If your face stings afterward, use them less or stop.

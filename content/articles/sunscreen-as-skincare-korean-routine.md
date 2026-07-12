@@ -65,14 +65,17 @@ For a glow routine that depends on sunscreen, read [Glass Skin Without 10 Steps]
 
 ## FAQ
 
+**Why is Korean sunscreen so popular?**  
+Korean sunscreens are popular because many feel like skincare: lightweight, hydrating, and easy to wear under makeup. The best SPF is the one you apply enough of every day, so texture matters.
+
+**Does sunscreen go before or after moisturizer?**  
+Sunscreen usually goes after moisturizer as the last skincare step in the morning. If your sunscreen is very moisturizing and your skin is oily, you can keep the moisturizer lighter.
+
 **Do I need sunscreen indoors?**  
-If you sit near windows or get daylight exposure during the day, sunscreen is still useful. If you are in a windowless room all day, the need is lower, but most people move in and out more than they think.
+You may still need sunscreen indoors if you sit near windows, commute, or step outside during daylight. If you are truly away from sunlight all day, the need is lower, but most people get more incidental exposure than they think.
 
-**Can sunscreen replace moisturizer?**  
-Sometimes, for oily skin or very hydrating formulas. Dry or compromised skin usually needs moisturizer first.
+**How much sunscreen should I apply to my face?**  
+Apply enough to cover the face, ears, neck, and other exposed areas evenly. Many people under-apply, so two thin layers can help. Reapply when outdoors, sweating, or after wiping your face.
 
-**Should I use SPF 30 or SPF 50?**  
-Both can be useful when applied properly. Many Korean daily sunscreens are SPF 50 because users want lightweight protection for everyday wear.
-
-**Does sunscreen help acne marks?**  
-It helps prevent post-acne marks from getting darker and lingering longer. It does not erase marks by itself.
+**Can sunscreen help dark spots and acne marks?**  
+Sunscreen helps prevent dark spots and post-acne marks from getting darker and lingering longer. It does not erase marks by itself, but brightening routines work better when SPF is consistent.
