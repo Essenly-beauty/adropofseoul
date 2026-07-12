@@ -8,21 +8,19 @@ import {
 describe("beauty sections", () => {
   it("keeps Beauty organized around editorial pillars", () => {
     expect(BEAUTY_SECTIONS.map((section) => section.slug)).toEqual([
-      "ingredients",
-      "routines",
-      "products",
-      "skin-concerns",
-      "trends",
-      "guides",
+      "skincare",
+      "hair",
+      "scalp",
+      "treatments",
     ]);
   });
 
   it("finds sections and matches article tags", () => {
-    const products = getBeautySectionBySlug("products");
-    expect(products?.label).toBe("Products");
-    expect(postMatchesBeautySection(["Shopping", "Sunscreen"], products!)).toBe(
+    const skincare = getBeautySectionBySlug("skincare");
+    expect(skincare?.label).toBe("Skincare");
+    expect(postMatchesBeautySection(["routine", "Sunscreen"], skincare!)).toBe(
       true
     );
-    expect(postMatchesBeautySection(["head spa"], products!)).toBe(false);
+    expect(postMatchesBeautySection(["head spa"], skincare!)).toBe(false);
   });
 });

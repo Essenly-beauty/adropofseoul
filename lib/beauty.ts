@@ -9,62 +9,61 @@ export type BeautySection = {
 
 export const BEAUTY_SECTIONS: BeautySection[] = [
   {
-    slug: "ingredients",
-    label: "Ingredients",
-    eyebrow: "Learn the label",
+    slug: "skincare",
+    label: "Skincare",
+    eyebrow: "Routines and ingredients",
     description:
-      "A K-beauty ingredient dictionary for actives, botanicals, barrier helpers, and the texture-makers that shape a routine.",
-    href: "/beauty/ingredients",
-    tags: ["ingredients", "ingredient guide", "actives"],
+      "Korean skincare routines, sunscreen habits, barrier care, ingredients, and product context for choosing less but better.",
+    href: "/beauty/skincare",
+    tags: [
+      "skincare",
+      "routine",
+      "routines",
+      "skincare routine",
+      "ingredient guide",
+      "barrier",
+      "glass skin",
+    ],
   },
   {
-    slug: "routines",
-    label: "Routines",
-    eyebrow: "Build the ritual",
+    slug: "hair",
+    label: "Hair",
+    eyebrow: "Salons and care",
     description:
-      "Morning, evening, seasonal, and skin-type routines that explain the logic behind Korean skincare layering.",
-    href: "/beauty/routines",
-    tags: ["routine", "routines", "skincare routine"],
+      "Hair salons, cuts, color, styling, and the practical details visitors need before booking in Seoul.",
+    href: "/beauty/hair",
+    tags: ["hair", "salon", "haircare"],
   },
   {
-    slug: "products",
-    label: "Products",
-    eyebrow: "Shop with context",
+    slug: "scalp",
+    label: "Scalp",
+    eyebrow: "Head spa culture",
     description:
-      "Editorial product guides that weigh texture, skin type, climate, availability, and value without turning the magazine into a storefront.",
-    href: "/beauty/products",
-    tags: ["products", "product guide", "shopping"],
+      "Scalp care, head spas, and the slower rituals that connect Korean haircare with wellness.",
+    href: "/beauty/scalp",
+    tags: ["scalp", "head spa", "head_spa", "haircare"],
   },
   {
-    slug: "skin-concerns",
-    label: "Skin Concerns",
-    eyebrow: "Read your skin",
+    slug: "treatments",
+    label: "Treatments",
+    eyebrow: "Clinic context",
     description:
-      "Guides for acne, redness, dryness, dark spots, pores, barrier repair, and other concerns people bring to K-beauty.",
-    href: "/beauty/skin-concerns",
-    tags: ["acne", "redness", "dryness", "hyperpigmentation", "barrier"],
-  },
-  {
-    slug: "trends",
-    label: "Trends & Culture",
-    eyebrow: "Why it matters",
-    description:
-      "The culture behind glass skin, toner pads, Olive Young browsing, sunscreen habits, and the details that make K-beauty travel.",
-    href: "/beauty/trends",
-    tags: ["trends", "culture", "glass skin", "olive young"],
-  },
-  {
-    slug: "guides",
-    label: "Guides",
-    eyebrow: "Start clearly",
-    description:
-      "Beginner-friendly explainers for reading ingredient lists, shopping in Korea, choosing sunscreen, and building a calmer routine.",
-    href: "/beauty/guides",
-    tags: ["guide", "guides", "beginner"],
+      "Treatment explainers, clinic culture, recovery routines, and realistic planning for Seoul beauty appointments.",
+    href: "/beauty/treatments",
+    tags: ["treatments", "clinic", "skin clinic", "laser", "recovery"],
   },
 ];
 
 export const BEAUTY_SECTION_SLUGS = BEAUTY_SECTIONS.map((s) => s.slug);
+
+export const BEAUTY_SECTION_REDIRECTS: Record<string, string> = {
+  ingredients: "/ingredients",
+  routines: "/beauty/skincare",
+  products: "/the-edit/products",
+  "skin-concerns": "/beauty/skincare",
+  trends: "/beauty/skincare",
+  guides: "/guides/how-to",
+};
 
 export function getBeautySectionBySlug(
   slug: string

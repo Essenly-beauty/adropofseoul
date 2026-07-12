@@ -12,15 +12,16 @@ describe("SiteHeader", () => {
     render(<SiteHeader />);
     for (const label of [
       "Beauty",
-      "Hair",
       "Places",
-      "Head Spa",
       "Guides",
-      "Picks",
+      "The Edit",
       "About",
+      "Search",
     ]) {
       expect(screen.getByRole("link", { name: label })).toBeTruthy();
     }
+    expect(screen.getByRole("link", { name: "Skincare" })).toBeTruthy();
+    expect(screen.getByRole("link", { name: "Hair Salons" })).toBeTruthy();
   });
   it("toggles the mobile menu panel", () => {
     render(<SiteHeader />);
@@ -30,5 +31,6 @@ describe("SiteHeader", () => {
     fireEvent.click(button);
     expect(screen.getByRole("navigation", { name: "Mobile" })).toBeTruthy();
     expect(button.getAttribute("aria-expanded")).toBe("true");
+    expect(screen.getByRole("button", { name: /beauty/i })).toBeTruthy();
   });
 });

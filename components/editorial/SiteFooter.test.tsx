@@ -16,6 +16,14 @@ describe("SiteFooter", () => {
     expect(
       screen.getByRole("link", { name: "Places" }).getAttribute("href")
     ).toBe("/places");
+    expect(
+      screen.getByRole("link", { name: "The Edit" }).getAttribute("href")
+    ).toBe("/the-edit");
+    expect(
+      screen
+        .getByRole("link", { name: "Affiliate Disclosure" })
+        .getAttribute("href")
+    ).toBe("/affiliate-disclosure");
     expect(screen.getByText(/All rights reserved/)).toBeTruthy();
   });
 });

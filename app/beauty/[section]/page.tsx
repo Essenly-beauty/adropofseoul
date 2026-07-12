@@ -1,15 +1,24 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { ArticleCard } from "@/components/editorial/ArticleCard";
-import { IngredientCard } from "@/components/editorial/IngredientCard";
+import {
+  DiscoveryPlaceCard,
+  GuideCard,
+} from "@/components/editorial/DiscoveryCards";
 import { SectionHeading } from "@/components/editorial/SectionHeading";
 import {
+  BEAUTY_SECTION_REDIRECTS,
   BEAUTY_SECTION_SLUGS,
+  BEAUTY_SECTIONS,
   getBeautySectionBySlug,
   postMatchesBeautySection,
 } from "@/lib/beauty";
+import {
+  getCategoryLandingBySlug,
+  getGuideBySlug,
+  getRelatedPlaces,
+} from "@/lib/discovery";
 import { canonical } from "@/lib/seo";
-import { listIngredients } from "@/services/ingredients";
 import { listPublishedPosts } from "@/services/posts";
 
 export const dynamic = "force-dynamic";
@@ -18,11 +27,11 @@ export function generateStaticParams() {
   return BEAUTY_SECTION_SLUGS.map((section) => ({ section }));
 }
 
-export async function generateMetadata({
+export function generateMetadata({
   params,
 }: {
   params: { section: string };
-}): Promise<Metadata> {
+}): Metadata {
   const section = getBeautySectionBySlug(params.section);
   if (!section) return { title: "Not found" };
   return {
@@ -37,43 +46,18 @@ export default async function BeautySectionPage({
 }: {
   params: { section: string };
 }) {
+  const legacy = BEAUTY_SECTION_REDIRECTS[params.section];
+  if (legacy) redirect(legacy);
+
   const section = getBeautySectionBySlug(params.section);
   if (!section) notFound();
-
-  if (section.slug === "ingredients") {
-    let ingredients: Awaited<ReturnType<typeof listIngredients>> = [];
-    try {
-      ingredients = await listIngredients({ limit: 200 });
-    } catch (err) {
-      console.error("beauty ingredients: fetch failed", err);
-    }
-
-    return (
-      <main className="mx-auto max-w-content px-6 py-16">
-        <SectionHeading
-          title="Ingredients"
-          eyebrow="Beauty / Learn the label"
-          href="/ingredients"
-        />
-        <p className="mb-8 max-w-3xl text-text-muted">
-          The ingredient dictionary stays independent at /ingredients, but it is
-          also the first pillar of Beauty: the place to understand what Korean
-          products are trying to do before deciding what to buy.
-        </p>
-        {ingredients.length === 0 ? (
-          <p className="text-text-muted">
-            Ingredient entries are being added — check back soon.
-          </p>
-        ) : (
-          <div className="grid gap-6 border-b border-soft-gray md:grid-cols-3 md:border-b-0">
-            {ingredients.map((ingredient) => (
-              <IngredientCard key={ingredient.id} ingredient={ingredient} />
-            ))}
-          </div>
-        )}
-      </main>
-    );
-  }
+  const landing = getCategoryLandingBySlug(section.slug);
+  const featuredGuide = landing?.featuredGuideSlug
+    ? getGuideBySlug(landing.featuredGuideSlug)
+    : undefined;
+  const featuredPlaces = landing
+    ? getRelatedPlaces(landing.featuredPlaceSlugs)
+    : [];
 
   let posts: Awaited<ReturnType<typeof listPublishedPosts>> = [];
   try {
@@ -88,23 +72,82 @@ export default async function BeautySectionPage({
     console.error(`beauty ${section.slug}: posts fetch failed`, err);
   }
 
+  const featuredStory =
+    landing?.featuredStorySlug &&
+    posts.find((post) => post.slug === landing.featuredStorySlug);
+  const latest = featuredStory
+    ? posts.filter((post) => post.slug !== featuredStory.slug)
+    : posts;
+
   return (
     <main className="mx-auto max-w-content px-6 py-16">
-      <SectionHeading title={section.label} eyebrow="Beauty" />
-      <p className="mb-8 max-w-3xl text-text-muted">{section.description}</p>
-      {posts.length === 0 ? (
-        <p className="max-w-2xl text-text-muted">
-          This Beauty section is being shaped. Future stories will sit here when
-          they match the editorial pillar, with product links used only when
-          they add practical context.
+      <header className="max-w-3xl">
+        <p className="text-xs uppercase tracking-widest text-accent">Beauty</p>
+        <h1 className="mt-2 font-serif text-5xl leading-tight md:text-6xl">
+          {section.label}
+        </h1>
+        <p className="mt-5 text-lg leading-8 text-text-muted">
+          {landing?.intro ?? section.description}
         </p>
-      ) : (
-        <div className="grid gap-8 md:grid-cols-3">
-          {posts.map((post) => (
-            <ArticleCard key={post.id} post={post} />
+      </header>
+
+      {featuredStory && (
+        <section className="mt-12">
+          <SectionHeading title="Featured story" eyebrow={section.eyebrow} />
+          <div className="max-w-xl">
+            <ArticleCard post={featuredStory} />
+          </div>
+        </section>
+      )}
+
+      {featuredGuide && (
+        <section className="mt-14">
+          <SectionHeading title="Featured guide" eyebrow="Plan" />
+          <div className="max-w-xl">
+            <GuideCard guide={featuredGuide} />
+          </div>
+        </section>
+      )}
+
+      {featuredPlaces.length > 0 && (
+        <section className="mt-14">
+          <SectionHeading title="Featured places" eyebrow="Directory" />
+          <div className="grid gap-8 md:grid-cols-3">
+            {featuredPlaces.map((place) => (
+              <DiscoveryPlaceCard key={place.slug} place={place} />
+            ))}
+          </div>
+        </section>
+      )}
+
+      {latest.length > 0 && (
+        <section className="mt-14">
+          <SectionHeading title="Latest articles" eyebrow="Stories" />
+          <div className="grid gap-8 md:grid-cols-3">
+            {latest.slice(0, 9).map((post) => (
+              <ArticleCard key={post.id} post={post} />
+            ))}
+          </div>
+        </section>
+      )}
+
+      <section className="mt-14 border-t border-soft-gray pt-8">
+        <SectionHeading title="Related categories" eyebrow="Keep exploring" />
+        <div className="flex flex-wrap gap-3">
+          {(
+            landing?.related ??
+            BEAUTY_SECTIONS.filter((item) => item.slug !== section.slug)
+          ).map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              className="rounded-full border border-soft-gray px-4 py-2 text-xs uppercase tracking-label text-text-muted transition-colors duration-medium ease-editorial hover:border-accent hover:text-accent"
+            >
+              {item.label}
+            </a>
           ))}
         </div>
-      )}
+      </section>
     </main>
   );
 }

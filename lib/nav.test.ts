@@ -6,19 +6,25 @@ describe("NAV_ITEMS", () => {
     expect(NAV_ITEMS.map((i) => i.label)).toEqual([
       "Home",
       "Beauty",
-      "Hair",
       "Places",
-      "Ingredients",
-      "Head Spa",
       "Guides",
-      "Picks",
+      "The Edit",
       "About",
+      "Search",
     ]);
   });
-  it("maps Head Spa to the /head-spa route and Places to the directory", () => {
-    expect(NAV_ITEMS.find((i) => i.label === "Head Spa")?.href).toBe(
-      "/head-spa"
-    );
+  it("maps dropdown sections to discovery routes", () => {
+    expect(
+      NAV_ITEMS.find((i) => i.label === "Beauty")?.items?.map((i) => i.href)
+    ).toEqual([
+      "/beauty/skincare",
+      "/beauty/hair",
+      "/beauty/scalp",
+      "/beauty/treatments",
+    ]);
     expect(NAV_ITEMS.find((i) => i.label === "Places")?.href).toBe("/places");
+    expect(NAV_ITEMS.find((i) => i.label === "The Edit")?.href).toBe(
+      "/the-edit"
+    );
   });
 });
