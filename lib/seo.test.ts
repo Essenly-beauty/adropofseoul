@@ -14,6 +14,7 @@ const post = {
   slug: "hello",
   excerpt: "x",
   body: "## hi",
+  featuredImage: "/images/articles/hello.jpg",
   author: "Team",
   publishedAt: "2026-01-01T00:00:00Z",
 } as Post;
@@ -39,6 +40,8 @@ describe("articleJsonLd", () => {
     expect(ld["@type"]).toBe("Article");
     expect(ld.headline).toBe("Hello");
     expect(ld.datePublished).toBe("2026-01-01T00:00:00Z");
+    expect(String(ld.image)).toContain("/images/articles/hello.jpg");
+    expect(String(ld.image)).toMatch(/^https?:\/\//);
   });
 });
 

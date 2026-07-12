@@ -10,7 +10,7 @@ meta_description: "A Korean summer skincare routine for humid weather: light cle
 author: "A Drop of Seoul Editorial"
 status: "published"
 published_at: "2026-07-12T10:20:00+09:00"
-featured_image: null
+featured_image: "/images/articles/korean-summer-cooling-skincare-routine.jpg"
 ---
 
 Korean summer skincare has a different rhythm from winter K-beauty. The goal is not to wrap the face in plush layers. It is to keep skin cool, clean, protected, and hydrated without turning everything sticky by noon.

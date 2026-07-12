@@ -10,7 +10,7 @@ meta_description: "Repair an irritated skin barrier with a Korean-style routine:
 author: "A Drop of Seoul Editorial"
 status: "published"
 published_at: "2026-07-12T10:00:00+09:00"
-featured_image: null
+featured_image: "/images/articles/korean-barrier-repair-routine.jpg"
 ---
 
 Barrier damage has a specific mood. Products that used to feel fine now sting. Your skin looks shiny but feels dry. Redness lingers. Makeup sits strangely. You keep wanting to add one more soothing serum, which is exactly how the problem often gets louder.

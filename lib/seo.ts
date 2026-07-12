@@ -13,7 +13,7 @@ export function articleJsonLd(post: Post): object {
     description: post.excerpt ?? undefined,
     datePublished: post.publishedAt ?? undefined,
     author: post.author ? { "@type": "Person", name: post.author } : undefined,
-    image: post.featuredImage ?? undefined,
+    image: post.featuredImage ? canonical(post.featuredImage) : undefined,
     publisher: { "@type": "Organization", name: SITE_NAME },
     mainEntityOfPage: canonical(`/articles/${post.slug}`),
   };

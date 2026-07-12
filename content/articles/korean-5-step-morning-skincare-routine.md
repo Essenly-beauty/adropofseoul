@@ -10,7 +10,7 @@ meta_description: "Build a realistic Korean 5-step morning skincare routine: cle
 author: "A Drop of Seoul Editorial"
 status: "published"
 published_at: "2026-07-12T09:10:00+09:00"
-featured_image: null
+featured_image: "/images/articles/korean-5-step-morning-skincare-routine.jpg"
 ---
 
 A good Seoul morning routine has to do three jobs at once: calm the face you woke up with, sit under sunscreen, and not make you regret everything by lunchtime. It is less about using many products and more about choosing layers thin enough to cooperate.

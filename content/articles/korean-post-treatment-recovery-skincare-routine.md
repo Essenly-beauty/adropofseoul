@@ -10,7 +10,7 @@ meta_description: "A gentle Korean recovery routine after skin treatments: clean
 author: "A Drop of Seoul Editorial"
 status: "published"
 published_at: "2026-07-12T10:50:00+09:00"
-featured_image: null
+featured_image: "/images/articles/korean-post-treatment-recovery-skincare-routine.jpg"
 ---
 
 Post-treatment skincare is where restraint becomes the whole routine. Whether you had a facial, laser, microneedling, extraction, or a stronger clinic treatment, the instinct to "help" your skin with extra products can backfire quickly.

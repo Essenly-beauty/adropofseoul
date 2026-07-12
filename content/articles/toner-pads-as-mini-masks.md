@@ -10,7 +10,7 @@ meta_description: "Learn how Korean toner pads are used as mini masks for hydrat
 author: "A Drop of Seoul Editorial"
 status: "published"
 published_at: "2026-07-12T09:40:00+09:00"
-featured_image: null
+featured_image: "/images/articles/toner-pads-as-mini-masks.jpg"
 ---
 
 Toner pads are one of those K-beauty products that make more sense after you watch someone use them in real life. Yes, they can be swiped across the face. But in Seoul-style routines, they are often used like tiny sheet masks: one on each cheek, one on the chin, maybe one across the forehead while you brush your teeth.

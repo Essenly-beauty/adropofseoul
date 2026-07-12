@@ -10,7 +10,7 @@ meta_description: "A realistic Korean 7-step night routine: double cleanse, hydr
 author: "A Drop of Seoul Editorial"
 status: "published"
 published_at: "2026-07-12T09:20:00+09:00"
-featured_image: null
+featured_image: "/images/articles/korean-7-step-evening-skincare-routine.jpg"
 ---
 
 The seven-step Korean evening routine is where skincare starts to feel like a ritual. Done well, it is slow in the best way: sunscreen comes off, the day leaves with it, and the skin gets exactly enough support to wake up calmer.

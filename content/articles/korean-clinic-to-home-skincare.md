@@ -10,7 +10,7 @@ meta_description: "What clinic-to-home means in Korean skincare: PDRN-inspired p
 author: "A Drop of Seoul Editorial"
 status: "published"
 published_at: "2026-07-12T10:40:00+09:00"
-featured_image: null
+featured_image: "/images/articles/korean-clinic-to-home-skincare.jpg"
 ---
 
 One reason K-beauty moves so quickly is that Korean skincare and Korean clinics talk to each other. A treatment becomes a buzzword. A recovery step becomes a sheet mask. A procedure-adjacent texture becomes a serum. Soon, the product shelf starts sounding like a dermatology waiting room.

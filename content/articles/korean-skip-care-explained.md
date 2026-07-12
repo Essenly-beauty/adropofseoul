@@ -10,7 +10,7 @@ meta_description: "Skip-care is Korean minimalist skincare built around fewer, s
 author: "A Drop of Seoul Editorial"
 status: "published"
 published_at: "2026-07-12T09:30:00+09:00"
-featured_image: null
+featured_image: "/images/articles/korean-skip-care-explained.jpg"
 ---
 
 Skip-care became popular because everyone eventually reaches the same private skincare truth: more products do not always mean better skin. Sometimes more products mean more pilling, more redness, more mystery bumps, and more time staring at your face under aggressive bathroom light.

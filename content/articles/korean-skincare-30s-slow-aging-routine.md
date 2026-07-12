@@ -10,7 +10,7 @@ meta_description: "Build a Korean skincare routine in your 30s with sunscreen, v
 author: "A Drop of Seoul Editorial"
 status: "published"
 published_at: "2026-07-12T10:30:00+09:00"
-featured_image: null
+featured_image: "/images/articles/korean-skincare-30s-slow-aging-routine.jpg"
 ---
 
 Your 30s are often when skincare stops being mostly about vibes and starts becoming strategy. Fine lines appear when you are dehydrated. Old acne marks linger longer. Sun exposure from five years ago quietly submits its invoice. The Korean response is not to attack the skin. It is to slow the visible changes with consistency.

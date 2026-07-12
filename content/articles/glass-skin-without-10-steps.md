@@ -10,7 +10,7 @@ meta_description: "A realistic guide to glass skin without 10 steps: hydration l
 author: "A Drop of Seoul Editorial"
 status: "published"
 published_at: "2026-07-12T09:50:00+09:00"
-featured_image: null
+featured_image: "/images/articles/glass-skin-without-10-steps.jpg"
 ---
 
 Glass skin is often sold as a staircase: oil cleanser, foam cleanser, exfoliant, toner, essence, serum, ampoule, sheet mask, cream, eye cream, oil, sleeping mask. By step nine, your face may be shiny, but so is a glazed donut. That is not automatically skin health.

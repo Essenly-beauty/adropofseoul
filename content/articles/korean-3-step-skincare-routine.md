@@ -10,7 +10,7 @@ meta_description: "A realistic Korean 3-step skincare routine for beginners: cle
 author: "A Drop of Seoul Editorial"
 status: "published"
 published_at: "2026-07-12T09:00:00+09:00"
-featured_image: null
+featured_image: "/images/articles/korean-3-step-skincare-routine.jpg"
 ---
 
 The Korean 3-step routine is not a confession that you failed K-beauty. In Seoul, a short routine is often the smart routine: after a late subway ride, during a humid week, before an early flight, or whenever your skin is already telling you it has had enough opinions.
