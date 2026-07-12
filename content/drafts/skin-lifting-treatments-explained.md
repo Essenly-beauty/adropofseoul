@@ -25,6 +25,8 @@ Most people who look into these treatments are noticing the same handful of thin
 
 What draws people to energy-based treatments specifically, rather than surgical options, is the idea of encouraging skin to firm itself from the inside, without an incision. That framing is part of the appeal, and it's also why it helps to understand what the "encouraging" part actually involves before deciding whether it's relevant to you.
 
+If the thing bothering you is more about dull, tired-looking texture or uneven tone than looseness, these aren't the right treatments for it — the mechanisms are different ones. Our guides on [skin boosters](/articles/skin-booster-treatments-explained) and [pigment and laser treatments](/articles/pigment-laser-treatments-explained) cover those.
+
 ## How it works
 
 All three treatments rely on the same underlying idea: heat delivered at a precise depth under the skin, not on the surface.
