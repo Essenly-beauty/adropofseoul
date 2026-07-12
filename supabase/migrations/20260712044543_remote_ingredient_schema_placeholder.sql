@@ -1,0 +1,7 @@
+-- Remote migration history placeholder.
+--
+-- The production Supabase project already contains migration version
+-- 20260712044543, created during an earlier remote schema operation. The
+-- resulting ingredient tables are represented locally by 0003_ingredients.sql,
+-- so this file intentionally contains no DDL. Keeping the version locally lets
+-- Supabase CLI compare migration history without losing the remote record.
