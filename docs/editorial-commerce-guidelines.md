@@ -48,6 +48,52 @@ site.
 - For products with changing price or stock, use current source links and avoid
   permanent claims like "cheapest" unless verified at publication time.
 
+## FAQ / AI Search Q&A Rules
+
+Use visible FAQ sections as reader service and AI/search extraction support, not
+as a schema trick. Google removed broad FAQ rich-result visibility, so the
+priority is clear, helpful, crawlable answers inside the article body.
+
+- Add an FAQ section to evergreen explainers, routines, ingredient guides,
+  treatment explainers, and buying guides when readers are likely to compare,
+  troubleshoot, or ask "can I use this?" questions.
+- Write questions in natural search language, as if a reader typed them into
+  Google, TikTok search, Reddit, or an AI assistant.
+- Prefer specific questions over vague ones: "Does sunscreen go before or after
+  moisturizer?" is stronger than "How do I use sunscreen?"
+- Use 4-5 questions for most articles. Use fewer only when the topic is narrow,
+  and more only for pillar guides.
+- Answer directly in the first sentence. The reader should get the short answer
+  before any nuance.
+- Add 1-3 follow-up sentences with practical context: skin type, routine step,
+  frequency, season, texture, irritation risk, or when to ask a professional.
+- Keep answers human and editorial. Avoid keyword stuffing, repetitive phrasing,
+  or robotic "yes/no" blocks.
+- Link naturally to related A Drop of Seoul articles and ingredient pages when
+  the answer gives the reader a useful next step.
+- Do not add `FAQPage` JSON-LD unless there is a strong current reason to do so.
+  Visible, high-quality Q&A is the default.
+- For medical-aesthetic, clinic, procedure, acne, pregnancy, or post-treatment
+  questions, include cautious language and defer to a clinician or provider when
+  appropriate.
+- Avoid promises: do not say a product will cure acne, erase wrinkles, repair a
+  barrier overnight, or replace a procedure.
+
+Good FAQ pattern:
+
+```md
+## FAQ
+
+**Does sunscreen go before or after moisturizer?**  
+Sunscreen usually goes after moisturizer as the last skincare step in the
+morning. If your sunscreen is very moisturizing and your skin is oily, you can
+keep the moisturizer lighter.
+
+**Can I use retinol and exfoliating acids in the same night routine?**  
+Most beginners should not use retinol and exfoliating acids in the same night.
+Choose one active theme per night and keep the rest of the routine calming.
+```
+
 ## Source Discipline
 
 - Use official brand pages, Olive Young Global, Amazon product pages, and the
