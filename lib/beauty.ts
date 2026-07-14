@@ -26,6 +26,15 @@ export const BEAUTY_SECTIONS: BeautySection[] = [
     ],
   },
   {
+    slug: "ingredients",
+    label: "Ingredients",
+    eyebrow: "Ingredient dictionary",
+    description:
+      "A Korean beauty ingredient dictionary for niacinamide, centella, snail mucin, barrier helpers, exfoliants, and more.",
+    href: "/ingredients",
+    tags: ["ingredients", "ingredient guide", "inci", "skincare"],
+  },
+  {
     slug: "hair",
     label: "Hair",
     eyebrow: "Salons and care",

@@ -11,6 +11,7 @@ export const NAV_ITEMS: NavItem[] = [
     href: "/beauty",
     items: [
       { label: "Skincare", href: "/beauty/skincare" },
+      { label: "Ingredients", href: "/ingredients" },
       { label: "Hair", href: "/beauty/hair" },
       { label: "Scalp", href: "/beauty/scalp" },
       { label: "Treatments", href: "/beauty/treatments" },

@@ -44,7 +44,7 @@ export default async function BeautyPage() {
 
       <section className="mt-12">
         <SectionHeading title="Beauty Categories" eyebrow="Explore" />
-        <div className="grid gap-px overflow-hidden border-y border-soft-gray bg-soft-gray md:grid-cols-4">
+        <div className="grid gap-px overflow-hidden border-y border-soft-gray bg-soft-gray md:grid-cols-2 lg:grid-cols-5">
           {BEAUTY_SECTIONS.map((section) => (
             <Link
               key={section.slug}

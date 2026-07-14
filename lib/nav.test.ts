@@ -18,6 +18,7 @@ describe("NAV_ITEMS", () => {
       NAV_ITEMS.find((i) => i.label === "Beauty")?.items?.map((i) => i.href)
     ).toEqual([
       "/beauty/skincare",
+      "/ingredients",
       "/beauty/hair",
       "/beauty/scalp",
       "/beauty/treatments",
