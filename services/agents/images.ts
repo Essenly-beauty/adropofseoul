@@ -122,11 +122,33 @@ export async function setImageStatus(
   status: "approved" | "rejected"
 ): Promise<WriteResult> {
   const supabase = await createClient();
-  const { error } = await supabase
+  // Guard: only 'new' images transition (stale UI double-clicks and deleted
+  // rows surface as errors instead of silently "succeeding").
+  const { data, error } = await supabase
+    .from("image_candidates")
+    .select("status")
+    .eq("id", id)
+    .maybeSingle();
+  if (error)
+    return { ok: false, code: error.code ?? null, message: error.message };
+  const current = (data as { status: string } | null)?.status;
+  if (!current) return { ok: false, code: null, message: "Image not found." };
+  if (current !== "new")
+    return {
+      ok: false,
+      code: null,
+      message: `Image already ${current}.`,
+    };
+
+  const { error: updateError } = await supabase
     .from("image_candidates")
     .update({ status })
     .eq("id", id);
-  if (error)
-    return { ok: false, code: error.code ?? null, message: error.message };
+  if (updateError)
+    return {
+      ok: false,
+      code: updateError.code ?? null,
+      message: updateError.message,
+    };
   return { ok: true };
 }

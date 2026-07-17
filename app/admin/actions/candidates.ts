@@ -103,6 +103,7 @@ export async function approveImage(id: string): Promise<void> {
   const r = await setImageStatus(id, "approved");
   if (!r.ok) throw new Error(r.message);
   revalidatePath("/admin/candidates");
+  revalidatePath("/admin/candidates/[id]", "page");
 }
 
 export async function rejectImage(id: string): Promise<void> {
@@ -110,4 +111,5 @@ export async function rejectImage(id: string): Promise<void> {
   const r = await setImageStatus(id, "rejected");
   if (!r.ok) throw new Error(r.message);
   revalidatePath("/admin/candidates");
+  revalidatePath("/admin/candidates/[id]", "page");
 }

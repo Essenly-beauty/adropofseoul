@@ -68,6 +68,27 @@ describe("parseRedditSearch", () => {
     ]);
     expect(docs[1].images).toEqual([]);
   });
+  it("rejects non-http(s) image schemes", () => {
+    const docs = parseRedditSearch({
+      data: {
+        children: [
+          {
+            data: {
+              title: "sneaky",
+              selftext: "",
+              permalink: "/r/seoul/comments/zzz/sneaky/",
+              removed_by_category: null,
+              url: "javascript:fetch(1)//pic.jpg",
+              preview: {
+                images: [{ source: { url: "data:text/html,x.jpg" } }],
+              },
+            },
+          },
+        ],
+      },
+    });
+    expect(docs[0].images).toEqual([]);
+  });
 });
 
 describe("formatGathered", () => {

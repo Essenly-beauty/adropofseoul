@@ -40,6 +40,10 @@ export type ResearchResult =
   | { ok: true; runId: string; kept: number; dropped: number; images: number }
   | { ok: false; runId?: string; error: string };
 
+/** Hard ceiling on image rows per run — keeps the manual server-action path
+ * inside its function budget (inserts are one roundtrip per row). */
+const MAX_IMAGES_PER_RUN = 60;
+
 /** Reality image found in source material → insert row. Everything from the
  * open web is rights-UNVERIFIED until the editor clears it (attribution is
  * recorded for crediting, but attribution alone is not a license). */
@@ -144,13 +148,21 @@ export async function runResearch(
 
     // Image candidates (option): place-linked reality shots from extraction,
     // the remaining area pool from gathered sources, and the stock pool.
+    // This channel is decoration — its failures degrade, never break the run
+    // (candidates are already persisted at this point).
     let imagesInserted = 0;
+    let imagesDropped = 0;
+    let imagesError: string | undefined;
     if (config.images) {
       const imageInputs: ImageInsert[] = [];
       const seenUrls = new Set<string>();
 
       fresh.forEach((c, i) => {
+        // Prompt tells the model to only echo URLs from the material; enforce
+        // it here — a URL not present verbatim in the gathered text is
+        // hallucinated or injected, and never persisted.
         for (const url of c.imageUrls) {
+          if (!gathered.text.includes(url)) continue;
           if (seenUrls.has(url)) continue;
           seenUrls.add(url);
           imageInputs.push(
@@ -172,17 +184,31 @@ export async function runResearch(
       }
 
       if (deps.gatherStock) {
-        for (const img of await deps.gatherStock(config)) {
-          if (seenUrls.has(img.url)) continue;
-          seenUrls.add(img.url);
-          imageInputs.push({ ...img, area: config.area });
+        try {
+          for (const img of await deps.gatherStock(config)) {
+            if (seenUrls.has(img.url)) continue;
+            seenUrls.add(img.url);
+            imageInputs.push({ ...img, area: config.area });
+          }
+        } catch (stockError) {
+          imagesError = `stock: ${
+            stockError instanceof Error ? stockError.message : stockError
+          }`;
         }
       }
 
-      if (imageInputs.length > 0) {
-        const result = await insertImageCandidates(runId, imageInputs);
-        if (!result.ok) throw new Error(result.message);
-        imagesInserted = result.inserted;
+      const capped = imageInputs.slice(0, MAX_IMAGES_PER_RUN);
+      imagesDropped = imageInputs.length - capped.length;
+
+      if (capped.length > 0) {
+        const result = await insertImageCandidates(runId, capped);
+        if (result.ok) {
+          imagesInserted = result.inserted;
+        } else {
+          imagesError = [imagesError, `insert: ${result.message}`]
+            .filter(Boolean)
+            .join("; ");
+        }
       }
     }
 
@@ -193,7 +219,10 @@ export async function runResearch(
         kept: fresh.length,
         dropped,
         images: imagesInserted,
+        imagesDropped,
       },
+      // Degraded image channel is recorded on the run without failing it.
+      error: imagesError,
     });
     return {
       ok: true,

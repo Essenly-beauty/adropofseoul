@@ -24,13 +24,21 @@ const IMAGE_URL_RE = /\.(jpe?g|png|webp)(\?|$)/i;
 const IMAGE_HOSTS = ["i.redd.it", "i.imgur.com"];
 const MAX_IMAGES_PER_POST = 2;
 
+function isHttp(u: URL): boolean {
+  return u.protocol === "http:" || u.protocol === "https:";
+}
+
 function postImages(post: NonNullable<RedditPost["data"]>): string[] {
   const found: string[] = [];
-  // Direct-link posts (i.redd.it / imgur / *.jpg).
+  // Direct-link posts (i.redd.it / imgur / *.jpg). http(s) only — these URLs
+  // are later rendered in the admin.
   if (post.url) {
     try {
       const u = new URL(post.url);
-      if (IMAGE_HOSTS.includes(u.hostname) || IMAGE_URL_RE.test(u.pathname)) {
+      if (
+        isHttp(u) &&
+        (IMAGE_HOSTS.includes(u.hostname) || IMAGE_URL_RE.test(u.pathname))
+      ) {
         found.push(post.url);
       }
     } catch {
@@ -40,7 +48,12 @@ function postImages(post: NonNullable<RedditPost["data"]>): string[] {
   // Preview sources (HTML-escaped by reddit).
   for (const img of post.preview?.images ?? []) {
     const src = img?.source?.url?.replace(/&amp;/g, "&");
-    if (src && !found.includes(src)) found.push(src);
+    if (!src || found.includes(src)) continue;
+    try {
+      if (isHttp(new URL(src))) found.push(src);
+    } catch {
+      // not a URL — ignore
+    }
   }
   return found.slice(0, MAX_IMAGES_PER_POST);
 }
@@ -94,7 +107,10 @@ export async function fetchRedditDocs(
   const url = `https://www.reddit.com/search.json?q=${encodeURIComponent(
     redditQueryFor(area)
   )}&sort=relevance&t=year&limit=${MAX_POSTS}`;
-  const res = await fetchImpl(url, { headers: { "User-Agent": REDDIT_UA } });
+  const res = await fetchImpl(url, {
+    headers: { "User-Agent": REDDIT_UA },
+    signal: AbortSignal.timeout(10_000),
+  });
   if (!res.ok) throw new Error(`Reddit search failed: HTTP ${res.status}`);
   return parseRedditSearch(await res.json());
 }

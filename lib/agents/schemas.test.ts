@@ -23,6 +23,28 @@ describe("CandidateListSchema", () => {
     });
     expect(r.success).toBe(false);
   });
+  it("rejects non-http(s) schemes in source and image URLs", () => {
+    expect(
+      CandidateListSchema.safeParse({
+        candidates: [
+          {
+            ...validCandidate,
+            sourceUrls: ["javascript:alert(1)//x.jpg"],
+          },
+        ],
+      }).success
+    ).toBe(false);
+    expect(
+      CandidateListSchema.safeParse({
+        candidates: [
+          {
+            ...validCandidate,
+            imageUrls: ["data:text/html,<script>1</script>"],
+          },
+        ],
+      }).success
+    ).toBe(false);
+  });
   it("rejects non-URL sources and out-of-range confidence", () => {
     expect(
       CandidateListSchema.safeParse({

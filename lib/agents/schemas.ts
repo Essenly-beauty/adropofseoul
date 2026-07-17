@@ -5,6 +5,14 @@ import { PLACE_CATEGORY_VALUES } from "@/lib/admin/enums";
 // schema level: a candidate without at least one source URL never parses
 // (spec §3 "Sources over sizzle").
 
+// z.url() accepts javascript:/data: schemes — these URLs are rendered as
+// hrefs/srcs in the admin, so enforce http(s) at the schema boundary.
+const HttpUrl = z
+  .url()
+  .refine((u) => u.startsWith("http://") || u.startsWith("https://"), {
+    message: "http(s) URLs only",
+  });
+
 export const CandidateSchema = z.object({
   name: z.string().min(1),
   area: z.string().min(1),
@@ -12,12 +20,13 @@ export const CandidateSchema = z.object({
     .enum(PLACE_CATEGORY_VALUES as [string, ...string[]])
     .nullable(),
   whyNotable: z.string().min(1),
-  sourceUrls: z.array(z.url()).min(1),
+  sourceUrls: z.array(HttpUrl).min(1),
   evidenceQuote: z.string().min(1),
   confidence: z.number().min(0).max(1),
   // Direct image URLs that appear in the source material for THIS place —
-  // reality shots. The model may only echo URLs present in the material.
-  imageUrls: z.array(z.url()).max(4).default([]),
+  // reality shots. The model may only echo URLs present in the material
+  // (additionally enforced in the pipeline against the gathered text).
+  imageUrls: z.array(HttpUrl).max(4).default([]),
   // Booking-service hints — ONLY when present verbatim in the material.
   nameKr: z.string().nullable().default(null),
   addressHint: z.string().nullable().default(null),
@@ -38,6 +47,21 @@ export const RunConfigSchema = z.object({
 export type Candidate = z.infer<typeof CandidateSchema>;
 export type CandidateList = z.infer<typeof CandidateListSchema>;
 export type RunConfig = z.infer<typeof RunConfigSchema>;
+
+// Writer output contract (Track 3). Body carries [[ NOTE: … ]] slots for
+// first-hand detail — the model must never fabricate experience.
+export const GuideDraftSchema = z.object({
+  title: z.string().min(1),
+  slug: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, "kebab-case slug"),
+  subtitle: z.string().min(1),
+  excerpt: z.string().min(1),
+  bodyMarkdown: z.string().min(200),
+  tags: z.array(z.string()).max(8).default([]),
+  seoTitle: z.string().min(1),
+  metaDescription: z.string().min(50).max(200),
+});
+
+export type GuideDraft = z.infer<typeof GuideDraftSchema>;
 
 /** A gathered image before persistence (services add run/candidate links). */
 export type ImageSeed = {

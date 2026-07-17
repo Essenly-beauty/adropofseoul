@@ -13,6 +13,19 @@ type UnsplashPhoto = {
   user?: { name?: string };
 };
 
+/** Unsplash URLs embed a per-request `ixid` tracking param — left in place it
+ * defeats the unique-url idempotency and re-inserts the same photo every run. */
+function stripVolatileParams(url: string): string {
+  try {
+    const u = new URL(url);
+    u.searchParams.delete("ixid");
+    u.searchParams.delete("ixlib");
+    return u.toString();
+  } catch {
+    return url;
+  }
+}
+
 export function mapUnsplashResults(payload: unknown): ImageSeed[] {
   const results =
     (payload as { results?: UnsplashPhoto[] } | null)?.results ?? [];
@@ -20,7 +33,7 @@ export function mapUnsplashResults(payload: unknown): ImageSeed[] {
   for (const photo of results) {
     if (!photo?.urls?.regular || !photo.links?.html) continue;
     seeds.push({
-      url: photo.urls.regular,
+      url: stripVolatileParams(photo.urls.regular),
       sourceUrl: photo.links.html,
       sourceType: "unsplash",
       description: photo.alt_description ?? null,
@@ -63,6 +76,9 @@ export function stockQueryFor(area: string): string {
   return `${area} seoul street cafe warm minimal`;
 }
 
+/** The stock pool is a decoration channel — a provider outage must degrade to
+ * "no stock images", never break the research run. Each provider is fetched
+ * with a timeout and its failures are swallowed per-provider. */
 export async function fetchStockImages(
   area: string,
   fetchImpl: typeof fetch = fetch,
@@ -72,19 +88,33 @@ export async function fetchStockImages(
   const query = encodeURIComponent(stockQueryFor(area));
 
   if (env.UNSPLASH_ACCESS_KEY) {
-    const res = await fetchImpl(
-      `https://api.unsplash.com/search/photos?query=${query}&per_page=${MAX_STOCK}&orientation=landscape`,
-      { headers: { Authorization: `Client-ID ${env.UNSPLASH_ACCESS_KEY}` } }
-    );
-    if (res.ok) seeds.push(...mapUnsplashResults(await res.json()));
+    try {
+      const res = await fetchImpl(
+        `https://api.unsplash.com/search/photos?query=${query}&per_page=${MAX_STOCK}&orientation=landscape`,
+        {
+          headers: { Authorization: `Client-ID ${env.UNSPLASH_ACCESS_KEY}` },
+          signal: AbortSignal.timeout(8_000),
+        }
+      );
+      if (res.ok) seeds.push(...mapUnsplashResults(await res.json()));
+    } catch {
+      // provider down/slow — skip, reality images are unaffected
+    }
   }
 
   if (env.PEXELS_API_KEY) {
-    const res = await fetchImpl(
-      `https://api.pexels.com/v1/search?query=${query}&per_page=${MAX_STOCK}&orientation=landscape`,
-      { headers: { Authorization: env.PEXELS_API_KEY } }
-    );
-    if (res.ok) seeds.push(...mapPexelsResults(await res.json()));
+    try {
+      const res = await fetchImpl(
+        `https://api.pexels.com/v1/search?query=${query}&per_page=${MAX_STOCK}&orientation=landscape`,
+        {
+          headers: { Authorization: env.PEXELS_API_KEY },
+          signal: AbortSignal.timeout(8_000),
+        }
+      );
+      if (res.ok) seeds.push(...mapPexelsResults(await res.json()));
+    } catch {
+      // provider down/slow — skip
+    }
   }
 
   return seeds;

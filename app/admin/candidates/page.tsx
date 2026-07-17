@@ -2,6 +2,7 @@ import { listCandidatesByStatus } from "@/services/agents/candidates";
 import { listImagePool } from "@/services/agents/images";
 import type { PlaceCandidate } from "@/services/agents/types";
 import { RunResearchForm } from "./RunResearchForm";
+import { DraftGuideForm } from "./DraftGuideForm";
 import { ImageCandidateGrid } from "./ImageCandidateGrid";
 
 export const dynamic = "force-dynamic";
@@ -64,8 +65,9 @@ export default async function CandidatesPage({
         <em>unpublished</em> place draft — nothing goes live from here.
       </p>
 
-      <div className="mt-6">
+      <div className="mt-6 flex flex-wrap gap-4">
         <RunResearchForm />
+        <DraftGuideForm />
         {searchParams.ran && (
           <p className="mt-2 text-sm text-text-muted">
             Research for “{searchParams.ran}” finished: {searchParams.kept} new
@@ -98,7 +100,8 @@ export default async function CandidatesPage({
       {imagePool.length > 0 && (
         <>
           <h2 className="mt-10 font-serif text-2xl">
-            Image pool ({imagePool.length})
+            Image pool ({imagePool.length}
+            {imagePool.length >= 100 ? " — latest 100 shown" : ""})
           </h2>
           <p className="mt-1 text-xs text-text-muted">
             Thumbnails and reality shots collected during research. “Rights

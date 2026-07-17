@@ -59,7 +59,9 @@ const poolImage = {
 function deps(overrides: Partial<ResearchDeps> = {}): ResearchDeps {
   return {
     gather: vi.fn().mockResolvedValue({
-      text: "[1] https://src\nsome gathered text",
+      // Contains the candidate's image URL — echoed URLs must appear
+      // verbatim in the gathered text to survive the anti-hallucination filter.
+      text: "[1] https://src\nimages: https://i.redd.it/soolloft.jpg\nsome gathered text",
       images: [poolImage],
     }),
     extract: vi
@@ -158,6 +160,51 @@ describe("runResearch", () => {
         license: "commercial-ok",
         attribution: "Jane Kim",
         suggestedUse: "thumbnail",
+      })
+    );
+  });
+
+  it("drops extractor image URLs that don't appear in the gathered text (hallucination guard)", async () => {
+    armPersistence();
+    const d = deps({
+      extract: vi.fn().mockResolvedValue({
+        candidates: [
+          {
+            ...candidate("Sool Loft"),
+            imageUrls: ["https://evil.example/injected.jpg"],
+          },
+        ],
+      }),
+    });
+    await runResearch({ area: "Seongsu", limit: 10 }, d);
+    const images = mockImgInsert.mock.calls[0][1];
+    expect(images).not.toContainEqual(
+      expect.objectContaining({ url: "https://evil.example/injected.jpg" })
+    );
+    // The pool image from gather is still persisted.
+    expect(images).toContainEqual(
+      expect.objectContaining({ url: "https://i.redd.it/pool1.jpg" })
+    );
+  });
+
+  it("degrades, not fails, when the stock provider or image insert breaks", async () => {
+    armPersistence();
+    mockImgInsert.mockResolvedValue({
+      ok: false,
+      code: "500",
+      message: "img db down",
+    });
+    const d = deps({
+      gatherStock: vi.fn().mockRejectedValue(new Error("stock down")),
+    });
+    const result = await runResearch({ area: "Seongsu", limit: 10 }, d);
+    // Candidates persisted, run finishes done with the degradation recorded.
+    expect(result.ok).toBe(true);
+    expect(mockFinishRun).toHaveBeenCalledWith(
+      "run1",
+      expect.objectContaining({
+        status: "done",
+        error: expect.stringContaining("stock down"),
       })
     );
   });

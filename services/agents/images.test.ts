@@ -75,8 +75,22 @@ describe("images service", () => {
     expect(list[0].url).toBe(row.url);
   });
 
-  it("setImageStatus returns ok", async () => {
-    mocked.mockResolvedValue(fakeClient({ data: null, error: null }));
+  it("setImageStatus transitions a 'new' image", async () => {
+    mocked.mockResolvedValue(
+      fakeClient({ data: { status: "new" }, error: null })
+    );
     expect(await setImageStatus("i1", "approved")).toEqual({ ok: true });
+  });
+
+  it("setImageStatus rejects a repeat transition and a missing row", async () => {
+    mocked.mockResolvedValue(
+      fakeClient({ data: { status: "approved" }, error: null })
+    );
+    const repeat = await setImageStatus("i1", "rejected");
+    expect(repeat.ok).toBe(false);
+
+    mocked.mockResolvedValue(fakeClient({ data: null, error: null }));
+    const missing = await setImageStatus("nope", "approved");
+    expect(missing.ok).toBe(false);
   });
 });
