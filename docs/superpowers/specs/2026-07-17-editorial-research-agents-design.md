@@ -262,12 +262,12 @@ and continue to filter on published status; candidates are invisible to them.
 
 This architecture splits into three plans, each landing independently:
 
-| Plan                              | Scope                                                                                                                                                                                                                         | Depends on         |
-| --------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ |
-| **(pre) Admin CMS CRUD**          | `2026-06-29-admin-cms-crud.md` — must ship first                                                                                                                                                                              | Plans 1–2 (done)   |
-| **Track 1 — Foundations**         | `0003` migration (`research_runs`, `place_candidates`, post brief/research/ai_review + status enum); AI SDK + Vercel AI Gateway wiring in `lib/agents/`; `services/agents/` skeleton + schemas; dedupe/scoring pure fns (TDD) | Admin CMS          |
-| **Track 2 — Research + Gate 1**   | `services/agents/research.ts` (Reddit + web + extract + dedupe + persist); admin `candidates/` review surface + approve/reject/promote actions; manual trigger; one Vercel Cron                                               | Track 1            |
-| **Track 3 — Writing + AI review** | `services/agents/writer.ts` (area+places → guide draft with NOTE slots/links/FAQ/SEO); `review.ts` + edit-page AI-review panel; manual trigger                                                                                | Track 2, Admin CMS |
+| Plan                                           | Scope                                                                                                                                                                                                                         | Depends on         |
+| ---------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ |
+| **(pre) Admin CMS CRUD**                       | `2026-06-29-admin-cms-crud.md` — must ship first                                                                                                                                                                              | Plans 1–2 (done)   |
+| **Track 1 — Foundations** ✅ done (2026-07-17) | `0003` migration (`research_runs`, `place_candidates`, post brief/research/ai_review + status enum); AI SDK + Vercel AI Gateway wiring in `lib/agents/`; `services/agents/` skeleton + schemas; dedupe/scoring pure fns (TDD) | Admin CMS          |
+| **Track 2 — Research + Gate 1**                | `services/agents/research.ts` (Reddit + web + extract + dedupe + persist); admin `candidates/` review surface + approve/reject/promote actions; manual trigger; one Vercel Cron                                               | Track 1            |
+| **Track 3 — Writing + AI review**              | `services/agents/writer.ts` (area+places → guide draft with NOTE slots/links/FAQ/SEO); `review.ts` + edit-page AI-review panel; manual trigger                                                                                | Track 2, Admin CMS |
 
 ## 10. Definition of done (this spec)
 
