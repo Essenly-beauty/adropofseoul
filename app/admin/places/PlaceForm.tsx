@@ -21,7 +21,7 @@ import { FormError } from "@/components/admin/FormError";
 
 export function PlaceForm({ place }: { place?: AdminPlace }) {
   const [state, action] = useFormState(savePlace, INITIAL_STATE);
-  const e = state.errors;
+  const e = state?.errors ?? {};
   return (
     <form action={action} className="max-w-3xl">
       {place && <input type="hidden" name="id" value={place.id} />}
@@ -187,7 +187,7 @@ export function PlaceForm({ place }: { place?: AdminPlace }) {
         Published
       </label>
 
-      {state.formError && <FormError message={state.formError} />}
+      {state?.formError && <FormError message={state.formError} />}
       <div className="mt-4">
         <SubmitButton>{place ? "Save changes" : "Create place"}</SubmitButton>
       </div>

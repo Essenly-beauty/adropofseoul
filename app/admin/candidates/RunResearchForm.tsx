@@ -19,7 +19,7 @@ export function RunResearchForm() {
           <TextField
             name="area"
             label="Run research for area"
-            error={state.errors.area}
+            error={state?.errors?.area}
             required
           />
         </div>
@@ -31,7 +31,7 @@ export function RunResearchForm() {
         <input type="checkbox" name="images" defaultChecked />
         Also collect image candidates (thumbnails + reality shots, with sources)
       </label>
-      {state.formError && <FormError message={state.formError} />}
+      {state?.formError && <FormError message={state.formError} />}
     </form>
   );
 }

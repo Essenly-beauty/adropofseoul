@@ -18,7 +18,7 @@ import { FormError } from "@/components/admin/FormError";
 
 export function PostForm({ post }: { post?: AdminPost }) {
   const [state, action] = useFormState(savePost, INITIAL_STATE);
-  const e = state.errors;
+  const e = state?.errors ?? {};
 
   return (
     <form action={action} className="max-w-3xl">
@@ -83,7 +83,7 @@ export function PostForm({ post }: { post?: AdminPost }) {
       />
       <StatusField defaultValue={post?.status} error={e.status} />
 
-      {state.formError && <FormError message={state.formError} />}
+      {state?.formError && <FormError message={state.formError} />}
       <div className="mt-4">
         <SubmitButton>{post ? "Save changes" : "Create post"}</SubmitButton>
       </div>

@@ -12,7 +12,7 @@ import { FormError } from "@/components/admin/FormError";
 
 export function ProductForm({ product }: { product?: AdminProduct }) {
   const [state, action] = useFormState(saveProduct, INITIAL_STATE);
-  const e = state.errors;
+  const e = state?.errors ?? {};
   return (
     <form action={action} className="max-w-3xl">
       {product && <input type="hidden" name="id" value={product.id} />}
@@ -96,7 +96,7 @@ export function ProductForm({ product }: { product?: AdminProduct }) {
         Published
       </label>
 
-      {state.formError && <FormError message={state.formError} />}
+      {state?.formError && <FormError message={state.formError} />}
       <div className="mt-4">
         <SubmitButton>
           {product ? "Save changes" : "Create product"}

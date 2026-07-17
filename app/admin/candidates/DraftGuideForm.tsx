@@ -19,7 +19,7 @@ export function DraftGuideForm() {
           <TextField
             name="area"
             label="Draft a guide for area"
-            error={state.errors.area}
+            error={state?.errors?.area}
             required
           />
         </div>
@@ -32,7 +32,7 @@ export function DraftGuideForm() {
         NOTE ]] slots for first-hand detail. Nothing publishes until you finish
         it.
       </p>
-      {state.formError && <FormError message={state.formError} />}
+      {state?.formError && <FormError message={state.formError} />}
     </form>
   );
 }
