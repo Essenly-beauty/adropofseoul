@@ -1,8 +1,12 @@
-// The SINGLE place status logic lives. V2 extends POST_STATUSES here (plus an
-// additive `ALTER TYPE post_status ADD VALUE` migration) — see spec §7.
+// The SINGLE place status logic lives (admin-cms spec §7 rule 1). The V2
+// editorial workflow statuses landed with migration 0003 (agents Track 1).
 export const POST_STATUSES: { value: string; label: string }[] = [
   { value: "draft", label: "Draft" },
+  { value: "research", label: "Research" },
+  { value: "ai_review", label: "AI Review" },
+  { value: "ready", label: "Ready" },
   { value: "published", label: "Published" },
+  { value: "archived", label: "Archived" },
 ];
 
 const LIVE_STATUSES = new Set(["published"]);
