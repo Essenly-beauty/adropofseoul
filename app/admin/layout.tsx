@@ -54,6 +54,12 @@ export default async function AdminLayout({
             Places
           </a>
           <a
+            href="/admin/candidates"
+            className="block rounded px-2 py-1 hover:bg-soft-gray"
+          >
+            Candidates
+          </a>
+          <a
             href="/admin/products"
             className="block rounded px-2 py-1 hover:bg-soft-gray"
           >

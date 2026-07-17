@@ -113,8 +113,8 @@ export async function runResearch(
 }
 
 // ---------------------------------------------------------------------------
-// Production dependencies. Gather = Reddit JSON + model web search (cited);
-// extract = generateObject against the candidate schema.
+// Production dependencies. Gather = Reddit JSON + gateway web search (cited);
+// extract = structured output against the candidate schema.
 
 const WEB_SEARCH_GATHER_PROMPT = (area: string) =>
   [

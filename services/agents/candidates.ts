@@ -96,6 +96,19 @@ export async function insertCandidates(
   return { ok: true, inserted };
 }
 
+export async function listCandidateById(
+  id: string
+): Promise<PlaceCandidate | null> {
+  const supabase = await createClient();
+  const { data, error } = await supabase
+    .from("place_candidates")
+    .select(COLUMNS)
+    .eq("id", id)
+    .maybeSingle();
+  if (error) throw error;
+  return data ? mapCandidateRow(data as CandidateRow) : null;
+}
+
 /** Dedupe keys of every candidate ever filed for an area (any status) —
  * rejected candidates must not resurface on the next run. */
 export async function listCandidateKeysForArea(
