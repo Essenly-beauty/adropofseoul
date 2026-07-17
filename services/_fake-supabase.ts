@@ -1,4 +1,4 @@
-type Result = { data: unknown; error: unknown };
+type Result = { data: unknown; error: unknown; count?: number };
 
 export function fakeClient(result: Result) {
   const calls: string[] = [];
@@ -14,8 +14,12 @@ export function fakeClient(result: Result) {
   builder.order = chain("order");
   builder.limit = chain("limit");
   builder.range = chain("range");
+  builder.insert = chain("insert");
+  builder.update = chain("update");
+  builder.delete = chain("delete");
   builder.maybeSingle = () => Promise.resolve(result);
-  // Awaiting the builder itself resolves the result (for list queries).
+  builder.single = () => Promise.resolve(result);
+  // Awaiting the builder itself resolves the result (for list/count/write queries).
   (builder as unknown as { then: unknown }).then = (
     onFulfilled: (r: Result) => unknown
   ) => Promise.resolve(result).then(onFulfilled);
