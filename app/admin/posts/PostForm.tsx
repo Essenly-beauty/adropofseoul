@@ -23,6 +23,16 @@ export function PostForm({ post }: { post?: AdminPost }) {
   return (
     <form action={action} className="max-w-3xl">
       {post && <input type="hidden" name="id" value={post.id} />}
+      {/* Round-trip the original publish timestamp so editing a published
+          post never resets published_at (the service only stamps it when
+          publishedAt is empty). */}
+      {post && (
+        <input
+          type="hidden"
+          name="publishedAt"
+          value={post.publishedAt ?? ""}
+        />
+      )}
       <TextField
         name="title"
         label="Title"

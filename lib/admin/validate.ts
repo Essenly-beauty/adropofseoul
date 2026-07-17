@@ -71,7 +71,10 @@ export function validateProduct(i: ProductInput): Record<string, string> {
   slugField(e, i.slug);
   urlIfPresent(e, "image", i.image);
   urlIfPresent(e, "affiliateUrl", i.affiliateUrl);
-  if (i.rating !== null && (i.rating < 0 || i.rating > 5))
+  if (
+    i.rating !== null &&
+    (Number.isNaN(i.rating) || i.rating < 0 || i.rating > 5)
+  )
     e.rating = "Must be 0–5.";
   return e;
 }

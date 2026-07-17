@@ -6,6 +6,7 @@ import { createPlace, updatePlace, removePlace } from "@/services/admin/places";
 import { validatePlace } from "@/lib/admin/validate";
 import type { PlaceInput } from "@/services/admin/types";
 import { type FormState, orNull } from "./state";
+import { requireAdmin } from "./require-admin";
 
 function readPlace(formData: FormData): PlaceInput {
   const languages = String(formData.get("languages") ?? "")
@@ -39,6 +40,7 @@ export async function savePlace(
   _prev: FormState,
   formData: FormData
 ): Promise<FormState> {
+  await requireAdmin();
   const id = orNull(formData.get("id"));
   const input = readPlace(formData);
 
@@ -57,7 +59,9 @@ export async function savePlace(
 }
 
 export async function deletePlace(id: string): Promise<void> {
-  await removePlace(id);
+  await requireAdmin();
+  const result = await removePlace(id);
+  if (!result.ok) throw new Error(`Delete failed: ${result.message}`);
   revalidatePath("/admin/places");
   redirect("/admin/places");
 }

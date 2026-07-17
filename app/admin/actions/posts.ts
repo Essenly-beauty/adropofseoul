@@ -6,6 +6,7 @@ import { createPost, updatePost, removePost } from "@/services/admin/posts";
 import { validatePost } from "@/lib/admin/validate";
 import type { PostInput } from "@/services/admin/types";
 import { type FormState, orNull } from "./state";
+import { requireAdmin } from "./require-admin";
 
 function readPost(formData: FormData): PostInput {
   const tags = String(formData.get("tags") ?? "")
@@ -33,6 +34,7 @@ export async function savePost(
   _prev: FormState,
   formData: FormData
 ): Promise<FormState> {
+  await requireAdmin();
   const id = orNull(formData.get("id"));
   const input = readPost(formData);
 
@@ -53,7 +55,9 @@ export async function savePost(
 }
 
 export async function deletePost(id: string): Promise<void> {
-  await removePost(id);
+  await requireAdmin();
+  const result = await removePost(id);
+  if (!result.ok) throw new Error(`Delete failed: ${result.message}`);
   revalidatePath("/admin/posts");
   redirect("/admin/posts");
 }

@@ -10,6 +10,7 @@ import {
 import { validateProduct } from "@/lib/admin/validate";
 import type { ProductInput } from "@/services/admin/types";
 import { type FormState, orNull } from "./state";
+import { requireAdmin } from "./require-admin";
 
 function readProduct(formData: FormData): ProductInput {
   const ratingRaw = orNull(formData.get("rating"));
@@ -35,6 +36,7 @@ export async function saveProduct(
   _prev: FormState,
   formData: FormData
 ): Promise<FormState> {
+  await requireAdmin();
   const id = orNull(formData.get("id"));
   const input = readProduct(formData);
 
@@ -55,7 +57,9 @@ export async function saveProduct(
 }
 
 export async function deleteProduct(id: string): Promise<void> {
-  await removeProduct(id);
+  await requireAdmin();
+  const result = await removeProduct(id);
+  if (!result.ok) throw new Error(`Delete failed: ${result.message}`);
   revalidatePath("/admin/products");
   redirect("/admin/products");
 }

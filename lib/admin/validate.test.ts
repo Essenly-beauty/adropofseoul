@@ -122,4 +122,9 @@ describe("validateProduct", () => {
     expect(e.rating).toBeTruthy();
     expect(e.affiliateUrl).toBeTruthy();
   });
+  it("rejects a NaN rating (non-numeric form input)", () => {
+    expect(
+      validateProduct({ ...baseProduct, rating: NaN }).rating
+    ).toBeTruthy();
+  });
 });
