@@ -256,35 +256,51 @@ export function productionDeps(): ResearchDeps {
     async gather(config) {
       const parts: string[] = [];
       const images: ImageSeed[] = [];
+      const failures: string[] = [];
+
+      // Each source is best-effort: one channel failing (e.g. Reddit 403s
+      // unauthenticated JSON) must not sink the run while the other works.
       if (config.sources.includes("reddit")) {
-        const docs = await fetchRedditDocs(config.area);
-        if (docs.length > 0) parts.push(formatGathered(docs));
-        for (const doc of docs) {
-          for (const url of doc.images) {
-            images.push({
-              url,
-              sourceUrl: doc.url,
-              sourceType: "reddit",
-              description: doc.title,
-              suggestedUse: "inline",
-              license: "unverified",
-              attribution: null,
-            });
+        try {
+          const docs = await fetchRedditDocs(config.area);
+          if (docs.length > 0) parts.push(formatGathered(docs));
+          for (const doc of docs) {
+            for (const url of doc.images) {
+              images.push({
+                url,
+                sourceUrl: doc.url,
+                sourceType: "reddit",
+                description: doc.title,
+                suggestedUse: "inline",
+                license: "unverified",
+                attribution: null,
+              });
+            }
           }
+        } catch (e) {
+          failures.push(`reddit: ${e instanceof Error ? e.message : e}`);
         }
       }
       if (config.sources.includes("web")) {
-        // Gateway-executed web search (no extra API key; works with any model).
-        const { text } = await generateText({
-          model: getModel(),
-          prompt: WEB_SEARCH_GATHER_PROMPT(config.area),
-          tools: { web_search: gateway.tools.perplexitySearch() },
-          stopWhen: stepCountIs(4),
-        });
-        if (text.trim()) parts.push(`[web research]\n${text}`);
+        try {
+          // Gateway-executed web search (no extra API key; any model).
+          const { text } = await generateText({
+            model: getModel(),
+            prompt: WEB_SEARCH_GATHER_PROMPT(config.area),
+            tools: { web_search: gateway.tools.perplexitySearch() },
+            stopWhen: stepCountIs(4),
+          });
+          if (text.trim()) parts.push(`[web research]\n${text}`);
+        } catch (e) {
+          failures.push(`web: ${e instanceof Error ? e.message : e}`);
+        }
       }
       if (parts.length === 0) {
-        throw new Error(`No source material gathered for ${config.area}.`);
+        throw new Error(
+          `No source material gathered for ${config.area}` +
+            (failures.length ? ` (${failures.join("; ")})` : "") +
+            "."
+        );
       }
       return { text: parts.join("\n\n===\n\n"), images };
     },
