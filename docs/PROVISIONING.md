@@ -39,3 +39,8 @@ off-Supabase images.
   AI Gateway settings and set it in `.env.local` and the Vercel project env.
   Agent features (`lib/agents/`, `services/agents/`) fail with a clear error
   when the key is absent; the rest of the site is unaffected.
+- **`CRON_SECRET`** (Track 2) — random string in the Vercel project env; Vercel
+  Cron sends it automatically as `Authorization: Bearer` to
+  `/api/agents/research` (weekly schedule in `vercel.json`). Without it the
+  route answers 401 to everyone, including the cron — set it before expecting
+  scheduled runs. Manual runs from `/admin/candidates` do not need it.
