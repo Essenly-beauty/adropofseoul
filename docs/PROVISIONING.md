@@ -44,3 +44,9 @@ off-Supabase images.
   `/api/agents/research` (weekly schedule in `vercel.json`). Without it the
   route answers 401 to everyone, including the cron — set it before expecting
   scheduled runs. Manual runs from `/admin/candidates` do not need it.
+- **`UNSPLASH_ACCESS_KEY` / `PEXELS_API_KEY`** (optional, Track 2 images) —
+  enable the commercial-safe stock image pool during research runs. Either or
+  both; a missing key silently skips that provider. Reality images found in
+  sources are always stored as `license: unverified` — the editor must clear
+  rights before publishing (attribution alone is not a license). Migration
+  `0004` (image_candidates) applies with the normal `npm run db:push`.

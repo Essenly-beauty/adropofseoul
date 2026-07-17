@@ -7,6 +7,7 @@ import {
   listCandidateById,
   setCandidateStatus,
 } from "@/services/agents/candidates";
+import { setImageStatus } from "@/services/agents/images";
 import { runResearch, productionDeps } from "@/services/agents/research";
 import { slugify } from "@/lib/slug";
 import { type FormState, orNull } from "./state";
@@ -75,14 +76,29 @@ export async function runResearchAction(
   await requireAdmin();
   const area = orNull(formData.get("area"));
   if (!area) return { errors: { area: "Enter an area (e.g. Seongsu)." } };
+  const images = formData.get("images") === "on";
 
-  const result = await runResearch({ area }, productionDeps());
+  const result = await runResearch({ area, images }, productionDeps());
   if (!result.ok) {
     return { errors: {}, formError: `Research failed: ${result.error}` };
   }
 
   revalidatePath("/admin/candidates");
   redirect(
-    `/admin/candidates?ran=${encodeURIComponent(area)}&kept=${result.kept}&dropped=${result.dropped}`
+    `/admin/candidates?ran=${encodeURIComponent(area)}&kept=${result.kept}&dropped=${result.dropped}&images=${result.images}`
   );
+}
+
+export async function approveImage(id: string): Promise<void> {
+  await requireAdmin();
+  const r = await setImageStatus(id, "approved");
+  if (!r.ok) throw new Error(r.message);
+  revalidatePath("/admin/candidates");
+}
+
+export async function rejectImage(id: string): Promise<void> {
+  await requireAdmin();
+  const r = await setImageStatus(id, "rejected");
+  if (!r.ok) throw new Error(r.message);
+  revalidatePath("/admin/candidates");
 }

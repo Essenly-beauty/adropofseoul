@@ -106,6 +106,31 @@ docs/PROVISIONING.md                       # MODIFY: CRON_SECRET
       candidates appear with real sources → approve one → confirm places draft
       in admin → reject one → re-run same area → no duplicates.
 
+### Task 6 (amendment, 2026-07-17): image candidates
+
+Editor request: also collect thumbnail-grade and in-article photos during
+research, with sources recorded (credits will be shown) and brand tone
+re-processing (2차 가공) applied later at render.
+
+- [x] Migration `0004_image_candidates.sql` — url (unique), source_url,
+      source_type (reddit/web/unsplash/pexels), suggested_use
+      (thumbnail/inline), license (commercial-ok/attribution-required/
+      **unverified**), attribution, status, optional place_candidate link.
+- [x] Two channels: **reality shots** found in sources (reddit previews/
+      direct links + extractor `imageUrls` echoing only URLs present in the
+      material) stored as `unverified` — content-strategy licensing hygiene:
+      attribution alone is not a license, the editor clears rights at the
+      gate; **stock pool** via Unsplash/Pexels APIs (env-gated, both
+      commercial-safe) for thumbnails.
+- [x] `RunConfig.images` option (form checkbox, default on; cron default on).
+- [x] `services/agents/images.ts` (idempotent inserts, list, approve/reject);
+      pipeline persists linked + pool images and records `counts.images`.
+- [x] UI: image grid with license badge / attribution / source link and
+      approve/reject on the candidate detail page + an area image pool on the
+      candidates list.
+- Brand tone treatment itself stays the separate small frontend task from the
+  content-strategy spec (tint applied in code to approved picks).
+
 ## Definition of Done
 
 - Pipeline is idempotent per area (dedupe vs existing candidates AND places).

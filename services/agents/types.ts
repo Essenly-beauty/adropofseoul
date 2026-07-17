@@ -21,7 +21,9 @@ export type ResearchRun = ResearchRunInput & {
 export type CandidateStatus =
   "new" | "reviewing" | "approved" | "rejected" | "promoted";
 
-export type PlaceCandidate = Candidate & {
+// Persisted candidates don't carry inline image lists — images live in the
+// image_candidates table, linked by place_candidate_id.
+export type PlaceCandidate = Omit<Candidate, "imageUrls"> & {
   id: string;
   runId: string | null;
   dedupeKey: string;

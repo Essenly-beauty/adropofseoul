@@ -37,6 +37,7 @@ const candidate = {
   sourceUrls: ["https://example.com"],
   evidenceQuote: "great",
   confidence: 0.8,
+  imageUrls: [],
 };
 
 describe("mapCandidateRow", () => {
@@ -64,10 +65,17 @@ describe("isLegalTransition", () => {
 });
 
 describe("insertCandidates", () => {
-  it("returns inserted count on success", async () => {
-    mocked.mockResolvedValue(fakeClient({ data: [{ id: "c1" }], error: null }));
+  it("returns inserted count and the new row ids", async () => {
+    mocked.mockResolvedValue(fakeClient({ data: { id: "c1" }, error: null }));
     const r = await insertCandidates("r1", [candidate]);
-    expect(r).toEqual({ ok: true, inserted: 1 });
+    expect(r).toEqual({ ok: true, inserted: 1, ids: ["c1"] });
+  });
+  it("skips duplicates with a null id slot", async () => {
+    mocked.mockResolvedValue(
+      fakeClient({ data: null, error: { code: "23505", message: "dup" } })
+    );
+    const r = await insertCandidates("r1", [candidate]);
+    expect(r).toEqual({ ok: true, inserted: 0, ids: [null] });
   });
   it("surfaces non-unique-violation errors", async () => {
     mocked.mockResolvedValue(

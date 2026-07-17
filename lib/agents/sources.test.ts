@@ -10,6 +10,16 @@ const redditFixture = {
           selftext: "Just tried Sool Loft — incredible scalp treatment.",
           permalink: "/r/seoul/comments/abc123/best_head_spa/",
           removed_by_category: null,
+          url: "https://i.redd.it/photo1.jpg",
+          preview: {
+            images: [
+              {
+                source: {
+                  url: "https://preview.redd.it/p1.jpg?width=640&amp;s=x",
+                },
+              },
+            ],
+          },
         },
       },
       {
@@ -50,17 +60,31 @@ describe("parseRedditSearch", () => {
     expect(parseRedditSearch({})).toEqual([]);
     expect(parseRedditSearch(null)).toEqual([]);
   });
+  it("collects direct-link and preview images, unescaping &amp;", () => {
+    const docs = parseRedditSearch(redditFixture);
+    expect(docs[0].images).toEqual([
+      "https://i.redd.it/photo1.jpg",
+      "https://preview.redd.it/p1.jpg?width=640&s=x",
+    ]);
+    expect(docs[1].images).toEqual([]);
+  });
 });
 
 describe("formatGathered", () => {
   it("labels each block with its URL so the extractor can cite it", () => {
     const s = formatGathered([
-      { url: "https://a.example", title: "T1", text: "body one" },
-      { url: "https://b.example", title: "T2", text: "body two" },
+      { url: "https://a.example", title: "T1", text: "body one", images: [] },
+      {
+        url: "https://b.example",
+        title: "T2",
+        text: "body two",
+        images: ["https://i.redd.it/x.jpg"],
+      },
     ]);
     expect(s).toContain("[1] https://a.example");
     expect(s).toContain("[2] https://b.example");
     expect(s).toContain("body two");
+    expect(s).toContain("images: https://i.redd.it/x.jpg");
   });
 });
 

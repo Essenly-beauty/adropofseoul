@@ -1,6 +1,8 @@
 import { listCandidatesByStatus } from "@/services/agents/candidates";
+import { listImagePool } from "@/services/agents/images";
 import type { PlaceCandidate } from "@/services/agents/types";
 import { RunResearchForm } from "./RunResearchForm";
+import { ImageCandidateGrid } from "./ImageCandidateGrid";
 
 export const dynamic = "force-dynamic";
 
@@ -41,11 +43,17 @@ function CandidateTable({ candidates }: { candidates: PlaceCandidate[] }) {
 export default async function CandidatesPage({
   searchParams,
 }: {
-  searchParams: { ran?: string; kept?: string; dropped?: string };
+  searchParams: {
+    ran?: string;
+    kept?: string;
+    dropped?: string;
+    images?: string;
+  };
 }) {
-  const [fresh, approved] = await Promise.all([
+  const [fresh, approved, imagePool] = await Promise.all([
     listCandidatesByStatus("new"),
     listCandidatesByStatus("approved"),
+    listImagePool("new"),
   ]);
 
   return (
@@ -61,7 +69,10 @@ export default async function CandidatesPage({
         {searchParams.ran && (
           <p className="mt-2 text-sm text-text-muted">
             Research for “{searchParams.ran}” finished: {searchParams.kept} new
-            candidate(s), {searchParams.dropped} already known.
+            candidate(s), {searchParams.dropped} already known
+            {searchParams.images !== undefined &&
+              `, ${searchParams.images} image(s) collected`}
+            .
           </p>
         )}
       </div>
@@ -81,6 +92,20 @@ export default async function CandidatesPage({
             Approved, not yet promoted ({approved.length})
           </h2>
           <CandidateTable candidates={approved} />
+        </>
+      )}
+
+      {imagePool.length > 0 && (
+        <>
+          <h2 className="mt-10 font-serif text-2xl">
+            Image pool ({imagePool.length})
+          </h2>
+          <p className="mt-1 text-xs text-text-muted">
+            Thumbnails and reality shots collected during research. “Rights
+            unverified” images need a license/permission check before use;
+            approved picks are re-processed with the brand tone treatment.
+          </p>
+          <ImageCandidateGrid images={imagePool} />
         </>
       )}
     </div>

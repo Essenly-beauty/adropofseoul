@@ -1,6 +1,8 @@
 import { notFound } from "next/navigation";
 import { listCandidateById } from "@/services/agents/candidates";
+import { listImagesForCandidate } from "@/services/agents/images";
 import { APPROVAL_THRESHOLD } from "@/lib/agents/score";
+import { ImageCandidateGrid } from "../ImageCandidateGrid";
 import {
   approveCandidate,
   rejectCandidate,
@@ -16,6 +18,7 @@ export default async function CandidateDetailPage({
 }) {
   const candidate = await listCandidateById(params.id);
   if (!candidate) notFound();
+  const images = await listImagesForCandidate(candidate.id);
 
   const lowConfidence = candidate.confidence < APPROVAL_THRESHOLD;
   const actionable =
@@ -57,6 +60,20 @@ export default async function CandidateDetailPage({
           </li>
         ))}
       </ul>
+
+      {images.length > 0 && (
+        <>
+          <h2 className="mt-6 font-serif text-xl">
+            Image candidates ({images.length})
+          </h2>
+          <p className="mt-1 text-xs text-text-muted">
+            “Rights unverified” images need permission or a license check before
+            publishing — crediting the source alone is not a license. Approved
+            picks get the brand tone treatment at render.
+          </p>
+          <ImageCandidateGrid images={images} />
+        </>
+      )}
 
       {lowConfidence && (
         <p className="mt-6 rounded-md border border-soft-gray bg-white p-3 text-sm text-text-muted">

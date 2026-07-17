@@ -11,6 +11,7 @@ function candidate(name: string, area = "Seongsu"): Candidate {
     sourceUrls: ["https://example.com"],
     evidenceQuote: "q",
     confidence: 0.7,
+    imageUrls: [],
   };
 }
 

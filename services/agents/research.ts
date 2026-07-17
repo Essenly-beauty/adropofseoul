@@ -4,6 +4,7 @@ import {
   CandidateListSchema,
   RunConfigSchema,
   type Candidate,
+  type ImageSeed,
   type RunConfig,
 } from "@/lib/agents/schemas";
 import {
@@ -13,20 +14,63 @@ import {
 import { filterNewCandidates } from "@/lib/agents/dedupe";
 import { combinedConfidence } from "@/lib/agents/score";
 import { fetchRedditDocs, formatGathered } from "@/lib/agents/sources";
+import { fetchStockImages } from "@/lib/agents/stock-images";
 import { createRun, finishRun } from "./runs";
 import { insertCandidates, listCandidateKeysForArea } from "./candidates";
+import { insertImageCandidates, type ImageInsert } from "./images";
 import { listPlaceKeysForArea } from "./places-keys";
 
+export type Gathered = {
+  /** URL-labeled source material for the extract prompt. */
+  text: string;
+  /** Reality images found in the sources — rights unverified. */
+  images: ImageSeed[];
+};
+
 export type ResearchDeps = {
-  /** Collects raw, URL-labeled source material for the area. */
-  gather: (config: RunConfig) => Promise<string>;
+  /** Collects raw source material (and any images found in it). */
+  gather: (config: RunConfig) => Promise<Gathered>;
   /** Extracts structured candidates from gathered material. */
   extract: (prompt: string) => Promise<{ candidates: Candidate[] }>;
+  /** Commercial-safe stock pool (Unsplash/Pexels). Optional — env-gated. */
+  gatherStock?: (config: RunConfig) => Promise<ImageSeed[]>;
 };
 
 export type ResearchResult =
-  | { ok: true; runId: string; kept: number; dropped: number }
+  | { ok: true; runId: string; kept: number; dropped: number; images: number }
   | { ok: false; runId?: string; error: string };
+
+/** Reality image found in source material → insert row. Everything from the
+ * open web is rights-UNVERIFIED until the editor clears it (attribution is
+ * recorded for crediting, but attribution alone is not a license). */
+function realityImage(
+  url: string,
+  sourceUrl: string,
+  area: string,
+  description: string | null,
+  placeCandidateId?: string | null
+): ImageInsert {
+  let sourceType: ImageSeed["sourceType"] = "web";
+  try {
+    const host = new URL(url).hostname;
+    if (host.endsWith("redd.it") || host.endsWith("reddit.com")) {
+      sourceType = "reddit";
+    }
+  } catch {
+    // keep "web"
+  }
+  return {
+    url,
+    sourceUrl,
+    sourceType,
+    description,
+    suggestedUse: "inline",
+    license: "unverified",
+    attribution: null,
+    area,
+    placeCandidateId: placeCandidateId ?? null,
+  };
+}
 
 /**
  * The research pipeline (spec §5.2). Persistence goes through the Track 1
@@ -63,7 +107,7 @@ export async function runResearch(
       await deps.extract(
         buildResearchExtractPrompt({
           area: config.area,
-          gathered,
+          gathered: gathered.text,
           limit: config.limit,
         })
       )
@@ -91,9 +135,55 @@ export async function runResearch(
     const fresh = filterNewCandidates(scored, existing);
     const dropped = scored.length - fresh.length;
 
+    let candidateIds: (string | null)[] = [];
     if (fresh.length > 0) {
       const inserted = await insertCandidates(runId, fresh);
       if (!inserted.ok) throw new Error(inserted.message);
+      candidateIds = inserted.ids;
+    }
+
+    // Image candidates (option): place-linked reality shots from extraction,
+    // the remaining area pool from gathered sources, and the stock pool.
+    let imagesInserted = 0;
+    if (config.images) {
+      const imageInputs: ImageInsert[] = [];
+      const seenUrls = new Set<string>();
+
+      fresh.forEach((c, i) => {
+        for (const url of c.imageUrls) {
+          if (seenUrls.has(url)) continue;
+          seenUrls.add(url);
+          imageInputs.push(
+            realityImage(
+              url,
+              c.sourceUrls[0],
+              config.area,
+              `${c.name} — found in sources`,
+              candidateIds[i]
+            )
+          );
+        }
+      });
+
+      for (const img of gathered.images) {
+        if (seenUrls.has(img.url)) continue;
+        seenUrls.add(img.url);
+        imageInputs.push({ ...img, area: config.area });
+      }
+
+      if (deps.gatherStock) {
+        for (const img of await deps.gatherStock(config)) {
+          if (seenUrls.has(img.url)) continue;
+          seenUrls.add(img.url);
+          imageInputs.push({ ...img, area: config.area });
+        }
+      }
+
+      if (imageInputs.length > 0) {
+        const result = await insertImageCandidates(runId, imageInputs);
+        if (!result.ok) throw new Error(result.message);
+        imagesInserted = result.inserted;
+      }
     }
 
     await finishRun(runId, {
@@ -102,9 +192,16 @@ export async function runResearch(
         extracted: extracted.length,
         kept: fresh.length,
         dropped,
+        images: imagesInserted,
       },
     });
-    return { ok: true, runId, kept: fresh.length, dropped };
+    return {
+      ok: true,
+      runId,
+      kept: fresh.length,
+      dropped,
+      images: imagesInserted,
+    };
   } catch (e) {
     const message = e instanceof Error ? e.message : String(e);
     await finishRun(runId, { status: "error", error: message });
@@ -129,9 +226,23 @@ export function productionDeps(): ResearchDeps {
   return {
     async gather(config) {
       const parts: string[] = [];
+      const images: ImageSeed[] = [];
       if (config.sources.includes("reddit")) {
         const docs = await fetchRedditDocs(config.area);
         if (docs.length > 0) parts.push(formatGathered(docs));
+        for (const doc of docs) {
+          for (const url of doc.images) {
+            images.push({
+              url,
+              sourceUrl: doc.url,
+              sourceType: "reddit",
+              description: doc.title,
+              suggestedUse: "inline",
+              license: "unverified",
+              attribution: null,
+            });
+          }
+        }
       }
       if (config.sources.includes("web")) {
         // Gateway-executed web search (no extra API key; works with any model).
@@ -146,7 +257,10 @@ export function productionDeps(): ResearchDeps {
       if (parts.length === 0) {
         throw new Error(`No source material gathered for ${config.area}.`);
       }
-      return parts.join("\n\n===\n\n");
+      return { text: parts.join("\n\n===\n\n"), images };
+    },
+    async gatherStock(config) {
+      return fetchStockImages(config.area);
     },
     async extract(prompt) {
       const { output } = await generateText({

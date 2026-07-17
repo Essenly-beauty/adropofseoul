@@ -75,25 +75,36 @@ function toRow(runId: string, c: Candidate) {
 /**
  * Inserts candidates one at a time so a duplicate dedupe_key (23505) skips
  * that candidate instead of failing the batch — re-running an area is
- * idempotent by design.
+ * idempotent by design. `ids[i]` is the new row id for `candidates[i]`
+ * (null when skipped), so callers can link image candidates to their place.
  */
 export async function insertCandidates(
   runId: string,
   candidates: Candidate[]
-): Promise<{ ok: true; inserted: number } | WriteResult> {
+): Promise<
+  | { ok: true; inserted: number; ids: (string | null)[] }
+  | { ok: false; code: string | null; message: string }
+> {
   const supabase = await createClient();
   let inserted = 0;
+  const ids: (string | null)[] = [];
   for (const c of candidates) {
-    const { error } = await supabase
+    const { data, error } = await supabase
       .from("place_candidates")
-      .insert(toRow(runId, c));
+      .insert(toRow(runId, c))
+      .select("id")
+      .single();
     if (error) {
-      if (error.code === "23505") continue; // already discovered — skip
+      if (error.code === "23505") {
+        ids.push(null); // already discovered — skip
+        continue;
+      }
       return { ok: false, code: error.code ?? null, message: error.message };
     }
+    ids.push((data as { id: string } | null)?.id ?? null);
     inserted++;
   }
-  return { ok: true, inserted };
+  return { ok: true, inserted, ids };
 }
 
 export async function listCandidateById(

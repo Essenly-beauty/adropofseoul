@@ -15,14 +15,19 @@ vi.mock("./candidates", () => ({
 vi.mock("./places-keys", () => ({
   listPlaceKeysForArea: vi.fn(),
 }));
+vi.mock("./images", () => ({
+  insertImageCandidates: vi.fn(),
+}));
 
 import { createRun, finishRun } from "./runs";
 import { insertCandidates, listCandidateKeysForArea } from "./candidates";
+import { insertImageCandidates } from "./images";
 import { listPlaceKeysForArea } from "./places-keys";
 
 const mockCreateRun = createRun as ReturnType<typeof vi.fn>;
 const mockFinishRun = finishRun as ReturnType<typeof vi.fn>;
 const mockInsert = insertCandidates as ReturnType<typeof vi.fn>;
+const mockImgInsert = insertImageCandidates as ReturnType<typeof vi.fn>;
 const mockCandKeys = listCandidateKeysForArea as ReturnType<typeof vi.fn>;
 const mockPlaceKeys = listPlaceKeysForArea as ReturnType<typeof vi.fn>;
 
@@ -35,12 +40,26 @@ function candidate(name: string): Candidate {
     sourceUrls: ["https://www.reddit.com/r/seoul/1", "https://blog.example"],
     evidenceQuote: "the best head spa",
     confidence: 0.8,
+    imageUrls: ["https://i.redd.it/soolloft.jpg"],
   };
 }
 
+const poolImage = {
+  url: "https://i.redd.it/pool1.jpg",
+  sourceUrl: "https://www.reddit.com/r/seoul/2",
+  sourceType: "reddit" as const,
+  description: "street view",
+  suggestedUse: "inline" as const,
+  license: "unverified" as const,
+  attribution: null,
+};
+
 function deps(overrides: Partial<ResearchDeps> = {}): ResearchDeps {
   return {
-    gather: vi.fn().mockResolvedValue("[1] https://src\nsome gathered text"),
+    gather: vi.fn().mockResolvedValue({
+      text: "[1] https://src\nsome gathered text",
+      images: [poolImage],
+    }),
     extract: vi
       .fn()
       .mockResolvedValue({ candidates: [candidate("Sool Loft")] }),
@@ -51,7 +70,11 @@ function deps(overrides: Partial<ResearchDeps> = {}): ResearchDeps {
 function armPersistence() {
   mockCreateRun.mockResolvedValue({ ok: true, id: "run1" });
   mockFinishRun.mockResolvedValue({ ok: true });
-  mockInsert.mockResolvedValue({ ok: true, inserted: 1 });
+  mockInsert.mockResolvedValue({ ok: true, inserted: 1, ids: ["cid1"] });
+  mockImgInsert.mockImplementation(async (_runId, imgs) => ({
+    ok: true,
+    inserted: imgs.length,
+  }));
   mockCandKeys.mockResolvedValue(new Set<string>());
   mockPlaceKeys.mockResolvedValue(new Set<string>());
 }
@@ -77,9 +100,76 @@ describe("runResearch", () => {
       "run1",
       expect.objectContaining({
         status: "done",
-        counts: expect.objectContaining({ extracted: 1, kept: 1, dropped: 0 }),
+        counts: expect.objectContaining({
+          extracted: 1,
+          kept: 1,
+          dropped: 0,
+          images: 2,
+        }),
       })
     );
+  });
+
+  it("persists place-linked reality images and the area pool with source + unverified license", async () => {
+    armPersistence();
+    await runResearch({ area: "Seongsu", limit: 10 }, deps());
+    const [runId, images] = mockImgInsert.mock.calls[0];
+    expect(runId).toBe("run1");
+    // Linked image: came from the candidate's imageUrls, linked to its new id.
+    expect(images).toContainEqual(
+      expect.objectContaining({
+        url: "https://i.redd.it/soolloft.jpg",
+        placeCandidateId: "cid1",
+        license: "unverified",
+        sourceType: "reddit",
+        area: "Seongsu",
+      })
+    );
+    // Pool image: from gathered sources, unlinked.
+    expect(images).toContainEqual(
+      expect.objectContaining({
+        url: "https://i.redd.it/pool1.jpg",
+        license: "unverified",
+      })
+    );
+  });
+
+  it("adds commercial-safe stock images when gatherStock is provided", async () => {
+    armPersistence();
+    const stock = {
+      url: "https://images.unsplash.com/photo-9",
+      sourceUrl: "https://unsplash.com/photos/xyz",
+      sourceType: "unsplash" as const,
+      description: "warm cafe",
+      suggestedUse: "thumbnail" as const,
+      license: "commercial-ok" as const,
+      attribution: "Jane Kim",
+    };
+    await runResearch(
+      { area: "Seongsu", limit: 10 },
+      deps({ gatherStock: vi.fn().mockResolvedValue([stock]) })
+    );
+    const images = mockImgInsert.mock.calls[0][1];
+    expect(images).toContainEqual(
+      expect.objectContaining({
+        url: stock.url,
+        license: "commercial-ok",
+        attribution: "Jane Kim",
+        suggestedUse: "thumbnail",
+      })
+    );
+  });
+
+  it("skips all image work when images:false", async () => {
+    armPersistence();
+    const d = deps({ gatherStock: vi.fn() });
+    const result = await runResearch(
+      { area: "Seongsu", limit: 10, images: false },
+      d
+    );
+    expect(mockImgInsert).not.toHaveBeenCalled();
+    expect(d.gatherStock).not.toHaveBeenCalled();
+    expect(result.ok && result.images).toBe(0);
   });
 
   it("re-scores model confidence with corroboration signals before persisting", async () => {
