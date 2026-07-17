@@ -18,5 +18,22 @@ export const PLACE_CATEGORIES: { value: string; label: string }[] = [
   { value: "wellness", label: "Wellness" },
 ];
 
+// Booking-readiness enums (migration 0005). editorial_status tracks DATA
+// verification only — partnership lives in partnership_status.
+export const BOOKING_CHANNELS: { value: string; label: string }[] = [
+  { value: "naver", label: "Naver Booking" },
+  { value: "online", label: "Own website / online" },
+  { value: "phone", label: "Phone" },
+  { value: "instagram", label: "Instagram DM" },
+  { value: "walk_in", label: "Walk-in" },
+];
+
+export const EDITORIAL_STATUSES: { value: string; label: string }[] = [
+  { value: "sample", label: "Sample (data unverified)" },
+  { value: "verified", label: "Verified" },
+];
+
 export const POST_CATEGORY_VALUES = POST_CATEGORIES.map((c) => c.value);
 export const PLACE_CATEGORY_VALUES = PLACE_CATEGORIES.map((c) => c.value);
+export const BOOKING_CHANNEL_VALUES = BOOKING_CHANNELS.map((c) => c.value);
+export const EDITORIAL_STATUS_VALUES = EDITORIAL_STATUSES.map((c) => c.value);

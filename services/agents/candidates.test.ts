@@ -20,7 +20,7 @@ const row = {
   category_guess: "head_spa",
   why_notable: "recommended",
   source_urls: ["https://example.com"],
-  evidence: { quote: "great" },
+  evidence: { quote: "great", nameKr: "술로프트", addressHint: null },
   confidence: 0.8,
   dedupe_key: "sool-loft|seongsu",
   status: "new",
@@ -38,14 +38,18 @@ const candidate = {
   evidenceQuote: "great",
   confidence: 0.8,
   imageUrls: [],
+  nameKr: "술로프트",
+  addressHint: null,
 };
 
 describe("mapCandidateRow", () => {
-  it("maps snake_case to camelCase", () => {
+  it("maps snake_case to camelCase incl. booking hints from evidence", () => {
     const c = mapCandidateRow(row as never);
     expect(c.dedupeKey).toBe("sool-loft|seongsu");
     expect(c.sourceUrls).toEqual(["https://example.com"]);
     expect(c.status).toBe("new");
+    expect(c.nameKr).toBe("술로프트");
+    expect(c.addressHint).toBeNull();
   });
 });
 

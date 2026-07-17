@@ -4,7 +4,11 @@ import { useFormState } from "react-dom";
 import { savePlace } from "@/app/admin/actions/places";
 import { INITIAL_STATE } from "@/app/admin/actions/state";
 import type { AdminPlace } from "@/services/admin/types";
-import { PLACE_CATEGORIES } from "@/lib/admin/enums";
+import {
+  PLACE_CATEGORIES,
+  BOOKING_CHANNELS,
+  EDITORIAL_STATUSES,
+} from "@/lib/admin/enums";
 import { TextField } from "@/components/admin/TextField";
 import { TextAreaField } from "@/components/admin/TextAreaField";
 import { SelectField } from "@/components/admin/SelectField";
@@ -29,6 +33,11 @@ export function PlaceForm({ place }: { place?: AdminPlace }) {
         required
       />
       <SlugField sourceId="name" defaultValue={place?.slug} error={e.slug} />
+      <TextField
+        name="nameKr"
+        label="Name (Korean)"
+        defaultValue={place?.nameKr}
+      />
       <SelectField
         name="category"
         label="Category"
@@ -38,6 +47,67 @@ export function PlaceForm({ place }: { place?: AdminPlace }) {
       />
       <TextField name="area" label="Area" defaultValue={place?.area} />
       <TextField name="address" label="Address" defaultValue={place?.address} />
+      <div className="grid gap-x-4 sm:grid-cols-2">
+        <TextField
+          name="geoLat"
+          label="Latitude"
+          defaultValue={place?.geoLat?.toString() ?? null}
+          error={e.geoLat}
+        />
+        <TextField
+          name="geoLng"
+          label="Longitude"
+          defaultValue={place?.geoLng?.toString() ?? null}
+          error={e.geoLng}
+        />
+        <TextField
+          name="priceMinKrw"
+          label="Price min (KRW)"
+          defaultValue={place?.priceMinKrw?.toString() ?? null}
+          error={e.priceMinKrw}
+        />
+        <TextField
+          name="priceMaxKrw"
+          label="Price max (KRW)"
+          defaultValue={place?.priceMaxKrw?.toString() ?? null}
+          error={e.priceMaxKrw}
+        />
+      </div>
+      <SelectField
+        name="bookingChannel"
+        label="Booking channel"
+        options={BOOKING_CHANNELS}
+        defaultValue={place?.bookingChannel}
+        error={e.bookingChannel}
+      />
+      <TextField
+        name="depositPolicy"
+        label="Deposit policy"
+        defaultValue={place?.depositPolicy}
+      />
+      <SelectField
+        name="editorialStatus"
+        label="Data status"
+        options={EDITORIAL_STATUSES}
+        defaultValue={place?.editorialStatus ?? "sample"}
+        error={e.editorialStatus}
+      />
+      {place && (
+        <input
+          type="hidden"
+          name="lastVerifiedAt"
+          value={place.lastVerifiedAt ?? ""}
+        />
+      )}
+      <label className="mb-4 flex items-center gap-2 text-sm">
+        <input type="checkbox" name="markVerified" />
+        Mark data verified now
+        {place?.lastVerifiedAt && (
+          <span className="text-text-muted">
+            (last verified {place.lastVerifiedAt.slice(0, 10)})
+          </span>
+        )}
+      </label>
       <TextAreaField
         name="shortDescription"
         label="Short description"

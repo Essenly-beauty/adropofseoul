@@ -50,3 +50,7 @@ off-Supabase images.
   sources are always stored as `license: unverified` — the editor must clear
   rights before publishing (attribution alone is not a license). Migration
   `0004` (image_candidates) applies with the normal `npm run db:push`.
+- **Booking readiness (0005)** — `neighborhoods` table + places columns
+  (name_kr, geo, price KRW range, booking_channel, deposit_policy,
+  editorial_status sample/verified, last_verified_at) apply with the normal
+  `npm run db:push`. See `docs/superpowers/specs/2026-07-17-booking-service-db-alignment.md`.

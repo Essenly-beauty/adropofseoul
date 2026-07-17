@@ -12,6 +12,8 @@ function candidate(name: string, area = "Seongsu"): Candidate {
     evidenceQuote: "q",
     confidence: 0.7,
     imageUrls: [],
+    nameKr: null,
+    addressHint: null,
   };
 }
 

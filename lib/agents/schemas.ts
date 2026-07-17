@@ -18,6 +18,9 @@ export const CandidateSchema = z.object({
   // Direct image URLs that appear in the source material for THIS place —
   // reality shots. The model may only echo URLs present in the material.
   imageUrls: z.array(z.url()).max(4).default([]),
+  // Booking-service hints — ONLY when present verbatim in the material.
+  nameKr: z.string().nullable().default(null),
+  addressHint: z.string().nullable().default(null),
 });
 
 export const CandidateListSchema = z.object({

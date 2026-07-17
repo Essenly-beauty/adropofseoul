@@ -1,5 +1,10 @@
 import { isValidEmail } from "@/lib/validation";
-import { POST_CATEGORY_VALUES, PLACE_CATEGORY_VALUES } from "./enums";
+import {
+  POST_CATEGORY_VALUES,
+  PLACE_CATEGORY_VALUES,
+  BOOKING_CHANNEL_VALUES,
+  EDITORIAL_STATUS_VALUES,
+} from "./enums";
 import { POST_STATUSES } from "./workflow";
 import type {
   PostInput,
@@ -62,6 +67,30 @@ export function validatePlace(i: PlaceInput): Record<string, string> {
   urlIfPresent(e, "bookingUrl", i.bookingUrl);
   if (i.contactEmail && !isValidEmail(i.contactEmail))
     e.contactEmail = "Invalid email.";
+  if (i.geoLat !== null && (Number.isNaN(i.geoLat) || Math.abs(i.geoLat) > 90))
+    e.geoLat = "Latitude must be between -90 and 90.";
+  if (i.geoLng !== null && (Number.isNaN(i.geoLng) || Math.abs(i.geoLng) > 180))
+    e.geoLng = "Longitude must be between -180 and 180.";
+  if (
+    i.priceMinKrw !== null &&
+    (Number.isNaN(i.priceMinKrw) || i.priceMinKrw < 0)
+  )
+    e.priceMinKrw = "Must be a non-negative amount.";
+  if (
+    i.priceMaxKrw !== null &&
+    (Number.isNaN(i.priceMaxKrw) || i.priceMaxKrw < 0)
+  )
+    e.priceMaxKrw = "Must be a non-negative amount.";
+  if (
+    i.priceMinKrw !== null &&
+    i.priceMaxKrw !== null &&
+    i.priceMinKrw > i.priceMaxKrw
+  )
+    e.priceMaxKrw = "Max must be ≥ min.";
+  if (i.bookingChannel && !BOOKING_CHANNEL_VALUES.includes(i.bookingChannel))
+    e.bookingChannel = "Choose a booking channel.";
+  if (!EDITORIAL_STATUS_VALUES.includes(i.editorialStatus))
+    e.editorialStatus = "Choose a status.";
   return e;
 }
 

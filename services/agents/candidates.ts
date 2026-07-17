@@ -11,7 +11,11 @@ type CandidateRow = {
   category_guess: string | null;
   why_notable: string | null;
   source_urls: string[];
-  evidence: { quote: string } | null;
+  evidence: {
+    quote: string;
+    nameKr?: string | null;
+    addressHint?: string | null;
+  } | null;
   confidence: number | null;
   dedupe_key: string;
   status: CandidateStatus;
@@ -49,6 +53,8 @@ export function mapCandidateRow(row: CandidateRow): PlaceCandidate {
     whyNotable: row.why_notable ?? "",
     sourceUrls: row.source_urls ?? [],
     evidenceQuote: row.evidence?.quote ?? "",
+    nameKr: row.evidence?.nameKr ?? null,
+    addressHint: row.evidence?.addressHint ?? null,
     confidence: row.confidence ?? 0,
     dedupeKey: row.dedupe_key,
     status: row.status,
@@ -66,7 +72,11 @@ function toRow(runId: string, c: Candidate) {
     category_guess: c.categoryGuess,
     why_notable: c.whyNotable,
     source_urls: c.sourceUrls,
-    evidence: { quote: c.evidenceQuote },
+    evidence: {
+      quote: c.evidenceQuote,
+      nameKr: c.nameKr,
+      addressHint: c.addressHint,
+    },
     confidence: c.confidence,
     dedupe_key: dedupeKey(c.name, c.area),
   };

@@ -47,10 +47,19 @@ describe("validatePost", () => {
 
 const basePlace = {
   name: "Sool Loft",
+  nameKr: null,
   slug: "sool-loft",
   category: "head_spa",
   area: null,
   address: null,
+  geoLat: null,
+  geoLng: null,
+  priceMinKrw: null,
+  priceMaxKrw: null,
+  bookingChannel: null,
+  depositPolicy: null,
+  editorialStatus: "sample",
+  lastVerifiedAt: null,
   shortDescription: null,
   longDescription: null,
   whyWeLikeIt: null,
@@ -84,6 +93,43 @@ describe("validatePlace", () => {
     });
     expect(e.googleMapUrl).toBeTruthy();
     expect(e.contactEmail).toBeTruthy();
+  });
+  it("rejects out-of-range coordinates and NaN numbers", () => {
+    const e = validatePlace({ ...basePlace, geoLat: 91, geoLng: NaN });
+    expect(e.geoLat).toBeTruthy();
+    expect(e.geoLng).toBeTruthy();
+  });
+  it("rejects a price range where min exceeds max", () => {
+    const e = validatePlace({
+      ...basePlace,
+      priceMinKrw: 90000,
+      priceMaxKrw: 50000,
+    });
+    expect(e.priceMaxKrw).toBeTruthy();
+  });
+  it("rejects unknown booking channels and editorial statuses", () => {
+    const e = validatePlace({
+      ...basePlace,
+      bookingChannel: "fax",
+      editorialStatus: "mystery",
+    });
+    expect(e.bookingChannel).toBeTruthy();
+    expect(e.editorialStatus).toBeTruthy();
+  });
+  it("accepts a fully-filled booking-ready place", () => {
+    expect(
+      validatePlace({
+        ...basePlace,
+        nameKr: "술로프트",
+        geoLat: 37.544,
+        geoLng: 127.055,
+        priceMinKrw: 50000,
+        priceMaxKrw: 120000,
+        bookingChannel: "naver",
+        editorialStatus: "verified",
+        lastVerifiedAt: "2026-07-17T00:00:00Z",
+      })
+    ).toEqual({});
   });
 });
 

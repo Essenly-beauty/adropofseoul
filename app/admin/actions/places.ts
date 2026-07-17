@@ -8,17 +8,37 @@ import type { PlaceInput } from "@/services/admin/types";
 import { type FormState, orNull } from "./state";
 import { requireAdmin } from "./require-admin";
 
+function numOrNull(v: FormDataEntryValue | null): number | null {
+  const s = orNull(v);
+  return s === null ? null : Number(s);
+}
+
 function readPlace(formData: FormData): PlaceInput {
   const languages = String(formData.get("languages") ?? "")
     .split(",")
     .map((t) => t.trim())
     .filter(Boolean);
+  // "Mark verified" stamps a fresh timestamp; otherwise the round-tripped
+  // previous value survives the edit (same pattern as publishedAt).
+  const lastVerifiedAt =
+    formData.get("markVerified") === "on"
+      ? new Date().toISOString()
+      : orNull(formData.get("lastVerifiedAt"));
   return {
     name: String(formData.get("name") ?? "").trim(),
+    nameKr: orNull(formData.get("nameKr")),
     slug: String(formData.get("slug") ?? "").trim(),
     category: String(formData.get("category") ?? "").trim(),
     area: orNull(formData.get("area")),
     address: orNull(formData.get("address")),
+    geoLat: numOrNull(formData.get("geoLat")),
+    geoLng: numOrNull(formData.get("geoLng")),
+    priceMinKrw: numOrNull(formData.get("priceMinKrw")),
+    priceMaxKrw: numOrNull(formData.get("priceMaxKrw")),
+    bookingChannel: orNull(formData.get("bookingChannel")),
+    depositPolicy: orNull(formData.get("depositPolicy")),
+    editorialStatus: String(formData.get("editorialStatus") ?? "sample").trim(),
+    lastVerifiedAt,
     shortDescription: orNull(formData.get("shortDescription")),
     longDescription: orNull(formData.get("longDescription")),
     whyWeLikeIt: orNull(formData.get("whyWeLikeIt")),

@@ -4,10 +4,19 @@ import type { AdminPlace, PlaceInput, WriteResult, Counts } from "./types";
 type PlaceRow = {
   id: string;
   name: string;
+  name_kr: string | null;
   slug: string;
   category: string;
   area: string | null;
   address: string | null;
+  geo_lat: number | null;
+  geo_lng: number | null;
+  price_min_krw: number | null;
+  price_max_krw: number | null;
+  booking_channel: string | null;
+  deposit_policy: string | null;
+  editorial_status: string;
+  last_verified_at: string | null;
   short_description: string | null;
   long_description: string | null;
   why_we_like_it: string | null;
@@ -26,16 +35,25 @@ type PlaceRow = {
 };
 
 const COLUMNS =
-  "id,name,slug,category,area,address,short_description,long_description,why_we_like_it,best_for,price_range,instagram_url,naver_map_url,google_map_url,booking_url,contact_email,contact_phone,languages,is_published,notes,updated_at";
+  "id,name,name_kr,slug,category,area,address,geo_lat,geo_lng,price_min_krw,price_max_krw,booking_channel,deposit_policy,editorial_status,last_verified_at,short_description,long_description,why_we_like_it,best_for,price_range,instagram_url,naver_map_url,google_map_url,booking_url,contact_email,contact_phone,languages,is_published,notes,updated_at";
 
 export function mapAdminPlaceRow(row: PlaceRow): AdminPlace {
   return {
     id: row.id,
     name: row.name,
+    nameKr: row.name_kr,
     slug: row.slug,
     category: row.category,
     area: row.area,
     address: row.address,
+    geoLat: row.geo_lat,
+    geoLng: row.geo_lng,
+    priceMinKrw: row.price_min_krw,
+    priceMaxKrw: row.price_max_krw,
+    bookingChannel: row.booking_channel,
+    depositPolicy: row.deposit_policy,
+    editorialStatus: row.editorial_status,
+    lastVerifiedAt: row.last_verified_at,
     shortDescription: row.short_description,
     longDescription: row.long_description,
     whyWeLikeIt: row.why_we_like_it,
@@ -57,10 +75,19 @@ export function mapAdminPlaceRow(row: PlaceRow): AdminPlace {
 function toRow(input: PlaceInput) {
   return {
     name: input.name,
+    name_kr: input.nameKr,
     slug: input.slug,
     category: input.category,
     area: input.area,
     address: input.address,
+    geo_lat: input.geoLat,
+    geo_lng: input.geoLng,
+    price_min_krw: input.priceMinKrw,
+    price_max_krw: input.priceMaxKrw,
+    booking_channel: input.bookingChannel,
+    deposit_policy: input.depositPolicy,
+    editorial_status: input.editorialStatus,
+    last_verified_at: input.lastVerifiedAt,
     short_description: input.shortDescription,
     long_description: input.longDescription,
     why_we_like_it: input.whyWeLikeIt,

@@ -41,6 +41,8 @@ function candidate(name: string): Candidate {
     evidenceQuote: "the best head spa",
     confidence: 0.8,
     imageUrls: ["https://i.redd.it/soolloft.jpg"],
+    nameKr: null,
+    addressHint: null,
   };
 }
 

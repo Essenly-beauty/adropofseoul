@@ -16,10 +16,19 @@ export type PostInput = {
 
 export type PlaceInput = {
   name: string;
+  nameKr: string | null;
   slug: string;
   category: string;
   area: string | null;
   address: string | null;
+  geoLat: number | null;
+  geoLng: number | null;
+  priceMinKrw: number | null;
+  priceMaxKrw: number | null;
+  bookingChannel: string | null;
+  depositPolicy: string | null;
+  editorialStatus: string;
+  lastVerifiedAt: string | null;
   shortDescription: string | null;
   longDescription: string | null;
   whyWeLikeIt: string | null;

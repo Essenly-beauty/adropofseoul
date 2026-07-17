@@ -25,10 +25,19 @@ export async function approveCandidate(id: string): Promise<void> {
 
   const created = await createPlace({
     name: candidate.name,
+    nameKr: candidate.nameKr,
     slug: slugify(candidate.name),
     category: candidate.categoryGuess ?? "shop",
     area: candidate.area,
-    address: null,
+    address: candidate.addressHint,
+    geoLat: null,
+    geoLng: null,
+    priceMinKrw: null,
+    priceMaxKrw: null,
+    bookingChannel: null,
+    depositPolicy: null,
+    editorialStatus: "sample", // data unverified until the editor checks it
+    lastVerifiedAt: null,
     shortDescription: null,
     longDescription: null,
     whyWeLikeIt: candidate.whyNotable || null,
