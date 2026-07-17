@@ -96,6 +96,22 @@ export async function insertCandidates(
   return { ok: true, inserted };
 }
 
+/** Dedupe keys of every candidate ever filed for an area (any status) —
+ * rejected candidates must not resurface on the next run. */
+export async function listCandidateKeysForArea(
+  area: string
+): Promise<Set<string>> {
+  const supabase = await createClient();
+  const { data, error } = await supabase
+    .from("place_candidates")
+    .select("dedupe_key")
+    .eq("area", area)
+    .limit(2000);
+  if (error) throw error;
+  const rows = (data as { dedupe_key: string }[] | null) ?? [];
+  return new Set(rows.map((r) => r.dedupe_key));
+}
+
 export async function listCandidatesByStatus(
   status: CandidateStatus
 ): Promise<PlaceCandidate[]> {
