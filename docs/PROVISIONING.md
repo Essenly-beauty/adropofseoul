@@ -5,8 +5,8 @@
 2. **Disable email signups:** Auth → Providers → Email → turn OFF "Allow new
    users to sign up". (Admin accounts are created manually; see step 5.)
 3. Link the CLI: `npx supabase link --project-ref <ref>`.
-4. Apply schema: `npm run db:push` (runs migrations 0001, 0002) then, to load
-   sample content, paste `supabase/seed.sql` into the SQL Editor and run it.
+4. Apply schema: `npm run db:push` (runs migrations 0001, 0002, 0003) then, to
+   load sample content, paste `supabase/seed.sql` into the SQL Editor and run it.
 5. Create the admin user: Auth → Users → Add user (email + password). Put that
    email in `ADMIN_EMAILS`.
 6. Generate types: `SUPABASE_PROJECT_ID=<ref> npm run db:types`, then commit
@@ -29,3 +29,13 @@ and update `images.remotePatterns` accordingly:
 Seed content uses no external image URLs, so this is latent until real data
 lands — but it must be resolved before publishing posts/products with
 off-Supabase images.
+
+## Editorial agents (Track 1+)
+
+- **Migration 0003** (`research_runs`, `place_candidates`, post workflow
+  fields) applies with the normal `npm run db:push`. After applying, regenerate
+  types: `SUPABASE_PROJECT_ID=<ref> npm run db:types` and commit the result.
+- **`AI_GATEWAY_API_KEY`** — create an API key under the Vercel team's
+  AI Gateway settings and set it in `.env.local` and the Vercel project env.
+  Agent features (`lib/agents/`, `services/agents/`) fail with a clear error
+  when the key is absent; the rest of the site is unaffected.
