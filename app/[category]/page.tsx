@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getCategoryBySlug, CATEGORY_SLUGS } from "@/lib/categories";
 import { listPublishedPosts } from "@/services/posts";
+import { listGuidePosts } from "@/lib/seongsu/assets";
 import { ArticleCard } from "@/components/editorial/ArticleCard";
 import { SectionHeading } from "@/components/editorial/SectionHeading";
 import { canonical } from "@/lib/seo";
+import type { Post } from "@/services/types";
 
 export function generateStaticParams() {
   return CATEGORY_SLUGS.map((category) => ({ category }));
@@ -32,10 +34,17 @@ export default async function CategoryPage({
   const cat = getCategoryBySlug(params.category);
   if (!cat) notFound();
 
-  const posts = await listPublishedPosts({
+  const dbPosts = await listPublishedPosts({
     limit: 48,
     category: cat.enumValue,
   });
+  // Include any code-defined guides that belong to this category.
+  const guidePosts = listGuidePosts({ category: cat.enumValue });
+  const guideSlugs = new Set(guidePosts.map((g) => g.slug));
+  const posts: Post[] = [
+    ...guidePosts,
+    ...dbPosts.filter((p) => !guideSlugs.has(p.slug)),
+  ].sort((a, b) => (b.publishedAt ?? "").localeCompare(a.publishedAt ?? ""));
   return (
     <main className="mx-auto max-w-content px-6 py-16">
       <SectionHeading title={cat.label} eyebrow="Category" />

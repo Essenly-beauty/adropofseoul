@@ -1,0 +1,656 @@
+<!doctype html>
+<!--
+  A Drop of Seoul — Seongsu interactive course map
+  Self-contained. Embedded on the blog via:
+   <iframe src="/seongsu_map.html?course=1" ...></iframe>
+  Pass ?course=1 (beauty + eats) or ?course=2 (cafés + dessert) to set the
+  course the map opens on; the in-map toggle still switches between them.
+  Map tiles: CARTO dark basemap (free tier; keep the attribution). Stop data
+  mirrors lib/seongsu/courses.ts — edit both together.
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Seongsu Walking Courses — A Drop of Seoul</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #141219;
+        --surface: #1d1b25;
+        --surface-2: #262331;
+        --line: #2f2c3a;
+        --ink: #f3efe8;
+        --muted: #a29caf;
+        --faint: #7c7688;
+        --star: #e9c46a;
+        --c1: #e6a339; /* Course 1 · beauty + eats (warm shop-window amber) */
+        --c2: #e77e93; /* Course 2 · cafés + dessert (soft blush) */
+        --accent: var(--c1);
+        --display: "Fraunces", Georgia, "Times New Roman", serif;
+        --body:
+          "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+      }
+      /* Fill the embedding <iframe> exactly (100vh == the iframe's own height). */
+      .ds-app {
+        font-family: var(--body);
+        color: var(--ink);
+        background: var(--bg);
+        display: flex;
+        height: 100vh;
+        overflow: hidden;
+        border-radius: 16px;
+        border: 1px solid var(--line);
+      }
+      /* ---------- Map ---------- */
+      .ds-mapwrap {
+        position: relative;
+        flex: 1 1 60%;
+        min-width: 0;
+        background: #0f0e13;
+      }
+      #ds-map {
+        position: absolute;
+        inset: 0;
+        background: #0f0e13;
+      }
+      .leaflet-container {
+        background: #0f0e13;
+        font-family: var(--body);
+      }
+      .ds-toggle {
+        position: absolute;
+        z-index: 600;
+        top: 14px;
+        left: 14px;
+        display: flex;
+        gap: 6px;
+        background: rgba(20, 18, 25, 0.72);
+        backdrop-filter: blur(8px);
+        padding: 5px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+      }
+      .ds-toggle button {
+        font-family: var(--body);
+        font-size: 12.5px;
+        font-weight: 600;
+        letter-spacing: 0.01em;
+        color: var(--muted);
+        background: transparent;
+        border: 0;
+        cursor: pointer;
+        padding: 7px 14px;
+        border-radius: 999px;
+        transition:
+          color 0.18s,
+          background 0.18s;
+      }
+      .ds-toggle button[aria-pressed="true"] {
+        color: #141219;
+        background: var(--accent);
+      }
+      /* numbered pins */
+      .ds-pin {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--body);
+        font-weight: 600;
+        font-size: 13px;
+        color: #141219;
+        background: var(--c);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+        border: 2px solid rgba(255, 255, 255, 0.85);
+        transition: transform 0.18s;
+        position: relative;
+      }
+      .ds-pin--active {
+        transform: scale(1.22);
+        z-index: 1000;
+      }
+      .ds-pin--active::after {
+        content: "";
+        position: absolute;
+        inset: -6px;
+        border-radius: 50%;
+        border: 2px solid var(--c);
+        opacity: 0.7;
+        animation: ds-ripple 1.8s ease-out infinite;
+      }
+      @keyframes ds-ripple {
+        0% {
+          transform: scale(0.7);
+          opacity: 0.7;
+        }
+        100% {
+          transform: scale(1.9);
+          opacity: 0;
+        }
+      }
+      /* ---------- Panel ---------- */
+      .ds-panel {
+        flex: 0 0 40%;
+        max-width: 430px;
+        min-width: 300px;
+        display: flex;
+        flex-direction: column;
+        background: var(--bg);
+      }
+      .ds-head {
+        padding: 20px 22px 16px;
+        border-bottom: 1px solid var(--line);
+      }
+      .ds-brand {
+        font-size: 10.5px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--faint);
+        display: flex;
+        align-items: center;
+        gap: 7px;
+      }
+      .ds-drop {
+        width: 8px;
+        height: 11px;
+        background: var(--accent);
+        border-radius: 0 50% 50% 50%/0 60% 60% 100%;
+        transform: rotate(45deg);
+        display: inline-block;
+      }
+      .ds-title {
+        font-family: var(--display);
+        font-weight: 600;
+        font-size: 22px;
+        line-height: 1.15;
+        margin: 12px 0 4px;
+      }
+      .ds-sub {
+        font-size: 13px;
+        color: var(--muted);
+      }
+      .ds-meta {
+        font-size: 11.5px;
+        color: var(--faint);
+        margin-top: 10px;
+        display: flex;
+        gap: 14px;
+      }
+      .ds-list {
+        overflow-y: auto;
+        padding: 8px 14px 22px;
+        scrollbar-width: thin;
+        scrollbar-color: var(--line) transparent;
+      }
+      .ds-part {
+        font-size: 10.5px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--faint);
+        padding: 16px 8px 8px;
+        font-weight: 600;
+      }
+      .ds-card {
+        display: grid;
+        grid-template-columns: 34px 1fr;
+        gap: 12px;
+        align-items: start;
+        padding: 13px 12px;
+        border-radius: 12px;
+        cursor: pointer;
+        border: 1px solid transparent;
+        transition:
+          background 0.16s,
+          border-color 0.16s;
+      }
+      .ds-card:hover {
+        background: var(--surface);
+      }
+      .ds-card--active {
+        background: var(--surface);
+        border-color: var(--accent);
+      }
+      .ds-num {
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        margin-top: 2px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        font-size: 13px;
+        color: #141219;
+        background: var(--accent);
+      }
+      .ds-time {
+        font-size: 11px;
+        color: var(--faint);
+        margin-bottom: 3px;
+      }
+      .ds-name {
+        font-weight: 600;
+        font-size: 15px;
+        line-height: 1.25;
+      }
+      .ds-kr {
+        color: var(--muted);
+        font-weight: 400;
+        font-size: 13px;
+      }
+      .ds-rate {
+        font-size: 12px;
+        color: var(--muted);
+        margin: 5px 0 6px;
+      }
+      .ds-rate b {
+        color: var(--star);
+        font-weight: 600;
+      }
+      .ds-note {
+        font-size: 12.5px;
+        color: var(--muted);
+        line-height: 1.45;
+      }
+      .ds-links {
+        display: flex;
+        gap: 8px;
+        margin-top: 10px;
+      }
+      .ds-links a {
+        font-size: 11.5px;
+        font-weight: 500;
+        text-decoration: none;
+        color: var(--ink);
+        border: 1px solid var(--line);
+        padding: 5px 10px;
+        border-radius: 999px;
+        transition:
+          border-color 0.16s,
+          color 0.16s;
+      }
+      .ds-links a:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+      .ds-attrib {
+        font-size: 10px;
+        color: var(--faint);
+        padding: 0 22px 12px;
+      }
+      @media (max-width: 760px) {
+        .ds-app {
+          flex-direction: column;
+        }
+        .ds-mapwrap {
+          flex: none;
+          height: 46vh;
+          min-height: 240px;
+        }
+        .ds-panel {
+          flex: 1 1 auto;
+          min-height: 0;
+          max-width: none;
+          width: 100%;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .ds-pin--active::after {
+          animation: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="ds-app">
+      <div class="ds-mapwrap">
+        <div class="ds-toggle" role="group" aria-label="Choose a course">
+          <button data-course="1" aria-pressed="true">Course 1</button>
+          <button data-course="2" aria-pressed="false">Course 2</button>
+        </div>
+        <div id="ds-map"></div>
+      </div>
+      <aside class="ds-panel">
+        <div class="ds-head">
+          <div class="ds-brand">
+            <span class="ds-drop"></span>A Drop of Seoul
+          </div>
+          <h2 class="ds-title" id="ds-ct"></h2>
+          <div class="ds-sub" id="ds-cs"></div>
+          <div class="ds-meta" id="ds-cm"></div>
+        </div>
+        <div class="ds-list" id="ds-list"></div>
+      </aside>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+    <script>
+      const COURSES = {
+        1: {
+          title: "Yeonmujang-gil",
+          sub: "Beauty flagships + local eats",
+          accent: "#e6a339",
+          walk: "~1.2 km · all a 10-min walk apart",
+          stops: [
+            {
+              n: 1,
+              time: "11:00 AM",
+              part: "Morning",
+              en: "Nonfiction Seongsu",
+              kr: "낫픽션 성수",
+              cat: "Fragrance flagship",
+              rating: 5.0,
+              count: 22,
+              lat: 37.5437945,
+              lng: 127.0504107,
+              pid: "ChIJSzsYAwClfDURZ-TRKwKg2sM",
+              note: "The most tourist-friendly perfume house here — staff walk you through every scent in English.",
+            },
+            {
+              n: 2,
+              time: "11:40 AM",
+              part: "Morning",
+              en: "Tamburins Seongsu",
+              kr: "탬버린즈 성수",
+              cat: "Perfume flagship",
+              rating: 4.5,
+              count: 249,
+              lat: 37.5437671,
+              lng: 127.0526044,
+              pid: "ChIJYaYyExWlfDURaI0QfIIWBHo",
+              note: "Go for the building as much as the perfume — the most photographed beauty space in Seongsu.",
+            },
+            {
+              n: 3,
+              time: "12:30 PM",
+              part: "Afternoon",
+              en: "Somunnan Gamjatang",
+              kr: "소문난 성수 감자탕",
+              cat: "Pork-bone stew",
+              rating: 4.1,
+              count: 6101,
+              lat: 37.5428241,
+              lng: 127.0543732,
+              pid: "ChIJtftAMZGkfDUR-dM7GT6Vl3g",
+              note: "Where the neighborhood's working crowd refuels. Hearty, cheap, 24h — the aroma lingers, so it's a smart mid-walk stop.",
+            },
+            {
+              n: 4,
+              time: "2:00 PM",
+              part: "Afternoon",
+              en: "Olive Young N Seongsu",
+              kr: "올리브영N 성수",
+              cat: "K-beauty megastore",
+              rating: 4.3,
+              count: 512,
+              lat: 37.5441151,
+              lng: 127.054556,
+              pid: "ChIJ14znQAClfDURT1IQuqyAwlA",
+              note: "The one-stop haul. Bring your passport for the tax refund; come early for the skin analysis.",
+            },
+            {
+              n: 5,
+              time: "3:30 PM",
+              part: "Afternoon",
+              en: "Jayeondo Salt Bread",
+              kr: "자연도소금빵 성수",
+              cat: "Salt-bread bakery",
+              rating: 4.3,
+              count: 854,
+              lat: 37.5423017,
+              lng: 127.0554582,
+              pid: "ChIJqW7Uqo2lfDURHss_BAbwIkk",
+              note: "One thing, done perfectly. Order at the kiosk, grab a bag, eat it warm on the walk.",
+            },
+            {
+              n: 6,
+              time: "4:00 PM",
+              part: "Afternoon",
+              en: "Amore Seongsu",
+              kr: "아모레 성수",
+              cat: "Beauty flagship",
+              rating: 4.8,
+              count: 873,
+              lat: 37.5444101,
+              lng: 127.0591197,
+              pid: "ChIJsy6u20mlfDURQOlVT0xmv6U",
+              note: "Book time for the custom lipstick — the one beauty souvenir you can't get anywhere else. Closed Mondays.",
+            },
+            {
+              n: 7,
+              time: "6:30 PM",
+              part: "Evening",
+              en: "Zodiac",
+              kr: "성수 바 조디악",
+              cat: "Cocktail bar",
+              rating: 4.9,
+              count: 122,
+              lat: 37.5418621,
+              lng: 127.0545552,
+              pid: "ChIJW3BKHPKlfDURMVEX8qlX1XY",
+              note: "End the day with your star-sign cocktail — small, stylish, rated Seongsu's best.",
+            },
+          ],
+        },
+        2: {
+          title: "Seongsu-ro East",
+          sub: "Warehouse cafés & dessert",
+          accent: "#e77e93",
+          walk: "~0.8 km · a slower, shorter crawl",
+          stops: [
+            {
+              n: 1,
+              time: "12:00 PM",
+              part: "Afternoon",
+              en: "bd Burger Seongsu",
+              kr: "bd버거 성수",
+              cat: "Smashburger",
+              rating: 4.8,
+              count: 733,
+              lat: 37.5410589,
+              lng: 127.0564084,
+              pid: "ChIJnQhJ2ZOkfDURatV1_omsUeg",
+              note: "Cross-checked across every list we tried. Get the wasabi shrimp burger; it's on the 2nd floor.",
+            },
+            {
+              n: 2,
+              time: "1:30 PM",
+              part: "Afternoon",
+              en: "Daelim Changgo",
+              kr: "대림창고",
+              cat: "Warehouse café",
+              rating: 4.2,
+              count: 2826,
+              lat: 37.5418384,
+              lng: 127.0564636,
+              pid: "ChIJi_M445OkfDURBV_ePY2qCHo",
+              note: "The OG warehouse café. Come for the cathedral-like space, not the coffee — it's a photo destination.",
+            },
+            {
+              n: 3,
+              time: "3:00 PM",
+              part: "Afternoon",
+              en: "Standard Bread Seongsu",
+              kr: "스탠다드브레드 성수",
+              cat: "Brunch bakery",
+              rating: 4.8,
+              count: 2986,
+              lat: 37.5416845,
+              lng: 127.0612531,
+              pid: "ChIJf5seGgClfDURTfd1UENPyV8",
+              note: "The east-side anchor. Put your name on the online list, then browse LCDC next door while you wait.",
+            },
+            {
+              n: 4,
+              time: "4:30 PM",
+              part: "Afternoon",
+              en: "LCDC Seoul",
+              kr: "LCDC SEOUL",
+              cat: "Concept store + café",
+              rating: 4.3,
+              count: 207,
+              lat: 37.5415795,
+              lng: 127.0614594,
+              pid: "ChIJM_O6RYqlfDURu7rlx8Fvdtg",
+              note: "One building, many little brands plus the calm Ephemera café — the natural pause on this crawl.",
+            },
+          ],
+        },
+      };
+
+      const map = L.map("ds-map", {
+        zoomControl: true,
+        scrollWheelZoom: false,
+      }).setView([37.5432, 127.0555], 15);
+      L.control.scale({ imperial: false }).addTo(map);
+      L.tileLayer(
+        "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+        {
+          maxZoom: 20,
+          subdomains: "abcd",
+          attribution: "© OpenStreetMap © CARTO",
+        }
+      ).addTo(map);
+
+      let layer = L.layerGroup().addTo(map);
+      let markers = {},
+        active = null,
+        current = 1;
+
+      const gLink = (s) =>
+        `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(s.kr)}&query_place_id=${s.pid}`;
+      const nLink = (s) =>
+        `https://map.naver.com/p/search/${encodeURIComponent(s.kr)}`;
+      const stars = (r) =>
+        "★".repeat(Math.round(r)) + "☆".repeat(5 - Math.round(r));
+
+      function setActive(n) {
+        active = n;
+        document
+          .querySelectorAll(".ds-card")
+          .forEach((c) =>
+            c.classList.toggle("ds-card--active", +c.dataset.n === n)
+          );
+        Object.entries(markers).forEach(([k, m]) => {
+          const el = m.getElement();
+          if (!el) return;
+          el.querySelector(".ds-pin").classList.toggle(
+            "ds-pin--active",
+            +k === n
+          );
+        });
+      }
+
+      function render(course) {
+        current = course;
+        const c = COURSES[course];
+        document.documentElement.style.setProperty("--accent", c.accent);
+        document
+          .querySelectorAll(".ds-toggle button")
+          .forEach((b) =>
+            b.setAttribute("aria-pressed", b.dataset.course === String(course))
+          );
+
+        document.getElementById("ds-ct").textContent =
+          `Course ${course} · ${c.title}`;
+        document.getElementById("ds-cs").textContent = c.sub;
+        document.getElementById("ds-cm").innerHTML =
+          `<span>🚶 ${c.walk}</span><span>${c.stops.length} stops</span>`;
+
+        // panel
+        const list = document.getElementById("ds-list");
+        list.innerHTML = "";
+        let lastPart = null;
+        c.stops.forEach((s) => {
+          if (s.part !== lastPart) {
+            const h = document.createElement("div");
+            h.className = "ds-part";
+            h.textContent = s.part;
+            list.appendChild(h);
+            lastPart = s.part;
+          }
+          const card = document.createElement("div");
+          card.className = "ds-card";
+          card.dataset.n = s.n;
+          card.innerHTML = `
+      <div class="ds-num">${s.n}</div>
+      <div>
+        <div class="ds-time">${s.time}</div>
+        <div class="ds-name">${s.en} <span class="ds-kr">${s.kr}</span></div>
+        <div class="ds-rate"><b>${s.rating.toFixed(1)} ${stars(s.rating)}</b> (${s.count.toLocaleString()}) · ${s.cat}</div>
+        <div class="ds-note">${s.note}</div>
+        <div class="ds-links">
+          <a href="${gLink(s)}" target="_blank" rel="noopener">Google Maps →</a>
+          <a href="${nLink(s)}" target="_blank" rel="noopener">네이버 지도 →</a>
+        </div>
+      </div>`;
+          card.addEventListener("click", (e) => {
+            if (e.target.tagName === "A") return;
+            setActive(s.n);
+            map.flyTo([s.lat, s.lng], 17, { duration: 0.6 });
+          });
+          list.appendChild(card);
+        });
+
+        // map
+        layer.clearLayers();
+        markers = {};
+        const pts = c.stops.map((s) => [s.lat, s.lng]);
+        L.polyline(pts, {
+          color: c.accent,
+          weight: 3,
+          opacity: 0.55,
+          dashArray: "2 8",
+          lineCap: "round",
+        }).addTo(layer);
+        c.stops.forEach((s) => {
+          const icon = L.divIcon({
+            className: "",
+            iconSize: [28, 28],
+            iconAnchor: [14, 14],
+            html: `<div class="ds-pin" style="--c:${c.accent}">${s.n}</div>`,
+          });
+          const m = L.marker([s.lat, s.lng], { icon }).addTo(layer);
+          m.on("click", () => {
+            setActive(s.n);
+            const el = document.querySelector(`.ds-card[data-n="${s.n}"]`);
+            if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
+          });
+          markers[s.n] = m;
+        });
+        map.fitBounds(pts, { padding: [55, 55] });
+        active = null;
+      }
+
+      document.querySelectorAll(".ds-toggle button").forEach((b) => {
+        b.addEventListener("click", () => render(+b.dataset.course));
+      });
+
+      // Open on the course named in ?course= (defaults to 1); falls back safely.
+      const params = new URLSearchParams(window.location.search);
+      const requested = parseInt(params.get("course"), 10);
+      render(COURSES[requested] ? requested : 1);
+
+      map.on("click", () => setActive(null));
+    </script>
+  </body>
+</html>

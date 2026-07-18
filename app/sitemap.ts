@@ -3,6 +3,7 @@ import { SITE_URL } from "@/lib/site";
 import { CATEGORY_SLUGS } from "@/lib/categories";
 import { listPublishedPosts } from "@/services/posts";
 import { listPlaces } from "@/services/places";
+import { GUIDE_SLUGS } from "@/lib/seongsu/guides";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticPaths = [
@@ -13,7 +14,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/about",
     "/contact",
     "/privacy",
+    "/guides/seongsu",
     ...CATEGORY_SLUGS.map((s) => `/${s}`),
+    ...GUIDE_SLUGS.map((s) => `/articles/${s}`),
   ];
 
   let posts: { slug: string }[] = [];

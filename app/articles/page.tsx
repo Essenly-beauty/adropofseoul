@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { listPublishedPosts } from "@/services/posts";
+import { listGuidePosts } from "@/lib/seongsu/assets";
 import { ArticleCard } from "@/components/editorial/ArticleCard";
 import { SectionHeading } from "@/components/editorial/SectionHeading";
 import { canonical } from "@/lib/seo";
+import type { Post } from "@/services/types";
 
 export const metadata: Metadata = {
   title: "Stories",
@@ -14,12 +16,18 @@ export const metadata: Metadata = {
 export const dynamic = "force-dynamic";
 
 export default async function ArticlesPage() {
-  let posts: Awaited<ReturnType<typeof listPublishedPosts>> = [];
+  let dbPosts: Post[] = [];
   try {
-    posts = await listPublishedPosts({ limit: 48 });
+    dbPosts = await listPublishedPosts({ limit: 48 });
   } catch (err) {
     console.error("articles: posts fetch failed", err);
   }
+  // Merge in the code-defined Seongsu guides, deduped by slug, newest first.
+  const guideSlugs = new Set(listGuidePosts().map((g) => g.slug));
+  const posts: Post[] = [
+    ...listGuidePosts(),
+    ...dbPosts.filter((p) => !guideSlugs.has(p.slug)),
+  ].sort((a, b) => (b.publishedAt ?? "").localeCompare(a.publishedAt ?? ""));
   return (
     <main className="mx-auto max-w-content px-6 py-16">
       <SectionHeading title="Stories" eyebrow="The Journal" />

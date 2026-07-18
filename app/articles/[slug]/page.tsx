@@ -4,12 +4,40 @@ import { getPostBySlug } from "@/services/posts";
 import { Prose } from "@/components/editorial/Prose";
 import { JsonLd } from "@/components/editorial/JsonLd";
 import { articleJsonLd, breadcrumbJsonLd, canonical } from "@/lib/seo";
+import { getGuide } from "@/lib/seongsu/guides";
+import { resolveHeroImage } from "@/lib/seongsu/assets";
+import { SeongsuGuide } from "@/components/seongsu/SeongsuGuide";
 
 export async function generateMetadata({
   params,
 }: {
   params: { slug: string };
 }): Promise<Metadata> {
+  // Code-defined Seongsu guides take priority over DB posts.
+  const guide = getGuide(params.slug);
+  if (guide) {
+    const hero = resolveHeroImage(guide);
+    const ogImages = hero ? [canonical(hero)] : undefined;
+    return {
+      title: guide.seoTitle,
+      description: guide.metaDescription,
+      alternates: { canonical: canonical(`/articles/${guide.slug}`) },
+      openGraph: {
+        title: guide.title,
+        description: guide.metaDescription,
+        type: "article",
+        url: canonical(`/articles/${guide.slug}`),
+        images: ogImages,
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: guide.title,
+        description: guide.metaDescription,
+        images: ogImages,
+      },
+    };
+  }
+
   const post = await getPostBySlug(params.slug);
   if (!post) return { title: "Not found" };
   return {
@@ -30,6 +58,9 @@ export default async function ArticlePage({
 }: {
   params: { slug: string };
 }) {
+  const guide = getGuide(params.slug);
+  if (guide) return <SeongsuGuide guide={guide} />;
+
   const post = await getPostBySlug(params.slug);
   if (!post) notFound();
 
