@@ -1,8 +1,9 @@
 import Link from "next/link";
-import { BEAUTY_TABS } from "@/lib/taxonomy";
+import { BEAUTY_TABS, type BeautyTabKey } from "@/lib/taxonomy";
 
-// All / Hair / Picks tab switcher for the Beauty section (shared chip style).
-export function BeautyTabs({ active }: { active: "all" | "hair" | "picks" }) {
+// Beauty section tab switcher (All / Skincare / Hair / Ingredients / Picks),
+// shared chip style.
+export function BeautyTabs({ active }: { active: BeautyTabKey }) {
   return (
     <nav aria-label="Beauty sections" className="mb-10 flex flex-wrap gap-2.5">
       {BEAUTY_TABS.map((tab) => {

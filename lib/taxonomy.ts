@@ -43,11 +43,18 @@ export const SECTIONS: Section[] = [
 ];
 
 // --- Beauty tabs ----------------------------------------------------------
+// All = every editorial beauty article (skincare + hair). Skincare = the
+// routine/tips articles. Ingredients = the K-beauty ingredient dictionary
+// (its own /ingredients route, surfaced here as a Beauty tab).
 export const BEAUTY_TABS = [
   { key: "all", label: "All", href: "/beauty" },
+  { key: "skincare", label: "Skincare", href: "/beauty/skincare" },
   { key: "hair", label: "Hair", href: "/beauty/hair" },
+  { key: "ingredients", label: "Ingredients", href: "/ingredients" },
   { key: "picks", label: "Picks", href: "/beauty/picks" },
 ] as const;
+
+export type BeautyTabKey = (typeof BEAUTY_TABS)[number]["key"];
 
 /**
  * Review / comparison "Picks" articles. Currently stored as `category='beauty'`;

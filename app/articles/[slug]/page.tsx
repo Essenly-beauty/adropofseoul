@@ -10,6 +10,8 @@ import { SeongsuGuide } from "@/components/seongsu/SeongsuGuide";
 import { getPillar } from "@/lib/articles/pillars";
 import { resolvePillarHero } from "@/lib/articles/assets";
 import { PillarArticle } from "@/components/editorial/PillarArticle";
+import { TonalFrame } from "@/components/editorial/TonalFrame";
+import { getArticleImageMeta } from "@/lib/article-images";
 
 export async function generateMetadata({
   params,
@@ -116,6 +118,48 @@ export default async function ArticlePage({
         {post.author && (
           <p className="mt-4 text-sm text-text-muted">By {post.author}</p>
         )}
+        {post.featuredImage &&
+          (() => {
+            const imageMeta = getArticleImageMeta(post.slug);
+            return (
+              <figure className="mt-8">
+                <TonalFrame
+                  src={post.featuredImage}
+                  alt={imageMeta?.alt ?? post.title}
+                  ratio="aspect-[16/10]"
+                  sizes="(max-width: 768px) 100vw, 768px"
+                  priority
+                  branded
+                />
+                {imageMeta && (
+                  <figcaption className="mt-2 text-center text-xs text-text-muted">
+                    {imageMeta.caption}{" "}
+                    <span className="whitespace-nowrap">
+                      Photo:{" "}
+                      <a
+                        href={imageMeta.creditUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="underline decoration-soft-gray underline-offset-2 hover:text-accent"
+                      >
+                        {imageMeta.creditName}
+                      </a>{" "}
+                      (
+                      <a
+                        href={imageMeta.licenseUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="underline decoration-soft-gray underline-offset-2 hover:text-accent"
+                      >
+                        {imageMeta.licenseName}
+                      </a>
+                      )
+                    </span>
+                  </figcaption>
+                )}
+              </figure>
+            );
+          })()}
         <div className="mt-8">
           {post.body ? (
             <Prose markdown={post.body} />

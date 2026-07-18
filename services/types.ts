@@ -33,6 +33,23 @@ export type Place = {
   images: string[];
 };
 
+export type Ingredient = {
+  id: string;
+  slug: string;
+  name: string;
+  inciName: string | null;
+  alsoKnownAs: string[];
+  functions: string[];
+  summary: string | null;
+  description: string | null;
+  benefits: string | null;
+  goodForSkinTypes: string[];
+  targetsConcerns: string[];
+  caution: string | null;
+  seoTitle: string | null;
+  metaDescription: string | null;
+};
+
 export type Product = {
   id: string;
   name: string;

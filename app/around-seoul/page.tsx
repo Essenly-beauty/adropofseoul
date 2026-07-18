@@ -19,6 +19,9 @@ export default function AroundSeoulPage() {
   return (
     <main className="mx-auto max-w-content px-6 py-16">
       <SectionHeading title="Around Seoul" eyebrow="Guides" />
+      <p className="-mt-2 mb-8 max-w-2xl text-text-muted">
+        Not sure where to go? Start with the neighborhood, not the checklist.
+      </p>
 
       {startHere && (
         <Link

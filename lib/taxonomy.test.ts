@@ -68,7 +68,19 @@ describe("sections", () => {
       "around-seoul",
     ]);
   });
-  it("has the three beauty tabs", () => {
-    expect(BEAUTY_TABS.map((t) => t.key)).toEqual(["all", "hair", "picks"]);
+  it("has the five beauty tabs including Skincare and Ingredients", () => {
+    expect(BEAUTY_TABS.map((t) => t.key)).toEqual([
+      "all",
+      "skincare",
+      "hair",
+      "ingredients",
+      "picks",
+    ]);
+    expect(BEAUTY_TABS.find((t) => t.key === "ingredients")?.href).toBe(
+      "/ingredients"
+    );
+    expect(BEAUTY_TABS.find((t) => t.key === "skincare")?.href).toBe(
+      "/beauty/skincare"
+    );
   });
 });

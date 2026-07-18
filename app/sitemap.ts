@@ -3,6 +3,7 @@ import { SITE_URL } from "@/lib/site";
 import { AROUND_SEOUL_NEIGHBORHOODS } from "@/lib/taxonomy";
 import { listPublishedPosts } from "@/services/posts";
 import { listPlaces } from "@/services/places";
+import { listIngredients } from "@/services/ingredients";
 import { GUIDE_SLUGS } from "@/lib/seongsu/guides";
 import { PILLAR_SLUGS } from "@/lib/articles/pillars";
 
@@ -11,8 +12,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "",
     "/articles",
     "/beauty",
+    "/beauty/skincare",
     "/beauty/hair",
     "/beauty/picks",
+    "/ingredients",
     "/wellness",
     "/places",
     "/around-seoul",
@@ -27,10 +30,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   let posts: { slug: string }[] = [];
   let places: { slug: string }[] = [];
+  let ingredients: { slug: string }[] = [];
   try {
-    [posts, places] = await Promise.all([
+    [posts, places, ingredients] = await Promise.all([
       listPublishedPosts({ limit: 1000 }),
       listPlaces({ limit: 1000 }),
+      listIngredients({ limit: 1000 }),
     ]);
   } catch {
     // No live DB yet (or transient failure): still emit the static routes.
@@ -47,6 +52,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })),
     ...places.map((pl) => ({
       url: `${SITE_URL}/places/${pl.slug}`,
+      lastModified: new Date(),
+    })),
+    ...ingredients.map((i) => ({
+      url: `${SITE_URL}/ingredients/${i.slug}`,
       lastModified: new Date(),
     })),
   ];

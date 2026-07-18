@@ -1,5 +1,5 @@
 import { SITE_URL, SITE_NAME } from "@/lib/site";
-import type { Post, Place } from "@/services/types";
+import type { Post, Place, Ingredient } from "@/services/types";
 
 export function canonical(path: string): string {
   return `${SITE_URL}${path.startsWith("/") ? path : `/${path}`}`;
@@ -27,6 +27,32 @@ export function localBusinessJsonLd(place: Place): object {
     description: place.shortDescription ?? undefined,
     address: place.area ?? undefined,
     url: canonical(`/places/${place.slug}`),
+  };
+}
+
+export function definedTermJsonLd(ingredient: Ingredient): object {
+  return {
+    "@context": "https://schema.org",
+    "@type": "DefinedTerm",
+    name: ingredient.name,
+    description: ingredient.summary ?? undefined,
+    termCode: ingredient.inciName ?? undefined,
+    inDefinedTermSet: canonical("/ingredients"),
+    url: canonical(`/ingredients/${ingredient.slug}`),
+  };
+}
+
+export function definedTermSetJsonLd(ingredients: Ingredient[]): object {
+  return {
+    "@context": "https://schema.org",
+    "@type": "DefinedTermSet",
+    name: `${SITE_NAME} — K-Beauty Ingredient Dictionary`,
+    url: canonical("/ingredients"),
+    hasDefinedTerm: ingredients.map((i) => ({
+      "@type": "DefinedTerm",
+      name: i.name,
+      url: canonical(`/ingredients/${i.slug}`),
+    })),
   };
 }
 

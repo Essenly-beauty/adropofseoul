@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { listPlaces } from "@/services/places";
 import { PlaceCard } from "@/components/editorial/PlaceCard";
 import { SectionHeading } from "@/components/editorial/SectionHeading";
@@ -66,6 +67,20 @@ export default async function PlacesPage({
   return (
     <main className="mx-auto max-w-content px-6 py-16">
       <SectionHeading title="Seoul Directory" eyebrow="Places" />
+      <div className="-mt-2 mb-8 max-w-2xl">
+        <p className="text-text-muted">
+          Specific spots, ready to book — by service and neighborhood.
+        </p>
+        <p className="mt-1.5 text-sm text-text-muted">
+          Want the bigger picture first?{" "}
+          <Link
+            href="/around-seoul"
+            className="text-accent transition-colors duration-medium ease-editorial hover:text-accent-hover"
+          >
+            Explore Seoul by neighborhood →
+          </Link>
+        </p>
+      </div>
       {(areas.length > 0 || types.length > 0) && (
         <PlaceFilters
           areas={areas}

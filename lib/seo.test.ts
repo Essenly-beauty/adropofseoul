@@ -4,8 +4,10 @@ import {
   articleJsonLd,
   localBusinessJsonLd,
   breadcrumbJsonLd,
+  definedTermJsonLd,
+  definedTermSetJsonLd,
 } from "./seo";
-import type { Post, Place } from "@/services/types";
+import type { Post, Place, Ingredient } from "@/services/types";
 
 const post = {
   title: "Hello",
@@ -45,6 +47,32 @@ describe("localBusinessJsonLd", () => {
     const ld = localBusinessJsonLd(place) as Record<string, unknown>;
     expect(ld["@type"]).toBe("LocalBusiness");
     expect(ld.name).toBe("Sool Loft");
+  });
+});
+
+const ingredient = {
+  slug: "niacinamide",
+  name: "Niacinamide",
+  inciName: "Niacinamide",
+  summary: "A versatile vitamin B3 derivative.",
+} as Ingredient;
+
+describe("definedTermJsonLd", () => {
+  it("builds a DefinedTerm with INCI termCode and dictionary set", () => {
+    const ld = definedTermJsonLd(ingredient) as Record<string, unknown>;
+    expect(ld["@type"]).toBe("DefinedTerm");
+    expect(ld.name).toBe("Niacinamide");
+    expect(ld.termCode).toBe("Niacinamide");
+    expect(String(ld.inDefinedTermSet)).toMatch(/\/ingredients$/);
+    expect(String(ld.url)).toMatch(/\/ingredients\/niacinamide$/);
+  });
+});
+
+describe("definedTermSetJsonLd", () => {
+  it("builds a DefinedTermSet listing each ingredient", () => {
+    const ld = definedTermSetJsonLd([ingredient]) as Record<string, unknown>;
+    expect(ld["@type"]).toBe("DefinedTermSet");
+    expect((ld.hasDefinedTerm as unknown[]).length).toBe(1);
   });
 });
 

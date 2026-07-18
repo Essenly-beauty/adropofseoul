@@ -1,16 +1,18 @@
 import Link from "next/link";
 import type { Post } from "@/services/types";
+import { getArticleImageMeta } from "@/lib/article-images";
 import { categoryLabel } from "@/lib/categories";
 import { readingTime } from "@/lib/reading-time";
 import { TonalFrame } from "./TonalFrame";
 
 export function ArticleCard({ post }: { post: Post }) {
   const minutes = readingTime(post.body);
+  const imageMeta = getArticleImageMeta(post.slug);
   return (
     <Link href={`/articles/${post.slug}`} className="group block">
       <TonalFrame
         src={post.featuredImage}
-        alt={post.title}
+        alt={imageMeta?.alt ?? post.title}
         label={categoryLabel(post.category)}
         ratio="aspect-[3/2]"
         sizes="(max-width: 768px) 100vw, 33vw"

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArticleCard } from "@/components/editorial/ArticleCard";
 import { JsonLd } from "@/components/editorial/JsonLd";
@@ -104,6 +105,18 @@ export default async function NeighborhoodPage({
           />
         </div>
       )}
+
+      <aside className="mt-16 border-t border-soft-gray pt-8">
+        <p className="text-text-muted">
+          Looking for a specific spot in {n.label}?{" "}
+          <Link
+            href={`/places?area=${encodeURIComponent(n.label)}`}
+            className="text-accent transition-colors duration-medium ease-editorial hover:text-accent-hover"
+          >
+            Browse the {n.label} directory →
+          </Link>
+        </p>
+      </aside>
     </main>
   );
 }
