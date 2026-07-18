@@ -29,4 +29,26 @@ describe("SiteHeader", () => {
     expect(screen.getByRole("navigation", { name: "Mobile" })).toBeTruthy();
     expect(button.getAttribute("aria-expanded")).toBe("true");
   });
+  it("shows sub-categories in the desktop dropdown markup", () => {
+    render(<SiteHeader />);
+    const primary = screen.getByRole("navigation", { name: "Primary" });
+    const hrefs = Array.from(primary.querySelectorAll("a")).map((a) =>
+      a.getAttribute("href")
+    );
+    expect(hrefs).toContain("/beauty/skincare");
+    expect(hrefs).toContain("/ingredients");
+    expect(hrefs).toContain("/around-seoul/seongsu");
+  });
+  it("lists sub-categories up front in the toggled mobile menu", () => {
+    render(<SiteHeader />);
+    fireEvent.click(screen.getByRole("button", { name: /menu/i }));
+    const mobile = screen.getByRole("navigation", { name: "Mobile" });
+    const hrefs = Array.from(mobile.querySelectorAll("a")).map((a) =>
+      a.getAttribute("href")
+    );
+    expect(hrefs).toContain("/beauty/skincare");
+    expect(hrefs).toContain("/ingredients");
+    expect(hrefs).toContain("/places?type=head-spa");
+    expect(hrefs).toContain("/around-seoul/common");
+  });
 });

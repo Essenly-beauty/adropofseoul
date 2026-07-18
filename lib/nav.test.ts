@@ -21,4 +21,24 @@ describe("NAV_ITEMS", () => {
       "/wellness"
     );
   });
+  it("exposes sub-categories for the GNB preview", () => {
+    const beauty = NAV_ITEMS.find((i) => i.label === "Beauty");
+    expect(beauty?.children?.map((c) => c.label)).toEqual([
+      "Skincare",
+      "Hair",
+      "Ingredients",
+      "Picks",
+    ]);
+    const around = NAV_ITEMS.find((i) => i.label === "Around Seoul");
+    expect(around?.children?.map((c) => c.label)).toContain("Seongsu");
+    expect(around?.children?.map((c) => c.label)).toContain("Common");
+    const places = NAV_ITEMS.find((i) => i.label === "Places");
+    expect(places?.children?.map((c) => c.href)).toContain(
+      "/places?type=head-spa"
+    );
+    // Home / About stay flat
+    expect(
+      NAV_ITEMS.find((i) => i.label === "About")?.children
+    ).toBeUndefined();
+  });
 });
