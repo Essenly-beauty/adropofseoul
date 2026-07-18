@@ -54,17 +54,18 @@ describe("mapCandidateRow", () => {
 });
 
 describe("isLegalTransition", () => {
-  it("allows the review flow", () => {
+  it("allows the review flow incl. one-click approve→promote", () => {
     expect(isLegalTransition("new", "reviewing")).toBe(true);
     expect(isLegalTransition("new", "approved")).toBe(true);
     expect(isLegalTransition("new", "rejected")).toBe(true);
-    expect(isLegalTransition("reviewing", "approved")).toBe(true);
+    expect(isLegalTransition("new", "promoted")).toBe(true);
+    expect(isLegalTransition("reviewing", "promoted")).toBe(true);
     expect(isLegalTransition("approved", "promoted")).toBe(true);
   });
   it("blocks illegal jumps", () => {
-    expect(isLegalTransition("new", "promoted")).toBe(false);
     expect(isLegalTransition("rejected", "approved")).toBe(false);
     expect(isLegalTransition("promoted", "new")).toBe(false);
+    expect(isLegalTransition("promoted", "rejected")).toBe(false);
   });
 });
 

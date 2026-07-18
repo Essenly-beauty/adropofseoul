@@ -28,9 +28,12 @@ const COLUMNS =
   "id,run_id,name,area,category_guess,why_notable,source_urls,evidence,confidence,dedupe_key,status,promoted_place_id,created_at,updated_at";
 
 // Legal review-flow transitions; anything else is a bug or a stale UI.
+// The admin "Approve" is one click = create the place draft AND promote, so a
+// candidate goes straight from new/reviewing to promoted (there is no separate
+// "approve then promote" step in the UI).
 const TRANSITIONS: Record<CandidateStatus, CandidateStatus[]> = {
-  new: ["reviewing", "approved", "rejected"],
-  reviewing: ["approved", "rejected"],
+  new: ["reviewing", "approved", "rejected", "promoted"],
+  reviewing: ["approved", "rejected", "promoted"],
   approved: ["promoted", "rejected"],
   rejected: [],
   promoted: [],

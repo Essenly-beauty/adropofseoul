@@ -2,7 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { createPlace } from "@/services/admin/places";
+import { createPlace, getPlaceBySlug } from "@/services/admin/places";
 import {
   listCandidateById,
   setCandidateStatus,
@@ -23,10 +23,14 @@ export async function approveCandidate(id: string): Promise<void> {
   const candidate = await listCandidateById(id);
   if (!candidate) throw new Error("Candidate not found.");
 
+  // Korean-only names slugify to "" — fall back to a candidate-stable slug so
+  // every place gets a valid, unique URL.
+  const slug = slugify(candidate.name) || `place-${candidate.id.slice(0, 8)}`;
+
   const created = await createPlace({
     name: candidate.name,
     nameKr: candidate.nameKr,
-    slug: slugify(candidate.name),
+    slug,
     category: candidate.categoryGuess ?? "shop",
     area: candidate.area,
     address: candidate.addressHint,
@@ -57,17 +61,28 @@ export async function approveCandidate(id: string): Promise<void> {
       `Sources: ${candidate.sourceUrls.join(", ")}`,
     ].join("\n"),
   });
-  if (!created.ok || !created.id) {
+  let placeId: string;
+  if (created.ok && created.id) {
+    placeId = created.id;
+  } else if (!created.ok && created.code === "23505") {
+    // A place with this slug already exists — most likely a prior
+    // half-finished promotion of THIS candidate. Reuse it instead of
+    // erroring or creating a duplicate (idempotent recovery).
+    const existing = await getPlaceBySlug(slug);
+    if (!existing)
+      throw new Error(`Could not create place: ${created.message}`);
+    placeId = existing.id;
+  } else {
     throw new Error(
       `Could not create place: ${!created.ok ? created.message : "no id"}`
     );
   }
 
-  const moved = await setCandidateStatus(id, "promoted", created.id);
+  const moved = await setCandidateStatus(id, "promoted", placeId);
   if (!moved.ok) throw new Error(moved.message);
 
   revalidatePath("/admin/candidates");
-  redirect(`/admin/places/${created.id}`);
+  redirect(`/admin/places/${placeId}`);
 }
 
 export async function rejectCandidate(id: string): Promise<void> {

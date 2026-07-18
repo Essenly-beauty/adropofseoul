@@ -116,6 +116,17 @@ export async function listAllPlaces(): Promise<AdminPlace[]> {
   return (data as PlaceRow[] | null)?.map(mapAdminPlaceRow) ?? [];
 }
 
+export async function getPlaceBySlug(slug: string): Promise<AdminPlace | null> {
+  const supabase = await createClient();
+  const { data, error } = await supabase
+    .from("places")
+    .select(COLUMNS)
+    .eq("slug", slug)
+    .maybeSingle();
+  if (error) throw error;
+  return data ? mapAdminPlaceRow(data as PlaceRow) : null;
+}
+
 export async function getPlaceById(id: string): Promise<AdminPlace | null> {
   const supabase = await createClient();
   const { data, error } = await supabase
