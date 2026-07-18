@@ -13,6 +13,10 @@ import {
 } from "@/lib/agents/prompts";
 import { filterNewCandidates } from "@/lib/agents/dedupe";
 import { combinedConfidence } from "@/lib/agents/score";
+import {
+  checkUrlLiveness,
+  type UrlLiveness,
+} from "@/lib/agents/verify-sources";
 import { fetchRedditDocs, formatGathered } from "@/lib/agents/sources";
 import { fetchStockImages } from "@/lib/agents/stock-images";
 import { createRun, finishRun } from "./runs";
@@ -34,7 +38,12 @@ export type ResearchDeps = {
   extract: (prompt: string) => Promise<{ candidates: Candidate[] }>;
   /** Commercial-safe stock pool (Unsplash/Pexels). Optional — env-gated. */
   gatherStock?: (config: RunConfig) => Promise<ImageSeed[]>;
+  /** Source-URL liveness check (injected for offline tests). */
+  checkUrl?: (url: string) => Promise<UrlLiveness>;
 };
+
+/** Max source URLs verified per run (bounds latency/cost). */
+const MAX_SOURCE_CHECKS = 40;
 
 export type ResearchResult =
   | { ok: true; runId: string; kept: number; dropped: number; images: number }
@@ -117,8 +126,43 @@ export async function runResearch(
       )
     ).candidates;
 
+    // Source verification (spec §3 "sources over sizzle"). Two gates:
+    //  1. every source URL must appear verbatim in the gathered material —
+    //     kills URLs the model invented or mangled (the 404 problem);
+    //  2. definitively-dead URLs (404/410) are dropped by a liveness check.
+    // A candidate left with no usable source is not verifiable → dropped.
+    const checkUrl = deps.checkUrl ?? checkUrlLiveness;
+    const present = Array.from(
+      new Set(
+        extracted.flatMap((c) =>
+          c.sourceUrls.filter((u) => gathered.text.includes(u))
+        )
+      )
+    );
+    const checked = await Promise.all(
+      present
+        .slice(0, MAX_SOURCE_CHECKS)
+        .map(async (u) => [u, await checkUrl(u)] as const)
+    );
+    const deadUrls = new Set(
+      checked.filter(([, l]) => l === "dead").map(([u]) => u)
+    );
+
+    const verified: Candidate[] = [];
+    let droppedNoSource = 0;
+    for (const c of extracted) {
+      const usable = c.sourceUrls.filter(
+        (u) => gathered.text.includes(u) && !deadUrls.has(u)
+      );
+      if (usable.length === 0) {
+        droppedNoSource++;
+        continue;
+      }
+      verified.push({ ...c, sourceUrls: usable });
+    }
+
     // Re-score model confidence with corroboration signals (spec §5.2).
-    const scored = extracted.map((c) => ({
+    const scored = verified.map((c) => ({
       ...c,
       confidence: combinedConfidence({
         modelConfidence: c.confidence,
@@ -216,6 +260,7 @@ export async function runResearch(
       status: "done",
       counts: {
         extracted: extracted.length,
+        droppedNoSource,
         kept: fresh.length,
         dropped,
         images: imagesInserted,
@@ -284,13 +329,20 @@ export function productionDeps(): ResearchDeps {
       if (config.sources.includes("web")) {
         try {
           // Gateway-executed web search (no extra API key; any model).
-          const { text } = await generateText({
+          const { text, sources } = await generateText({
             model: getModel(),
             prompt: WEB_SEARCH_GATHER_PROMPT(config.area),
             tools: { web_search: gateway.tools.perplexitySearch() },
             stopWhen: stepCountIs(4),
           });
           if (text.trim()) parts.push(`[web research]\n${text}`);
+          // The search tool's REAL result URLs — the extractor is constrained
+          // to URLs present in this material, so citing these avoids the model
+          // inventing/mangling an article URL into a 404.
+          const urls = sources
+            .filter((s) => s.sourceType === "url")
+            .map((s) => s.url);
+          if (urls.length > 0) parts.push(`[web sources]\n${urls.join("\n")}`);
         } catch (e) {
           failures.push(`web: ${e instanceof Error ? e.message : e}`);
         }

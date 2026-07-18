@@ -56,17 +56,22 @@ const poolImage = {
   attribution: null,
 };
 
+// Gathered text must contain the candidate's source + image URLs — both are
+// constrained to URLs present verbatim in the material (anti-hallucination).
+const GATHERED_TEXT =
+  "[1] https://www.reddit.com/r/seoul/1\nhttps://blog.example\n" +
+  "images: https://i.redd.it/soolloft.jpg\nsome gathered text";
+
 function deps(overrides: Partial<ResearchDeps> = {}): ResearchDeps {
   return {
     gather: vi.fn().mockResolvedValue({
-      // Contains the candidate's image URL — echoed URLs must appear
-      // verbatim in the gathered text to survive the anti-hallucination filter.
-      text: "[1] https://src\nimages: https://i.redd.it/soolloft.jpg\nsome gathered text",
+      text: GATHERED_TEXT,
       images: [poolImage],
     }),
     extract: vi
       .fn()
       .mockResolvedValue({ candidates: [candidate("Sool Loft")] }),
+    checkUrl: vi.fn().mockResolvedValue("alive"),
     ...overrides,
   };
 }
@@ -229,6 +234,45 @@ describe("runResearch", () => {
     expect(persisted.confidence).not.toBe(0.8);
     expect(persisted.confidence).toBeGreaterThan(0);
     expect(persisted.confidence).toBeLessThanOrEqual(1);
+  });
+
+  it("drops a candidate whose sources are all dead (404) or absent from the material", async () => {
+    armPersistence();
+    const d = deps({
+      extract: vi.fn().mockResolvedValue({
+        candidates: [
+          candidate("Sool Loft"), // sources present + alive → kept
+          {
+            ...candidate("Ghost Spa"),
+            // one URL is in the material but 404s, the other isn't in it at all
+            sourceUrls: [
+              "https://www.reddit.com/r/seoul/1",
+              "https://made-up.example",
+            ],
+          },
+        ],
+      }),
+      // reddit/1 is dead; anything else alive
+      checkUrl: vi
+        .fn()
+        .mockImplementation(async (u: string) =>
+          u === "https://www.reddit.com/r/seoul/1" ? "dead" : "alive"
+        ),
+    });
+    await runResearch({ area: "Seongsu", limit: 10 }, d);
+    // Sool Loft has TWO sources (reddit/1 dead, blog.example alive) → survives
+    // on the live one; Ghost Spa's only in-material source is dead → dropped.
+    const inserted = mockInsert.mock.calls[0][1];
+    expect(inserted.map((c: { name: string }) => c.name)).toEqual([
+      "Sool Loft",
+    ]);
+    expect(inserted[0].sourceUrls).toEqual(["https://blog.example"]);
+    expect(mockFinishRun).toHaveBeenCalledWith(
+      "run1",
+      expect.objectContaining({
+        counts: expect.objectContaining({ droppedNoSource: 1 }),
+      })
+    );
   });
 
   it("drops candidates already known (existing candidate or place keys)", async () => {
