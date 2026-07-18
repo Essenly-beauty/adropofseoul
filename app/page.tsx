@@ -104,7 +104,7 @@ export default async function HomePage() {
             <SectionHeading
               title="Weekly Picks"
               eyebrow="The Shelf"
-              href="/picks"
+              href="/beauty/picks"
             />
             <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
               {products.map((pr) => (

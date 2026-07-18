@@ -3,11 +3,16 @@ import { render, screen } from "@testing-library/react";
 import { CategoryIndex } from "./CategoryIndex";
 
 describe("CategoryIndex", () => {
-  it("renders a linked row per category", () => {
+  it("renders a linked row per section", () => {
     render(<CategoryIndex />);
-    const beauty = screen.getByRole("link", { name: /Beauty/ });
-    expect(beauty.getAttribute("href")).toBe("/beauty");
-    const headSpa = screen.getByRole("link", { name: /Head Spa/ });
-    expect(headSpa.getAttribute("href")).toBe("/head-spa");
+    expect(
+      screen.getByRole("link", { name: /Beauty/ }).getAttribute("href")
+    ).toBe("/beauty");
+    expect(
+      screen.getByRole("link", { name: /Wellness/ }).getAttribute("href")
+    ).toBe("/wellness");
+    expect(
+      screen.getByRole("link", { name: /Around Seoul/ }).getAttribute("href")
+    ).toBe("/around-seoul");
   });
 });

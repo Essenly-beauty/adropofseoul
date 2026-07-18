@@ -1,19 +1,13 @@
 import Link from "next/link";
 import { SITE_NAME, TAGLINE } from "@/lib/site";
+import { SECTIONS } from "@/lib/taxonomy";
 
-const EXPLORE = [
-  { label: "Beauty", href: "/beauty" },
-  { label: "Hair", href: "/hair" },
-  { label: "Head Spa", href: "/head-spa" },
-  { label: "Wellness", href: "/wellness" },
-  { label: "Guides", href: "/guides" },
-];
+const EXPLORE = SECTIONS.map((s) => ({ label: s.label, href: s.href }));
 
-const GUIDE = [
-  { label: "Places", href: "/places" },
-  { label: "Picks", href: "/picks" },
+const MORE = [
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
+  { label: "Privacy Policy", href: "/privacy" },
 ];
 
 export function SiteFooter() {
@@ -30,7 +24,7 @@ export function SiteFooter() {
             </p>
           </div>
           <FooterColumn title="Explore" items={EXPLORE} />
-          <FooterColumn title="The Guide" items={GUIDE} />
+          <FooterColumn title="More" items={MORE} />
         </div>
         <div className="flex flex-wrap justify-between gap-2.5 border-t border-soft-gray py-6 text-xs text-text-muted">
           <span>© {SITE_NAME}. All rights reserved.</span>

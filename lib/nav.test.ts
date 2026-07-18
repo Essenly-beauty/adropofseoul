@@ -6,18 +6,19 @@ describe("NAV_ITEMS", () => {
     expect(NAV_ITEMS.map((i) => i.label)).toEqual([
       "Home",
       "Beauty",
-      "Hair",
       "Places",
-      "Head Spa",
-      "Guides",
-      "Picks",
+      "Wellness",
+      "Around Seoul",
       "About",
     ]);
   });
-  it("maps Head Spa to the /head-spa route and Places to the directory", () => {
-    expect(NAV_ITEMS.find((i) => i.label === "Head Spa")?.href).toBe(
-      "/head-spa"
+  it("maps sections to their routes", () => {
+    expect(NAV_ITEMS.find((i) => i.label === "Around Seoul")?.href).toBe(
+      "/around-seoul"
     );
     expect(NAV_ITEMS.find((i) => i.label === "Places")?.href).toBe("/places");
+    expect(NAV_ITEMS.find((i) => i.label === "Wellness")?.href).toBe(
+      "/wellness"
+    );
   });
 });

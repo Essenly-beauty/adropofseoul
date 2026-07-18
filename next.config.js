@@ -8,6 +8,24 @@ const nextConfig = {
     // (e.g. your Supabase Storage host and each known CDN).
     remotePatterns: [{ protocol: "https", hostname: "**" }],
   },
+  // Permanent (308) redirects from the pre-restructure IA to the new homes.
+  async redirects() {
+    return [
+      { source: "/hair", destination: "/beauty/hair", permanent: true },
+      { source: "/picks", destination: "/beauty/picks", permanent: true },
+      {
+        source: "/head-spa",
+        destination: "/places?type=head-spa",
+        permanent: true,
+      },
+      { source: "/guides", destination: "/around-seoul", permanent: true },
+      {
+        source: "/guides/seongsu",
+        destination: "/around-seoul/seongsu",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;

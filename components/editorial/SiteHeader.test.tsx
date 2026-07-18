@@ -12,11 +12,9 @@ describe("SiteHeader", () => {
     render(<SiteHeader />);
     for (const label of [
       "Beauty",
-      "Hair",
       "Places",
-      "Head Spa",
-      "Guides",
-      "Picks",
+      "Wellness",
+      "Around Seoul",
       "About",
     ]) {
       expect(screen.getByRole("link", { name: label })).toBeTruthy();

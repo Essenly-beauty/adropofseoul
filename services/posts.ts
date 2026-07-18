@@ -40,7 +40,7 @@ export function mapPostRow(row: PostRow): Post {
 }
 
 export async function listPublishedPosts(
-  opts: { limit?: number; category?: string } = {}
+  opts: { limit?: number; category?: string; categories?: string[] } = {}
 ): Promise<Post[]> {
   const supabase = await createClient();
   let query = supabase
@@ -50,6 +50,8 @@ export async function listPublishedPosts(
     .order("published_at", { ascending: false })
     .limit(opts.limit ?? 24);
   if (opts.category) query = query.eq("category", opts.category);
+  if (opts.categories && opts.categories.length > 0)
+    query = query.in("category", opts.categories);
   const { data, error } = await query;
   if (error) throw error;
   return (data as PostRow[] | null)?.map(mapPostRow) ?? [];

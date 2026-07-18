@@ -2,8 +2,16 @@ import type { Metadata } from "next";
 import { listPlaces } from "@/services/places";
 import { PlaceCard } from "@/components/editorial/PlaceCard";
 import { SectionHeading } from "@/components/editorial/SectionHeading";
-import { AreaFilter } from "@/components/editorial/AreaFilter";
+import {
+  PlaceFilters,
+  type TypeOption,
+} from "@/components/editorial/PlaceFilters";
 import { canonical } from "@/lib/seo";
+import {
+  PLACE_TYPE_LABELS,
+  placeCategoryFromType,
+  placeTypeSlug,
+} from "@/lib/taxonomy";
 
 export const metadata: Metadata = {
   title: "Seoul Directory",
@@ -17,7 +25,7 @@ export const dynamic = "force-dynamic";
 export default async function PlacesPage({
   searchParams,
 }: {
-  searchParams: { area?: string };
+  searchParams: { area?: string; type?: string };
 }) {
   let places: Awaited<ReturnType<typeof listPlaces>> = [];
   try {
@@ -29,16 +37,43 @@ export default async function PlacesPage({
   const areas = Array.from(
     new Set(places.map((p) => p.area).filter((a): a is string => !!a))
   ).sort((a, b) => a.localeCompare(b));
-  const active =
+
+  const types: TypeOption[] = Array.from(new Set(places.map((p) => p.category)))
+    .map((category) => ({
+      slug: placeTypeSlug(category),
+      label: PLACE_TYPE_LABELS[category] ?? category,
+    }))
+    .sort((a, b) => a.label.localeCompare(b.label));
+
+  const activeArea =
     searchParams.area && areas.includes(searchParams.area)
       ? searchParams.area
       : undefined;
-  const visible = active ? places.filter((p) => p.area === active) : places;
+  const activeType =
+    searchParams.type && types.some((t) => t.slug === searchParams.type)
+      ? searchParams.type
+      : undefined;
+  const activeCategory = activeType
+    ? placeCategoryFromType(activeType)
+    : undefined;
+
+  const visible = places.filter(
+    (p) =>
+      (!activeArea || p.area === activeArea) &&
+      (!activeCategory || p.category === activeCategory)
+  );
 
   return (
     <main className="mx-auto max-w-content px-6 py-16">
       <SectionHeading title="Seoul Directory" eyebrow="Places" />
-      {areas.length > 0 && <AreaFilter areas={areas} active={active} />}
+      {(areas.length > 0 || types.length > 0) && (
+        <PlaceFilters
+          areas={areas}
+          types={types}
+          activeArea={activeArea}
+          activeType={activeType}
+        />
+      )}
       {visible.length === 0 ? (
         <p className="text-text-muted">
           No places listed yet — check back soon.

@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/site";
-import { CATEGORY_SLUGS } from "@/lib/categories";
+import { AROUND_SEOUL_NEIGHBORHOODS } from "@/lib/taxonomy";
 import { listPublishedPosts } from "@/services/posts";
 import { listPlaces } from "@/services/places";
 import { GUIDE_SLUGS } from "@/lib/seongsu/guides";
@@ -9,13 +9,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticPaths = [
     "",
     "/articles",
+    "/beauty",
+    "/beauty/hair",
+    "/beauty/picks",
+    "/wellness",
     "/places",
-    "/picks",
+    "/around-seoul",
+    "/around-seoul/common",
     "/about",
     "/contact",
     "/privacy",
-    "/guides/seongsu",
-    ...CATEGORY_SLUGS.map((s) => `/${s}`),
+    ...AROUND_SEOUL_NEIGHBORHOODS.map((n) => `/around-seoul/${n.slug}`),
     ...GUIDE_SLUGS.map((s) => `/articles/${s}`),
   ];
 

@@ -1,36 +1,19 @@
 import { describe, it, expect } from "vitest";
-import {
-  getCategoryBySlug,
-  CATEGORY_SLUGS,
-  CATEGORIES,
-  categoryLabel,
-} from "./categories";
+import { categoryLabel } from "./categories";
 
-describe("categories", () => {
-  it("maps the head-spa route slug to the head_spa enum", () => {
-    expect(getCategoryBySlug("head-spa")?.enumValue).toBe("head_spa");
-  });
-  it("maps beauty to itself", () => {
-    expect(getCategoryBySlug("beauty")?.enumValue).toBe("beauty");
-  });
-  it("returns undefined for an unknown slug", () => {
-    expect(getCategoryBySlug("nope")).toBeUndefined();
-  });
-  it("exposes the editorial category slugs (no places/picks)", () => {
-    expect(CATEGORY_SLUGS).toEqual([
-      "beauty",
-      "hair",
-      "head-spa",
-      "wellness",
-      "guides",
-    ]);
-  });
-  it("gives every category a non-empty blurb", () => {
-    expect(CATEGORIES.every((c) => c.blurb.length > 0)).toBe(true);
-  });
-  it("maps enum values to labels", () => {
-    expect(categoryLabel("head_spa")).toBe("Head Spa");
+describe("categoryLabel", () => {
+  it("labels beauty and hair as themselves", () => {
     expect(categoryLabel("beauty")).toBe("Beauty");
+    expect(categoryLabel("hair")).toBe("Hair");
+  });
+  it("surfaces head-spa articles under the Wellness label", () => {
+    expect(categoryLabel("head_spa")).toBe("Wellness");
+    expect(categoryLabel("wellness")).toBe("Wellness");
+  });
+  it("labels guides as Around Seoul", () => {
+    expect(categoryLabel("guides")).toBe("Around Seoul");
+  });
+  it("falls back to the raw value for unknown categories", () => {
     expect(categoryLabel("unknown")).toBe("unknown");
   });
 });
