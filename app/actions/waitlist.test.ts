@@ -54,6 +54,17 @@ describe("joinWaitlist", () => {
     });
   });
 
+  it("preserves a pillar-article source", async () => {
+    await joinWaitlist(
+      { ok: false, message: "" },
+      form({ email: "reader@example.com", source: "seoul-neighborhoods-guide" })
+    );
+    expect(insertMock).toHaveBeenCalledWith({
+      email: "reader@example.com",
+      source: "seoul-neighborhoods-guide",
+    });
+  });
+
   it("treats a duplicate (23505) as success", async () => {
     insertMock.mockResolvedValue({ error: { code: "23505" } });
     const res = await joinWaitlist(

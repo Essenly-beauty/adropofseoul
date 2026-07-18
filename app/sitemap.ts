@@ -4,6 +4,7 @@ import { AROUND_SEOUL_NEIGHBORHOODS } from "@/lib/taxonomy";
 import { listPublishedPosts } from "@/services/posts";
 import { listPlaces } from "@/services/places";
 import { GUIDE_SLUGS } from "@/lib/seongsu/guides";
+import { PILLAR_SLUGS } from "@/lib/articles/pillars";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticPaths = [
@@ -21,6 +22,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/privacy",
     ...AROUND_SEOUL_NEIGHBORHOODS.map((n) => `/around-seoul/${n.slug}`),
     ...GUIDE_SLUGS.map((s) => `/articles/${s}`),
+    ...PILLAR_SLUGS.map((s) => `/articles/${s}`),
   ];
 
   let posts: { slug: string }[] = [];

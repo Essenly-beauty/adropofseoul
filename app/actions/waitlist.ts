@@ -3,11 +3,16 @@
 import { createClient } from "@/lib/supabase/server";
 import { isValidEmail } from "@/lib/validation";
 import { GUIDE_SLUGS } from "@/lib/seongsu/guides";
+import { PILLAR_SLUGS } from "@/lib/articles/pillars";
 
 export type WaitlistState = { ok: boolean; message: string };
 
 // Sources we accept, so a stray/forged `source` can't pollute the metric.
-const ALLOWED_SOURCES = new Set<string>([...GUIDE_SLUGS, "seongsu-series"]);
+const ALLOWED_SOURCES = new Set<string>([
+  ...GUIDE_SLUGS,
+  ...PILLAR_SLUGS,
+  "seongsu-series",
+]);
 
 function normalizeSource(raw: string): string {
   const s = raw.trim();

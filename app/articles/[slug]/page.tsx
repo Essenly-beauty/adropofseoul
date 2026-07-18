@@ -7,6 +7,9 @@ import { articleJsonLd, breadcrumbJsonLd, canonical } from "@/lib/seo";
 import { getGuide } from "@/lib/seongsu/guides";
 import { resolveHeroImage } from "@/lib/seongsu/assets";
 import { SeongsuGuide } from "@/components/seongsu/SeongsuGuide";
+import { getPillar } from "@/lib/articles/pillars";
+import { resolvePillarHero } from "@/lib/articles/assets";
+import { PillarArticle } from "@/components/editorial/PillarArticle";
 
 export async function generateMetadata({
   params,
@@ -38,6 +41,31 @@ export async function generateMetadata({
     };
   }
 
+  // Code-defined pillar (hub) articles.
+  const pillar = getPillar(params.slug);
+  if (pillar) {
+    const hero = resolvePillarHero(pillar);
+    const ogImages = hero ? [canonical(hero)] : undefined;
+    return {
+      title: pillar.seoTitle,
+      description: pillar.metaDescription,
+      alternates: { canonical: canonical(`/articles/${pillar.slug}`) },
+      openGraph: {
+        title: pillar.ogTitle,
+        description: pillar.ogDescription,
+        type: "article",
+        url: canonical(`/articles/${pillar.slug}`),
+        images: ogImages,
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: pillar.ogTitle,
+        description: pillar.ogDescription,
+        images: ogImages,
+      },
+    };
+  }
+
   const post = await getPostBySlug(params.slug);
   if (!post) return { title: "Not found" };
   return {
@@ -60,6 +88,9 @@ export default async function ArticlePage({
 }) {
   const guide = getGuide(params.slug);
   if (guide) return <SeongsuGuide guide={guide} />;
+
+  const pillar = getPillar(params.slug);
+  if (pillar) return <PillarArticle pillar={pillar} />;
 
   const post = await getPostBySlug(params.slug);
   if (!post) notFound();

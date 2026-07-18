@@ -4,6 +4,7 @@ import { AroundSeoulTabs } from "@/components/editorial/AroundSeoulTabs";
 import { ArticleCard } from "@/components/editorial/ArticleCard";
 import { canonical } from "@/lib/seo";
 import { listPublishedPosts } from "@/services/posts";
+import { listPillarPosts } from "@/lib/articles/assets";
 import { regionForGuide } from "@/lib/taxonomy";
 import type { Post } from "@/services/types";
 
@@ -17,14 +18,16 @@ export const metadata: Metadata = {
 export const dynamic = "force-dynamic";
 
 export default async function AroundSeoulCommonPage() {
-  // Region-agnostic guides = guides posts explicitly tagged region:common.
-  let posts: Post[] = [];
+  // Region-agnostic guides: code-defined pillars (pinned first) + any DB
+  // guides posts explicitly tagged region:common.
+  let dbPosts: Post[] = [];
   try {
     const guides = await listPublishedPosts({ limit: 96, category: "guides" });
-    posts = guides.filter((p) => regionForGuide(p) === "common");
+    dbPosts = guides.filter((p) => regionForGuide(p) === "common");
   } catch (err) {
     console.error("around-seoul/common: fetch failed", err);
   }
+  const posts: Post[] = [...listPillarPosts({ region: "common" }), ...dbPosts];
 
   return (
     <main className="mx-auto max-w-content px-6 py-16">

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { listPublishedPosts } from "@/services/posts";
 import { listGuidePosts } from "@/lib/seongsu/assets";
+import { listPillarPosts } from "@/lib/articles/assets";
 import { ArticleCard } from "@/components/editorial/ArticleCard";
 import { SectionHeading } from "@/components/editorial/SectionHeading";
 import { canonical } from "@/lib/seo";
@@ -22,11 +23,12 @@ export default async function ArticlesPage() {
   } catch (err) {
     console.error("articles: posts fetch failed", err);
   }
-  // Merge in the code-defined Seongsu guides, deduped by slug, newest first.
-  const guideSlugs = new Set(listGuidePosts().map((g) => g.slug));
+  // Merge in the code-defined guides + pillar articles, deduped, newest first.
+  const codePosts = [...listGuidePosts(), ...listPillarPosts()];
+  const codeSlugs = new Set(codePosts.map((p) => p.slug));
   const posts: Post[] = [
-    ...listGuidePosts(),
-    ...dbPosts.filter((p) => !guideSlugs.has(p.slug)),
+    ...codePosts,
+    ...dbPosts.filter((p) => !codeSlugs.has(p.slug)),
   ].sort((a, b) => (b.publishedAt ?? "").localeCompare(a.publishedAt ?? ""));
   return (
     <main className="mx-auto max-w-content px-6 py-16">
