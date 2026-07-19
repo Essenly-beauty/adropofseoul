@@ -29,3 +29,33 @@ and update `images.remotePatterns` accordingly:
 Seed content uses no external image URLs, so this is latent until real data
 lands — but it must be resolved before publishing posts/products with
 off-Supabase images.
+
+## When attaching a custom domain
+
+The canonical site URL lives in TWO places that must be updated together:
+
+1. **`app/layout.tsx` — `metadataBase`** is hardcoded to
+   `https://adropofseoul.vercel.app`. Change it to the new domain. This is
+   what turns relative OG paths (`/og.png`) into absolute `og:image` /
+   `twitter:image` URLs.
+2. **`NEXT_PUBLIC_SITE_URL` (Vercel env, Production)** — set to the new
+   domain (no trailing slash). It drives `SITE_URL` in `lib/site.ts`, which
+   feeds `canonical()` in `lib/seo.ts` (per-page canonical URLs, per-page
+   `og:url`/`og:image`, JSON-LD), `app/sitemap.ts`, and `app/robots.ts`.
+   If both aren't updated, canonical/sitemap URLs and OG URLs will point at
+   different hosts.
+
+Also:
+
+- In Vercel domain settings, keep `adropofseoul.vercel.app` as a 308
+  redirect to the new primary domain so old shared links and indexed pages
+  carry over.
+- **OG image cache:** link scrapers (Facebook, Kakao, X, LinkedIn) cache
+  per-URL. The domain change alone gives the image a fresh URL, but when
+  replacing `public/og.png` itself, rename the file (e.g. `og-v2.png`) and
+  update the `OG_IMAGE` constant in `app/layout.tsx` — query-string versions
+  are ignored by some scrapers. Force a re-scrape with the Facebook Sharing
+  Debugger and Kakao 공유 디버거 (developers.kakao.com/tool/debugger/sharing).
+- **Verify:** `npm run build && npx next start`, then check that
+  `curl -s localhost:3000/ | grep og:image` shows the new domain, and that
+  `/sitemap.xml` and `/robots.txt` use it too.
