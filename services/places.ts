@@ -14,6 +14,7 @@ type PlaceRow = {
   review_count: number | null;
   website_url: string | null;
   address: string | null;
+  service_detail: string | null;
   short_description: string | null;
   long_description: string | null;
   why_we_like_it: string | null;
@@ -28,7 +29,7 @@ type PlaceRow = {
 };
 
 const COLUMNS =
-  "id,name,slug,category,area,name_kr,entry_type,rating,review_count,website_url,address,short_description,long_description,why_we_like_it,best_for,price_range,instagram_url,naver_map_url,google_map_url,booking_url,languages,images";
+  "id,name,slug,category,area,name_kr,entry_type,rating,review_count,website_url,address,service_detail,short_description,long_description,why_we_like_it,best_for,price_range,instagram_url,naver_map_url,google_map_url,booking_url,languages,images";
 
 export function mapPlaceRow(row: PlaceRow): Place {
   return {
@@ -44,6 +45,7 @@ export function mapPlaceRow(row: PlaceRow): Place {
     reviewCount: row.review_count,
     websiteUrl: row.website_url,
     address: row.address,
+    serviceDetail: row.service_detail,
     shortDescription: row.short_description,
     longDescription: row.long_description,
     whyWeLikeIt: row.why_we_like_it,

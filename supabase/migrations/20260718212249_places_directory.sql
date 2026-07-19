@@ -21,6 +21,9 @@ alter table places
   add column if not exists rating numeric(2,1),
   add column if not exists review_count integer,
   add column if not exists name_kr text,
-  add column if not exists website_url text;
+  add column if not exists website_url text,
+  -- finer-grained service description than the category enum,
+  -- e.g. "Full-body, foot & facial spa" (from the source dataset's type field)
+  add column if not exists service_detail text;
 
 create index if not exists places_entry_type_idx on places (entry_type);

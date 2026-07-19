@@ -26,6 +26,7 @@ export type Place = {
   reviewCount: number | null;
   websiteUrl: string | null;
   address: string | null;
+  serviceDetail: string | null;
   shortDescription: string | null;
   longDescription: string | null;
   whyWeLikeIt: string | null;
