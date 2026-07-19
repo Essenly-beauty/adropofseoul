@@ -137,6 +137,25 @@ export const PLACE_TYPE_LABELS: Record<string, string> = {
   food_tour: "Food Tour",
 };
 
+// Category glyphs for the compact directory cards (mirrors the Seongsu
+// course-stop card idiom).
+export const PLACE_TYPE_EMOJI: Record<string, string> = {
+  head_spa: "💆",
+  salon: "💇",
+  cafe: "☕",
+  clinic: "🏥",
+  shop: "🛍️",
+  wellness: "🌿",
+  personal_color: "🎨",
+  makeup: "💄",
+  spa: "🧖",
+  facial: "✨",
+  nail_lash: "💅",
+  perfume: "🧴",
+  cooking_class: "🍳",
+  food_tour: "🥢",
+};
+
 // A directory entry is either a bookable spot or a bookable activity.
 export const PLACE_ENTRY_KINDS = [
   { value: "place", label: "Places" },

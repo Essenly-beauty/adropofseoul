@@ -38,13 +38,24 @@ describe("PlaceCard", () => {
     expect(screen.getByText(/minimalist scalp-care studio/)).toBeTruthy();
   });
 
-  it("shows rating with review count when present", () => {
+  it("shows star rating with review count when present", () => {
     render(<PlaceCard place={{ ...place, rating: 4.9, reviewCount: 487 }} />);
-    expect(screen.getByText("★ 4.9 (487)")).toBeTruthy();
+    expect(screen.getByText("4.9")).toBeTruthy();
+    expect(screen.getByText(/\(487\)/)).toBeTruthy();
+    expect(screen.getByText(/★/)).toBeTruthy();
   });
 
-  it("labels experiences", () => {
-    render(<PlaceCard place={{ ...place, entryType: "experience" }} />);
-    expect(screen.getByText("Experience")).toBeTruthy();
+  it("labels experiences and shows the service detail", () => {
+    render(
+      <PlaceCard
+        place={{
+          ...place,
+          entryType: "experience",
+          serviceDetail: "Perfume-making class",
+        }}
+      />
+    );
+    expect(screen.getByText(/Experience/)).toBeTruthy();
+    expect(screen.getByText(/Perfume-making class/)).toBeTruthy();
   });
 });

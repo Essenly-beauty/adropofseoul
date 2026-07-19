@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getPlaceBySlug } from "@/services/places";
-import { Prose } from "@/components/editorial/Prose";
 import { JsonLd } from "@/components/editorial/JsonLd";
+import { Stars } from "@/components/editorial/Stars";
 import { localBusinessJsonLd, breadcrumbJsonLd, canonical } from "@/lib/seo";
-import { PLACE_TYPE_LABELS } from "@/lib/taxonomy";
+import { PLACE_TYPE_EMOJI, PLACE_TYPE_LABELS } from "@/lib/taxonomy";
 
 export async function generateMetadata({
   params,
@@ -26,45 +27,41 @@ export async function generateMetadata({
 }
 
 const LINKS: {
-  key:
-    | "googleMapUrl"
-    | "naverMapUrl"
-    | "bookingUrl"
-    | "instagramUrl"
-    | "websiteUrl";
+  key: "googleMapUrl" | "naverMapUrl" | "bookingUrl" | "websiteUrl";
   label: string;
 }[] = [
   // Map links are name-based searches, not verified pins — always opened in a
   // new tab so readers can cross-check without losing the directory.
-  { key: "googleMapUrl", label: "Google Maps" },
-  { key: "naverMapUrl", label: "Naver Map" },
-  { key: "bookingUrl", label: "Book" },
-  { key: "websiteUrl", label: "Website" },
-  { key: "instagramUrl", label: "Instagram" },
+  { key: "googleMapUrl", label: "Google Maps →" },
+  { key: "naverMapUrl", label: "네이버 지도 →" },
+  { key: "bookingUrl", label: "Book →" },
+  { key: "websiteUrl", label: "Website →" },
 ];
 
 function instagramHandle(url: string): string {
   return url.replace(/\/+$/, "").split("/").pop() ?? url;
 }
 
-// One labelled cell in the "At a glance" panel; renders nothing when the
-// datum was not collected for this place.
-function Fact({
+// One emoji-labelled fact row; renders nothing when the datum was not
+// collected for this place. Mirrors the Seongsu course-stop card idiom.
+function Field({
+  icon,
   label,
   value,
-  wide = false,
 }: {
+  icon: string;
   label: string;
   value: React.ReactNode;
-  wide?: boolean;
 }) {
   if (value == null || value === "") return null;
   return (
-    <div className={wide ? "sm:col-span-2" : undefined}>
-      <dt className="text-xs uppercase tracking-label text-text-muted">
-        {label}
-      </dt>
-      <dd className="mt-1">{value}</dd>
+    <div className="flex gap-2 text-sm">
+      <span aria-hidden className="select-none">
+        {icon}
+      </span>
+      <span className="text-text-muted">
+        <span className="font-medium text-text">{label}:</span> {value}
+      </span>
     </div>
   );
 }
@@ -77,8 +74,18 @@ export default async function PlacePage({
   const place = await getPlaceBySlug(params.slug);
   if (!place) notFound();
 
+  const service =
+    place.serviceDetail ??
+    PLACE_TYPE_LABELS[place.category] ??
+    place.category.replace(/_/g, " ");
+  const verdict = place.whyWeLikeIt ?? place.shortDescription;
+  const about = place.longDescription
+    ?.split(/\n\n+/)
+    .map((p) => p.trim())
+    .filter(Boolean);
+
   return (
-    <main className="mx-auto max-w-3xl px-6 py-16">
+    <main className="mx-auto max-w-2xl px-6 py-12 md:py-16">
       <JsonLd data={localBusinessJsonLd(place)} />
       <JsonLd
         data={breadcrumbJsonLd([
@@ -87,53 +94,55 @@ export default async function PlacePage({
           { name: place.name, path: `/places/${place.slug}` },
         ])}
       />
-      <p className="text-xs uppercase tracking-widest text-accent">
-        {PLACE_TYPE_LABELS[place.category] ?? place.category.replace(/_/g, " ")}
-        {place.entryType === "experience" ? " · Experience" : ""}
-        {place.area ? ` · ${place.area}` : ""}
-      </p>
-      <h1 className="mt-2 font-serif text-4xl md:text-5xl">{place.name}</h1>
-      {place.nameKr && <p className="mt-2 text-text-muted">{place.nameKr}</p>}
-      {place.rating != null && (
-        <p className="mt-2 text-sm text-text-muted">
-          ★ {place.rating.toFixed(1)}
-          {place.reviewCount != null && ` · ${place.reviewCount} reviews`}
-        </p>
-      )}
-      {place.shortDescription && (
-        <p className="mt-3 text-xl text-text-muted">{place.shortDescription}</p>
-      )}
 
-      {/* Everything we collected about this place, scannable in one panel. */}
-      <section className="mt-10 rounded-lg border border-soft-gray p-6 md:p-7">
-        <h2 className="text-[11px] uppercase tracking-label text-accent">
-          At a glance
-        </h2>
-        <dl className="mt-4 grid gap-x-10 gap-y-4 text-sm sm:grid-cols-2">
-          <Fact
-            label="Service"
-            value={
-              place.serviceDetail ??
-              PLACE_TYPE_LABELS[place.category] ??
-              place.category.replace(/_/g, " ")
-            }
-          />
-          <Fact label="Neighborhood" value={place.area} />
-          <Fact label="Best for" value={place.bestFor} />
-          <Fact
-            label="Rating"
-            value={
-              place.rating != null
-                ? `★ ${place.rating.toFixed(1)}${
-                    place.reviewCount != null
-                      ? ` · ${place.reviewCount} reviews`
-                      : ""
-                  }`
-                : null
-            }
-          />
-          <Fact label="Price" value={place.priceRange} />
-          <Fact
+      <Link
+        href="/places"
+        className="text-[11px] uppercase tracking-label text-text-muted transition-colors duration-medium ease-editorial hover:text-accent"
+      >
+        ← Seoul Directory
+      </Link>
+
+      <article className="mt-4 rounded-lg border border-soft-gray bg-porcelain/40 p-5 md:p-7">
+        <p className="text-[11px] uppercase tracking-label text-text-muted">
+          {PLACE_TYPE_LABELS[place.category] ??
+            place.category.replace(/_/g, " ")}
+          {place.entryType === "experience" ? " · Experience" : ""}
+          {place.area ? ` · ${place.area}` : ""}
+        </p>
+        <h1 className="mt-1 font-serif text-2xl leading-tight md:text-3xl">
+          {place.name}{" "}
+          {place.nameKr && (
+            <span className="text-lg text-text-muted">{place.nameKr}</span>
+          )}
+        </h1>
+        <p className="mt-1.5 text-sm text-text-muted">
+          {place.rating != null && (
+            <>
+              <Stars rating={place.rating} />{" "}
+              <span className="font-semibold text-text">
+                {place.rating.toFixed(1)}
+              </span>
+              {place.reviewCount != null && (
+                <> ({place.reviewCount.toLocaleString()})</>
+              )}{" "}
+              ·{" "}
+            </>
+          )}
+          <span aria-hidden>{PLACE_TYPE_EMOJI[place.category]}</span> {service}
+        </p>
+
+        {verdict && (
+          <p className="mt-4 border-l-2 border-accent pl-3 text-[15px] italic text-text">
+            {verdict}
+          </p>
+        )}
+
+        <div className="mt-4 grid gap-2 sm:grid-cols-2">
+          <Field icon="📍" label="Neighborhood" value={place.area} />
+          <Field icon="👍" label="Best for" value={place.bestFor} />
+          <Field icon="💰" label="Price" value={place.priceRange} />
+          <Field
+            icon="📷"
             label="Instagram"
             value={
               place.instagramUrl ? (
@@ -148,36 +157,35 @@ export default async function PlacePage({
               ) : null
             }
           />
-          <Fact label="Address" value={place.address} wide />
-        </dl>
-      </section>
-
-      <div className="mt-6 flex flex-wrap gap-3">
-        {LINKS.filter((l) => place[l.key]).map((l) => (
-          <a
-            key={l.key}
-            href={place[l.key] as string}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-md border border-soft-gray px-4 py-2 text-sm hover:border-accent"
-          >
-            {l.label}
-          </a>
-        ))}
-      </div>
-
-      {place.whyWeLikeIt && (
-        <div className="mt-8 rounded-lg bg-muted-pink/40 p-5">
-          <p className="text-sm font-medium">Why we like it</p>
-          <p className="mt-1 text-sm text-text-muted">{place.whyWeLikeIt}</p>
+          <Field icon="🧭" label="Address" value={place.address} />
         </div>
-      )}
 
-      {place.longDescription && (
-        <div className="mt-8">
-          <Prose markdown={place.longDescription} />
+        {about && about.length > 0 && (
+          <div className="mt-4 space-y-2 text-sm leading-relaxed text-text-muted">
+            <p>
+              <span className="font-medium text-text">About: </span>
+              {about[0]}
+            </p>
+            {about.slice(1).map((p) => (
+              <p key={p.slice(0, 24)}>{p}</p>
+            ))}
+          </div>
+        )}
+
+        <div className="mt-5 flex flex-wrap gap-3">
+          {LINKS.filter((l) => place[l.key]).map((l) => (
+            <a
+              key={l.key}
+              href={place[l.key] as string}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-full border border-text px-4 py-1.5 text-xs font-medium uppercase tracking-label transition-colors duration-medium ease-editorial hover:border-accent hover:text-accent"
+            >
+              {l.label}
+            </a>
+          ))}
         </div>
-      )}
+      </article>
     </main>
   );
 }

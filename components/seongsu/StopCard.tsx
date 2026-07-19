@@ -1,14 +1,5 @@
 import { googleMapsUrl, naverMapUrl, type Stop } from "@/lib/seongsu/courses";
-
-function Stars({ rating }: { rating: number }) {
-  const full = Math.round(rating);
-  return (
-    <span aria-hidden className="text-accent">
-      {"★".repeat(full)}
-      <span className="text-text-muted/40">{"☆".repeat(5 - full)}</span>
-    </span>
-  );
-}
+import { Stars } from "@/components/editorial/Stars";
 
 function Field({
   icon,
