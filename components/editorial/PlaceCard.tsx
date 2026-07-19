@@ -18,11 +18,26 @@ export function PlaceCard({ place }: { place: Place }) {
           {place.name}
         </h3>
         {place.area && (
-          <span className="text-[11px] uppercase tracking-label text-accent">
+          <span className="shrink-0 text-[11px] uppercase tracking-label text-accent">
             {place.area}
           </span>
         )}
       </div>
+      {(place.rating != null || place.entryType === "experience") && (
+        <p className="mt-1 flex items-center gap-2 text-xs text-text-muted">
+          {place.rating != null && (
+            <span>
+              ★ {place.rating.toFixed(1)}
+              {place.reviewCount != null && ` (${place.reviewCount})`}
+            </span>
+          )}
+          {place.entryType === "experience" && (
+            <span className="uppercase tracking-label text-[10px]">
+              Experience
+            </span>
+          )}
+        </p>
+      )}
       {place.shortDescription && (
         <p className="mt-2 text-sm text-text-muted line-clamp-2">
           {place.shortDescription}

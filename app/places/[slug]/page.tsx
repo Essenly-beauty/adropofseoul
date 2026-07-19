@@ -4,6 +4,7 @@ import { getPlaceBySlug } from "@/services/places";
 import { Prose } from "@/components/editorial/Prose";
 import { JsonLd } from "@/components/editorial/JsonLd";
 import { localBusinessJsonLd, breadcrumbJsonLd, canonical } from "@/lib/seo";
+import { PLACE_TYPE_LABELS } from "@/lib/taxonomy";
 
 export async function generateMetadata({
   params,
@@ -25,12 +26,20 @@ export async function generateMetadata({
 }
 
 const LINKS: {
-  key: "googleMapUrl" | "naverMapUrl" | "bookingUrl" | "instagramUrl";
+  key:
+    | "googleMapUrl"
+    | "naverMapUrl"
+    | "bookingUrl"
+    | "instagramUrl"
+    | "websiteUrl";
   label: string;
 }[] = [
+  // Map links are name-based searches, not verified pins — always opened in a
+  // new tab so readers can cross-check without losing the directory.
   { key: "googleMapUrl", label: "Google Maps" },
   { key: "naverMapUrl", label: "Naver Map" },
   { key: "bookingUrl", label: "Book" },
+  { key: "websiteUrl", label: "Website" },
   { key: "instagramUrl", label: "Instagram" },
 ];
 
@@ -53,10 +62,18 @@ export default async function PlacePage({
         ])}
       />
       <p className="text-xs uppercase tracking-widest text-accent">
-        {place.category.replace(/_/g, " ")}
+        {PLACE_TYPE_LABELS[place.category] ?? place.category.replace(/_/g, " ")}
+        {place.entryType === "experience" ? " · Experience" : ""}
         {place.area ? ` · ${place.area}` : ""}
       </p>
       <h1 className="mt-2 font-serif text-4xl md:text-5xl">{place.name}</h1>
+      {place.nameKr && <p className="mt-2 text-text-muted">{place.nameKr}</p>}
+      {place.rating != null && (
+        <p className="mt-2 text-sm text-text-muted">
+          ★ {place.rating.toFixed(1)}
+          {place.reviewCount != null && ` · ${place.reviewCount} reviews`}
+        </p>
+      )}
       {place.shortDescription && (
         <p className="mt-3 text-xl text-text-muted">{place.shortDescription}</p>
       )}
@@ -75,6 +92,12 @@ export default async function PlacePage({
       )}
 
       <dl className="mt-8 space-y-1 text-sm">
+        {place.address && (
+          <div className="flex gap-2">
+            <dt className="text-text-muted">Address</dt>
+            <dd>{place.address}</dd>
+          </div>
+        )}
         {place.bestFor && (
           <div className="flex gap-2">
             <dt className="text-text-muted">Best for</dt>

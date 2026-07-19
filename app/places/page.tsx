@@ -9,6 +9,7 @@ import {
 } from "@/components/editorial/PlaceFilters";
 import { canonical } from "@/lib/seo";
 import {
+  PLACE_ENTRY_KINDS,
   PLACE_TYPE_LABELS,
   placeCategoryFromType,
   placeTypeSlug,
@@ -26,11 +27,11 @@ export const dynamic = "force-dynamic";
 export default async function PlacesPage({
   searchParams,
 }: {
-  searchParams: { area?: string; type?: string };
+  searchParams: { area?: string; type?: string; kind?: string };
 }) {
   let places: Awaited<ReturnType<typeof listPlaces>> = [];
   try {
-    places = await listPlaces({ limit: 96 });
+    places = await listPlaces({ limit: 200 });
   } catch (err) {
     console.error("places: places fetch failed", err);
   }
@@ -46,6 +47,10 @@ export default async function PlacesPage({
     }))
     .sort((a, b) => a.label.localeCompare(b.label));
 
+  const kinds = PLACE_ENTRY_KINDS.filter((k) =>
+    places.some((p) => p.entryType === k.value)
+  );
+
   const activeArea =
     searchParams.area && areas.includes(searchParams.area)
       ? searchParams.area
@@ -54,12 +59,16 @@ export default async function PlacesPage({
     searchParams.type && types.some((t) => t.slug === searchParams.type)
       ? searchParams.type
       : undefined;
+  const activeKind = kinds.some((k) => k.value === searchParams.kind)
+    ? searchParams.kind
+    : undefined;
   const activeCategory = activeType
     ? placeCategoryFromType(activeType)
     : undefined;
 
   const visible = places.filter(
     (p) =>
+      (!activeKind || p.entryType === activeKind) &&
       (!activeArea || p.area === activeArea) &&
       (!activeCategory || p.category === activeCategory)
   );
@@ -83,8 +92,10 @@ export default async function PlacesPage({
       </div>
       {(areas.length > 0 || types.length > 0) && (
         <PlaceFilters
+          kinds={kinds.length > 1 ? [...kinds] : []}
           areas={areas}
           types={types}
+          activeKind={activeKind}
           activeArea={activeArea}
           activeType={activeType}
         />

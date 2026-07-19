@@ -9,6 +9,12 @@ const place = {
   slug: "sool-loft-head-spa",
   category: "head_spa",
   area: "Seongsu",
+  nameKr: "술로프트",
+  entryType: "place",
+  rating: null,
+  reviewCount: null,
+  websiteUrl: null,
+  address: null,
   shortDescription: "A minimalist scalp-care studio.",
   longDescription: null,
   whyWeLikeIt: null,
@@ -29,5 +35,15 @@ describe("PlaceCard", () => {
     expect(link.getAttribute("href")).toBe("/places/sool-loft-head-spa");
     expect(screen.getAllByText("Seongsu").length).toBeGreaterThan(0);
     expect(screen.getByText(/minimalist scalp-care studio/)).toBeTruthy();
+  });
+
+  it("shows rating with review count when present", () => {
+    render(<PlaceCard place={{ ...place, rating: 4.9, reviewCount: 487 }} />);
+    expect(screen.getByText("★ 4.9 (487)")).toBeTruthy();
+  });
+
+  it("labels experiences", () => {
+    render(<PlaceCard place={{ ...place, entryType: "experience" }} />);
+    expect(screen.getByText("Experience")).toBeTruthy();
   });
 });

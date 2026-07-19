@@ -26,41 +26,80 @@ function Chip({
   );
 }
 
-function hrefWith(next: { area?: string; type?: string }): string {
+export type KindOption = { value: string; label: string };
+
+function hrefWith(next: {
+  area?: string;
+  type?: string;
+  kind?: string;
+}): string {
   const sp = new URLSearchParams();
+  if (next.kind) sp.set("kind", next.kind);
   if (next.area) sp.set("area", next.area);
   if (next.type) sp.set("type", next.type);
   const qs = sp.toString();
   return qs ? `/places?${qs}` : "/places";
 }
 
-// Area + type filter bar for the Places directory. Each chip preserves the
-// other active dimension so filters combine.
+// Kind + type + area filter bar for the Places directory. Each chip preserves
+// the other active dimensions so filters combine.
 export function PlaceFilters({
+  kinds = [],
   areas,
   types,
+  activeKind,
   activeArea,
   activeType,
 }: {
+  kinds?: KindOption[];
   areas: string[];
   types: TypeOption[];
+  activeKind?: string;
   activeArea?: string;
   activeType?: string;
 }) {
   return (
     <div className="mb-10 space-y-3">
+      {kinds.length > 0 && (
+        <nav
+          aria-label="Filter by places or experiences"
+          className="flex flex-wrap gap-2.5"
+        >
+          <Chip
+            label="All"
+            href={hrefWith({ area: activeArea, type: activeType })}
+            active={!activeKind}
+          />
+          {kinds.map((k) => (
+            <Chip
+              key={k.value}
+              label={k.label}
+              href={hrefWith({
+                kind: k.value,
+                area: activeArea,
+                type: activeType,
+              })}
+              active={activeKind === k.value}
+            />
+          ))}
+        </nav>
+      )}
       {types.length > 0 && (
         <nav aria-label="Filter by type" className="flex flex-wrap gap-2.5">
           <Chip
             label="All types"
-            href={hrefWith({ area: activeArea })}
+            href={hrefWith({ kind: activeKind, area: activeArea })}
             active={!activeType}
           />
           {types.map((t) => (
             <Chip
               key={t.slug}
               label={t.label}
-              href={hrefWith({ area: activeArea, type: t.slug })}
+              href={hrefWith({
+                kind: activeKind,
+                area: activeArea,
+                type: t.slug,
+              })}
               active={activeType === t.slug}
             />
           ))}
@@ -70,14 +109,14 @@ export function PlaceFilters({
         <nav aria-label="Filter by area" className="flex flex-wrap gap-2.5">
           <Chip
             label="All areas"
-            href={hrefWith({ type: activeType })}
+            href={hrefWith({ kind: activeKind, type: activeType })}
             active={!activeArea}
           />
           {areas.map((area) => (
             <Chip
               key={area}
               label={area}
-              href={hrefWith({ area, type: activeType })}
+              href={hrefWith({ kind: activeKind, area, type: activeType })}
               active={activeArea === area}
             />
           ))}
