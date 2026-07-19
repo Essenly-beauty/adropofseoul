@@ -15,6 +15,7 @@ const place = {
   reviewCount: null,
   websiteUrl: null,
   address: null,
+  serviceDetail: null,
   shortDescription: "A minimalist scalp-care studio.",
   longDescription: null,
   whyWeLikeIt: null,

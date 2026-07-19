@@ -43,6 +43,32 @@ const LINKS: {
   { key: "instagramUrl", label: "Instagram" },
 ];
 
+function instagramHandle(url: string): string {
+  return url.replace(/\/+$/, "").split("/").pop() ?? url;
+}
+
+// One labelled cell in the "At a glance" panel; renders nothing when the
+// datum was not collected for this place.
+function Fact({
+  label,
+  value,
+  wide = false,
+}: {
+  label: string;
+  value: React.ReactNode;
+  wide?: boolean;
+}) {
+  if (value == null || value === "") return null;
+  return (
+    <div className={wide ? "sm:col-span-2" : undefined}>
+      <dt className="text-xs uppercase tracking-label text-text-muted">
+        {label}
+      </dt>
+      <dd className="mt-1">{value}</dd>
+    </div>
+  );
+}
+
 export default async function PlacePage({
   params,
 }: {
@@ -78,39 +104,53 @@ export default async function PlacePage({
         <p className="mt-3 text-xl text-text-muted">{place.shortDescription}</p>
       )}
 
-      {place.whyWeLikeIt && (
-        <div className="mt-6 rounded-lg bg-muted-pink/40 p-4">
-          <p className="text-sm font-medium">Why we like it</p>
-          <p className="mt-1 text-sm text-text-muted">{place.whyWeLikeIt}</p>
-        </div>
-      )}
-
-      {place.longDescription && (
-        <div className="mt-8">
-          <Prose markdown={place.longDescription} />
-        </div>
-      )}
-
-      <dl className="mt-8 space-y-1 text-sm">
-        {place.address && (
-          <div className="flex gap-2">
-            <dt className="text-text-muted">Address</dt>
-            <dd>{place.address}</dd>
-          </div>
-        )}
-        {place.bestFor && (
-          <div className="flex gap-2">
-            <dt className="text-text-muted">Best for</dt>
-            <dd>{place.bestFor}</dd>
-          </div>
-        )}
-        {place.priceRange && (
-          <div className="flex gap-2">
-            <dt className="text-text-muted">Price</dt>
-            <dd>{place.priceRange}</dd>
-          </div>
-        )}
-      </dl>
+      {/* Everything we collected about this place, scannable in one panel. */}
+      <section className="mt-10 rounded-lg border border-soft-gray p-6 md:p-7">
+        <h2 className="text-[11px] uppercase tracking-label text-accent">
+          At a glance
+        </h2>
+        <dl className="mt-4 grid gap-x-10 gap-y-4 text-sm sm:grid-cols-2">
+          <Fact
+            label="Service"
+            value={
+              place.serviceDetail ??
+              PLACE_TYPE_LABELS[place.category] ??
+              place.category.replace(/_/g, " ")
+            }
+          />
+          <Fact label="Neighborhood" value={place.area} />
+          <Fact label="Best for" value={place.bestFor} />
+          <Fact
+            label="Rating"
+            value={
+              place.rating != null
+                ? `★ ${place.rating.toFixed(1)}${
+                    place.reviewCount != null
+                      ? ` · ${place.reviewCount} reviews`
+                      : ""
+                  }`
+                : null
+            }
+          />
+          <Fact label="Price" value={place.priceRange} />
+          <Fact
+            label="Instagram"
+            value={
+              place.instagramUrl ? (
+                <a
+                  href={place.instagramUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-accent transition-colors duration-medium ease-editorial hover:text-accent-hover"
+                >
+                  @{instagramHandle(place.instagramUrl)}
+                </a>
+              ) : null
+            }
+          />
+          <Fact label="Address" value={place.address} wide />
+        </dl>
+      </section>
 
       <div className="mt-6 flex flex-wrap gap-3">
         {LINKS.filter((l) => place[l.key]).map((l) => (
@@ -125,6 +165,19 @@ export default async function PlacePage({
           </a>
         ))}
       </div>
+
+      {place.whyWeLikeIt && (
+        <div className="mt-8 rounded-lg bg-muted-pink/40 p-5">
+          <p className="text-sm font-medium">Why we like it</p>
+          <p className="mt-1 text-sm text-text-muted">{place.whyWeLikeIt}</p>
+        </div>
+      )}
+
+      {place.longDescription && (
+        <div className="mt-8">
+          <Prose markdown={place.longDescription} />
+        </div>
+      )}
     </main>
   );
 }
