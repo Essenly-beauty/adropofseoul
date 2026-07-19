@@ -1,0 +1,3 @@
+-- Placeholder: migration 0004 was applied directly to the remote project from
+-- an earlier checkout and its file was never committed here. This empty file
+-- aligns local/remote migration history so `supabase db push` works.

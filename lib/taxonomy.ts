@@ -127,7 +127,22 @@ export const PLACE_TYPE_LABELS: Record<string, string> = {
   clinic: "Clinic",
   shop: "Shop",
   wellness: "Wellness",
+  personal_color: "Personal Color",
+  makeup: "Makeup",
+  spa: "Spa & Massage",
+  facial: "Facial",
+  nail_lash: "Nails & Lashes",
+  perfume: "Perfume Workshop",
+  cooking_class: "Cooking Class",
+  food_tour: "Food Tour",
 };
+
+// A directory entry is either a bookable spot or a bookable activity.
+export const PLACE_ENTRY_KINDS = [
+  { value: "place", label: "Places" },
+  { value: "experience", label: "Experiences" },
+] as const;
+export type PlaceEntryKind = (typeof PLACE_ENTRY_KINDS)[number]["value"];
 
 /** URL type-slug ("head-spa") → place category enum ("head_spa"). */
 export function placeCategoryFromType(typeSlug: string): string {

@@ -20,6 +20,12 @@ export type Place = {
   slug: string;
   category: string;
   area: string | null;
+  nameKr: string | null;
+  entryType: "place" | "experience";
+  rating: number | null;
+  reviewCount: number | null;
+  websiteUrl: string | null;
+  address: string | null;
   shortDescription: string | null;
   longDescription: string | null;
   whyWeLikeIt: string | null;

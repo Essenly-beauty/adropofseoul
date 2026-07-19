@@ -47,6 +47,20 @@ describe("localBusinessJsonLd", () => {
     const ld = localBusinessJsonLd(place) as Record<string, unknown>;
     expect(ld["@type"]).toBe("LocalBusiness");
     expect(ld.name).toBe("Sool Loft");
+    expect(ld.aggregateRating).toBeUndefined();
+  });
+
+  it("adds aggregateRating only when rating and review count exist", () => {
+    const ld = localBusinessJsonLd({
+      ...place,
+      rating: 4.9,
+      reviewCount: 487,
+    }) as Record<string, unknown>;
+    expect(ld.aggregateRating).toEqual({
+      "@type": "AggregateRating",
+      ratingValue: 4.9,
+      reviewCount: 487,
+    });
   });
 });
 

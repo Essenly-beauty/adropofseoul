@@ -8,6 +8,12 @@ type PlaceRow = {
   slug: string;
   category: string;
   area: string | null;
+  name_kr: string | null;
+  entry_type: "place" | "experience";
+  rating: number | string | null;
+  review_count: number | null;
+  website_url: string | null;
+  address: string | null;
   short_description: string | null;
   long_description: string | null;
   why_we_like_it: string | null;
@@ -22,7 +28,7 @@ type PlaceRow = {
 };
 
 const COLUMNS =
-  "id,name,slug,category,area,short_description,long_description,why_we_like_it,best_for,price_range,instagram_url,naver_map_url,google_map_url,booking_url,languages,images";
+  "id,name,slug,category,area,name_kr,entry_type,rating,review_count,website_url,address,short_description,long_description,why_we_like_it,best_for,price_range,instagram_url,naver_map_url,google_map_url,booking_url,languages,images";
 
 export function mapPlaceRow(row: PlaceRow): Place {
   return {
@@ -31,6 +37,13 @@ export function mapPlaceRow(row: PlaceRow): Place {
     slug: row.slug,
     category: row.category,
     area: row.area,
+    nameKr: row.name_kr,
+    entryType: row.entry_type ?? "place",
+    // numeric columns come back from PostgREST as strings
+    rating: row.rating == null ? null : Number(row.rating),
+    reviewCount: row.review_count,
+    websiteUrl: row.website_url,
+    address: row.address,
     shortDescription: row.short_description,
     longDescription: row.long_description,
     whyWeLikeIt: row.why_we_like_it,

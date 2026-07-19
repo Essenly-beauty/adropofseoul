@@ -24,9 +24,22 @@ export function localBusinessJsonLd(place: Place): object {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     name: place.name,
+    alternateName: place.nameKr ?? undefined,
     description: place.shortDescription ?? undefined,
-    address: place.area ?? undefined,
+    address: place.address ?? place.area ?? undefined,
     url: canonical(`/places/${place.slug}`),
+    sameAs:
+      [place.websiteUrl, place.instagramUrl].filter(Boolean).length > 0
+        ? [place.websiteUrl, place.instagramUrl].filter(Boolean)
+        : undefined,
+    aggregateRating:
+      place.rating != null && place.reviewCount != null
+        ? {
+            "@type": "AggregateRating",
+            ratingValue: place.rating,
+            reviewCount: place.reviewCount,
+          }
+        : undefined,
   };
 }
 

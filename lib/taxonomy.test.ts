@@ -4,6 +4,7 @@ import {
   WELLNESS_CATEGORIES,
   getNeighborhood,
   regionForGuide,
+  PLACE_TYPE_LABELS,
   placeCategoryFromType,
   placeTypeSlug,
   SECTIONS,
@@ -56,6 +57,22 @@ describe("place types", () => {
   it("round-trips type slug and category enum", () => {
     expect(placeCategoryFromType("head-spa")).toBe("head_spa");
     expect(placeTypeSlug("head_spa")).toBe("head-spa");
+    expect(placeCategoryFromType("personal-color")).toBe("personal_color");
+    expect(placeTypeSlug("nail_lash")).toBe("nail-lash");
+  });
+
+  it("labels every directory category", () => {
+    for (const cat of [
+      "personal_color",
+      "makeup",
+      "spa",
+      "facial",
+      "nail_lash",
+      "perfume",
+      "cooking_class",
+      "food_tour",
+    ])
+      expect(PLACE_TYPE_LABELS[cat]).toBeTruthy();
   });
 });
 
