@@ -1,0 +1,641 @@
+{
+  "$note": "English editorial layer for data/adropofseoul_places.json, keyed by slug. `excluded` entries are kept in the source dataset but never seeded. kind: place|experience mirrors entryType(장소|체험).",
+  "excluded": {
+    "seoul-no-wait-local-reservations-with-digital-guide": "reservation-agency service, not a place or experience",
+    "seoul-no-wait-vegan-reservations-with-digital-guide": "reservation-agency service, not a place or experience",
+    "seoul-solo-dining-reservations-with-digital-guide": "reservation-agency service, not a place or experience",
+    "korean-restaurant-booking-seoul-busan-jeju": "reservation-agency service, not a place or experience"
+  },
+  "places": {
+    "juno-hair-garosugil": {
+      "name": "JUNO HAIR Garosugil",
+      "category": "salon",
+      "kind": "place",
+      "area": "Garosugil",
+      "summary": "Garosugil branch of Seoul's largest salon chain — a reliable first cut, with 50+ Klook bookings."
+    },
+    "color-place-k-pop-celeb-personal-color": {
+      "name": "Color Place",
+      "category": "personal_color",
+      "kind": "place",
+      "area": "Gangnam",
+      "summary": "The K-pop celebrity personal-color studio — famous for idol visits, from BLACKPINK to TWICE."
+    },
+    "color-signal-personal-color-makeup": {
+      "name": "Color Signal",
+      "category": "personal_color",
+      "kind": "place",
+      "area": "Gangnam",
+      "summary": "Thorough color analysis with interpreter service; reviewers note the team follows through even past closing time."
+    },
+    "colorize-personal-color-makeup-gangnam": {
+      "name": "Colorize (Gangnam)",
+      "category": "personal_color",
+      "kind": "place",
+      "area": "Gangnam",
+      "summary": "Gangnam branch of the Colorize personal-color studio — same brand as the Myeongdong flagship."
+    },
+    "earthness-spa-aroma-massage": {
+      "name": "Earthness Spa",
+      "category": "spa",
+      "kind": "place",
+      "area": "Gangnam",
+      "summary": "Quiet aroma-oil massage studio in Gangnam."
+    },
+    "in-spa-premium-hotel-spa": {
+      "name": "IN SPA",
+      "category": "spa",
+      "kind": "place",
+      "area": "Gangnam",
+      "summary": "Premium hotel-style spa and massage in Gangnam."
+    },
+    "moclock-scalp-hair-loss-care": {
+      "name": "Moclock Scalp Care",
+      "category": "head_spa",
+      "kind": "place",
+      "area": "Gangnam",
+      "summary": "Scalp and hair-loss care specialist head spa in Gangnam."
+    },
+    "myshopper-personal-color-shopping-guide": {
+      "name": "Myshopper",
+      "category": "personal_color",
+      "kind": "place",
+      "area": "Gangnam",
+      "summary": "Personal color analysis paired with a guided shopping session."
+    },
+    "cutloose-k-pop-hair-makeup": {
+      "name": "Cutloose",
+      "category": "salon",
+      "kind": "place",
+      "area": "Cheongdam",
+      "summary": "Cheongdam K-pop hair and makeup studio; the director's creative styling made their Instagram the portfolio."
+    },
+    "normalshop": {
+      "name": "Normalshop",
+      "category": "salon",
+      "kind": "place",
+      "area": "Cheongdam",
+      "summary": "Hair and makeup studio near Gangnam-gu Office Station — pets welcome."
+    },
+    "rolling-jay": {
+      "name": "Rolling Jay",
+      "category": "salon",
+      "kind": "place",
+      "area": "Cheongdam",
+      "summary": "Hair and makeup salon between Cheongdam and Gangnam-gu Office Station."
+    },
+    "juno-hair-gangseo-office": {
+      "name": "JUNO HAIR Gangseo",
+      "category": "salon",
+      "kind": "place",
+      "area": "Gangseo",
+      "summary": "Gangseo branch of the JUNO HAIR chain."
+    },
+    "hosu-dosan": {
+      "name": "HOSU DOSAN",
+      "category": "salon",
+      "kind": "place",
+      "area": "Cheongdam",
+      "summary": "Premium K-pop hair and makeup on Dosan-daero; idol-style makeovers, bookable via Creatrip."
+    },
+    "a3-nature-private-body-scrub": {
+      "name": "A3 Nature",
+      "category": "spa",
+      "kind": "place",
+      "area": "Dongdaemun",
+      "summary": "Private Korean body-scrub spa in Dongdaemun."
+    },
+    "sparex-sauna-good-morning-city-dongmyo": {
+      "name": "SPAREX Sauna",
+      "category": "spa",
+      "kind": "place",
+      "area": "Dongdaemun",
+      "summary": "Classic jjimjilbang sauna in the Good Morning City building near Dongmyo."
+    },
+    "a-muu-hair-salon": {
+      "name": "A:MUU Hair Salon",
+      "category": "salon",
+      "kind": "place",
+      "area": "Myeongdong",
+      "summary": "A 28-year veteran director — layered cuts, perms, and head spa, popular with visiting travelers."
+    },
+    "anskin-myeongdong": {
+      "name": "ANSKIN",
+      "category": "facial",
+      "kind": "place",
+      "area": "Myeongdong",
+      "summary": "Facial care studio in the heart of Myeongdong."
+    },
+    "art-de-la-peau": {
+      "name": "Art de la Peau",
+      "category": "facial",
+      "kind": "place",
+      "area": "Myeongdong",
+      "summary": "Esthetic facials and massage — one of Myeongdong's best-reviewed skincare rooms."
+    },
+    "cocorea-makeup-hair": {
+      "name": "Cocorea",
+      "category": "personal_color",
+      "kind": "place",
+      "area": "Myeongdong",
+      "summary": "Personal color plus hair and makeup in one sitting; bookings run through Klook and Naver."
+    },
+    "colorize-personal-color-analysis-makeup": {
+      "name": "Colorize (Myeongdong)",
+      "category": "personal_color",
+      "kind": "place",
+      "area": "Myeongdong",
+      "summary": "The Colorize flagship — consultants explain why each color works, down to shopping picks. 2,400+ reviews."
+    },
+    "hana-mud-spa": {
+      "name": "Hana Mud Spa",
+      "category": "spa",
+      "kind": "place",
+      "area": "Myeongdong",
+      "summary": "Women-only mud sauna and massage with Korean-style amethyst sauna rooms; book via Creatrip or Klook."
+    },
+    "herique-hair": {
+      "name": "Herique Hair",
+      "category": "salon",
+      "kind": "place",
+      "area": "Myeongdong",
+      "summary": "Well-reviewed Myeongdong hair salon with 460+ ratings."
+    },
+    "juno-hair-myeongdong-street": {
+      "name": "JUNO HAIR Myeongdong",
+      "category": "salon",
+      "kind": "place",
+      "area": "Myeongdong",
+      "summary": "Myeongdong Street branch of the JUNO HAIR chain — hair and head spa."
+    },
+    "line-esthe-facial-care": {
+      "name": "Line Esthe",
+      "category": "facial",
+      "kind": "place",
+      "area": "Myeongdong",
+      "summary": "Facial-care room in Myeongdong with consistently high ratings."
+    },
+    "mizo-massage-rooftop-spa": {
+      "name": "MIZO Rooftop Spa",
+      "category": "spa",
+      "kind": "place",
+      "area": "Myeongdong",
+      "summary": "Rooftop spa combining full-body, foot, and facial care."
+    },
+    "myeongdong-beauty-skyview-spa": {
+      "name": "Myeongdong Beauty Skyview Spa",
+      "category": "spa",
+      "kind": "place",
+      "area": "Myeongdong",
+      "summary": "Hot stone, full-body massage, and facial with a rooftop view, one minute from Myeongdong Station."
+    },
+    "myeongdong-condition-body-head-massage": {
+      "name": "Myeongdong Condition",
+      "category": "spa",
+      "kind": "place",
+      "area": "Myeongdong",
+      "summary": "Body and head massage studio in Myeongdong."
+    },
+    "myeongdong-skinspa": {
+      "name": "Myeongdong Skinspa",
+      "category": "facial",
+      "kind": "place",
+      "area": "Myeongdong",
+      "summary": "Korean-style facials, RF lifting, and skin boosters at the Skinspa flagship."
+    },
+    "o-hui-whoo-spa-massage": {
+      "name": "O HUI & WHOO Spa",
+      "category": "spa",
+      "kind": "place",
+      "area": "Myeongdong",
+      "summary": "Spa and massage built around the O HUI and WHOO cosmetic lines — 1,000+ reviews."
+    },
+    "parkjun-beautylab": {
+      "name": "Parkjun BeautyLab",
+      "category": "salon",
+      "kind": "place",
+      "area": "Myeongdong",
+      "summary": "Total beauty lab known for its signature 15-step scalp treatment; a favorite among visiting travelers."
+    },
+    "spa-1978-red-ginseng-ritual": {
+      "name": "SPA 1978",
+      "category": "spa",
+      "kind": "place",
+      "area": "Myeongdong",
+      "summary": "Red-ginseng ritual spa (formerly SPA 1899) in Myeongdong."
+    },
+    "the-bom-personal-color-makeup": {
+      "name": "The Bom",
+      "category": "personal_color",
+      "kind": "place",
+      "area": "Myeongdong",
+      "summary": "Personal color and makeup studio on Toegye-ro, near Myeongdong."
+    },
+    "ye-lead-hair-styling": {
+      "name": "Ye_Lead Hair",
+      "category": "salon",
+      "kind": "place",
+      "area": "Myeongdong",
+      "summary": "Premium salon built around an 18-step signature scalp treatment."
+    },
+    "argyol-seongsu": {
+      "name": "Argyol",
+      "category": "salon",
+      "kind": "place",
+      "area": "Seongsu",
+      "summary": "K-beauty styling bar with a 15-step head spa; four branches across Seoul."
+    },
+    "jungsaemmool-k-beauty-makeup-class-seongsu-101": {
+      "name": "JUNGSAEMMOOL Makeup Class",
+      "category": "makeup",
+      "kind": "experience",
+      "area": "Seongsu",
+      "summary": "JUNGSAEMMOOL's group makeup class with 1:1 touches — take home a fan-size product and use the photo booth after."
+    },
+    "mércdi-hair-salon": {
+      "name": "Mércdi Hair Salon",
+      "category": "salon",
+      "kind": "place",
+      "area": "Seongsu",
+      "summary": "Small Seongsu hair salon; official web presence and exact location unverified."
+    },
+    "whipped-face-mask-cleanser-class": {
+      "name": "WHIPPED",
+      "category": "facial",
+      "kind": "experience",
+      "area": "Seongsu",
+      "summary": "One-day vegan class in Seongsu — whip up your own cleanser and face mask."
+    },
+    "the-foret-spa-seoul-forest": {
+      "name": "THE FORET SPA",
+      "category": "spa",
+      "kind": "place",
+      "area": "Seongsu",
+      "summary": "Private-room premium spa near Seoul Forest Station; head spa and anti-aging care draw high marks."
+    },
+    "mariem-hair-head-spa": {
+      "name": "Mariem",
+      "category": "head_spa",
+      "kind": "place",
+      "area": "Seongsu",
+      "summary": "15-step scalp and hair therapy studio between Seongsu and Wangsimni."
+    },
+    "dakyo-nail-apgujeong": {
+      "name": "DAKYO NAIL",
+      "category": "nail_lash",
+      "kind": "place",
+      "area": "Apgujeong",
+      "summary": "Nail art studio in Apgujeong, newly listed on Klook."
+    },
+    "lovey-hair-makeup": {
+      "name": "Lovey",
+      "category": "salon",
+      "kind": "place",
+      "area": "Apgujeong",
+      "summary": "Hair and makeup studio in Apgujeong."
+    },
+    "hyze-clinic": {
+      "name": "HYZE Clinic",
+      "category": "clinic",
+      "kind": "place",
+      "area": "Apgujeong",
+      "summary": "Dermatology clinic at Apgujeong Rodeo focused on lifting, pigment, and body treatments."
+    },
+    "onyad-hair": {
+      "name": "ONYAD Hair",
+      "category": "salon",
+      "kind": "place",
+      "area": "Apgujeong",
+      "summary": "Famous on social for 'On-spa' personal hair consulting; Seoul Forest flagship plus five branches."
+    },
+    "lee-chul-hair-kerker": {
+      "name": "Lee Chul Hair KerKer",
+      "category": "salon",
+      "kind": "place",
+      "area": "Wangsimni",
+      "summary": "Wangsimni outpost of the long-running Lee Chul salon chain."
+    },
+    "season-of-you": {
+      "name": "Season of You",
+      "category": "personal_color",
+      "kind": "place",
+      "area": "Yongsan",
+      "summary": "Foreigner-friendly personal color studio near Sinyongsan Station."
+    },
+    "ecojardin-stem-cell-head-spa": {
+      "name": "EcoJardin",
+      "category": "head_spa",
+      "kind": "place",
+      "area": "Jamsil",
+      "summary": "Stem-cell head spa inside Lotte Tower, Jamsil."
+    },
+    "arz-make-up-cheongdam": {
+      "name": "ARZ MAKE UP",
+      "category": "makeup",
+      "kind": "place",
+      "area": "Cheongdam",
+      "summary": "Cheongdam studio specialized in wedding and photoshoot makeup."
+    },
+    "boboris-total-beauty-salon": {
+      "name": "BOBORIS",
+      "category": "salon",
+      "kind": "place",
+      "area": "Cheongdam",
+      "summary": "Total beauty salon reportedly in Cheongdam; Seoul address and official account unverified."
+    },
+    "hautbeaute": {
+      "name": "Hautbeaute",
+      "category": "salon",
+      "kind": "place",
+      "area": "Cheongdam",
+      "summary": "A celebrity-favorite hair and makeup atelier on Cheongdam-dong."
+    },
+    "jenny-house-celeb-hair-styling": {
+      "name": "Jenny House",
+      "category": "salon",
+      "kind": "place",
+      "area": "Cheongdam",
+      "summary": "The celebrity hair house — Jenny House's Cheongdam flagship."
+    },
+    "soonsoo-cheongdam": {
+      "name": "Soonsoo Cheongdam",
+      "category": "salon",
+      "kind": "place",
+      "area": "Cheongdam",
+      "summary": "Cheongdam total beauty salon — hair, makeup, weddings, and celebrity styling."
+    },
+    "void-cheongdam-hair-makeup": {
+      "name": "VOID Cheongdam",
+      "category": "salon",
+      "kind": "place",
+      "area": "Cheongdam",
+      "summary": "Small Cheongdam studio praised for natural styling and attentive consultations."
+    },
+    "yoning": {
+      "name": "Yoning",
+      "category": "salon",
+      "kind": "place",
+      "area": "Cheongdam",
+      "summary": "Premium K-beauty hair and makeup in Cheongdam; idol styling draws a celebrity clientele."
+    },
+    "color-of-you-personal-color-analysis": {
+      "name": "Color of You",
+      "category": "personal_color",
+      "kind": "place",
+      "area": "Hongdae",
+      "summary": "Popular with travelers — seasonal tone analysis you can apply right away, in English."
+    },
+    "damda-private-korean-bath-body-scrub": {
+      "name": "DAMDA",
+      "category": "spa",
+      "kind": "place",
+      "area": "Hongdae",
+      "summary": "Private Korean bath, body scrub, and hair care in one course — a gentle first-seshin experience."
+    },
+    "forena-clinic": {
+      "name": "Forena Clinic",
+      "category": "clinic",
+      "kind": "place",
+      "area": "Hongdae",
+      "summary": "Foreigner-friendly dermatology clinic a minute from Hongik Univ. Station — Ulthera, Thermage, Rejuran."
+    },
+    "hanji-makeup-glow-makeup": {
+      "name": "HANJI Makeup",
+      "category": "makeup",
+      "kind": "place",
+      "area": "Hongdae",
+      "summary": "Glow-makeup studio in Hongdae."
+    },
+    "image-ho-personal-color": {
+      "name": "Image Ho",
+      "category": "personal_color",
+      "kind": "place",
+      "area": "Hongdae",
+      "summary": "Group personal-color consulting running since 2007; book via Seoul Beauty Global."
+    },
+    "moi-hair-makeup": {
+      "name": "Moi Hair & Makeup",
+      "category": "salon",
+      "kind": "place",
+      "area": "Hongdae",
+      "summary": "1:1 tailored hair and makeup consulting in Hongdae."
+    },
+    "personalized-k-beauty-facial-healing-ritual": {
+      "name": "K-Beauty Facial & Healing Ritual",
+      "category": "facial",
+      "kind": "experience",
+      "area": "Hongdae",
+      "summary": "Personalized K-beauty facial and healing ritual session in Hongdae."
+    },
+    "pingpong-eyelash-salon": {
+      "name": "Pingpong Eyelash Salon",
+      "category": "nail_lash",
+      "kind": "place",
+      "area": "Hongdae",
+      "summary": "Eyelash salon listed on Klook; exact location and official account unverified."
+    },
+    "roa-makeup": {
+      "name": "ROA.MAKEUP",
+      "category": "makeup",
+      "kind": "place",
+      "area": "Hongdae",
+      "summary": "Makeup studio near Hongik University Station."
+    },
+    "shop-vivian-eyelash-extension": {
+      "name": "Shop Vivian",
+      "category": "nail_lash",
+      "kind": "place",
+      "area": "Hongdae",
+      "summary": "1:1 eyelash extension specialist in Hongdae; official account unverified."
+    },
+    "the-foot-shop-body-foot-care": {
+      "name": "The Foot Shop",
+      "category": "spa",
+      "kind": "place",
+      "area": "Hongdae",
+      "summary": "Body and foot care shop in Hongdae."
+    },
+    "unique-by-hair-styling": {
+      "name": "UNIQUE-by",
+      "category": "salon",
+      "kind": "place",
+      "area": "Hongdae",
+      "summary": "Hongdae hair styling salon."
+    },
+    "vog-hair-hongdae": {
+      "name": "VOG Hair",
+      "category": "salon",
+      "kind": "place",
+      "area": "Hongdae",
+      "summary": "Halal- and foreigner-friendly hair salon with English-speaking stylists."
+    },
+    "iimi-hair-makeup": {
+      "name": "iimi Hair & Makeup",
+      "category": "salon",
+      "kind": "place",
+      "area": "Hongdae",
+      "summary": "K-pop idol-style hair and makeup, popular for profile shoots — five minutes from Hongik Univ. Station."
+    },
+    "nailkimlee": {
+      "name": "NailKimlee",
+      "category": "nail_lash",
+      "kind": "place",
+      "area": "Hongdae",
+      "summary": "Popular Hongdae/Hapjeong nail atelier; 1:1 by appointment."
+    },
+    "olrang-hair-styling": {
+      "name": "OLRANG",
+      "category": "salon",
+      "kind": "place",
+      "area": "Hongdae",
+      "summary": "Hapjeong salon where each designer runs their own book."
+    },
+    "note-private-self-perfume-class-gangnam": {
+      "name": ".NOTE Perfume Class (Gangnam)",
+      "category": "perfume",
+      "kind": "experience",
+      "area": "Gangnam",
+      "summary": ".NOTE's private self-perfume class, Gangnam studio."
+    },
+    "greedy-scent-bukchon": {
+      "name": "Greedy Scent Bukchon",
+      "category": "perfume",
+      "kind": "experience",
+      "area": "Bukchon",
+      "summary": "Blend your own scent from 30-plus notes in a hanok-village atmosphere — 'the memory of the trip, bottled.'"
+    },
+    "note-private-self-perfume-class-seongsu": {
+      "name": ".NOTE Perfume Class (Seongsu)",
+      "category": "perfume",
+      "kind": "experience",
+      "area": "Seongsu",
+      "summary": "Tablet-guided private perfume class in Seongsu — go at your own pace, with thoughtful extras."
+    },
+    "lumiere-perfume-seongsu": {
+      "name": "Lumiere Perfume (Seongsu)",
+      "category": "perfume",
+      "kind": "experience",
+      "area": "Seongsu",
+      "summary": "Seongsu perfume atelier with warm 1:1 guidance; many reviewers come back for the upgrade package."
+    },
+    "greedy-scent-yeonnam": {
+      "name": "Greedy Scent Yeonnam",
+      "category": "perfume",
+      "kind": "experience",
+      "area": "Yeonnam",
+      "summary": "Yeonnam branch of the Greedy Scent perfume workshop."
+    },
+    "note-private-self-perfume-class-hongdae": {
+      "name": ".NOTE Perfume Class (Hongdae)",
+      "category": "perfume",
+      "kind": "experience",
+      "area": "Hongdae",
+      "summary": ".NOTE's private self-perfume class, Hongdae studio."
+    },
+    "lumiere-perfume-hongdae": {
+      "name": "Lumiere Perfume (Hongdae)",
+      "category": "perfume",
+      "kind": "experience",
+      "area": "Hongdae",
+      "summary": "Hongdae branch of the Lumiere perfume atelier."
+    },
+    "korean-home-style-cooking-class-near-gangnam-station": {
+      "name": "Home-Style Korean Cooking Class",
+      "category": "cooking_class",
+      "kind": "experience",
+      "area": "Gangnam",
+      "summary": "Home-style Korean cooking near Gangnam Station — creative freedom over strict recipes, with the culture behind each dish."
+    },
+    "kimchi-making-class-with-chef-hakyung-at-gyeongbokgung": {
+      "name": "Kimchi Class with Chef Hakyung",
+      "category": "cooking_class",
+      "kind": "experience",
+      "area": "Bukchon",
+      "summary": "Kimchi-making class with Chef Hakyung near Gyeongbokgung."
+    },
+    "cooking-class-in-mangwon-market-with-michelin-starred-chef": {
+      "name": "Mangwon Market Chef's Cooking Class",
+      "category": "cooking_class",
+      "kind": "experience",
+      "area": "Mangwon",
+      "summary": "Shop Mangwon Market with a Michelin-experienced chef, then cook what you found — closer to cultural exchange than a lesson."
+    },
+    "korean-cooking-class-with-grocery-shopping-at-seoul-local-market": {
+      "name": "Market-to-Table Cooking Class",
+      "category": "cooking_class",
+      "kind": "experience",
+      "area": "Mangwon",
+      "summary": "Korean cooking class that starts with grocery shopping in Mangwon Market."
+    },
+    "kimchi-cooking-class-in-traditional-hanok-house": {
+      "name": "Hanok Kimchi Cooking Class",
+      "category": "cooking_class",
+      "kind": "experience",
+      "area": "Bukchon",
+      "summary": "Kimchi class held in a traditional hanok near Bukchon."
+    },
+    "royal-seoul-cooking-class-in-a-100-year-old-hanok": {
+      "name": "Royal Seoul Cooking Class",
+      "category": "cooking_class",
+      "kind": "experience",
+      "area": "Bukchon",
+      "summary": "Royal Korean cooking in a 100-year-old hanok, paired with a market tour."
+    },
+    "traditional-korean-6-dish-cooking-class-hidden-alley-tour": {
+      "name": "Korean 6-Dish Class & Alley Tour",
+      "category": "cooking_class",
+      "kind": "experience",
+      "area": "Bukchon",
+      "summary": "Six-dish traditional Korean cooking class plus a hidden-alley walking tour."
+    },
+    "seoul-soju-makgeolli-tasting-experience": {
+      "name": "Soju & Makgeolli Tasting",
+      "category": "food_tour",
+      "kind": "experience",
+      "area": null,
+      "summary": "Soju and makgeolli tastings, from distillery visits to guided flights."
+    },
+    "where-locals-eat-korean-bbq-dry-aged-hanwoo": {
+      "name": "Where Locals Eat: Korean BBQ",
+      "category": "food_tour",
+      "kind": "experience",
+      "area": null,
+      "summary": "Hosted Korean BBQ and dry-aged hanwoo dinners where locals actually eat."
+    },
+    "brewing-makgeolli-experience": {
+      "name": "Makgeolli Brewing Experience",
+      "category": "cooking_class",
+      "kind": "experience",
+      "area": "Seongsu",
+      "summary": "Brew your own makgeolli in a Seongsu workshop."
+    },
+    "the-seoul-pub-crawl": {
+      "name": "The Seoul Pub Crawl",
+      "category": "food_tour",
+      "kind": "experience",
+      "area": "Itaewon",
+      "summary": "Itaewon-based pub crawl through Seoul's nightlife."
+    },
+    "gwangjang-market-half-day-street-food-experience": {
+      "name": "Gwangjang Street Food Tour",
+      "category": "food_tour",
+      "kind": "experience",
+      "area": "Jongno",
+      "summary": "Half-day Gwangjang Market street-food tour run like a stamp-rally challenge — guides get repeat praise."
+    },
+    "gwangjang-market-half-day-vegan-food-tour": {
+      "name": "Gwangjang Vegan Food Tour",
+      "category": "food_tour",
+      "kind": "experience",
+      "area": "Jongno",
+      "summary": "Half-day vegan food tour through Gwangjang Market."
+    },
+    "absolute-seoul-pub-crawl-hongdae-itaewon": {
+      "name": "Absolute Seoul Pub Crawl",
+      "category": "food_tour",
+      "kind": "experience",
+      "area": "Hongdae",
+      "summary": "High-energy pub crawl with hosts who mix an international crowd — Hongdae most nights, Itaewon on Fridays."
+    }
+  }
+}
