@@ -9,6 +9,7 @@ describe("beauty sections", () => {
   it("keeps Beauty organized around editorial pillars", () => {
     expect(BEAUTY_SECTIONS.map((section) => section.slug)).toEqual([
       "skincare",
+      "ingredients",
       "hair",
       "scalp",
       "treatments",
