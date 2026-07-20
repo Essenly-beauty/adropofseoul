@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { DiscoveryPlaceCard } from "@/components/editorial/DiscoveryCards";
 import { JsonLd } from "@/components/editorial/JsonLd";
+import { PlacesDirectory } from "@/components/editorial/PlacesDirectory";
 import { SectionHeading } from "@/components/editorial/SectionHeading";
 import {
   PLACES,
@@ -78,10 +78,8 @@ export default function PlacesPage() {
 
       <section className="mt-12">
         <SectionHeading title="All Seoul Places" eyebrow="Directory" />
-        <div className="grid gap-8 md:grid-cols-3">
-          {PLACES.map((place) => (
-            <DiscoveryPlaceCard key={place.slug} place={place} />
-          ))}
+        <div className="mt-8">
+          <PlacesDirectory places={PLACES} />
         </div>
       </section>
     </main>
