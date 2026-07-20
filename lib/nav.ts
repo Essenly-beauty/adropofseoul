@@ -25,6 +25,7 @@ export const NAV_ITEMS: NavItem[] = [
       { label: "Head Spas", href: "/places/head-spas" },
       { label: "Skin Clinics", href: "/places/skin-clinics" },
       { label: "Beauty Stores", href: "/places/beauty-stores" },
+      { label: "All Places →", href: "/places" },
     ],
   },
   {

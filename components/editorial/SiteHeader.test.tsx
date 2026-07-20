@@ -33,4 +33,9 @@ describe("SiteHeader", () => {
     expect(button.getAttribute("aria-expanded")).toBe("true");
     expect(screen.getByRole("button", { name: /beauty/i })).toBeTruthy();
   });
+  it("exposes an All Places link in the Places dropdown", () => {
+    render(<SiteHeader />);
+    const allPlaces = screen.getByRole("link", { name: "All Places →" });
+    expect(allPlaces.getAttribute("href")).toBe("/places");
+  });
 });
