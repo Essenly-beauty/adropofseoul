@@ -172,3 +172,19 @@ export function placeCategoryFromType(typeSlug: string): string {
 export function placeTypeSlug(category: string): string {
   return category.replace(/_/g, "-");
 }
+
+// --- Posts -----------------------------------------------------------------
+export const POST_CATEGORIES: { value: string; label: string }[] = [
+  { value: "beauty", label: "Beauty" },
+  { value: "hair", label: "Hair" },
+  { value: "head_spa", label: "Head Spa" },
+  { value: "places", label: "Places" },
+  { value: "wellness", label: "Wellness" },
+  { value: "products", label: "Products" },
+  { value: "guides", label: "Guides" },
+];
+
+export const POST_STATUSES: { value: string; label: string }[] = [
+  { value: "draft", label: "Draft" },
+  { value: "published", label: "Published" },
+];
