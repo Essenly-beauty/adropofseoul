@@ -3,11 +3,11 @@ import { render, screen } from "@testing-library/react";
 import { PlaceForm } from "./PlaceForm";
 import type { AdminPlace } from "@/services/admin/places";
 
-vi.mock("react", async () => {
-  const actual = await vi.importActual("react");
+vi.mock("react-dom", async () => {
+  const actual = await vi.importActual("react-dom");
   return {
     ...actual,
-    useActionState: vi.fn((action, initialState) => [initialState, vi.fn()]),
+    useFormState: (_action: unknown, initial: unknown) => [initial, vi.fn()],
   };
 });
 

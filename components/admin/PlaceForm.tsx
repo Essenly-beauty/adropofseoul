@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState } from "react";
+import { useFormState } from "react-dom";
 import Link from "next/link";
 import { PLACE_TYPE_LABELS, PLACE_ENTRY_KINDS } from "@/lib/taxonomy";
 import type { AdminPlace } from "@/services/admin/places";
@@ -39,9 +39,7 @@ export function PlaceForm({
     mode === "edit" && place
       ? updatePlaceAction.bind(null, place.id)
       : createPlaceAction;
-  const [state, formAction] = useActionState<FormState, FormData>(action, {
-    ok: true,
-  });
+  const [state, formAction] = useFormState(action, { ok: true } as FormState);
   const e = state.errors ?? {};
 
   return (
