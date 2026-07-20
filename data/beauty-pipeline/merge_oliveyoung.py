@@ -13,7 +13,7 @@
   4. 덮어쓰기 전 각 파일을 *.bak.csv로 백업. 검증 실패 시 저장 중단.
   5. keyf()는 화해 때 쓴 것과 완전히 동일해야 함.
 """
-import re, shutil
+import json, re, shutil
 from pathlib import Path
 import pandas as pd
 
@@ -38,9 +38,16 @@ def keyf(brand: str, name: str) -> str:
 #   필수 : brand, product_name, oy_id(올리브영 상품코드), url
 #   선택 : brand_en, category, subcategory, skin_types(list), concerns(list)
 def load_crawled() -> list[dict]:
-    # TODO: 크롤러 결과(JSON/CSV)를 읽어 dict 리스트로 반환
-    #   예) return json.load(open("oliveyoung_crawl.json", encoding="utf-8"))
-    raise NotImplementedError
+    """csv/oliveyoung_crawl.json 을 읽어 dict 리스트로 반환. 필수 필드 검증."""
+    path = DIR / "oliveyoung_crawl.json"
+    if not path.exists():
+        raise SystemExit(f"크롤 결과 없음: {path} — crawler.py로 먼저 수집하세요")
+    data = json.load(open(path, encoding="utf-8"))
+    required = ("brand", "product_name", "oy_id", "url")
+    bad = [r for r in data if not all(str(r.get(k, "")).strip() for k in required)]
+    if bad:
+        raise SystemExit(f"필수 필드 누락 레코드 {len(bad)}건 (필수: {required}): {bad[:3]}")
+    return data
 
 def is_ambiguous(key, brand, key_to_id, brands_seen):
     # 정확 키는 없지만 같은 브랜드가 이미 있으면 → 사람이 확인
