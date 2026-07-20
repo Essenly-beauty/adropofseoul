@@ -9,6 +9,8 @@ import {
   placeTypeSlug,
   SECTIONS,
   BEAUTY_TABS,
+  POST_CATEGORIES,
+  POST_STATUSES,
 } from "./taxonomy";
 import type { Post } from "@/services/types";
 
@@ -99,5 +101,22 @@ describe("sections", () => {
     expect(BEAUTY_TABS.find((t) => t.key === "skincare")?.href).toBe(
       "/beauty/skincare"
     );
+  });
+});
+
+describe("post taxonomy", () => {
+  it("lists the post_category enum values", () => {
+    expect(POST_CATEGORIES.map((c) => c.value)).toEqual([
+      "beauty",
+      "hair",
+      "head_spa",
+      "places",
+      "wellness",
+      "products",
+      "guides",
+    ]);
+  });
+  it("lists the post_status enum values", () => {
+    expect(POST_STATUSES.map((s) => s.value)).toEqual(["draft", "published"]);
   });
 });
