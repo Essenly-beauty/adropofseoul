@@ -33,9 +33,14 @@ describe("NAV_ITEMS", () => {
     expect(around?.children?.map((c) => c.label)).toContain("Seongsu");
     expect(around?.children?.map((c) => c.label)).toContain("Common");
     const places = NAV_ITEMS.find((i) => i.label === "Places");
-    expect(places?.children?.map((c) => c.href)).toContain(
-      "/places?type=head-spa"
-    );
+    expect(places?.children).toEqual([
+      { label: "Head Spa", href: "/places?type=head-spa" },
+      { label: "Salons", href: "/places?type=salon" },
+      { label: "Spa & Massage", href: "/places?type=spa" },
+      { label: "Personal Color", href: "/places?type=personal-color" },
+      { label: "Experiences", href: "/places?kind=experience" },
+      { label: "All Places", href: "/places" },
+    ]);
     // Home / About stay flat
     expect(
       NAV_ITEMS.find((i) => i.label === "About")?.children

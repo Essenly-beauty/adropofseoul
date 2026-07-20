@@ -19,9 +19,16 @@ const SECTION_CHILDREN: Record<string, { label: string; href: string }[]> = {
     label: t.label,
     href: t.href,
   })),
+  // A short, curated slice of the directory's 11 live categories — the full
+  // type / kind / area facets live on the /places page filters. Keep this
+  // list short: the mobile GNB renders all children expanded.
   places: [
     { label: "Head Spa", href: "/places?type=head-spa" },
     { label: "Salons", href: "/places?type=salon" },
+    { label: "Spa & Massage", href: "/places?type=spa" },
+    { label: "Personal Color", href: "/places?type=personal-color" },
+    { label: "Experiences", href: "/places?kind=experience" },
+    { label: "All Places", href: "/places" },
   ],
   "around-seoul": [
     ...AROUND_SEOUL_NEIGHBORHOODS.map((n) => ({
