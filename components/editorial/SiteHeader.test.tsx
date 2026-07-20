@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, within } from "@testing-library/react";
 import { SiteHeader } from "./SiteHeader";
 
 describe("SiteHeader", () => {
@@ -37,5 +37,16 @@ describe("SiteHeader", () => {
     render(<SiteHeader />);
     const allPlaces = screen.getByRole("link", { name: "All Places →" });
     expect(allPlaces.getAttribute("href")).toBe("/places");
+  });
+  it("does not duplicate the All Places link in the mobile menu", () => {
+    render(<SiteHeader />);
+    fireEvent.click(screen.getByRole("button", { name: /menu/i }));
+    fireEvent.click(screen.getByRole("button", { name: /places/i }));
+    const mobileNav = screen.getByRole("navigation", { name: "Mobile" });
+    const placesLinks = within(mobileNav)
+      .getAllByRole("link")
+      .filter((link) => link.getAttribute("href") === "/places");
+    expect(placesLinks).toHaveLength(1);
+    expect(placesLinks[0].textContent).toBe("All Places");
   });
 });

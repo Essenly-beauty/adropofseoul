@@ -88,16 +88,18 @@ export function SiteHeader() {
                         >
                           All {item.label}
                         </Link>
-                        {item.items.map((child) => (
-                          <Link
-                            key={child.href}
-                            href={child.href}
-                            onClick={() => setOpen(false)}
-                            className="block py-2 text-sm text-text-muted transition-colors duration-medium ease-editorial hover:text-accent"
-                          >
-                            {child.label}
-                          </Link>
-                        ))}
+                        {item.items
+                          .filter((child) => child.href !== item.href)
+                          .map((child) => (
+                            <Link
+                              key={child.href}
+                              href={child.href}
+                              onClick={() => setOpen(false)}
+                              className="block py-2 text-sm text-text-muted transition-colors duration-medium ease-editorial hover:text-accent"
+                            >
+                              {child.label}
+                            </Link>
+                          ))}
                       </div>
                     )}
                   </div>
