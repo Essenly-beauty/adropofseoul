@@ -88,6 +88,20 @@ def parse_product(html: str, url: str, known_brands: list) -> dict:
     raise ValueError(f"브랜드 미매칭: '{title}' ({url}) — brands.csv brand_en에 없음")
 
 
+def collect(urls, known_brands, fetch_fn=fetch, delay: float = 3.0):
+    """URL들을 순회 수집. 파싱 불가 페이지(품절/리다이렉트 폴백 등)는 건너뛰고 사유를 모은다.
+
+    반환: (records, skipped) — skipped는 "url: 사유" 문자열 목록.
+    """
+    records, skipped = [], []
+    for u in urls:
+        try:
+            records.append(parse_product(fetch_fn(u, delay), u, known_brands))
+        except ValueError as e:
+            skipped.append(f"{u}: {e}")
+    return records, skipped
+
+
 def main(argv=None) -> None:
     ap = argparse.ArgumentParser(description="올리브영 글로벌 시딩 수집기")
     ap.add_argument("url_file", help="상품 URL 목록 파일(줄당 1개)")
@@ -100,11 +114,13 @@ def main(argv=None) -> None:
         raise SystemExit(f"URL 목록이 비어 있음: {args.url_file}")
 
     known = load_known_brands(DIR / "brands.csv")
-    records = [parse_product(fetch(u, args.delay), u, known) for u in urls[: args.max]]
+    records, skipped = collect(urls[: args.max], known, delay=args.delay)
 
     out = DIR / "oliveyoung_global_crawl.json"
     out.write_text(json.dumps(records, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"{len(records)}건 저장 → {out}")
+    for s in skipped:
+        print(f"건너뜀: {s}")
 
 
 if __name__ == "__main__":

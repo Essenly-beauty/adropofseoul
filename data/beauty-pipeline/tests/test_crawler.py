@@ -62,6 +62,25 @@ def test_load_known_brands_reads_brand_en_column(pipeline: Path):
     assert brands == ["Torriden", "ANUA"]  # 픽스처 brands.csv의 brand_en 열
 
 
+def test_collect_skips_unparseable_pages_and_reports():
+    """리다이렉트/품절 폴백 페이지(일반 홈 타이틀)는 건너뛰고 나머지는 수집한다."""
+    import crawler
+
+    good_html = FIXTURE.read_text(encoding="utf-8")
+    fallback_html = (
+        '<html><head><meta property="og:title" '
+        'content="OLIVE YOUNG Global | Korea&#39;s No. 1 Health &amp; Beauty Store"/>'
+        "</head><body></body></html>"
+    )
+    pages = {SAMPLE_URL: good_html, "https://global.oliveyoung.com/product/detail?prdtNo=GA999": fallback_html}
+
+    records, skipped = crawler.collect(
+        list(pages.keys()), ["CAREZONE"], fetch_fn=lambda u, delay: pages[u], delay=0
+    )
+    assert [r["oy_id"] for r in records] == ["GA210000002"]
+    assert len(skipped) == 1 and "GA999" in skipped[0]
+
+
 def test_main_rejects_empty_url_file(pipeline: Path, tmp_path: Path):
     urls = tmp_path / "urls.txt"
     urls.write_text("\n", encoding="utf-8")
