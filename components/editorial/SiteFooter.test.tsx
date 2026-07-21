@@ -19,6 +19,9 @@ describe("SiteFooter", () => {
     expect(
       screen.getByRole("link", { name: "Privacy Policy" }).getAttribute("href")
     ).toBe("/privacy");
+    expect(
+      screen.getByRole("link", { name: "Terms of Use" }).getAttribute("href")
+    ).toBe("/terms");
     expect(screen.getByText(/All rights reserved/)).toBeTruthy();
   });
 });
