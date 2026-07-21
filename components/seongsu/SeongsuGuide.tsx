@@ -2,7 +2,8 @@ import Link from "next/link";
 import { Prose } from "@/components/editorial/Prose";
 import { TonalFrame } from "@/components/editorial/TonalFrame";
 import { JsonLd } from "@/components/editorial/JsonLd";
-import { articleJsonLd, breadcrumbJsonLd } from "@/lib/seo";
+import { articleJsonLd, breadcrumbJsonLd, canonical } from "@/lib/seo";
+import { ShareButtons } from "@/components/editorial/ShareButtons";
 import {
   getCourse,
   COURSE_1_ALTERNATES,
@@ -36,7 +37,15 @@ export function SeongsuGuide({ guide }: { guide: Guide }) {
         </p>
         <h1 className="mt-2 font-serif text-4xl md:text-5xl">{guide.title}</h1>
         <p className="mt-3 text-xl text-text-muted">{guide.subtitle}</p>
-        <p className="mt-4 text-sm text-text-muted">By {guide.author}</p>
+        <div className="mt-4 flex items-center justify-between gap-4">
+          <p className="text-sm text-text-muted">By {guide.author}</p>
+          <ShareButtons
+            path={`/articles/${guide.slug}`}
+            title={`${guide.title} — A Drop of Seoul`}
+            imageUrl={hero ? canonical(hero) : undefined}
+            align="right"
+          />
+        </div>
 
         <figure className="mt-8">
           <TonalFrame

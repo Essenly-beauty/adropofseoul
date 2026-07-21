@@ -196,6 +196,7 @@ export default async function PlacePage({
           path={`/places/${place.slug}`}
           title={`${place.name} — A Drop of Seoul`}
           imageUrl={placeShareImage(place)}
+          className="mt-5"
         />
       </article>
     </main>

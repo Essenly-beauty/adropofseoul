@@ -18,10 +18,14 @@ export function ShareButtons({
   path,
   title,
   imageUrl,
+  align = "left",
+  className = "",
 }: {
   path: string;
   title: string;
   imageUrl?: string;
+  align?: "left" | "right";
+  className?: string;
 }) {
   const [open, setOpen] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -82,7 +86,7 @@ export function ShareButtons({
   }
 
   return (
-    <div ref={rootRef} className="relative mt-5 inline-block">
+    <div ref={rootRef} className={`relative inline-block ${className}`}>
       <button
         type="button"
         className={PILL}
@@ -96,7 +100,9 @@ export function ShareButtons({
       {open && (
         <div
           role="menu"
-          className="absolute left-0 z-10 mt-2 w-44 rounded-lg border border-soft-gray bg-bg p-1.5 shadow-sm"
+          className={`absolute z-10 mt-2 w-44 rounded-lg border border-soft-gray bg-bg p-1.5 shadow-sm ${
+            align === "right" ? "right-0" : "left-0"
+          }`}
         >
           {canNativeShare && (
             <button

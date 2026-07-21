@@ -68,6 +68,20 @@ describe("ShareButtons", () => {
     expect(await screen.findByText("Copied ✓")).toBeTruthy();
   });
 
+  it("supports a right-aligned menu and a custom root class", () => {
+    const { container } = render(
+      <ShareButtons
+        path="/places/soo"
+        title="Soo Head Spa"
+        align="right"
+        className="mt-4"
+      />
+    );
+    expect((container.firstChild as HTMLElement).className).toContain("mt-4");
+    openMenu();
+    expect(screen.getByRole("menu").className).toContain("right-0");
+  });
+
   it("closes on Escape and on outside click", () => {
     render(<ShareButtons path="/places/soo" title="Soo Head Spa" />);
     openMenu();
