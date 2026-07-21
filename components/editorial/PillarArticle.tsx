@@ -2,9 +2,10 @@ import Link from "next/link";
 import { Prose } from "@/components/editorial/Prose";
 import { TonalFrame } from "@/components/editorial/TonalFrame";
 import { JsonLd } from "@/components/editorial/JsonLd";
-import { articleJsonLd, breadcrumbJsonLd } from "@/lib/seo";
+import { articleJsonLd, breadcrumbJsonLd, canonical } from "@/lib/seo";
 import { pillarToPost, resolvePillarHero } from "@/lib/articles/assets";
 import type { Pillar } from "@/lib/articles/pillars";
+import { ShareButtons } from "@/components/editorial/ShareButtons";
 import { WaitlistForm } from "@/components/seongsu/WaitlistForm";
 
 export function PillarArticle({ pillar }: { pillar: Pillar }) {
@@ -28,7 +29,15 @@ export function PillarArticle({ pillar }: { pillar: Pillar }) {
         </p>
         <h1 className="mt-2 font-serif text-4xl md:text-5xl">{pillar.title}</h1>
         <p className="mt-3 text-xl text-text-muted">{pillar.dek}</p>
-        <p className="mt-4 text-sm text-text-muted">By {pillar.author}</p>
+        <div className="mt-4 flex items-center justify-between gap-4">
+          <p className="text-sm text-text-muted">By {pillar.author}</p>
+          <ShareButtons
+            path={`/articles/${pillar.slug}`}
+            title={`${pillar.title} — A Drop of Seoul`}
+            imageUrl={hero ? canonical(hero) : undefined}
+            align="right"
+          />
+        </div>
 
         <figure className="mt-8">
           <TonalFrame

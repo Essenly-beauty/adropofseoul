@@ -6,6 +6,8 @@ import { JsonLd } from "@/components/editorial/JsonLd";
 import { Stars } from "@/components/editorial/Stars";
 import { localBusinessJsonLd, breadcrumbJsonLd, canonical } from "@/lib/seo";
 import { PLACE_TYPE_EMOJI, PLACE_TYPE_LABELS } from "@/lib/taxonomy";
+import { ShareButtons } from "@/components/editorial/ShareButtons";
+import { placeShareImage } from "@/lib/og";
 
 export async function generateMetadata({
   params,
@@ -21,7 +23,11 @@ export async function generateMetadata({
     openGraph: {
       title: place.name,
       description: place.shortDescription ?? undefined,
-      images: place.images[0] ? [place.images[0]] : undefined,
+      images: [placeShareImage(place)],
+    },
+    twitter: {
+      card: "summary_large_image",
+      images: [placeShareImage(place)],
     },
   };
 }
@@ -185,6 +191,13 @@ export default async function PlacePage({
             </a>
           ))}
         </div>
+
+        <ShareButtons
+          path={`/places/${place.slug}`}
+          title={`${place.name} — A Drop of Seoul`}
+          imageUrl={placeShareImage(place)}
+          className="mt-5"
+        />
       </article>
     </main>
   );

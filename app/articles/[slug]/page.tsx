@@ -10,6 +10,7 @@ import { SeongsuGuide } from "@/components/seongsu/SeongsuGuide";
 import { getPillar } from "@/lib/articles/pillars";
 import { resolvePillarHero } from "@/lib/articles/assets";
 import { PillarArticle } from "@/components/editorial/PillarArticle";
+import { ShareButtons } from "@/components/editorial/ShareButtons";
 import { TonalFrame } from "@/components/editorial/TonalFrame";
 import { getArticleImageMeta } from "@/lib/article-images";
 
@@ -115,9 +116,23 @@ export default async function ArticlePage({
         {post.subtitle && (
           <p className="mt-3 text-xl text-text-muted">{post.subtitle}</p>
         )}
-        {post.author && (
-          <p className="mt-4 text-sm text-text-muted">By {post.author}</p>
-        )}
+        <div className="mt-4 flex items-center justify-between gap-4">
+          {post.author ? (
+            <p className="text-sm text-text-muted">By {post.author}</p>
+          ) : (
+            <span aria-hidden />
+          )}
+          <ShareButtons
+            path={`/articles/${post.slug}`}
+            title={`${post.title} — A Drop of Seoul`}
+            imageUrl={
+              post.featuredImage && /^https?:\/\//.test(post.featuredImage)
+                ? post.featuredImage
+                : undefined
+            }
+            align="right"
+          />
+        </div>
         {post.featuredImage &&
           (() => {
             const imageMeta = getArticleImageMeta(post.slug);
