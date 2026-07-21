@@ -1,6 +1,7 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { ShareButtons } from "./ShareButtons";
+import { SITE_URL } from "@/lib/site";
 
 describe("ShareButtons", () => {
   it("renders copy + primary channels, hides secondary behind More", () => {
@@ -36,7 +37,7 @@ describe("ShareButtons", () => {
     expect(wa.getAttribute("target")).toBe("_blank");
     expect(wa.getAttribute("rel")).toContain("noopener");
     const decoded = decodeURIComponent(wa.getAttribute("href")!);
-    expect(decoded).toContain("/places/soo");
+    expect(decoded).toContain(`${SITE_URL}/places/soo`);
     expect(decoded).toContain("utm_medium=whatsapp");
   });
 

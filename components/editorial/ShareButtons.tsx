@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { SITE_URL } from "@/lib/site";
 import { PRIMARY_CHANNEL_KEYS, SHARE_CHANNELS, withUtm } from "@/lib/share";
 
@@ -21,10 +21,19 @@ export function ShareButtons({
   const [copied, setCopied] = useState(false);
   const [expanded, setExpanded] = useState(false);
   const [canNativeShare, setCanNativeShare] = useState(false);
+  const copiedTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const url = `${SITE_URL}${path}`;
 
   useEffect(() => {
     setCanNativeShare(typeof navigator.share === "function");
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      if (copiedTimeoutRef.current) {
+        clearTimeout(copiedTimeoutRef.current);
+      }
+    };
   }, []);
 
   const primary = SHARE_CHANNELS.filter((c) =>
@@ -35,9 +44,17 @@ export function ShareButtons({
   );
 
   async function copy() {
-    await navigator.clipboard.writeText(withUtm(url, "copy"));
+    try {
+      await navigator.clipboard.writeText(withUtm(url, "copy"));
+    } catch {
+      // clipboard denied or unavailable (non-secure context) — no-op
+      return;
+    }
     setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    if (copiedTimeoutRef.current) {
+      clearTimeout(copiedTimeoutRef.current);
+    }
+    copiedTimeoutRef.current = setTimeout(() => setCopied(false), 2000);
   }
 
   function nativeShare() {
@@ -69,7 +86,12 @@ export function ShareButtons({
             Share…
           </button>
         )}
-        <button type="button" className={PILL} onClick={copy}>
+        <button
+          type="button"
+          className={PILL}
+          onClick={copy}
+          aria-live="polite"
+        >
           {copied ? "Copied ✓" : "Copy Link"}
         </button>
         {primary.map(channelPill)}
