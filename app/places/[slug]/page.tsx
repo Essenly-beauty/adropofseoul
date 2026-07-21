@@ -6,6 +6,7 @@ import { JsonLd } from "@/components/editorial/JsonLd";
 import { Stars } from "@/components/editorial/Stars";
 import { localBusinessJsonLd, breadcrumbJsonLd, canonical } from "@/lib/seo";
 import { PLACE_TYPE_EMOJI, PLACE_TYPE_LABELS } from "@/lib/taxonomy";
+import { ShareButtons } from "@/components/editorial/ShareButtons";
 
 export async function generateMetadata({
   params,
@@ -185,6 +186,12 @@ export default async function PlacePage({
             </a>
           ))}
         </div>
+
+        <ShareButtons
+          path={`/places/${place.slug}`}
+          title={`${place.name} — A Drop of Seoul`}
+          imageUrl={place.images[0]}
+        />
       </article>
     </main>
   );
