@@ -3,13 +3,16 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArticleCard } from "@/components/editorial/ArticleCard";
 import { JsonLd } from "@/components/editorial/JsonLd";
+import { NeighborhoodDirectory } from "@/components/around-seoul/NeighborhoodDirectory";
 import { breadcrumbJsonLd, canonical } from "@/lib/seo";
 import { getNeighborhood, regionForGuide } from "@/lib/taxonomy";
 import { listPublishedPosts } from "@/services/posts";
 import { listGuidePosts } from "@/lib/seongsu/assets";
+import { listPlaces } from "@/services/places";
 import { SeongsuMap } from "@/components/seongsu/SeongsuMap";
 import { WaitlistForm } from "@/components/seongsu/WaitlistForm";
 import type { Post } from "@/services/types";
+import type { Place } from "@/services/types";
 
 // Rendered on demand: the hub pulls DB `guides` posts (via cookies), so it can't
 // be statically prerendered. `notFound()` still guards unknown neighborhoods.
@@ -55,6 +58,16 @@ async function neighborhoodPosts(slug: string): Promise<Post[]> {
     .sort((a, b) => (b.publishedAt ?? "").localeCompare(a.publishedAt ?? ""));
 }
 
+// Published places for the hub's purpose sections; hubs render fine without.
+async function neighborhoodPlaces(area: string): Promise<Place[]> {
+  try {
+    return await listPlaces({ limit: 100, area });
+  } catch (err) {
+    console.error("around-seoul: places fetch failed", err);
+    return [];
+  }
+}
+
 export default async function NeighborhoodPage({
   params,
 }: {
@@ -64,6 +77,7 @@ export default async function NeighborhoodPage({
   if (!n) notFound();
 
   const posts = await neighborhoodPosts(n.slug);
+  const places = n.sections?.length ? await neighborhoodPlaces(n.label) : [];
 
   return (
     <main className="mx-auto max-w-content px-6 py-16">
@@ -86,6 +100,8 @@ export default async function NeighborhoodPage({
       </header>
 
       {n.hasMap && <SeongsuMap course={1} className="mx-auto max-w-3xl" />}
+
+      <NeighborhoodDirectory neighborhood={n} places={places} />
 
       {posts.length > 0 && (
         <div className="mt-4 grid gap-8 md:grid-cols-2">
