@@ -38,6 +38,14 @@ describe("ShareButtons", () => {
     }
   });
 
+  it("every menu item carries an icon", () => {
+    render(<ShareButtons path="/places/soo" title="Soo Head Spa" />);
+    openMenu();
+    for (const item of screen.getAllByRole("menuitem")) {
+      expect(item.querySelector("svg")).toBeTruthy();
+    }
+  });
+
   it("channel links are absolute, UTM-tagged, and open in a new tab", () => {
     render(<ShareButtons path="/places/soo" title="Soo Head Spa" />);
     openMenu();

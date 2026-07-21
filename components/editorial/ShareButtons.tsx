@@ -3,12 +3,13 @@
 import { useEffect, useRef, useState } from "react";
 import { SITE_URL } from "@/lib/site";
 import { SHARE_CHANNELS, withUtm } from "@/lib/share";
+import { ChannelIcon, CopyLinkIcon, NativeShareIcon } from "./ShareIcons";
 
 const PILL =
   "inline-flex items-center gap-1.5 rounded-full border border-soft-gray px-3 py-1.5 text-[11px] uppercase tracking-label text-text-muted transition-colors duration-medium ease-editorial hover:border-accent hover:text-accent";
 
 const ITEM =
-  "block w-full rounded-md px-3 py-2 text-left text-[11px] uppercase tracking-label text-text-muted transition-colors duration-medium ease-editorial hover:bg-porcelain hover:text-text";
+  "flex w-full items-center gap-2.5 rounded-md px-3 py-2 text-left text-[11px] uppercase tracking-label text-text-muted transition-colors duration-medium ease-editorial hover:bg-porcelain hover:text-text";
 
 // Single Share trigger that opens a channel menu. Native share is detected
 // after mount so the server render (no navigator) matches the first client
@@ -89,21 +90,7 @@ export function ShareButtons({
         aria-expanded={open}
         onClick={() => setOpen((v) => !v)}
       >
-        <svg
-          aria-hidden
-          viewBox="0 0 16 16"
-          width="12"
-          height="12"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path d="M8 1.5v8.5" />
-          <path d="M5 4.5l3-3 3 3" />
-          <path d="M3 7.5v5A1.5 1.5 0 0 0 4.5 14h7a1.5 1.5 0 0 0 1.5-1.5v-5" />
-        </svg>
+        <NativeShareIcon />
         Share
       </button>
       {open && (
@@ -118,6 +105,7 @@ export function ShareButtons({
               className={ITEM}
               onClick={nativeShare}
             >
+              <NativeShareIcon />
               Share via…
             </button>
           )}
@@ -128,6 +116,7 @@ export function ShareButtons({
             aria-live="polite"
             onClick={copy}
           >
+            <CopyLinkIcon />
             {copied ? "Copied ✓" : "Copy Link"}
           </button>
           {SHARE_CHANNELS.map((c) => (
@@ -140,6 +129,7 @@ export function ShareButtons({
               className={ITEM}
               onClick={() => setOpen(false)}
             >
+              <ChannelIcon channel={c.key} />
               {c.label}
             </a>
           ))}
