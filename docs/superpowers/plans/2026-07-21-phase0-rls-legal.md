@@ -12,7 +12,7 @@
 
 - No new npm dependencies.
 - App-layer admin guards (`ADMIN_EMAILS` + middleware + `requireAdmin`) stay untouched — the claim is defense in depth, not a replacement.
-- Policy names must not change (drop + recreate under the same name): `posts_admin_all`, `places_admin_all`, `products_admin_all`, `media_admin_all`, `newsletter_admin_read` (0002_rls.sql), `waitlist_admin_read` (0006_waitlist.sql), `ingredients_admin_all`, `product_ingredients_admin_all` (20260712044543_ingredients.sql). Public-read and public-insert policies are NOT touched.
+- Policy names must not change (drop + recreate under the same name): `posts_admin_all`, `places_admin_all`, `products_admin_all`, `media_admin_all`, `newsletter_admin_read` (0002_rls.sql), `waitlist_admin_read` (0006_waitlist.sql), `ingredients_admin_all`, `product_ingredients_admin_all` (20260712044543_ingredients.sql). Public-insert policies are NOT touched. AMENDED during review: the 5 public-READ policies ARE recreated as `to anon, authenticated` (same using-clauses) — original `to anon`-only scoping would have blanked the site for signed-in non-admin members once the permissive admin policies were claim-gated. Do not "fix" this back.
 - Scripts follow the `scripts/seed-posts.mjs` conventions: header usage comment, `env()` helper that falls back to `.env.local`, plain Node ESM, no CLI framework.
 - Legal pages: English, editorial page style (`max-w-3xl px-6 py-16`, serif h1, `text-text-muted` body), honest about current vs planned collection ("if you create an account…" phrasing for SSO/profile features not yet live). No boilerplate legalese walls — short clear sections.
 - Test commands: `npx vitest run <file>`; full gate `npm test && npm run typecheck`.
