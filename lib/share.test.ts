@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { withUtm, SHARE_CHANNELS, PRIMARY_CHANNEL_KEYS } from "./share";
+import { withUtm, SHARE_CHANNELS } from "./share";
 
 describe("withUtm", () => {
   it("appends utm params to a bare url", () => {
@@ -75,11 +75,5 @@ describe("SHARE_CHANNELS", () => {
     expect(pin.href(url, title, "https://img.example/a.jpg")).toContain(
       `media=${encodeURIComponent("https://img.example/a.jpg")}`
     );
-  });
-
-  it("primary keys are a subset of channel keys", () => {
-    const keys = SHARE_CHANNELS.map((c) => c.key);
-    expect(PRIMARY_CHANNEL_KEYS).toEqual(["whatsapp", "pinterest", "x"]);
-    for (const k of PRIMARY_CHANNEL_KEYS) expect(keys).toContain(k);
   });
 });

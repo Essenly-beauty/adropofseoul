@@ -2,13 +2,17 @@
 
 import { useEffect, useRef, useState } from "react";
 import { SITE_URL } from "@/lib/site";
-import { PRIMARY_CHANNEL_KEYS, SHARE_CHANNELS, withUtm } from "@/lib/share";
+import { SHARE_CHANNELS, withUtm } from "@/lib/share";
 
 const PILL =
-  "rounded-full border border-soft-gray px-3 py-1.5 text-[11px] uppercase tracking-label text-text-muted transition-colors duration-medium ease-editorial hover:border-accent hover:text-accent";
+  "inline-flex items-center gap-1.5 rounded-full border border-soft-gray px-3 py-1.5 text-[11px] uppercase tracking-label text-text-muted transition-colors duration-medium ease-editorial hover:border-accent hover:text-accent";
 
-// Share pills for a detail page. Native share is detected after mount so the
-// server render (no navigator) matches the first client render.
+const ITEM =
+  "block w-full rounded-md px-3 py-2 text-left text-[11px] uppercase tracking-label text-text-muted transition-colors duration-medium ease-editorial hover:bg-porcelain hover:text-text";
+
+// Single Share trigger that opens a channel menu. Native share is detected
+// after mount so the server render (no navigator) matches the first client
+// render.
 export function ShareButtons({
   path,
   title,
@@ -18,9 +22,10 @@ export function ShareButtons({
   title: string;
   imageUrl?: string;
 }) {
+  const [open, setOpen] = useState(false);
   const [copied, setCopied] = useState(false);
-  const [expanded, setExpanded] = useState(false);
   const [canNativeShare, setCanNativeShare] = useState(false);
+  const rootRef = useRef<HTMLDivElement>(null);
   const copiedTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const url = `${SITE_URL}${path}`;
 
@@ -36,12 +41,23 @@ export function ShareButtons({
     };
   }, []);
 
-  const primary = SHARE_CHANNELS.filter((c) =>
-    PRIMARY_CHANNEL_KEYS.includes(c.key)
-  );
-  const secondary = SHARE_CHANNELS.filter(
-    (c) => !PRIMARY_CHANNEL_KEYS.includes(c.key)
-  );
+  useEffect(() => {
+    if (!open) return;
+    function onMouseDown(e: MouseEvent) {
+      if (rootRef.current && !rootRef.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    }
+    function onKeyDown(e: KeyboardEvent) {
+      if (e.key === "Escape") setOpen(false);
+    }
+    document.addEventListener("mousedown", onMouseDown);
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.removeEventListener("mousedown", onMouseDown);
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  }, [open]);
 
   async function copy() {
     try {
@@ -58,55 +74,77 @@ export function ShareButtons({
   }
 
   function nativeShare() {
+    setOpen(false);
     navigator.share({ title, url: withUtm(url, "native") }).catch(() => {
       // user dismissed the share sheet — not an error
     });
   }
 
-  const channelPill = (c: (typeof SHARE_CHANNELS)[number]) => (
-    <a
-      key={c.key}
-      href={c.href(url, title, imageUrl)}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={PILL}
-    >
-      {c.label}
-    </a>
-  );
-
   return (
-    <div className="mt-5">
-      <p className="text-[11px] uppercase tracking-label text-text-muted">
-        Share
-      </p>
-      <div className="mt-2 flex flex-wrap gap-2">
-        {canNativeShare && (
-          <button type="button" className={PILL} onClick={nativeShare}>
-            Share…
-          </button>
-        )}
-        <button
-          type="button"
-          className={PILL}
-          onClick={copy}
-          aria-live="polite"
+    <div ref={rootRef} className="relative mt-5 inline-block">
+      <button
+        type="button"
+        className={PILL}
+        aria-haspopup="menu"
+        aria-expanded={open}
+        onClick={() => setOpen((v) => !v)}
+      >
+        <svg
+          aria-hidden
+          viewBox="0 0 16 16"
+          width="12"
+          height="12"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         >
-          {copied ? "Copied ✓" : "Copy Link"}
-        </button>
-        {primary.map(channelPill)}
-        {expanded ? (
-          secondary.map(channelPill)
-        ) : (
+          <path d="M8 1.5v8.5" />
+          <path d="M5 4.5l3-3 3 3" />
+          <path d="M3 7.5v5A1.5 1.5 0 0 0 4.5 14h7a1.5 1.5 0 0 0 1.5-1.5v-5" />
+        </svg>
+        Share
+      </button>
+      {open && (
+        <div
+          role="menu"
+          className="absolute left-0 z-10 mt-2 w-44 rounded-lg border border-soft-gray bg-bg p-1.5 shadow-sm"
+        >
+          {canNativeShare && (
+            <button
+              type="button"
+              role="menuitem"
+              className={ITEM}
+              onClick={nativeShare}
+            >
+              Share via…
+            </button>
+          )}
           <button
             type="button"
-            className={PILL}
-            onClick={() => setExpanded(true)}
+            role="menuitem"
+            className={ITEM}
+            aria-live="polite"
+            onClick={copy}
           >
-            More +
+            {copied ? "Copied ✓" : "Copy Link"}
           </button>
-        )}
-      </div>
+          {SHARE_CHANNELS.map((c) => (
+            <a
+              key={c.key}
+              role="menuitem"
+              href={c.href(url, title, imageUrl)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={ITEM}
+              onClick={() => setOpen(false)}
+            >
+              {c.label}
+            </a>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

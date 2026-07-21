@@ -74,5 +74,3 @@ export const SHARE_CHANNELS: ShareChannel[] = [
       `mailto:?subject=${enc(title)}&body=${enc(withUtm(url, "email"))}`,
   },
 ];
-
-export const PRIMARY_CHANNEL_KEYS = ["whatsapp", "pinterest", "x"];
