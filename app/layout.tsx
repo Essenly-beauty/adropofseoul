@@ -3,6 +3,7 @@ import { Cormorant_Garamond, Inter } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/editorial/SiteHeader";
 import { SiteFooter } from "@/components/editorial/SiteFooter";
+import { SITE_URL } from "@/lib/site";
 
 const serif = Cormorant_Garamond({
   subsets: ["latin"],
@@ -22,7 +23,7 @@ const sans = Inter({
 const OG_IMAGE = "/og.png";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://adropofseoul.vercel.app"),
+  metadataBase: new URL(SITE_URL),
   title: "A Drop of Seoul",
   description:
     "A curated guide to Korean beauty, hair rituals, head spas, and places worth knowing.",

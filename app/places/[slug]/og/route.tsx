@@ -83,7 +83,7 @@ export async function GET(
               color: "#1C1C1C",
             }}
           >
-            {place.rating.toFixed(1)} / 5
+            {`${place.rating.toFixed(1)} / 5`}
           </div>
         )}
       </div>
