@@ -38,7 +38,8 @@ python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
 - `age_groups.csv` : product_id, age_group, rank
 - `concerns.csv` : product_id, source, concern_raw (원본값 보존)
 - `skin_type_map.csv` / `concern_map.csv` : source, raw_value, std_value (표준화 규칙; std는 나중에 사람이 채움)
-- `awards.csv` / `textures.csv` / `rankings.csv` : 화해 전용 — 올리브영 병합 시 건드리지 않음
+- `awards.csv` : 수상 기록. 화해 어워드 + 올리브영 어워즈(award_theme "올리브영 어워즈 YYYY", 공식 스토어의 ★Awards★ 에디션 목록이 근거일 때만 — 추측 금지)
+- `textures.csv` / `rankings.csv` : 화해 전용 — 올리브영 병합 시 건드리지 않음
 
 ### 원본 보존 원칙 (중요)
 
