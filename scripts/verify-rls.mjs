@@ -47,6 +47,7 @@ function check(name, ok, detail) {
   console.log(`${ok ? "PASS" : "FAIL"} ${name}${detail ? ` — ${detail}` : ""}`);
 }
 
+let cleanupFailed = false;
 try {
   const probe = createClient(url, env("NEXT_PUBLIC_SUPABASE_ANON_KEY"));
   const { error: signInError } = await probe.auth.signInWithPassword({
@@ -60,7 +61,11 @@ try {
     .from("places")
     .select("id, slug")
     .limit(1);
-  check("published places readable", !readError, readError?.message);
+  check(
+    "published places readable",
+    !readError && (places ?? []).length > 0,
+    readError?.message ?? `read ${places?.length ?? 0} rows`
+  );
 
   // UPDATE against a using-clause that denies the row updates 0 rows.
   const target = places?.[0];
@@ -98,9 +103,15 @@ try {
     subsError?.message ?? `read ${subs?.length ?? 0} rows`
   );
 } finally {
-  await admin.auth.admin.deleteUser(created.user.id);
+  const { error } = await admin.auth.admin.deleteUser(created.user.id);
+  if (error) {
+    console.error(
+      `CLEANUP FAILED: throwaway user ${email} not deleted — ${error.message}`
+    );
+    cleanupFailed = true;
+  }
 }
 
-const allPass = results.every(Boolean);
+const allPass = results.every(Boolean) && !cleanupFailed;
 console.log(allPass ? "RLS VERIFY: ALL PASS" : "RLS VERIFY: FAILURES");
 process.exit(allPass ? 0 : 1);

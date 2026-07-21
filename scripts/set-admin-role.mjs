@@ -26,8 +26,9 @@ function env(key) {
   throw new Error("missing " + key);
 }
 
-const emails = process.argv.slice(2).length
-  ? process.argv.slice(2)
+const argvEmails = process.argv.slice(2);
+const emails = argvEmails.length
+  ? argvEmails
   : env("ADMIN_EMAILS")
       .split(",")
       .map((e) => e.trim())
@@ -43,14 +44,24 @@ const supabase = createClient(
   env("SUPABASE_SERVICE_ROLE_KEY")
 );
 
-const { data, error } = await supabase.auth.admin.listUsers({
-  perPage: 1000,
-});
-if (error) throw error;
+// listUsers is paginated server-side; keep fetching pages until one comes
+// back short of perPage, so admin lookups don't silently miss users past
+// page 1 once the project has more than perPage accounts.
+const perPage = 1000;
+const users = [];
+for (let page = 1; ; page++) {
+  const { data, error } = await supabase.auth.admin.listUsers({
+    page,
+    perPage,
+  });
+  if (error) throw error;
+  users.push(...data.users);
+  if (data.users.length < perPage) break;
+}
 
 let failed = false;
 for (const email of emails) {
-  const user = data.users.find(
+  const user = users.find(
     (u) => u.email?.toLowerCase() === email.toLowerCase()
   );
   if (!user) {

@@ -60,3 +60,26 @@ drop policy if exists waitlist_admin_read on waitlist_subscribers;
 create policy waitlist_admin_read on waitlist_subscribers
   for select to authenticated
   using (public.is_admin());
+
+-- public reads must also cover signed-in (non-admin) sessions: previously a
+-- logged-in user was covered by the permissive *_admin_all policies; with
+-- those claim-gated, "to anon" alone would blank the site for members.
+drop policy if exists posts_public_read on posts;
+create policy posts_public_read on posts
+  for select to anon, authenticated using (status = 'published');
+
+drop policy if exists places_public_read on places;
+create policy places_public_read on places
+  for select to anon, authenticated using (is_published = true);
+
+drop policy if exists products_public_read on products;
+create policy products_public_read on products
+  for select to anon, authenticated using (is_published = true);
+
+drop policy if exists ingredients_public_read on ingredients;
+create policy ingredients_public_read on ingredients
+  for select to anon, authenticated using (status = 'published');
+
+drop policy if exists product_ingredients_public_read on product_ingredients;
+create policy product_ingredients_public_read on product_ingredients
+  for select to anon, authenticated using (true);
