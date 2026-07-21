@@ -62,7 +62,7 @@ export default function PrivacyPage() {
 
       <Section title="What we don't do">
         <p>
-          We do not sell personal data. We do not republish other people's
+          We do not sell personal data. We do not republish other people&apos;s
           reviews or private content. We collect nothing beyond what the
           features above need.
         </p>
