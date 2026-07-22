@@ -1,4 +1,6 @@
 import { describe, it, expect } from "vitest";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import {
   isPick,
   WELLNESS_CATEGORIES,
@@ -212,5 +214,21 @@ describe("phase-b neighborhoods", () => {
             PLACE_TYPE_LABELS[c],
             `${n.slug} / ${s.title} / ${c}`
           ).toBeTruthy();
+  });
+
+  it("only uses real area values in hub configs", () => {
+    const curation = JSON.parse(
+      readFileSync(join(__dirname, "../data/places-curation.en.json"), "utf8")
+    ) as { places: Record<string, { area: string | null }> };
+    const known = new Set(
+      Object.values(curation.places)
+        .map((p) => p.area)
+        .filter(Boolean)
+    );
+    for (const n of AROUND_SEOUL_NEIGHBORHOODS) {
+      if (n.areas) expect(n.areas.length, n.slug).toBeGreaterThan(0);
+      for (const a of neighborhoodAreas(n))
+        expect(known.has(a), `${n.slug} / ${a}`).toBe(true);
+    }
   });
 });
