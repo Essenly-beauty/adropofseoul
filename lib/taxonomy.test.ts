@@ -11,6 +11,8 @@ import {
   BEAUTY_TABS,
   POST_CATEGORIES,
   POST_STATUSES,
+  groupPlacesBySection,
+  type NeighborhoodSection,
 } from "./taxonomy";
 import type { Post } from "@/services/types";
 
@@ -118,5 +120,58 @@ describe("post taxonomy", () => {
   });
   it("lists the post_status enum values", () => {
     expect(POST_STATUSES.map((s) => s.value)).toEqual(["draft", "published"]);
+  });
+});
+
+describe("groupPlacesBySection", () => {
+  const sections: NeighborhoodSection[] = [
+    { title: "Shops", categories: ["shop"] },
+    {
+      title: "Classes",
+      categories: ["perfume", "facial"],
+      entryType: "experience",
+    },
+    { title: "Services", categories: ["salon", "facial"], entryType: "place" },
+  ];
+  const p = (
+    category: string,
+    entryType: "place" | "experience" = "place"
+  ) => ({ category, entryType });
+
+  it("groups by category in section order and drops empty sections", () => {
+    const groups = groupPlacesBySection([p("salon"), p("shop")], sections);
+    expect(groups.map((g) => g.section.title)).toEqual(["Shops", "Services"]);
+  });
+
+  it("routes the same category to different sections by entry type", () => {
+    const groups = groupPlacesBySection(
+      [p("facial", "experience"), p("facial", "place")],
+      sections
+    );
+    expect(groups.map((g) => g.section.title)).toEqual(["Classes", "Services"]);
+    expect(groups[0].places).toHaveLength(1);
+  });
+
+  it("assigns each place to the first matching section only", () => {
+    const overlapping: NeighborhoodSection[] = [
+      { title: "A", categories: ["shop"] },
+      { title: "B", categories: ["shop"] },
+    ];
+    const groups = groupPlacesBySection([p("shop")], overlapping);
+    expect(groups).toHaveLength(1);
+    expect(groups[0].section.title).toBe("A");
+  });
+
+  it("returns nothing when no places match", () => {
+    expect(groupPlacesBySection([p("cafe")], sections)).toEqual([]);
+  });
+
+  it("gives Seongsu a purpose-section config in editorial order", () => {
+    expect(getNeighborhood("seongsu")?.sections?.map((s) => s.title)).toEqual([
+      "Shop the flagships",
+      "Warehouse cafés",
+      "Make something",
+      "Beauty services on the rise",
+    ]);
   });
 });

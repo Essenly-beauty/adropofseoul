@@ -78,7 +78,27 @@ export function isPick(post: Pick<Post, "slug" | "tags">): boolean {
 /** Wellness surfaces both native wellness posts and head-spa explainers. */
 export const WELLNESS_CATEGORIES = ["wellness", "head_spa"];
 
+// --- Places types (moved up) -----------------------------------------------
+// A directory entry is either a bookable spot or a bookable activity.
+export const PLACE_ENTRY_KINDS = [
+  { value: "place", label: "Places" },
+  { value: "experience", label: "Experiences" },
+] as const;
+export type PlaceEntryKind = (typeof PLACE_ENTRY_KINDS)[number]["value"];
+
 // --- Around Seoul ---------------------------------------------------------
+/** One purpose-based group on a neighborhood hub page. */
+export type NeighborhoodSection = {
+  /** Section heading, e.g. "Shop the flagships". */
+  title: string;
+  /** Optional one-line intro under the heading. */
+  blurb?: string;
+  /** place_category enum values that belong to this section. */
+  categories: string[];
+  /** Restrict to one entry kind; omit to accept both. */
+  entryType?: PlaceEntryKind;
+};
+
 export type Neighborhood = {
   slug: string;
   label: string;
@@ -90,6 +110,8 @@ export type Neighborhood = {
   lede?: string;
   /** True if this neighborhood has a dedicated interactive course map. */
   hasMap?: boolean;
+  /** Purpose-based directory sections, in editorial order. */
+  sections?: NeighborhoodSection[];
 };
 
 export const AROUND_SEOUL_NEIGHBORHOODS: Neighborhood[] = [
@@ -99,8 +121,41 @@ export const AROUND_SEOUL_NEIGHBORHOODS: Neighborhood[] = [
     blurb:
       "Seoul's beauty-and-fashion district — flagships, local tables, and warehouse cafés.",
     heading: "Seongsu, the local way",
-    lede: "Seongsu is where Seoul's beauty industry actually works — and the food scene grew up to feed it. Two connected walks, cross-checked and walked by our team: the beauty-and-bites mile, and the warehouse-café crawl just east. They share one map, and they link into a single day.",
+    lede: "Seongsu is where Seoul's beauty industry actually works — flagship stores, warehouse cafés, and the workshops behind them. Shop the flagships people fly in for, take the classes locals book, and walk our cross-checked beauty-and-bites mile on the map below.",
     hasMap: true,
+    sections: [
+      {
+        title: "Shop the flagships",
+        blurb: "The K-beauty and fashion flagships people actually fly in for.",
+        categories: ["shop"],
+      },
+      {
+        title: "Warehouse cafés",
+        blurb: "Factory-conversion coffee — Seongsu's original draw.",
+        categories: ["cafe"],
+      },
+      {
+        title: "Make something",
+        blurb:
+          "Perfume, makeup, and traditional-drink classes worth booking ahead.",
+        categories: ["perfume", "makeup", "cooking_class", "facial"],
+        entryType: "experience",
+      },
+      {
+        title: "Beauty services on the rise",
+        blurb:
+          "Salons and studios locals book by DM — barely on the booking apps yet.",
+        categories: [
+          "personal_color",
+          "nail_lash",
+          "salon",
+          "head_spa",
+          "spa",
+          "facial",
+        ],
+        entryType: "place",
+      },
+    ],
   },
 ];
 
@@ -156,13 +211,6 @@ export const PLACE_TYPE_EMOJI: Record<string, string> = {
   food_tour: "🥢",
 };
 
-// A directory entry is either a bookable spot or a bookable activity.
-export const PLACE_ENTRY_KINDS = [
-  { value: "place", label: "Places" },
-  { value: "experience", label: "Experiences" },
-] as const;
-export type PlaceEntryKind = (typeof PLACE_ENTRY_KINDS)[number]["value"];
-
 /** URL type-slug ("head-spa") → place category enum ("head_spa"). */
 export function placeCategoryFromType(typeSlug: string): string {
   return typeSlug.replace(/-/g, "_");
@@ -171,6 +219,38 @@ export function placeCategoryFromType(typeSlug: string): string {
 /** place category enum ("head_spa") → URL type-slug ("head-spa"). */
 export function placeTypeSlug(category: string): string {
   return category.replace(/_/g, "-");
+}
+
+/**
+ * Group places into a neighborhood's sections. Section order is preserved,
+ * each place lands in the first section whose categories (and entryType,
+ * when set) match, and empty sections are omitted.
+ */
+export function groupPlacesBySection<
+  T extends { category: string; entryType: PlaceEntryKind },
+>(
+  places: T[],
+  sections: NeighborhoodSection[]
+): { section: NeighborhoodSection; places: T[] }[] {
+  const remaining = [...places];
+  const groups: { section: NeighborhoodSection; places: T[] }[] = [];
+  for (const section of sections) {
+    const matched: T[] = [];
+    for (let i = 0; i < remaining.length;) {
+      const p = remaining[i];
+      if (
+        section.categories.includes(p.category) &&
+        (!section.entryType || p.entryType === section.entryType)
+      ) {
+        matched.push(p);
+        remaining.splice(i, 1);
+      } else {
+        i++;
+      }
+    }
+    if (matched.length > 0) groups.push({ section, places: matched });
+  }
+  return groups;
 }
 
 // --- Posts -----------------------------------------------------------------
