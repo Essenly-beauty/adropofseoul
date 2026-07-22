@@ -1802,7 +1802,7 @@
     "googleMaps": null,
     "naverMap": null,
     "reviewSummary": null,
-    "verified": false
+    "verified": true
   },
   {
     "id": "096",
@@ -1821,7 +1821,7 @@
     "googleMaps": null,
     "naverMap": null,
     "reviewSummary": null,
-    "verified": false
+    "verified": true
   },
   {
     "id": "097",
@@ -1840,7 +1840,7 @@
     "googleMaps": null,
     "naverMap": null,
     "reviewSummary": null,
-    "verified": false
+    "verified": true
   },
   {
     "id": "098",
@@ -1859,7 +1859,7 @@
     "googleMaps": null,
     "naverMap": null,
     "reviewSummary": null,
-    "verified": false
+    "verified": true
   },
   {
     "id": "099",
@@ -1878,7 +1878,7 @@
     "googleMaps": null,
     "naverMap": null,
     "reviewSummary": null,
-    "verified": false
+    "verified": true
   },
   {
     "id": "100",
@@ -1897,7 +1897,7 @@
     "googleMaps": null,
     "naverMap": null,
     "reviewSummary": null,
-    "verified": false
+    "verified": true
   },
   {
     "id": "101",
@@ -1916,7 +1916,7 @@
     "googleMaps": null,
     "naverMap": null,
     "reviewSummary": null,
-    "verified": false
+    "verified": true
   },
   {
     "id": "102",
@@ -1935,7 +1935,7 @@
     "googleMaps": null,
     "naverMap": null,
     "reviewSummary": null,
-    "verified": false
+    "verified": true
   },
   {
     "id": "103",
@@ -1954,7 +1954,7 @@
     "googleMaps": null,
     "naverMap": null,
     "reviewSummary": null,
-    "verified": false
+    "verified": true
   },
   {
     "id": "104",
@@ -1973,7 +1973,7 @@
     "googleMaps": null,
     "naverMap": null,
     "reviewSummary": null,
-    "verified": false
+    "verified": true
   },
   {
     "id": "105",
@@ -1992,7 +1992,7 @@
     "googleMaps": null,
     "naverMap": null,
     "reviewSummary": null,
-    "verified": false
+    "verified": true
   },
   {
     "id": "106",
@@ -2011,7 +2011,7 @@
     "googleMaps": null,
     "naverMap": null,
     "reviewSummary": null,
-    "verified": false
+    "verified": true
   },
   {
     "id": "107",
@@ -2030,26 +2030,7 @@
     "googleMaps": null,
     "naverMap": null,
     "reviewSummary": null,
-    "verified": false
-  },
-  {
-    "id": "108",
-    "slug": "daelim-changgo",
-    "category": "카페",
-    "entryType": "장소",
-    "type": "카페·갤러리",
-    "region": "성수",
-    "nameEn": "Daelim Changgo",
-    "nameKr": "대림창고",
-    "rating": null,
-    "reviews": null,
-    "website": null,
-    "instagram": "@daelimchanggo_gallery",
-    "address": "서울 성동구 성수이로 78",
-    "googleMaps": null,
-    "naverMap": null,
-    "reviewSummary": null,
-    "verified": false
+    "verified": true
   },
   {
     "id": "109",
@@ -2068,7 +2049,7 @@
     "googleMaps": null,
     "naverMap": null,
     "reviewSummary": null,
-    "verified": false
+    "verified": true
   },
   {
     "id": "110",
@@ -2087,7 +2068,7 @@
     "googleMaps": null,
     "naverMap": null,
     "reviewSummary": null,
-    "verified": false
+    "verified": true
   },
   {
     "id": "111",
@@ -2106,7 +2087,7 @@
     "googleMaps": null,
     "naverMap": null,
     "reviewSummary": null,
-    "verified": false
+    "verified": true
   },
   {
     "id": "112",
@@ -2125,7 +2106,7 @@
     "googleMaps": null,
     "naverMap": null,
     "reviewSummary": null,
-    "verified": false
+    "verified": true
   },
   {
     "id": "113",
@@ -2144,7 +2125,7 @@
     "googleMaps": null,
     "naverMap": null,
     "reviewSummary": null,
-    "verified": false
+    "verified": true
   },
   {
     "id": "114",
@@ -2163,6 +2144,6 @@
     "googleMaps": null,
     "naverMap": null,
     "reviewSummary": null,
-    "verified": false
+    "verified": true
   }
 ]
