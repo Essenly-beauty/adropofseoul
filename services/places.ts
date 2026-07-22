@@ -61,7 +61,12 @@ export function mapPlaceRow(row: PlaceRow): Place {
 }
 
 export async function listPlaces(
-  opts: { limit?: number; category?: string; area?: string } = {}
+  opts: {
+    limit?: number;
+    category?: string;
+    area?: string;
+    areas?: string[];
+  } = {}
 ): Promise<Place[]> {
   const supabase = await createClient();
   let query = supabase
@@ -72,6 +77,7 @@ export async function listPlaces(
     .limit(opts.limit ?? 50);
   if (opts.category) query = query.eq("category", opts.category);
   if (opts.area) query = query.eq("area", opts.area);
+  if (opts.areas?.length) query = query.in("area", opts.areas);
   const { data, error } = await query;
   if (error) throw error;
   return (data as PlaceRow[] | null)?.map(mapPlaceRow) ?? [];

@@ -24,10 +24,13 @@ export function NeighborhoodDirectory({
   return (
     <div className="mt-16 space-y-14">
       {groups.map(({ section, places: grouped }) => {
-        const filter =
-          section.categories.length === 1
-            ? `/places?area=${encodeURIComponent(neighborhood.label)}&type=${placeTypeSlug(section.categories[0])}`
-            : `/places?area=${encodeURIComponent(neighborhood.label)}${section.entryType ? `&kind=${section.entryType}` : ""}`;
+        const params = new URLSearchParams();
+        if (!neighborhood.areas) params.set("area", neighborhood.label);
+        if (section.categories.length === 1)
+          params.set("type", placeTypeSlug(section.categories[0]));
+        else if (section.entryType) params.set("kind", section.entryType);
+        const query = params.toString();
+        const filter = query ? `/places?${query}` : "/places";
         return (
           <section key={section.title}>
             <h2 className="font-serif text-2xl md:text-3xl">{section.title}</h2>
