@@ -2163,7 +2163,7 @@
     "googleMaps": null,
     "naverMap": null,
     "reviewSummary": null,
-    "verified": false
+    "verified": true
   },
   {
     "id": "116",
@@ -2182,7 +2182,7 @@
     "googleMaps": null,
     "naverMap": null,
     "reviewSummary": null,
-    "verified": false
+    "verified": true
   },
   {
     "id": "117",
@@ -2201,7 +2201,7 @@
     "googleMaps": null,
     "naverMap": null,
     "reviewSummary": null,
-    "verified": false
+    "verified": true
   },
   {
     "id": "118",
@@ -2220,7 +2220,7 @@
     "googleMaps": null,
     "naverMap": null,
     "reviewSummary": null,
-    "verified": false
+    "verified": true
   },
   {
     "id": "119",
@@ -2239,6 +2239,6 @@
     "googleMaps": null,
     "naverMap": null,
     "reviewSummary": null,
-    "verified": false
+    "verified": true
   }
 ]
