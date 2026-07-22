@@ -12,6 +12,8 @@ import {
   POST_CATEGORIES,
   POST_STATUSES,
   groupPlacesBySection,
+  neighborhoodAreas,
+  AROUND_SEOUL_NEIGHBORHOODS,
   type NeighborhoodSection,
 } from "./taxonomy";
 import type { Post } from "@/services/types";
@@ -173,5 +175,42 @@ describe("groupPlacesBySection", () => {
       "Make something",
       "Beauty services on the rise",
     ]);
+  });
+});
+
+describe("phase-b neighborhoods", () => {
+  it("exposes the four neighborhoods in order", () => {
+    expect(AROUND_SEOUL_NEIGHBORHOODS.map((n) => n.slug)).toEqual([
+      "seongsu",
+      "hongdae",
+      "myeongdong",
+      "gangnam-cheongdam",
+    ]);
+  });
+
+  it("derives hub areas with label fallback", () => {
+    expect(neighborhoodAreas(getNeighborhood("myeongdong")!)).toEqual([
+      "Myeongdong",
+    ]);
+    expect(neighborhoodAreas(getNeighborhood("hongdae")!)).toEqual([
+      "Hongdae",
+      "Yeonnam",
+    ]);
+    expect(neighborhoodAreas(getNeighborhood("gangnam-cheongdam")!)).toEqual([
+      "Gangnam",
+      "Cheongdam",
+      "Apgujeong",
+      "Garosugil",
+    ]);
+  });
+
+  it("only uses known place types in section configs", () => {
+    for (const n of AROUND_SEOUL_NEIGHBORHOODS)
+      for (const s of n.sections ?? [])
+        for (const c of s.categories)
+          expect(
+            PLACE_TYPE_LABELS[c],
+            `${n.slug} / ${s.title} / ${c}`
+          ).toBeTruthy();
   });
 });
