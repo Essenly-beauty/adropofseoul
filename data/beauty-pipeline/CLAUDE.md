@@ -9,7 +9,7 @@
 - `reconcile_global.py` — 글로벌(영문) 1단계: 사람이 판정할 대조표 생성. 입력: `csv/oliveyoung_global_crawl.json`
 - `apply_global.py` — 글로벌 2단계: 판정된 `csv/reconcile_global.csv` 적용
 - `inventory_raw_values.py` — 크롤 JSON의 skin/concern 원본값을 맵 CSV에 사전 등록
-- `crawler.py` — 수집 뼈대(기본 비활성, parse_product 미구현)
+- `crawler.py` — 글로벌 시딩 수집기 (og:title 기반, brands.csv brand_en 접두 매칭). 국내는 봇 차단으로 수집 안 함(2026-07-21 조사, 이슈 #11)
 - `validate.py` — 마스터 무결성 리포트 (exit 0/1)
 - `tests/` — pytest. 마스터를 절대 건드리지 않고 tmp 폴더 사본으로 검증.
 
@@ -38,7 +38,8 @@ python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
 - `age_groups.csv` : product_id, age_group, rank
 - `concerns.csv` : product_id, source, concern_raw (원본값 보존)
 - `skin_type_map.csv` / `concern_map.csv` : source, raw_value, std_value (표준화 규칙; std는 나중에 사람이 채움)
-- `awards.csv` / `textures.csv` / `rankings.csv` : 화해 전용 — 올리브영 병합 시 건드리지 않음
+- `awards.csv` : 수상 기록. 화해 어워드 + 올리브영 어워즈(award_theme "올리브영 어워즈 YYYY", 공식 스토어의 ★Awards★ 에디션 목록이 근거일 때만 — 추측 금지)
+- `textures.csv` / `rankings.csv` : 화해 전용 — 올리브영 병합 시 건드리지 않음
 
 ### 원본 보존 원칙 (중요)
 
@@ -55,6 +56,8 @@ python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
 ## 흐름
 
 ### 국내 (한글 자동 병합)
+
+※ 2026-07-21 조사: 국내 사이트는 봇 차단 대기실로 비브라우저 트래픽을 거부 → 크롤링 금지. 이 흐름은 다른 데이터 출처가 생길 때만 사용.
 
 1. 수집 준비: robots.txt/이용약관 확인, 요청 간 지연, User-Agent 명시. 공식 API·제휴 피드 우선 확인.
 2. 시딩 샌드박스: 5~10개만 수집 → `csv/oliveyoung_crawl.json` → 필드가 스키마에 맞는지 사람이 확인.
