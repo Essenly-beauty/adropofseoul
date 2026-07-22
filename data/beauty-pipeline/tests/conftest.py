@@ -16,6 +16,7 @@ SCRIPTS = [
     "reconcile_global.py",
     "validate.py",
     "crawler.py",
+    "export_picks.py",
 ]
 
 MASTERS = {
