@@ -5,7 +5,11 @@ import { ArticleCard } from "@/components/editorial/ArticleCard";
 import { JsonLd } from "@/components/editorial/JsonLd";
 import { NeighborhoodDirectory } from "@/components/around-seoul/NeighborhoodDirectory";
 import { breadcrumbJsonLd, canonical } from "@/lib/seo";
-import { getNeighborhood, regionForGuide } from "@/lib/taxonomy";
+import {
+  getNeighborhood,
+  neighborhoodAreas,
+  regionForGuide,
+} from "@/lib/taxonomy";
 import { listPublishedPosts } from "@/services/posts";
 import { listGuidePosts } from "@/lib/seongsu/assets";
 import { listPlaces } from "@/services/places";
@@ -58,9 +62,10 @@ async function neighborhoodPosts(slug: string): Promise<Post[]> {
 }
 
 // Published places for the hub's purpose sections; hubs render fine without.
-async function neighborhoodPlaces(area: string): Promise<Place[]> {
+// limit 200 matches /places; revisit if any hub's row count approaches it.
+async function neighborhoodPlaces(areas: string[]): Promise<Place[]> {
   try {
-    return await listPlaces({ limit: 100, area });
+    return await listPlaces({ limit: 200, areas });
   } catch (err) {
     console.error("around-seoul: places fetch failed", err);
     return [];
@@ -76,7 +81,9 @@ export default async function NeighborhoodPage({
   if (!n) notFound();
 
   const posts = await neighborhoodPosts(n.slug);
-  const places = n.sections?.length ? await neighborhoodPlaces(n.label) : [];
+  const places = n.sections?.length
+    ? await neighborhoodPlaces(neighborhoodAreas(n))
+    : [];
 
   return (
     <main className="mx-auto max-w-content px-6 py-16">
@@ -125,7 +132,11 @@ export default async function NeighborhoodPage({
         <p className="text-text-muted">
           Looking for a specific spot in {n.label}?{" "}
           <Link
-            href={`/places?area=${encodeURIComponent(n.label)}`}
+            href={
+              n.areas
+                ? "/places"
+                : `/places?area=${encodeURIComponent(n.label)}`
+            }
             className="text-accent transition-colors duration-medium ease-editorial hover:text-accent-hover"
           >
             Browse the {n.label} directory →

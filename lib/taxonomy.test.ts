@@ -1,4 +1,6 @@
 import { describe, it, expect } from "vitest";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import {
   isPick,
   WELLNESS_CATEGORIES,
@@ -12,6 +14,8 @@ import {
   POST_CATEGORIES,
   POST_STATUSES,
   groupPlacesBySection,
+  neighborhoodAreas,
+  AROUND_SEOUL_NEIGHBORHOODS,
   type NeighborhoodSection,
 } from "./taxonomy";
 import type { Post } from "@/services/types";
@@ -173,5 +177,58 @@ describe("groupPlacesBySection", () => {
       "Make something",
       "Beauty services on the rise",
     ]);
+  });
+});
+
+describe("phase-b neighborhoods", () => {
+  it("exposes the four neighborhoods in order", () => {
+    expect(AROUND_SEOUL_NEIGHBORHOODS.map((n) => n.slug)).toEqual([
+      "seongsu",
+      "hongdae",
+      "myeongdong",
+      "gangnam-cheongdam",
+    ]);
+  });
+
+  it("derives hub areas with label fallback", () => {
+    expect(neighborhoodAreas(getNeighborhood("myeongdong")!)).toEqual([
+      "Myeongdong",
+    ]);
+    expect(neighborhoodAreas(getNeighborhood("hongdae")!)).toEqual([
+      "Hongdae",
+      "Yeonnam",
+    ]);
+    expect(neighborhoodAreas(getNeighborhood("gangnam-cheongdam")!)).toEqual([
+      "Gangnam",
+      "Cheongdam",
+      "Apgujeong",
+      "Garosugil",
+    ]);
+  });
+
+  it("only uses known place types in section configs", () => {
+    for (const n of AROUND_SEOUL_NEIGHBORHOODS)
+      for (const s of n.sections ?? [])
+        for (const c of s.categories)
+          expect(
+            PLACE_TYPE_LABELS[c],
+            `${n.slug} / ${s.title} / ${c}`
+          ).toBeTruthy();
+  });
+
+  it("only uses real area values in hub configs", () => {
+    const curation = JSON.parse(
+      readFileSync(join(__dirname, "../data/places-curation.en.json"), "utf8")
+    ) as { places: Record<string, { area: string | null }> };
+    const known = new Set(
+      Object.values(curation.places)
+        .map((p) => p.area)
+        .filter(Boolean)
+    );
+    for (const n of AROUND_SEOUL_NEIGHBORHOODS) {
+      if (n.areas) expect(n.areas.length, n.slug).toBeGreaterThan(0);
+      for (const a of neighborhoodAreas(n))
+        expect(known.has(a), `${n.slug} / ${a}`).toBe(true);
+    }
   });
 });

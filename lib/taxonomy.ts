@@ -112,6 +112,8 @@ export type Neighborhood = {
   hasMap?: boolean;
   /** Purpose-based directory sections, in editorial order. */
   sections?: NeighborhoodSection[];
+  /** Place `area` values this hub aggregates; defaults to [label]. */
+  areas?: string[];
 };
 
 export const AROUND_SEOUL_NEIGHBORHOODS: Neighborhood[] = [
@@ -157,10 +159,117 @@ export const AROUND_SEOUL_NEIGHBORHOODS: Neighborhood[] = [
       },
     ],
   },
+  {
+    slug: "hongdae",
+    label: "Hongdae",
+    blurb:
+      "Personal color, nails, lashes, and indie perfume — Seoul's youngest beauty district.",
+    heading: "Hongdae, in full color",
+    lede: "Hongdae is where Seoul gets its color done — the personal-color capital, plus walk-in friendly salons, lash and nail studios, and perfume labs, all at student-district prices.",
+    areas: ["Hongdae", "Yeonnam"],
+    sections: [
+      {
+        title: "Personal color & makeup",
+        blurb: "Where Seoul's personal-color boom lives — book ahead.",
+        categories: ["personal_color", "makeup"],
+      },
+      {
+        title: "Nails & lashes",
+        blurb: "Detail work Hongdae does better than anywhere.",
+        categories: ["nail_lash"],
+      },
+      {
+        title: "Hair salons",
+        blurb: "English-friendly cuts and color without the Gangnam price tag.",
+        categories: ["salon"],
+      },
+      {
+        title: "Perfume workshops",
+        blurb: "Blend your own bottle to take home.",
+        categories: ["perfume"],
+        entryType: "experience",
+      },
+      {
+        title: "Spa & skin",
+        blurb: "Scrubs, facials, and skin clinics between the studios.",
+        categories: ["spa", "facial", "clinic"],
+      },
+    ],
+  },
+  {
+    slug: "myeongdong",
+    label: "Myeongdong",
+    blurb: "Spas, facials, and walk-in salons in the heart of tourist Seoul.",
+    heading: "Myeongdong, made easy",
+    lede: "Myeongdong is Seoul's beauty-service hub for first-timers — the densest cluster of tourist-friendly spas, facials, and walk-in salons, minutes from the flagship shopping streets.",
+    sections: [
+      {
+        title: "Spa & massage",
+        blurb: "Full-body, foot, and everything in between — no Korean needed.",
+        categories: ["spa"],
+      },
+      {
+        title: "Facial & skincare",
+        blurb: "Glass-skin facials an elevator ride from the shopping.",
+        categories: ["facial"],
+      },
+      {
+        title: "Hair & makeup",
+        blurb: "Walk-in friendly salons used to international guests.",
+        categories: ["salon", "makeup"],
+      },
+      {
+        title: "Personal color",
+        blurb: "Quick diagnoses that fit between itinerary stops.",
+        categories: ["personal_color"],
+      },
+    ],
+  },
+  {
+    slug: "gangnam-cheongdam",
+    label: "Gangnam & Cheongdam",
+    blurb: "K-pop hair & makeup, head spas, and the premium end of K-beauty.",
+    heading: "Gangnam & Cheongdam, the premium tier",
+    lede: "South of the river is Seoul's premium tier — the K-pop stylist salons of Cheongdam, the city's head-spa district, and the studios where personal color analysis got serious.",
+    areas: ["Gangnam", "Cheongdam", "Apgujeong", "Garosugil"],
+    sections: [
+      {
+        title: "K-pop hair & makeup",
+        blurb: "The salons idols actually sit in — book well ahead.",
+        categories: ["salon", "makeup"],
+      },
+      {
+        title: "Head spa & massage",
+        blurb: "Seoul's head-spa district, plus aroma and body work.",
+        categories: ["head_spa", "spa"],
+      },
+      {
+        title: "Personal color",
+        blurb: "The first-generation studios that started the trend.",
+        categories: ["personal_color"],
+      },
+      {
+        title: "Classes & workshops",
+        blurb: "Private perfume blending and hands-on Korean cooking.",
+        categories: ["perfume", "cooking_class"],
+        entryType: "experience",
+      },
+      {
+        title: "Nails & clinics",
+        blurb: "Celebrity nail art and dermatology-grade skin care.",
+        categories: ["nail_lash", "clinic"],
+      },
+    ],
+  },
 ];
 
 export function getNeighborhood(slug: string): Neighborhood | undefined {
   return AROUND_SEOUL_NEIGHBORHOODS.find((n) => n.slug === slug);
+}
+
+/** The place `area` values that belong to a neighborhood hub. */
+export function neighborhoodAreas(n: Neighborhood): string[] {
+  return n.areas ?? [n.label];
 }
 
 /**
