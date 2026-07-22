@@ -27,7 +27,7 @@ export function NeighborhoodDirectory({
         const filter =
           section.categories.length === 1
             ? `/places?area=${encodeURIComponent(neighborhood.label)}&type=${placeTypeSlug(section.categories[0])}`
-            : `/places?area=${encodeURIComponent(neighborhood.label)}`;
+            : `/places?area=${encodeURIComponent(neighborhood.label)}${section.entryType ? `&kind=${section.entryType}` : ""}`;
         return (
           <section key={section.title}>
             <h2 className="font-serif text-2xl md:text-3xl">{section.title}</h2>

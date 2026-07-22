@@ -11,8 +11,7 @@ import { listGuidePosts } from "@/lib/seongsu/assets";
 import { listPlaces } from "@/services/places";
 import { SeongsuMap } from "@/components/seongsu/SeongsuMap";
 import { WaitlistForm } from "@/components/seongsu/WaitlistForm";
-import type { Post } from "@/services/types";
-import type { Place } from "@/services/types";
+import type { Post, Place } from "@/services/types";
 
 // Rendered on demand: the hub pulls DB `guides` posts (via cookies), so it can't
 // be statically prerendered. `notFound()` still guards unknown neighborhoods.
