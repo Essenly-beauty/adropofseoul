@@ -23,6 +23,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/about",
     "/contact",
     "/privacy",
+    "/terms",
     ...AROUND_SEOUL_NEIGHBORHOODS.map((n) => `/around-seoul/${n.slug}`),
     ...GUIDE_SLUGS.map((s) => `/articles/${s}`),
     ...PILLAR_SLUGS.map((s) => `/articles/${s}`),
