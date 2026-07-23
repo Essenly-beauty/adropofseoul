@@ -57,6 +57,11 @@ export type Ingredient = {
   metaDescription: string | null;
 };
 
+export type ProductOffer = {
+  retailer: "oliveyoung_global" | "amazon_us";
+  url: string;
+};
+
 export type Product = {
   id: string;
   name: string;
@@ -72,4 +77,7 @@ export type Product = {
   ingredients: string | null;
   rating: number | null;
   disclosureRequired: boolean;
+  offers: ProductOffer[];
+  tags: string[];
+  awardBadge: string | null;
 };

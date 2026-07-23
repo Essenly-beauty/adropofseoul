@@ -28,6 +28,47 @@ describe("mapProductRow", () => {
     expect(p.disclosureRequired).toBe(true);
     expect(p.rating).toBe(4.5);
   });
+
+  it("maps offers (active only, sorted), tags, award badge", () => {
+    const p = mapProductRow({
+      ...row,
+      tags: ["Dry", "Hydration"],
+      award_badge: "Olive Young Awards 2024 · Essence/Serum",
+      product_offers: [
+        {
+          retailer: "amazon_us",
+          url: "https://amzn.example/x",
+          is_active: true,
+          sort: 2,
+        },
+        {
+          retailer: "oliveyoung_global",
+          url: "https://oy.example/g",
+          is_active: true,
+          sort: 1,
+        },
+        {
+          retailer: "amazon_us",
+          url: "https://amzn.example/dead",
+          is_active: false,
+          sort: 0,
+        },
+      ],
+    } as never);
+    expect(p.offers).toEqual([
+      { retailer: "oliveyoung_global", url: "https://oy.example/g" },
+      { retailer: "amazon_us", url: "https://amzn.example/x" },
+    ]);
+    expect(p.tags).toEqual(["Dry", "Hydration"]);
+    expect(p.awardBadge).toBe("Olive Young Awards 2024 · Essence/Serum");
+  });
+
+  it("defaults offers/tags/awardBadge when columns absent", () => {
+    const p = mapProductRow(row as never);
+    expect(p.offers).toEqual([]);
+    expect(p.tags).toEqual([]);
+    expect(p.awardBadge).toBeNull();
+  });
 });
 
 describe("getProductBySlug", () => {
