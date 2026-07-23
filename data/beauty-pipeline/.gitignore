@@ -2,3 +2,4 @@
 __pycache__/
 csv/*.bak.csv
 csv/review_queue.csv
+images/
