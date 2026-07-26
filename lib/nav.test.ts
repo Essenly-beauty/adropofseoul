@@ -1,49 +1,47 @@
 import { describe, it, expect } from "vitest";
-import { NAV_ITEMS } from "./nav";
+import { NAV_ITEMS, NAV_CTA } from "./nav";
 
 describe("NAV_ITEMS", () => {
   it("lists the primary nav in exact order", () => {
     expect(NAV_ITEMS.map((i) => i.label)).toEqual([
       "Home",
-      "Beauty",
-      "Places",
+      "Skincare",
+      "Haircare",
       "Wellness",
-      "Around Seoul",
+      "Seoul",
+      "Stories",
       "About",
     ]);
   });
   it("maps sections to their routes", () => {
-    expect(NAV_ITEMS.find((i) => i.label === "Around Seoul")?.href).toBe(
-      "/around-seoul"
+    expect(NAV_ITEMS.find((i) => i.label === "Seoul")?.href).toBe("/seoul");
+    expect(NAV_ITEMS.find((i) => i.label === "Haircare")?.href).toBe(
+      "/haircare"
     );
-    expect(NAV_ITEMS.find((i) => i.label === "Places")?.href).toBe("/places");
     expect(NAV_ITEMS.find((i) => i.label === "Wellness")?.href).toBe(
       "/wellness"
     );
   });
   it("exposes sub-categories for the GNB preview", () => {
-    const beauty = NAV_ITEMS.find((i) => i.label === "Beauty");
-    expect(beauty?.children?.map((c) => c.label)).toEqual([
-      "Skincare",
-      "Hair",
-      "Ingredients",
-      "Picks",
-    ]);
-    const around = NAV_ITEMS.find((i) => i.label === "Around Seoul");
-    expect(around?.children?.map((c) => c.label)).toContain("Seongsu");
-    expect(around?.children?.map((c) => c.label)).toContain("Common");
-    const places = NAV_ITEMS.find((i) => i.label === "Places");
-    expect(places?.children).toEqual([
-      { label: "Head Spa", href: "/places?type=head-spa" },
-      { label: "Salons", href: "/places?type=salon" },
-      { label: "Spa & Massage", href: "/places?type=spa" },
-      { label: "Personal Color", href: "/places?type=personal-color" },
-      { label: "Experiences", href: "/places?kind=experience" },
-      { label: "All Places", href: "/places" },
-    ]);
+    const haircare = NAV_ITEMS.find((i) => i.label === "Haircare");
+    expect(haircare?.children?.map((c) => c.label)).toContain(
+      "My Hair Profile"
+    );
+    expect(haircare?.children?.map((c) => c.label)).toContain("Ingredients");
+    const seoul = NAV_ITEMS.find((i) => i.label === "Seoul");
+    expect(seoul?.children?.map((c) => c.href)).toContain("/seoul/places");
+    expect(seoul?.children?.map((c) => c.href)).toContain(
+      "/seoul/neighborhoods"
+    );
+    expect(seoul?.children?.map((c) => c.href)).toContain(
+      "/seoul/neighborhoods/seongsu"
+    );
     // Home / About stay flat
     expect(
       NAV_ITEMS.find((i) => i.label === "About")?.children
     ).toBeUndefined();
+  });
+  it("exposes the Hair Profile CTA", () => {
+    expect(NAV_CTA.href).toBe("/hair-profile");
   });
 });

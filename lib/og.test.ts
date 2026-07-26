@@ -14,13 +14,13 @@ describe("placeShareImage", () => {
 
   it("falls back to the generated og route when images are empty", () => {
     expect(placeShareImage({ slug: "soo", images: [] })).toBe(
-      `${SITE_URL}/places/soo/og`
+      `${SITE_URL}/seoul/places/soo/og`
     );
   });
 
   it("falls back when the first image is a relative path", () => {
     expect(placeShareImage({ slug: "soo", images: ["/uploads/a.jpg"] })).toBe(
-      `${SITE_URL}/places/soo/og`
+      `${SITE_URL}/seoul/places/soo/og`
     );
   });
 });

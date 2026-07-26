@@ -38,7 +38,7 @@ function hrefWith(next: {
   if (next.area) sp.set("area", next.area);
   if (next.type) sp.set("type", next.type);
   const qs = sp.toString();
-  return qs ? `/places?${qs}` : "/places";
+  return qs ? `/seoul/places?${qs}` : "/seoul/places";
 }
 
 // Kind + type + area filter bar for the Places directory. Each chip preserves

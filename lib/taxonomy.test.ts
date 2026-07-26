@@ -8,7 +8,8 @@ import {
   placeCategoryFromType,
   placeTypeSlug,
   SECTIONS,
-  BEAUTY_TABS,
+  SKINCARE_TABS,
+  sectionForCategory,
   POST_CATEGORIES,
   POST_STATUSES,
 } from "./taxonomy";
@@ -79,28 +80,38 @@ describe("place types", () => {
 });
 
 describe("sections", () => {
-  it("exposes the four content sections in order", () => {
+  it("exposes the five content sections in order", () => {
     expect(SECTIONS.map((s) => s.slug)).toEqual([
-      "beauty",
-      "places",
+      "skincare",
+      "haircare",
       "wellness",
-      "around-seoul",
+      "seoul",
+      "stories",
     ]);
   });
-  it("has the five beauty tabs including Skincare and Ingredients", () => {
-    expect(BEAUTY_TABS.map((t) => t.key)).toEqual([
-      "all",
+  it("has the skincare tabs including Ingredients and Picks", () => {
+    expect(SKINCARE_TABS.map((t) => t.key)).toEqual([
       "skincare",
-      "hair",
       "ingredients",
       "picks",
     ]);
-    expect(BEAUTY_TABS.find((t) => t.key === "ingredients")?.href).toBe(
+    expect(SKINCARE_TABS.find((t) => t.key === "ingredients")?.href).toBe(
       "/ingredients"
     );
-    expect(BEAUTY_TABS.find((t) => t.key === "skincare")?.href).toBe(
-      "/beauty/skincare"
+    expect(SKINCARE_TABS.find((t) => t.key === "picks")?.href).toBe(
+      "/skincare/picks"
     );
+  });
+});
+
+describe("sectionForCategory", () => {
+  it("maps DB categories to their new sections", () => {
+    expect(sectionForCategory("beauty").href).toBe("/skincare");
+    expect(sectionForCategory("hair").href).toBe("/haircare");
+    expect(sectionForCategory("head_spa").href).toBe("/wellness");
+    expect(sectionForCategory("wellness").href).toBe("/wellness");
+    expect(sectionForCategory("places").href).toBe("/seoul");
+    expect(sectionForCategory("guides").href).toBe("/seoul");
   });
 });
 

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { SectionHeading } from "@/components/editorial/SectionHeading";
-import { AroundSeoulTabs } from "@/components/editorial/AroundSeoulTabs";
+import { SectionTabs } from "@/components/editorial/SectionTabs";
+import { NEIGHBORHOOD_TABS } from "@/lib/seoul-tabs";
 import { ArticleCard } from "@/components/editorial/ArticleCard";
 import { canonical } from "@/lib/seo";
 import { listPublishedPosts } from "@/services/posts";
@@ -9,10 +10,10 @@ import { regionForGuide } from "@/lib/taxonomy";
 import type { Post } from "@/services/types";
 
 export const metadata: Metadata = {
-  title: "Around Seoul · Common",
+  title: "Neighborhoods · Common",
   description:
     "Seoul explorations that aren't tied to one neighborhood — the city-wide guides.",
-  alternates: { canonical: canonical("/around-seoul/common") },
+  alternates: { canonical: canonical("/seoul/neighborhoods/common") },
 };
 
 export const dynamic = "force-dynamic";
@@ -31,14 +32,18 @@ export default async function AroundSeoulCommonPage() {
 
   return (
     <main className="mx-auto max-w-content px-6 py-16">
-      <SectionHeading title="Around Seoul" eyebrow="Guides" />
-      <AroundSeoulTabs active="common" />
+      <SectionHeading title="Neighborhoods" eyebrow="Seoul" />
+      <SectionTabs
+        label="Neighborhood sections"
+        tabs={NEIGHBORHOOD_TABS}
+        active="common"
+      />
       {posts.length === 0 ? (
         <p className="max-w-xl text-text-muted">
           City-wide Seoul guides are on the way. In the meantime, explore our
           neighborhood walks under{" "}
           <a
-            href="/around-seoul"
+            href="/seoul/neighborhoods"
             className="text-accent hover:text-accent-hover"
           >
             By neighborhood

@@ -12,7 +12,7 @@ export function PlaceCard({ place }: { place: Place }) {
     place.category.replace(/_/g, " ");
   return (
     <Link
-      href={`/places/${place.slug}`}
+      href={`/seoul/places/${place.slug}`}
       className="group block rounded-lg border border-soft-gray p-5 transition-colors duration-medium ease-editorial hover:border-accent"
     >
       <div className="flex items-baseline justify-between gap-3">

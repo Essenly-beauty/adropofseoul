@@ -154,13 +154,13 @@ export default async function IngredientPage({
             Browse ingredients
           </a>
           <a
-            href="/beauty/skincare"
+            href="/skincare"
             className="rounded-full border border-soft-gray px-4 py-2 text-[11px] uppercase tracking-label text-text-muted transition-colors duration-medium ease-editorial hover:border-accent hover:text-text"
           >
             Skincare routines
           </a>
           <a
-            href="/beauty/picks"
+            href="/skincare/picks"
             className="rounded-full border border-soft-gray px-4 py-2 text-[11px] uppercase tracking-label text-text-muted transition-colors duration-medium ease-editorial hover:border-accent hover:text-text"
           >
             Product picks

@@ -27,7 +27,7 @@ export function localBusinessJsonLd(place: Place): object {
     alternateName: place.nameKr ?? undefined,
     description: place.shortDescription ?? undefined,
     address: place.address ?? place.area ?? undefined,
-    url: canonical(`/places/${place.slug}`),
+    url: canonical(`/seoul/places/${place.slug}`),
     sameAs:
       [place.websiteUrl, place.instagramUrl].filter(Boolean).length > 0
         ? [place.websiteUrl, place.instagramUrl].filter(Boolean)

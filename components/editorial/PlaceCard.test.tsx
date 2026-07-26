@@ -33,7 +33,7 @@ describe("PlaceCard", () => {
   it("links to the place and shows name, area, description", () => {
     render(<PlaceCard place={place} />);
     const link = screen.getByRole("link", { name: /Sool Loft Head Spa/ });
-    expect(link.getAttribute("href")).toBe("/places/sool-loft-head-spa");
+    expect(link.getAttribute("href")).toBe("/seoul/places/sool-loft-head-spa");
     expect(screen.getAllByText("Seongsu").length).toBeGreaterThan(0);
     expect(screen.getByText(/minimalist scalp-care studio/)).toBeTruthy();
   });

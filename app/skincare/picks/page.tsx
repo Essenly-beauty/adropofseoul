@@ -4,21 +4,21 @@ import { listPublishedPosts } from "@/services/posts";
 import { ProductCard } from "@/components/editorial/ProductCard";
 import { ArticleCard } from "@/components/editorial/ArticleCard";
 import { SectionHeading } from "@/components/editorial/SectionHeading";
-import { BeautyTabs } from "@/components/editorial/BeautyTabs";
+import { SectionTabs } from "@/components/editorial/SectionTabs";
 import { canonical } from "@/lib/seo";
-import { isPick } from "@/lib/taxonomy";
+import { SKINCARE_TABS, isPick } from "@/lib/taxonomy";
 import type { Post } from "@/services/types";
 
 export const metadata: Metadata = {
   title: "Picks",
   description:
-    "Korean beauty and hair products we recommend, plus our reviews and comparisons.",
-  alternates: { canonical: canonical("/beauty/picks") },
+    "Korean skincare and hair products we recommend, plus our reviews and comparisons.",
+  alternates: { canonical: canonical("/skincare/picks") },
 };
 
 export const dynamic = "force-dynamic";
 
-export default async function BeautyPicksPage() {
+export default async function SkincarePicksPage() {
   let products: Awaited<ReturnType<typeof listProducts>> = [];
   let beautyPosts: Post[] = [];
   try {
@@ -27,14 +27,18 @@ export default async function BeautyPicksPage() {
       listPublishedPosts({ limit: 96, category: "beauty" }),
     ]);
   } catch (err) {
-    console.error("beauty/picks: fetch failed", err);
+    console.error("skincare/picks: fetch failed", err);
   }
   const reviews = beautyPosts.filter((p) => isPick(p));
 
   return (
     <main className="mx-auto max-w-content px-6 py-16">
-      <SectionHeading title="Beauty" eyebrow="What we love" />
-      <BeautyTabs active="picks" />
+      <SectionHeading title="Picks" eyebrow="What we love" />
+      <SectionTabs
+        label="Skincare sections"
+        tabs={SKINCARE_TABS}
+        active="picks"
+      />
 
       {products.length === 0 && reviews.length === 0 ? (
         <p className="text-text-muted">No picks yet — check back soon.</p>

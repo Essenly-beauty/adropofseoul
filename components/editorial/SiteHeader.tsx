@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { NAV_ITEMS } from "@/lib/nav";
+import { NAV_ITEMS, NAV_CTA } from "@/lib/nav";
 import { SITE_NAME } from "@/lib/site";
 
 export function SiteHeader() {
@@ -15,7 +15,7 @@ export function SiteHeader() {
         <Link href="/" className="font-serif text-2xl tracking-tight">
           {SITE_NAME}
         </Link>
-        <nav aria-label="Primary" className="hidden gap-7 md:flex">
+        <nav aria-label="Primary" className="hidden items-center gap-7 md:flex">
           {items.map((item) => (
             <div key={item.href} className="group relative">
               <Link
@@ -51,6 +51,12 @@ export function SiteHeader() {
               )}
             </div>
           ))}
+          <Link
+            href={NAV_CTA.href}
+            className="rounded-full border border-text px-3.5 py-1.5 text-[11px] uppercase tracking-label text-text transition-colors duration-medium ease-editorial hover:border-accent hover:bg-accent hover:text-bg"
+          >
+            {NAV_CTA.label}
+          </Link>
         </nav>
         <button
           type="button"
@@ -68,6 +74,15 @@ export function SiteHeader() {
           className="max-h-[calc(100vh-66px)] overflow-y-auto border-t border-soft-gray px-6 py-4 md:hidden"
         >
           <ul className="flex flex-col gap-1">
+            <li>
+              <Link
+                href={NAV_CTA.href}
+                onClick={() => setOpen(false)}
+                className="mb-2 block rounded-full border border-text px-4 py-2.5 text-center text-[12px] uppercase tracking-label text-text transition-colors duration-medium ease-editorial hover:border-accent hover:bg-accent hover:text-bg"
+              >
+                {NAV_CTA.label}
+              </Link>
+            </li>
             {items.map((item) => (
               <li key={item.href}>
                 <Link

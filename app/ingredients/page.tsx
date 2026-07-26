@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { listIngredients } from "@/services/ingredients";
 import { IngredientCard } from "@/components/editorial/IngredientCard";
 import { SectionHeading } from "@/components/editorial/SectionHeading";
-import { BeautyTabs } from "@/components/editorial/BeautyTabs";
+import { SectionTabs } from "@/components/editorial/SectionTabs";
+import { SKINCARE_TABS } from "@/lib/taxonomy";
 import { JsonLd } from "@/components/editorial/JsonLd";
 import { TermFilter } from "@/components/editorial/TermFilter";
 import { SKIN_TYPES } from "@/lib/beauty";
@@ -45,7 +46,11 @@ export default async function IngredientsPage({
         title="Ingredient Dictionary"
         eyebrow="Know your actives"
       />
-      <BeautyTabs active="ingredients" />
+      <SectionTabs
+        label="Skincare sections"
+        tabs={SKINCARE_TABS}
+        active="ingredients"
+      />
       {ingredients.length > 0 && (
         <TermFilter
           basePath="/ingredients"

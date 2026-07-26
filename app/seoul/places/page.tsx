@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   title: "Seoul Directory",
   description:
     "Head spas, salons, clinics, cafes, and wellness spots worth knowing in Seoul.",
-  alternates: { canonical: canonical("/places") },
+  alternates: { canonical: canonical("/seoul/places") },
 };
 
 export const dynamic = "force-dynamic";
@@ -83,7 +83,7 @@ export default async function PlacesPage({
         <p className="mt-1.5 text-sm text-text-muted">
           Want the bigger picture first?{" "}
           <Link
-            href="/around-seoul"
+            href="/seoul/neighborhoods"
             className="text-accent transition-colors duration-medium ease-editorial hover:text-accent-hover"
           >
             Explore Seoul by neighborhood →

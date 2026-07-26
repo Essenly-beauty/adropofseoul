@@ -11,14 +11,20 @@ describe("SiteHeader", () => {
   it("renders every primary nav link", () => {
     render(<SiteHeader />);
     for (const label of [
-      "Beauty",
-      "Places",
+      "Skincare",
+      "Haircare",
       "Wellness",
-      "Around Seoul",
+      "Seoul",
+      "Stories",
       "About",
     ]) {
       expect(screen.getByRole("link", { name: label })).toBeTruthy();
     }
+  });
+  it("renders the My Hair Profile CTA", () => {
+    render(<SiteHeader />);
+    const cta = screen.getAllByRole("link", { name: "My Hair Profile" })[0];
+    expect(cta.getAttribute("href")).toBe("/hair-profile");
   });
   it("toggles the mobile menu panel", () => {
     render(<SiteHeader />);
@@ -35,9 +41,9 @@ describe("SiteHeader", () => {
     const hrefs = Array.from(primary.querySelectorAll("a")).map((a) =>
       a.getAttribute("href")
     );
-    expect(hrefs).toContain("/beauty/skincare");
+    expect(hrefs).toContain("/hair-profile");
     expect(hrefs).toContain("/ingredients");
-    expect(hrefs).toContain("/around-seoul/seongsu");
+    expect(hrefs).toContain("/seoul/neighborhoods/seongsu");
   });
   it("lists sub-categories up front in the toggled mobile menu", () => {
     render(<SiteHeader />);
@@ -46,9 +52,9 @@ describe("SiteHeader", () => {
     const hrefs = Array.from(mobile.querySelectorAll("a")).map((a) =>
       a.getAttribute("href")
     );
-    expect(hrefs).toContain("/beauty/skincare");
+    expect(hrefs).toContain("/hair-profile");
     expect(hrefs).toContain("/ingredients");
-    expect(hrefs).toContain("/places?type=head-spa");
-    expect(hrefs).toContain("/around-seoul/common");
+    expect(hrefs).toContain("/seoul/places");
+    expect(hrefs).toContain("/seoul/neighborhoods");
   });
 });
