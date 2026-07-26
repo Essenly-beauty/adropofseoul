@@ -58,3 +58,18 @@ additive and ships behind flags; no existing table, route, or screen changes.
 - **Retention/cleanup** of abandoned anonymous attempts and deletion/export flows
   are `[LEGAL REVIEW REQUIRED]` (`docs/03 §14`) and implemented in a later milestone.
 - Supersedes nothing; `docs/03` remains the logical target model this adapts.
+
+## Update — applied 2026-07-26
+
+Migration applied to the remote via the CLI (only this additive migration; the
+drifted history was worked around transiently — see `supabase/migrations/README.md`).
+All 11 tables + RLS verified live. Types regenerated (`types/database.types.ts`).
+
+**Important finding:** `public.is_admin()` **does not exist on the remote** — the
+admin-claim RLS migration (`20260721150000_admin_claim_rls`) was never applied to
+production, so the remote still runs the original `0002_rls` model (authenticated
+= admin). Consequently the `*_admin_all` policies on the new quiz/consent tables
+were **removed from this migration** (quiz/consent rows are managed via the
+service role for now); they'll be re-added in a later migration once the
+admin-claim model is actually on prod. This finding is a production security
+posture item beyond M1 — flagged to the founder separately.

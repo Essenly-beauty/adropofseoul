@@ -239,11 +239,14 @@ alter table consent_records enable row level security;
 -- authenticated keys. Reachable only by the service-role client in trusted
 -- server actions (service role bypasses RLS).
 
--- Quiz definitions/questions/options: public read of ACTIVE content; admin manage.
+-- Quiz definitions/questions/options: public read of ACTIVE content.
+-- Admin management is via the service-role client for now; admin-scoped
+-- policies (public.is_admin()) are intentionally deferred to a later migration
+-- because the admin-claim RLS model (20260721150000_admin_claim_rls) is not yet
+-- applied to the remote — is_admin() does not exist there. Adding them here
+-- would make this additive migration fail on the current remote schema.
 create policy quiz_definitions_public_read on quiz_definitions
   for select using (status = 'active');
-create policy quiz_definitions_admin_all on quiz_definitions
-  for all using (public.is_admin()) with check (public.is_admin());
 
 create policy quiz_questions_public_read on quiz_questions
   for select using (
@@ -252,8 +255,6 @@ create policy quiz_questions_public_read on quiz_questions
       where d.id = quiz_questions.quiz_definition_id and d.status = 'active'
     )
   );
-create policy quiz_questions_admin_all on quiz_questions
-  for all using (public.is_admin()) with check (public.is_admin());
 
 create policy quiz_options_public_read on quiz_options
   for select using (
@@ -264,8 +265,6 @@ create policy quiz_options_public_read on quiz_options
       where q.id = quiz_options.question_id and d.status = 'active'
     )
   );
-create policy quiz_options_admin_all on quiz_options
-  for all using (public.is_admin()) with check (public.is_admin());
 
 -- Attempts / responses / snapshots / current profiles: authenticated owner only.
 -- Anonymous (user_id null) rows are unreachable here and handled by the server.
@@ -298,10 +297,9 @@ create policy user_current_profiles_owner on user_current_profiles
   with check (user_id = auth.uid());
 
 -- Consent documents are public policy text; records are owner-scoped.
+-- (Admin management via service role for now; see the note above re: is_admin.)
 create policy consent_documents_public_read on consent_documents
   for select using (true);
-create policy consent_documents_admin_all on consent_documents
-  for all using (public.is_admin()) with check (public.is_admin());
 
 create policy consent_records_owner_read on consent_records
   for select using (user_id is not null and user_id = auth.uid());
