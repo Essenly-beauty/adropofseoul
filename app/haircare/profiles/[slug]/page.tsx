@@ -116,7 +116,7 @@ export default function HairProfilePage({
 
       <div className="mt-8 flex flex-wrap gap-3">
         <Link
-          href="/hair-profile"
+          href="/beauty-profile/hair"
           className="rounded-full border border-text px-4 py-1.5 text-xs font-medium uppercase tracking-label transition-colors duration-medium ease-editorial hover:border-accent hover:text-accent"
         >
           Take the Hair Profile test →

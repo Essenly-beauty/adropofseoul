@@ -40,7 +40,7 @@ export default async function HaircarePage() {
         the lens of Korean hair care.
       </p>
       <Link
-        href="/hair-profile"
+        href="/beauty-profile/hair"
         className="mt-6 inline-block rounded-full border border-text px-5 py-2.5 text-[11px] uppercase tracking-label text-text transition-colors duration-medium ease-editorial hover:border-accent hover:bg-accent hover:text-bg"
       >
         Discover My Hair Profile →
