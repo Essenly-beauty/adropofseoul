@@ -11,6 +11,30 @@ later in M3), `docs/03_DATABASE_SCHEMA.md`, `docs/05_COMPONENT_GUIDELINES.md`
 (§2 QuizShell/QuestionRenderer), `docs/07_API_SPEC.md` (§2 operations, §3 error
 codes, §4 idempotency), `docs/06_ANALYTICS_EVENTS.md`, `docs/adr/0001`.
 
+## Setting `SUPABASE_SERVICE_ROLE_KEY` (the prereq, step by step)
+
+This key **bypasses RLS** — treat it as a master secret. Never commit it, never
+expose it to the client, never paste it into chat/PRs/logs.
+
+1. **Get it:** Supabase dashboard → project **adropofseoul** → **Project
+   Settings → API** → copy the **`service_role`** (secret) key. Supabase is
+   migrating key formats, so it may appear as a legacy JWT (`eyJ…`) or a new
+   secret key (`sb_secret_…`) — either works for server admin use. Do **not**
+   use the `anon` key (that's already `NEXT_PUBLIC_SUPABASE_ANON_KEY`).
+2. **Local:** in `.env.local`, replace the placeholder value:
+   `SUPABASE_SERVICE_ROLE_KEY=<the real key>` — keep the name exactly (no
+   `NEXT_PUBLIC_` prefix, or it leaks to the browser). `.env.local` is
+   gitignored, so it won't be committed. Restart `npm run dev` after editing.
+3. **Vercel (for preview/prod runtime):** Project → Settings → Environment
+   Variables → add `SUPABASE_SERVICE_ROLE_KEY` (Production + Preview, mark
+   Sensitive), or `vercel env add SUPABASE_SERVICE_ROLE_KEY production`. Redeploy
+   to apply. It's likely NOT set yet (nothing used it before M1).
+4. **Verify safely:** `hasServiceRoleKey()` in `lib/supabase/admin.ts` returns
+   true once it's not the `your-…` placeholder. Don't print the key.
+5. **Not needed for `db push`** — migrations use the Supabase CLI login, not this
+   key. This key is for the app's runtime admin client (anonymous quiz writes)
+   and the REST seed script. If it ever leaks, rotate it in Supabase → API.
+
 ## Already done (do NOT redo)
 
 - **M1 (merged, applied to prod):** data model + RLS live — `quiz_definitions/
