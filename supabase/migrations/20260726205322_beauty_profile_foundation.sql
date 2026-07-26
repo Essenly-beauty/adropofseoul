@@ -154,7 +154,7 @@ create table profile_snapshots (
   id uuid primary key default gen_random_uuid(),
   user_id uuid references auth.users (id) on delete cascade,
   anonymous_identity_id uuid references anonymous_identities (id) on delete cascade,
-  quiz_attempt_id uuid not null references quiz_attempts (id),
+  quiz_attempt_id uuid not null references quiz_attempts (id) on delete cascade,
   profile_domain profile_domain not null,
   profile_version integer not null default 1,
   rule_set_version text not null,

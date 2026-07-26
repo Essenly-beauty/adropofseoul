@@ -56,6 +56,7 @@ export function track(event: string, props?: EventProps): void {
 
 /** Associate the anonymous session with an authenticated user id. */
 export function identify(userId: string, props?: EventProps): void {
+  assertSafeProps("identify", props);
   provider?.identify(userId, props);
 }
 

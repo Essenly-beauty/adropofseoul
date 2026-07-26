@@ -60,16 +60,19 @@ export function validateResponse(
   allowedOptionKeys: readonly string[] = []
 ): { ok: true } | { ok: false; error: string } {
   const allowed = new Set(allowedOptionKeys);
-  const optionAllowed = (k: unknown) =>
-    typeof k === "string" && (allowed.size === 0 || allowed.has(k));
+  const optionAllowed = (k: unknown) => typeof k === "string" && allowed.has(k);
 
   switch (questionType) {
     case "single_select": {
+      // A select question with no options is malformed — deny rather than
+      // silently accept any string.
+      if (allowed.size === 0) return { ok: false, error: "INVALID_QUESTION" };
       if (!optionAllowed(response))
         return { ok: false, error: "INVALID_RESPONSE" };
       return { ok: true };
     }
     case "multi_select": {
+      if (allowed.size === 0) return { ok: false, error: "INVALID_QUESTION" };
       if (!Array.isArray(response))
         return { ok: false, error: "INVALID_RESPONSE" };
       if (response.length > MAX_MULTI_SELECT)

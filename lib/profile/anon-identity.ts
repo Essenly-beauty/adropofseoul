@@ -29,6 +29,10 @@ export async function readAnonToken(): Promise<string | null> {
 /**
  * Ensure the response carries an anonymous token cookie, returning the token
  * and its hash. Reuses an existing token; issues a new one otherwise.
+ *
+ * Writes a cookie, so it must be called only from a Server Action or Route
+ * Handler — never during a plain Server Component render (Next throws
+ * "Cookies can only be modified in a Server Action or Route Handler").
  */
 export async function ensureAnonToken(): Promise<{
   token: string;

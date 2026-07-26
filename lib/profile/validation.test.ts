@@ -64,7 +64,10 @@ describe("validateResponse", () => {
     if (!bad.ok) expect(bad.error).toBe("INVALID_QUESTION");
   });
 
-  it("with no option constraint, any string key is allowed", () => {
-    expect(validateResponse("single_select", "anything", []).ok).toBe(true);
+  it("denies a select question that has no options (malformed)", () => {
+    const bad = validateResponse("single_select", "anything", []);
+    expect(bad.ok).toBe(false);
+    if (!bad.ok) expect(bad.error).toBe("INVALID_QUESTION");
+    expect(validateResponse("multi_select", ["x"], []).ok).toBe(false);
   });
 });
