@@ -1,22 +1,21 @@
 import Link from "next/link";
 
-const TABS = [
-  { key: "neighborhoods", label: "By neighborhood", href: "/around-seoul" },
-  { key: "common", label: "Common", href: "/around-seoul/common" },
-] as const;
+export type SectionTab = { key: string; label: string; href: string };
 
-// 지역별 / Common switcher for the Around Seoul section (shared chip style).
-export function AroundSeoulTabs({
+// Shared chip-style tab switcher used across section landings (Skincare tabs,
+// neighborhood tabs, etc.).
+export function SectionTabs({
+  label,
+  tabs,
   active,
 }: {
-  active: "neighborhoods" | "common";
+  label: string;
+  tabs: readonly SectionTab[];
+  active: string;
 }) {
   return (
-    <nav
-      aria-label="Around Seoul sections"
-      className="mb-10 flex flex-wrap gap-2.5"
-    >
-      {TABS.map((tab) => {
+    <nav aria-label={label} className="mb-10 flex flex-wrap gap-2.5">
+      {tabs.map((tab) => {
         const isActive = tab.key === active;
         return (
           <Link

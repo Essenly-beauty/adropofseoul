@@ -26,7 +26,7 @@ export function SeongsuGuide({ guide }: { guide: Guide }) {
       <JsonLd
         data={breadcrumbJsonLd([
           { name: "Home", path: "/" },
-          { name: "Stories", path: "/articles" },
+          { name: "Stories", path: "/stories" },
           { name: guide.title, path: `/articles/${guide.slug}` },
         ])}
       />

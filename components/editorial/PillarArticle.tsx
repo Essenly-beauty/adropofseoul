@@ -18,7 +18,8 @@ export function PillarArticle({ pillar }: { pillar: Pillar }) {
       <JsonLd
         data={breadcrumbJsonLd([
           { name: "Home", path: "/" },
-          { name: "Around Seoul", path: "/around-seoul" },
+          { name: "Seoul", path: "/seoul" },
+          { name: "Neighborhoods", path: "/seoul/neighborhoods" },
           { name: pillar.title, path: `/articles/${pillar.slug}` },
         ])}
       />

@@ -22,16 +22,16 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const n = getNeighborhood(params.neighborhood);
   if (!n) return { title: "Not found" };
-  const title = `${n.label} — Around Seoul`;
+  const title = `${n.label} — Seoul Neighborhoods`;
   return {
     title,
     description: n.lede ?? n.blurb,
-    alternates: { canonical: canonical(`/around-seoul/${n.slug}`) },
+    alternates: { canonical: canonical(`/seoul/neighborhoods/${n.slug}`) },
     openGraph: {
       title,
       description: n.lede ?? n.blurb,
       type: "website",
-      url: canonical(`/around-seoul/${n.slug}`),
+      url: canonical(`/seoul/neighborhoods/${n.slug}`),
     },
   };
 }
@@ -70,14 +70,15 @@ export default async function NeighborhoodPage({
       <JsonLd
         data={breadcrumbJsonLd([
           { name: "Home", path: "/" },
-          { name: "Around Seoul", path: "/around-seoul" },
-          { name: n.label, path: `/around-seoul/${n.slug}` },
+          { name: "Seoul", path: "/seoul" },
+          { name: "Neighborhoods", path: "/seoul/neighborhoods" },
+          { name: n.label, path: `/seoul/neighborhoods/${n.slug}` },
         ])}
       />
 
       <header className="max-w-2xl">
         <p className="text-xs uppercase tracking-widest text-accent">
-          Around Seoul · Neighborhood
+          Seoul · Neighborhood
         </p>
         <h1 className="mt-2 font-serif text-4xl md:text-5xl">
           {n.heading ?? n.label}
@@ -110,7 +111,7 @@ export default async function NeighborhoodPage({
         <p className="text-text-muted">
           Looking for a specific spot in {n.label}?{" "}
           <Link
-            href={`/places?area=${encodeURIComponent(n.label)}`}
+            href={`/seoul/places?area=${encodeURIComponent(n.label)}`}
             className="text-accent transition-colors duration-medium ease-editorial hover:text-accent-hover"
           >
             Browse the {n.label} directory →

@@ -2,34 +2,43 @@ import type { Metadata } from "next";
 import { listPublishedPosts } from "@/services/posts";
 import { ArticleCard } from "@/components/editorial/ArticleCard";
 import { SectionHeading } from "@/components/editorial/SectionHeading";
-import { BeautyTabs } from "@/components/editorial/BeautyTabs";
+import { SectionTabs } from "@/components/editorial/SectionTabs";
 import { canonical } from "@/lib/seo";
-import { isPick } from "@/lib/taxonomy";
+import { SKINCARE_TABS, isPick } from "@/lib/taxonomy";
 import type { Post } from "@/services/types";
 
 export const metadata: Metadata = {
   title: "Skincare",
   description:
-    "Korean skincare routines, actives, and honest advice — from 3-step mornings to barrier repair.",
-  alternates: { canonical: canonical("/beauty/skincare") },
+    "Understand Korean skincare beyond trends — from routines and ingredients to treatments and aftercare.",
+  alternates: { canonical: canonical("/skincare") },
 };
 
 export const dynamic = "force-dynamic";
 
-export default async function BeautySkincarePage() {
+export default async function SkincarePage() {
   let posts: Post[] = [];
   try {
     posts = await listPublishedPosts({ limit: 96, category: "beauty" });
   } catch (err) {
-    console.error("beauty/skincare: posts fetch failed", err);
+    console.error("skincare: posts fetch failed", err);
   }
-  // Skincare = the routine/tips articles; review-type "Picks" live in their tab.
+  // Skincare = routine / actives / treatment articles; review-type "Picks"
+  // live under their own tab.
   const articles = posts.filter((p) => !isPick(p));
 
   return (
     <main className="mx-auto max-w-content px-6 py-16">
-      <SectionHeading title="Beauty" eyebrow="The Journal" />
-      <BeautyTabs active="skincare" />
+      <SectionHeading title="Skincare" eyebrow="The Journal" />
+      <p className="-mt-2 mb-8 max-w-2xl text-text-muted">
+        Korean skincare beyond trends — routines, ingredients, treatments, and
+        the aftercare that holds it all together.
+      </p>
+      <SectionTabs
+        label="Skincare sections"
+        tabs={SKINCARE_TABS}
+        active="skincare"
+      />
       {articles.length === 0 ? (
         <p className="text-text-muted">
           No skincare stories yet — check back soon.

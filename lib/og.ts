@@ -9,7 +9,7 @@ import type { Place } from "@/services/types";
 export function placeShareImage(place: Pick<Place, "slug" | "images">): string {
   const first = place.images[0];
   if (first && /^https?:\/\//.test(first)) return first;
-  return `${SITE_URL}/places/${place.slug}/og`;
+  return `${SITE_URL}/seoul/places/${place.slug}/og`;
 }
 
 export function placeOgSubtitle(

@@ -19,7 +19,7 @@ export async function generateMetadata({
   return {
     title: place.name,
     description: place.shortDescription ?? undefined,
-    alternates: { canonical: canonical(`/places/${place.slug}`) },
+    alternates: { canonical: canonical(`/seoul/places/${place.slug}`) },
     openGraph: {
       title: place.name,
       description: place.shortDescription ?? undefined,
@@ -96,13 +96,14 @@ export default async function PlacePage({
       <JsonLd
         data={breadcrumbJsonLd([
           { name: "Home", path: "/" },
-          { name: "Places", path: "/places" },
-          { name: place.name, path: `/places/${place.slug}` },
+          { name: "Seoul", path: "/seoul" },
+          { name: "Places", path: "/seoul/places" },
+          { name: place.name, path: `/seoul/places/${place.slug}` },
         ])}
       />
 
       <Link
-        href="/places"
+        href="/seoul/places"
         className="text-[11px] uppercase tracking-label text-text-muted transition-colors duration-medium ease-editorial hover:text-accent"
       >
         ← Seoul Directory
@@ -193,7 +194,7 @@ export default async function PlacePage({
         </div>
 
         <ShareButtons
-          path={`/places/${place.slug}`}
+          path={`/seoul/places/${place.slug}`}
           title={`${place.name} — A Drop of Seoul`}
           imageUrl={placeShareImage(place)}
           className="mt-5"

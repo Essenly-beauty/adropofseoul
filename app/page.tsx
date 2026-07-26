@@ -52,9 +52,30 @@ export default async function HomePage() {
           <SectionHeading
             title="Find your way in"
             eyebrow="Explore"
-            href="/articles"
+            href="/stories"
           />
           <CategoryIndex />
+        </section>
+      </Reveal>
+
+      <Reveal>
+        <section className="bg-porcelain/60">
+          <div className="mx-auto max-w-content px-6 py-14 text-center md:py-20">
+            <Eyebrow className="mb-4">My Hair Profile</Eyebrow>
+            <h2 className="mx-auto max-w-[24ch] font-serif text-3xl leading-tight md:text-4xl">
+              Not sure what your hair actually needs?
+            </h2>
+            <p className="mx-auto mt-4 max-w-[48ch] text-text-muted">
+              A short Hair &amp; Scalp Profile to understand your texture, scalp
+              condition, damage level, and ideal care routine.
+            </p>
+            <a
+              href="/hair-profile"
+              className="mt-6 inline-block rounded-full border border-text px-5 py-2.5 text-[11px] uppercase tracking-label text-text transition-colors duration-medium ease-editorial hover:border-accent hover:bg-accent hover:text-bg"
+            >
+              Discover My Hair Profile →
+            </a>
+          </div>
         </section>
       </Reveal>
 
@@ -64,7 +85,7 @@ export default async function HomePage() {
             <SectionHeading
               title="Latest Stories"
               eyebrow="Journal"
-              href="/articles"
+              href="/stories"
             />
             <div className="grid gap-8 md:grid-cols-3">
               {latest.map((p) => (
@@ -82,7 +103,7 @@ export default async function HomePage() {
               <SectionHeading
                 title="The Seoul Directory"
                 eyebrow="On the map"
-                href="/places"
+                href="/seoul/places"
               />
               <p className="-mt-2 mb-10 max-w-[52ch] text-text-muted">
                 Places worth knowing — vetted studios, salons, and spaces with
@@ -104,7 +125,7 @@ export default async function HomePage() {
             <SectionHeading
               title="Weekly Picks"
               eyebrow="The Shelf"
-              href="/beauty/picks"
+              href="/skincare/picks"
             />
             <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
               {products.map((pr) => (
