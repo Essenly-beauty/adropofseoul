@@ -16,7 +16,7 @@ const SECTION_CHILDREN: Record<string, { label: string; href: string }[]> = {
     { label: "Picks", href: "/skincare/picks" },
   ],
   haircare: [
-    { label: "My Hair Profile", href: "/hair-profile" },
+    { label: "Hair Profile", href: "/beauty-profile/hair" },
     { label: "Scalp Care", href: "/haircare#scalp-care" },
     { label: "Treatments & Styling", href: "/haircare#treatments" },
     { label: "Ingredients", href: "/ingredients" },
@@ -45,7 +45,7 @@ export const NAV_ITEMS: NavItem[] = [
 
 // The Hair Profile quiz is the site's flagship interactive feature — surfaced
 // as a distinct CTA rather than a plain nav link.
-export const NAV_CTA = { label: "My Hair Profile", href: "/hair-profile" };
+export const NAV_CTA = { label: "My Beauty Profile", href: "/beauty-profile" };
 
 // Skincare tab set, re-exported for the shared SectionTabs switcher.
 export { SKINCARE_TABS };

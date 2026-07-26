@@ -54,6 +54,12 @@ const nextConfig = {
       },
       // Stories feed moved off /articles (detail pages stay at /articles/:slug)
       { source: "/articles", destination: "/stories", permanent: true },
+      // Beauty Profile: Hair Profile moved under the Skin+Hair hub
+      {
+        source: "/hair-profile",
+        destination: "/beauty-profile/hair",
+        permanent: true,
+      },
       // Legacy short links from the previous restructure
       { source: "/hair", destination: "/haircare", permanent: true },
       { source: "/picks", destination: "/skincare/picks", permanent: true },

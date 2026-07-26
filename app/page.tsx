@@ -61,19 +61,19 @@ export default async function HomePage() {
       <Reveal>
         <section className="bg-porcelain/60">
           <div className="mx-auto max-w-content px-6 py-14 text-center md:py-20">
-            <Eyebrow className="mb-4">My Hair Profile</Eyebrow>
+            <Eyebrow className="mb-4">My Beauty Profile</Eyebrow>
             <h2 className="mx-auto max-w-[24ch] font-serif text-3xl leading-tight md:text-4xl">
-              Not sure what your hair actually needs?
+              Not sure what your skin and hair actually need?
             </h2>
             <p className="mx-auto mt-4 max-w-[48ch] text-text-muted">
-              A short Hair &amp; Scalp Profile to understand your texture, scalp
-              condition, damage level, and ideal care routine.
+              A short, private profile of your texture, tendencies, and ideal
+              routine — guidance, not a diagnosis, and no signup to see it.
             </p>
             <a
-              href="/hair-profile"
+              href="/beauty-profile"
               className="mt-6 inline-block rounded-full border border-text px-5 py-2.5 text-[11px] uppercase tracking-label text-text transition-colors duration-medium ease-editorial hover:border-accent hover:bg-accent hover:text-bg"
             >
-              Discover My Hair Profile →
+              Discover My Beauty Profile →
             </a>
           </div>
         </section>
