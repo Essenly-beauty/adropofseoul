@@ -35,7 +35,7 @@ export function SiteHeader() {
               {item.children && (
                 // Preview of sub-categories: opens on hover or keyboard focus.
                 <div className="invisible absolute left-1/2 top-full z-50 -translate-x-1/2 pt-4 opacity-0 transition-all duration-fast ease-editorial group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
-                  <ul className="min-w-[160px] rounded-md border border-soft-gray bg-bg px-1.5 py-2 shadow-sm">
+                  <ul className="min-w-[180px] rounded-md border border-soft-gray bg-bg px-1.5 py-2 shadow-sm">
                     {item.children.map((child) => (
                       <li key={child.href}>
                         <Link
@@ -44,6 +44,20 @@ export function SiteHeader() {
                         >
                           {child.label}
                         </Link>
+                        {child.children && (
+                          <ul className="mb-1 ml-3 border-l border-soft-gray pl-2">
+                            {child.children.map((grand) => (
+                              <li key={grand.href}>
+                                <Link
+                                  href={grand.href}
+                                  className="block rounded-sm px-3 py-1.5 text-[11px] uppercase tracking-label text-text-muted/90 transition-colors duration-medium ease-editorial hover:bg-porcelain hover:text-text"
+                                >
+                                  {grand.label}
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
                       </li>
                     ))}
                   </ul>
@@ -104,6 +118,21 @@ export function SiteHeader() {
                         >
                           {child.label}
                         </Link>
+                        {child.children && (
+                          <ul className="flex flex-col border-l border-soft-gray pl-4">
+                            {child.children.map((grand) => (
+                              <li key={grand.href}>
+                                <Link
+                                  href={grand.href}
+                                  onClick={() => setOpen(false)}
+                                  className="block py-1.5 text-[11px] uppercase tracking-label text-text-muted/90 transition-colors duration-medium ease-editorial hover:text-accent"
+                                >
+                                  {grand.label}
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
                       </li>
                     ))}
                   </ul>
