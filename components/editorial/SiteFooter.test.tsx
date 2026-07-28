@@ -11,11 +11,11 @@ describe("SiteFooter", () => {
   it("renders curated column links and copyright", () => {
     render(<SiteFooter />);
     expect(
-      screen.getByRole("link", { name: "Beauty" }).getAttribute("href")
-    ).toBe("/beauty");
+      screen.getByRole("link", { name: "Skincare" }).getAttribute("href")
+    ).toBe("/skincare");
     expect(
-      screen.getByRole("link", { name: "Places" }).getAttribute("href")
-    ).toBe("/places");
+      screen.getByRole("link", { name: "Seoul" }).getAttribute("href")
+    ).toBe("/seoul");
     expect(
       screen.getByRole("link", { name: "Privacy Policy" }).getAttribute("href")
     ).toBe("/privacy");

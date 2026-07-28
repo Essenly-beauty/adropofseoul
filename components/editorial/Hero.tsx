@@ -15,13 +15,13 @@ export function Hero() {
       </p>
       <div className="mt-11 flex flex-wrap items-center justify-center gap-4">
         <Link
-          href="/articles"
+          href="/stories"
           className="rounded-full border border-text px-7 py-3.5 text-[12.5px] uppercase tracking-label transition-colors duration-medium ease-editorial hover:bg-text hover:text-bg"
         >
           Explore Guides
         </Link>
         <Link
-          href="/places"
+          href="/seoul/places"
           className="border-b border-transparent pb-1 text-[12.5px] uppercase tracking-label text-text-muted transition-colors duration-medium ease-editorial hover:border-accent hover:text-text"
         >
           The Seoul Directory →

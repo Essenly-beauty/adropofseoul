@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getPostBySlug } from "@/services/posts";
+import { sectionForCategory } from "@/lib/taxonomy";
 import { Prose } from "@/components/editorial/Prose";
 import { JsonLd } from "@/components/editorial/JsonLd";
 import { articleJsonLd, breadcrumbJsonLd, canonical } from "@/lib/seo";
@@ -98,20 +100,25 @@ export default async function ArticlePage({
   const post = await getPostBySlug(params.slug);
   if (!post) notFound();
 
+  const section = sectionForCategory(post.category);
+
   return (
     <main className="mx-auto max-w-3xl px-6 py-16">
       <JsonLd data={articleJsonLd(post)} />
       <JsonLd
         data={breadcrumbJsonLd([
           { name: "Home", path: "/" },
-          { name: "Stories", path: "/articles" },
+          { name: section.label, path: section.href },
           { name: post.title, path: `/articles/${post.slug}` },
         ])}
       />
       <article>
-        <p className="text-xs uppercase tracking-widest text-accent">
-          {post.category.replace(/_/g, " ")}
-        </p>
+        <Link
+          href={section.href}
+          className="text-xs uppercase tracking-widest text-accent transition-colors duration-medium ease-editorial hover:text-accent-hover"
+        >
+          {section.label}
+        </Link>
         <h1 className="mt-2 font-serif text-4xl md:text-5xl">{post.title}</h1>
         {post.subtitle && (
           <p className="mt-3 text-xl text-text-muted">{post.subtitle}</p>

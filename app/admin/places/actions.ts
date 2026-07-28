@@ -23,8 +23,8 @@ async function requireAdmin() {
 
 function revalidatePlaces() {
   revalidatePath("/admin/places");
-  revalidatePath("/places");
-  revalidatePath("/places/[slug]", "page");
+  revalidatePath("/seoul/places");
+  revalidatePath("/seoul/places/[slug]", "page");
 }
 
 function isUniqueViolation(err: unknown): boolean {

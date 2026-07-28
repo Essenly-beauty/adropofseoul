@@ -5,14 +5,16 @@ import { CategoryIndex } from "./CategoryIndex";
 describe("CategoryIndex", () => {
   it("renders a linked row per section", () => {
     render(<CategoryIndex />);
+    // Accessible name is "<label> <blurb> Enter →" — anchor to the label so a
+    // blurb that mentions another section (Stories mentions "Seoul") is ignored.
     expect(
-      screen.getByRole("link", { name: /Beauty/ }).getAttribute("href")
-    ).toBe("/beauty");
+      screen.getByRole("link", { name: /^Skincare/ }).getAttribute("href")
+    ).toBe("/skincare");
     expect(
-      screen.getByRole("link", { name: /Wellness/ }).getAttribute("href")
+      screen.getByRole("link", { name: /^Wellness/ }).getAttribute("href")
     ).toBe("/wellness");
     expect(
-      screen.getByRole("link", { name: /Around Seoul/ }).getAttribute("href")
-    ).toBe("/around-seoul");
+      screen.getByRole("link", { name: /^Seoul/ }).getAttribute("href")
+    ).toBe("/seoul");
   });
 });

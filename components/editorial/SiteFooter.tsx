@@ -5,6 +5,7 @@ import { SECTIONS } from "@/lib/taxonomy";
 const EXPLORE = SECTIONS.map((s) => ({ label: s.label, href: s.href }));
 
 const MORE = [
+  { label: "My Beauty Profile", href: "/beauty-profile" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
   { label: "Privacy Policy", href: "/privacy" },
