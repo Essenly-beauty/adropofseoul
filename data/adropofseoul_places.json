@@ -2258,7 +2258,7 @@
     "googleMaps": null,
     "naverMap": null,
     "reviewSummary": null,
-    "verified": false
+    "verified": true
   },
   {
     "id": "121",
@@ -2277,7 +2277,7 @@
     "googleMaps": null,
     "naverMap": null,
     "reviewSummary": null,
-    "verified": false
+    "verified": true
   },
   {
     "id": "122",
@@ -2296,7 +2296,7 @@
     "googleMaps": null,
     "naverMap": null,
     "reviewSummary": null,
-    "verified": false
+    "verified": true
   },
   {
     "id": "123",
@@ -2315,7 +2315,7 @@
     "googleMaps": null,
     "naverMap": null,
     "reviewSummary": null,
-    "verified": false
+    "verified": true
   },
   {
     "id": "124",
@@ -2334,7 +2334,7 @@
     "googleMaps": null,
     "naverMap": null,
     "reviewSummary": null,
-    "verified": false
+    "verified": true
   },
   {
     "id": "125",
@@ -2353,7 +2353,7 @@
     "googleMaps": null,
     "naverMap": null,
     "reviewSummary": null,
-    "verified": false
+    "verified": true
   },
   {
     "id": "126",
@@ -2372,7 +2372,7 @@
     "googleMaps": null,
     "naverMap": null,
     "reviewSummary": null,
-    "verified": false
+    "verified": true
   },
   {
     "id": "127",
@@ -2391,7 +2391,7 @@
     "googleMaps": null,
     "naverMap": null,
     "reviewSummary": null,
-    "verified": false
+    "verified": true
   },
   {
     "id": "128",
@@ -2410,7 +2410,7 @@
     "googleMaps": null,
     "naverMap": null,
     "reviewSummary": null,
-    "verified": false
+    "verified": true
   },
   {
     "id": "129",
@@ -2429,7 +2429,7 @@
     "googleMaps": null,
     "naverMap": null,
     "reviewSummary": null,
-    "verified": false
+    "verified": true
   },
   {
     "id": "130",
@@ -2448,7 +2448,7 @@
     "googleMaps": null,
     "naverMap": null,
     "reviewSummary": null,
-    "verified": false
+    "verified": true
   },
   {
     "id": "131",
@@ -2486,7 +2486,7 @@
     "googleMaps": null,
     "naverMap": null,
     "reviewSummary": null,
-    "verified": false
+    "verified": true
   },
   {
     "id": "133",
@@ -2505,7 +2505,7 @@
     "googleMaps": null,
     "naverMap": null,
     "reviewSummary": null,
-    "verified": false
+    "verified": true
   },
   {
     "id": "134",
@@ -2524,6 +2524,6 @@
     "googleMaps": null,
     "naverMap": null,
     "reviewSummary": null,
-    "verified": false
+    "verified": true
   }
 ]
