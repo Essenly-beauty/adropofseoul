@@ -4,12 +4,18 @@ import { notFound } from "next/navigation";
 import { ArticleCard } from "@/components/editorial/ArticleCard";
 import { JsonLd } from "@/components/editorial/JsonLd";
 import { breadcrumbJsonLd, canonical } from "@/lib/seo";
-import { getNeighborhood, regionForGuide } from "@/lib/taxonomy";
+import {
+  getNeighborhood,
+  neighborhoodAreas,
+  regionForGuide,
+} from "@/lib/taxonomy";
 import { listPublishedPosts } from "@/services/posts";
+import { listPlaces } from "@/services/places";
 import { listGuidePosts } from "@/lib/seongsu/assets";
 import { SeongsuMap } from "@/components/seongsu/SeongsuMap";
+import { NeighborhoodDirectory } from "@/components/seoul/NeighborhoodDirectory";
 import { WaitlistForm } from "@/components/seongsu/WaitlistForm";
-import type { Post } from "@/services/types";
+import type { Post, Place } from "@/services/types";
 
 // Rendered on demand: the hub pulls DB `guides` posts (via cookies), so it can't
 // be statically prerendered. `notFound()` still guards unknown neighborhoods.
@@ -23,17 +29,31 @@ export async function generateMetadata({
   const n = getNeighborhood(params.neighborhood);
   if (!n) return { title: "Not found" };
   const title = `${n.label} — Seoul Neighborhoods`;
+  const raw = n.lede ?? n.blurb;
+  const description =
+    raw.length > 155 ? raw.slice(0, 152).replace(/\s+\S*$/, "") + "…" : raw;
   return {
     title,
-    description: n.lede ?? n.blurb,
+    description,
     alternates: { canonical: canonical(`/seoul/neighborhoods/${n.slug}`) },
     openGraph: {
       title,
-      description: n.lede ?? n.blurb,
+      description,
       type: "website",
       url: canonical(`/seoul/neighborhoods/${n.slug}`),
     },
   };
+}
+
+// Published places for the hub's purpose sections; hubs render fine without.
+// limit 200 matches /seoul/places; revisit if any hub nears that count.
+async function neighborhoodPlaces(areas: string[]): Promise<Place[]> {
+  try {
+    return await listPlaces({ limit: 200, areas });
+  } catch (err) {
+    console.error("seoul/neighborhoods: places fetch failed", err);
+    return [];
+  }
 }
 
 // All guides for a neighborhood: DB `guides` posts + code-defined guides,
@@ -64,6 +84,9 @@ export default async function NeighborhoodPage({
   if (!n) notFound();
 
   const posts = await neighborhoodPosts(n.slug);
+  const places = n.sections?.length
+    ? await neighborhoodPlaces(neighborhoodAreas(n))
+    : [];
 
   return (
     <main className="mx-auto max-w-content px-6 py-16">
@@ -88,6 +111,8 @@ export default async function NeighborhoodPage({
 
       {n.hasMap && <SeongsuMap course={1} className="mx-auto max-w-3xl" />}
 
+      <NeighborhoodDirectory neighborhood={n} places={places} />
+
       {posts.length > 0 && (
         <div className="mt-4 grid gap-8 md:grid-cols-2">
           {posts.map((post) => (
@@ -111,7 +136,11 @@ export default async function NeighborhoodPage({
         <p className="text-text-muted">
           Looking for a specific spot in {n.label}?{" "}
           <Link
-            href={`/seoul/places?area=${encodeURIComponent(n.label)}`}
+            href={
+              n.areas
+                ? "/seoul/places"
+                : `/seoul/places?area=${encodeURIComponent(n.label)}`
+            }
             className="text-accent transition-colors duration-medium ease-editorial hover:text-accent-hover"
           >
             Browse the {n.label} directory →
