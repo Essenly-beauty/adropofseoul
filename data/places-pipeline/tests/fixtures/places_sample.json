@@ -1,0 +1,16 @@
+[
+  {
+    "id": "999",
+    "slug": "cheongdam-hair-salon-existing",
+    "nameKr": "청담헤어살롱 (강남점)",
+    "nameEn": "Cheongdam Hair Salon",
+    "address": "서울 강남구 도산대로 (청담동)"
+  },
+  {
+    "id": "998",
+    "slug": "mapo-yeomni-existing-by-address",
+    "nameKr": "다른이름",
+    "nameEn": "",
+    "address": "서울특별시 마포구 염리동 5-3, 2층"
+  }
+]
