@@ -1260,6 +1260,171 @@
       "bestFor": "a visually dramatic tea-and-dessert stop inside one of Seongsu's newest architectural flagships",
       "whyWeLikeIt": "Occupies the striking 5th floor of Gentle Monster's \"Haus Nowhere\" concept store near Seoul Forest Station, cited as one of Seoul's most visually distinctive interior spaces.",
       "longDescription": "NUDAKE Tea House sits on the fifth floor of Haus Nowhere, Gentle Monster's flagship near Seoul Forest that opened in September 2025 as the first chapter of the brand's long-term retail vision. NUDAKE, Gentle Monster's dessert-and-tea offshoot, built the floor around a rotating collection of themed teas served in sculptural, sometimes claw-shaped ceramics.\n\nKinetic installations move through the space alongside a pistachio-and-violet color scheme, and the gift shop at the front sells tea by the cup from roughly 12,500 to 36,000 won. The tea lounge runs daily from around noon to 9pm; the adjoining gift shop opens earlier, at 11am."
+    },
+    "texture-apgujeong-rodeo": {
+      "name": "Texture Apgujeong Rodeo",
+      "category": "salon",
+      "kind": "place",
+      "area": "Apgujeong",
+      "serviceDetail": "Color-specialist hair salon",
+      "summary": "A colour-focused hair salon on Apgujeong Rodeo, part of a small two-branch brand that treats dyeing and bond-repair as its signature.",
+      "bestFor": "trend-led colour work and hair-repair treatments in the Apgujeong Rodeo shopping belt",
+      "whyWeLikeIt": "It bills itself as a colour-and-wellness salon rather than a generic cut shop, and sits right on the Apgujeong Rodeo strip where the newest Seoul hair trends surface first.",
+      "longDescription": "Texture is a colour-specialist salon on the second floor of the YOHAN Building on Apgujeong-ro, at the heart of the Apgujeong Rodeo shopping district. It is one of two branches of the brand, alongside a Seoul Forest location, and frames itself as a \"wellness salon\" built around dyeing and clinic-style hair repair.\n\nAs a newly opened studio it books through its Instagram profile link, Naver reservations and DM. Hours run roughly 10:00 to 21:00, closed Wednesdays. Note that the brand's storefront and menu are Korean-first, so non-Korean speakers may want to book ahead with a translation app."
+    },
+    "the-boutique-hauve-dosan": {
+      "name": "The Boutique Hauve Dosan",
+      "category": "salon",
+      "kind": "place",
+      "area": "Apgujeong",
+      "serviceDetail": "Full-service hair salon",
+      "summary": "A large, newly opened Apgujeong-Rodeo salon with around twenty chairs and a proprietary damaged-hair perm-and-treatment line.",
+      "bestFor": "a spacious full-service cut, colour and perm session on the Apgujeong Rodeo strip",
+      "whyWeLikeIt": "It opened in 2026 as a roomy ~90-pyeong salon with valet parking and its own \"The Barrel\" repair-perm line — an easy, comfortable full-service option in a premium neighbourhood.",
+      "longDescription": "The Boutique Hauve's Dosan branch is a large hair salon — roughly ninety pyeong with about twenty chairs — on the second floor at 312 Apgujeong-ro, on the Apgujeong Rodeo strip. It runs a proprietary \"The Barrel\" perm-and-treatment programme aimed at damaged hair, and offers valet parking.\n\nAs a 2026 opening it books through Instagram and Naver, and has run first-visit discount events. English service is limited, so booking ahead with a translation app is advisable."
+    },
+    "typer-haus": {
+      "name": "Typer Haus",
+      "category": "salon",
+      "kind": "place",
+      "area": "Apgujeong",
+      "serviceDetail": "Men's premium hair salon",
+      "summary": "A men's premium hair shop near Apgujeong Rodeo station, backed by a well-known men's-hair brand and branded entirely in English around the line \"Type Your Persona.\"",
+      "bestFor": "a men's cut and styling session in a design-forward Apgujeong studio",
+      "whyWeLikeIt": "It's the new flagship-style offshoot of a major men's-hair brand, with strongly English-forward branding — an unusually approachable pick for male travellers wanting a Korean men's cut.",
+      "longDescription": "Typer Haus is a men's premium hair shop in the basement level at 20 Seolleung-ro 161-gil, a short walk from Apgujeong Rodeo station. It launched in mid-2026 as an offshoot of an established men's-hair brand with a large following, and leans into English branding — \"MENS PREMIUM HAIR SHOP,\" \"Type Your Persona.\"\n\nBooking is by Instagram DM. As a men's-only studio its appeal is narrower, but the English-forward identity and prime location make it one of the easier men's salons for visitors to approach."
+    },
+    "esyun-hair": {
+      "name": "ESYUN Hair Extensions",
+      "category": "salon",
+      "kind": "place",
+      "area": "Apgujeong",
+      "serviceDetail": "Hair-extension specialist studio",
+      "summary": "A hair-extension (붙임머리) specialist studio near Sinsa, with profile branding in Japanese as well as Korean.",
+      "bestFor": "adding length or volume with professional hair extensions",
+      "whyWeLikeIt": "It's a dedicated extension specialist rather than a general salon, and its Japanese-language profile signals it's used to serving Japanese-speaking visitors — a niche but genuinely tourist-friendly option.",
+      "longDescription": "ESYUN is a hair-extension (붙임머리) specialist studio on the third floor at 45 Gangnam-daero 162-gil in Sinsa-dong, recently opened after relocating from Yongin. Its Instagram profile carries Korean and Japanese (\"エクステ\") branding, pointing to a Japanese-speaking clientele.\n\nBooking is by Instagram DM or phone. This is a focused extensions studio rather than a full-service salon, so it suits travellers specifically after length or volume work."
+    },
+    "the-gravel-cheongdam": {
+      "name": "The Gravel",
+      "category": "salon",
+      "kind": "place",
+      "area": "Cheongdam",
+      "serviceDetail": "Men's private hair lounge",
+      "summary": "A high-end men's-only \"gentlemen's hair lounge\" in Cheongdam offering one-to-one private styling, scalp spa and hairpiece work.",
+      "bestFor": "a private, unhurried men's cut, scalp-spa or styling session in Cheongdam",
+      "whyWeLikeIt": "It's a 1:1 private atelier built around the idea of \"designing your value\" — a discreet, high-touch men's option in Seoul's most exclusive salon district.",
+      "longDescription": "The Gravel is a men's-only \"gentlemen's hair lounge\" on the third floor at 5 Dosan-daero 102-gil in Cheongdam. It works one-to-one in a private-atelier format, covering men's cutting and styling, scalp spa and hairpiece services, under a \"Design Your Value\" concept.\n\nA 2026 opening, it books through Instagram. Content is largely Korean; the private format and Cheongdam address place it at the premium end of the men's-grooming market."
+    },
+    "nailamuteun": {
+      "name": "Nailamuteun",
+      "category": "nail_lash",
+      "kind": "place",
+      "area": "Yeonnam",
+      "serviceDetail": "Nail art studio",
+      "summary": "A newly opened nail-art studio in Yeonnam-dong, tagging itself squarely to the Yeonnam and Hongdae nail scene.",
+      "bestFor": "on-trend Yeonnam nail art booked directly by DM",
+      "whyWeLikeIt": "It's exactly the rising, DM-booking Yeonnam nail studio our readers ask about — new, location-proud, and off the big booking platforms.",
+      "longDescription": "Nailamuteun is a nail-art studio in a lower-level unit at 35 Seongmisan-ro 26-gil in Yeonnam-dong, the leafy neighbourhood just north of Hongdae. It opened in 2026 and identifies itself explicitly with the Yeonnam and Hongdae nail scene.\n\nBooking is by Instagram DM. As a small independent studio it isn't listed on the big booking apps, which is precisely why it's worth surfacing for visitors who want a local Yeonnam nail session."
+    },
+    "carp-nail": {
+      "name": "Carp Nail",
+      "category": "nail_lash",
+      "kind": "place",
+      "area": "Yeonnam",
+      "serviceDetail": "Nail art studio",
+      "summary": "A small independent nail-art studio in Yeonnam-dong with a distinctive name and location-tagged Instagram.",
+      "bestFor": "a Yeonnam nail-art appointment away from the chains",
+      "whyWeLikeIt": "It's a genuinely independent Yeonnam studio — distinctive branding, DM booking, the kind of neighbourhood nail spot that rarely shows up in English guides.",
+      "longDescription": "Carp Nail is a nail-art studio on the second floor at 19 Donggyo-ro 32-gil in Yeonnam-dong. Newly licensed in 2026, it tags its work to Yeonnam and books directly through Instagram DM.\n\nSmall and off the major platforms, it suits travellers who prefer an independent neighbourhood studio over a chain."
+    },
+    "orosyfuss-hapjeong-nail": {
+      "name": "The Prettier Nail & OROSYFUSS Hapjeong",
+      "category": "nail_lash",
+      "kind": "place",
+      "area": "Hongdae",
+      "serviceDetail": "Nail & foot-care studio",
+      "summary": "The Hapjeong branch of the OROSYFUSS group, combining nail art with problem-foot (문제성발) care in the Mapo Hangang Prugio complex.",
+      "bestFor": "nail art plus specialist foot care near Hongdae/Hapjeong",
+      "whyWeLikeIt": "It pairs standard nail art with genuine problem-foot care — a more clinical, useful combination than a typical nail bar, right by Hapjeong.",
+      "longDescription": "This is the Hapjeong branch of the OROSYFUSS group, on the ground floor of the Mapo Hangang Prugio commercial complex at 14 World Cup-ro 1-gil in Hapjeong-dong. It combines nail art with specialist problem-foot (문제성발) care.\n\nOpened in 2026 with a live Naver booking link and Instagram DM, it sits within walking distance of the Hongdae/Hapjeong area."
+    },
+    "jolly-nail-hapjeong": {
+      "name": "J.Olly Nail Art (Hapjeong)",
+      "category": "nail_lash",
+      "kind": "place",
+      "area": "Hongdae",
+      "serviceDetail": "Nail, lash & makeup studio",
+      "summary": "A new Hapjeong-area branch of the multi-location Mapo K-beauty brand J.Olly, offering nail, lash and makeup together.",
+      "bestFor": "a one-stop nail, lash and makeup session near Hongdae",
+      "whyWeLikeIt": "It's a rising multi-service K-beauty brand — nails, lashes and makeup under one roof — expanding into the Hongdae/Seogyo area in 2026.",
+      "longDescription": "J.Olly is a multi-location Mapo-gu K-beauty brand offering nails, lashes and makeup; this is its new Seogyo-dong (Hapjeong-area) branch on the second floor at 40 World Cup-ro. The flagship sits near Gongdeok.\n\nOpened in 2026, it books through Instagram and Naver. The combined nail-lash-makeup menu makes it a convenient single stop for visitors near Hongdae."
+    },
+    "hera-spa-esthetic": {
+      "name": "HERA Spa & Esthetic",
+      "category": "facial",
+      "kind": "place",
+      "area": "Myeongdong",
+      "serviceDetail": "Women's hotel facial & body spa",
+      "summary": "A women-only hotel spa on the second floor of the Sejong Hotel by Myeongdong, offering scrub, facial, aroma and foot care.",
+      "bestFor": "a women-only hotel spa session — scrub, facial or aroma — steps from Myeongdong",
+      "whyWeLikeIt": "It's a proper hotel spa with its own page on the Sejong Hotel site, women-only and walkably close to Myeongdong — an easy, legible choice for visitors.",
+      "longDescription": "HERA Spa & Esthetic is a women-only spa on the second floor of the Sejong Hotel at 145 Toegye-ro, beside Myeongdong. The hotel's own website lists it with a full menu of scrub, facial, aroma and foot-care treatments, hours of 09:30–22:00 and a direct phone line.\n\nBeing inside an established hotel makes it one of the more predictable, easy-to-book spa options for visitors staying around Myeongdong."
+    },
+    "fleur-jardin-myeongdong": {
+      "name": "Fleur Jardin Myeongdong",
+      "category": "facial",
+      "kind": "place",
+      "area": "Myeongdong",
+      "serviceDetail": "Facial, nail & foot spa",
+      "summary": "A Myeongdong skincare studio combining facials and skin analysis with nail and foot-spa services in the T Avenue building.",
+      "bestFor": "a combined facial, skin-analysis and nail session in central Myeongdong",
+      "whyWeLikeIt": "It bundles facials, skin analysis, nails and foot spa in one central Myeongdong address — convenient for visitors who want several beauty services in a single stop.",
+      "longDescription": "Fleur Jardin is a skincare studio on the second floor of the T Avenue building at 7-9 Myeongdong 10-gil in Myeongdong. Its menu spans facials and skin analysis alongside nail and foot-spa work.\n\nThe studio maintains an active Instagram and Naver blog and books through them; its central Myeongdong location makes it an easy add-on to a shopping day."
+    },
+    "as-blanc-lotte-hotel-seoul": {
+      "name": "As Blanc (Lotte Hotel Seoul)",
+      "category": "facial",
+      "kind": "place",
+      "area": "Myeongdong",
+      "serviceDetail": "Luxury hotel facial spa",
+      "summary": "A forthcoming branch of the As Blanc facial-spa brand on the seventh floor of Lotte Hotel Seoul, beside Myeongdong.",
+      "bestFor": "a luxury hotel K-beauty facial by Myeongdong (opening late 2026)",
+      "whyWeLikeIt": "As Blanc is a foreigner-ready K-beauty facial brand — English site, Klook listing, overseas branches — and this Lotte Hotel Seoul location will put it right beside Myeongdong.",
+      "longDescription": "As Blanc is a directly-managed K-beauty facial-spa brand that operates in luxury malls and hotels, with an English website, a Klook listing and an overseas branch. This location, on the seventh floor of Lotte Hotel Seoul at 30 Euljiro, is beside Myeongdong.\n\nNote: the Lotte Hotel Seoul branch is slated to open around September 2026, so confirm it is operating before visiting."
+    },
+    "cocorea-spa-myeongdong": {
+      "name": "COCOREA Spa (Myeongdong)",
+      "category": "facial",
+      "kind": "place",
+      "area": "Myeongdong",
+      "serviceDetail": "Facial & skin-treatment spa",
+      "summary": "The skincare-and-treatment arm of the COCOREA brand on Myeongdong 4-gil, focused on facials and modern skin devices.",
+      "bestFor": "a device-led K-beauty facial in central Myeongdong",
+      "whyWeLikeIt": "It's the facial/skin-treatment side of a multi-unit Myeongdong K-beauty brand — modern treatments like PDRN and skin devices, right on Myeongdong 4-gil.",
+      "longDescription": "COCOREA Spa is the skincare-and-treatment branch of the COCOREA brand, on the second floor at 17-1 Myeongdong 4-gil. It focuses on facials and current K-beauty skin treatments and devices. (Note the brand also runs a separate makeup and personal-colour unit nearby on the same street — this entry is the facial spa.)\n\nA 2026 opening, it books through Instagram; its central Myeongdong position makes it a convenient skincare stop."
+    },
+    "triomphe-esthetic": {
+      "name": "Triomphe Esthetic",
+      "category": "facial",
+      "kind": "place",
+      "area": "Myeongdong",
+      "serviceDetail": "Medical-aesthetic esthetic spa",
+      "summary": "The esthetic arm of a Myeongdong medical-aesthetic clinic, with strong foreigner support including LINE, WeChat and WhatsApp booking.",
+      "bestFor": "a clinic-grade esthetic facial in Myeongdong with multilingual booking",
+      "whyWeLikeIt": "It's tied to a medical-aesthetic clinic and is unusually foreigner-ready — LINE, WeChat and WhatsApp contacts make it one of the easiest esthetic studios for visitors to book.",
+      "longDescription": "Triomphe Esthetic is the esthetic/skincare arm of Triomphe Dr. Clinic & Aesthetic, on the first floor of the Myeongdong Central Building at 16 Myeongdong 9-gil. It opened in late 2024 and runs its own booking line.\n\nIt stands out for foreigner readiness, offering LINE, WeChat and WhatsApp contacts alongside Naver — an easy pick for visitors who want a clinic-linked facial in central Myeongdong."
+    },
+    "renk-euljiro": {
+      "name": "Re:NK Euljiro",
+      "category": "facial",
+      "kind": "place",
+      "area": "Myeongdong",
+      "serviceDetail": "Brand facial spa (President Hotel)",
+      "summary": "A Re:NK-brand facial spa inside the President Hotel near Euljiro-ipgu and Myeongdong.",
+      "bestFor": "a Re:NK-brand facial near Euljiro-ipgu station",
+      "whyWeLikeIt": "It's a named-brand facial spa inside a hotel by Euljiro-ipgu — a legible, centrally located option a short walk from Myeongdong.",
+      "longDescription": "Re:NK Euljiro is a facial and skincare spa run under the Re:NK brand, on the sixth floor (room 701) of the President Hotel at 16 Euljiro, near Euljiro-ipgu station and a short walk from Myeongdong.\n\nThe branch books through its KakaoTalk channel and Instagram DM. Content is Korean-first; the hotel setting and central location make it easy to find."
     }
   }
 }
