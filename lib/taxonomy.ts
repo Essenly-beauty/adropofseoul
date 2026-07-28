@@ -114,6 +114,26 @@ export function isPick(post: Pick<Post, "slug" | "tags">): boolean {
 }
 
 // --- Seoul: neighborhoods -------------------------------------------------
+// A directory entry is either a bookable spot or a bookable activity.
+// (Declared here, above Neighborhood, so NeighborhoodSection can reference it.)
+export const PLACE_ENTRY_KINDS = [
+  { value: "place", label: "Places" },
+  { value: "experience", label: "Experiences" },
+] as const;
+export type PlaceEntryKind = (typeof PLACE_ENTRY_KINDS)[number]["value"];
+
+/** One purpose-based group on a neighborhood hub page. */
+export type NeighborhoodSection = {
+  /** Section heading, e.g. "Shop the flagships". */
+  title: string;
+  /** Optional one-line intro under the heading. */
+  blurb?: string;
+  /** place_category enum values that belong to this section. */
+  categories: string[];
+  /** Restrict to one entry kind; omit to accept both. */
+  entryType?: PlaceEntryKind;
+};
+
 export type Neighborhood = {
   slug: string;
   label: string;
@@ -125,6 +145,10 @@ export type Neighborhood = {
   lede?: string;
   /** True if this neighborhood has a dedicated interactive course map. */
   hasMap?: boolean;
+  /** Purpose-based directory sections, in editorial order. */
+  sections?: NeighborhoodSection[];
+  /** Place `area` values this hub aggregates; defaults to [label]. */
+  areas?: string[];
 };
 
 export const SEOUL_NEIGHBORHOODS: Neighborhood[] = [
@@ -136,11 +160,151 @@ export const SEOUL_NEIGHBORHOODS: Neighborhood[] = [
     heading: "Seongsu, the local way",
     lede: "Seongsu is where Seoul's beauty industry actually works — and the food scene grew up to feed it. Two connected walks, cross-checked and walked by our team: the beauty-and-bites mile, and the warehouse-café crawl just east. They share one map, and they link into a single day.",
     hasMap: true,
+    sections: [
+      {
+        title: "Shop the flagships",
+        blurb: "The K-beauty and fashion flagships people actually fly in for.",
+        categories: ["shop"],
+      },
+      {
+        title: "Warehouse cafés",
+        blurb: "Factory-conversion coffee — Seongsu's original draw.",
+        categories: ["cafe"],
+      },
+      {
+        title: "Make something",
+        blurb:
+          "Perfume, makeup, and traditional-drink classes worth booking ahead.",
+        categories: ["perfume", "makeup", "cooking_class", "facial"],
+        entryType: "experience",
+      },
+      {
+        title: "Beauty services on the rise",
+        blurb:
+          "Salons and studios locals book by DM — barely on the booking apps yet.",
+        categories: [
+          "personal_color",
+          "nail_lash",
+          "salon",
+          "head_spa",
+          "spa",
+          "facial",
+        ],
+        entryType: "place",
+      },
+    ],
+  },
+  {
+    slug: "hongdae",
+    label: "Hongdae",
+    blurb:
+      "Personal color, nails, lashes, and indie perfume — Seoul's youngest beauty district.",
+    heading: "Hongdae, in full color",
+    lede: "Hongdae is where Seoul gets its color done — the personal-color capital, plus walk-in friendly salons, lash and nail studios, and perfume labs, all at student-district prices.",
+    areas: ["Hongdae", "Yeonnam"],
+    sections: [
+      {
+        title: "Personal color & makeup",
+        blurb: "Where Seoul's personal-color boom lives — book ahead.",
+        categories: ["personal_color", "makeup"],
+      },
+      {
+        title: "Nails & lashes",
+        blurb: "Detail work Hongdae does better than anywhere.",
+        categories: ["nail_lash"],
+      },
+      {
+        title: "Hair salons",
+        blurb: "English-friendly cuts and color without the Gangnam price tag.",
+        categories: ["salon"],
+      },
+      {
+        title: "Perfume workshops",
+        blurb: "Blend your own bottle to take home.",
+        categories: ["perfume"],
+        entryType: "experience",
+      },
+      {
+        title: "Spa & skin",
+        blurb: "Scrubs, facials, and skin clinics between the studios.",
+        categories: ["spa", "facial", "clinic"],
+      },
+    ],
+  },
+  {
+    slug: "myeongdong",
+    label: "Myeongdong",
+    blurb: "Spas, facials, and walk-in salons in the heart of tourist Seoul.",
+    heading: "Myeongdong, made easy",
+    lede: "Myeongdong is Seoul's beauty-service hub for first-timers — the densest cluster of tourist-friendly spas, facials, and walk-in salons, minutes from the flagship shopping streets.",
+    sections: [
+      {
+        title: "Spa & massage",
+        blurb: "Full-body, foot, and everything in between — no Korean needed.",
+        categories: ["spa"],
+      },
+      {
+        title: "Facial & skincare",
+        blurb: "Glass-skin facials an elevator ride from the shopping.",
+        categories: ["facial"],
+      },
+      {
+        title: "Hair & makeup",
+        blurb: "Walk-in friendly salons used to international guests.",
+        categories: ["salon", "makeup"],
+      },
+      {
+        title: "Personal color",
+        blurb: "Quick diagnoses that fit between itinerary stops.",
+        categories: ["personal_color"],
+      },
+    ],
+  },
+  {
+    slug: "gangnam-cheongdam",
+    label: "Gangnam & Cheongdam",
+    blurb: "K-pop hair & makeup, head spas, and the premium end of K-beauty.",
+    heading: "Gangnam & Cheongdam, the premium tier",
+    lede: "South of the river is Seoul's premium tier — the K-pop stylist salons of Cheongdam, the city's head-spa district, and the studios where personal color analysis got serious.",
+    areas: ["Gangnam", "Cheongdam", "Apgujeong", "Garosugil"],
+    sections: [
+      {
+        title: "K-pop hair & makeup",
+        blurb: "The salons idols actually sit in — book well ahead.",
+        categories: ["salon", "makeup"],
+      },
+      {
+        title: "Head spa & massage",
+        blurb: "Seoul's head-spa district, plus aroma and body work.",
+        categories: ["head_spa", "spa"],
+      },
+      {
+        title: "Personal color",
+        blurb: "The first-generation studios that started the trend.",
+        categories: ["personal_color"],
+      },
+      {
+        title: "Classes & workshops",
+        blurb: "Private perfume blending and hands-on Korean cooking.",
+        categories: ["perfume", "cooking_class"],
+        entryType: "experience",
+      },
+      {
+        title: "Nails & clinics",
+        blurb: "Celebrity nail art and dermatology-grade skin care.",
+        categories: ["nail_lash", "clinic"],
+      },
+    ],
   },
 ];
 
 export function getNeighborhood(slug: string): Neighborhood | undefined {
   return SEOUL_NEIGHBORHOODS.find((n) => n.slug === slug);
+}
+
+/** The place `area` values that belong to a neighborhood hub. */
+export function neighborhoodAreas(n: Neighborhood): string[] {
+  return n.areas ?? [n.label];
 }
 
 /**
@@ -191,13 +355,6 @@ export const PLACE_TYPE_EMOJI: Record<string, string> = {
   food_tour: "🥢",
 };
 
-// A directory entry is either a bookable spot or a bookable activity.
-export const PLACE_ENTRY_KINDS = [
-  { value: "place", label: "Places" },
-  { value: "experience", label: "Experiences" },
-] as const;
-export type PlaceEntryKind = (typeof PLACE_ENTRY_KINDS)[number]["value"];
-
 /** URL type-slug ("head-spa") → place category enum ("head_spa"). */
 export function placeCategoryFromType(typeSlug: string): string {
   return typeSlug.replace(/-/g, "_");
@@ -206,6 +363,57 @@ export function placeCategoryFromType(typeSlug: string): string {
 /** place category enum ("head_spa") → URL type-slug ("head-spa"). */
 export function placeTypeSlug(category: string): string {
   return category.replace(/_/g, "-");
+}
+
+/**
+ * Group places into a neighborhood's sections. Section order is preserved,
+ * each place lands in the first section whose categories (and entryType,
+ * when set) match, and empty sections are omitted.
+ */
+export function groupPlacesBySection<
+  T extends { category: string; entryType: PlaceEntryKind },
+>(
+  places: T[],
+  sections: NeighborhoodSection[]
+): { section: NeighborhoodSection; places: T[] }[] {
+  const remaining = [...places];
+  const groups: { section: NeighborhoodSection; places: T[] }[] = [];
+  for (const section of sections) {
+    const matched: T[] = [];
+    for (let i = 0; i < remaining.length;) {
+      const p = remaining[i];
+      if (
+        section.categories.includes(p.category) &&
+        (!section.entryType || p.entryType === section.entryType)
+      ) {
+        matched.push(p);
+        remaining.splice(i, 1);
+      } else {
+        i++;
+      }
+    }
+    if (matched.length > 0) groups.push({ section, places: matched });
+  }
+  return groups;
+}
+
+/**
+ * The /seoul/places directory link for a hub section. `area` is included only
+ * for single-area hubs (a multi-area hub's label is not a valid `area` value);
+ * `type` is added for single-category sections, else `kind` when the section
+ * is entry-type-restricted.
+ */
+export function sectionDirectoryHref(
+  neighborhood: Neighborhood,
+  section: NeighborhoodSection
+): string {
+  const params = new URLSearchParams();
+  if (!neighborhood.areas) params.set("area", neighborhood.label);
+  if (section.categories.length === 1)
+    params.set("type", placeTypeSlug(section.categories[0]));
+  else if (section.entryType) params.set("kind", section.entryType);
+  const query = params.toString();
+  return query ? `/seoul/places?${query}` : "/seoul/places";
 }
 
 // --- Posts -----------------------------------------------------------------

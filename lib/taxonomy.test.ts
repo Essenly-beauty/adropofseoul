@@ -1,4 +1,6 @@
 import { describe, it, expect } from "vitest";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import {
   isPick,
   WELLNESS_CATEGORIES,
@@ -12,6 +14,12 @@ import {
   sectionForCategory,
   POST_CATEGORIES,
   POST_STATUSES,
+  groupPlacesBySection,
+  neighborhoodAreas,
+  sectionDirectoryHref,
+  SEOUL_NEIGHBORHOODS,
+  type NeighborhoodSection,
+  type Neighborhood,
 } from "./taxonomy";
 import type { Post } from "@/services/types";
 
@@ -129,5 +137,160 @@ describe("post taxonomy", () => {
   });
   it("lists the post_status enum values", () => {
     expect(POST_STATUSES.map((s) => s.value)).toEqual(["draft", "published"]);
+  });
+});
+
+describe("groupPlacesBySection", () => {
+  const sections: NeighborhoodSection[] = [
+    { title: "Shops", categories: ["shop"] },
+    {
+      title: "Classes",
+      categories: ["perfume", "facial"],
+      entryType: "experience",
+    },
+    { title: "Services", categories: ["salon", "facial"], entryType: "place" },
+  ];
+  const p = (
+    category: string,
+    entryType: "place" | "experience" = "place"
+  ) => ({
+    category,
+    entryType,
+  });
+
+  it("groups by category in section order and drops empty sections", () => {
+    const groups = groupPlacesBySection([p("salon"), p("shop")], sections);
+    expect(groups.map((g) => g.section.title)).toEqual(["Shops", "Services"]);
+  });
+
+  it("routes the same category to different sections by entry type", () => {
+    const groups = groupPlacesBySection(
+      [p("facial", "experience"), p("facial", "place")],
+      sections
+    );
+    expect(groups.map((g) => g.section.title)).toEqual(["Classes", "Services"]);
+    expect(groups[0].places).toHaveLength(1);
+  });
+
+  it("assigns each place to the first matching section only", () => {
+    const overlapping: NeighborhoodSection[] = [
+      { title: "A", categories: ["shop"] },
+      { title: "B", categories: ["shop"] },
+    ];
+    const groups = groupPlacesBySection([p("shop")], overlapping);
+    expect(groups).toHaveLength(1);
+    expect(groups[0].section.title).toBe("A");
+  });
+
+  it("returns nothing when no places match", () => {
+    expect(groupPlacesBySection([p("cafe")], sections)).toEqual([]);
+  });
+
+  it("gives Seongsu a purpose-section config in editorial order", () => {
+    expect(getNeighborhood("seongsu")?.sections?.map((s) => s.title)).toEqual([
+      "Shop the flagships",
+      "Warehouse cafés",
+      "Make something",
+      "Beauty services on the rise",
+    ]);
+  });
+});
+
+describe("seoul neighborhoods", () => {
+  it("exposes the four neighborhoods in order", () => {
+    expect(SEOUL_NEIGHBORHOODS.map((n) => n.slug)).toEqual([
+      "seongsu",
+      "hongdae",
+      "myeongdong",
+      "gangnam-cheongdam",
+    ]);
+  });
+
+  it("derives hub areas with label fallback", () => {
+    expect(neighborhoodAreas(getNeighborhood("myeongdong")!)).toEqual([
+      "Myeongdong",
+    ]);
+    expect(neighborhoodAreas(getNeighborhood("hongdae")!)).toEqual([
+      "Hongdae",
+      "Yeonnam",
+    ]);
+    expect(neighborhoodAreas(getNeighborhood("gangnam-cheongdam")!)).toEqual([
+      "Gangnam",
+      "Cheongdam",
+      "Apgujeong",
+      "Garosugil",
+    ]);
+  });
+
+  it("only uses known place types in section configs", () => {
+    for (const n of SEOUL_NEIGHBORHOODS)
+      for (const s of n.sections ?? [])
+        for (const c of s.categories)
+          expect(
+            PLACE_TYPE_LABELS[c],
+            `${n.slug} / ${s.title} / ${c}`
+          ).toBeTruthy();
+  });
+
+  it("only uses real area values in hub configs", () => {
+    const curation = JSON.parse(
+      readFileSync(join(__dirname, "../data/places-curation.en.json"), "utf8")
+    ) as { places: Record<string, { area: string | null }> };
+    const known = new Set(
+      Object.values(curation.places)
+        .map((p) => p.area)
+        .filter(Boolean)
+    );
+    for (const n of SEOUL_NEIGHBORHOODS) {
+      if (n.areas) expect(n.areas.length, n.slug).toBeGreaterThan(0);
+      for (const a of neighborhoodAreas(n))
+        expect(known.has(a), `${n.slug} / ${a}`).toBe(true);
+    }
+  });
+});
+
+describe("sectionDirectoryHref", () => {
+  const single = (over: Partial<Neighborhood> = {}): Neighborhood => ({
+    slug: "myeongdong",
+    label: "Myeongdong",
+    blurb: "",
+    ...over,
+  });
+  const multi = (): Neighborhood => ({
+    slug: "gangnam-cheongdam",
+    label: "Gangnam & Cheongdam",
+    blurb: "",
+    areas: ["Gangnam", "Cheongdam"],
+  });
+
+  it("single-area + single-category → area and type", () => {
+    expect(
+      sectionDirectoryHref(single(), { title: "S", categories: ["facial"] })
+    ).toBe("/seoul/places?area=Myeongdong&type=facial");
+  });
+
+  it("single-area + multi-category + entryType → area and kind", () => {
+    expect(
+      sectionDirectoryHref(single(), {
+        title: "S",
+        categories: ["perfume", "makeup"],
+        entryType: "experience",
+      })
+    ).toBe("/seoul/places?area=Myeongdong&kind=experience");
+  });
+
+  it("multi-area + single-category → type only (no area)", () => {
+    expect(
+      sectionDirectoryHref(multi(), { title: "S", categories: ["salon"] })
+    ).toBe("/seoul/places?type=salon");
+  });
+
+  it("multi-area + multi-category + no entryType → bare /seoul/places", () => {
+    expect(
+      sectionDirectoryHref(multi(), {
+        title: "S",
+        categories: ["salon", "makeup"],
+      })
+    ).toBe("/seoul/places");
   });
 });
