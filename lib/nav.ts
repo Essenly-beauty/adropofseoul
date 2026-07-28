@@ -1,16 +1,24 @@
 import { SECTIONS, SKINCARE_TABS, SEOUL_NEIGHBORHOODS } from "@/lib/taxonomy";
 
+/** A GNB entry; children may nest one further level (e.g. Neighborhoods → areas). */
+export type NavChild = {
+  label: string;
+  href: string;
+  children?: NavChild[];
+};
+
 export type NavItem = {
   label: string;
   href: string;
   /** Sub-categories shown in the GNB (mobile toggle list + desktop dropdown). */
-  children?: { label: string; href: string }[];
+  children?: NavChild[];
 };
 
 // Sub-categories per section. The section link itself covers the landing, so
 // children surface the deeper entry points. Haircare leads with the profile
-// quiz; Seoul splits into Places (what to do) and Neighborhoods (where to go).
-const SECTION_CHILDREN: Record<string, { label: string; href: string }[]> = {
+// quiz; Seoul splits into Places (what to do) and Neighborhoods (where to go),
+// with the individual neighborhoods nested under Neighborhoods.
+const SECTION_CHILDREN: Record<string, NavChild[]> = {
   skincare: [
     { label: "Ingredients", href: "/ingredients" },
     { label: "Picks", href: "/skincare/picks" },
@@ -24,11 +32,14 @@ const SECTION_CHILDREN: Record<string, { label: string; href: string }[]> = {
   ],
   seoul: [
     { label: "Places", href: "/seoul/places" },
-    { label: "Neighborhoods", href: "/seoul/neighborhoods" },
-    ...SEOUL_NEIGHBORHOODS.map((n) => ({
-      label: n.label,
-      href: `/seoul/neighborhoods/${n.slug}`,
-    })),
+    {
+      label: "Neighborhoods",
+      href: "/seoul/neighborhoods",
+      children: SEOUL_NEIGHBORHOODS.map((n) => ({
+        label: n.label,
+        href: `/seoul/neighborhoods/${n.slug}`,
+      })),
+    },
   ],
 };
 

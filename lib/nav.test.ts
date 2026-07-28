@@ -29,13 +29,20 @@ describe("NAV_ITEMS", () => {
     );
     expect(haircare?.children?.map((c) => c.label)).toContain("Ingredients");
     const seoul = NAV_ITEMS.find((i) => i.label === "Seoul");
-    expect(seoul?.children?.map((c) => c.href)).toContain("/seoul/places");
-    expect(seoul?.children?.map((c) => c.href)).toContain(
-      "/seoul/neighborhoods"
+    expect(seoul?.children?.map((c) => c.href)).toEqual([
+      "/seoul/places",
+      "/seoul/neighborhoods",
+    ]);
+    // Individual neighborhoods nest one level under "Neighborhoods".
+    const hoods = seoul?.children?.find(
+      (c) => c.href === "/seoul/neighborhoods"
     );
-    expect(seoul?.children?.map((c) => c.href)).toContain(
-      "/seoul/neighborhoods/seongsu"
-    );
+    expect(hoods?.children?.map((c) => c.href)).toEqual([
+      "/seoul/neighborhoods/seongsu",
+      "/seoul/neighborhoods/hongdae",
+      "/seoul/neighborhoods/myeongdong",
+      "/seoul/neighborhoods/gangnam-cheongdam",
+    ]);
     // Home / About stay flat
     expect(
       NAV_ITEMS.find((i) => i.label === "About")?.children
