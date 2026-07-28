@@ -1425,6 +1425,61 @@
       "bestFor": "a Re:NK-brand facial near Euljiro-ipgu station",
       "whyWeLikeIt": "It's a named-brand facial spa inside a hotel by Euljiro-ipgu — a legible, centrally located option a short walk from Myeongdong.",
       "longDescription": "Re:NK Euljiro is a facial and skincare spa run under the Re:NK brand, on the sixth floor (room 701) of the President Hotel at 16 Euljiro, near Euljiro-ipgu station and a short walk from Myeongdong.\n\nThe branch books through its KakaoTalk channel and Instagram DM. Content is Korean-first; the hotel setting and central location make it easy to find."
+    },
+    "weneedblack-cheongdam": {
+      "name": "WENEEDBLACK The Cheongdam",
+      "category": "salon",
+      "kind": "place",
+      "area": "Cheongdam",
+      "serviceDetail": "Premium hair salon",
+      "summary": "A newly opened Cheongdam hair salon under the WENEEDBLACK brand (operator LIVEX), with modern, trend-led cut and colour work.",
+      "bestFor": "trend-led cut and colour in a premium Cheongdam salon",
+      "whyWeLikeIt": "It's the Cheongdam branch of a brand with a growing following, opened in 2026 right in Seoul's most exclusive salon district.",
+      "longDescription": "WENEEDBLACK's Cheongdam branch sits on the third floor at 34 Apgujeong-ro 80-gil in Cheongdam-dong, run by the LIVEX group that also operates the premium WENEED flagship line. It opened in 2026 with modern, trend-focused hair work.\n\nBooking is by DM on the brand's Instagram, which hosts this branch's content (there is no branch-only account). Content is largely Korean; the Cheongdam address places it at the premium end of the market."
+    },
+    "signicho-nail-hongdae": {
+      "name": "Signicho Nail Hongdae",
+      "category": "nail_lash",
+      "kind": "place",
+      "area": "Hongdae",
+      "serviceDetail": "Nail art studio",
+      "summary": "A busy, budget-friendly nail-art studio on Hongdae's main walking street, with a heavy portfolio and a big following.",
+      "bestFor": "affordable, photo-ready nail art right on the Hongdae walking street",
+      "whyWeLikeIt": "It's exactly the rising Hongdae nail studio travellers ask about — a large active Instagram following, fixed budget-friendly pricing from around 29,000 won, and a central location on the walking street.",
+      "longDescription": "Signicho Nail is a nail-art studio on the second floor at 54 Eoulmadang-ro in Seogyo-dong, on Hongdae's main walking street. It runs a heavy nail-art portfolio, keeps fixed budget-friendly pricing (gel from around 29,000 won, monthly art from 39,000), and hours of 10:00–21:00, open year-round.\n\nIt books by Instagram DM and a Kakao channel. One of the more visible Hongdae nail studios among foreign visitors, it's a strong, easy pick."
+    },
+    "sketch-on-nails": {
+      "name": "The Sketch Nails",
+      "category": "nail_lash",
+      "kind": "place",
+      "area": "Hongdae",
+      "serviceDetail": "Nail art studio",
+      "summary": "A small Hongdae nail studio known for photogenic anime/character (오타쿠) nail art, minutes from Hongik University station.",
+      "bestFor": "highly photogenic character and anime-themed nail art near Hongdae station",
+      "whyWeLikeIt": "Its anime-and-character nail art is genuinely distinctive and internationally photogenic — a standout for visitors who want something beyond standard gel work.",
+      "longDescription": "The Sketch Nails is a one-person nail studio on the lower level at 7 Wausan-ro 29na-gil in Seogyo-dong, a few minutes from Hongik University station exit 7. It specialises in photogenic anime and character (오타쿠) nail art, with fixed monthly-art pricing around 39,000 won.\n\nIts profile carries Japanese as well as Korean, and it books through Naver reservation and Instagram DM. As a small independent shop it isn't on the big platforms — part of its appeal."
+    },
+    "gonggan-nail-hongdae": {
+      "name": "Gonggan Nail (Hongdae Branch 2)",
+      "category": "nail_lash",
+      "kind": "place",
+      "area": "Hongdae",
+      "serviceDetail": "Nail art studio (chain branch)",
+      "summary": "The second Hongdae branch of the established Gonggan Nail chain, in the LG Palace building by Hongik University station.",
+      "bestFor": "reliable chain-quality gel and nail art near Hongdae station",
+      "whyWeLikeIt": "It's a branch of a well-run nail-art chain — gel, extensions and monthly art with dependable quality — a lower-risk option than an unknown independent.",
+      "longDescription": "Gonggan Nail's second Hongdae branch is on the fifth floor (room 605) of the LG Palace building at 156 Yanghwa-ro in Donggyo-dong, by Hongik University station. It opened in 2026 as part of an established Seoul nail-art chain covering gel, extensions and monthly art, with hours of 10:00–21:00.\n\nBooking is via Naver and DM. Note this specific branch has no dedicated Instagram — reach it through the brand's official account and website, quoting the 156 Yanghwa-ro, room 605 address so you land at the right location."
+    },
+    "hikari-skin-massage": {
+      "name": "Hikari Skin Massage",
+      "category": "facial",
+      "kind": "place",
+      "area": "Myeongdong",
+      "serviceDetail": "Skin & body massage (Japanese-friendly)",
+      "summary": "A long-running Myeongdong skin-and-body massage shop geared to Japanese-speaking visitors, near Myeongdong station.",
+      "bestFor": "skin and body massage in Myeongdong with Japanese-language service",
+      "whyWeLikeIt": "It has served Myeongdong since around 2020 with Japanese-speaking staff and LINE booking — an easy, established choice for Japanese-speaking travellers.",
+      "longDescription": "Hikari is a skin-and-body massage shop on the fifth floor at 18 Myeongdong 8na-gil in Chungmuro 1-ga, near Myeongdong station exit 6. It has operated in Myeongdong since around 2020 and re-registered at this location, and is strongly oriented to Japanese-speaking visitors, with Japanese captions and LINE booking.\n\nIt books by LINE, phone and the heally platform. Services skew toward massage and skin/body care; English support is limited, so Japanese speakers will find it easiest."
     }
   }
 }
