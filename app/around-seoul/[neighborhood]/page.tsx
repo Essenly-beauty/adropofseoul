@@ -29,13 +29,16 @@ export async function generateMetadata({
   const n = getNeighborhood(params.neighborhood);
   if (!n) return { title: "Not found" };
   const title = `${n.label} — Around Seoul`;
+  const raw = n.lede ?? n.blurb;
+  const description =
+    raw.length > 155 ? raw.slice(0, 152).replace(/\s+\S*$/, "") + "…" : raw;
   return {
     title,
-    description: n.lede ?? n.blurb,
+    description,
     alternates: { canonical: canonical(`/around-seoul/${n.slug}`) },
     openGraph: {
       title,
-      description: n.lede ?? n.blurb,
+      description,
       type: "website",
       url: canonical(`/around-seoul/${n.slug}`),
     },

@@ -15,8 +15,10 @@ import {
   POST_STATUSES,
   groupPlacesBySection,
   neighborhoodAreas,
+  sectionDirectoryHref,
   AROUND_SEOUL_NEIGHBORHOODS,
   type NeighborhoodSection,
+  type Neighborhood,
 } from "./taxonomy";
 import type { Post } from "@/services/types";
 
@@ -230,5 +232,51 @@ describe("phase-b neighborhoods", () => {
       for (const a of neighborhoodAreas(n))
         expect(known.has(a), `${n.slug} / ${a}`).toBe(true);
     }
+  });
+});
+
+describe("sectionDirectoryHref", () => {
+  const single = (over: Partial<Neighborhood> = {}): Neighborhood => ({
+    slug: "myeongdong",
+    label: "Myeongdong",
+    blurb: "",
+    ...over,
+  });
+  const multi = (): Neighborhood => ({
+    slug: "gangnam-cheongdam",
+    label: "Gangnam & Cheongdam",
+    blurb: "",
+    areas: ["Gangnam", "Cheongdam"],
+  });
+
+  it("single-area + single-category → area and type", () => {
+    expect(
+      sectionDirectoryHref(single(), { title: "S", categories: ["facial"] })
+    ).toBe("/places?area=Myeongdong&type=facial");
+  });
+
+  it("single-area + multi-category + entryType → area and kind", () => {
+    expect(
+      sectionDirectoryHref(single(), {
+        title: "S",
+        categories: ["perfume", "makeup"],
+        entryType: "experience",
+      })
+    ).toBe("/places?area=Myeongdong&kind=experience");
+  });
+
+  it("multi-area + single-category → type only (no area)", () => {
+    expect(
+      sectionDirectoryHref(multi(), { title: "S", categories: ["salon"] })
+    ).toBe("/places?type=salon");
+  });
+
+  it("multi-area + multi-category + no entryType → bare /places", () => {
+    expect(
+      sectionDirectoryHref(multi(), {
+        title: "S",
+        categories: ["salon", "makeup"],
+      })
+    ).toBe("/places");
   });
 });

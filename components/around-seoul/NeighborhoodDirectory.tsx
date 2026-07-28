@@ -2,7 +2,7 @@ import Link from "next/link";
 import { PlaceCard } from "@/components/editorial/PlaceCard";
 import {
   groupPlacesBySection,
-  placeTypeSlug,
+  sectionDirectoryHref,
   type Neighborhood,
 } from "@/lib/taxonomy";
 import type { Place } from "@/services/types";
@@ -24,13 +24,7 @@ export function NeighborhoodDirectory({
   return (
     <div className="mt-16 space-y-14">
       {groups.map(({ section, places: grouped }) => {
-        const params = new URLSearchParams();
-        if (!neighborhood.areas) params.set("area", neighborhood.label);
-        if (section.categories.length === 1)
-          params.set("type", placeTypeSlug(section.categories[0]));
-        else if (section.entryType) params.set("kind", section.entryType);
-        const query = params.toString();
-        const filter = query ? `/places?${query}` : "/places";
+        const filter = sectionDirectoryHref(neighborhood, section);
         return (
           <section key={section.title}>
             <h2 className="font-serif text-2xl md:text-3xl">{section.title}</h2>

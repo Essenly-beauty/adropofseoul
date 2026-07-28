@@ -60,6 +60,10 @@ export function mapPlaceRow(row: PlaceRow): Place {
   };
 }
 
+/**
+ * List published places. Pass `area` OR `areas` (they AND together if both
+ * are given, so callers should pass one).
+ */
 export async function listPlaces(
   opts: {
     limit?: number;

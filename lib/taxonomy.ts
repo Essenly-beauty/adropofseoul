@@ -331,6 +331,25 @@ export function placeTypeSlug(category: string): string {
 }
 
 /**
+ * The /places directory link for a hub section. `area` is included only for
+ * single-area hubs (a multi-area hub's label is not a valid `area` value);
+ * `type` is added for single-category sections, else `kind` when the section
+ * is entry-type-restricted.
+ */
+export function sectionDirectoryHref(
+  neighborhood: Neighborhood,
+  section: NeighborhoodSection
+): string {
+  const params = new URLSearchParams();
+  if (!neighborhood.areas) params.set("area", neighborhood.label);
+  if (section.categories.length === 1)
+    params.set("type", placeTypeSlug(section.categories[0]));
+  else if (section.entryType) params.set("kind", section.entryType);
+  const query = params.toString();
+  return query ? `/places?${query}` : "/places";
+}
+
+/**
  * Group places into a neighborhood's sections. Section order is preserved,
  * each place lands in the first section whose categories (and entryType,
  * when set) match, and empty sections are omitted.
