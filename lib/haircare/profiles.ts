@@ -3,6 +3,9 @@
 // Profiles are code-defined — they're editorial hubs, not DB posts — and each
 // one is a stable SEO landing at /haircare/profiles/<slug>.
 
+/** One step of a profile's suggested routine (shown on the quiz result). */
+export type HairRoutineStep = { step: string; detail: string };
+
 export type HairProfile = {
   slug: string;
   name: string;
@@ -16,6 +19,8 @@ export type HairProfile = {
   lookFor: string[];
   /** What to use sparingly. */
   useCarefully: string[];
+  /** The four-step routine for this profile, in order. */
+  routine: HairRoutineStep[];
   /** The pillar guide this profile reads into (title only until authored). */
   pillarGuide: string;
   /** Supporting article topics that build out the hub. */
@@ -46,6 +51,15 @@ export const HAIR_PROFILES: HairProfile[] = [
       "Volumizing rinse-out care",
     ],
     useCarefully: ["Rich butters", "Heavy leave-in oils", "Root-level masks"],
+    routine: [
+      { step: "Wash", detail: "Use a light shampoo focused on the scalp." },
+      {
+        step: "Condition",
+        detail: "Apply a rinse-out conditioner from mid-lengths down.",
+      },
+      { step: "Style", detail: "Choose a mist or fluid leave-in." },
+      { step: "Reset", detail: "Clarify occasionally when buildup appears." },
+    ],
     pillarGuide: "The Complete Guide to Fine Hair That Gets Weighed Down",
     guides: [
       "Why Fine Hair Gets Oily Fast",
@@ -77,6 +91,15 @@ export const HAIR_PROFILES: HairProfile[] = [
       "Lightweight shine serums",
     ],
     useCarefully: ["Over-washing", "Repeated high-heat styling"],
+    routine: [
+      { step: "Wash", detail: "Cleanse without stripping the lengths." },
+      { step: "Condition", detail: "Use a smoothing conditioner generously." },
+      { step: "Treat", detail: "Add a richer mask weekly." },
+      {
+        step: "Finish",
+        detail: "Use heat protection and a small amount of serum.",
+      },
+    ],
     pillarGuide: "How to Care for Thick, Dense Hair That Looks Dry or Frizzy",
     guides: [
       "Korean Glass Hair for Thick Hair",
@@ -107,6 +130,15 @@ export const HAIR_PROFILES: HairProfile[] = [
       "Lightweight emollients for ends",
     ],
     useCarefully: ["Root-level oils", "Masks applied to the scalp"],
+    routine: [
+      { step: "Wash", detail: "Massage shampoo into the scalp only." },
+      { step: "Condition", detail: "Apply conditioner below the ears." },
+      { step: "Treat", detail: "Use a mask only on dry lengths." },
+      {
+        step: "Between washes",
+        detail: "Protect ends with a light leave-in.",
+      },
+    ],
     pillarGuide: "How to Care for an Oily Scalp and Dry Ends",
     guides: [
       "Should You Shampoo Your Ends?",
@@ -133,6 +165,15 @@ export const HAIR_PROFILES: HairProfile[] = [
     ],
     lookFor: ["Light gels", "Humectants", "Soft-hold leave-ins"],
     useCarefully: ["Dry brushing", "Heavy smoothing that flattens the wave"],
+    routine: [
+      {
+        step: "Wash",
+        detail: "Use a balanced cleanser and avoid rough handling.",
+      },
+      { step: "Condition", detail: "Keep conditioner light and rinse well." },
+      { step: "Define", detail: "Apply mousse or flexible gel on wet hair." },
+      { step: "Dry", detail: "Air-dry or diffuse on low heat." },
+    ],
     pillarGuide: "You May Not Have Frizzy Straight Hair — You May Have Waves",
     guides: [
       "How to Test Your Natural Wave Pattern",
@@ -163,6 +204,15 @@ export const HAIR_PROFILES: HairProfile[] = [
       "Leave-in conditioners",
     ],
     useCarefully: ["Aggressive detangling", "Frequent heat styling"],
+    routine: [
+      {
+        step: "Cleanse",
+        detail: "Use a balanced shampoo or conditioning cleanser.",
+      },
+      { step: "Condition", detail: "Detangle with plenty of slip." },
+      { step: "Layer", detail: "Apply leave-in and then hold." },
+      { step: "Reset", detail: "Clarify periodically to manage buildup." },
+    ],
     pillarGuide: "A Practical Hair-Care Guide for Curly and Coily Hair",
     guides: [
       "Moisture vs. Product Buildup",
@@ -196,6 +246,18 @@ export const HAIR_PROFILES: HairProfile[] = [
     useCarefully: [
       "Frequent high heat",
       "Stacking chemical treatments too close together",
+    ],
+    routine: [
+      {
+        step: "Wash",
+        detail: "Use a gentle routine and avoid rough friction.",
+      },
+      { step: "Condition", detail: "Choose a damage-focused conditioner." },
+      { step: "Treat", detail: "Use a weekly mask or bond-support step." },
+      {
+        step: "Protect",
+        detail: "Apply leave-in and heat protection every time.",
+      },
     ],
     pillarGuide:
       "How to Care for Bleached, Permed, or Chemically Straightened Hair",
