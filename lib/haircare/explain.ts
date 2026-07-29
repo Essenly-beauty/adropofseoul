@@ -73,11 +73,16 @@ const ADVISORY_PRIMARY = ["sensitive_scalp", "hair_loss"];
 const SENSITIVE_TAG = "Sensitive scalp consideration";
 const MAX_REASONS = 4;
 
+/** Reverse of ARCHETYPE_SLUG, built once. */
+const CODE_BY_SLUG: Record<string, HairArchetypeCode> = Object.fromEntries(
+  (Object.keys(ARCHETYPE_SLUG) as HairArchetypeCode[]).map((code) => [
+    ARCHETYPE_SLUG[code],
+    code,
+  ])
+);
+
 function codeFor(profileSlug: string | null): HairArchetypeCode | null {
-  const found = (Object.keys(ARCHETYPE_SLUG) as HairArchetypeCode[]).find(
-    (code) => ARCHETYPE_SLUG[code] === profileSlug
-  );
-  return found ?? null;
+  return profileSlug ? (CODE_BY_SLUG[profileSlug] ?? null) : null;
 }
 
 export function explainHairResult(

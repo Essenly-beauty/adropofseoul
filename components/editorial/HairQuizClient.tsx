@@ -35,12 +35,13 @@ function HairQuizResult({
   onRetake: () => void;
 }) {
   const { profile, explanation } = useMemo(() => {
-    const score = scoreHairQuiz(responses as HairQuizResponses);
+    const answers: HairQuizResponses = responses;
+    const score = scoreHairQuiz(answers);
     return {
       profile: score.profileSlug
         ? (getHairProfile(score.profileSlug) ?? null)
         : null,
-      explanation: explainHairResult(responses as HairQuizResponses, score),
+      explanation: explainHairResult(answers, score),
     };
   }, [responses]);
 

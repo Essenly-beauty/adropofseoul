@@ -1,8 +1,9 @@
 // Duration buckets for the profile funnel (docs/06). Buckets, never timestamps —
 // a bucket can't re-identify anyone.
 //
-// `durationBucket()` in app/actions/profile.ts computes the same buckets from an
-// ISO start time on the server; keep the two lists in step.
+// The single source of the bucket taxonomy: the client quiz measures elapsed ms
+// directly, and `durationBucket()` in app/actions/profile.ts converts its ISO
+// start time and delegates here.
 
 export function durationBucketFromMs(ms: number): string {
   if (!Number.isFinite(ms) || ms < 0) return "under_1m";

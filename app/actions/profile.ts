@@ -29,6 +29,7 @@ import {
 } from "@/lib/profile/validation";
 import { isFlagEnabled, type ProfileFlag } from "@/lib/profile/flags";
 import { normalizeSourceContext } from "@/lib/profile/source-context";
+import { durationBucketFromMs } from "@/lib/analytics/duration";
 import {
   mapQuizDefinition,
   type LoadedQuizDefinition,
@@ -86,13 +87,7 @@ function resumeAgeBucket(lastSavedISO: string): string {
 }
 
 function durationBucket(startISO: string): string {
-  const delta = Date.now() - Date.parse(startISO);
-  if (!Number.isFinite(delta) || delta < 0) return "under_1m";
-  const m = delta / 60_000;
-  if (m < 1) return "under_1m";
-  if (m < 3) return "1_3m";
-  if (m < 10) return "3_10m";
-  return "over_10m";
+  return durationBucketFromMs(Date.now() - Date.parse(startISO));
 }
 
 /** Load the stamped definition (bypasses RLS so retired/draft is visible). */
