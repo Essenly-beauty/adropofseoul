@@ -231,8 +231,11 @@ Every applied weight records `{ questionKey, optionKey, archetype, weight }` in
 Three small, additive changes to the M2b framework. Existing preview and
 server-backed paths behave identically when the new props are absent.
 
-- `QuizShell` gains `renderResult?: (responses: Responses) => ReactNode`. When
-  present, completion renders it instead of the current interstitial.
+- `QuizShell` gains
+  `renderResult?: (args: { responses: Responses; restart: () => void }) => ReactNode`.
+  When present, completion renders it instead of the current interstitial. The
+  `restart` callback is the same reset the built-in "Start over" button uses, so
+  the result screen can offer a retake without reimplementing it.
 - `QuizQuestionDef` gains `validation?: { min?: number; max?: number; exclusiveOptionKeys?: string[] }`,
   mirroring the existing `quiz_questions.validation_json` column, and
   `mapQuizDefinition` populates it from that column. Today the mapper reads
