@@ -235,3 +235,75 @@ describe("QuizShell (server-backed)", () => {
     expect(onResumed).not.toHaveBeenCalled();
   });
 });
+
+// ---------------------------------------------------------------------------
+// Caller-supplied result (M3): renderResult replaces the built-in interstitial.
+// ---------------------------------------------------------------------------
+describe("QuizShell with a custom result", () => {
+  function renderWithResult() {
+    return render(
+      <QuizShell
+        definition={PLACEHOLDER_HAIR_QUIZ}
+        renderResult={({ responses, restart }) => (
+          <div>
+            <p>Result for {String(responses.wash_frequency)}</p>
+            <button type="button" onClick={restart}>
+              Retake
+            </button>
+          </div>
+        )}
+      />
+    );
+  }
+
+  function answerThroughStepFour() {
+    fireEvent.click(screen.getByRole("button", { name: "Next" })); // intro
+    fireEvent.click(screen.getByRole("radio", { name: "Every other day" }));
+    fireEvent.click(screen.getByRole("button", { name: "Next" }));
+    fireEvent.click(screen.getByRole("checkbox", { name: "Frizz" }));
+    fireEvent.click(screen.getByRole("button", { name: "Next" }));
+    fireEvent.click(screen.getByRole("radio", { name: "2" }));
+    fireEvent.click(screen.getByRole("button", { name: "Next" }));
+  }
+
+  function finish() {
+    answerThroughStepFour();
+    fireEvent.click(screen.getByRole("radio", { name: "More volume" }));
+    fireEvent.click(screen.getByRole("button", { name: "See my result" }));
+  }
+
+  it("labels the final action for a result, not a preview", () => {
+    renderWithResult();
+    answerThroughStepFour();
+    expect(screen.getByRole("button", { name: "See my result" })).toBeTruthy();
+    expect(screen.queryByRole("button", { name: "See preview" })).toBe(null);
+  });
+
+  it("renders the custom result with the collected answers", () => {
+    renderWithResult();
+    finish();
+    expect(screen.getByText("Result for alt")).toBeTruthy();
+    expect(screen.queryByText("That's the preview.")).toBe(null);
+  });
+
+  it("restarts the quiz from the custom result", () => {
+    renderWithResult();
+    finish();
+    fireEvent.click(screen.getByRole("button", { name: "Retake" }));
+    expect(screen.getByText("Step 1 of 5")).toBeTruthy();
+  });
+
+  it("keeps the built-in interstitial when no result is provided", () => {
+    render(<QuizShell definition={PLACEHOLDER_HAIR_QUIZ} />);
+    fireEvent.click(screen.getByRole("button", { name: "Next" }));
+    fireEvent.click(screen.getByRole("radio", { name: "Every other day" }));
+    fireEvent.click(screen.getByRole("button", { name: "Next" }));
+    fireEvent.click(screen.getByRole("checkbox", { name: "Frizz" }));
+    fireEvent.click(screen.getByRole("button", { name: "Next" }));
+    fireEvent.click(screen.getByRole("radio", { name: "2" }));
+    fireEvent.click(screen.getByRole("button", { name: "Next" }));
+    fireEvent.click(screen.getByRole("radio", { name: "More volume" }));
+    fireEvent.click(screen.getByRole("button", { name: "See preview" }));
+    expect(screen.getByText("That's the preview.")).toBeTruthy();
+  });
+});

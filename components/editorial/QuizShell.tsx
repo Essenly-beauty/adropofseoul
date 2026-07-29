@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import Link from "next/link";
 import { QuestionRenderer, type QuizResponseValue } from "./QuestionRenderer";
 import {
@@ -63,6 +63,7 @@ export function QuizShell({
   onStepView,
   onStepCompleted,
   onResumed,
+  renderResult,
 }: {
   definition: QuizDefinition;
   exitHref?: string;
@@ -85,6 +86,14 @@ export function QuizShell({
   ) => void;
   /** Called once on mount when resuming a pre-existing attempt. */
   onResumed?: () => void;
+  /**
+   * Render the completed state yourself — receives the collected answers and a
+   * reset. When omitted, the built-in interstitial is shown.
+   */
+  renderResult?: (args: {
+    responses: Responses;
+    restart: () => void;
+  }) => ReactNode;
 }) {
   const total = definition.questions.length;
   const serverBacked = Boolean(onComplete);
@@ -193,7 +202,16 @@ export function QuizShell({
     focusStep();
   }
 
+  function restart() {
+    setDone(false);
+    setIndex(0);
+    setResponses({});
+    setError(null);
+    stepErrors.current = {};
+  }
+
   if (done) {
+    if (renderResult) return <>{renderResult({ responses, restart })}</>;
     return (
       <div className="mx-auto max-w-2xl px-6 py-16 md:py-24" aria-live="polite">
         <p className="text-xs uppercase tracking-widest text-accent">
@@ -211,11 +229,7 @@ export function QuizShell({
           {!serverBacked && (
             <button
               type="button"
-              onClick={() => {
-                setDone(false);
-                setIndex(0);
-                setResponses({});
-              }}
+              onClick={restart}
               className="rounded-full border border-text px-4 py-1.5 text-xs font-medium uppercase tracking-label transition-colors duration-medium ease-editorial hover:border-accent hover:text-accent"
             >
               Start over
@@ -300,7 +314,11 @@ export function QuizShell({
             disabled={saving}
             className="rounded-full border border-text bg-text px-6 py-2 text-xs font-medium uppercase tracking-label text-bg transition-colors duration-medium ease-editorial hover:border-accent hover:bg-accent disabled:cursor-not-allowed disabled:opacity-40"
           >
-            {isLast ? (serverBacked ? "See my result" : "See preview") : "Next"}
+            {isLast
+              ? serverBacked || renderResult
+                ? "See my result"
+                : "See preview"
+              : "Next"}
           </button>
         </div>
       </div>
