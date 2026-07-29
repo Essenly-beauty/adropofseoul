@@ -13,6 +13,7 @@ import type { Database } from "@/types/database.types";
 import type {
   QuizDefinition,
   QuizQuestionDef,
+  QuizQuestionValidation,
   QuizOptionDef,
 } from "./quiz-definition";
 import type { QuestionTypeValue } from "./validation";
@@ -60,6 +61,21 @@ function parseScale(
   const max = typeof v.max === "number" ? v.max : null;
   if (max === null) return null;
   return { min, max };
+}
+
+function parseValidation(
+  validationJson: unknown
+): QuizQuestionValidation | undefined {
+  if (!validationJson || typeof validationJson !== "object") return undefined;
+  const v = validationJson as Record<string, unknown>;
+  const out: QuizQuestionValidation = {};
+  if (typeof v.min === "number") out.min = v.min;
+  if (typeof v.max === "number") out.max = v.max;
+  if (Array.isArray(v.exclusiveOptionKeys))
+    out.exclusiveOptionKeys = v.exclusiveOptionKeys.filter(
+      (k): k is string => typeof k === "string"
+    );
+  return Object.keys(out).length > 0 ? out : undefined;
 }
 
 /**
@@ -127,6 +143,7 @@ export function mapQuizDefinition(
       content: q.content_key ?? q.question_key,
       helpText: q.help_text_key ?? undefined,
       sectionKey: q.section_key ?? undefined,
+      validation: parseValidation(q.validation_json),
       isRequired: q.is_required,
       allowsMultiple: q.allows_multiple,
       options: clientOptions,

@@ -18,6 +18,17 @@ export type QuizOptionDef = {
   label: string;
 };
 
+/**
+ * Per-question validation, mirroring `quiz_questions.validation_json`.
+ * `min`/`max` bound a `scale`; `exclusiveOptionKeys` marks multi-select options
+ * that cannot be combined with any other (a "None of these" answer).
+ */
+export type QuizQuestionValidation = {
+  min?: number;
+  max?: number;
+  exclusiveOptionKeys?: string[];
+};
+
 export type QuizQuestionDef = {
   key: string;
   type: QuestionTypeValue;
@@ -25,6 +36,7 @@ export type QuizQuestionDef = {
   content: string;
   helpText?: string;
   sectionKey?: string;
+  validation?: QuizQuestionValidation;
   isRequired: boolean;
   allowsMultiple: boolean;
   options: QuizOptionDef[];

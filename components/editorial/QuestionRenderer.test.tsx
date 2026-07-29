@@ -158,3 +158,57 @@ describe("QuestionRenderer", () => {
     expect(screen.getByRole("checkbox", { name: "A" })).toBeTruthy();
   });
 });
+
+describe("QuestionRenderer exclusive multi-select options", () => {
+  const concerns = q({
+    key: "scalp_concerns",
+    type: "multi_select",
+    content: "Which scalp concerns do you experience regularly?",
+    allowsMultiple: true,
+    validation: { exclusiveOptionKeys: ["none"] },
+    options: [
+      { key: "none", value: "none", label: "None" },
+      { key: "itching", value: "itching", label: "Itching" },
+      { key: "oiliness", value: "oiliness", label: "Excess oiliness" },
+    ],
+  });
+
+  it("clears the other options when an exclusive option is picked", () => {
+    const onChange = vi.fn();
+    render(
+      <QuestionRenderer
+        question={concerns}
+        value={["itching", "oiliness"]}
+        onChange={onChange}
+      />
+    );
+    fireEvent.click(screen.getByRole("checkbox", { name: "None" }));
+    expect(onChange).toHaveBeenCalledWith(["none"]);
+  });
+
+  it("drops the exclusive option when another option is picked", () => {
+    const onChange = vi.fn();
+    render(
+      <QuestionRenderer
+        question={concerns}
+        value={["none"]}
+        onChange={onChange}
+      />
+    );
+    fireEvent.click(screen.getByRole("checkbox", { name: "Itching" }));
+    expect(onChange).toHaveBeenCalledWith(["itching"]);
+  });
+
+  it("deselects an exclusive option that is clicked again", () => {
+    const onChange = vi.fn();
+    render(
+      <QuestionRenderer
+        question={concerns}
+        value={["none"]}
+        onChange={onChange}
+      />
+    );
+    fireEvent.click(screen.getByRole("checkbox", { name: "None" }));
+    expect(onChange).toHaveBeenCalledWith([]);
+  });
+});

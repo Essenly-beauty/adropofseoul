@@ -98,14 +98,22 @@ export function QuestionRenderer({
         : []
   );
 
+  const exclusiveKeys = question.validation?.exclusiveOptionKeys ?? [];
+
   function toggle(optionKey: string) {
     if (!multiple) {
       onChange(optionKey);
       return;
     }
+    // An exclusive option ("None") can't coexist with any other answer.
+    if (exclusiveKeys.includes(optionKey)) {
+      onChange(selected.has(optionKey) ? [] : [optionKey]);
+      return;
+    }
     const next = new Set(selected);
     if (next.has(optionKey)) next.delete(optionKey);
     else next.add(optionKey);
+    exclusiveKeys.forEach((k) => next.delete(k));
     onChange(Array.from(next));
   }
 
