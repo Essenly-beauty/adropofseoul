@@ -3,7 +3,11 @@
 import { QuizShell } from "./QuizShell";
 import type { QuizResponseValue } from "./QuestionRenderer";
 import type { QuizDefinition } from "@/lib/profile/quiz-definition";
-import { saveQuizResponse, completeQuizAttempt } from "@/app/actions/profile";
+import {
+  saveQuizResponse,
+  completeQuizAttempt,
+  updateQuizProgress,
+} from "@/app/actions/profile";
 import {
   profileQuizStepViewed,
   profileQuizStepCompleted,
@@ -58,9 +62,13 @@ export function QuizRunner({
       initialStep={initialStep}
       onSaveResponse={onSaveResponse}
       onComplete={onComplete}
-      onStepView={(stepKey, stepIndex) =>
-        profileQuizStepViewed({ domain, quizVersion, stepKey, stepIndex })
-      }
+      onStepView={(stepKey, stepIndex) => {
+        profileQuizStepViewed({ domain, quizVersion, stepKey, stepIndex });
+        // Persist position so a refresh resumes on the current step, not step 0
+        // (answers already persist via saveQuizResponse). Fire-and-forget; a
+        // late call on a completed attempt is rejected server-side and ignored.
+        void updateQuizProgress(attemptId, stepIndex).catch(() => {});
+      }}
       onStepCompleted={(stepKey, stepIndex, validationErrorCount) =>
         profileQuizStepCompleted({
           domain,

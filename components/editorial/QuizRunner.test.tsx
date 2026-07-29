@@ -4,6 +4,7 @@ import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 vi.mock("@/app/actions/profile", () => ({
   saveQuizResponse: vi.fn(),
   completeQuizAttempt: vi.fn(),
+  updateQuizProgress: vi.fn(),
 }));
 vi.mock("@/lib/analytics/events", () => ({
   profileQuizStepViewed: vi.fn(),
@@ -43,6 +44,10 @@ beforeEach(() => {
     firstCompletion: true,
     durationBucket: "1_3m",
   });
+  vi.mocked(actions.updateQuizProgress).mockResolvedValue({
+    ok: true,
+    currentStep: 0,
+  });
 });
 
 describe("QuizRunner wiring", () => {
@@ -54,6 +59,20 @@ describe("QuizRunner wiring", () => {
       stepKey: "intro",
       stepIndex: 0,
     });
+  });
+
+  it("persists step position via updateQuizProgress as the user advances (resume-on-refresh)", async () => {
+    renderRunner();
+    // fires for the initial step on mount...
+    await waitFor(() =>
+      expect(actions.updateQuizProgress).toHaveBeenCalledWith(ATTEMPT, 0)
+    );
+    fireEvent.click(nextBtn());
+    await screen.findByText("Step 2 of 5");
+    // ...and again for the step advanced to
+    await waitFor(() =>
+      expect(actions.updateQuizProgress).toHaveBeenCalledWith(ATTEMPT, 1)
+    );
   });
 
   it("autosaves an answer through saveQuizResponse and emits step_completed", async () => {
