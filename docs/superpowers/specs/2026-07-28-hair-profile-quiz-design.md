@@ -72,19 +72,19 @@ stored. No `info` step and no free text: every question is answerable and closed
 | 1   | `natural_pattern`      | single    | `natural_hair`   | `straight`, `loose_wave`, `defined_wave_curl`, `tight_curl_coil`, `unknown_treated`                                                   |
 | 2   | `strand_thickness`     | single    | `natural_hair`   | `fine`, `medium`, `coarse`, `unknown`                                                                                                 |
 | 3   | `density`              | single    | `natural_hair`   | `low`, `medium`, `high`, `unknown`                                                                                                    |
-| 3b  | `hair_length`          | single    | `natural_hair`   | `above_shoulder`, `shoulder_collarbone`, `mid_back`, `waist_or_longer`                                                                |
-| 4   | `scalp_oiliness_onset` | single    | `scalp`          | `hours`, `next_day`, `two_plus_days`, `rarely_oily`                                                                                   |
-| 5   | `scalp_concerns`       | **multi** | `scalp`          | `none`*, `itching`, `flaking`, `redness_stinging`, `odor`, `bumps`, `oiliness`, `tightness_dryness`, `hair_loss_concern`              |
-| 6   | `wash_frequency`       | single    | `scalp`          | `multiple_daily`, `daily`, `every_other_day`, `three_plus_days`                                                                       |
-| 7   | `product_response`     | single    | `hair_behavior`  | `weighed_down`, `balanced`, `still_dry`, `sits_on_surface`, `varies`                                                                  |
-| 8   | `dry_time`             | single    | `hair_behavior`  | `very_fast`, `average`, `slow`, `mixed`, `unknown`                                                                                    |
-| 9   | `humidity_response`    | single    | `hair_behavior`  | `little_change`, `falls_flat`, `frizzes`, `waves_appear`, `expands_tangles`                                                           |
-| 10  | `chemical_history`     | **multi** | `damage_styling` | `color`, `bleach`, `perm`, `straightening`, `keratin_smoothing`, `none`*                                                              |
-| 11  | `heat_frequency`       | single    | `damage_styling` | `rarely`, `one_two_week`, `three_five_week`, `almost_daily`, `dryer_only`                                                             |
-| 12  | `ends_condition`       | single    | `damage_styling` | `smooth`, `slightly_dry`, `split_breaking`, `tangled`, `rough_dull`                                                                   |
-| 12b | `environment`          | **multi** | `environment`    | `hard_water`, `dry_climate`, `cold_winter`, `high_pollution`, `frequent_swimming`, `none`\*                                           |
-| 13  | `primary_concern`      | single    | `concern_goal`   | `oily_scalp`, `flatness`, `dryness`, `frizz`, `breakage`, `tangling`, `lack_shine`, `curl_definition`, `sensitive_scalp`, `hair_loss` |
-| 14  | `desired_result`       | single    | `concern_goal`   | `light_fresh`, `volume`, `glass_hair`, `soft_controlled`, `defined_texture`, `stronger_look`                                          |
+| 4   | `hair_length`          | single    | `natural_hair`   | `above_shoulder`, `shoulder_collarbone`, `mid_back`, `waist_or_longer`                                                                |
+| 5   | `scalp_oiliness_onset` | single    | `scalp`          | `hours`, `next_day`, `two_plus_days`, `rarely_oily`                                                                                   |
+| 6   | `scalp_concerns`       | **multi** | `scalp`          | `none`*, `itching`, `flaking`, `redness_stinging`, `odor`, `bumps`, `oiliness`, `tightness_dryness`, `hair_loss_concern`              |
+| 7   | `wash_frequency`       | single    | `scalp`          | `multiple_daily`, `daily`, `every_other_day`, `three_plus_days`                                                                       |
+| 8   | `product_response`     | single    | `hair_behavior`  | `weighed_down`, `balanced`, `still_dry`, `sits_on_surface`, `varies`                                                                  |
+| 9   | `dry_time`             | single    | `hair_behavior`  | `very_fast`, `average`, `slow`, `mixed`, `unknown`                                                                                    |
+| 10  | `humidity_response`    | single    | `hair_behavior`  | `little_change`, `falls_flat`, `frizzes`, `waves_appear`, `expands_tangles`                                                           |
+| 11  | `chemical_history`     | **multi** | `damage_styling` | `color`, `bleach`, `perm`, `straightening`, `keratin_smoothing`, `none`*                                                              |
+| 12  | `heat_frequency`       | single    | `damage_styling` | `rarely`, `one_two_week`, `three_five_week`, `almost_daily`, `dryer_only`                                                             |
+| 13  | `ends_condition`       | single    | `damage_styling` | `smooth`, `slightly_dry`, `split_breaking`, `tangled`, `rough_dull`                                                                   |
+| 14  | `environment`          | **multi** | `environment`    | `hard_water`, `dry_climate`, `cold_winter`, `high_pollution`, `frequent_swimming`, `none`\*                                           |
+| 15  | `primary_concern`      | single    | `concern_goal`   | `oily_scalp`, `flatness`, `dryness`, `frizz`, `breakage`, `tangling`, `lack_shine`, `curl_definition`, `sensitive_scalp`, `hair_loss` |
+| 16  | `desired_result`       | single    | `concern_goal`   | `light_fresh`, `volume`, `glass_hair`, `soft_controlled`, `defined_texture`, `stronger_look`                                          |
 
 \* `none` is **exclusive**: selecting it clears the other options, and selecting
 another option clears `none`. Declared per question as
@@ -99,7 +99,7 @@ index-keyed tables break silently when a question is reordered.
 
 ### 4.1 Single-select weights
 
-Options absent from this table contribute nothing: `unknown` (Q2, Q3, Q8),
+Options absent from this table contribute nothing: `unknown` (Q2, Q3, Q9),
 `average`, `varies`, `every_other_day`, `rarely`, and the two `primary_concern`
 options handled as advisory in §4.6.
 
