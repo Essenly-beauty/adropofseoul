@@ -45,6 +45,7 @@ vi.mock("@/lib/profile/quiz-repo", () => ({
   findSnapshotByAttempt: vi.fn(),
   findAnsweredQuestionIds: vi.fn(),
   findResponsesByAttempt: vi.fn(),
+  findOwnedSnapshot: vi.fn(),
 }));
 
 import * as admin from "@/lib/supabase/admin";
@@ -57,6 +58,7 @@ import {
   updateQuizProgress,
   completeQuizAttempt,
   getQuizAttempt,
+  getProfileSnapshot,
 } from "./profile";
 
 // --- Fixtures (mirror the placeholder hair quiz) ---------------------------
@@ -900,5 +902,86 @@ describe("guards on save/progress/complete/get", () => {
       error: "ATTEMPT_EXPIRED",
     });
     expect(repo.findOwnedAttempt).not.toHaveBeenCalled();
+  });
+});
+
+// ===========================================================================
+// getProfileSnapshot — the durable result read
+// ===========================================================================
+describe("getProfileSnapshot", () => {
+  const SNAPSHOT_ID = "33333333-3333-4333-8333-333333333333";
+  const OTHER_ID = "44444444-4444-4444-8444-444444444444";
+
+  const storedSnapshot = {
+    profile_code: "hidden-wave",
+    profile_domain: "hair",
+    traits_json: ["Loose wave", "Fine strands"],
+    summary_json: {
+      reasons: ["Waves or curls become more visible"],
+      advisory: false,
+    },
+    confidence_json: { margin: 4 },
+  };
+
+  it("serves a snapshot to its owner", async () => {
+    vi.mocked(repo.findOwnedSnapshot).mockResolvedValue(storedSnapshot);
+    const res = await getProfileSnapshot(SNAPSHOT_ID);
+    expect(res.ok).toBe(true);
+    if (res.ok) {
+      expect(res.profileSlug).toBe("hidden-wave");
+      expect(res.explanation.tags).toContain("Loose wave");
+      expect(res.explanation.reasons[0]).toBe(
+        "Waves or curls become more visible"
+      );
+    }
+  });
+
+  it("answers identically for a foreign snapshot and a missing one", async () => {
+    // The repo read is identity-scoped, so a snapshot owned by someone else
+    // comes back null — the same as one that doesn't exist. A probing client
+    // must not be able to tell those apart (docs/adr/0001).
+    vi.mocked(repo.findOwnedSnapshot).mockResolvedValue(null);
+    const foreign = await getProfileSnapshot(SNAPSHOT_ID);
+    const missing = await getProfileSnapshot(OTHER_ID);
+    expect(foreign).toEqual({ ok: false, error: "SNAPSHOT_NOT_FOUND" });
+    expect(foreign).toEqual(missing);
+  });
+
+  it("scopes the read to the caller's identity", async () => {
+    vi.mocked(repo.findOwnedSnapshot).mockResolvedValue(storedSnapshot);
+    await getProfileSnapshot(SNAPSHOT_ID);
+    expect(repo.findOwnedSnapshot).toHaveBeenCalledWith(
+      expect.anything(),
+      SNAPSHOT_ID,
+      IDENTITY.id
+    );
+  });
+
+  it("refuses a caller with no anonymous identity", async () => {
+    vi.mocked(anon.readAnonToken).mockResolvedValue(null);
+    const res = await getProfileSnapshot(SNAPSHOT_ID);
+    expect(res).toEqual({ ok: false, error: "SNAPSHOT_NOT_FOUND" });
+    expect(repo.findOwnedSnapshot).not.toHaveBeenCalled();
+  });
+
+  it("rejects a malformed snapshot id without touching the database", async () => {
+    const res = await getProfileSnapshot("not-a-uuid");
+    expect(res).toEqual({ ok: false, error: "VALIDATION_FAILED" });
+    expect(repo.findOwnedSnapshot).not.toHaveBeenCalled();
+  });
+
+  it("stays readable when the persistence flag is off", async () => {
+    // A result already written must not vanish because the flag flipped.
+    process.env.NEXT_PUBLIC_FLAG_HAIR_PROFILE = "0";
+    vi.mocked(repo.findOwnedSnapshot).mockResolvedValue(storedSnapshot);
+    const res = await getProfileSnapshot(SNAPSHOT_ID);
+    expect(res.ok).toBe(true);
+  });
+
+  it("fails closed with no service-role key", async () => {
+    vi.mocked(admin.hasServiceRoleKey).mockReturnValue(false);
+    const res = await getProfileSnapshot(SNAPSHOT_ID);
+    expect(res).toEqual({ ok: false, error: "INTERNAL_ERROR" });
+    expect(repo.findOwnedSnapshot).not.toHaveBeenCalled();
   });
 });

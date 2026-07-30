@@ -30,7 +30,8 @@ import {
 import { isFlagEnabled, type ProfileFlag } from "@/lib/profile/flags";
 import { normalizeSourceContext } from "@/lib/profile/source-context";
 import { durationBucketFromMs } from "@/lib/analytics/duration";
-import { buildHairSnapshot } from "@/lib/haircare/snapshot";
+import { buildHairSnapshot, readHairSnapshot } from "@/lib/haircare/snapshot";
+import type { HairResultExplanation } from "@/lib/haircare/explain";
 import {
   mapQuizDefinition,
   hydrateResponses,
@@ -556,6 +557,43 @@ export async function getQuizAttempt(attemptId: string): Promise<
       currentStep: attempt.current_step,
       initialResponses,
     });
+  } catch {
+    return fail("INTERNAL_ERROR");
+  }
+}
+
+// ---------------------------------------------------------------------------
+// getProfileSnapshot — owner-scoped durable result.
+// ---------------------------------------------------------------------------
+// Deliberately NOT flag-gated: a result already written must stay readable even
+// if the persistence flag is later switched off.
+export async function getProfileSnapshot(snapshotId: string): Promise<
+  ActionResult<{
+    profileSlug: string | null;
+    explanation: HairResultExplanation;
+  }>
+> {
+  if (typeof snapshotId !== "string" || !UUID_RE.test(snapshotId))
+    return fail("VALIDATION_FAILED");
+  if (!hasServiceRoleKey()) return fail("INTERNAL_ERROR");
+
+  try {
+    const admin = createAdminClient();
+    const identity = await resolveIdentity(admin);
+    // No identity, not owned, and not found all answer the same way: a probing
+    // client must not learn that an id exists (docs/adr/0001).
+    if (!identity) return fail("SNAPSHOT_NOT_FOUND");
+
+    const row = await repo.findOwnedSnapshot(admin, snapshotId, identity.id);
+    if (!row) return fail("SNAPSHOT_NOT_FOUND");
+
+    const { profileSlug, explanation } = readHairSnapshot({
+      profile_code: row.profile_code,
+      traits_json: row.traits_json as Json,
+      summary_json: row.summary_json as Json,
+      confidence_json: row.confidence_json as Json,
+    });
+    return ok({ profileSlug, explanation });
   } catch {
     return fail("INTERNAL_ERROR");
   }
