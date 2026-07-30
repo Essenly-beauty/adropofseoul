@@ -7,6 +7,9 @@
 import { hairOptionLabel } from "./quiz";
 import {
   ARCHETYPE_SLUG,
+  SENSITIVE_HAIR_LOSS_CONCERN,
+  SENSITIVE_PRIMARY_CONCERNS,
+  SENSITIVE_SCALP_SYMPTOMS,
   type HairArchetypeCode,
   type HairQuizResponses,
   type HairQuizScore,
@@ -60,15 +63,15 @@ const TAG_LABELS: Record<string, Record<string, string>> = {
   },
 };
 
-/** Scalp answers that raise the professional-evaluation advisory (§4.6). */
+// Scalp answers that raise the professional-evaluation advisory (§4.6): the
+// health-adjacent symptoms, plus a stated hair-loss concern. Deliberately wider
+// than `sensitiveScalpFlag`, which covers the four symptoms only — the flag is a
+// data classification, this is who gets told to see someone.
 const ADVISORY_CONCERNS = [
-  "itching",
-  "flaking",
-  "redness_stinging",
-  "bumps",
-  "hair_loss_concern",
+  ...SENSITIVE_SCALP_SYMPTOMS,
+  SENSITIVE_HAIR_LOSS_CONCERN,
 ];
-const ADVISORY_PRIMARY = ["sensitive_scalp", "hair_loss"];
+const ADVISORY_PRIMARY = SENSITIVE_PRIMARY_CONCERNS;
 
 const SENSITIVE_TAG = "Sensitive scalp consideration";
 const MAX_REASONS = 4;

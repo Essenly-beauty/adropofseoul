@@ -260,6 +260,128 @@ describe("scoreHairQuiz", () => {
     ).toBe(true);
   });
 
+  // -------------------------------------------------------------------------
+  // Persistence-facing result columns (data schema §4).
+  // -------------------------------------------------------------------------
+
+  it("names the runner-up and the margin over it", () => {
+    const res = scoreHairQuiz(
+      sheet({
+        strand_thickness: "fine",
+        density: "low",
+        product_response: "weighed_down",
+        primary_concern: "flatness",
+        desired_result: "volume",
+      })
+    );
+    expect(res.winner).toBe("LB");
+    expect(res.runnerUp).not.toBe("LB");
+    expect(res.margin).toBe(res.scores.LB - res.scores[res.runnerUp!]);
+    expect(res.margin).toBeGreaterThan(0);
+  });
+
+  it("reports a negative margin when an override outranks the top scorer", () => {
+    // Lightweight Balancer wins on points; the bleach + splitting-ends rule
+    // hands the result to Treated & Fragile anyway.
+    const res = scoreHairQuiz(
+      sheet({
+        strand_thickness: "fine",
+        density: "low",
+        product_response: "weighed_down",
+        primary_concern: "flatness",
+        desired_result: "volume",
+        chemical_history: ["bleach"],
+        ends_condition: "split_breaking",
+      })
+    );
+    expect(res.winner).toBe("TF");
+    expect(res.overrideApplied).toBe("severe_damage");
+    expect(res.runnerUp).toBe("LB");
+    expect(res.margin).toBeLessThan(0);
+  });
+
+  it("labels which override fired", () => {
+    expect(scoreHairQuiz(sheet()).overrideApplied).toBe("none");
+    expect(
+      scoreHairQuiz(
+        sheet({
+          natural_pattern: "loose_wave",
+          humidity_response: "waves_appear",
+        })
+      ).overrideApplied
+    ).toBe("hidden_wave");
+    expect(
+      scoreHairQuiz(sheet({ natural_pattern: "tight_curl_coil" }))
+        .overrideApplied
+    ).toBe("tight_curl_protected");
+    expect(
+      scoreHairQuiz(
+        sheet({
+          chemical_history: ["color"],
+          heat_frequency: "almost_daily",
+          ends_condition: "slightly_dry",
+        })
+      ).overrideApplied
+    ).toBe("severe_damage");
+  });
+
+  it("keeps the uncapped chemical damage alongside the capped score", () => {
+    const res = scoreHairQuiz(
+      sheet({
+        chemical_history: [
+          "color",
+          "bleach",
+          "perm",
+          "straightening",
+          "keratin_smoothing",
+        ],
+      })
+    );
+    expect(res.tfChemicalRaw).toBe(17);
+    expect(res.scores.TF).toBe(10);
+  });
+
+  it("flags a health-adjacent scalp symptom without scoring it", () => {
+    expect(scoreHairQuiz(sheet()).sensitiveScalpFlag).toBe(false);
+    expect(
+      scoreHairQuiz(sheet({ scalp_concerns: ["oiliness"] })).sensitiveScalpFlag
+    ).toBe(false);
+    for (const symptom of ["itching", "flaking", "redness_stinging", "bumps"]) {
+      expect(
+        scoreHairQuiz(sheet({ scalp_concerns: [symptom] })).sensitiveScalpFlag,
+        symptom
+      ).toBe(true);
+    }
+  });
+
+  it("reports the tie-break only when a shared top score decided it", () => {
+    // A genuine tie: two codes on 1 point each, nothing else scoring.
+    const tied = scoreHairQuiz({ natural_pattern: "straight" }); // LB 1, DG 2
+    expect(tied.tieBreakUsed).toBe(false); // DG wins outright
+    const forced = scoreHairQuiz(
+      sheet({
+        natural_pattern: "loose_wave",
+        humidity_response: "waves_appear",
+      })
+    );
+    expect(forced.tieBreakUsed).toBe(false); // an override decided, not a tie
+  });
+
+  it("still fills the result columns when there is no signal", () => {
+    const res = scoreHairQuiz({});
+    expect(res).toMatchObject({
+      lowSignal: true,
+      profileSlug: null,
+      winner: null,
+      runnerUp: null,
+      margin: 0,
+      overrideApplied: "none",
+      tfChemicalRaw: 0,
+      sensitiveScalpFlag: false,
+      tieBreakUsed: false,
+    });
+  });
+
   it("ignores malformed answers instead of throwing", () => {
     expect(() =>
       scoreHairQuiz({

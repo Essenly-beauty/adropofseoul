@@ -8,7 +8,36 @@
 // These weights are editorial judgment, not clinical evidence.
 // [PRODUCT/MEDICAL REVIEW REQUIRED before this ships]
 
+/**
+ * Scoring algorithm version, tracked separately from the question-set version so
+ * past responses can be re-segmented when the weights change (data schema §0.2,
+ * §10). Bump this whenever a weight, override, or tie-break rule changes.
+ */
+export const SCORING_VERSION = "score-1.0.0";
+
 export type HairArchetypeCode = "LB" | "DG" | "OD" | "HW" | "MC" | "TF";
+
+/** Which forced rule decided the winner, if any (data schema §4). */
+export type HairOverride =
+  "none" | "severe_damage" | "hidden_wave" | "tight_curl_protected";
+
+/**
+ * `scalp_concerns` values classified as health-adjacent (data schema §5). Kept
+ * here so the result flag, the advisory, and any future brand-sharing exclusion
+ * all read one list instead of three copies.
+ */
+export const SENSITIVE_SCALP_SYMPTOMS = [
+  "itching",
+  "flaking",
+  "redness_stinging",
+  "bumps",
+];
+
+/** Additionally sensitive, and additionally advisory-raising: hair loss. */
+export const SENSITIVE_HAIR_LOSS_CONCERN = "hair_loss_concern";
+
+/** `primary_concern` values classified as health-adjacent (data schema §5). */
+export const SENSITIVE_PRIMARY_CONCERNS = ["sensitive_scalp", "hair_loss"];
 
 /** Tie-break priority: the first code with the highest score wins (§4.5). */
 const CODE_ORDER: HairArchetypeCode[] = ["LB", "DG", "OD", "HW", "MC", "TF"];
@@ -40,6 +69,24 @@ export type HairQuizScore = {
   scores: Record<HairArchetypeCode, number>;
   signals: HairScoreSignal[];
   lowSignal: boolean;
+  /** Winning code, or null when lowSignal. */
+  winner: HairArchetypeCode | null;
+  /** Highest-scoring code other than the winner — the hybrid-segment partner. */
+  runnerUp: HairArchetypeCode | null;
+  /**
+   * Winner's score minus the runner-up's. Small = hybrid segment. **Can be
+   * negative**: an override can hand the result to a code that did not top the
+   * score, and a negative margin is exactly the signal that it did.
+   */
+  margin: number;
+  /** True when the top score was shared and insertion order decided it. */
+  tieBreakUsed: boolean;
+  /** Chemical damage before the cap — preserves the heavy-damage signal. */
+  tfChemicalRaw: number;
+  /** Which forced rule decided the winner. */
+  overrideApplied: HairOverride;
+  /** A health-adjacent scalp symptom was selected (data schema §4, §5). */
+  sensitiveScalpFlag: boolean;
 };
 
 type Weights = Partial<Record<HairArchetypeCode, number>>;
@@ -191,7 +238,8 @@ export function scoreHairQuiz(responses: HairQuizResponses): HairQuizScore {
     if (weights) apply(questionKey, answer, weights);
   }
 
-  for (const concern of asMulti(responses.scalp_concerns)) {
+  const concerns = asMulti(responses.scalp_concerns);
+  for (const concern of concerns) {
     const weights = SCALP_CONCERN_WEIGHTS[concern];
     if (weights) apply("scalp_concerns", concern, weights);
   }
@@ -235,10 +283,26 @@ export function scoreHairQuiz(responses: HairQuizResponses): HairQuizScore {
     apply("ends_condition", ends, { OD: 4 });
   }
 
+  const sensitiveScalpFlag = concerns.some((c) =>
+    SENSITIVE_SCALP_SYMPTOMS.includes(c)
+  );
+
   // --- §4.5 winner selection ---
   const best = CODE_ORDER.reduce((a, b) => (scores[b] > scores[a] ? b : a));
   if (scores[best] === 0)
-    return { profileSlug: null, scores, signals, lowSignal: true };
+    return {
+      profileSlug: null,
+      scores,
+      signals,
+      lowSignal: true,
+      winner: null,
+      runnerUp: null,
+      margin: 0,
+      tieBreakUsed: false,
+      tfChemicalRaw: rawDamage,
+      overrideApplied: "none",
+      sensitiveScalpFlag,
+    };
 
   const severe =
     scores.TF >= 13 ||
@@ -248,19 +312,43 @@ export function scoreHairQuiz(responses: HairQuizResponses): HairQuizScore {
       ends !== "smooth");
 
   let winner = best;
+  let overrideApplied: HairOverride = "none";
   if (pattern === "tight_curl_coil") {
     // Coily hair keeps its pattern routine unless damage clearly dominates.
-    winner = severe && scores.TF >= scores.MC + 4 ? "TF" : "MC";
+    if (severe && scores.TF >= scores.MC + 4) {
+      winner = "TF";
+      overrideApplied = "severe_damage";
+    } else {
+      winner = "MC";
+      overrideApplied = "tight_curl_protected";
+    }
   } else if (severe) {
     winner = "TF";
+    overrideApplied = "severe_damage";
   } else if (pattern === "loose_wave" && humidity === "waves_appear") {
     winner = "HW";
+    overrideApplied = "hidden_wave";
   }
+
+  // Ranked by score, ties keeping CODE_ORDER (Array.prototype.sort is stable).
+  const ranked = [...CODE_ORDER].sort((a, b) => scores[b] - scores[a]);
+  const runnerUp = ranked.find((c) => c !== winner) ?? null;
+  const tiedAtTop =
+    CODE_ORDER.filter((c) => scores[c] === scores[best]).length > 1;
 
   return {
     profileSlug: ARCHETYPE_SLUG[winner],
     scores,
     signals,
     lowSignal: false,
+    winner,
+    runnerUp,
+    margin: runnerUp ? scores[winner] - scores[runnerUp] : 0,
+    // Only meaningful when the tie actually decided the outcome — an override
+    // that stepped in makes the shared top score irrelevant.
+    tieBreakUsed: tiedAtTop && winner === best,
+    tfChemicalRaw: rawDamage,
+    overrideApplied,
+    sensitiveScalpFlag,
   };
 }
