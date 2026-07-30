@@ -226,6 +226,32 @@ Every applied weight records `{ questionKey, optionKey, archetype, weight }` in
   rendered as "you said X → this points to Y". Derived from the scoring table, so
   the explanation cannot contradict the score.
 
+### 4.8 Persistence-facing result columns
+
+Added for the v0.1 data-schema draft (§4 of that doc). `scoreHairQuiz` returns
+these alongside the archetype so whatever persists a result can store them
+without re-deriving anything:
+
+| field                 | meaning                                                                                                                                                                                     |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `winner` / `runnerUp` | winning code, and the highest-scoring code that is not the winner                                                                                                                           |
+| `margin`              | `scores[winner] − scores[runnerUp]`. Small = hybrid segment. **Signed**: an override can hand the result to a code that did not top the score, and a negative margin is how you detect that |
+| `tieBreakUsed`        | the top score was shared **and** the tie decided the outcome (false when an override stepped in)                                                                                            |
+| `tfChemicalRaw`       | chemical damage **before** the cap of 10 — preserves the heavy-damage signal the cap flattens                                                                                               |
+| `overrideApplied`     | `none` / `severe_damage` / `hidden_wave` / `tight_curl_protected`                                                                                                                           |
+| `sensitiveScalpFlag`  | a health-adjacent scalp symptom was selected                                                                                                                                                |
+
+`SCORING_VERSION` (`score-1.0.0`) is exported separately from the question-set
+version: weights can change without the questions changing, and past responses
+must stay re-segmentable. Bump it on any weight, override, or tie-break change.
+
+The health-adjacent value lists (`SENSITIVE_SCALP_SYMPTOMS`,
+`SENSITIVE_HAIR_LOSS_CONCERN`, `SENSITIVE_PRIMARY_CONCERNS`) live in `scoring.ts`
+so the result flag, the §4.6 advisory, and any future brand-sharing exclusion
+read one taxonomy. Note the deliberate asymmetry: `sensitiveScalpFlag` covers the
+four symptoms (a data classification), while the advisory also fires on a stated
+hair-loss concern (who gets told to see someone).
+
 ## 5. Framework extensions
 
 Three small, additive changes to the M2b framework. Existing preview and
@@ -352,3 +378,44 @@ signup/save prompt (M5); rendering `routine` on the profile landings; the Skin q
 - **Version 1 is claimed by this definition.** When the DB seed follows, it must
   publish `version: 1` matching §3 exactly, and retire v0 — `docs/NEXT_TASK_M2b.md`
   warns that re-applying the v0 seed after v1 exists would demote v1 in production.
+
+## 12. Open conflicts with the v0.1 data/consent drafts (2026-07-29)
+
+The `hair_profile_data_schema_v0.1` and `hair_profile_consent_copy_v0.1` drafts
+introduced four conflicts with shipped code or the live M1 schema. §4.8 above is
+the part that was adopted; these four are unresolved and must be decided before
+any persistence work starts.
+
+1. **Question keys disagree.** The draft mandates `q01_natural_pattern`,
+   `q02_strand_feel`, `q04_oil_return`, `q10_chemical_services`, … and says never
+   to change them. The shipped keys are unprefixed and three are named
+   differently (`strand_thickness`, `scalp_oiliness_onset`, `chemical_history`).
+   Note the draft is self-defeating here: its own §3 principle is "store by key,
+   not by index, so inserting a question doesn't break data" — but a `qNN_` prefix
+   encodes the index in the key, so inserting a question forces either a renumber
+   (violating "never change keys") or numbers that no longer match order.
+   Recommendation: keep the unprefixed semantic keys.
+2. **The table model forks the live schema.** The draft proposes
+   `quiz_response` / `quiz_answer` / `quiz_result` / `consent_log`. M1 already
+   shipped to production with `quiz_attempts` / `quiz_responses` /
+   `profile_snapshots` / `consent_documents` + `consent_records`. Adopting the
+   draft as written creates a second overlapping data model. Recommendation: map
+   the draft's _fields_ onto the existing tables (most are additive columns on
+   `profile_snapshots`) rather than adding new tables.
+3. **`quiz_version` type.** The draft uses a string (`hp-2026.07`);
+   `quiz_definitions.version` is an integer and `HAIR_QUIZ.version` is `1`. A
+   string tag would need its own column, not a redefinition of `version`.
+4. **Event tracking would breach an existing control.** The draft's §8
+   `question_answered { answer_values }` sends raw answers. `assertSafeProps` in
+   `lib/analytics/index.ts` throws on `answers` / `value` / `value_code` / `label`
+   (H13), and §8 of this spec commits to no raw answers in analytics. Not
+   implemented. Recommendation: keep `stepKey` + `stepIndex` only; if per-option
+   distributions are needed, derive them server-side from stored responses.
+
+Also unbuilt by design: the consent UI. The consent draft's checkboxes state that
+responses are shared with a named third party, retained for a bounded period, and
+deletable on request. Nothing in the current build persists or transmits a
+response — the quiz scores in the browser and forgets. Shipping that copy now
+would collect consent for processing that does not happen and assert rights that
+no system enforces. The consent surface belongs in the same change as the
+persistence and the sharing pipeline, not before it.
