@@ -30,6 +30,7 @@ import {
 import { isFlagEnabled, type ProfileFlag } from "@/lib/profile/flags";
 import { normalizeSourceContext } from "@/lib/profile/source-context";
 import { durationBucketFromMs } from "@/lib/analytics/duration";
+import { buildHairSnapshot } from "@/lib/haircare/snapshot";
 import {
   mapQuizDefinition,
   hydrateResponses,
@@ -139,21 +140,33 @@ function toCanonicalResponse(
 // brick). Placeholder deterministic result — the real scoring engine is M3;
 // profile_code / rule_set_version are NOT NULL so we write labeled stubs.
 // [PRODUCT/MEDICAL REVIEW REQUIRED for the real result]
-async function ensurePlaceholderSnapshot(
+/**
+ * Score the stored responses and persist the result, exactly once per attempt.
+ * The result is derived from `quiz_responses` — never from anything the client
+ * sent with the completion call.
+ *
+ * Recovers on the unique violation so a completion that flipped the status but
+ * lost the snapshot write is repaired rather than bricking the attempt (H5).
+ *
+ * Hair-only today, which matches this action's `hair_profile` gate. When the
+ * skin quiz lands this becomes a dispatch on `loaded.quizKey`.
+ */
+async function ensureHairSnapshot(
   admin: ReturnType<typeof createAdminClient>,
   attemptId: string,
   identityId: string,
-  domain: LoadedQuizDefinition["quizKey"]
+  loaded: LoadedQuizDefinition
 ): Promise<{ id: string; inserted: boolean }> {
+  const stored = await repo.findResponsesByAttempt(admin, attemptId);
+  const responses = hydrateResponses(loaded, stored);
+  const fields = buildHairSnapshot(responses);
   try {
     const snap = await repo.insertSnapshot(admin, {
       quiz_attempt_id: attemptId,
       anonymous_identity_id: identityId,
       user_id: null,
-      profile_domain: domain,
-      profile_version: 1,
-      rule_set_version: "placeholder-0",
-      profile_code: "placeholder",
+      profile_domain: loaded.quizKey,
+      ...fields,
     });
     return { id: snap.id, inserted: true };
   } catch (e) {
@@ -461,14 +474,7 @@ export async function completeQuizAttempt(
       const snap = await repo.findSnapshotByAttempt(admin, attemptId);
       const id =
         snap?.id ??
-        (
-          await ensurePlaceholderSnapshot(
-            admin,
-            attemptId,
-            identity.id,
-            loaded.quizKey
-          )
-        ).id;
+        (await ensureHairSnapshot(admin, attemptId, identity.id, loaded)).id;
       return ok({
         resultId: id,
         status: "completed",
@@ -494,11 +500,11 @@ export async function completeQuizAttempt(
     // Whether we won or a concurrent completer did, ensure exactly one snapshot
     // exists (the unique backstop makes this safe) and return it. firstCompletion
     // is true only for the writer that actually created the snapshot.
-    const ensured = await ensurePlaceholderSnapshot(
+    const ensured = await ensureHairSnapshot(
       admin,
       attemptId,
       identity.id,
-      loaded.quizKey
+      loaded
     );
     await repo.touchIdentityExpiry(admin, identity.id, expiryISO());
     return ok({
