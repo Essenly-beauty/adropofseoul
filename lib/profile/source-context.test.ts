@@ -12,6 +12,13 @@ describe("normalizeSourceContext", () => {
     }
   });
 
+  it("allows the source the quiz page actually sends", () => {
+    // Regression: HairQuizClient sends "hair_quiz_page". It was missing from the
+    // allowlist, so every attempt silently recorded "direct" and the funnel lost
+    // its entry point — invisible in the UI, only findable in the stored rows.
+    expect(normalizeSourceContext("hair_quiz_page")).toBe("hair_quiz_page");
+  });
+
   it("coerces unknown / forged strings to the default", () => {
     expect(normalizeSourceContext("evil'; drop table--")).toBe(
       DEFAULT_SOURCE_CONTEXT
