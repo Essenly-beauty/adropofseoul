@@ -166,3 +166,36 @@ export function mapQuizDefinition(
     requiredAnswerableKeys,
   };
 }
+
+/**
+ * Stored responses → the client/scoring shape: keyed by question key, values as
+ * option keys. `quiz_responses.response_json` holds canonical value codes, and
+ * everything that reads answers back (resume hydration, server-side scoring)
+ * needs the same conversion — so it lives here once.
+ */
+export function hydrateResponses(
+  loaded: LoadedQuizDefinition,
+  rows: { questionId: string; responseJson: unknown }[]
+): Record<string, string | string[] | number> {
+  const byId = new Map(
+    Object.values(loaded.questionByKey).map((q) => [q.id, q])
+  );
+  const out: Record<string, string | string[] | number> = {};
+  for (const row of rows) {
+    const q = byId.get(row.questionId);
+    if (!q) continue;
+    const raw = row.responseJson;
+    if (q.type === "single_select" && typeof raw === "string") {
+      out[q.key] = q.valueToOptionKey[raw] ?? raw;
+    } else if (q.type === "multi_select" && Array.isArray(raw)) {
+      out[q.key] = raw.map(
+        (v) => q.valueToOptionKey[v as string] ?? (v as string)
+      );
+    } else if (q.type === "scale" && typeof raw === "number") {
+      out[q.key] = raw;
+    } else if (q.type === "text" && typeof raw === "string") {
+      out[q.key] = raw;
+    }
+  }
+  return out;
+}

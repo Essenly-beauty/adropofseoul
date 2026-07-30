@@ -30,8 +30,11 @@ import {
 import { isFlagEnabled, type ProfileFlag } from "@/lib/profile/flags";
 import { normalizeSourceContext } from "@/lib/profile/source-context";
 import { durationBucketFromMs } from "@/lib/analytics/duration";
+import { buildHairSnapshot, readHairSnapshot } from "@/lib/haircare/snapshot";
+import type { HairResultExplanation } from "@/lib/haircare/explain";
 import {
   mapQuizDefinition,
+  hydrateResponses,
   type LoadedQuizDefinition,
 } from "@/lib/profile/quiz-mapper";
 import type { QuizDefinition } from "@/lib/profile/quiz-definition";
@@ -130,29 +133,36 @@ function toCanonicalResponse(
   return response as string; // text
 }
 
-// Insert the placeholder result snapshot, or return the existing one if a
-// concurrent completer already wrote it (the unique(quiz_attempt_id) backstop
-// raises 23505). Idempotent and recoverable: callers can invoke it on the CAS
-// winner, the CAS loser, and the already-completed replay path, so a completion
-// can never be left permanently without a snapshot (finding: CAS-before-insert
-// brick). Placeholder deterministic result — the real scoring engine is M3;
-// profile_code / rule_set_version are NOT NULL so we write labeled stubs.
-// [PRODUCT/MEDICAL REVIEW REQUIRED for the real result]
-async function ensurePlaceholderSnapshot(
+/**
+ * Score the stored responses and persist the result, exactly once per attempt.
+ *
+ * The result is derived from `quiz_responses` — never from anything the client
+ * sent with the completion call.
+ *
+ * Callers invoke this on the CAS winner, the CAS loser, and the already-completed
+ * replay path, and it recovers on the unique violation (23505), so a completion
+ * that flipped the status but lost the snapshot write is repaired rather than
+ * bricking the attempt (H5; finding: CAS-before-insert brick).
+ *
+ * Hair-only today, which matches this action's `hair_profile` gate. When the
+ * skin quiz lands this becomes a dispatch on `loaded.quizKey`.
+ */
+async function ensureHairSnapshot(
   admin: ReturnType<typeof createAdminClient>,
   attemptId: string,
   identityId: string,
-  domain: LoadedQuizDefinition["quizKey"]
+  loaded: LoadedQuizDefinition
 ): Promise<{ id: string; inserted: boolean }> {
+  const stored = await repo.findResponsesByAttempt(admin, attemptId);
+  const responses = hydrateResponses(loaded, stored);
+  const fields = buildHairSnapshot(responses);
   try {
     const snap = await repo.insertSnapshot(admin, {
       quiz_attempt_id: attemptId,
       anonymous_identity_id: identityId,
       user_id: null,
-      profile_domain: domain,
-      profile_version: 1,
-      rule_set_version: "placeholder-0",
-      profile_code: "placeholder",
+      profile_domain: loaded.quizKey,
+      ...fields,
     });
     return { id: snap.id, inserted: true };
   } catch (e) {
@@ -460,14 +470,7 @@ export async function completeQuizAttempt(
       const snap = await repo.findSnapshotByAttempt(admin, attemptId);
       const id =
         snap?.id ??
-        (
-          await ensurePlaceholderSnapshot(
-            admin,
-            attemptId,
-            identity.id,
-            loaded.quizKey
-          )
-        ).id;
+        (await ensureHairSnapshot(admin, attemptId, identity.id, loaded)).id;
       return ok({
         resultId: id,
         status: "completed",
@@ -493,11 +496,11 @@ export async function completeQuizAttempt(
     // Whether we won or a concurrent completer did, ensure exactly one snapshot
     // exists (the unique backstop makes this safe) and return it. firstCompletion
     // is true only for the writer that actually created the snapshot.
-    const ensured = await ensurePlaceholderSnapshot(
+    const ensured = await ensureHairSnapshot(
       admin,
       attemptId,
       identity.id,
-      loaded.quizKey
+      loaded
     );
     await repo.touchIdentityExpiry(admin, identity.id, expiryISO());
     return ok({
@@ -544,27 +547,8 @@ export async function getQuizAttempt(attemptId: string): Promise<
 
     // Rehydrate stored canonical value_codes back into option keys the renderer
     // uses (owner already proven; never read client storage for this).
-    const idToQuestion = new Map(
-      Object.values(loaded.questionByKey).map((q) => [q.id, q])
-    );
     const stored = await repo.findResponsesByAttempt(admin, attemptId);
-    const initialResponses: Record<string, string | string[] | number> = {};
-    for (const row of stored) {
-      const q = idToQuestion.get(row.questionId);
-      if (!q) continue;
-      const raw = row.responseJson;
-      if (q.type === "single_select" && typeof raw === "string") {
-        initialResponses[q.key] = q.valueToOptionKey[raw] ?? raw;
-      } else if (q.type === "multi_select" && Array.isArray(raw)) {
-        initialResponses[q.key] = raw.map(
-          (v) => q.valueToOptionKey[v as string] ?? (v as string)
-        );
-      } else if (q.type === "scale" && typeof raw === "number") {
-        initialResponses[q.key] = raw;
-      } else if (q.type === "text" && typeof raw === "string") {
-        initialResponses[q.key] = raw;
-      }
-    }
+    const initialResponses = hydrateResponses(loaded, stored);
 
     return ok({
       definition: loaded.definition,
@@ -573,6 +557,43 @@ export async function getQuizAttempt(attemptId: string): Promise<
       currentStep: attempt.current_step,
       initialResponses,
     });
+  } catch {
+    return fail("INTERNAL_ERROR");
+  }
+}
+
+// ---------------------------------------------------------------------------
+// getProfileSnapshot — owner-scoped durable result.
+// ---------------------------------------------------------------------------
+// Deliberately NOT flag-gated: a result already written must stay readable even
+// if the persistence flag is later switched off.
+export async function getProfileSnapshot(snapshotId: string): Promise<
+  ActionResult<{
+    profileSlug: string | null;
+    explanation: HairResultExplanation;
+  }>
+> {
+  if (typeof snapshotId !== "string" || !UUID_RE.test(snapshotId))
+    return fail("VALIDATION_FAILED");
+  if (!hasServiceRoleKey()) return fail("INTERNAL_ERROR");
+
+  try {
+    const admin = createAdminClient();
+    const identity = await resolveIdentity(admin);
+    // No identity, not owned, and not found all answer the same way: a probing
+    // client must not learn that an id exists (docs/adr/0001).
+    if (!identity) return fail("SNAPSHOT_NOT_FOUND");
+
+    const row = await repo.findOwnedSnapshot(admin, snapshotId, identity.id);
+    if (!row) return fail("SNAPSHOT_NOT_FOUND");
+
+    const { profileSlug, explanation } = readHairSnapshot({
+      profile_code: row.profile_code,
+      traits_json: row.traits_json as Json,
+      summary_json: row.summary_json as Json,
+      confidence_json: row.confidence_json as Json,
+    });
+    return ok({ profileSlug, explanation });
   } catch {
     return fail("INTERNAL_ERROR");
   }

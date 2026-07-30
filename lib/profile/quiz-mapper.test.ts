@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { mapQuizDefinition } from "./quiz-mapper";
+import { mapQuizDefinition, hydrateResponses } from "./quiz-mapper";
 import type { Database } from "@/types/database.types";
 
 type DefRow = Database["public"]["Tables"]["quiz_definitions"]["Row"];
@@ -172,6 +172,35 @@ describe("mapQuizDefinition", () => {
     expect(heat.validation).toEqual({ min: 0, max: 5 });
     const wash = loaded.definition.questions.find((x) => x.key === "wash")!;
     expect(wash.validation).toBeUndefined();
+  });
+
+  it("hydrates stored value codes back into option keys", () => {
+    const byKey = loaded.questionByKey;
+    const hydrated = hydrateResponses(loaded, [
+      { questionId: byKey.wash.id, responseJson: "every_other_day" },
+      { questionId: byKey.concerns.id, responseJson: ["lacks_volume"] },
+      { questionId: byKey.heat.id, responseJson: 3 },
+    ]);
+    // wash's option_key is "alt" while its value_code is "every_other_day".
+    expect(hydrated).toEqual({ wash: "alt", concerns: ["flat"], heat: 3 });
+  });
+
+  it("skips rows it cannot place or whose shape is wrong for the type", () => {
+    const byKey = loaded.questionByKey;
+    const hydrated = hydrateResponses(loaded, [
+      { questionId: "no-such-question", responseJson: "x" },
+      { questionId: byKey.wash.id, responseJson: 42 }, // single_select wants a string
+      { questionId: byKey.concerns.id, responseJson: "flat" }, // multi wants an array
+      { questionId: byKey.heat.id, responseJson: "3" }, // scale wants a number
+    ]);
+    expect(hydrated).toEqual({});
+  });
+
+  it("passes through a value code with no matching option key", () => {
+    const hydrated = hydrateResponses(loaded, [
+      { questionId: loaded.questionByKey.wash.id, responseJson: "gone" },
+    ]);
+    expect(hydrated).toEqual({ wash: "gone" });
   });
 
   it("carries exclusive option keys through", () => {

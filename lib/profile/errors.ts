@@ -7,6 +7,9 @@ export const PROFILE_ERROR_CODES = [
   "AUTH_REQUIRED",
   "FORBIDDEN",
   "ATTEMPT_NOT_FOUND",
+  // Also returned for a snapshot the caller does not own: "not yours" and
+  // "doesn't exist" must be indistinguishable (docs/adr/0001).
+  "SNAPSHOT_NOT_FOUND",
   "ATTEMPT_EXPIRED",
   "ATTEMPT_ALREADY_COMPLETED",
   "QUIZ_VERSION_RETIRED",

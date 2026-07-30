@@ -334,3 +334,30 @@ export async function findResponsesByAttempt(
     responseJson: r.response_json as unknown,
   }));
 }
+
+/**
+ * A snapshot, only if this identity owns it. Ownership is never taken from the
+ * URL: the id is a lookup key, not a capability (docs/adr/0001).
+ */
+export async function findOwnedSnapshot(
+  admin: Client,
+  snapshotId: string,
+  identityId: string
+): Promise<{
+  profile_code: string;
+  profile_domain: string;
+  traits_json: unknown;
+  summary_json: unknown;
+  confidence_json: unknown;
+} | null> {
+  const { data, error } = await admin
+    .from("profile_snapshots")
+    .select(
+      "profile_code, profile_domain, traits_json, summary_json, confidence_json"
+    )
+    .eq("id", snapshotId)
+    .eq("anonymous_identity_id", identityId)
+    .maybeSingle();
+  if (error) throw error;
+  return data ?? null;
+}

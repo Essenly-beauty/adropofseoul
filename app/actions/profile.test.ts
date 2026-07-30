@@ -1,6 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import type { Database } from "@/types/database.types";
 import { hashToken as realHashToken } from "@/lib/profile/anon-token";
+import { HAIR_QUIZ } from "@/lib/haircare/quiz";
 
 // --- Mocks (real modules never load: sidesteps server-only + next/headers) ---
 
@@ -44,6 +45,7 @@ vi.mock("@/lib/profile/quiz-repo", () => ({
   findSnapshotByAttempt: vi.fn(),
   findAnsweredQuestionIds: vi.fn(),
   findResponsesByAttempt: vi.fn(),
+  findOwnedSnapshot: vi.fn(),
 }));
 
 import * as admin from "@/lib/supabase/admin";
@@ -56,6 +58,7 @@ import {
   updateQuizProgress,
   completeQuizAttempt,
   getQuizAttempt,
+  getProfileSnapshot,
 } from "./profile";
 
 // --- Fixtures (mirror the placeholder hair quiz) ---------------------------
@@ -209,6 +212,73 @@ function programDefinitionLoad() {
   vi.mocked(repo.findDefinitionRowById).mockResolvedValue(DEF);
   vi.mocked(repo.findQuestionRows).mockResolvedValue(QUESTIONS);
   vi.mocked(repo.findOptionRows).mockResolvedValue(OPTIONS);
+}
+
+// --- The real v1 hair definition, generated from HAIR_QUIZ ------------------
+// Completion scores for real now, so its tests need the real definition. Built
+// from the definition itself, so adding a question can't silently skip it here.
+
+const V1_DEF: DefRow = { ...DEF, version: 1 };
+
+const V1_QUESTIONS: QuestionRow[] = HAIR_QUIZ.questions.map((q, i) =>
+  baseQ({
+    id: `q-${q.key}`,
+    question_key: q.key,
+    question_type: q.type,
+    section_key: q.sectionKey ?? null,
+    position: i,
+    is_required: q.isRequired,
+    allows_multiple: q.allowsMultiple,
+    content_key: q.content,
+    help_text_key: q.helpText ?? null,
+    validation_json: (q.validation ?? null) as QuestionRow["validation_json"],
+  })
+);
+
+const V1_OPTIONS: OptionRow[] = HAIR_QUIZ.questions.flatMap((q) =>
+  q.options.map((o, j) =>
+    baseO({
+      id: `o-${q.key}-${o.key}`,
+      question_id: `q-${q.key}`,
+      option_key: o.key,
+      position: j,
+      content_key: o.label,
+      value_code: o.value,
+    })
+  )
+);
+
+/** A complete sheet that scores to Hidden Wave, as stored value codes. */
+const HIDDEN_WAVE_ANSWERS: Record<string, string | string[]> = {
+  natural_pattern: "loose_wave",
+  strand_thickness: "fine",
+  density: "low",
+  hair_length: "shoulder_collarbone",
+  scalp_oiliness_onset: "two_plus_days",
+  scalp_concerns: ["none"],
+  wash_frequency: "every_other_day",
+  product_response: "varies",
+  dry_time: "average",
+  humidity_response: "waves_appear",
+  chemical_history: ["none"],
+  heat_frequency: "rarely",
+  ends_condition: "smooth",
+  environment: ["none"],
+  primary_concern: "curl_definition",
+  desired_result: "defined_texture",
+};
+
+/** Definition load + stored responses for the real v1 quiz. */
+function programHairV1Load() {
+  vi.mocked(repo.findDefinitionRowById).mockResolvedValue(V1_DEF);
+  vi.mocked(repo.findQuestionRows).mockResolvedValue(V1_QUESTIONS);
+  vi.mocked(repo.findOptionRows).mockResolvedValue(V1_OPTIONS);
+  vi.mocked(repo.findResponsesByAttempt).mockResolvedValue(
+    Object.entries(HIDDEN_WAVE_ANSWERS).map(([key, value]) => ({
+      questionId: `q-${key}`,
+      responseJson: value,
+    }))
+  );
 }
 
 beforeEach(() => {
@@ -562,18 +632,19 @@ describe("updateQuizProgress", () => {
 // completeQuizAttempt
 // ===========================================================================
 describe("completeQuizAttempt", () => {
-  const allAnswered = ["q-wash", "q-concerns", "q-heat", "q-goal"];
+  // Every v1 question is required and answerable, so completion needs them all.
+  const allAnswered = V1_QUESTIONS.map((q) => q.id);
 
   beforeEach(() => {
     vi.mocked(repo.findOwnedAttempt).mockResolvedValue(attempt());
-    programDefinitionLoad();
+    programHairV1Load();
     vi.mocked(repo.findAnsweredQuestionIds).mockResolvedValue(allAnswered);
     vi.mocked(repo.casCompleteAttempt).mockResolvedValue(true);
     vi.mocked(repo.insertSnapshot).mockResolvedValue({ id: "snap-1" });
     vi.mocked(repo.findSnapshotByAttempt).mockResolvedValue(null);
   });
 
-  it("completes with a placeholder snapshot when all required responses exist", async () => {
+  it("writes the scored archetype, not a placeholder", async () => {
     const res = await completeQuizAttempt(ATTEMPT_ID);
     expect(res.ok).toBe(true);
     if (res.ok) {
@@ -587,9 +658,38 @@ describe("completeQuizAttempt", () => {
         anonymous_identity_id: IDENTITY.id,
         user_id: null,
         profile_domain: "hair",
-        profile_code: "placeholder",
-        rule_set_version: "placeholder-0",
+        profile_code: "hidden-wave",
+        rule_set_version: "score-1.0.0",
       })
+    );
+    const row = vi.mocked(repo.insertSnapshot).mock.calls[0][1] as {
+      profile_code: string;
+      rule_set_version: string;
+      traits_json: unknown;
+    };
+    expect(row.profile_code).not.toBe("placeholder");
+    expect(row.rule_set_version).not.toBe("placeholder-0");
+    expect(row.traits_json).toContain("Loose wave");
+  });
+
+  it("scores from the stored responses, not from the request", async () => {
+    // Same attempt, different stored answers → a different archetype. Proves the
+    // result comes from the database rather than anything a client sent.
+    vi.mocked(repo.findResponsesByAttempt).mockResolvedValue(
+      Object.entries({
+        ...HIDDEN_WAVE_ANSWERS,
+        chemical_history: ["bleach"],
+        ends_condition: "split_breaking",
+        primary_concern: "breakage",
+      }).map(([key, value]) => ({
+        questionId: `q-${key}`,
+        responseJson: value,
+      }))
+    );
+    await completeQuizAttempt(ATTEMPT_ID);
+    expect(repo.insertSnapshot).toHaveBeenCalledWith(
+      expect.anything(),
+      expect.objectContaining({ profile_code: "treated-fragile" })
     );
   });
 
@@ -802,5 +902,86 @@ describe("guards on save/progress/complete/get", () => {
       error: "ATTEMPT_EXPIRED",
     });
     expect(repo.findOwnedAttempt).not.toHaveBeenCalled();
+  });
+});
+
+// ===========================================================================
+// getProfileSnapshot — the durable result read
+// ===========================================================================
+describe("getProfileSnapshot", () => {
+  const SNAPSHOT_ID = "33333333-3333-4333-8333-333333333333";
+  const OTHER_ID = "44444444-4444-4444-8444-444444444444";
+
+  const storedSnapshot = {
+    profile_code: "hidden-wave",
+    profile_domain: "hair",
+    traits_json: ["Loose wave", "Fine strands"],
+    summary_json: {
+      reasons: ["Waves or curls become more visible"],
+      advisory: false,
+    },
+    confidence_json: { margin: 4 },
+  };
+
+  it("serves a snapshot to its owner", async () => {
+    vi.mocked(repo.findOwnedSnapshot).mockResolvedValue(storedSnapshot);
+    const res = await getProfileSnapshot(SNAPSHOT_ID);
+    expect(res.ok).toBe(true);
+    if (res.ok) {
+      expect(res.profileSlug).toBe("hidden-wave");
+      expect(res.explanation.tags).toContain("Loose wave");
+      expect(res.explanation.reasons[0]).toBe(
+        "Waves or curls become more visible"
+      );
+    }
+  });
+
+  it("answers identically for a foreign snapshot and a missing one", async () => {
+    // The repo read is identity-scoped, so a snapshot owned by someone else
+    // comes back null — the same as one that doesn't exist. A probing client
+    // must not be able to tell those apart (docs/adr/0001).
+    vi.mocked(repo.findOwnedSnapshot).mockResolvedValue(null);
+    const foreign = await getProfileSnapshot(SNAPSHOT_ID);
+    const missing = await getProfileSnapshot(OTHER_ID);
+    expect(foreign).toEqual({ ok: false, error: "SNAPSHOT_NOT_FOUND" });
+    expect(foreign).toEqual(missing);
+  });
+
+  it("scopes the read to the caller's identity", async () => {
+    vi.mocked(repo.findOwnedSnapshot).mockResolvedValue(storedSnapshot);
+    await getProfileSnapshot(SNAPSHOT_ID);
+    expect(repo.findOwnedSnapshot).toHaveBeenCalledWith(
+      expect.anything(),
+      SNAPSHOT_ID,
+      IDENTITY.id
+    );
+  });
+
+  it("refuses a caller with no anonymous identity", async () => {
+    vi.mocked(anon.readAnonToken).mockResolvedValue(null);
+    const res = await getProfileSnapshot(SNAPSHOT_ID);
+    expect(res).toEqual({ ok: false, error: "SNAPSHOT_NOT_FOUND" });
+    expect(repo.findOwnedSnapshot).not.toHaveBeenCalled();
+  });
+
+  it("rejects a malformed snapshot id without touching the database", async () => {
+    const res = await getProfileSnapshot("not-a-uuid");
+    expect(res).toEqual({ ok: false, error: "VALIDATION_FAILED" });
+    expect(repo.findOwnedSnapshot).not.toHaveBeenCalled();
+  });
+
+  it("stays readable when the persistence flag is off", async () => {
+    // A result already written must not vanish because the flag flipped.
+    process.env.NEXT_PUBLIC_FLAG_HAIR_PROFILE = "0";
+    vi.mocked(repo.findOwnedSnapshot).mockResolvedValue(storedSnapshot);
+    const res = await getProfileSnapshot(SNAPSHOT_ID);
+    expect(res.ok).toBe(true);
+  });
+
+  it("fails closed with no service-role key", async () => {
+    vi.mocked(admin.hasServiceRoleKey).mockReturnValue(false);
+    const res = await getProfileSnapshot(SNAPSHOT_ID);
+    expect(res).toEqual({ ok: false, error: "INTERNAL_ERROR" });
+    expect(repo.findOwnedSnapshot).not.toHaveBeenCalled();
   });
 });

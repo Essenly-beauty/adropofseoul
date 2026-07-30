@@ -91,6 +91,20 @@ export default function HairProfilePage({
         <List title="What to use carefully" items={profile.useCarefully} />
       </div>
 
+      <section className="mt-12">
+        <h2 className="font-serif text-2xl">Build your routine</h2>
+        <ol className="mt-4 grid gap-4 sm:grid-cols-2">
+          {profile.routine.map((s) => (
+            <li key={s.step} className="border-t border-soft-gray pt-3">
+              <p className="text-[11px] uppercase tracking-label text-accent">
+                {s.step}
+              </p>
+              <p className="mt-1 text-sm text-text-muted">{s.detail}</p>
+            </li>
+          ))}
+        </ol>
+      </section>
+
       <section className="mt-10 rounded-lg border border-soft-gray bg-porcelain/40 p-6">
         <h2 className="text-[11px] uppercase tracking-label text-accent">
           Read your full guide
