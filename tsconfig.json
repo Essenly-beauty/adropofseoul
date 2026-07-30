@@ -16,5 +16,9 @@
     "paths": { "@/*": ["./*"] }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  // scripts/ are operational one-shots run directly by node (which requires the
+  // .ts import extension that this config's module settings reject, and allows
+  // the top-level await they use). The rest of scripts/ is .mjs and was never
+  // typechecked either — node running them is the check.
+  "exclude": ["node_modules", "scripts"]
 }

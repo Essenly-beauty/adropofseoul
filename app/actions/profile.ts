@@ -32,6 +32,7 @@ import { normalizeSourceContext } from "@/lib/profile/source-context";
 import { durationBucketFromMs } from "@/lib/analytics/duration";
 import {
   mapQuizDefinition,
+  hydrateResponses,
   type LoadedQuizDefinition,
 } from "@/lib/profile/quiz-mapper";
 import type { QuizDefinition } from "@/lib/profile/quiz-definition";
@@ -544,27 +545,8 @@ export async function getQuizAttempt(attemptId: string): Promise<
 
     // Rehydrate stored canonical value_codes back into option keys the renderer
     // uses (owner already proven; never read client storage for this).
-    const idToQuestion = new Map(
-      Object.values(loaded.questionByKey).map((q) => [q.id, q])
-    );
     const stored = await repo.findResponsesByAttempt(admin, attemptId);
-    const initialResponses: Record<string, string | string[] | number> = {};
-    for (const row of stored) {
-      const q = idToQuestion.get(row.questionId);
-      if (!q) continue;
-      const raw = row.responseJson;
-      if (q.type === "single_select" && typeof raw === "string") {
-        initialResponses[q.key] = q.valueToOptionKey[raw] ?? raw;
-      } else if (q.type === "multi_select" && Array.isArray(raw)) {
-        initialResponses[q.key] = raw.map(
-          (v) => q.valueToOptionKey[v as string] ?? (v as string)
-        );
-      } else if (q.type === "scale" && typeof raw === "number") {
-        initialResponses[q.key] = raw;
-      } else if (q.type === "text" && typeof raw === "string") {
-        initialResponses[q.key] = raw;
-      }
-    }
+    const initialResponses = hydrateResponses(loaded, stored);
 
     return ok({
       definition: loaded.definition,

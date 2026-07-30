@@ -55,87 +55,97 @@ async function rest(
   return text ? JSON.parse(text) : null;
 }
 
-const questions = HAIR_QUIZ.questions;
-console.log(
-  `hair quiz v${HAIR_QUIZ.version}: ${questions.length} questions, ` +
-    `${questions.reduce((n, q) => n + q.options.length, 0)} options`
-);
-if (DRY) {
-  for (const q of questions)
-    console.log(`  ${q.key} (${q.type}) — ${q.options.length} options`);
-  process.exit(0);
-}
-
-// 1. Retire any other active hair version first: the schema uniques
-// (quiz_key, version), not "one active per domain", so this is enforced here.
-await rest(
-  `quiz_definitions?quiz_key=eq.hair&status=eq.active&version=neq.${HAIR_QUIZ.version}`,
-  {
-    method: "PATCH",
-    body: { status: "retired", retired_at: new Date().toISOString() },
-    prefer: "return=minimal",
+// Wrapped in main() rather than using top-level await: this file is inside the
+// project's tsconfig, and `tsc --noEmit` rejects top-level await at its module
+// target even though node runs it fine.
+async function main() {
+  const questions = HAIR_QUIZ.questions;
+  console.log(
+    `hair quiz v${HAIR_QUIZ.version}: ${questions.length} questions, ` +
+      `${questions.reduce((n, q) => n + q.options.length, 0)} options`
+  );
+  if (DRY) {
+    for (const q of questions)
+      console.log(`  ${q.key} (${q.type}) — ${q.options.length} options`);
+    return;
   }
-);
 
-// 2. Upsert the definition on (quiz_key, version).
-const [def] = await rest("quiz_definitions?on_conflict=quiz_key,version", {
-  method: "POST",
-  body: [
+  // 1. Retire any other active hair version first: the schema uniques
+  // (quiz_key, version), not "one active per domain", so this is enforced here.
+  await rest(
+    `quiz_definitions?quiz_key=eq.hair&status=eq.active&version=neq.${HAIR_QUIZ.version}`,
     {
-      quiz_key: HAIR_QUIZ.quizKey,
-      version: HAIR_QUIZ.version,
-      status: "active",
-      locale_strategy: "single",
-      title_key: HAIR_QUIZ.title,
-      description_key: HAIR_QUIZ.description ?? null,
-      published_at: new Date().toISOString(),
-      retired_at: null,
-    },
-  ],
-  prefer: "resolution=merge-duplicates,return=representation",
-});
-console.log("definition:", def.id);
-
-// 3. Upsert questions on (quiz_definition_id, question_key), then their options
-// on (question_id, option_key). Position comes from array order, so reordering
-// the definition reorders the quiz without touching any key.
-for (let i = 0; i < questions.length; i++) {
-  const q = questions[i];
-  const [row] = await rest(
-    "quiz_questions?on_conflict=quiz_definition_id,question_key",
-    {
-      method: "POST",
-      body: [
-        {
-          quiz_definition_id: def.id,
-          question_key: q.key,
-          question_type: q.type,
-          section_key: q.sectionKey ?? null,
-          position: i,
-          is_required: q.isRequired,
-          allows_multiple: q.allowsMultiple,
-          content_key: q.content,
-          help_text_key: q.helpText ?? null,
-          validation_json: q.validation ?? null,
-        },
-      ],
-      prefer: "resolution=merge-duplicates,return=representation",
+      method: "PATCH",
+      body: { status: "retired", retired_at: new Date().toISOString() },
+      prefer: "return=minimal",
     }
   );
-  if (q.options.length > 0) {
-    await rest("quiz_options?on_conflict=question_id,option_key", {
-      method: "POST",
-      body: q.options.map((o, j) => ({
-        question_id: row.id,
-        option_key: o.key,
-        position: j,
-        content_key: o.label,
-        value_code: o.value,
-      })),
-      prefer: "resolution=merge-duplicates,return=minimal",
-    });
+
+  // 2. Upsert the definition on (quiz_key, version).
+  const [def] = await rest("quiz_definitions?on_conflict=quiz_key,version", {
+    method: "POST",
+    body: [
+      {
+        quiz_key: HAIR_QUIZ.quizKey,
+        version: HAIR_QUIZ.version,
+        status: "active",
+        locale_strategy: "single",
+        title_key: HAIR_QUIZ.title,
+        description_key: HAIR_QUIZ.description ?? null,
+        published_at: new Date().toISOString(),
+        retired_at: null,
+      },
+    ],
+    prefer: "resolution=merge-duplicates,return=representation",
+  });
+  console.log("definition:", def.id);
+
+  // 3. Upsert questions on (quiz_definition_id, question_key), then their options
+  // on (question_id, option_key). Position comes from array order, so reordering
+  // the definition reorders the quiz without touching any key.
+  for (let i = 0; i < questions.length; i++) {
+    const q = questions[i];
+    const [row] = await rest(
+      "quiz_questions?on_conflict=quiz_definition_id,question_key",
+      {
+        method: "POST",
+        body: [
+          {
+            quiz_definition_id: def.id,
+            question_key: q.key,
+            question_type: q.type,
+            section_key: q.sectionKey ?? null,
+            position: i,
+            is_required: q.isRequired,
+            allows_multiple: q.allowsMultiple,
+            content_key: q.content,
+            help_text_key: q.helpText ?? null,
+            validation_json: q.validation ?? null,
+          },
+        ],
+        prefer: "resolution=merge-duplicates,return=representation",
+      }
+    );
+    if (q.options.length > 0) {
+      await rest("quiz_options?on_conflict=question_id,option_key", {
+        method: "POST",
+        body: q.options.map((o, j) => ({
+          question_id: row.id,
+          option_key: o.key,
+          position: j,
+          content_key: o.label,
+          value_code: o.value,
+        })),
+        prefer: "resolution=merge-duplicates,return=minimal",
+      });
+    }
+    console.log(`  ${q.key}: ${q.options.length} options`);
   }
-  console.log(`  ${q.key}: ${q.options.length} options`);
+
+  console.log("seeded hair quiz v" + HAIR_QUIZ.version);
 }
 
-console.log("seeded hair quiz v" + HAIR_QUIZ.version);
+main().catch((e) => {
+  console.error(e instanceof Error ? e.message : e);
+  process.exit(1);
+});
