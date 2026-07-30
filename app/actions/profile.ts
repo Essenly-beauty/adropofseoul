@@ -132,21 +132,16 @@ function toCanonicalResponse(
   return response as string; // text
 }
 
-// Insert the placeholder result snapshot, or return the existing one if a
-// concurrent completer already wrote it (the unique(quiz_attempt_id) backstop
-// raises 23505). Idempotent and recoverable: callers can invoke it on the CAS
-// winner, the CAS loser, and the already-completed replay path, so a completion
-// can never be left permanently without a snapshot (finding: CAS-before-insert
-// brick). Placeholder deterministic result — the real scoring engine is M3;
-// profile_code / rule_set_version are NOT NULL so we write labeled stubs.
-// [PRODUCT/MEDICAL REVIEW REQUIRED for the real result]
 /**
  * Score the stored responses and persist the result, exactly once per attempt.
+ *
  * The result is derived from `quiz_responses` — never from anything the client
  * sent with the completion call.
  *
- * Recovers on the unique violation so a completion that flipped the status but
- * lost the snapshot write is repaired rather than bricking the attempt (H5).
+ * Callers invoke this on the CAS winner, the CAS loser, and the already-completed
+ * replay path, and it recovers on the unique violation (23505), so a completion
+ * that flipped the status but lost the snapshot write is repaired rather than
+ * bricking the attempt (H5; finding: CAS-before-insert brick).
  *
  * Hair-only today, which matches this action's `hair_profile` gate. When the
  * skin quiz lands this becomes a dispatch on `loaded.quizKey`.
