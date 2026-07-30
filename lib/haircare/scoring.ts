@@ -184,6 +184,19 @@ const SCALP_CONCERN_WEIGHTS: Record<string, Weights> = {
   // only (§4.6) — see explain.ts.
 };
 
+// --- §4.2b environment (multi) --------------------------------------------
+// Scoped to what Q9 (humidity_response) can't tell us: humidity is already
+// covered behaviourally there, so this carries water hardness, climate dryness,
+// airborne buildup, and chlorine/salt exposure. Weights stay modest — where you
+// live shouldn't outweigh what your hair actually does.
+const ENVIRONMENT_WEIGHTS: Record<string, Weights> = {
+  hard_water: { LB: 2, DG: 1 }, // mineral residue reads as buildup and dullness
+  dry_climate: { DG: 1, MC: 2, TF: 1 },
+  cold_winter: { DG: 1, MC: 1, TF: 1 }, // indoor heating dries the lengths
+  high_pollution: { OD: 2 }, // scalp buildup between washes
+  frequent_swimming: { TF: 3 }, // chlorine and salt are real cuticle damage
+};
+
 // --- §4.3 chemical_history (multi) ----------------------------------------
 const CHEMICAL_DAMAGE: Record<string, number> = {
   color: 2,
@@ -200,6 +213,9 @@ const DRY_OR_DAMAGED_ENDS = [
   "tangled",
   "rough_dull",
 ];
+
+/** Lengths at which a slow air-dry says nothing about thickness or density. */
+const LONG_LENGTHS = ["mid_back", "waist_or_longer"];
 
 function asSingle(v: unknown): string | null {
   return typeof v === "string" && v.length > 0 ? v : null;
@@ -231,11 +247,21 @@ export function scoreHairQuiz(responses: HairQuizResponses): HairQuizScore {
     }
   }
 
+  // Long hair air-dries slowly whatever its thickness or density, so the
+  // `dry_time: slow` weights would otherwise read length as body (§4.4).
+  const longHair = LONG_LENGTHS.includes(asSingle(responses.hair_length) ?? "");
+
   for (const [questionKey, table] of Object.entries(SINGLE_WEIGHTS)) {
     const answer = asSingle(responses[questionKey]);
     if (!answer) continue;
+    if (questionKey === "dry_time" && answer === "slow" && longHair) continue;
     const weights = table[answer];
     if (weights) apply(questionKey, answer, weights);
+  }
+
+  for (const factor of asMulti(responses.environment)) {
+    const weights = ENVIRONMENT_WEIGHTS[factor];
+    if (weights) apply("environment", factor, weights);
   }
 
   const concerns = asMulti(responses.scalp_concerns);

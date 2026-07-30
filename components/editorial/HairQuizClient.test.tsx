@@ -35,6 +35,8 @@ const HIDDEN_WAVE: Record<string, string> = {
   natural_pattern: "loose_wave",
   strand_thickness: "fine",
   density: "low",
+  hair_length: "shoulder_collarbone",
+  environment: "none",
   scalp_oiliness_onset: "two_plus_days",
   scalp_concerns: "none",
   wash_frequency: "every_other_day",
@@ -53,7 +55,7 @@ describe("HairQuizClient", () => {
 
   it("opens on step 1 of 14 and reports the quiz start once", () => {
     render(<HairQuizClient />);
-    expect(screen.getByText("Step 1 of 14")).toBeTruthy();
+    expect(screen.getByText("Step 1 of 16")).toBeTruthy();
     expect(profileQuizStarted).toHaveBeenCalledTimes(1);
     expect(profileQuizStarted).toHaveBeenCalledWith({
       domain: "hair",
@@ -89,6 +91,6 @@ describe("HairQuizClient", () => {
     render(<HairQuizClient />);
     completeQuiz(HIDDEN_WAVE);
     fireEvent.click(screen.getByRole("button", { name: /retake/i }));
-    expect(screen.getByText("Step 1 of 14")).toBeTruthy();
+    expect(screen.getByText("Step 1 of 16")).toBeTruthy();
   });
 });

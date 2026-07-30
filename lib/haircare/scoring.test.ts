@@ -9,6 +9,8 @@ function sheet(over: HairQuizResponses = {}): HairQuizResponses {
     natural_pattern: "straight",
     strand_thickness: "unknown",
     density: "unknown",
+    hair_length: "shoulder_collarbone",
+    environment: ["none"],
     scalp_oiliness_onset: "two_plus_days",
     scalp_concerns: ["none"],
     wash_frequency: "every_other_day",
@@ -258,6 +260,93 @@ describe("scoreHairQuiz", () => {
           s.weight === 4
       )
     ).toBe(true);
+  });
+
+  // -------------------------------------------------------------------------
+  // Environment (§4.2b) and the hair-length confound correction (§4.4).
+  // -------------------------------------------------------------------------
+
+  it("scores each environment factor", () => {
+    const base = scoreHairQuiz(sheet());
+    const hard = scoreHairQuiz(sheet({ environment: ["hard_water"] }));
+    expect(hard.scores.LB - base.scores.LB).toBe(2);
+    expect(hard.scores.DG - base.scores.DG).toBe(1);
+
+    const pool = scoreHairQuiz(sheet({ environment: ["frequent_swimming"] }));
+    expect(pool.scores.TF - base.scores.TF).toBe(3);
+
+    const dust = scoreHairQuiz(sheet({ environment: ["high_pollution"] }));
+    expect(dust.scores.OD - base.scores.OD).toBe(2);
+  });
+
+  it("adds up multiple environment factors and ignores None", () => {
+    const base = scoreHairQuiz(sheet());
+    const both = scoreHairQuiz(
+      sheet({ environment: ["dry_climate", "cold_winter"] })
+    );
+    expect(both.scores.MC - base.scores.MC).toBe(3);
+    expect(scoreHairQuiz(sheet({ environment: ["none"] })).scores).toEqual(
+      base.scores
+    );
+  });
+
+  it("does not let environment alone decide the archetype", () => {
+    // Every factor selected, on an otherwise neutral sheet: the profile still
+    // comes from the hair answers, not from where the person lives.
+    const res = scoreHairQuiz(
+      sheet({
+        environment: [
+          "hard_water",
+          "dry_climate",
+          "cold_winter",
+          "high_pollution",
+          "frequent_swimming",
+        ],
+      })
+    );
+    expect(res.overrideApplied).toBe("none");
+    expect(res.scores.TF).toBeLessThan(13); // nowhere near the severe threshold
+  });
+
+  it("stops reading a slow air-dry as body once the hair is long", () => {
+    const short = scoreHairQuiz(
+      sheet({ dry_time: "slow", hair_length: "above_shoulder" })
+    );
+    const long = scoreHairQuiz(
+      sheet({ dry_time: "slow", hair_length: "waist_or_longer" })
+    );
+    // slow contributes DG 2 / HW 1 / MC 1 — suppressed at length.
+    expect(short.scores.DG - long.scores.DG).toBe(2);
+    expect(short.scores.HW - long.scores.HW).toBe(1);
+    expect(short.scores.MC - long.scores.MC).toBe(1);
+  });
+
+  it("leaves the other dry-time answers alone at any length", () => {
+    for (const length of ["above_shoulder", "waist_or_longer"]) {
+      const res = scoreHairQuiz(
+        sheet({ dry_time: "mixed", hair_length: length })
+      );
+      const base = scoreHairQuiz(
+        sheet({ dry_time: "average", hair_length: length })
+      );
+      expect(res.scores.OD - base.scores.OD, length).toBe(2);
+    }
+  });
+
+  it("gives hair length no archetype weight of its own", () => {
+    const base = scoreHairQuiz(sheet({ dry_time: "average" }));
+    for (const length of [
+      "above_shoulder",
+      "shoulder_collarbone",
+      "mid_back",
+      "waist_or_longer",
+    ]) {
+      expect(
+        scoreHairQuiz(sheet({ dry_time: "average", hair_length: length }))
+          .scores,
+        length
+      ).toEqual(base.scores);
+    }
   });
 
   // -------------------------------------------------------------------------

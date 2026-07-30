@@ -4,10 +4,10 @@ import { optionKeys } from "@/lib/profile/quiz-definition";
 import { validateResponse } from "@/lib/profile/validation";
 
 describe("HAIR_QUIZ", () => {
-  it("is version 1 of the hair domain with 14 questions", () => {
+  it("is version 1 of the hair domain with 16 questions", () => {
     expect(HAIR_QUIZ.quizKey).toBe("hair");
     expect(HAIR_QUIZ.version).toBe(1);
-    expect(HAIR_QUIZ.questions).toHaveLength(14);
+    expect(HAIR_QUIZ.questions).toHaveLength(16);
   });
 
   it("has unique question keys", () => {
@@ -43,11 +43,12 @@ describe("HAIR_QUIZ", () => {
       expect(HAIR_QUIZ_SECTIONS, q.key).toContain(q.sectionKey);
   });
 
-  it("marks exactly the two multi-selects, each with an exclusive None", () => {
+  it("marks exactly the three multi-selects, each with an exclusive None", () => {
     const multi = HAIR_QUIZ.questions.filter((q) => q.type === "multi_select");
     expect(multi.map((q) => q.key)).toEqual([
       "scalp_concerns",
       "chemical_history",
+      "environment",
     ]);
     for (const q of multi) {
       expect(q.validation?.exclusiveOptionKeys, q.key).toEqual(["none"]);

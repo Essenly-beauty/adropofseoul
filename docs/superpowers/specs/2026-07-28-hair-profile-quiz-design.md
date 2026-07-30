@@ -63,7 +63,7 @@ archetypes) whose archetypes already map 1:1 onto `HAIR_PROFILES` in
 ## 3. Question inventory
 
 `HAIR_QUIZ: QuizDefinition` in `lib/haircare/quiz.ts` — `quizKey: "hair"`,
-`version: 1`, 14 questions, all `isRequired: true`. Option `key` and `value` are
+`version: 1`, 16 questions, all `isRequired: true`. Option `key` and `value` are
 identical and are the canonical codes below; labels are display-only and never
 stored. No `info` step and no free text: every question is answerable and closed.
 
@@ -72,6 +72,7 @@ stored. No `info` step and no free text: every question is answerable and closed
 | 1   | `natural_pattern`      | single    | `natural_hair`   | `straight`, `loose_wave`, `defined_wave_curl`, `tight_curl_coil`, `unknown_treated`                                                   |
 | 2   | `strand_thickness`     | single    | `natural_hair`   | `fine`, `medium`, `coarse`, `unknown`                                                                                                 |
 | 3   | `density`              | single    | `natural_hair`   | `low`, `medium`, `high`, `unknown`                                                                                                    |
+| 3b  | `hair_length`          | single    | `natural_hair`   | `above_shoulder`, `shoulder_collarbone`, `mid_back`, `waist_or_longer`                                                                |
 | 4   | `scalp_oiliness_onset` | single    | `scalp`          | `hours`, `next_day`, `two_plus_days`, `rarely_oily`                                                                                   |
 | 5   | `scalp_concerns`       | **multi** | `scalp`          | `none`*, `itching`, `flaking`, `redness_stinging`, `odor`, `bumps`, `oiliness`, `tightness_dryness`, `hair_loss_concern`              |
 | 6   | `wash_frequency`       | single    | `scalp`          | `multiple_daily`, `daily`, `every_other_day`, `three_plus_days`                                                                       |
@@ -81,6 +82,7 @@ stored. No `info` step and no free text: every question is answerable and closed
 | 10  | `chemical_history`     | **multi** | `damage_styling` | `color`, `bleach`, `perm`, `straightening`, `keratin_smoothing`, `none`*                                                              |
 | 11  | `heat_frequency`       | single    | `damage_styling` | `rarely`, `one_two_week`, `three_five_week`, `almost_daily`, `dryer_only`                                                             |
 | 12  | `ends_condition`       | single    | `damage_styling` | `smooth`, `slightly_dry`, `split_breaking`, `tangled`, `rough_dull`                                                                   |
+| 12b | `environment`          | **multi** | `environment`    | `hard_water`, `dry_climate`, `cold_winter`, `high_pollution`, `frequent_swimming`, `none`\*                                           |
 | 13  | `primary_concern`      | single    | `concern_goal`   | `oily_scalp`, `flatness`, `dryness`, `frizz`, `breakage`, `tangling`, `lack_shine`, `curl_definition`, `sensitive_scalp`, `hair_loss` |
 | 14  | `desired_result`       | single    | `concern_goal`   | `light_fresh`, `volume`, `glass_hair`, `soft_controlled`, `defined_texture`, `stronger_look`                                          |
 
@@ -167,6 +169,27 @@ options handled as advisory in §4.6.
 | `itching`, `flaking`, `redness_stinging`, `bumps`, `hair_loss_concern` | no score — advisory only (§4.6) |
 | `none`                                                                 | no score                        |
 
+### 4.2b `environment` (multi)
+
+Scoped to what Q9 (`humidity_response`) cannot tell us. Humidity is already
+covered there, and covered better — asking how hair _reacts_ beats asking about
+the climate it reacts to. So this question carries only water hardness, climate
+dryness, airborne buildup, and chlorine/salt exposure.
+
+| selection           | LB  | DG  | OD  | MC  | TF  | rationale                                     |
+| ------------------- | --- | --- | --- | --- | --- | --------------------------------------------- |
+| `hard_water`        | 2   | 1   |     |     |     | mineral residue reads as buildup and dullness |
+| `dry_climate`       |     | 1   |     | 2   | 1   |                                               |
+| `cold_winter`       |     | 1   |     | 1   | 1   | indoor heating dries the lengths              |
+| `high_pollution`    |     |     | 2   |     |     | scalp buildup between washes                  |
+| `frequent_swimming` |     |     |     |     | 3   | chlorine and salt are real cuticle damage     |
+| `none`              |     |     |     |     |     |                                               |
+
+Weights are deliberately modest: every factor selected at once totals LB 2 /
+DG 3 / OD 2 / MC 3 / TF 5 — enough to tip a close call, never enough to decide
+the archetype or to reach the `severe` threshold of 13 on its own. Where someone
+lives should not outweigh what their hair does. A test asserts this.
+
 ### 4.3 `chemical_history` (multi)
 
 `color` 2, `bleach` 6, `perm` 3, `straightening` 4, `keratin_smoothing` 2.
@@ -179,6 +202,15 @@ stops someone with four services from being pushed past every override threshold
   `humidity_response` ∈ {`waves_appear`, `frizzes`} → HW +3.
 - `scalp_oiliness_onset` ∈ {`hours`, `next_day`} **and** `ends_condition` ∈
   {`slightly_dry`, `split_breaking`, `tangled`, `rough_dull`} → OD +4.
+
+**Length confound correction.** When `hair_length` ∈ {`mid_back`,
+`waist_or_longer`}, the `dry_time: slow` weights (DG 2 / HW 1 / MC 1) are **not
+applied**. Long hair air-dries slowly whatever its thickness or density, so
+without this the question reads length as body — the exact confound the v0.1 data
+schema draft flagged on `dry_time` ("모발 길이와 교란 → 단독 해석 금지").
+`hair_length` carries **no archetype weight of its own**: assigning one would be a
+fresh clinical judgment, and correcting an existing misreading is a different
+thing from inventing a new signal. Tests pin both halves.
 
 ### 4.5 Winner selection
 
@@ -378,6 +410,45 @@ signup/save prompt (M5); rendering `routine` on the profile landings; the Skin q
 - **Version 1 is claimed by this definition.** When the DB seed follows, it must
   publish `version: 1` matching §3 exactly, and retire v0 — `docs/NEXT_TASK_M2b.md`
   warns that re-applying the v0 seed after v1 exists would demote v1 in production.
+
+## 11b. Product/medical review outcomes (2026-07-30)
+
+The review of §4 and the question copy closed with these rulings. They are
+decisions, not suggestions — changing any of them needs a new review pass.
+
+**Approved as built:**
+
+- `sensitive_scalp` and `hair_loss` (Q13) carry **no archetype weight**, and the
+  five health-adjacent `scalp_concerns` values carry none either. The
+  professional-evaluation advisory (§4.6) is the accepted handling. Assigning
+  weights would mean inventing clinical logic.
+- **Hair loss is not mapped to any archetype**, deliberately. The six profiles are
+  care archetypes, not a differential for shedding.
+
+**Copy:**
+
+- Q5's `flaking` label keeps **"Flaking or visible dandruff"** in English —
+  "flaking" is the observation and "dandruff" is a colloquial gloss, which reads
+  as cosmetic rather than clinical. **The Korean localisation must not translate it
+  as 비듬**: anti-dandruff claims sit in 의약외품 (quasi-drug) territory in Korea,
+  so use 각질 wording instead. This applies to every future `ko` string, not just
+  this option.
+
+**Deliberately not collected** — pregnancy or breastfeeding, current medications,
+and any diagnosed scalp condition. All three are special-category or
+health-record data, none of them changes the archetype, and asking would make the
+quiz look like it triages medical conditions. The §4.6 advisory already routes
+symptomatic users to a professional, which is the responsible path. Do not add
+these questions without a legal review of the collection itself, separate from
+the copy review.
+
+**Deferred to signup (M5), not asked anonymously** — age range and country. Age
+cannot score without inventing age-to-archetype clinical logic, and an unscored
+question repeats the problem §4.6 exists to avoid; collected at signup it can
+actually drive content routing and CRM under consent. Country is already planned
+as an IP-derived `country_code` at persistence time, and the `environment`
+question (§4.2b) captures what country would only proxy for — water hardness and
+climate vary more within large countries than between small ones.
 
 ## 12. v0.1 data/consent drafts — what was and wasn't adopted
 

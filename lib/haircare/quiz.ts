@@ -19,6 +19,7 @@ export const HAIR_QUIZ_SECTIONS = [
   "scalp",
   "hair_behavior",
   "damage_styling",
+  "environment",
   "concern_goal",
 ] as const;
 
@@ -112,6 +113,18 @@ export const HAIR_QUIZ: QuizDefinition = {
         ["high", "My hair feels dense, heavy, or forms a thick ponytail"],
         ["unknown", "I am not sure"],
       ]
+    ),
+    single(
+      "hair_length",
+      "natural_hair",
+      "How long is your hair right now?",
+      [
+        ["above_shoulder", "Above the shoulders"],
+        ["shoulder_collarbone", "Shoulder to collarbone"],
+        ["mid_back", "Past the collarbone, to mid-back"],
+        ["waist_or_longer", "Waist-length or longer"],
+      ],
+      "Length changes how long hair takes to dry, so this keeps that answer from being read as thickness."
     ),
     single(
       "scalp_oiliness_onset",
@@ -225,6 +238,19 @@ export const HAIR_QUIZ: QuizDefinition = {
         ["split_breaking", "Split, snapping, or breaking"],
         ["tangled", "Frequently tangled"],
         ["rough_dull", "Rough, dull, or noticeably different from my roots"],
+      ]
+    ),
+    multi(
+      "environment",
+      "environment",
+      "Does anything here describe where you live or swim?",
+      [
+        ["hard_water", "Hard water or noticeable mineral residue"],
+        ["dry_climate", "Dry climate for much of the year"],
+        ["cold_winter", "Long, cold winters with indoor heating"],
+        ["high_pollution", "High air pollution or fine dust"],
+        ["frequent_swimming", "Chlorinated pool or seawater regularly"],
+        ["none", "None of these"],
       ]
     ),
     single(

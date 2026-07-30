@@ -7,6 +7,8 @@ function sheet(over: HairQuizResponses = {}): HairQuizResponses {
     natural_pattern: "loose_wave",
     strand_thickness: "fine",
     density: "low",
+    hair_length: "shoulder_collarbone",
+    environment: ["none"],
     scalp_oiliness_onset: "two_plus_days",
     scalp_concerns: ["none"],
     wash_frequency: "every_other_day",
