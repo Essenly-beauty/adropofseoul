@@ -7,6 +7,7 @@ export const SOURCE_CONTEXTS = [
   "direct", // fallback / unknown
   "hub", // /beauty-profile hub
   "hair_landing", // /beauty-profile/hair chooser
+  "hair_quiz_page", // /beauty-profile/hair/quiz — the primary entry since M3-2
   "article_cta", // an in-article profile CTA
   "nav", // global nav CTA
 ] as const;

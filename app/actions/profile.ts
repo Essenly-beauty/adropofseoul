@@ -70,6 +70,23 @@ function quizFlagForDomain(domain: ProfileDomainValue): ProfileFlag {
   return domain === "hair" ? "hair_profile" : "skin_profile";
 }
 
+/**
+ * Leave a server-side breadcrumb when persistence is unavailable, then fail as
+ * usual. The quiz falls back to client-only scoring in this case, which is
+ * invisible to the user *and*, until this existed, invisible to the operator —
+ * a missing env var and a flag that's off produced identical silence.
+ *
+ * Codes only: never an answer, a token, or a row id. Server logs are not
+ * returned to the client, but they are still not a place for user data.
+ */
+function logUnavailable(
+  action: string,
+  code: Extract<ProfileErrorCode, "FEATURE_DISABLED" | "INTERNAL_ERROR">
+) {
+  console.warn(`[profile] ${action}: persistence unavailable (${code})`);
+  return fail(code);
+}
+
 function expiryISO(): string {
   return new Date(Date.now() + ANON_TTL_MS).toISOString();
 }
@@ -217,7 +234,7 @@ export async function startQuizAttempt(
 > {
   if (!isProfileDomain(domain)) return fail("VALIDATION_FAILED");
   if (!isFlagEnabled(quizFlagForDomain(domain)))
-    return fail("FEATURE_DISABLED");
+    return logUnavailable("startQuizAttempt", "FEATURE_DISABLED");
   if (
     typeof idempotencyKey !== "string" ||
     idempotencyKey.length === 0 ||
@@ -225,7 +242,8 @@ export async function startQuizAttempt(
   ) {
     return fail("VALIDATION_FAILED");
   }
-  if (!hasServiceRoleKey()) return fail("INTERNAL_ERROR");
+  if (!hasServiceRoleKey())
+    return logUnavailable("startQuizAttempt", "INTERNAL_ERROR");
 
   const source = normalizeSourceContext(sourceContext);
   try {
@@ -279,7 +297,12 @@ export async function startQuizAttempt(
         ? undefined
         : resumeAgeBucket(attempt.last_saved_at),
     });
-  } catch {
+  } catch (e) {
+    // The client silently falls back from here, so the reason has to land
+    // somewhere. Message only — no stack, no row ids, no answers.
+    console.error(
+      `[profile] startQuizAttempt threw: ${e instanceof Error ? e.message : "unknown"}`
+    );
     return fail("INTERNAL_ERROR");
   }
 }
