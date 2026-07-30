@@ -91,8 +91,8 @@ another option clears `none`. Declared per question as
 ## 4. Scoring model
 
 `lib/haircare/scoring.ts` — `scoreHairQuiz(responses)` →
-`{ profileSlug: string | null, scores, signals, lowSignal }`. Pure, synchronous,
-no I/O. Weights are keyed by **question key**, never by question index:
+`{ profileSlug: string | null, scores, signals, lowSignal, … }` (the persistence
+columns of §4.8 complete the shape). Pure, synchronous, no I/O. Weights are keyed by **question key**, never by question index:
 index-keyed tables break silently when a question is reordered.
 
 ### 4.1 Single-select weights
