@@ -1,28 +1,22 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
-import { QuizShell } from "@/components/editorial/QuizShell";
-import { PLACEHOLDER_HAIR_QUIZ } from "@/lib/profile/quiz-definition";
-import { isFlagEnabled } from "@/lib/profile/flags";
+import { HairQuizClient } from "@/components/editorial/HairQuizClient";
 
-// Preview of the quiz framework (M2b-1). Gated behind the default-OFF
-// `hair_profile` flag, so it's invisible in production until the engine is
-// ready. This renders the reusable QuizShell against a PLACEHOLDER definition
-// with responses held client-side — server-authoritative persistence
-// (start/save/resume, a real attempt route) is M2b-2. Quiz/result routes are
-// noindex (acceptance criteria).
+// The public Hair Profile quiz (WS-06). Client-only: answers are scored in the
+// browser and nothing is stored, so there is no flag to gate and no personal
+// data in the URL. noindex — the quiz itself is not a landing page; the six
+// profile guides under /haircare/profiles are.
+//
+// The server-backed, anonymously-persisted variant lives at ./start and
+// ./[attempt] and stays behind the hair_profile flag until its v1 seed lands.
 export const metadata: Metadata = {
-  title: "Hair Profile quiz (preview)",
+  title: "Hair Profile quiz",
   robots: { index: false, follow: false },
 };
 
-export default function HairQuizPreviewPage() {
-  if (!isFlagEnabled("hair_profile")) notFound();
+export default function HairQuizPage() {
   return (
     <main>
-      <QuizShell
-        definition={PLACEHOLDER_HAIR_QUIZ}
-        exitHref="/beauty-profile/hair"
-      />
+      <HairQuizClient />
     </main>
   );
 }

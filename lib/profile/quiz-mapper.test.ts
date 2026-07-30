@@ -166,4 +166,30 @@ describe("mapQuizDefinition", () => {
     )!;
     expect(concerns.content).toBe("concerns"); // content_key was null
   });
+
+  it("carries validation_json into the client question shape", () => {
+    const heat = loaded.definition.questions.find((x) => x.key === "heat")!;
+    expect(heat.validation).toEqual({ min: 0, max: 5 });
+    const wash = loaded.definition.questions.find((x) => x.key === "wash")!;
+    expect(wash.validation).toBeUndefined();
+  });
+
+  it("carries exclusive option keys through", () => {
+    const withExclusive = mapQuizDefinition(
+      def,
+      [
+        q({
+          id: "q-concerns",
+          question_key: "concerns",
+          question_type: "multi_select",
+          allows_multiple: true,
+          validation_json: { exclusiveOptionKeys: ["none"] },
+        }),
+      ],
+      []
+    );
+    expect(withExclusive.definition.questions[0].validation).toEqual({
+      exclusiveOptionKeys: ["none"],
+    });
+  });
 });

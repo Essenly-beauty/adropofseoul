@@ -56,15 +56,21 @@ export default function HairProfilePage() {
         ))}
       </ul>
 
-      {/* The guided 12–14 question quiz is in build. Until it ships, this is
-          functional: choose the profile that fits and go to its care guide.
-          The six profiles double as the hair quiz's result archetypes. */}
-      <section className="mt-12">
-        <h2 className="font-serif text-2xl">Find your profile</h2>
-        <p className="mt-2 text-text-muted">
-          The guided two-minute quiz is coming soon. In the meantime, choose the
-          profile that sounds most like your hair.
-        </p>
+      <div className="mt-10">
+        <Link
+          href="/beauty-profile/hair/quiz"
+          className="inline-block rounded-full border border-text bg-text px-6 py-2.5 text-xs font-medium uppercase tracking-label text-bg transition-colors duration-medium ease-editorial hover:border-accent hover:bg-accent"
+        >
+          Start the quiz
+        </Link>
+      </div>
+
+      {/* Secondary path: the six profiles double as the quiz's result
+          archetypes, so anyone who already knows theirs can skip straight to
+          the care guide. */}
+      <section className="mt-16 border-t border-soft-gray pt-10">
+        <h2 className="font-serif text-2xl">Already know your profile?</h2>
+        <p className="mt-2 text-text-muted">Go straight to its care guide.</p>
         <div className="mt-6 grid gap-4 sm:grid-cols-2">
           {HAIR_PROFILES.map((p) => (
             <Link
