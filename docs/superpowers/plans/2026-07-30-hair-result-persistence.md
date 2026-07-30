@@ -224,7 +224,7 @@ console.log("seeded hair quiz v" + HAIR_QUIZ.version);
 - [ ] **Step 2: Dry-run it**
 
 Run: `node scripts/seed-hair-quiz.ts --dry`
-Expected: `hair quiz v1: 16 questions, 84 options`, then one line per question
+Expected: `hair quiz v1: 16 questions, 87 options`, then one line per question
 key. No network calls. If the count is not 16, the definition and this plan have
 diverged — stop and reconcile before writing anything.
 
