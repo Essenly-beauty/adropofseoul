@@ -379,12 +379,14 @@ signup/save prompt (M5); rendering `routine` on the profile landings; the Skin q
   publish `version: 1` matching §3 exactly, and retire v0 — `docs/NEXT_TASK_M2b.md`
   warns that re-applying the v0 seed after v1 exists would demote v1 in production.
 
-## 12. Open conflicts with the v0.1 data/consent drafts (2026-07-29)
+## 12. v0.1 data/consent drafts — what was and wasn't adopted
 
 The `hair_profile_data_schema_v0.1` and `hair_profile_consent_copy_v0.1` drafts
-introduced four conflicts with shipped code or the live M1 schema. §4.8 above is
-the part that was adopted; these four are unresolved and must be decided before
-any persistence work starts.
+conflicted with shipped code or the live M1 schema in four places. §4.8 above is
+the part that was adopted. **The four below were reviewed and deliberately not
+adopted (decided 2026-07-30).** The reasoning is kept because the drafts remain
+in circulation: anyone picking up the persistence work will meet them again and
+should not re-implement them from the draft.
 
 1. **Question keys disagree.** The draft mandates `q01_natural_pattern`,
    `q02_strand_feel`, `q04_oil_return`, `q10_chemical_services`, … and says never
@@ -394,23 +396,25 @@ any persistence work starts.
    not by index, so inserting a question doesn't break data" — but a `qNN_` prefix
    encodes the index in the key, so inserting a question forces either a renumber
    (violating "never change keys") or numbers that no longer match order.
-   Recommendation: keep the unprefixed semantic keys.
+   **Decided: keep the unprefixed semantic keys; the draft's §3.1 should be
+   corrected to match the code.**
 2. **The table model forks the live schema.** The draft proposes
    `quiz_response` / `quiz_answer` / `quiz_result` / `consent_log`. M1 already
    shipped to production with `quiz_attempts` / `quiz_responses` /
    `profile_snapshots` / `consent_documents` + `consent_records`. Adopting the
-   draft as written creates a second overlapping data model. Recommendation: map
-   the draft's _fields_ onto the existing tables (most are additive columns on
-   `profile_snapshots`) rather than adding new tables.
+   draft as written creates a second overlapping data model. **Decided: map the
+   draft's _fields_ onto the existing tables (most are additive columns on
+   `profile_snapshots`); do not add the draft's tables.**
 3. **`quiz_version` type.** The draft uses a string (`hp-2026.07`);
    `quiz_definitions.version` is an integer and `HAIR_QUIZ.version` is `1`. A
    string tag would need its own column, not a redefinition of `version`.
+   **Decided: keep the integer `version`.**
 4. **Event tracking would breach an existing control.** The draft's §8
    `question_answered { answer_values }` sends raw answers. `assertSafeProps` in
    `lib/analytics/index.ts` throws on `answers` / `value` / `value_code` / `label`
-   (H13), and §8 of this spec commits to no raw answers in analytics. Not
-   implemented. Recommendation: keep `stepKey` + `stepIndex` only; if per-option
-   distributions are needed, derive them server-side from stored responses.
+   (H13), and §8 of this spec commits to no raw answers in analytics.
+   **Decided: not implemented — keep `stepKey` + `stepIndex` only. If per-option
+   distributions are needed, derive them server-side from stored responses.**
 
 Also unbuilt by design: the consent UI. The consent draft's checkboxes state that
 responses are shared with a named third party, retained for a bounded period, and
