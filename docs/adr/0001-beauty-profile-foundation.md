@@ -65,11 +65,35 @@ Migration applied to the remote via the CLI (only this additive migration; the
 drifted history was worked around transiently — see `supabase/migrations/README.md`).
 All 11 tables + RLS verified live. Types regenerated (`types/database.types.ts`).
 
-**Important finding:** `public.is_admin()` **does not exist on the remote** — the
-admin-claim RLS migration (`20260721150000_admin_claim_rls`) was never applied to
-production, so the remote still runs the original `0002_rls` model (authenticated
-= admin). Consequently the `*_admin_all` policies on the new quiz/consent tables
-were **removed from this migration** (quiz/consent rows are managed via the
-service role for now); they'll be re-added in a later migration once the
-admin-claim model is actually on prod. This finding is a production security
-posture item beyond M1 — flagged to the founder separately.
+**Finding at the time — SINCE RESOLVED, see the 2026-07-31 update below:**
+`public.is_admin()` did not exist on the remote — the admin-claim RLS migration
+(`20260721150000_admin_claim_rls`) had not been applied to production, so the
+remote still ran the original `0002_rls` model (authenticated = admin).
+Consequently the `*_admin_all` policies on the new quiz/consent tables were
+**removed from this migration** (quiz/consent rows are managed via the service
+role); they can be re-added in a later migration now that the admin-claim model
+is on prod.
+
+## Update — verified 2026-07-31: the admin-claim lockdown is live
+
+The finding above is **no longer true**, and the launch-checklist item it created
+("apply `admin_claim_rls` to prod before enabling public signup", carried in
+`docs/NEXT_TASK_M2b.md`) is **satisfied**.
+
+Verified against production rather than assumed:
+
+- `public.is_admin()` exists and returns `false` for the service role.
+- `node scripts/verify-rls.mjs` reports **ALL PASS**. That script creates a
+  throwaway **non-admin** user, signs in as them with the anon key, and checks
+  they can read published content but cannot write it or read subscriber emails:
+  published places readable, `places` update blocked, `places` insert blocked by
+  RLS, subscriber emails hidden. It deletes the user afterwards.
+
+So `authenticated = admin` is no longer the production posture, and **public
+signup (WS-08) is not blocked on this.** Re-run `scripts/verify-rls.mjs`
+immediately before enabling signup — the above is a point-in-time check.
+
+Still open from the original finding: the `*_admin_all` policies on the
+quiz/consent tables were never re-added, so those rows stay service-role-only.
+That is fine today — nothing reads them as an admin — but it is the follow-up
+this ADR still owes.
