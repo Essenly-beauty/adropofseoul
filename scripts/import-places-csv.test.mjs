@@ -1,6 +1,16 @@
 import { readFileSync } from "node:fs";
 import { describe, it, expect } from "vitest";
-import { parseCsv, fixSpaColumnSwap, isUsable } from "./import-places-csv.mjs";
+import {
+  parseCsv,
+  fixSpaColumnSwap,
+  isUsable,
+  MAPPING,
+  EXCLUDED,
+  slugify,
+  googleMapsUrl,
+  naverMapUrl,
+  buildRows,
+} from "./import-places-csv.mjs";
 
 const CSV = readFileSync(
   "data/places-import/seoul-attractions-2026-07.csv",
@@ -72,5 +82,147 @@ describe("isUsable", () => {
   it("finds exactly 72 usable rows in the real CSV", () => {
     const rows = parseCsv(CSV).map(fixSpaColumnSwap).filter(isUsable);
     expect(rows).toHaveLength(72);
+  });
+});
+
+describe("MAPPING", () => {
+  it("covers exactly the 71 seeded rows", () => {
+    expect(Object.keys(MAPPING)).toHaveLength(71);
+  });
+
+  it("has an entry for every usable CSV row that is not excluded", () => {
+    const names = parseCsv(CSV)
+      .map(fixSpaColumnSwap)
+      .filter(isUsable)
+      .map((r) => r["국문명"])
+      .filter((n) => !EXCLUDED[n]);
+    const missing = names.filter((n) => !MAPPING[n]);
+    expect(missing).toEqual([]);
+    expect(names).toHaveLength(71);
+  });
+
+  it("has no MAPPING key that is absent from the CSV", () => {
+    const names = new Set(parseCsv(CSV).map((r) => r["국문명"]));
+    expect(Object.keys(MAPPING).filter((n) => !names.has(n))).toEqual([]);
+  });
+
+  it("uses only categories the DB enum knows", () => {
+    const ALLOWED = [
+      "observatory",
+      "market",
+      "mall",
+      "spa",
+      "facial",
+      "head_spa",
+      "wellness",
+    ];
+    for (const [name, m] of Object.entries(MAPPING)) {
+      expect(ALLOWED, `${name} has category ${m.category}`).toContain(
+        m.category
+      );
+    }
+  });
+
+  it("marks exactly the three editorially held-back rows", () => {
+    const held = Object.entries(MAPPING)
+      .filter(([, m]) => m.unpublished)
+      .map(([n]) => n);
+    expect(held.sort()).toEqual(["Eco Jardin", "오투", "황족마사지"].sort());
+  });
+
+  it("leaves address blank only for the two rows verification must fill", () => {
+    const blank = Object.entries(MAPPING)
+      .filter(([, m]) => !m.address)
+      .map(([n]) => n);
+    expect(blank.sort()).toEqual(["종로3가 포장마차 골목", "중부시장"].sort());
+  });
+});
+
+describe("slugify", () => {
+  it.each([
+    ["N Seoul Tower", "n-seoul-tower"],
+    ["Lotte World Tower & Mall", "lotte-world-tower-mall"],
+    [
+      "Gimpo Int'l Airport Observatory Deck",
+      "gimpo-intl-airport-observatory-deck",
+    ],
+    ["I'Park Mall", "ipark-mall"],
+    ["Provence Spa by L'OCCITANE", "provence-spa-by-loccitane"],
+    ["63 Skypicnic", "63-skypicnic"],
+    ["Café Déjà", "cafe-deja"],
+  ])("%s → %s", (input, expected) => {
+    expect(slugify(input)).toBe(expected);
+  });
+});
+
+describe("map links", () => {
+  it("builds a Google Maps search URL from name + area", () => {
+    expect(googleMapsUrl("N Seoul Tower", "Yongsan")).toBe(
+      "https://www.google.com/maps/search/?api=1&query=N%20Seoul%20Tower%20Yongsan%20Seoul"
+    );
+  });
+
+  it("encodes ampersands so the query is not truncated", () => {
+    expect(googleMapsUrl("Lotte World Tower & Mall", "Jamsil")).toContain(
+      "%26"
+    );
+  });
+
+  it("builds a Naver search URL from the Korean name", () => {
+    expect(naverMapUrl("남대문시장")).toBe(
+      "https://map.naver.com/p/search/%EB%82%A8%EB%8C%80%EB%AC%B8%EC%8B%9C%EC%9E%A5"
+    );
+  });
+});
+
+describe("buildRows", () => {
+  const rows = buildRows(CSV, [], 140);
+
+  it("produces 71 entries", () => {
+    expect(rows).toHaveLength(71);
+  });
+
+  it("drops the excluded row", () => {
+    expect(rows.find((r) => r.nameKr === "종로타워")).toBeUndefined();
+  });
+
+  it("numbers ids sequentially as zero-padded strings", () => {
+    expect(rows[0].id).toBe("140");
+    expect(rows.at(-1).id).toBe("210");
+  });
+
+  it("seeds every row unverified — verification flips this by hand", () => {
+    expect(rows.every((r) => r.verified === false)).toBe(true);
+  });
+
+  it("carries the CSV About through as an internal note, never as public copy", () => {
+    const tower = rows.find((r) => r.nameKr === "N 서울타워");
+    expect(tower.reviewSummary).toContain("남산");
+  });
+
+  it("keeps the raw CSV 지역 in region for traceability", () => {
+    expect(rows.find((r) => r.nameKr === "헬로에이피엠").region).toBe(
+      "서대문(아현)"
+    );
+  });
+
+  it("parses rating and reviews as numbers, null when absent", () => {
+    const tower = rows.find((r) => r.nameKr === "N 서울타워");
+    expect(tower.rating).toBe(4.2);
+    expect(tower.reviews).toBe(9678);
+    const quarry = rows.find((r) => r.nameKr === "채석장 전망대");
+    expect(quarry.rating).toBeNull();
+    expect(quarry.reviews).toBe(2);
+  });
+
+  it("throws when a slug collides with an existing one", () => {
+    expect(() => buildRows(CSV, ["n-seoul-tower"], 140)).toThrow(
+      /n-seoul-tower/
+    );
+  });
+
+  it("produces no duplicate slugs among the new rows", () => {
+    const slugs = rows.map((r) => r.slug);
+    expect(new Set(slugs).size).toBe(slugs.length);
   });
 });
