@@ -2,7 +2,7 @@
 
 **Date:** 2026-07-31
 **Status:** Approved (verbal)
-**Scope:** 외부 CSV(전망대 & 타워 / 벼룩시장 & 재래시장 / 쇼핑몰 / 스파·웰니스 644행)에서 검증 가능한 68행을 `places` 디렉터리에 시딩한다. `place_category`에 `observatory` / `market` / `mall`을 신설해 디렉터리를 K-뷰티 전용에서 "서울 여행 + 뷰티"로 넓힌다. 정보 부족 572행은 Phase 2(별도 스펙)로 분리.
+**Scope:** 외부 CSV(전망대 & 타워 / 벼룩시장 & 재래시장 / 쇼핑몰 / 스파·웰니스 644행)에서 검증 가능한 71행을 `places` 디렉터리에 시딩한다. `place_category`에 `observatory` / `market` / `mall`을 신설해 디렉터리를 K-뷰티 전용에서 "서울 여행 + 뷰티"로 넓힌다. 정보 부족 572행은 Phase 2(별도 스펙)로 분리.
 
 ## Background
 
@@ -56,59 +56,70 @@
 묶여 있다(`lib/taxonomy.ts` `SEOUL_NEIGHBORHOODS`). 여기에 스타필드 코엑스나 동대문
 도매상가가 섞이면 허브 섹션이 오염된다.
 
-## 편집 심사 — 72행 중 4행 제외
+## 편집 심사 — 제외 1행, 미게시 3행 (사용자 확정: "분리")
 
-`data/places-curation.en.json`의 `excluded` 맵(현재 4건)에 이유와 함께 기록한다.
+두 사안을 **다르게** 처리한다. 분류가 사실과 다른 것은 데이터 오류라 제외하고,
+평점이 낮은 것은 사실이므로 데이터로는 보유하되 추천으로 노출하지 않는다.
 
-| 제외                  | 이유                                                                     |
-| --------------------- | ------------------------------------------------------------------------ |
-| 종로타워              | 30층 전망 데크가 오피스로 전환됨 — `observatory` 분류 자체가 사실과 다름 |
-| 오투 (O2 Body & Foot) | 2.7★ / 13리뷰. About도 "부정적 평가가 많은 발마사지 업체"                |
-| Eco Jardin (경복궁)   | 2.6★ / 10리뷰                                                            |
-| 황족마사지            | 2.4★ / 19리뷰                                                            |
+### 제외 1행 — `data/places-curation.en.json`의 `excluded` 맵에 기록
 
-편집 매체가 2점대 업소를 디렉터리 추천으로 올리지 않는다는 판단이다.
-`Eco Jardin Aeogae Branch`(4.8★)는 별개 지점이므로 유지한다.
+| 제외     | 이유                                                                     |
+| -------- | ------------------------------------------------------------------------ |
+| 종로타워 | 30층 전망 데크가 오피스로 전환됨 — `observatory` 분류 자체가 사실과 다름 |
 
-**주의 표기 대상(제외 아님):** `정동전망대`는 About에 "최근 운영 여부에 혼선"이 있어
+### 미게시 3행 — 시딩하되 `verified: false` → `is_published: false`
+
+| 장소                  | category   | area       | 평점/리뷰 |
+| --------------------- | ---------- | ---------- | --------- |
+| 오투 (O2 Body & Foot) | `spa`      | Myeongdong | 2.7★ / 13 |
+| Eco Jardin (경복궁)   | `head_spa` | Jongno     | 2.6★ / 10 |
+| 황족마사지            | `spa`      | Myeongdong | 2.4★ / 19 |
+
+편집 매체가 2점대 업소를 디렉터리 추천으로 **노출하지는** 않되, 나중에 재평가하거나
+Phase 2에서 중복 판정할 때 쓸 수 있도록 행 자체는 남긴다. 이 3행은 **검증 성공 여부와
+무관하게** 미게시다 — 검증 실패로 인한 미게시와 이유가 다르므로 `excluded` 맵에 사유를
+`unpublishedReason`으로 따로 남겨 나중에 구분할 수 있게 한다.
+`Eco Jardin Aeogae Branch`(4.8★)는 별개 지점이므로 정상 게시 대상이다.
+
+**주의 표기 대상(미게시 아님):** `정동전망대`는 About에 "최근 운영 여부에 혼선"이 있어
 검증 결과에 따라 `is_published`를 정한다. `명동밀리오레`(3.1★, "노후화된 시설로 평가됨"),
-`강변스파랜드`(3.4★), `호쿠토시치세이`(3.4★), `헬로에이피엠`(3.3★)은 시딩하되 편집
+`강변스파랜드`(3.4★), `호쿠토시치세이`(3.4★), `헬로에이피엠`(3.3★)은 게시하되 편집
 산문에서 기대치를 솔직히 적는다.
 
-## 카테고리 매핑 (68행)
+## 카테고리 매핑 (71행)
 
-전망대 12→11(종로타워 제외), 시장 18, 쇼핑몰 14, 스파/웰니스 28→25(3건 제외).
+전망대 12→11(종로타워 제외), 시장 18, 쇼핑몰 14, 스파/웰니스 28.
 스파/웰니스는 신설 값을 쓰지 않고 기존 뷰티 카테고리로 분해한다.
 
 | category      | 건수 | 비고 |
 | ------------- | ---- | ---- |
 | `market`      | 18   | 신설 |
-| `spa`         | 15   | 기존 |
+| `spa`         | 17   | 기존 |
 | `mall`        | 14   | 신설 |
 | `observatory` | 11   | 신설 |
 | `facial`      | 7    | 기존 |
-| `head_spa`    | 2    | 기존 |
+| `head_spa`    | 3    | 기존 |
 | `wellness`    | 1    | 기존 |
 
-`entry_type`은 68행 전부 `place`. 신규 허브는 만들지 않는다 —
+`entry_type`은 71행 전부 `place`. 신규 허브는 만들지 않는다 —
 `SEOUL_NEIGHBORHOODS` 4개 허브(성수·홍대·명동·강남&청담)는 손대지 않고,
 신규 area는 디렉터리 필터 값으로만 쓴다.
 
 ## area 정규화 — 42종 → 32종
 
 `지역` 칼럼 42종을 주소 기준으로 재판정해 통제 어휘 32종(기존 17 + 신설 15)으로 정리한다.
-68행 중 39행(57%)이 기존 어휘로 흡수된다.
+71행 중 42행(59%)이 기존 어휘로 흡수된다.
 
 **area는 행정구역이 아니라 독자가 인식하는 권역이다.** 그래서 종로구 청계천로 279의
 `프로방스 스파 바이 록시땅`은 입점 건물이 JW메리어트 **동대문** 스퀘어이므로 `Dongdaemun`,
 중구 한강대로 405의 `롯데아울렛 서울역점`은 아이파크몰과 같은 용산~서울역 축이므로 `Yongsan`이다.
 
-### 기존 어휘 재사용 (39행)
+### 기존 어휘 재사용 (42행)
 
 | area                                      | 기존           | +신규   |
 | ----------------------------------------- | -------------- | ------- |
-| Jongno                                    | 2              | +8      |
-| Myeongdong                                | 25             | +7      |
+| Jongno                                    | 2              | +9      |
+| Myeongdong                                | 25             | +9      |
 | Dongdaemun                                | 2              | +7      |
 | Gangnam                                   | 9              | +5      |
 | Yongsan                                   | 1              | +4      |
@@ -133,7 +144,7 @@
 1건짜리 area가 미게시로 남으면 필터 칩이 아예 생기지 않으므로(필터는 게시된 장소에서 파생)
 어휘가 비어도 UI가 자가 치유된다.
 
-전체 68행 매핑표는 **부록 A**.
+전체 71행 매핑표는 **부록 A**.
 
 ## Deliverables
 
@@ -168,20 +179,20 @@ enum 추가와 seed는 별도 트랜잭션이어야 한다(Postgres는 같은 �
 - 스파/웰니스 블록의 `지역`↔`주소` 스왑 교정
 - 부록 A의 `국문명 → {category, area}` 매핑을 **스크립트 안의 JS 리터럴로** 옮겨 적용한다
   (마크다운을 파싱하지 않는다). 주소 파싱 휴리스틱이 아니라 수기 검토된 테이블을 쓰는 이유는
-  68행 규모에서는 감사 가능성이 휴리스틱의 편의보다 중요하기 때문이다. 부록 A가 사람이 읽는
+  71행 규모에서는 감사 가능성이 휴리스틱의 편의보다 중요하기 때문이다. 부록 A가 사람이 읽는
   정본, JS 리터럴이 기계가 읽는 사본이며 둘의 행 수·키가 일치하는지는 테스트로 잠근다.
 - `excluded` 목록 필터
 - slug 생성: 영문명 → ASCII kebab, 기존 138개 slug와 충돌 검사 후 실패 시 에러
 - 지도 링크 생성 (기존 패턴 준수):
   - `googleMaps` = `https://www.google.com/maps/search/?api=1&query=<영문명 + area + Seoul>` (URL 인코딩)
   - `naverMap` = `https://map.naver.com/p/search/<국문명>` (URL 인코딩)
-- 산출: `data/adropofseoul_places.json`에 68행 append (138 → 206)
+- 산출: `data/adropofseoul_places.json`에 71행 append (138 → 209)
 
 `--dry-run`으로 결과만 출력하는 모드를 둔다(`seed-places.mjs` 관례).
 
 ### 4. 검증 + 영문 편집 레이어 (`data/places-curation.en.json`)
 
-68행 각각:
+71행 각각:
 
 1. **검증** — 공개 웹 검색으로 상호·도로명주소·현재 영업 여부를 확인한다. 주소가
    `주소 미기재`인 2행(`중부시장`, `종로3가 포장마차 골목`)은 검색으로 도로명주소를 채운다.
@@ -208,7 +219,7 @@ PLACE_TYPE_EMOJI:  { observatory: "🔭", market: "🏮", mall: "🛒" }
 이 두 맵이 디렉터리 필터와 `components/admin/PlaceForm.tsx` 카테고리 드롭다운을 동시에 커버한다.
 
 `app/seoul/places/page.tsx:34` — `listPlaces({ limit: 200 })` → `300`.
-138 + 68 = 206으로 현재 상한을 넘어 조용히 잘린다.
+138 + 71 = 209로 현재 상한을 넘어 조용히 잘린다.
 
 `app/seoul/page.tsx`의 `PLACE_TYPES` 진입점 카드에 `Observatories`(observatory) ·
 `Markets`(market) · `Shopping Malls`(mall) 3개를 추가해 6개 → 9개로 만든다.
@@ -246,7 +257,7 @@ PLACE_TYPE_EMOJI:  { observatory: "🔭", market: "🏮", mall: "🛒" }
 - `booking_url` · `price_range` · `languages` · `website_url` · `instagram_url` —
   CSV에 없고 이번 검증 범위도 아니다. null로 둔다.
 
-## 부록 A — 68행 매핑표
+## 부록 A — 71행 매핑표
 
 수기 검토된 `국문명 → {category, area}` 테이블. import 스크립트가 이 표를 그대로 쓴다.
 
@@ -309,6 +320,8 @@ PLACE_TYPE_EMOJI:  { observatory: "🔭", market: "🏮", mall: "🛒" }
 | `spa`         | 더 스파 그랜드 하얏트 서울  | The Spa Grand Hyatt Seoul                  | Itaewon      | 서울 용산구 소월로 322 Garden Level                         | 4.6 / 53   |
 | `spa`         | 레비쉬 스파                 | Lavish Spa                                 | Jongno       | 서울 종로구 동숭3길 6-4 2층                                 | 4.9 / 98   |
 | `spa`         | 스파렉스 사우나             | Sparex Sauna                               | Jongno       | 서울 종로구 지봉로 19 Season Bldg. 12F                      | 3.6 / 65   |
+| `spa`         | 오투 ⚑미게시                | O2 Body & Foot                             | Myeongdong   | 서울 중구 남대문로 78                                       | 2.7 / 13   |
+| `spa`         | 황족마사지 ⚑미게시          | Hwangjok Massage                           | Myeongdong   | 서울 중구 명동8나길 12 롯데리아 5층                         | 2.4 / 19   |
 | `spa`         | 숲속 한방 랜드              | Supsok Hanbang Land                        | Seodaemun    | 서울 서대문구 봉원동 51                                     | 3.9 / 11   |
 | `facial`      | 설화수 스파                 | Sulwhasoo Spa                              | Euljiro      | 서울 중구 을지로 30 4층                                     | 4.1 / 15   |
 | `facial`      | Individuel Geneve           | Individuel Geneve                          | Gangnam      | 서울 강남구 봉은사로47길 60                                 | 3.9 / 37   |
@@ -319,7 +332,11 @@ PLACE_TYPE_EMOJI:  { observatory: "🔭", market: "🏮", mall: "🛒" }
 | `facial`      | Laurel studio               | Laurel studio                              | Sangam       | 서울 마포구 월드컵북로 7, 3층                               | 5.0 / 21   |
 | `head_spa`    | 스톤 하우스 헤드 스파       | Stone House Head Spa                       | Gangnam      | 서울 강남구 언주로147길 B63-22 B1, A동                      | 4.9 / 11   |
 | `head_spa`    | Eco Jardin Aeogae Branch    | Eco Jardin Aeogae Branch                   | Gongdeok     | 서울 마포구 마포대로 204, 2층                               | 4.8 / 17   |
+| `head_spa`    | Eco Jardin (경복궁) ⚑미게시 | Eco Jardin                                 | Jongno       | 서울 종로구 자하문로 9, 5층                                 | 2.6 / 10   |
 | `wellness`    | 크레이트 웰네스             | Create Wellness Center                     | Itaewon      | 서울 용산구 이태원로 211 한남빌딩 1층                       | 4.8 / 30   |
+
+⚑미게시 3행은 `verified: false`로 시딩되어 `is_published: false`가 된다 — 데이터는 보유하되
+디렉터리에 노출하지 않는다. 나머지 68행은 검증 성공 시 게시 대상이다.
 
 주소 칼럼에는 CSV 원본을 옮기되 영문 혼용(`서울 Mapo-daero 225`)·오타(`말리재로`→`만리재로`)를
 정규화했다. `주소 미기재` 2행과 위 정규화 전부 검증 단계에서 재확인한다.
