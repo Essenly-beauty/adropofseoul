@@ -6,6 +6,10 @@
 //   node scripts/import-places-csv.mjs --dry-run   변환 결과만 출력
 //   node scripts/import-places-csv.mjs             adropofseoul_places.json에 append
 
+import { readFileSync, writeFileSync } from "node:fs";
+import { fileURLToPath, pathToFileURL } from "node:url";
+import { dirname, join } from "node:path";
+
 /** RFC4180 최소 파서 — 따옴표 안의 콤마·개행·이스케이프된 따옴표를 처리한다. */
 export function parseCsv(text) {
   const src = text.replace(/^﻿/, "");
@@ -522,4 +526,44 @@ export function buildRows(csvText, existingSlugs, startId) {
     });
   }
   return rows;
+}
+
+// --- CLI ---------------------------------------------------------------
+// import 시 부작용이 없도록 직접 실행일 때만 돈다 (테스트가 이 모듈을 import한다).
+if (
+  process.argv[1] &&
+  import.meta.url === pathToFileURL(process.argv[1]).href
+) {
+  const root = join(dirname(fileURLToPath(import.meta.url)), "..");
+  const jsonPath = join(root, "data/adropofseoul_places.json");
+  const csvPath = join(
+    root,
+    "data/places-import/seoul-attractions-2026-07.csv"
+  );
+
+  const existing = JSON.parse(readFileSync(jsonPath, "utf8"));
+  const startId = Math.max(...existing.map((e) => Number(e.id))) + 1;
+  const rows = buildRows(
+    readFileSync(csvPath, "utf8"),
+    existing.map((e) => e.slug),
+    startId
+  );
+
+  console.log(`${rows.length} rows built (id ${rows[0].id}–${rows.at(-1).id})`);
+  const counts = {};
+  for (const r of rows) counts[r.type] = (counts[r.type] ?? 0) + 1;
+  console.log("categories:", counts);
+
+  if (process.argv.includes("--dry-run")) {
+    console.log(JSON.stringify(rows.slice(0, 2), null, 2));
+    process.exit(0);
+  }
+
+  writeFileSync(
+    jsonPath,
+    JSON.stringify([...existing, ...rows], null, 2) + "\n"
+  );
+  console.log(
+    `wrote ${jsonPath} (${existing.length} → ${existing.length + rows.length})`
+  );
 }
