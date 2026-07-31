@@ -21,6 +21,16 @@ describe("parseCsv", () => {
     const rows = parseCsv('a,b\n"x,y",z');
     expect(rows[0]).toEqual({ a: "x,y", b: "z" });
   });
+
+  it("unescapes doubled quotes inside a quoted field", () => {
+    const rows = parseCsv('a,b\n"say ""hi""",z');
+    expect(rows[0]).toEqual({ a: 'say "hi"', b: "z" });
+  });
+
+  it("preserves the escaped quotes in the 스파고결 About field", () => {
+    const row = parseCsv(CSV).find((r) => r["국문명"] === "스파고결");
+    expect(row.About).toContain('"기 순환"');
+  });
 });
 
 describe("fixSpaColumnSwap", () => {
