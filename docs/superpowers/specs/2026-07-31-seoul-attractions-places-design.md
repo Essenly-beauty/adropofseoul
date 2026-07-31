@@ -211,8 +211,13 @@ PLACE_TYPE_EMOJI:  { observatory: "🔭", market: "🏮", mall: "🛒" }
 138 + 68 = 206으로 현재 상한을 넘어 조용히 잘린다.
 
 `app/seoul/page.tsx`의 `PLACE_TYPES` 진입점 카드에 `Observatories`(observatory) ·
-`Markets`(market) 2개를 추가한다. `mall`은 진입점에 넣지 않는다 — 6개 카드 그리드의
-뷰티 중심 성격을 유지하고, 쇼핑몰은 디렉터리 필터로만 접근한다.
+`Markets`(market) · `Shopping Malls`(mall) 3개를 추가해 6개 → 9개로 만든다.
+
+이 그리드의 선정 기준은 주석이 말하는 "best-populated"가 아니다 — 실제로는 `clinic`(2건)이
+들어가 있고 `facial`(13건) · `nail_lash`(13건) · `shop`(12건)이 빠져 있다. 진짜 기준은
+**"서울에 그걸 하러 오는가"**이고, 그 기준에서 동대문·명동 쇼핑은 K-뷰티 방문객의 실제
+목적이므로 `mall`(14건)은 자격이 있다. 레이아웃도 `lg:grid-cols-3`에서 9개가 3행을 꽉 채운다
+(8개면 `3+3+2`로 마지막 행이 어그러진다).
 
 ### 6. 테스트
 
