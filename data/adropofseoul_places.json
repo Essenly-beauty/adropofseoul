@@ -2638,7 +2638,7 @@
     "googleMaps": "https://www.google.com/maps/search/?api=1&query=N%20Seoul%20Tower%20Yongsan%20Seoul",
     "naverMap": "https://map.naver.com/p/search/N%20%EC%84%9C%EC%9A%B8%ED%83%80%EC%9B%8C",
     "reviewSummary": "남산 정상에 위치한 서울의 대표 랜드마크 전망대. 낮과 밤 모두 아름다운 시내 전망으로 유명하며 특히 야경 명소로 인기가 높음. 인근 남대문시장과 연계 관광 가능.",
-    "verified": false
+    "verified": true
   },
   {
     "id": "141",
@@ -2657,7 +2657,7 @@
     "googleMaps": "https://www.google.com/maps/search/?api=1&query=Lotte%20World%20Tower%20%26%20Mall%20Jamsil%20Seoul",
     "naverMap": "https://map.naver.com/p/search/%EB%A1%AF%EB%8D%B0%EC%9B%94%EB%93%9C%ED%83%80%EC%9B%8C%26%EB%AA%B0",
     "reviewSummary": "세계 5위권 초고층 빌딩으로 전망대, 스카이워크, 럭셔리 호텔, 쇼핑몰, 레스토랑, 갤러리, 콘서트홀이 결합된 복합시설. 방문에 3시간 이상 소요.",
-    "verified": false
+    "verified": true
   },
   {
     "id": "142",
@@ -2676,7 +2676,7 @@
     "googleMaps": "https://www.google.com/maps/search/?api=1&query=Seoul%20Sky%20Jamsil%20Seoul",
     "naverMap": "https://map.naver.com/p/search/%EC%84%9C%EC%9A%B8%EC%8A%A4%EC%B9%B4%EC%9D%B4",
     "reviewSummary": "롯데월드타워 117~123층에 위치한 전망대로 서울에서 가장 높은 전망 명소. 유리 바닥 체험 등이 있으나 편의시설은 다소 부족하다는 평.",
-    "verified": false
+    "verified": true
   },
   {
     "id": "143",
@@ -2695,7 +2695,7 @@
     "googleMaps": "https://www.google.com/maps/search/?api=1&query=Seoul%20City%20Wall%20Jongno%20Seoul",
     "naverMap": "https://map.naver.com/p/search/%EC%84%9C%EC%9A%B8%20%ED%95%9C%EC%96%91%EB%8F%84%EC%84%B1",
     "reviewSummary": "약 600년 전 축조된 서울 성곽길. 구간별로 난이도와 풍경이 달라 걷기 코스로 인기, 남산·낙산 구간에서 시내 전망 감상 가능.",
-    "verified": false
+    "verified": true
   },
   {
     "id": "144",
@@ -2714,7 +2714,7 @@
     "googleMaps": "https://www.google.com/maps/search/?api=1&query=Jeongdong%20Observatory%20Jeongdong%20Seoul",
     "naverMap": "https://map.naver.com/p/search/%EC%A0%95%EB%8F%99%EC%A0%84%EB%A7%9D%EB%8C%80",
     "reviewSummary": "서울시청 서소문별관 13층 무료 전망 공간 겸 카페. 덕수궁을 내려다보는 숨은 명소로, 최근 운영 여부에 혼선이 있어 방문 전 확인 필요.",
-    "verified": false
+    "verified": true
   },
   {
     "id": "145",
@@ -2733,7 +2733,7 @@
     "googleMaps": "https://www.google.com/maps/search/?api=1&query=Gimpo%20Int'l%20Airport%20Observatory%20Deck%20Gangseo%20Seoul",
     "naverMap": "https://map.naver.com/p/search/%EA%B9%80%ED%8F%AC%EA%B3%B5%ED%95%AD%20%EC%A0%84%EB%A7%9D%EB%8C%80",
     "reviewSummary": "김포국제공항 국내선 청사 4층 야외 전망대로 항공기 이동을 가까이서 볼 수 있음. 국제선 반대편이라 국내선 항공기만 조망 가능.",
-    "verified": false
+    "verified": true
   },
   {
     "id": "146",
@@ -2752,7 +2752,7 @@
     "googleMaps": "https://www.google.com/maps/search/?api=1&query=Cultural%20Complex%20J-Bug%20Gwangjin%20Seoul",
     "naverMap": "https://map.naver.com/p/search/%EB%9A%9D%EC%84%AC%20%EC%A0%84%EB%A7%9D%EB%AC%B8%ED%99%94%EC%BD%A4%ED%94%8C%EB%A0%89%EC%8A%A4%20J-Bug",
     "reviewSummary": "뚝섬한강공원 내 누에 모양 복합문화시설로 도서관·카페·전시공간을 갖추고 한강 야경 조망 가능.",
-    "verified": false
+    "verified": true
   },
   {
     "id": "147",
@@ -2771,7 +2771,7 @@
     "googleMaps": "https://www.google.com/maps/search/?api=1&query=63%20Skypicnic%20Yeouido%20Seoul",
     "naverMap": "https://map.naver.com/p/search/63%20%EC%8A%A4%EC%B9%B4%EC%9D%B4%ED%94%BC%ED%81%AC%EB%8B%89",
     "reviewSummary": "63빌딩 내 예술과 전망을 결합한 체험형 공간으로 지상 250m 높이에서 예술적 휴식을 즐길 수 있는 아트 전망대.",
-    "verified": false
+    "verified": true
   },
   {
     "id": "148",
@@ -2790,7 +2790,7 @@
     "googleMaps": "https://www.google.com/maps/search/?api=1&query=Riverview%208th%20Avenue%20Gangdong%20Seoul",
     "naverMap": "https://map.naver.com/p/search/%EA%B4%91%EC%A7%84%EA%B5%908%EB%B2%88%EA%B0%80",
     "reviewSummary": "광진교 중앙 하단에 위치한 한강 전망대. 다리 리모델링으로 조성된 랜드마크로, 이용객이 적어 조용하게 즐길 수 있음.",
-    "verified": false
+    "verified": true
   },
   {
     "id": "149",
@@ -2805,11 +2805,11 @@
     "reviews": 2,
     "website": null,
     "instagram": null,
-    "address": "서울 종로구 창신동 일대(비공식)",
+    "address": "서울 종로구 낙산5길 51",
     "googleMaps": "https://www.google.com/maps/search/?api=1&query=Chaeseokjang%20Observatory%20Jongno%20Seoul",
     "naverMap": "https://map.naver.com/p/search/%EC%B1%84%EC%84%9D%EC%9E%A5%20%EC%A0%84%EB%A7%9D%EB%8C%80",
     "reviewSummary": "창신동 인근 카페 옥상형 전망대. 카페 이용 시에만 옥상 출입 가능한 숨은 도심 전망 명소.",
-    "verified": false
+    "verified": true
   },
   {
     "id": "150",
@@ -2824,11 +2824,11 @@
     "reviews": 2,
     "website": null,
     "instagram": null,
-    "address": "서울 성동구 응봉동(비공식)",
+    "address": "서울 성동구 독서당로 362",
     "googleMaps": "https://www.google.com/maps/search/?api=1&query=Eungbongsan%20Palgakjeong%20Seongdong%20Seoul",
     "naverMap": "https://map.naver.com/p/search/%EC%9D%91%EB%B4%89%EC%82%B0%ED%8C%94%EA%B0%81%EC%A0%95",
     "reviewSummary": "응봉산 정상 팔각정으로 한강·성수대교·강변북로 야경을 한눈에 담을 수 있는 서울의 인기 야경 명소.",
-    "verified": false
+    "verified": true
   },
   {
     "id": "151",

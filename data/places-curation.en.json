@@ -1480,6 +1480,127 @@
       "bestFor": "skin and body massage in Myeongdong with Japanese-language service",
       "whyWeLikeIt": "It has served Myeongdong since around 2020 with Japanese-speaking staff and LINE booking — an easy, established choice for Japanese-speaking travellers.",
       "longDescription": "Hikari is a skin-and-body massage shop on the fifth floor at 18 Myeongdong 8na-gil in Chungmuro 1-ga, near Myeongdong station exit 6. It has operated in Myeongdong since around 2020 and re-registered at this location, and is strongly oriented to Japanese-speaking visitors, with Japanese captions and LINE booking.\n\nIt books by LINE, phone and the heally platform. Services skew toward massage and skin/body care; English support is limited, so Japanese speakers will find it easiest."
+    },
+    "n-seoul-tower": {
+      "name": "N Seoul Tower",
+      "category": "observatory",
+      "kind": "place",
+      "area": "Yongsan",
+      "summary": "Seoul's landmark tower on Namsan — the city's default first view, and its most photographed one after dark.",
+      "serviceDetail": "Observation tower",
+      "bestFor": "a first orientation to the city",
+      "whyWeLikeIt": "Nearly ten thousand ratings hold it at 4.2 — unusual consistency for a landmark that sees this much traffic, and a fair signal that the view delivers on the climb.",
+      "longDescription": "N Seoul Tower stands at the summit of Namsan, in Yongsan-gu, and functions as the city's orientation point: the observation deck gives you the whole basin at once, which is the fastest way to understand how Seoul is laid out before you start walking it.\n\nThe tower is busiest after sunset, when the night view is the draw. Its rating sits at 4.2 across more than 9,600 ratings — a large enough sample that the number means something. Getting up is part of the visit; the cable car from Myeongdong is the usual route, and the walk up through Namsan Park is the quieter one.\n\nNamdaemun Market sits at the foot of the hill, close enough to pair the two in an afternoon."
+    },
+    "lotte-world-tower-mall": {
+      "name": "Lotte World Tower & Mall",
+      "category": "observatory",
+      "kind": "place",
+      "area": "Jamsil",
+      "summary": "Seoul's tallest building — a 555-meter Jamsil complex holding a mall, hotel, and cinema, with the Seoul Sky observatory as just one part of it.",
+      "serviceDetail": "Skyscraper complex — mall, hotel & entertainment",
+      "bestFor": "a full afternoon of shopping and dining anchored by one landmark tower",
+      "whyWeLikeIt": "At 555 meters, it was among the world's five tallest buildings when it opened in 2017 — worth knowing before deciding whether to also pay for the Seoul Sky ticket inside it.",
+      "longDescription": "Lotte World Tower & Mall is the 555-meter skyscraper complex that anchors Jamsil, in Songpa-gu — 123 floors that ranked among the world's five tallest buildings on its 2017 opening. The tower holds the Signiel hotel and, on floors 117 to 123, the Seoul Sky observation deck, covered separately in this guide.\n\nAt street level the complex spreads into a shopping mall, a cinema, a concert hall, and a run of restaurants — enough to fill an afternoon before anyone goes near the observatory. Its rating sits at 4.4 across roughly 900 reviews, reflecting the mall and hotel experience as much as the tower itself.\n\nIt sits directly on Jamsil Station (lines 2 and 8), with the mall entrance built into the transit hub."
+    },
+    "seoul-sky": {
+      "name": "Seoul Sky",
+      "category": "observatory",
+      "kind": "place",
+      "area": "Jamsil",
+      "summary": "The observation deck on floors 117–123 of Lotte World Tower — the highest vantage point in Seoul, with a glass floor underfoot.",
+      "serviceDetail": "Observation deck",
+      "bestFor": "the highest view over Seoul, glass floor included",
+      "whyWeLikeIt": "It's the specific reason to go up the tower — the glass-floor section and the open-air Sky Terrace exist only at this level, separate from anything the mall below offers.",
+      "longDescription": "Seoul Sky occupies the top seven floors of Lotte World Tower — 117 through 123 — putting its observation floors between 472 and 498 meters above ground, the highest public vantage point in the city. The visit takes in a standard indoor observation floor, a glass-floored section that puts you directly over the drop, and an open-air Sky Terrace near the very top.\n\nIt shares its address and building with Lotte World Tower & Mall, but it is a separate, separately ticketed attraction — the tower's shopping, dining, and hotel floors are a different visit, covered elsewhere in this guide. Seoul Sky holds a 4.3 rating across roughly 300 reviews.\n\nTickets are sold at a dedicated entrance inside the mall in Jamsil, and the elevator ride up is part of the experience."
+    },
+    "seoul-city-wall": {
+      "name": "Seoul City Wall",
+      "category": "observatory",
+      "kind": "place",
+      "area": "Jongno",
+      "summary": "Hanyangdoseong, the 18.6-kilometer Joseon-era fortress wall that still traces four of Seoul's inner mountains — a walking route as much as a monument.",
+      "serviceDetail": "Historic fortress wall / walking trail",
+      "bestFor": "a self-guided heritage walk with skyline views built into the route",
+      "whyWeLikeIt": "It's on UNESCO's tentative World Heritage list, and unlike most fortress walls this old, long stretches of it are still open to walk rather than roped off.",
+      "longDescription": "Seoul City Wall — Hanyangdoseong — was first built in 1396 to enclose the new Joseon capital and runs 18.6 kilometers along the ridgelines of Baegaksan, Naksan, Namsan, and Inwangsan. Rather than one site, it's a network of walking courses: the Baegak course (Changuimun to Hyehwamun) and the Naksan course (Hyehwamun to Heunginjimun) are the two most associated with Jongno-gu, passing the Hanyangdoseong Museum and Naksan Park.\n\nThe wall links Seoul's historic great and minor gates, and stretches along Naksan and Namsan open onto unobstructed views back over the city center — the Namsan course leads directly toward N Seoul Tower. It's on UNESCO's tentative World Heritage list.\n\nThere's no single entrance; access is trailhead by trailhead, and the city's official Hanyangdoseong site maps every course and gate."
+    },
+    "jeongdong-observatory": {
+      "name": "Jeongdong Observatory",
+      "category": "observatory",
+      "kind": "place",
+      "area": "Jeongdong",
+      "summary": "A free public viewpoint on the 13th floor of Seoul City Hall's Seosomun annex, looking straight down over Deoksugung Palace.",
+      "serviceDetail": "Free observation floor & café",
+      "bestFor": "a free, quiet view over Deoksugung without a ticket or a queue",
+      "whyWeLikeIt": "It holds a 4.4 average across a modest 37 ratings — a small but consistent number for a spot many visitors don't know to look for.",
+      "longDescription": "Jeongdong Observatory sits on the 13th floor of Seoul City Hall's Seosomun annex building in Jung-gu, looking directly down over Deoksugung Palace and the Jeongdong neighborhood around it. It opened in 2013, closed for a period afterward, and has since reopened with expanded hours: weekdays 13:30–17:30 and weekends 9:00–17:30, closed on most public holidays. Admission is free, and there's a small café on the same floor.\n\nAs of mid-2026, Seoul City Hall also runs a second, newer observation floor in its main building nearby — a separate facility with its own entrance, not to be confused with this one. Both are free and city-run, but Jeongdong Observatory is the older, quieter of the two, and the one with the Deoksugung view."
+    },
+    "gimpo-intl-airport-observatory-deck": {
+      "name": "Gimpo Int'l Airport Observatory Deck",
+      "category": "observatory",
+      "kind": "place",
+      "area": "Gangseo",
+      "summary": "An outdoor deck on the domestic terminal's 4th floor at Gimpo International Airport, close enough to watch aircraft taxi and take off.",
+      "serviceDetail": "Outdoor airport observation deck",
+      "bestFor": "watching domestic flights up close before or after a trip",
+      "whyWeLikeIt": null,
+      "longDescription": "Gimpo International Airport's observatory deck sits at the far end of the 4th floor of the domestic passenger terminal, reachable straight from the terminal's food court. It opened in October 2018 as part of the domestic terminal's remodeling, and it's an open-air deck separated from the apron by wire fencing rather than glass — close enough to watch aircraft push back, taxi, and take off.\n\nBecause it sits on the domestic side, only domestic flights are visible; the international terminal is on the opposite side of the airport grounds and out of view from here. The rating is modest, 3.5 across 20 ratings, in keeping with a bare-bones facility rather than a dedicated attraction — a free bonus for travelers already at the airport more than a destination on its own.\n\nA different, no-longer-public viewing room elsewhere in the airport complex has a similar history; this is the domestic-terminal deck, still open to anyone passing through."
+    },
+    "cultural-complex-j-bug": {
+      "name": "Cultural Complex J-Bug",
+      "category": "observatory",
+      "kind": "place",
+      "area": "Gwangjin",
+      "summary": "A caterpillar-shaped cultural complex inside Ttukseom Hangang Park — officially Seoul Saenggak-maru — with a library, café, and river-facing views.",
+      "serviceDetail": "Riverside cultural complex — library, café & exhibits",
+      "bestFor": "a quiet library-and-river break inside Ttukseom Hangang Park",
+      "whyWeLikeIt": "The building itself is the hook — a 243-meter structure shaped like an inchworm, which is where the nickname \"J-Bug\" comes from.",
+      "longDescription": "Cultural Complex J-Bug is the popular nickname for Seoul Saenggak-maru, a 243-meter, caterpillar-shaped building inside Ttukseom Hangang Park in Gwangjin-gu. Inside are a public library, meeting rooms, a café, and a small exhibition hall on the Han River's history — a low-key alternative to the park's open lawns when the weather doesn't cooperate.\n\nUpper floors and the building's river-facing side give views up and down the Han, though the site is built for lingering rather than for the view alone. It's closed on Mondays and on New Year's Day, Lunar New Year, and Chuseok.\n\nThe nearest access point is Jayang Station (Line 7), Ttukseom Hangang Park exit, about a ten-minute walk into the park."
+    },
+    "63-skypicnic": {
+      "name": "63 Skypicnic",
+      "category": "observatory",
+      "kind": "place",
+      "area": "Yeouido",
+      "summary": "A newly reopened art-and-media observatory on the 60th and 63rd floors of Yeouido's 63 Building.",
+      "serviceDetail": "Art-and-media observation deck",
+      "bestFor": "a media-art take on the classic high-rise view, plus a rooftop rarely open to the public",
+      "whyWeLikeIt": "The 63rd-floor rooftop had been closed to visitors for years over safety concerns; its reopening as part of 63 Skypicnic in June 2026 is the news here.",
+      "longDescription": "63 Skypicnic is the observation deck that opened inside Yeouido's 63 Building on June 4, 2026, replacing the tower's earlier observatory. The main level, on the 60th floor, combines a media-art installation with mirrored surfaces and projection screens, an immersive screening room, a café, and a gift shop rather than a plain viewing platform.\n\nThe draw beyond the art is the 63rd-floor rooftop, which reopened here after years of closure over safety concerns — one of the few genuinely open-air rooftops among Seoul's tall-building observatories, and the best of the three levels for watching the Han River move from sunset into night.\n\nTickets are sold from the ground floor, with the observatory itself starting at the 60th."
+    },
+    "riverview-8th-avenue": {
+      "name": "Riverview 8th Avenue",
+      "category": "observatory",
+      "kind": "place",
+      "area": "Gangdong",
+      "summary": "A glass-floored viewing platform built into a pier of Gwangjin Bridge — one of only three bridge-pier observatories in the world.",
+      "serviceDetail": "Bridge-pier river observatory",
+      "bestFor": "a quiet, glass-floor view of the Han River away from the bigger attractions",
+      "whyWeLikeIt": "It's one of only three observatories of its kind anywhere, alongside comparable decks on Paris's Bir-Hakeim Bridge and Tokyo's Rainbow Bridge — genuinely uncommon, and still lightly visited.",
+      "longDescription": "Riverview 8th Avenue sits beneath the eighth pier of Gwangjin Bridge, on the Gangdong-gu bank of the Han River. A glass floor lets visitors look straight down at the water, and the enclosed, glass-walled space frames both directions of the river along with the skylines of Gwangjin-gu and Gangdong-gu. It's one of only three bridge-pier observatories in the world.\n\nThe space also hosts small exhibitions and occasional talks. Hours run seasonally — roughly noon to 8 p.m. from April through October and shorter in the colder months — and it's closed on Mondays, Lunar New Year, and Chuseok. Admission is free.\n\nIt's about a 15-minute walk from either Gwangnaru or Cheonho station on Line 5, and it stays noticeably quieter than the Han River's better-known viewpoints."
+    },
+    "chaeseokjang-observatory": {
+      "name": "Chaeseokjang Observatory",
+      "category": "observatory",
+      "kind": "place",
+      "area": "Jongno",
+      "summary": "A rooftop viewpoint built atop a former Japanese colonial-era quarry cliff in Changsin-dong, with a café built into the level below.",
+      "serviceDetail": "Rooftop viewpoint & café",
+      "bestFor": "an off-the-tourist-track skyline view with real neighborhood history behind it",
+      "whyWeLikeIt": "The quarry it sits on supplied granite for colonial-era landmark buildings — a piece of Seoul's history most skyline views don't come with.",
+      "longDescription": "Chaeseokjang Observatory — also known as the Changsin-Sungin Quarry Observatory — sits atop a former granite quarry cliff in Changsin-dong, Jongno-gu. The quarry was cut into Naksan's hillside during the Japanese colonial period to supply stone for buildings including the old Government-General building and the Bank of Korea; after the war, displaced families settled the quarry site into the hillside village that still surrounds the observatory today.\n\nThe building opened in 2019: a glass-walled second floor holds Café Nakta, and the rooftop above it is an open, unobstructed platform over the quarry cliff and the Seoul skyline beyond. It's closed on Mondays.\n\nIt's about an 11-minute walk from Changsin Station (Line 6), inside the same hillside neighborhood as Naksan Park."
+    },
+    "eungbongsan-palgakjeong": {
+      "name": "Eungbongsan Palgakjeong",
+      "category": "observatory",
+      "kind": "place",
+      "area": "Seongdong",
+      "summary": "A traditional octagonal pavilion at the summit of Eungbongsan — one of Seoul's classic Han River night-view spots, reached by a short hike.",
+      "serviceDetail": "Hilltop pavilion viewpoint",
+      "bestFor": "a short hike to one of Seoul's classic night-view spots",
+      "whyWeLikeIt": "The mountain served as a royal hunting ground in the Joseon dynasty, and the eight-sided pavilion at its summit is a small, quiet payoff for what's only about a 30-minute climb.",
+      "longDescription": "Eungbongsan Palgakjeong is the octagonal pavilion at the 94-meter summit of Eungbongsan, in Seongdong-gu, near where the Han River meets Jungnangcheon stream. A wooden staircase path climbs from the base to the pavilion in around 30 minutes, passing benches and exercise equipment along the way; the mountain itself served as a royal hunting ground during the Joseon dynasty.\n\nFrom the pavilion, the view takes in the Han River, Apgujeong across the water, and — on clear days — Lotte World Tower and the mountains beyond, which is what has made it one of Seoul's regularly recommended night-view spots.\n\nThe nearest stop is Eungbong Station on the Gyeongui-Jungang Line, about a ten-minute walk to the trailhead."
     }
   }
 }
