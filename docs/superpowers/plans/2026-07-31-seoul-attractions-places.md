@@ -193,7 +193,7 @@ cp ~/Downloads/a_drop_of_seoul_places_전망대_시장_쇼핑몰_스파웰니스
 wc -l data/places-import/seoul-attractions-2026-07.csv
 ```
 
-Expected: `644` (헤더 1 + 데이터 643, 마지막 줄 개행 없음)
+Expected: `644` — `wc -l`은 개행 수를 센다. 파일은 645줄(헤더 1 + 데이터 644)이고 마지막 줄에 개행이 없다.
 
 - [ ] **Step 2: 실패하는 테스트를 쓴다**
 
@@ -216,7 +216,7 @@ describe("parseCsv", () => {
   });
 
   it("reads every data row", () => {
-    expect(parseCsv(CSV)).toHaveLength(643);
+    expect(parseCsv(CSV)).toHaveLength(644);
   });
 
   it("keeps commas inside quoted fields together", () => {
