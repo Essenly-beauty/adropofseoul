@@ -20,6 +20,9 @@ const PLACE_TYPES = [
   { type: "spa", label: "Spa & Massage", cat: "spa" },
   { type: "personal-color", label: "Personal Color", cat: "personal_color" },
   { type: "perfume", label: "Perfume Workshops", cat: "perfume" },
+  { type: "observatory", label: "Observatories", cat: "observatory" },
+  { type: "market", label: "Markets", cat: "market" },
+  { type: "mall", label: "Shopping Malls", cat: "mall" },
 ];
 
 export default function SeoulPage() {

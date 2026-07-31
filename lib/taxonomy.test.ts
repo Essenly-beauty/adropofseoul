@@ -7,6 +7,7 @@ import {
   getNeighborhood,
   regionForGuide,
   PLACE_TYPE_LABELS,
+  PLACE_TYPE_EMOJI,
   placeCategoryFromType,
   placeTypeSlug,
   SECTIONS,
@@ -292,5 +293,24 @@ describe("sectionDirectoryHref", () => {
         categories: ["salon", "makeup"],
       })
     ).toBe("/seoul/places");
+  });
+});
+
+describe("place categories — Seoul attractions", () => {
+  const ATTRACTION_CATEGORIES = ["observatory", "market", "mall"] as const;
+
+  it.each(ATTRACTION_CATEGORIES)("has a reader-facing label for %s", (cat) => {
+    expect(PLACE_TYPE_LABELS[cat]).toBeTruthy();
+    expect(PLACE_TYPE_LABELS[cat]).not.toBe(cat);
+  });
+
+  it.each(ATTRACTION_CATEGORIES)("has a card glyph for %s", (cat) => {
+    expect(PLACE_TYPE_EMOJI[cat]).toBeTruthy();
+  });
+
+  it("keeps labels and glyphs in sync — every label has a glyph", () => {
+    for (const key of Object.keys(PLACE_TYPE_LABELS)) {
+      expect(PLACE_TYPE_EMOJI[key], `missing glyph for ${key}`).toBeTruthy();
+    }
   });
 });

@@ -334,6 +334,9 @@ export const PLACE_TYPE_LABELS: Record<string, string> = {
   perfume: "Perfume Workshop",
   cooking_class: "Cooking Class",
   food_tour: "Food Tour",
+  observatory: "Observatory & Tower",
+  market: "Market",
+  mall: "Shopping Mall",
 };
 
 // Category glyphs for the compact directory cards (mirrors the Seongsu
@@ -353,6 +356,9 @@ export const PLACE_TYPE_EMOJI: Record<string, string> = {
   perfume: "🧴",
   cooking_class: "🍳",
   food_tour: "🥢",
+  observatory: "🔭",
+  market: "🏮",
+  mall: "🛒",
 };
 
 /** URL type-slug ("head-spa") → place category enum ("head_spa"). */

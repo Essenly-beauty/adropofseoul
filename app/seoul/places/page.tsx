@@ -31,7 +31,7 @@ export default async function PlacesPage({
 }) {
   let places: Awaited<ReturnType<typeof listPlaces>> = [];
   try {
-    places = await listPlaces({ limit: 200 });
+    places = await listPlaces({ limit: 300 });
   } catch (err) {
     console.error("places: places fetch failed", err);
   }
