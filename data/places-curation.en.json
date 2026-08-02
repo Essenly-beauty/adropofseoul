@@ -1611,7 +1611,7 @@
       "serviceDetail": "Traditional general market",
       "bestFor": "browsing Korea's oldest and largest general market, from clothing to ginseng",
       "whyWeLikeIt": "Different sections trade on a round-the-clock rotation, so parts of the market are still open in the middle of the night — unusual for a market of this size.",
-      "longDescription": "Namdaemun Market sits just north of Sungnyemun Gate in Jung-gu, and traces its start to the early 1400s under King Taejong — making it, by most accounts, Seoul's oldest continuously operating market. It's also its largest, with more than 20,000 wholesale and retail stalls spread across the site.\n\nThe market deals in general merchandise rather than one specialty: clothing, eyewear, kitchenware, toys, camping and fishing gear, stationery, hats, and ginseng all have their own stall clusters, alongside a large imported-goods section. Individual stores generally run from around 9am to 5pm, though the market as a whole doesn't fully close — different sections trade in shifts through the night.\n\nIt's a short walk from Myeongdong and from Namsan, making it easy to fold into a walk that also takes in N Seoul Tower."
+      "longDescription": "Namdaemun Market sits just north of Sungnyemun Gate in Jung-gu, and carries roughly 600 years of history, by the city's own count — Seoul's longest-standing traditional market. It's also its largest, with more than 20,000 wholesale and retail stalls spread across the site.\n\nThe market deals in general merchandise rather than one specialty: clothing, eyewear, kitchenware, toys, camping and fishing gear, stationery, hats, and ginseng all have their own stall clusters, alongside a large imported-goods section. Individual stores generally run from around 9am to 5pm, though the market as a whole doesn't fully close — different sections trade in shifts through the night.\n\nIt's a short walk from Myeongdong and from Namsan, making it easy to fold into a walk that also takes in N Seoul Tower."
     },
     "kwangjang-market": {
       "name": "Kwangjang Market",
@@ -1644,7 +1644,7 @@
       "serviceDetail": "Wholesale fish market",
       "bestFor": "picking your own live seafood on the trading floor and eating it upstairs",
       "whyWeLikeIt": "Auctions start in the middle of the night — shellfish from around 1am, live fish from 3am — so the floor is already in full swing hours before most of the city wakes up.",
-      "longDescription": "Noryangjin Fisheries Wholesale Market, in Dongjak-gu, is Seoul's largest consumer-facing fish market and is operated by Suhyup Noryangjin Fisheries Co., a subsidiary of the National Federation of Fisheries Cooperatives. The trading floor works on a section-by-section schedule: shellfish auctions from about 1am, premium fresh fish from 1:30am, live fish from 3am, with retail sales continuing through the day.\n\nThe usual way to visit is to buy raw fish, shellfish, or other seafood directly from a tank-front vendor on the ground floor, then carry it upstairs to one of the market's restaurants to have it sliced and served, paying only a preparation fee. The market closes on Sundays, January 1st, and the Lunar New Year and Chuseok holidays.\n\nIt's next to Noryangjin Station, on Lines 1 and 9."
+      "longDescription": "Noryangjin Fisheries Wholesale Market, in Dongjak-gu, is Seoul's largest consumer-facing fish market, operated by Suhyup Noryangjin Fisheries Co. The trading floor works on a section-by-section schedule: shellfish auctions from about 1am, premium fresh fish from 1:30am, live fish from 3am, with retail sales continuing through the day.\n\nThe usual way to visit is to buy raw fish, shellfish, or other seafood directly from a tank-front vendor on the ground floor, then carry it upstairs to one of the market's restaurants to have it sliced and served, paying only a preparation fee. The market closes on Sundays, January 1st, and the Lunar New Year and Chuseok holidays.\n\nIt's next to Noryangjin Station, on Lines 1 and 9."
     },
     "majang-meat-market": {
       "name": "Majang Meat Market",
@@ -1654,8 +1654,8 @@
       "summary": "Korea's largest meat wholesale market, in Seongdong-gu — around 1,500 stalls trading hanwoo and other cuts, many of which will grill what you buy on the spot.",
       "serviceDetail": "Wholesale meat market",
       "bestFor": "buying hanwoo beef at wholesale stalls and having it grilled on the spot",
-      "whyWeLikeIt": "It's estimated to handle more than 60% of the meat distributed within Seoul, with around 2 million visitors passing through its roughly 1,500 stalls each year.",
-      "longDescription": "Majang Meat Market, sometimes called Majang-dong Livestock Market, is Korea's largest meat wholesale market, with roughly 1,500 vendors trading in Seongdong-gu. Livestock is processed and distributed through the market on an hourly basis, and it's estimated to account for more than 60% of the meat distributed across Seoul.\n\nHanwoo — Korean native-breed beef — is the market's signature product, sold directly from wholesale butchers rather than a retail counter. Many stalls will sell you a cut and point you to an adjoining grill room to cook and eat it immediately, which is the market's most common way to visit. General hours run from 3am to 11pm, with the market closed on the first and third Sunday of each month.\n\nIt's about a 10-minute walk from either Yongdu Station (Line 2) or Majang Station (Line 5)."
+      "whyWeLikeIt": "It handles an estimated 60 to 70% of livestock distribution across the greater Seoul area, with around 2 million visitors passing through its roughly 1,500 stalls each year.",
+      "longDescription": "Majang Meat Market, sometimes called Majang-dong Livestock Market, is Korea's largest meat wholesale market, with roughly 1,500 vendors trading in Seongdong-gu. Livestock is processed and distributed through the market on an hourly basis, and the district's own count puts its share of livestock distribution across the greater Seoul area at 60 to 70%.\n\nHanwoo — Korean native-breed beef — is the market's signature product, sold directly from wholesale butchers rather than a retail counter. Many stalls will sell you a cut and point you to an adjoining grill room to cook and eat it immediately, which is the market's most common way to visit. General hours run from 3am to 11pm, with the market closed on the first and third Sunday of each month.\n\nIt's about a 10-minute walk from either Yongdu Station (Line 2) or Majang Station (Line 5)."
     },
     "jungbu-market": {
       "name": "Jungbu Market",
@@ -1673,11 +1673,11 @@
       "category": "market",
       "kind": "place",
       "area": "Mangwon",
-      "summary": "A neighborhood market in Mapo-gu with more than 200 vendors selling produce, seafood, and prepared food, next to the café-and-bar strip on Mangridan-gil.",
+      "summary": "A neighborhood market in Mapo-gu selling produce, seafood, and prepared food, next to the café-and-bar strip on Mangridan-gil.",
       "serviceDetail": "Neighborhood market",
       "bestFor": "a produce-and-food-stall neighborhood market paired with the Mangridan-gil strip",
       "whyWeLikeIt": null,
-      "longDescription": "Mangwon Market grew out of small shops in an alley in Mangwon-dong starting in the 1970s and now runs for several blocks, with more than 200 vendors selling seasonal fruit and vegetables, seafood, meat, and household goods alongside a food alley of noodle and street-food stalls.\n\nThe market sits right next to Mangridan-gil, the strip of cafés, bars, and small shops that has grown up in the surrounding blocks over the past decade, so the two are usually visited together — produce shopping on one side of the street, coffee and browsing on the other. Most stalls run from around 9am to 9pm, with hours and days off varying by vendor.\n\nIt's a short walk from Mangwon Station, on Line 6."
+      "longDescription": "Mangwon Market runs for several blocks of Mangwon-dong, selling seasonal fruit and vegetables, seafood, meat, and household goods alongside a food alley of noodle and street-food stalls.\n\nThe market sits right next to Mangridan-gil, the strip of cafés, bars, and small shops that has grown up in the surrounding blocks over the past decade, so the two are usually visited together — produce shopping on one side of the street, coffee and browsing on the other. Most stalls run from around 9am to 9pm, with hours and days off varying by vendor.\n\nIt's a short walk from Mangwon Station, on Line 6."
     },
     "garak-market": {
       "name": "Garak Market",
@@ -1688,18 +1688,18 @@
       "serviceDetail": "Wholesale agricultural and marine market",
       "bestFor": "seeing the scale of Seoul's produce and seafood supply chain in one visit",
       "whyWeLikeIt": "It's engineered to move around 7,300 tons of goods a day — the largest volume of any public wholesale market in the country.",
-      "longDescription": "Garak Market opened on June 19, 1985, in Songpa-gu as Korea's first — and now largest — public wholesale market for agricultural and marine products, spread across more than 540,000 square meters. It's organized into separate halls: a produce market with about 460 stores, a seafood market with roughly 200, and a livestock section with its own meat-processing and cold-storage facilities.\n\nDaily trading volume runs to roughly 7,300 tons, and the market accounts for a large share of the produce and seafood distributed across Seoul. Most of the wholesale trading floor operates around the clock aside from Sundays and public holidays, though the retail-facing sections keep closer to daytime hours.\n\nIt's beside Garak Market Station, on Lines 3 and 8."
+      "longDescription": "Garak Market opened in June 1985 in Songpa-gu as Korea's first — and now largest — public wholesale market for agricultural and marine products, spread across more than 540,000 square meters. It's organized into separate halls for produce, seafood, and livestock, the last with its own meat-processing and cold-storage facilities.\n\nDaily trading volume runs to roughly 7,300 tons, and the market accounts for a large share of the produce and seafood distributed across Seoul. Most of the wholesale trading floor operates around the clock aside from Sundays and public holidays, though the retail-facing sections keep closer to daytime hours.\n\nIt's beside Garak Market Station, on Lines 3 and 8."
     },
     "seoul-folk-flea-market": {
       "name": "Seoul Folk Flea Market",
       "category": "market",
       "kind": "place",
       "area": "Dongdaemun",
-      "summary": "Korea's largest indoor flea market, in seven color-coded buildings in Dongdaemun-gu — antiques, secondhand clothing, and household curios across nearly 900 shops.",
+      "summary": "A large indoor flea market in seven color-coded buildings in Dongdaemun-gu — antiques, secondhand clothing, and household curios across nearly 900 shops.",
       "serviceDetail": "Flea market and antiques hall",
       "bestFor": "digging through antiques and secondhand goods in one indoor market",
-      "whyWeLikeIt": "The market's seven buildings are each color-coded to a shade of the rainbow — a system that makes an 885-shop complex easier to navigate than it sounds.",
-      "longDescription": "Seoul Folk Flea Market — officially Seoul Pungmul Market — relocated to its current site near Sinseol-dong, where it now occupies seven buildings, each assigned one color of the rainbow, holding around 885 shops across roughly 8,000 square meters. It was named a Seoul Future Heritage site in 2015.\n\nThe market deals mostly in secondhand and antique goods: old furniture, clocks, cameras, records, tools, and vintage clothing are its core categories, with one building given over largely to antiques and handicrafts. Shop hours run 10am to 7pm, with the market's food court staying open until 10pm; the whole market closes on Tuesdays.\n\nIt's a short walk from Sinseol-dong Station, Exit 9, on Lines 1 and 2."
+      "whyWeLikeIt": "The market's seven buildings are each color-coded to a shade of the rainbow — a system that makes an 894-shop complex easier to navigate than it sounds.",
+      "longDescription": "Seoul Folk Flea Market — officially Seoul Pungmul Market — relocated to its current site near Sinseol-dong, where it now occupies seven buildings, each assigned one color of the rainbow, holding around 894 shops. It was named a Seoul Future Heritage site in 2015.\n\nThe market deals mostly in secondhand and antique goods: old furniture, clocks, cameras, records, tools, and vintage clothing are its core categories, with one building given over largely to antiques and handicrafts. Shop hours run 10am to 7pm, with the market's food court staying open until 10pm; the whole market closes on Tuesdays.\n\nIt's a short walk from Sinseol-dong Station, Exit 9, on Lines 1 and 2."
     },
     "dongmyo-flea-market": {
       "name": "Dongmyo Flea Market",
@@ -1709,8 +1709,8 @@
       "summary": "An open-air secondhand market along the wall of Dongmyo Shrine, in business since the 1980s — vintage and used clothing is its biggest category, much of it priced by the piece.",
       "serviceDetail": "Outdoor flea market",
       "bestFor": "sorting through streetside racks of secondhand and vintage clothing",
-      "whyWeLikeIt": "Secondhand clothing — the market's biggest category — commonly sells for around ₩1,000 a piece.",
-      "longDescription": "Dongmyo Flea Market runs along the outer wall of Dongmyo Shrine in Jongno-gu, where merchants began gathering to sell secondhand goods in the 1980s. It has since grown into one of Seoul's largest flea markets, with several hundred stalls spread along the shrine wall and side streets near Dongmyo Station.\n\nClothing is the market's largest category now — mostly secondhand and vintage pieces, often priced by the piece rather than negotiated — alongside antiques, used electronics, records, old books, and household odds and ends. It's open every day but only partially on weekdays; the full market runs on weekends, with individual stalls keeping their own hours through the afternoon.\n\nIt's right outside Exit 3 of Dongmyo Station, on Lines 1 and 6."
+      "whyWeLikeIt": "In the market's clothing piles, pieces commonly go for ₩1,000 to ₩5,000.",
+      "longDescription": "Dongmyo Flea Market runs along the outer wall of Dongmyo Shrine in Jongno-gu, where merchants began gathering to sell secondhand goods in the 1980s. It has since grown into one of Seoul's largest flea markets, with several hundred stalls spread along the shrine wall and side streets near Dongmyo Station.\n\nClothing is the market's largest category now — mostly secondhand and vintage pieces, often priced by the piece rather than negotiated — alongside antiques, used electronics, records, old books, and household odds and ends. It's open every day, with individual stalls keeping their own hours through the afternoon.\n\nIt's right outside Exit 3 of Dongmyo Station, on Lines 1 and 6."
     },
     "mapo-agricultural-marine-products-market": {
       "name": "Mapo Agricultural & Marine Products Market",
@@ -1732,7 +1732,7 @@
       "serviceDetail": "Neighborhood market and jokbal alley",
       "bestFor": "jokbal — braised pig's trotters — in Gongdeok's Jokbal Alley",
       "whyWeLikeIt": "The alley traces back to a single restaurant's success roughly 30 years ago, and the competitors that followed it are still standing side by side today.",
-      "longDescription": "Gongdeok Market dates to 1967, one of a handful of Seoul markets old enough to be nicknamed a 'five generations market' for how long some of its stalls have stayed in the same families. It sits a few minutes from Gongdeok Station in Mapo-gu.\n\nJokbal Alley is a narrow row of restaurants serving jokbal — pork trotters braised in soy sauce and spices, typically served with a spicy broth, blood sausage, and salted shrimp dip. The alley grew up after one restaurant's success drew competitors nearby roughly 30 years ago. An adjoining Jeon Alley specializes in Korean savory pancakes and other fried snacks. The market suffered a major fire in 2007 but has since been rebuilt.\n\nIt's a short walk from Gongdeok Station, on Lines 5, 6, and the Airport Railroad."
+      "longDescription": "Gongdeok Market sits a few minutes from Gongdeok Station in Mapo-gu, one of the longstanding neighborhood markets in the area.\n\nJokbal Alley is a narrow row of restaurants serving jokbal — pork trotters braised in soy sauce and spices, typically served with a spicy broth, blood sausage, and salted shrimp dip. The alley grew up after one restaurant's success drew competitors nearby roughly 30 years ago. An adjoining Jeon Alley specializes in Korean savory pancakes and other fried snacks.\n\nIt's a short walk from Gongdeok Station, on Lines 5, 6, and the Airport Railroad."
     },
     "jongno-3-ga-stalls-alley": {
       "name": "Jongno 3-ga Stalls Alley",
@@ -1753,8 +1753,8 @@
       "summary": "An old neighborhood market in Yeongdeungpo-gu, its central alley lined with sundae (blood sausage) shops that face each other from both sides.",
       "serviceDetail": "Neighborhood market",
       "bestFor": "sundaeguk — blood sausage soup — in the market's namesake alley",
-      "whyWeLikeIt": "One restaurant in the market's sundae alley has been serving since 1966, nearly as long as the market itself has existed in its current form.",
-      "longDescription": "Yeongdeungpo Market has operated in Yeongdeungpo-gu since the years after the Korean War, when it became a central distribution point for food, clothing, and household goods in the district. Around 600 merchants currently trade there, selling produce, meat, seafood, and daily necessities.\n\nOne stretch of the market is a sundae alley, where restaurants selling sundae (Korean blood sausage) and sundaeguk (blood sausage soup) face each other across a narrow lane; one of them has been in business since 1966. Sundae is typically boiled fresh in the afternoon, so stores are better stocked for takeout later in the day than in the morning.\n\nIt's next to Yeongdeungpo Market Station, on Line 5."
+      "whyWeLikeIt": null,
+      "longDescription": "Yeongdeungpo Market has operated in Yeongdeungpo-gu since around the end of Japanese colonial rule, when it became a central distribution point for food, clothing, and household goods in the district. Around 600 merchants currently trade there, selling produce, meat, seafood, and daily necessities.\n\nOne stretch of the market is a sundae alley, where restaurants selling sundae (Korean blood sausage) and sundaeguk (blood sausage soup) face each other across a narrow lane. Sundae is typically boiled fresh in the afternoon, so stores are better stocked for takeout later in the day than in the morning.\n\nIt's next to Yeongdeungpo Market Station, on Line 5."
     },
     "shinheung-market": {
       "name": "Shinheung Market",
@@ -1776,7 +1776,7 @@
       "serviceDetail": "Neighborhood market",
       "bestFor": "a market stop at the end of a Gyeongchun Line Forest Trail walk",
       "whyWeLikeIt": "Its name is said to come from vendors who'd scatter and reassemble near the old rail line whenever authorities cracked down on them — vanishing and reappearing like a goblin.",
-      "longDescription": "Gongneungdong Goblin Market traces back to street vendors who gathered near what's now Hwarangdae Station after the Gyeongchun railway line opened in 1939. The market has operated in some form for roughly 40 years, and is the only traditional market in Nowon-gu to have gone through a full modernization, including a transparent roof that lets in daylight.\n\nIt sells the usual mix of a neighborhood market — meat, groceries, prepared food, and household goods — and sits at the end of the Gyeongchun Line Forest Trail, the walking-and-cycling path built on the old railway's former route. Since around 2019, the market has developed alongside that trail into more of a destination stop.\n\nIt's near Taereung Entrance Station, on Lines 6 and 7."
+      "longDescription": "Gongneungdong Goblin Market traces back to street vendors who gathered near what's now Hwarangdae Station after the Gyeongchun railway line opened on July 25, 1939. It's a covered, arcade-style market today, selling the usual mix of a neighborhood market — meat, groceries, prepared food, and household goods.\n\nIt sits at the end of the Gyeongchun Line Forest Trail, the walking-and-cycling path built on the old railway's former route. Since around 2019, the market has developed alongside that trail into more of a destination stop.\n\nIt's near Taereung Entrance Station, on Lines 6 and 7."
     },
     "yeongcheon-market": {
       "name": "Yeongcheon Market",
@@ -1786,8 +1786,8 @@
       "summary": "A single-alley covered market in Seodaemun-gu, across the road from Independence Gate — once one of Seoul's largest wholesale rice-cake markets.",
       "serviceDetail": "Neighborhood market",
       "bestFor": "a covered neighborhood market next to Independence Gate Park",
-      "whyWeLikeIt": "The street around it was named a Seoul 'Future Heritage' site in 2021, and the market itself was once one of the city's largest wholesale rice-cake markets.",
-      "longDescription": "Yeongcheon Market formed in the 1960s near Dongnimmun (Independence Gate) in Seodaemun-gu, and for a stretch of its history was known as one of Seoul's largest wholesale markets for tteok (rice cakes). It's a single covered alley today, with roughly 130 to 200 stores depending on the count, selling street food, produce, meat, seafood, and household goods.\n\nTteokbokki and twisted doughnuts (kkwabaegi) are sold at a large share of the market's food stalls. In 2021, the city designated the street around the market — Yeongcheonsijang-gil — a Seoul Future Heritage site.\n\nIt's a short walk from Dongnimmun Station (Line 3), directly across the road from Independence Gate Park, and not far from Seodaemun Station (Line 5)."
+      "whyWeLikeIt": "The market itself was once one of Seoul's largest wholesale rice-cake markets — a different trade than what fills its stalls today.",
+      "longDescription": "Yeongcheon Market formed in the 1960s near Dongnimmun (Independence Gate) in Seodaemun-gu, starting as a tteok (rice cake) alley near the old Seodaemun Prison, and for a stretch of its history was known as one of Seoul's largest wholesale markets for rice cakes. It's a single covered alley today, selling street food, produce, meat, seafood, and household goods.\n\nTteokbokki and twisted doughnuts (kkwabaegi) are sold at a large share of the market's food stalls.\n\nIt's a short walk from Dongnimmun Station (Line 3), directly across the road from Independence Gate Park, and not far from Seodaemun Station (Line 5)."
     },
     "myeongdong-night-market": {
       "name": "Myeongdong Night Market",
