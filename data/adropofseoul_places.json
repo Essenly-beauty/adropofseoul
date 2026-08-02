@@ -3189,7 +3189,7 @@
     "googleMaps": "https://www.google.com/maps/search/?api=1&query=Starfield%20COEX%20Mall%20Gangnam%20Seoul",
     "naverMap": "https://map.naver.com/p/search/%EC%8A%A4%ED%83%80%ED%95%84%EB%93%9C%20%EC%BD%94%EC%97%91%EC%8A%A4%EB%AA%B0",
     "reviewSummary": "아시아 최대의 지하 쇼핑몰. 국내외 브랜드와 아쿠아리움·영화관·김치박물관 등 관광명소가 함께 있음",
-    "verified": false
+    "verified": true
   },
   {
     "id": "170",
@@ -3208,7 +3208,7 @@
     "googleMaps": "https://www.google.com/maps/search/?api=1&query=GOTO%20Mall%20Seocho%20Seoul",
     "naverMap": "https://map.naver.com/p/search/%EA%B3%A0%ED%88%AC%20%EB%AA%B0",
     "reviewSummary": "센트럴시티와 고속터미널을 잇는 서울 최대 지하상가, 여성의류 중심의 저렴한 쇼핑",
-    "verified": false
+    "verified": true
   },
   {
     "id": "171",
@@ -3227,7 +3227,7 @@
     "googleMaps": "https://www.google.com/maps/search/?api=1&query=I'Park%20Mall%20Yongsan%20Seoul",
     "naverMap": "https://map.naver.com/p/search/%EC%95%84%EC%9D%B4%ED%8C%8C%ED%81%AC%EB%AA%B0",
     "reviewSummary": "용산역 연결 복합쇼핑센터, 영화관·맛집·쇼핑을 한 곳에서 즐길 수 있음",
-    "verified": false
+    "verified": true
   },
   {
     "id": "172",
@@ -3246,7 +3246,7 @@
     "googleMaps": "https://www.google.com/maps/search/?api=1&query=Lotte%20Outlets%20Seoul%20Station%20Yongsan%20Seoul",
     "naverMap": "https://map.naver.com/p/search/%EB%A1%AF%EB%8D%B0%EC%95%84%EC%9A%B8%EB%A0%9B%20%EC%84%9C%EC%9A%B8%EC%97%AD%EC%A0%90",
     "reviewSummary": "서울역 인근 아울렛, 다양한 브랜드와 큰 할인폭으로 쇼핑하기 좋은 곳",
-    "verified": false
+    "verified": true
   },
   {
     "id": "173",
@@ -3265,7 +3265,7 @@
     "googleMaps": "https://www.google.com/maps/search/?api=1&query=IFC%20Mall%20Yeouido%20Seoul",
     "naverMap": "https://map.naver.com/p/search/IFC%20%EB%AA%B0",
     "reviewSummary": "2012년 개장한 여의도 대표 쇼핑몰, 여의도역과 연결되어 접근성 좋음",
-    "verified": false
+    "verified": true
   },
   {
     "id": "174",
@@ -3284,7 +3284,7 @@
     "googleMaps": "https://www.google.com/maps/search/?api=1&query=Common%20Ground%20Gwangjin%20Seoul",
     "naverMap": "https://map.naver.com/p/search/%EC%BB%A4%EB%A8%BC%EA%B7%B8%EB%9D%BC%EC%9A%B4%EB%93%9C",
     "reviewSummary": "200여개 컨테이너로 구성된 국내 최대 컨테이너 팝업몰, 건대 인근 인디 감성 복합문화공간",
-    "verified": false
+    "verified": true
   },
   {
     "id": "175",
@@ -3303,7 +3303,7 @@
     "googleMaps": "https://www.google.com/maps/search/?api=1&query=Myeongdong%20Underground%20Shopping%20Center%20Myeongdong%20Seoul",
     "naverMap": "https://map.naver.com/p/search/%EB%AA%85%EB%8F%99%EC%A7%80%ED%95%98%EC%83%81%EA%B0%80",
     "reviewSummary": "명동역과 연결된 지하상가, 의류·가방·기념품·K-pop 상품 등 판매",
-    "verified": false
+    "verified": true
   },
   {
     "id": "176",
@@ -3322,7 +3322,7 @@
     "googleMaps": "https://www.google.com/maps/search/?api=1&query=Apm%20Place%20Dongdaemun%20Seoul",
     "naverMap": "https://map.naver.com/p/search/%EC%97%90%EC%9D%B4%ED%94%BC%EC%97%A0%20%ED%94%8C%EB%A0%88%EC%9D%B4%EC%8A%A4",
     "reviewSummary": "동대문 소재 9층 규모 여성의류 도매쇼핑몰, 현금 결제 위주",
-    "verified": false
+    "verified": true
   },
   {
     "id": "177",
@@ -3341,7 +3341,7 @@
     "googleMaps": "https://www.google.com/maps/search/?api=1&query=Stylenanda%20Pink%20Hotel%20Flagship%20Store%20Myeongdong%20Seoul",
     "naverMap": "https://map.naver.com/p/search/%EC%8A%A4%ED%83%80%EC%9D%BC%EB%82%9C%EB%8B%A4%20%ED%95%91%ED%81%AC%ED%98%B8%ED%85%94",
     "reviewSummary": "명동의 핑크 컨셉 플래그십 스토어, 최상층 핑크풀 카페로 인기",
-    "verified": false
+    "verified": true
   },
   {
     "id": "178",
@@ -3360,7 +3360,7 @@
     "googleMaps": "https://www.google.com/maps/search/?api=1&query=Mecenatpolis%20Mall%20Hapjeong%20Seoul",
     "naverMap": "https://map.naver.com/p/search/%EB%A9%94%EC%84%B8%EB%82%98%ED%8F%B4%EB%A6%AC%EC%8A%A4%EB%AA%B0",
     "reviewSummary": "합정역과 연결된 야외형 쇼핑몰, 다양한 브랜드와 카페·식당 입점",
-    "verified": false
+    "verified": true
   },
   {
     "id": "179",
@@ -3379,7 +3379,7 @@
     "googleMaps": "https://www.google.com/maps/search/?api=1&query=Garden%205%20Songpa%20Seoul",
     "naverMap": "https://map.naver.com/p/search/%EA%B0%80%EB%93%A0%ED%8C%8C%EC%9D%B4%EB%B8%8C",
     "reviewSummary": "장지역 인근 복합쇼핑몰, NC백화점·현대시티몰·영화관 등 입점",
-    "verified": false
+    "verified": true
   },
   {
     "id": "180",
@@ -3398,7 +3398,7 @@
     "googleMaps": "https://www.google.com/maps/search/?api=1&query=Nampyeonghwa%20Sangga%20Dongdaemun%20Seoul",
     "naverMap": "https://map.naver.com/p/search/%EB%82%A8%ED%8F%89%ED%99%94%20%EC%83%81%EA%B0%80",
     "reviewSummary": "동대문 인근 가방·의류 도매상가, 시중가보다 저렴한 가격",
-    "verified": false
+    "verified": true
   },
   {
     "id": "181",
@@ -3417,7 +3417,7 @@
     "googleMaps": "https://www.google.com/maps/search/?api=1&query=Hello%20APM%20Dongdaemun%20Seoul",
     "naverMap": "https://map.naver.com/p/search/%ED%97%AC%EB%A1%9C%EC%97%90%EC%9D%B4%ED%94%BC%EC%97%A0",
     "reviewSummary": "동대문 인근 남녀 패션 전문 쇼핑몰, 흥정 가능한 가격대",
-    "verified": false
+    "verified": true
   },
   {
     "id": "182",
@@ -3436,7 +3436,7 @@
     "googleMaps": "https://www.google.com/maps/search/?api=1&query=Myeongdong%20Migliore%20Myeongdong%20Seoul",
     "naverMap": "https://map.naver.com/p/search/%EB%AA%85%EB%8F%99%EB%B0%80%EB%A6%AC%EC%98%A4%EB%A0%88",
     "reviewSummary": "명동역 인근 대형 패션상가, 저렴하지만 노후화된 시설로 평가됨",
-    "verified": false
+    "verified": true
   },
   {
     "id": "183",

@@ -1799,6 +1799,160 @@
       "bestFor": "an evening of Myeongdong's street food once the daytime shops close",
       "whyWeLikeIt": null,
       "longDescription": "Myeongdong Night Market is the name commonly given to the street-food scene that takes over Myeongdong-gil and its side streets each evening, once the neighborhood's daytime fashion and cosmetics shops start winding down. Vendors typically begin setting up carts in the late afternoon.\n\nSkewers of grilled meat, hotteok (a filled, pan-fried sweet pancake), tteokbokki, grilled and battered seafood, and baked cheese dishes are the mainstays, sold from carts concentrated within a few minutes' walk of Myeongdong Station. Unlike Namdaemun or Gwangjang, it isn't organized around a single market building — it's an evening layer on top of Myeongdong's regular shopping street, and it packs up again by around midnight.\n\nIt's centered on Myeongdong Station, Exit 6, on Line 4."
+    },
+    "starfield-coex-mall": {
+      "name": "Starfield COEX Mall",
+      "category": "mall",
+      "kind": "place",
+      "area": "Gangnam",
+      "summary": "The underground mall beneath the COEX complex in Samseong-dong, holding an aquarium, a multiplex and a free public library.",
+      "serviceDetail": "Underground shopping mall",
+      "bestFor": "a long indoor afternoon that mixes shopping with an aquarium and a library",
+      "whyWeLikeIt": "It holds a 4.0 rating across more than 900 ratings — a large enough sample for the number to mean something.",
+      "longDescription": "Starfield COEX Mall runs beneath the COEX complex at 513 Yeongdong-daero, in Samseong-dong. Alongside the shops it holds the COEX Aquarium, a Megabox multiplex and the Starfield Library.\n\nThe library occupies two levels at the middle of the mall — 2,800 square metres, shelves thirteen metres high, around 70,000 books and some 600 magazine titles, open to anyone at no charge. Around it run the fashion, beauty and food-and-beverage floors, and the mall keeps one set of hours, 10:30 to 22:00.\n\nYou can reach all of it without going outside. Samseong Station on Line 2 connects directly through Exits 5 and 6 by way of Millennium Plaza, and Bongeunsa Station on Line 9 connects through Exit 7 by way of ASEM Plaza."
+    },
+    "goto-mall": {
+      "name": "GOTO Mall",
+      "category": "mall",
+      "kind": "place",
+      "area": "Seocho",
+      "summary": "The 620-shop arcade under the Express Bus Terminal — the largest of the 25 underground arcades the city operates.",
+      "serviceDetail": "Underground shopping arcade",
+      "bestFor": "shopping without going outside, between the subway and the bus terminal",
+      "whyWeLikeIt": "It is public infrastructure rather than a retail development — the Seoul Facilities Corporation runs it as one of 25 city-owned arcades, which is why the passageways stay open 24 hours whether or not the shops are.",
+      "longDescription": "GOTO Mall is the underground shopping arcade beneath the Express Bus Terminal in Seocho-gu, run by the Seoul Facilities Corporation as one of the 25 arcades the city owns. It covers 31,566 square metres and holds 620 shops, which makes it the largest of those 25 by both floor area and shop count.\n\nThe corporation lists its goods as clothing, flowers and household items, plus restaurants. Shops keep 10:00 to 22:00; the passageways themselves stay open 24 hours, so the arcade doubles as a route between the trains and the coaches.\n\nExpress Bus Terminal Station sits directly above it, served by Lines 3, 7 and 9, and the arcade links the station to the terminal building where buses leave for the rest of the country."
+    },
+    "ipark-mall": {
+      "name": "I'Park Mall",
+      "category": "mall",
+      "kind": "place",
+      "area": "Yongsan",
+      "summary": "The eleven-floor mall built into Yongsan Station — department store halls, an electronics centre, a cinema and an e-sports arena.",
+      "serviceDetail": "Station-attached shopping complex",
+      "bestFor": "filling the hours before a train out of Yongsan Station",
+      "whyWeLikeIt": "It is built into Yongsan Station rather than near it, so the shops are reachable straight from the concourse without going outside.",
+      "longDescription": "I'Park Mall stands at 55 Hangang-daero 23-gil and connects directly into Yongsan Station, which is the first thing to know about it — you reach the shops from the station without stepping outside.\n\nInside, it divides into the I'Park Department Store, itself split into Living, Culture and Fashion halls, plus a Digital Shopping Center and an Event Park. Alongside those are a CGV cinema, an e-sports stadium, an E-mart, a bookstore, a culture centre and more than a hundred restaurants, spread over eleven floors.\n\nHours run 10:30 to 20:30 Sunday through Thursday and 10:30 to 21:00 on Fridays and Saturdays, with floors one to three and the fashion park on four staying open to 22:00."
+    },
+    "lotte-outlets-seoul-station": {
+      "name": "Lotte Outlets Seoul Station",
+      "category": "mall",
+      "kind": "place",
+      "area": "Yongsan",
+      "summary": "Three outlet floors inside the Seoul Station building, carrying 84 brands above a Lotte Mart.",
+      "serviceDetail": "Outlet mall",
+      "bestFor": "a shopping stop worked into a departure from Seoul Station",
+      "whyWeLikeIt": "It is inside the station building rather than beside it, and the Lotte Mart below it stays open to 23:00 — two hours after the outlet floors have closed.",
+      "longDescription": "Lotte Outlets Seoul Station takes up three floors of the Seoul Station building at 405 Hangang-daero, in Jung-gu. It carries 84 brands across about 3,400 pyeong — roughly 11,000 square metres — among them the first North Face outlet store, and there are paid lockers on site for anyone shopping between trains.\n\nThe outlet floors run 10:30 to 21:00. Sharing the same building beneath them is a Lotte Mart branded Zettaplex, open 10:00 to 23:00 and closed two Wednesdays a month, with immediate tax refunds available to foreign shoppers."
+    },
+    "ifc-mall": {
+      "name": "IFC Mall",
+      "category": "mall",
+      "kind": "place",
+      "area": "Yeouido",
+      "summary": "Three basement levels under the International Finance Centre towers on Yeouido, reached from the station by a 360-metre moving walkway.",
+      "serviceDetail": "Underground shopping mall",
+      "bestFor": "a cinema and a bookshop in the middle of the office district",
+      "whyWeLikeIt": "The 360-metre moving walkway from Yeouido Station means the whole visit can happen underground — and by its operator's account it was the first retail and cultural complex to open in Yeouido, Seoul's financial centre.",
+      "longDescription": "IFC Mall occupies three basement levels beneath the International Finance Centre at 10 Gukjegeumyung-ro, on Yeouido. It opened in 2012 and holds around 110 brands — fashion, beauty, sportswear and accessories — plus restaurants, a nine-screen CGV cinema and a Youngpoong Bookstore.\n\nThe approach is the distinctive part. A 360-metre moving walkway runs from Yeouido Station, where Lines 5 and 9 interchange, straight into the mall, so you never come up to street level.\n\nMall hours are 10:00 to 22:00; the street-level shops close an hour earlier, at 21:00."
+    },
+    "common-ground": {
+      "name": "Common Ground",
+      "category": "mall",
+      "kind": "place",
+      "area": "Gwangjin",
+      "summary": "A complex assembled from 200 shipping containers outside Konkuk University, open since April 2015.",
+      "serviceDetail": "Container shopping complex",
+      "bestFor": "browsing a shopping complex built out of freight containers",
+      "whyWeLikeIt": "The containers aren't a decorative theme — the whole structure is 200 of them, stacked into two facing blocks.",
+      "longDescription": "Common Ground stands at 200 Achasan-ro in Gwangjin-gu, built from 200 shipping containers and open since 10 April 2015. The containers are stacked into two facing blocks, Street Market and Market Hall, and the complex's other named zones are a Culture Space, a Terrace Market and a Market Ground.\n\nStreet Market holds thirty shops and Market Hall carries 26 boutique brands, with an Adidas Originals store occupying a zone of its own.\n\nOpening hours are 11:00 to 22:00, with some of the third-floor food tenants running to 01:00 at weekends. Konkuk University Station, where Lines 2 and 7 meet, is Exit 3 and about three minutes away on foot."
+    },
+    "myeongdong-underground-shopping-center": {
+      "name": "Myeongdong Underground Shopping Center",
+      "category": "mall",
+      "kind": "place",
+      "area": "Myeongdong",
+      "summary": "A 61-shop arcade under Namdaemun-ro listed for eyewear and clothing — and entered from Euljiro 1-ga Station, not Myeongdong Station.",
+      "serviceDetail": "Underground shopping arcade",
+      "bestFor": "eyeglasses, and a covered route between Euljiro and Myeongdong",
+      "whyWeLikeIt": "The operator gives its main goods as eyeglasses and clothing, and the name misleads on access: the entrance is at Euljiro 1-ga, while the arcade under Myeongdong Station is a different one.",
+      "longDescription": "The Myeongdong Underground Shopping Center runs under Namdaemun-ro at basement number 72, one of the 25 underground arcades the Seoul Facilities Corporation operates. It covers 3,838 square metres and holds 61 shops; the operator lists its main goods as eyeglasses and clothing.\n\nThe name is misleading about how you get in. The arcade connects to Euljiro 1-ga Station on Line 2, at Exit 7 — not to Myeongdong Station. There is a separate arcade at Myeongdong Station on Line 4, running under Toegye-ro with 70 shops of its own selling clothing, bags and accessories.\n\nShops open 09:00 to 22:00 and the arcade trades year-round; the passageway itself stays open 24 hours."
+    },
+    "apm-place": {
+      "name": "Apm Place",
+      "category": "mall",
+      "kind": "place",
+      "area": "Dongdaemun",
+      "summary": "A twelve-storey wholesale fashion building in Dongdaemun that trades overnight, from 8pm to 5am, and closes at weekends.",
+      "serviceDetail": "Wholesale fashion building",
+      "bestFor": "buying women's clothing wholesale on Dongdaemun's night schedule",
+      "whyWeLikeIt": "Its hours say what it is: 8pm to 5am, shut Friday and Saturday. This building runs on the buyers' week, not the shopper's weekend.",
+      "longDescription": "apM PLACE is at 276 Euljiro, one of three apM buildings in Dongdaemun — with apM and apM Luxe — that trade as wholesale fashion malls.\n\nThe selling floors are given over almost entirely to women's clothing, filling floors one through eight and the first basement, with miscellaneous goods on the second basement. Above the shop floors the building turns over to storage on nine, offices on ten, and officetels on eleven and twelve; parking sits on basement levels four and five.\n\nTrading runs from 8:00pm to 5:00am the following morning, and the building is closed on Fridays and Saturdays. That is the Dongdaemun wholesale cycle rather than an ordinary mall's timetable, so anyone arriving in the daytime will find the shutters down."
+    },
+    "stylenanda-pink-hotel-flagship-store": {
+      "name": "Stylenanda Pink Hotel Flagship Store",
+      "category": "mall",
+      "kind": "place",
+      "area": "Myeongdong",
+      "summary": "Stylenanda's Myeongdong flagship, fitted out as an imaginary pink hotel — lobby, spa, guest room and pool, each one a selling floor.",
+      "serviceDetail": "Brand flagship store",
+      "bestFor": "3CE cosmetics, and the themed floors they come with",
+      "whyWeLikeIt": "The hotel conceit runs all the way up: the fifth-floor Pink Pool Cafe is a bakery operated separately from the store, and the sixth-floor rooftop is open to anyone who climbs to it.",
+      "longDescription": "The Stylenanda Pink Hotel is the brand's Myeongdong flagship at 37-8 Myeongdong 8-gil, open since October 2016 and built out as a fictional hotel: each floor is dressed as a lobby, a spa, a guest room, a pool area or a terrace, and the whole thing is pink.\n\nThe stock divides by level. The first two floors carry 3CE, Stylenanda's cosmetics line; floors three to five hold clothing and apparel. The fifth floor also has the Pink Pool Cafe, a bakery run separately from Stylenanda, and the rooftop on six is open to the public.\n\nIt opens at 12:00 and closes at 21:00. Myeongdong Station Exit 6, on Line 4, is 148 metres away."
+    },
+    "mecenatpolis-mall": {
+      "name": "Mecenatpolis Mall",
+      "category": "mall",
+      "kind": "place",
+      "area": "Hapjeong",
+      "summary": "An open-air street mall at the foot of the Mecenatpolis towers in Hapjeong, connected directly to the station.",
+      "serviceDetail": "Open-air street mall",
+      "bestFor": "a cinema, a supermarket and a meal without an enclosed mall around them",
+      "whyWeLikeIt": "A Lotte Cinema and a performance venue, the Lotte Card Art Center, are built into the same complex as the shops and the supermarket.",
+      "longDescription": "Mecenatpolis Mall sits at 45 Yanghwa-ro in Seogyo-dong, at the base of the Mecenatpolis complex — three residential towers plus offices, completed in 2012. The Korea Tourism Organization classifies the mall itself as a street mall, meaning its shops line open walkways rather than enclosed corridors.\n\nTenants cover fashion and beauty, a large supermarket, and a run of restaurants and cafés. A Lotte Cinema is on site, as is the Lotte Card Art Center, a performance venue.\n\nThe mall connects directly to Hapjeong Station, where Lines 2 and 6 interchange."
+    },
+    "garden-5": {
+      "name": "Garden 5",
+      "category": "mall",
+      "kind": "place",
+      "area": "Songpa",
+      "summary": "A four-hall retail complex at Jangji Station, built by the city to rehouse traders displaced by the Cheonggyecheon restoration.",
+      "serviceDetail": "Suburban shopping complex",
+      "bestFor": "a full-day mall trip in southeastern Seoul",
+      "whyWeLikeIt": "Roughly 4,000 retail units sit across its four halls, anchored by an NC Department Store, a Hyundai City Mall outlet and a CGV multiplex.",
+      "longDescription": "Garden 5 is at 66 Chungmin-ro in Munjeong-dong, in southeastern Seoul. Songpa-gu's own listing describes four halls — Fashion, Main, Living and Techno — holding roughly 4,000 retail units between them.\n\nThe complex exists because of the Cheonggyecheon restoration. Seoul's city government, through its SH Corporation, developed it as somewhere the traders cleared from the stream's banks could reopen, and it opened in June 2010.\n\nThe large tenants today are an NC Department Store, a Hyundai City Mall urban outlet and a CGV multiplex. Hours are 10:30 to 21:00 Monday to Thursday and 10:30 to 22:00 Friday to Sunday, with the food halls running 10:00 to 23:00 every day. Jangji Station on Line 8 is Exit 4."
+    },
+    "nampyeonghwa-sangga": {
+      "name": "Nampyeonghwa Sangga",
+      "category": "mall",
+      "kind": "place",
+      "area": "Dongdaemun",
+      "summary": "A wholesale market for bags and clothing on the Dongdaemun edge of Jung-gu, trading since 1980 across a basement and three floors.",
+      "serviceDetail": "Wholesale bag & clothing market",
+      "bestFor": "bags bought wholesale, on the market's own hours",
+      "whyWeLikeIt": "Bags are the specialism rather than a side line: the basement and the whole ground floor are given to them, in a building that has been trading since 1980.",
+      "longDescription": "Nampyeonghwa Sangga is a wholesale market for bags and clothing at 282-10 Jangchungdan-ro, in Sindang-dong on the Dongdaemun side of Jung-gu. It has been trading since 1980 and holds around 700 shops across a basement and three floors.\n\nStock is arranged by level: bags in the basement and on the ground floor, young casual wear on the second floor, denim and women's clothing on the third.\n\nThe hours split the same way. The basement and ground floor trade from midnight to noon; the second and third floors trade from 8:00pm to 5:00am. The whole building is closed on Fridays and Saturdays, and on the days it does open, no floor trades in the afternoon."
+    },
+    "hello-apm": {
+      "name": "Hello APM",
+      "category": "mall",
+      "kind": "place",
+      "area": "Dongdaemun",
+      "summary": "A Dongdaemun fashion building that trades retail rather than wholesale, with the clothing on its lower four floors — open to 1am, closed Tuesdays.",
+      "serviceDetail": "Retail fashion building",
+      "bestFor": "late-evening clothes shopping in Dongdaemun without wholesale hours",
+      "whyWeLikeIt": "Only part of the building is a mall. Clothing occupies the basement and floors one to four; five to seven are listed as vacant, and everything above is a gym, clinics and offices.",
+      "longDescription": "Hello apm is at 253 Jangchungdan-ro in Dongdaemun. The Dongdaemun Fashion Town tourist-zone directory lists it as a shopping centre and discount store rather than a wholesale building, and the hours match: 10:20 in the morning until 1:00am, closed on Tuesdays.\n\nClothing sits on the lower floors — women's wear on one, two and three, with women's accessories on three; children's wear and wedding goods, including hanbok, bedding, jewellery and curtains, also on two; men's wear and accessories on four. The basement carries shoes, imported cosmetics, tourist goods and a comics café, and there is a pharmacy on the ground floor.\n\nFloors five to seven are listed as vacant. The floors above them are not retail at all: a gym on eight, screen golf and billiards on nine, dental, paediatric, obstetric and dermatology clinics on ten, and management offices on eleven."
+    },
+    "myeongdong-migliore": {
+      "name": "Myeongdong Migliore",
+      "category": "mall",
+      "kind": "place",
+      "area": "Myeongdong",
+      "summary": "Two retail floors at Myeongdong Station Exit 6, under fifteen storeys of hotel — remodelled and reopened in August 2024.",
+      "serviceDetail": "Fashion & lifestyle arcade",
+      "bestFor": "a short stop right outside Myeongdong Station Exit 6",
+      "whyWeLikeIt": "It sits directly at Myeongdong Station Exit 6, and what's on its two floors is a mix rather than a category — an Olive Young, a handful of fashion labels, a K-pop merchandise shop and cafés.",
+      "longDescription": "Myeongdong Migliore is at 115 Toegye-ro, directly in front of Myeongdong Station Exit 6. Migliore opened its first branch in Dongdaemun in February 1998 and this Myeongdong branch in 2000.\n\nThe building now does two jobs at once. Floors one and two are the shopping mall; floors three to seventeen operate as a hotel. The two retail floors were remodelled and reopened in August 2024.\n\nWhat's on them is a mix rather than one category: Olive Young and Giordano, fashion labels including Folder, Roem, Drawfit and Instant Punk, the K-pop merchandise shop AllThatKpop, and cafés. Opening hours are set store by store rather than for the building, so each shop keeps its own.\n\nIts rating stands at 3.1 across 42 ratings — a small sample."
     }
   }
 }
