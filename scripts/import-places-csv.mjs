@@ -71,7 +71,10 @@ export function isUsable(row) {
 // data/places-import/seoul-attractions-2026-07.csv는 소스가 원래 무엇을 말했는지의
 // 기록으로 그대로 둔다. MAPPING은 이후 검증을 거친 값을 담으며, 둘이 다르면
 // 검증이 우선한다 — CSV 원문이 아니라 여기가 authoritative.
-// unpublished: 편집 판단으로 게시하지 않는 행 (검증 실패와 이유가 다르다).
+// 게시 여부는 여기서 정하지 않는다. buildRows는 모든 행을 verified: false로 내보내고,
+// 게시는 검증 태스크가 data/adropofseoul_places.json에서 손으로 뒤집는다. 끝내 게시하지
+// 않는 행의 사유(검증 실패 / 편집 판단)는 data/places-curation.en.json의
+// unpublishedReason에 적는다.
 export const MAPPING = {
   광진교8번가: {
     category: "observatory",
@@ -360,13 +363,11 @@ export const MAPPING = {
     category: "spa",
     area: "Myeongdong",
     address: "서울 중구 남대문로 78",
-    unpublished: true,
   },
   황족마사지: {
     category: "spa",
     area: "Myeongdong",
     address: "서울 중구 명동8나길 12 롯데리아 5층",
-    unpublished: true,
   },
   "숲속 한방 랜드": {
     category: "spa",
@@ -422,7 +423,6 @@ export const MAPPING = {
     category: "head_spa",
     area: "Jongno",
     address: "서울 종로구 자하문로 9, 5층",
-    unpublished: true,
   },
   "크레이트 웰네스": {
     category: "wellness",
@@ -431,7 +431,8 @@ export const MAPPING = {
   },
 };
 
-// 시딩하지 않는 행 — 분류가 사실과 다른 경우만. 저평점은 여기가 아니라 MAPPING.unpublished로 다룬다.
+// 시딩하지 않는 행 — 분류가 사실과 다른 경우만. 저평점은 여기서 빼지 않는다: 행은 남기고
+// 게시만 하지 않으며, 사유는 curation의 unpublishedReason에 적는다(위 MAPPING 주석 참고).
 export const EXCLUDED = {
   종로타워: "전망 데크가 오피스로 전환됨 — observatory 분류가 사실과 다름",
 };

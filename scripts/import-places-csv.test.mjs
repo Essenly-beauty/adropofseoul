@@ -123,11 +123,12 @@ describe("MAPPING", () => {
     }
   });
 
-  it("marks exactly the three editorially held-back rows", () => {
-    const held = Object.entries(MAPPING)
-      .filter(([, m]) => m.unpublished)
-      .map(([n]) => n);
-    expect(held.sort()).toEqual(["Eco Jardin", "오투", "황족마사지"].sort());
+  // MAPPING은 게시 여부를 다루지 않는다 — buildRows가 전 행을 verified: false로
+  // 내보내고, 미게시 사유는 curation의 unpublishedReason이 갖는다.
+  // 게이트 자체는 scripts/seed-places.test.mjs가 검증한다.
+  it("carries no publish flag — only category, area, address", () => {
+    const keys = new Set(Object.values(MAPPING).flatMap((m) => Object.keys(m)));
+    expect([...keys].sort()).toEqual(["address", "area", "category"]);
   });
 
   // 주소 공란은 두 가지 뿐이다: 단일 주소가 존재하지 않는 곳(포장마차 골목)과,
