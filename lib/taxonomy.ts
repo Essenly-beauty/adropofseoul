@@ -229,6 +229,11 @@ export const SEOUL_NEIGHBORHOODS: Neighborhood[] = [
         blurb: "Scrubs, facials, and skin clinics between the studios.",
         categories: ["spa", "facial", "clinic"],
       },
+      {
+        title: "Eat & drink with a guide",
+        blurb: "Bar and street-food crawls that start here after dark.",
+        categories: ["food_tour"],
+      },
     ],
   },
   {
@@ -257,6 +262,17 @@ export const SEOUL_NEIGHBORHOODS: Neighborhood[] = [
         title: "Personal color",
         blurb: "Quick diagnoses that fit between itinerary stops.",
         categories: ["personal_color"],
+      },
+      {
+        title: "Markets",
+        blurb:
+          "Namdaemun's wholesale rows, and the stalls that set up at dusk.",
+        categories: ["market"],
+      },
+      {
+        title: "Malls & arcades",
+        blurb: "Underground shopping and fashion floors, a few blocks apart.",
+        categories: ["mall"],
       },
     ],
   },
@@ -290,9 +306,15 @@ export const SEOUL_NEIGHBORHOODS: Neighborhood[] = [
         entryType: "experience",
       },
       {
-        title: "Nails & clinics",
-        blurb: "Celebrity nail art and dermatology-grade skin care.",
-        categories: ["nail_lash", "clinic"],
+        title: "Facials, nails & clinics",
+        blurb:
+          "Facial studios, celebrity nail art, and dermatology-grade skin care.",
+        categories: ["facial", "nail_lash", "clinic"],
+      },
+      {
+        title: "Malls",
+        blurb: "Underground complexes big enough to fill a whole afternoon.",
+        categories: ["mall"],
       },
     ],
   },

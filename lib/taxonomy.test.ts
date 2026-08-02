@@ -21,6 +21,7 @@ import {
   SEOUL_NEIGHBORHOODS,
   type NeighborhoodSection,
   type Neighborhood,
+  type PlaceEntryKind,
 } from "./taxonomy";
 import type { Post } from "@/services/types";
 
@@ -248,6 +249,63 @@ describe("seoul neighborhoods", () => {
         expect(known.has(a), `${n.slug} / ${a}`).toBe(true);
     }
   });
+});
+
+// A hub renders only what groupPlacesBySection matches: a published place whose
+// category is in none of its sections is dropped without a trace. This drives
+// the real data so widening `place_category` (or seeding a new area) fails here
+// rather than silently emptying a row off its neighborhood page.
+describe("neighborhood hub coverage", () => {
+  type SourceRow = { slug: string; verified?: boolean };
+  type CurationRow = {
+    category: string;
+    kind: PlaceEntryKind;
+    area: string | null;
+  };
+  const read = <T>(rel: string): T =>
+    JSON.parse(readFileSync(join(__dirname, rel), "utf8")) as T;
+
+  // Mirrors scripts/seed-places.mjs: `excluded` slugs never reach the DB, and
+  // only `verified: true` rows are seeded with is_published true.
+  const source = read<SourceRow[]>("../data/adropofseoul_places.json");
+  const curation = read<{
+    excluded: Record<string, string>;
+    places: Record<string, CurationRow>;
+  }>("../data/places-curation.en.json");
+
+  const published = source
+    .filter((s) => s.verified === true && !curation.excluded[s.slug])
+    .map((s) => {
+      const en = curation.places[s.slug];
+      if (!en) throw new Error(`no curation entry for ${s.slug}`);
+      return {
+        slug: s.slug,
+        category: en.category,
+        entryType: en.kind,
+        area: en.area,
+      };
+    });
+
+  for (const n of SEOUL_NEIGHBORHOODS) {
+    it(`shows every published ${n.slug} place in some section`, () => {
+      const areas = neighborhoodAreas(n);
+      const inHub = published.filter((p) => !!p.area && areas.includes(p.area));
+      expect(inHub.length, `${n.slug} has no published places`).toBeGreaterThan(
+        0
+      );
+
+      const shown = new Set(
+        groupPlacesBySection(inHub, n.sections ?? []).flatMap((g) =>
+          g.places.map((p) => p.slug)
+        )
+      );
+      const dropped = inHub
+        .filter((p) => !shown.has(p.slug))
+        .map((p) => `${p.slug} (${p.category}/${p.entryType})`)
+        .sort();
+      expect(dropped, `${n.slug} hub drops these places`).toEqual([]);
+    });
+  }
 });
 
 describe("sectionDirectoryHref", () => {
