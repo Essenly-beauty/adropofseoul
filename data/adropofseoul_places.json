@@ -2847,7 +2847,7 @@
     "googleMaps": "https://www.google.com/maps/search/?api=1&query=Namdaemun%20Market%20Myeongdong%20Seoul",
     "naverMap": "https://map.naver.com/p/search/%EB%82%A8%EB%8C%80%EB%AC%B8%EC%8B%9C%EC%9E%A5",
     "reviewSummary": "한국 최대 규모 전통시장. 의류·액세서리·공예품·약재 등 판매, 상인이 직접 만든 상품을 좋은 가격에 판매.",
-    "verified": false
+    "verified": true
   },
   {
     "id": "152",
@@ -2866,7 +2866,7 @@
     "googleMaps": "https://www.google.com/maps/search/?api=1&query=Kwangjang%20Market%20Jongno%20Seoul",
     "naverMap": "https://map.naver.com/p/search/%EA%B4%91%EC%9E%A5%EC%8B%9C%EC%9E%A5",
     "reviewSummary": "1905년 설립된 국내 최초 사설 상설시장. 빈대떡·마약김밥 등 먹자골목으로 유명, 최근 외국인 관광객 급증.",
-    "verified": false
+    "verified": true
   },
   {
     "id": "153",
@@ -2885,7 +2885,7 @@
     "googleMaps": "https://www.google.com/maps/search/?api=1&query=Ssamzigil%20Jongno%20Seoul",
     "naverMap": "https://map.naver.com/p/search/%EC%8C%88%EC%A7%80%EA%B8%B8",
     "reviewSummary": "나선형 통로를 따라 전통 공예품·기념품·체험공방이 모인 편집매장.",
-    "verified": false
+    "verified": true
   },
   {
     "id": "154",
@@ -2904,7 +2904,7 @@
     "googleMaps": "https://www.google.com/maps/search/?api=1&query=Noryangjin%20Fisheries%20Wholesale%20Market%20Noryangjin%20Seoul",
     "naverMap": "https://map.naver.com/p/search/%EB%85%B8%EB%9F%89%EC%A7%84%20%EC%88%98%EC%82%B0%EB%AC%BC%20%EB%8F%84%EB%A7%A4%EC%8B%9C%EC%9E%A5",
     "reviewSummary": "서울 최대 수산물 도매시장. 신선한 회를 구매 후 인근 식당에서 시식 가능.",
-    "verified": false
+    "verified": true
   },
   {
     "id": "155",
@@ -2923,7 +2923,7 @@
     "googleMaps": "https://www.google.com/maps/search/?api=1&query=Majang%20Meat%20Market%20Seongdong%20Seoul",
     "naverMap": "https://map.naver.com/p/search/%EB%A7%88%EC%9E%A5%20%EC%B6%95%EC%82%B0%EB%AC%BC%EC%8B%9C%EC%9E%A5",
     "reviewSummary": "국내 최대 축산물 유통시장. 저렴하게 한우 구매 후 바로 구워먹기 가능.",
-    "verified": false
+    "verified": true
   },
   {
     "id": "156",
@@ -2938,11 +2938,11 @@
     "reviews": 115,
     "website": null,
     "instagram": null,
-    "address": "",
+    "address": "서울 중구 을지로36길 35",
     "googleMaps": "https://www.google.com/maps/search/?api=1&query=Jungbu%20Market%20Euljiro%20Seoul",
     "naverMap": "https://map.naver.com/p/search/%EC%A4%91%EB%B6%80%EC%8B%9C%EC%9E%A5",
     "reviewSummary": "건어물·해산물·인삼 전문 도매시장.",
-    "verified": false
+    "verified": true
   },
   {
     "id": "157",
@@ -2961,7 +2961,7 @@
     "googleMaps": "https://www.google.com/maps/search/?api=1&query=Mangwon%20Market%20Mangwon%20Seoul",
     "naverMap": "https://map.naver.com/p/search/%EB%A7%9D%EC%9B%90%EC%8B%9C%EC%9E%A5",
     "reviewSummary": "망원동 대표 전통시장, 신선한 채소·과일과 먹거리로 유명.",
-    "verified": false
+    "verified": true
   },
   {
     "id": "158",
@@ -2980,7 +2980,7 @@
     "googleMaps": "https://www.google.com/maps/search/?api=1&query=Garak%20Market%20Songpa%20Seoul",
     "naverMap": "https://map.naver.com/p/search/%EA%B0%80%EB%9D%BD%EC%8B%9C%EC%9E%A5",
     "reviewSummary": "국내 최대 농수산물 도매시장.",
-    "verified": false
+    "verified": true
   },
   {
     "id": "159",
@@ -2999,7 +2999,7 @@
     "googleMaps": "https://www.google.com/maps/search/?api=1&query=Seoul%20Folk%20Flea%20Market%20Dongdaemun%20Seoul",
     "naverMap": "https://map.naver.com/p/search/%EC%84%9C%EC%9A%B8%ED%92%8D%EB%AC%BC%EC%8B%9C%EC%9E%A5",
     "reviewSummary": "신설동 인근 실내 골동품·구제 시장.",
-    "verified": false
+    "verified": true
   },
   {
     "id": "160",
@@ -3018,7 +3018,7 @@
     "googleMaps": "https://www.google.com/maps/search/?api=1&query=Dongmyo%20Flea%20Market%20Jongno%20Seoul",
     "naverMap": "https://map.naver.com/p/search/%EB%8F%99%EB%AC%98%EB%B2%BC%EB%A3%A9%EC%8B%9C%EC%9E%A5",
     "reviewSummary": "구제·빈티지 벼룩시장, 골동품과 중고의류 판매.",
-    "verified": false
+    "verified": true
   },
   {
     "id": "161",
@@ -3037,7 +3037,7 @@
     "googleMaps": "https://www.google.com/maps/search/?api=1&query=Mapo%20Agricultural%20%26%20Marine%20Products%20Market%20Sangam%20Seoul",
     "naverMap": "https://map.naver.com/p/search/%EB%A7%88%ED%8F%AC%20%EB%86%8D%EC%88%98%EC%82%B0%EB%AC%BC%20%EC%8B%9C%EC%9E%A5",
     "reviewSummary": "마포월드컵경기장 인근 도매시장. 노량진시장의 저렴한 대안으로 언급됨.",
-    "verified": false
+    "verified": true
   },
   {
     "id": "162",
@@ -3056,7 +3056,7 @@
     "googleMaps": "https://www.google.com/maps/search/?api=1&query=Gongdeok%20Market%20Gongdeok%20Seoul",
     "naverMap": "https://map.naver.com/p/search/%EA%B3%B5%EB%8D%95%EC%8B%9C%EC%9E%A5",
     "reviewSummary": "마포 공덕동 명물시장, 족발집으로 유명.",
-    "verified": false
+    "verified": true
   },
   {
     "id": "163",
@@ -3075,7 +3075,7 @@
     "googleMaps": "https://www.google.com/maps/search/?api=1&query=Jongno%203-ga%20Stalls%20Alley%20Jongno%20Seoul",
     "naverMap": "https://map.naver.com/p/search/%EC%A2%85%EB%A1%9C3%EA%B0%80%20%ED%8F%AC%EC%9E%A5%EB%A7%88%EC%B0%A8%20%EA%B3%A8%EB%AA%A9",
     "reviewSummary": "포장마차가 모인 골목, 힙한 감성의 길거리 음식.",
-    "verified": false
+    "verified": true
   },
   {
     "id": "164",
@@ -3094,7 +3094,7 @@
     "googleMaps": "https://www.google.com/maps/search/?api=1&query=Yeongdeungpo%20Market%20Yeongdeungpo%20Seoul",
     "naverMap": "https://map.naver.com/p/search/%EC%98%81%EB%93%B1%ED%8F%AC%EC%A4%91%EC%95%99%EC%8B%9C%EC%9E%A5",
     "reviewSummary": "영등포 대표 재래시장, 순댓국 거리로 유명.",
-    "verified": false
+    "verified": true
   },
   {
     "id": "165",
@@ -3113,7 +3113,7 @@
     "googleMaps": "https://www.google.com/maps/search/?api=1&query=Shinheung%20Market%20Yongsan%20Seoul",
     "naverMap": "https://map.naver.com/p/search/%EC%8B%A0%ED%9D%A5%EC%8B%9C%EC%9E%A5",
     "reviewSummary": "해방촌 레트로 감성 골목시장, 소품샵·카페.",
-    "verified": false
+    "verified": true
   },
   {
     "id": "166",
@@ -3132,7 +3132,7 @@
     "googleMaps": "https://www.google.com/maps/search/?api=1&query=Gongneungdong%20Goblin%20Market%20Nowon%20Seoul",
     "naverMap": "https://map.naver.com/p/search/%EA%B3%B5%EB%A6%89%EB%8F%99%20%EB%8F%84%EA%B9%A8%EB%B9%84%EC%8B%9C%EC%9E%A5",
     "reviewSummary": "경춘선숲길과 연결된 아담한 시장, 닭강정·만두 등.",
-    "verified": false
+    "verified": true
   },
   {
     "id": "167",
@@ -3151,7 +3151,7 @@
     "googleMaps": "https://www.google.com/maps/search/?api=1&query=Yeongcheon%20Market%20Seodaemun%20Seoul",
     "naverMap": "https://map.naver.com/p/search/%EC%98%81%EC%B2%9C%EC%8B%9C%EC%9E%A5",
     "reviewSummary": "현지인이 즐겨찾는 전통시장, 족발 맛집으로 유명.",
-    "verified": false
+    "verified": true
   },
   {
     "id": "168",
@@ -3170,7 +3170,7 @@
     "googleMaps": "https://www.google.com/maps/search/?api=1&query=Myeongdong%20Night%20Market%20Myeongdong%20Seoul",
     "naverMap": "https://map.naver.com/p/search/Myeongdong%20Night%20Market",
     "reviewSummary": "명동 인근 야시장, 밤에 즐기는 다양한 길거리 음식.",
-    "verified": false
+    "verified": true
   },
   {
     "id": "169",
