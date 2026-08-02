@@ -130,11 +130,11 @@ describe("MAPPING", () => {
     expect(held.sort()).toEqual(["Eco Jardin", "오투", "황족마사지"].sort());
   });
 
-  it("leaves address blank only for the two rows verification must fill", () => {
+  it("leaves address blank only for the one row verification must still fill", () => {
     const blank = Object.entries(MAPPING)
       .filter(([, m]) => !m.address)
       .map(([n]) => n);
-    expect(blank.sort()).toEqual(["종로3가 포장마차 골목", "중부시장"].sort());
+    expect(blank.sort()).toEqual(["종로3가 포장마차 골목"]);
   });
 });
 

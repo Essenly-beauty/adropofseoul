@@ -68,7 +68,9 @@ export function isUsable(row) {
 }
 
 // 부록 A(설계 문서)의 수기 검토 매핑. 국문명 → { category, area, address }.
-// address는 CSV 원본을 옮기되 영문 혼용·오타·불필요한 꼬리를 정규화했다.
+// data/places-import/seoul-attractions-2026-07.csv는 소스가 원래 무엇을 말했는지의
+// 기록으로 그대로 둔다. MAPPING은 이후 검증을 거친 값을 담으며, 둘이 다르면
+// 검증이 우선한다 — CSV 원문이 아니라 여기가 authoritative.
 // unpublished: 편집 판단으로 게시하지 않는 행 (검증 실패와 이유가 다르다).
 export const MAPPING = {
   광진교8번가: {
@@ -109,12 +111,12 @@ export const MAPPING = {
   "채석장 전망대": {
     category: "observatory",
     area: "Jongno",
-    address: "서울 종로구 창신동 일대(비공식)",
+    address: "서울 종로구 낙산5길 51",
   },
   응봉산팔각정: {
     category: "observatory",
     area: "Seongdong",
-    address: "서울 성동구 응봉동(비공식)",
+    address: "서울 성동구 독서당로 362",
   },
   "63 스카이피크닉": {
     category: "observatory",
@@ -131,7 +133,11 @@ export const MAPPING = {
     area: "Dongdaemun",
     address: "서울 동대문구 천호대로4길 21",
   },
-  중부시장: { category: "market", area: "Euljiro", address: "" },
+  중부시장: {
+    category: "market",
+    area: "Euljiro",
+    address: "서울 중구 을지로36길 35",
+  },
   공덕시장: {
     category: "market",
     area: "Gongdeok",
@@ -363,12 +369,12 @@ export const MAPPING = {
   "숲속 한방 랜드": {
     category: "spa",
     area: "Seodaemun",
-    address: "서울 서대문구 봉원동 51",
+    address: "서울 서대문구 봉원사길 75-7",
   },
   "설화수 스파": {
     category: "facial",
     area: "Euljiro",
-    address: "서울 중구 을지로 30, 4층",
+    address: "서울 중구 을지로 30, 롯데호텔 서울 본관 7층",
   },
   "Individuel Geneve": {
     category: "facial",
@@ -393,11 +399,11 @@ export const MAPPING = {
   헤라: {
     category: "facial",
     area: "Myeongdong",
-    address: "서울 중구 명동8가길 39",
+    address: "서울 중구 명동8가길 37, 3~5층",
   },
   "Laurel studio": {
     category: "facial",
-    area: "Sangam",
+    area: "Hongdae",
     address: "서울 마포구 월드컵북로 7, 3층",
   },
   "스톤 하우스 헤드 스파": {
