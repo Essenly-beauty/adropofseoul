@@ -3471,7 +3471,7 @@
     "website": null,
     "instagram": null,
     "address": "서울 마포구 월드컵북로 7, 3층",
-    "googleMaps": "https://www.google.com/maps/search/?api=1&query=Laurel%20studio%20Sangam%20Seoul",
+    "googleMaps": "https://www.google.com/maps/search/?api=1&query=Laurel%20studio%20Hongdae%20Seoul",
     "naverMap": "https://map.naver.com/p/search/Laurel%20studio",
     "reviewSummary": "한옥 마루에 누워 한복을 입은 테라피스트에게 페이셜 케어를 받는 K-뷰티 체험 공간으로 외국인 여행자에 특화됨.",
     "verified": true
@@ -3717,11 +3717,11 @@
     "reviews": 12,
     "website": null,
     "instagram": null,
-    "address": "서울 중구 명동8가길 39",
+    "address": "서울 중구 명동8가길 37, 3~5층",
     "googleMaps": "https://www.google.com/maps/search/?api=1&query=Hera%20Myeongdong%20Seoul",
-    "naverMap": "https://map.naver.com/p/search/%ED%97%A4%EB%9D%BC",
+    "naverMap": "https://map.naver.com/p/search/%ED%97%A4%EB%9D%BC%EC%97%90%EC%8A%A4%ED%85%8C",
     "reviewSummary": "일본인 고객이 많이 찾는 명동의 에스테틱 살롱.",
-    "verified": false
+    "verified": true
   },
   {
     "id": "198",
