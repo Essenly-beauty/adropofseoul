@@ -289,10 +289,12 @@ export const MAPPING = {
     area: "Apgujeong",
     address: "서울 강남구 선릉로157길 6, 4층",
   },
+  // 주소 공란: VisitKorea(선릉로 722, 201호)와 이 행이 들고 있던 삼성로119길 23이
+  // 서로 다르고 어느 쪽도 현행으로 확인되지 않았다. 확인 전까지 주소를 싣지 않는다.
   "마르지아 힐링 스파 - 청담": {
     category: "spa",
     area: "Cheongdam",
-    address: "서울 강남구 삼성로119길 23, 4층",
+    address: "",
   },
   Asuca: {
     category: "spa",

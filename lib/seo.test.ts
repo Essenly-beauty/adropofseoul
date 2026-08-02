@@ -50,6 +50,23 @@ describe("localBusinessJsonLd", () => {
     expect(ld.aggregateRating).toBeUndefined();
   });
 
+  // The seed writes '' — not null — for a place with no confirmable address
+  // (Jongno 3-ga's stall alley, Marzia Cheongdam), so the fallback has to
+  // treat the empty string as missing.
+  it("falls back to the area when the address is blank, not just null", () => {
+    expect(
+      (
+        localBusinessJsonLd({ ...place, address: "" }) as Record<
+          string,
+          unknown
+        >
+      ).address
+    ).toBe("Seongsu");
+    expect(
+      (localBusinessJsonLd(place) as Record<string, unknown>).address
+    ).toBe("Seongsu");
+  });
+
   it("adds aggregateRating only when rating and review count exist", () => {
     const ld = localBusinessJsonLd({
       ...place,

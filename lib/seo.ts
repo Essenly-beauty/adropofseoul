@@ -26,7 +26,10 @@ export function localBusinessJsonLd(place: Place): object {
     name: place.name,
     alternateName: place.nameKr ?? undefined,
     description: place.shortDescription ?? undefined,
-    address: place.address ?? place.area ?? undefined,
+    // Rows with no confirmable street address are seeded with an empty string
+    // (not null), so fall back on falsy — an empty schema.org address is worse
+    // than none, and the area is at least true.
+    address: place.address || place.area || undefined,
     url: canonical(`/seoul/places/${place.slug}`),
     sameAs:
       [place.websiteUrl, place.instagramUrl].filter(Boolean).length > 0

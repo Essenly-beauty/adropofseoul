@@ -130,11 +130,16 @@ describe("MAPPING", () => {
     expect(held.sort()).toEqual(["Eco Jardin", "오투", "황족마사지"].sort());
   });
 
-  it("leaves address blank only for the one row verification must still fill", () => {
+  // 주소 공란은 두 가지 뿐이다: 단일 주소가 존재하지 않는 곳(포장마차 골목)과,
+  // 공식 정보원끼리 주소가 엇갈려 어느 쪽도 확인되지 않은 곳(마르지아 청담).
+  // 목록이 늘어나면 검증을 건너뛴 행이 섞인 것이므로 여기서 걸린다.
+  it("leaves address blank only for the two rows with no confirmable address", () => {
     const blank = Object.entries(MAPPING)
       .filter(([, m]) => !m.address)
       .map(([n]) => n);
-    expect(blank.sort()).toEqual(["종로3가 포장마차 골목"]);
+    expect(blank.sort()).toEqual(
+      ["종로3가 포장마차 골목", "마르지아 힐링 스파 - 청담"].sort()
+    );
   });
 });
 
