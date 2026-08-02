@@ -1852,7 +1852,7 @@
       "summary": "Three basement levels under the International Finance Centre towers on Yeouido, reached from the station by a 360-metre moving walkway.",
       "serviceDetail": "Underground shopping mall",
       "bestFor": "a cinema and a bookshop in the middle of the office district",
-      "whyWeLikeIt": "The 360-metre moving walkway from Yeouido Station means the whole visit can happen underground — and by its operator's account it was the first retail and cultural complex to open in Yeouido, Seoul's financial centre.",
+      "whyWeLikeIt": null,
       "longDescription": "IFC Mall occupies three basement levels beneath the International Finance Centre at 10 Gukjegeumyung-ro, on Yeouido. It opened in 2012 and holds around 110 brands — fashion, beauty, sportswear and accessories — plus restaurants, a nine-screen CGV cinema and a Youngpoong Bookstore.\n\nThe approach is the distinctive part. A 360-metre moving walkway runs from Yeouido Station, where Lines 5 and 9 interchange, straight into the mall, so you never come up to street level.\n\nMall hours are 10:00 to 22:00; the street-level shops close an hour earlier, at 21:00."
     },
     "common-ground": {
@@ -1893,11 +1893,11 @@
       "category": "mall",
       "kind": "place",
       "area": "Myeongdong",
-      "summary": "Stylenanda's Myeongdong flagship, fitted out as an imaginary pink hotel — lobby, spa, guest room and pool, each one a selling floor.",
+      "summary": "Stylenanda's Myeongdong flagship — a store fitted out to look like a hotel, carrying the brand's 3CE cosmetics line.",
       "serviceDetail": "Brand flagship store",
-      "bestFor": "3CE cosmetics, and the themed floors they come with",
-      "whyWeLikeIt": "The hotel conceit runs all the way up: the fifth-floor Pink Pool Cafe is a bakery operated separately from the store, and the sixth-floor rooftop is open to anyone who climbs to it.",
-      "longDescription": "The Stylenanda Pink Hotel is the brand's Myeongdong flagship at 37-8 Myeongdong 8-gil, open since October 2016 and built out as a fictional hotel: each floor is dressed as a lobby, a spa, a guest room, a pool area or a terrace, and the whole thing is pink.\n\nThe stock divides by level. The first two floors carry 3CE, Stylenanda's cosmetics line; floors three to five hold clothing and apparel. The fifth floor also has the Pink Pool Cafe, a bakery run separately from Stylenanda, and the rooftop on six is open to the public.\n\nIt opens at 12:00 and closes at 21:00. Myeongdong Station Exit 6, on Line 4, is 148 metres away."
+      "bestFor": "3CE cosmetics bought at the brand's own flagship",
+      "whyWeLikeIt": null,
+      "longDescription": "The Stylenanda Pink Hotel is the brand's Myeongdong flagship, at 37-8 Myeongdong 8-gil in Jung-gu. Seoul's official tourism listing describes it as a store fitted out to look like a hotel — the conceit its name refers to.\n\nWhat it carries is the brand's own range, including 3CE, the cosmetics line Nanda launched in 2004.\n\nIt opens at 12:00 and closes at 21:00. Myeongdong Station Exit 6, on Line 4, is 148 metres away."
     },
     "mecenatpolis-mall": {
       "name": "Mecenatpolis Mall",
