@@ -292,12 +292,14 @@ export const MAPPING = {
     area: "Apgujeong",
     address: "서울 강남구 선릉로157길 6, 4층",
   },
-  // 주소 공란: VisitKorea(선릉로 722, 201호)와 이 행이 들고 있던 삼성로119길 23이
-  // 서로 다르고 어느 쪽도 현행으로 확인되지 않았다. 확인 전까지 주소를 싣지 않는다.
+  // 네이버 플레이스 1259283842(청담마르지아힐링스파 청담점)로 주소 확정.
+  // VisitKorea(선릉로 722, 201호)와 CSV(삼성로119길 23)는 모두 옛 주소이고,
+  // 업체 자체 도메인 chungdammarzia.com은 현재 DNS가 응답하지 않는다.
+  // 지점명은 '청담'이지만 실제 위치는 언주역(9호선) 옆 역삼동이라 area는 Gangnam.
   "마르지아 힐링 스파 - 청담": {
     category: "spa",
-    area: "Cheongdam",
-    address: "",
+    area: "Gangnam",
+    address: "서울 강남구 봉은사로 174, 역삼 노블루체 언주역 B층 108호",
   },
   Asuca: {
     category: "spa",

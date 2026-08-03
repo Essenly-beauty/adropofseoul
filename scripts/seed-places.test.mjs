@@ -52,7 +52,7 @@ const ATTRACTION_HOLDS = [
 const UNPUBLISHED = [...ATTRACTION_HOLDS, ...HELD_PRE_EXISTING];
 
 // Places with no address anyone could confirm — seeded blank on purpose.
-const NO_ADDRESS = ["jongno-3-ga-stalls-alley", "marzia-healing-spa-cheongdam"];
+const NO_ADDRESS = ["jongno-3-ga-stalls-alley"];
 
 /**
  * Split the `values (...), (...)` block into tuples of raw field text.
