@@ -6,7 +6,7 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: [
-    "/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",
-  ],
+  // Only the CMS requires authentication. Public requests should not wait for
+  // a Supabase getUser() network round trip.
+  matcher: ["/admin/:path*"],
 };

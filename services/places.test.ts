@@ -27,8 +27,8 @@ const row = {
   images: ["a.jpg"],
 };
 
-vi.mock("@/lib/supabase/server", () => ({ createClient: vi.fn() }));
-import { createClient } from "@/lib/supabase/server";
+vi.mock("@/lib/supabase/public", () => ({ createClient: vi.fn() }));
+import { createClient } from "@/lib/supabase/public";
 
 describe("mapPlaceRow", () => {
   it("maps row and coerces images to array", () => {

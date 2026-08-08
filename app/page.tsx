@@ -12,7 +12,9 @@ import { NewsletterForm } from "@/components/editorial/NewsletterForm";
 import { Reveal } from "@/components/editorial/Reveal";
 import { Eyebrow } from "@/components/editorial/Eyebrow";
 
-export const dynamic = "force-dynamic";
+// Regenerate public editorial data at most once every five minutes instead of
+// blocking every visitor on three database queries.
+export const revalidate = 300;
 
 // The home page renders gracefully even if the data backend is unreachable:
 // each fetch falls back to an empty list (logged), and the empty-state guards

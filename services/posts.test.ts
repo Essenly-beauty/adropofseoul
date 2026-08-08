@@ -18,10 +18,10 @@ const row = {
   published_at: "2026-01-01T00:00:00Z",
 };
 
-vi.mock("@/lib/supabase/server", () => ({
+vi.mock("@/lib/supabase/public", () => ({
   createClient: vi.fn(),
 }));
-import { createClient } from "@/lib/supabase/server";
+import { createClient } from "@/lib/supabase/public";
 
 describe("mapPostRow", () => {
   it("maps snake_case row to camelCase Post", () => {
