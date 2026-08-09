@@ -10,7 +10,7 @@ meta_description: "Myeongdong or Seongsu for beauty shopping in Seoul? An honest
 author: "A Drop of Seoul Editorial"
 status: "published"
 published_at: "2026-08-09T15:52:37+09:00"
-featured_image: null
+featured_image: "/images/articles/myeongdong-vs-seongsu-beauty-shopping.png"
 ---
 
 People ask us to settle this like it's a fight. Myeongdong or Seongsu. Pick one.
