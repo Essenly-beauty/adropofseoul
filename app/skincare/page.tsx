@@ -4,7 +4,7 @@ import { ArticleCard } from "@/components/editorial/ArticleCard";
 import { SectionHeading } from "@/components/editorial/SectionHeading";
 import { SectionTabs } from "@/components/editorial/SectionTabs";
 import { canonical } from "@/lib/seo";
-import { SKINCARE_TABS, isPick } from "@/lib/taxonomy";
+import { SKINCARE_CATEGORIES, SKINCARE_TABS, isPick } from "@/lib/taxonomy";
 import type { Post } from "@/services/types";
 
 export const metadata: Metadata = {
@@ -19,7 +19,10 @@ export const dynamic = "force-dynamic";
 export default async function SkincarePage() {
   let posts: Post[] = [];
   try {
-    posts = await listPublishedPosts({ limit: 96, category: "beauty" });
+    posts = await listPublishedPosts({
+      limit: 96,
+      categories: SKINCARE_CATEGORIES,
+    });
   } catch (err) {
     console.error("skincare: posts fetch failed", err);
   }

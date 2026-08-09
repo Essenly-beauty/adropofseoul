@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { listPublishedPosts } from "@/services/posts";
+import { ArticleCard } from "@/components/editorial/ArticleCard";
 import { SectionHeading } from "@/components/editorial/SectionHeading";
+import { listPillarPosts } from "@/lib/articles/assets";
 import { canonical } from "@/lib/seo";
 import { SEOUL_NEIGHBORHOODS, PLACE_TYPE_EMOJI } from "@/lib/taxonomy";
+import { listGuidePosts } from "@/lib/seongsu/assets";
+import type { Post } from "@/services/types";
 
 export const metadata: Metadata = {
   title: "Seoul",
@@ -22,7 +27,28 @@ const PLACE_TYPES = [
   { type: "perfume", label: "Perfume Workshops", cat: "perfume" },
 ];
 
-export default function SeoulPage() {
+export const dynamic = "force-dynamic";
+
+export default async function SeoulPage() {
+  let dbPosts: Post[] = [];
+  try {
+    dbPosts = await listPublishedPosts({
+      limit: 24,
+      categories: ["places", "guides"],
+    });
+  } catch (err) {
+    console.error("seoul: posts fetch failed", err);
+  }
+
+  const codePosts = [
+    ...listGuidePosts({ category: "guides" }),
+    ...listPillarPosts(),
+  ];
+  const codeSlugs = new Set(codePosts.map((p) => p.slug));
+  const posts = [...codePosts, ...dbPosts.filter((p) => !codeSlugs.has(p.slug))]
+    .sort((a, b) => (b.publishedAt ?? "").localeCompare(a.publishedAt ?? ""))
+    .slice(0, 12);
+
   return (
     <main className="mx-auto max-w-content px-6 py-16">
       <SectionHeading title="Seoul" eyebrow="The City" />
@@ -94,6 +120,25 @@ export default function SeoulPage() {
             </Link>
           ))}
         </div>
+      </section>
+
+      <section className="mt-16">
+        <SectionHeading title="Latest stories" eyebrow="Seoul editorial" />
+        <p className="-mt-2 mb-8 max-w-2xl text-text-muted">
+          Neighborhood strategy, beauty shopping, and the city context behind
+          the list.
+        </p>
+        {posts.length === 0 ? (
+          <p className="text-text-muted">
+            No Seoul stories yet — check back soon.
+          </p>
+        ) : (
+          <div className="grid gap-8 md:grid-cols-3">
+            {posts.map((p) => (
+              <ArticleCard key={p.id} post={p} />
+            ))}
+          </div>
+        )}
       </section>
     </main>
   );

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { unstable_noStore as noStore } from "next/cache";
 import Link from "next/link";
 import { listPublishedPosts } from "@/services/posts";
 import { listGuidePosts } from "@/lib/seongsu/assets";
@@ -33,6 +34,8 @@ export default async function StoriesPage({
 }: {
   searchParams: { filter?: string };
 }) {
+  noStore();
+
   let dbPosts: Post[] = [];
   try {
     dbPosts = await listPublishedPosts({ limit: 96 });
