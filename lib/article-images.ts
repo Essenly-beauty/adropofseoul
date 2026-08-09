@@ -116,6 +116,15 @@ export const ARTICLE_IMAGE_META: Record<string, ArticleImageMeta> = {
     licenseName: "Pexels License",
     licenseUrl: "https://www.pexels.com/license/",
   },
+  "myeongdong-vs-seongsu-beauty-shopping": {
+    alt: "Split Seoul street scene comparing Myeongdong beauty shops with Seongsu storefronts",
+    caption:
+      "A visual shorthand for the choice: Myeongdong for dense beauty shopping, Seongsu for a slower flagship-and-popup afternoon.",
+    creditName: "A Drop of Seoul",
+    creditUrl: "/articles/myeongdong-vs-seongsu-beauty-shopping",
+    licenseName: "Provided artwork",
+    licenseUrl: "/articles/myeongdong-vs-seongsu-beauty-shopping",
+  },
 };
 
 export function getArticleImageMeta(
