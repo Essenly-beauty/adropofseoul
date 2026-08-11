@@ -164,9 +164,9 @@ export const PILLARS: Pillar[] = [
     publishedAt: "2026-07-18",
     excerpt:
       "Seoul works like a collection of small cities, not a checklist. Match your mood — trends, luxury, history, K-beauty — to the right neighborhood, and figure out where to stay. The hub to start every Seoul trip.",
-    heroImage: "/images/seoul/seoul-neighborhoods-guide.jpg",
+    heroImage: "/images/seoul/seoul-neighborhoods-guide.png",
     heroAlt:
-      "A map-like collage of Seoul neighborhoods at dusk — warehouse cafés, palace rooftops, and neon shopping streets across the Han River",
+      "Seoul City Hall and the I·SEOUL·U sculpture behind the plaza fountains",
     heroCaption:
       "Seoul is a stack of small cities — pick the ones that fit your trip.",
     body: SEOUL_NEIGHBORHOODS_BODY,
