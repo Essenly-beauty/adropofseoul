@@ -21,6 +21,11 @@ type PostRow = {
 const COLUMNS =
   "id,title,slug,subtitle,excerpt,body,category,tags,featured_image,author,seo_title,meta_description,published_at";
 
+const LOCAL_FEATURED_IMAGES: Record<string, string> = {
+  "olive-young-shopping-guide":
+    "/images/articles/olive-young-shopping-guide.jpg",
+};
+
 export function mapPostRow(row: PostRow): Post {
   return {
     id: row.id,
@@ -31,7 +36,7 @@ export function mapPostRow(row: PostRow): Post {
     body: row.body,
     category: row.category,
     tags: row.tags ?? [],
-    featuredImage: row.featured_image,
+    featuredImage: row.featured_image ?? LOCAL_FEATURED_IMAGES[row.slug] ?? null,
     author: row.author,
     seoTitle: row.seo_title,
     metaDescription: row.meta_description,
