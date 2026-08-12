@@ -134,6 +134,15 @@ export const ARTICLE_IMAGE_META: Record<string, ArticleImageMeta> = {
     licenseName: "Original editorial artwork",
     licenseUrl: "/articles/olive-young-shopping-guide",
   },
+  "what-to-buy-korean-skincare-skin-type": {
+    alt: "Hands comparing gel and cream skincare beside products organized for dry, oily, combination, and sensitive skin",
+    caption:
+      "Shop for the skin you have: compare texture and purpose before packaging or promotion.",
+    creditName: "A Drop of Seoul",
+    creditUrl: "/articles/what-to-buy-korean-skincare-skin-type",
+    licenseName: "Original editorial artwork",
+    licenseUrl: "/articles/what-to-buy-korean-skincare-skin-type",
+  },
 };
 
 export function getArticleImageMeta(

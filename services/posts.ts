@@ -24,6 +24,8 @@ const COLUMNS =
 const LOCAL_FEATURED_IMAGES: Record<string, string> = {
   "olive-young-shopping-guide":
     "/images/articles/olive-young-shopping-guide.jpg",
+  "what-to-buy-korean-skincare-skin-type":
+    "/images/articles/what-to-buy-korean-skincare-skin-type.jpg",
 };
 
 export function mapPostRow(row: PostRow): Post {
