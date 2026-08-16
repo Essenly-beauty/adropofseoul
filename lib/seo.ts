@@ -6,6 +6,7 @@ export function canonical(path: string): string {
 }
 
 export function articleJsonLd(post: Post): object {
+  const articleUrl = canonical(`/articles/${post.slug}`);
   return {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -13,9 +14,33 @@ export function articleJsonLd(post: Post): object {
     description: post.excerpt ?? undefined,
     datePublished: post.publishedAt ?? undefined,
     author: post.author ? { "@type": "Person", name: post.author } : undefined,
-    image: post.featuredImage ?? undefined,
-    publisher: { "@type": "Organization", name: SITE_NAME },
-    mainEntityOfPage: canonical(`/articles/${post.slug}`),
+    image: post.featuredImage
+      ? post.featuredImage.startsWith("http")
+        ? post.featuredImage
+        : canonical(post.featuredImage)
+      : undefined,
+    publisher: {
+      "@type": "Organization",
+      name: SITE_NAME,
+      url: canonical("/"),
+    },
+    mainEntityOfPage: { "@type": "WebPage", "@id": articleUrl },
+  };
+}
+
+export function websiteJsonLd(): object {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: SITE_NAME,
+    url: canonical("/"),
+    description:
+      "A Seoul-based editorial and discovery platform covering Korean beauty, haircare, skincare, wellness, places, and experiences for an international audience.",
+    publisher: {
+      "@type": "Organization",
+      name: SITE_NAME,
+      url: canonical("/"),
+    },
   };
 }
 

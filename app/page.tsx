@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { listPublishedPosts } from "@/services/posts";
 import { listPlaces } from "@/services/places";
 import { listProducts } from "@/services/products";
@@ -11,6 +12,20 @@ import { ProductCard } from "@/components/editorial/ProductCard";
 import { NewsletterForm } from "@/components/editorial/NewsletterForm";
 import { Reveal } from "@/components/editorial/Reveal";
 import { Eyebrow } from "@/components/editorial/Eyebrow";
+import { canonical } from "@/lib/seo";
+import { HOME_TITLE, TAGLINE } from "@/lib/site";
+
+export const metadata: Metadata = {
+  title: { absolute: HOME_TITLE },
+  description: TAGLINE,
+  alternates: { canonical: canonical("/") },
+  openGraph: {
+    title: HOME_TITLE,
+    description: TAGLINE,
+    url: canonical("/"),
+    type: "website",
+  },
+};
 
 export const dynamic = "force-dynamic";
 
