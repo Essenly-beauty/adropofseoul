@@ -19,7 +19,7 @@ export default function NeighborhoodsPage() {
 
   return (
     <main className="mx-auto max-w-content px-6 py-16">
-      <SectionHeading title="Neighborhoods" eyebrow="Seoul" />
+      <SectionHeading title="Neighborhoods" eyebrow="A Local's Seoul" />
       <p className="-mt-2 mb-8 max-w-2xl text-text-muted">
         Not sure where to go? Start with the neighborhood, not the checklist.
       </p>

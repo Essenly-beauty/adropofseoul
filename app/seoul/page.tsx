@@ -5,9 +5,11 @@ import { canonical } from "@/lib/seo";
 import { SEOUL_NEIGHBORHOODS, PLACE_TYPE_EMOJI } from "@/lib/taxonomy";
 
 export const metadata: Metadata = {
-  title: "Seoul",
+  // Reader-facing branding is "A Local's Seoul"; the metadata keeps the plain
+  // "Seoul" keywords so search still reads this as the Seoul guide hub.
+  title: "A Local's Seoul | Local Guide to Seoul | A Drop of Seoul",
   description:
-    "Explore Seoul by what you want to experience — head spas, salons, clinics, personal color — or by the neighborhood you want to know.",
+    "Discover Seoul like a local — neighborhoods, beauty spots, shops, cafés, and places we'd genuinely recommend to a friend visiting Seoul.",
   alternates: { canonical: canonical("/seoul") },
 };
 
@@ -28,10 +30,10 @@ const PLACE_TYPES = [
 export default function SeoulPage() {
   return (
     <main className="mx-auto max-w-content px-6 py-16">
-      <SectionHeading title="Seoul" eyebrow="The City" />
+      <SectionHeading title="A Local's Seoul" eyebrow="The City" as="h1" />
       <p className="-mt-2 mb-10 max-w-2xl text-text-muted">
-        Explore the city by what you want to experience — or by the neighborhood
-        you want to know.
+        The places, neighborhoods, and little things we&apos;d share with a
+        friend visiting Seoul.
       </p>
 
       {/* Explore by place type */}

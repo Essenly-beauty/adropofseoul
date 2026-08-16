@@ -25,7 +25,7 @@ const FILTERS = [
   { key: "skincare", label: "Skincare" },
   { key: "haircare", label: "Haircare" },
   { key: "wellness", label: "Wellness" },
-  { key: "seoul", label: "Seoul" },
+  { key: "seoul", label: "A Local's Seoul" },
 ] as const;
 
 export default async function StoriesPage({

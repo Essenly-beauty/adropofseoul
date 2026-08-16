@@ -99,6 +99,11 @@ describe("sections", () => {
       "stories",
     ]);
   });
+  it("brands the Seoul section as A Local's Seoul without moving its route", () => {
+    const seoul = SECTIONS.find((s) => s.slug === "seoul");
+    expect(seoul?.label).toBe("A Local's Seoul");
+    expect(seoul?.href).toBe("/seoul");
+  });
   it("has the skincare tabs including Ingredients and Picks", () => {
     expect(SKINCARE_TABS.map((t) => t.key)).toEqual([
       "skincare",
@@ -122,6 +127,10 @@ describe("sectionForCategory", () => {
     expect(sectionForCategory("wellness").href).toBe("/wellness");
     expect(sectionForCategory("places").href).toBe("/seoul");
     expect(sectionForCategory("guides").href).toBe("/seoul");
+  });
+  it("labels the Seoul section with its editorial branding", () => {
+    expect(sectionForCategory("places").label).toBe("A Local's Seoul");
+    expect(sectionForCategory("places").slug).toBe("seoul");
   });
 });
 

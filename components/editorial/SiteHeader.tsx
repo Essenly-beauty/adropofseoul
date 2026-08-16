@@ -12,10 +12,18 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-soft-gray bg-bg/80 backdrop-blur supports-[backdrop-filter]:bg-bg/60">
       <div className="mx-auto flex h-[66px] max-w-content items-center justify-between px-6">
-        <Link href="/" className="font-serif text-2xl tracking-tight">
+        <Link
+          href="/"
+          className="whitespace-nowrap font-serif text-2xl tracking-tight"
+        >
           {SITE_NAME}
         </Link>
-        <nav aria-label="Primary" className="hidden items-center gap-7 md:flex">
+        {/* "A Local's Seoul" is long for a nav row: keep every label on one
+            line and tighten the gap until there's room for the wide spacing. */}
+        <nav
+          aria-label="Primary"
+          className="hidden items-center gap-4 whitespace-nowrap lg:flex xl:gap-7"
+        >
           {items.map((item) => (
             <div key={item.href} className="group relative">
               <Link
@@ -77,7 +85,7 @@ export function SiteHeader() {
           aria-label="Menu"
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
-          className="text-xs uppercase tracking-label text-text-muted md:hidden"
+          className="text-xs uppercase tracking-label text-text-muted lg:hidden"
         >
           {open ? "Close" : "Menu"}
         </button>
@@ -85,7 +93,7 @@ export function SiteHeader() {
       {open && (
         <nav
           aria-label="Mobile"
-          className="max-h-[calc(100vh-66px)] overflow-y-auto border-t border-soft-gray px-6 py-4 md:hidden"
+          className="max-h-[calc(100vh-66px)] overflow-y-auto border-t border-soft-gray px-6 py-4 lg:hidden"
         >
           <ul className="flex flex-col gap-1">
             <li>

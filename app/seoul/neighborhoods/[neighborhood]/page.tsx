@@ -93,7 +93,7 @@ export default async function NeighborhoodPage({
       <JsonLd
         data={breadcrumbJsonLd([
           { name: "Home", path: "/" },
-          { name: "Seoul", path: "/seoul" },
+          { name: "A Local's Seoul", path: "/seoul" },
           { name: "Neighborhoods", path: "/seoul/neighborhoods" },
           { name: n.label, path: `/seoul/neighborhoods/${n.slug}` },
         ])}

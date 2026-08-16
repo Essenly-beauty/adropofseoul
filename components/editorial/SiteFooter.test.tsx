@@ -14,7 +14,7 @@ describe("SiteFooter", () => {
       screen.getByRole("link", { name: "Skincare" }).getAttribute("href")
     ).toBe("/skincare");
     expect(
-      screen.getByRole("link", { name: "Seoul" }).getAttribute("href")
+      screen.getByRole("link", { name: "A Local's Seoul" }).getAttribute("href")
     ).toBe("/seoul");
     expect(
       screen.getByRole("link", { name: "Privacy Policy" }).getAttribute("href")

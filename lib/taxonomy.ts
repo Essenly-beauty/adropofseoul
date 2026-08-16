@@ -3,8 +3,10 @@
 // Published articles live in the DB with their original `category` enum value;
 // this module expresses the *presentation* taxonomy (the GNB) in code, so no
 // data migration is needed. The 2026 restructure splits the old "Beauty" into
-// Skincare + Haircare and merges Places + Around Seoul into "Seoul" — all as a
-// code-level remapping over the stable `category` enum (see sectionForCategory).
+// Skincare + Haircare and merges Places + Around Seoul into the Seoul section
+// (display name "A Local's Seoul") — all as a code-level remapping over the
+// stable `category` enum (see sectionForCategory). `label` is editorial
+// branding only: the `seoul` slug and the /seoul route never change with it.
 
 import type { Post } from "@/services/types";
 
@@ -40,10 +42,10 @@ export const SECTIONS: Section[] = [
   },
   {
     slug: "seoul",
-    label: "Seoul",
+    label: "A Local's Seoul",
     href: "/seoul",
     blurb:
-      "Explore the city by what you want to experience — or by neighborhood",
+      "The places, neighborhoods, and little things we'd share with a friend visiting Seoul",
   },
   {
     slug: "stories",
@@ -73,7 +75,7 @@ export function sectionForCategory(category: string): SectionRef {
       return { slug: "wellness", label: "Wellness", href: "/wellness" };
     case "places":
     case "guides":
-      return { slug: "seoul", label: "Seoul", href: "/seoul" };
+      return { slug: "seoul", label: "A Local's Seoul", href: "/seoul" };
     default:
       return { slug: "stories", label: "Stories", href: "/stories" };
   }

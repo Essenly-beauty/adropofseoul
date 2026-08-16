@@ -96,7 +96,7 @@ export default async function PlacePage({
       <JsonLd
         data={breadcrumbJsonLd([
           { name: "Home", path: "/" },
-          { name: "Seoul", path: "/seoul" },
+          { name: "A Local's Seoul", path: "/seoul" },
           { name: "Places", path: "/seoul/places" },
           { name: place.name, path: `/seoul/places/${place.slug}` },
         ])}
