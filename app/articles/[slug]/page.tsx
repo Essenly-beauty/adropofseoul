@@ -27,7 +27,7 @@ export async function generateMetadata({
     const hero = resolveHeroImage(guide);
     const ogImages = hero ? [canonical(hero)] : undefined;
     return {
-      title: guide.seoTitle,
+      title: guide.seoTitle.replace(/\s*\|\s*A Drop of Seoul$/, ""),
       description: guide.metaDescription,
       alternates: { canonical: canonical(`/articles/${guide.slug}`) },
       openGraph: {
@@ -73,15 +73,34 @@ export async function generateMetadata({
 
   const post = await getPostBySlug(params.slug);
   if (!post) return { title: "Not found" };
+  const articleUrl = canonical(`/articles/${post.slug}`);
+  const description = post.metaDescription ?? post.excerpt ?? undefined;
+  const ogImages = post.featuredImage
+    ? [
+        post.featuredImage.startsWith("http")
+          ? post.featuredImage
+          : canonical(post.featuredImage),
+      ]
+    : undefined;
   return {
     title: post.seoTitle ?? post.title,
-    description: post.metaDescription ?? post.excerpt ?? undefined,
-    alternates: { canonical: canonical(`/articles/${post.slug}`) },
+    description,
+    alternates: { canonical: articleUrl },
     openGraph: {
       title: post.title,
-      description: post.excerpt ?? undefined,
+      description,
       type: "article",
-      images: post.featuredImage ? [post.featuredImage] : undefined,
+      url: articleUrl,
+      images: ogImages,
+      publishedTime: post.publishedAt ?? undefined,
+      authors: post.author ? [post.author] : undefined,
+      tags: post.tags,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description,
+      images: ogImages,
     },
   };
 }

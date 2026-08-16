@@ -50,19 +50,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   return [
     ...staticPaths.map((p) => ({
       url: `${SITE_URL}${p}`,
-      lastModified: new Date(),
     })),
     ...posts.map((p) => ({
       url: `${SITE_URL}/articles/${p.slug}`,
-      lastModified: new Date(),
     })),
     ...places.map((pl) => ({
       url: `${SITE_URL}/seoul/places/${pl.slug}`,
-      lastModified: new Date(),
     })),
     ...ingredients.map((i) => ({
       url: `${SITE_URL}/ingredients/${i.slug}`,
-      lastModified: new Date(),
     })),
   ];
 }

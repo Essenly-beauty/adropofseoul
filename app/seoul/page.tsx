@@ -7,7 +7,7 @@ import { SEOUL_NEIGHBORHOODS, PLACE_TYPE_EMOJI } from "@/lib/taxonomy";
 export const metadata: Metadata = {
   // Reader-facing branding is "A Local's Seoul"; the metadata keeps the plain
   // "Seoul" keywords so search still reads this as the Seoul guide hub.
-  title: "A Local's Seoul | Local Guide to Seoul | A Drop of Seoul",
+  title: "A Local's Seoul | Local Guide to Seoul",
   description:
     "Discover Seoul like a local — neighborhoods, beauty spots, shops, cafés, and places we'd genuinely recommend to a friend visiting Seoul.",
   alternates: { canonical: canonical("/seoul") },
