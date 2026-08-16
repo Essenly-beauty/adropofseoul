@@ -10,7 +10,7 @@ meta_description: "The everyday Korean habits actually worth copying — and an 
 author: "A Drop of Seoul Editorial"
 status: "published"
 published_at: "2026-08-16T01:30:00+00:00"
-featured_image: ""
+featured_image: "/images/articles/korean-wellness-habits-worth-keeping.jpg"
 ---
 
 The Korean wellness content that travels tends to be the expensive part. The clinics. The devices. The ten-step everything.

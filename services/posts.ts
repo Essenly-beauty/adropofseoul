@@ -27,6 +27,7 @@ const LOCAL_FEATURED_IMAGES: Record<string, string> = {
     "/images/articles/myeongdong-vs-seongsu-beauty-shopping.png",
   "olive-young-shopping-guide":
     "/images/articles/olive-young-shopping-guide.jpg",
+  "seongsu-beauty-spots": "/images/articles/seongsu-beauty-spots.png",
   "what-to-buy-korean-skincare-skin-type":
     "/images/articles/what-to-buy-korean-skincare-skin-type.jpg",
 };

@@ -10,7 +10,7 @@ meta_description: "The Korean slow aging trend explained — where 저속노화 
 author: "A Drop of Seoul Editorial"
 status: "published"
 published_at: "2026-08-16T03:40:00+00:00"
-featured_image: ""
+featured_image: "/images/articles/slow-aging-korea-meaning.jpg"
 ---
 
 There's a word you'll start hearing about ten minutes into any conversation with a Korean person under forty who has recently changed something about their life.
