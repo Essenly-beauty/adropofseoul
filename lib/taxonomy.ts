@@ -320,6 +320,63 @@ export const SEOUL_NEIGHBORHOODS: Neighborhood[] = [
       },
     ],
   },
+  {
+    // No `Hannam` rows exist in the places source yet, and hub areas must be
+    // real curation values (see taxonomy.test.ts). Hannam-dong runs along the
+    // Itaewon–Hangangjin axis, so the hub borrows `Itaewon` until Hannam
+    // addresses are seeded — add "Hannam" to `areas` at that point. NOT
+    // `Yongsan`: that is the administrative district, and pulling it in drags
+    // N Seoul Tower, IPark Mall, and Lotte Outlets onto a hillside gallery
+    // walk. Most sections below are empty on purpose; groupPlacesBySection
+    // omits them until they fill.
+    slug: "hannam",
+    label: "Hannam",
+    blurb:
+      "Galleries, fragrance, and independent flagships on a hillside above the river.",
+    heading: "Hannam, unhurried",
+    lede: "If Seongsu shouts, Hannam doesn't feel the need. This is where Seoul's international galleries landed, where independent designers open rooms instead of concessions, and where an afternoon is measured in staircases rather than stops.",
+    areas: ["Itaewon"],
+    sections: [
+      {
+        title: "Fragrance",
+        blurb: "Niche Korean scent, tested slowly rather than sprayed at you.",
+        categories: ["perfume"],
+      },
+      {
+        title: "Shops & flagships",
+        blurb: "Independent Korean labels with rooms of their own.",
+        categories: ["shop"],
+      },
+      {
+        title: "Cafés",
+        blurb: "Where the afternoon ends, on a courtyard if you time it right.",
+        categories: ["cafe"],
+      },
+      {
+        title: "Personal color & makeup",
+        blurb: "Studios on the quieter side of the river.",
+        categories: ["personal_color", "makeup"],
+      },
+      {
+        title: "Spa, skin & wellness",
+        blurb: "Hotel spas on the Namsan side, and the quieter studios below.",
+        categories: [
+          "spa",
+          "wellness",
+          "facial",
+          "head_spa",
+          "salon",
+          "clinic",
+          "nail_lash",
+        ],
+      },
+      {
+        title: "Eat & drink with a guide",
+        blurb: "Crawls that start on the Itaewon side after dark.",
+        categories: ["food_tour"],
+      },
+    ],
+  },
 ];
 
 export function getNeighborhood(slug: string): Neighborhood | undefined {

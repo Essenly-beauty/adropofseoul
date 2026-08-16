@@ -208,12 +208,13 @@ describe("groupPlacesBySection", () => {
 });
 
 describe("seoul neighborhoods", () => {
-  it("exposes the four neighborhoods in order", () => {
+  it("exposes the five neighborhoods in order", () => {
     expect(SEOUL_NEIGHBORHOODS.map((n) => n.slug)).toEqual([
       "seongsu",
       "hongdae",
       "myeongdong",
       "gangnam-cheongdam",
+      "hannam",
     ]);
   });
 
@@ -231,6 +232,7 @@ describe("seoul neighborhoods", () => {
       "Apgujeong",
       "Garosugil",
     ]);
+    expect(neighborhoodAreas(getNeighborhood("hannam")!)).toEqual(["Itaewon"]);
   });
 
   it("only uses known place types in section configs", () => {

@@ -44,6 +44,7 @@ describe("NAV_ITEMS", () => {
       "/seoul/neighborhoods/hongdae",
       "/seoul/neighborhoods/myeongdong",
       "/seoul/neighborhoods/gangnam-cheongdam",
+      "/seoul/neighborhoods/hannam",
     ]);
     // Home / About stay flat
     expect(
