@@ -9,7 +9,7 @@ seo_title: "Korean 3-Step Skincare Routine: Simple K-Beauty for Beginners"
 meta_description: "A realistic Korean 3-step skincare routine for beginners: cleanser, moisturizer, sunscreen by day, and a calm night routine with treatment only when needed."
 author: "A Drop of Seoul Editorial"
 status: "published"
-published_at: "2026-07-12T09:00:00+09:00"
+published_at: "2026-07-12T00:00:00+00:00"
 featured_image: "/images/articles/korean-3-step-skincare-routine.jpg"
 ---
 

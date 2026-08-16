@@ -4,6 +4,7 @@
 import { readFileSync, readdirSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
+import { splitFrontmatter, scalar, listValue } from "./frontmatter.mjs";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -21,25 +22,6 @@ function env(key) {
   throw new Error("missing " + key);
 }
 
-function scalar(fm, key) {
-  const match = fm.match(new RegExp(`^${key}:\\s*"([\\s\\S]*?)"\\s*$`, "m"));
-  if (match) return match[1];
-  const bare = fm.match(new RegExp(`^${key}:\\s*([^\\n]+)\\s*$`, "m"));
-  if (!bare) return null;
-  const value = bare[1].trim();
-  if (value === "null" || value === "") return null;
-  return value.replace(/^"|"$/g, "");
-}
-
-function listValue(fm, key) {
-  const inline = fm.match(new RegExp(`^${key}:\\s*\\[(.*?)\\]`, "m"));
-  if (!inline) return [];
-  return inline[1]
-    .split(",")
-    .map((s) => s.trim().replace(/^"|"$/g, ""))
-    .filter(Boolean);
-}
-
 const URL = env("NEXT_PUBLIC_SUPABASE_URL");
 const SRK = env("SUPABASE_SERVICE_ROLE_KEY");
 const dir = join(root, "content/articles");
@@ -48,10 +30,9 @@ const rows = readdirSync(dir)
   .filter((file) => file.endsWith(".md"))
   .map((file) => {
     const text = readFileSync(join(dir, file), "utf8");
-    const match = text.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
-    if (!match) throw new Error(`missing frontmatter: ${file}`);
-    const fm = match[1];
-    const body = match[2].trim();
+    const parsed = splitFrontmatter(text);
+    if (!parsed) throw new Error(`missing frontmatter: ${file}`);
+    const { frontmatter: fm, body } = parsed;
     return {
       title: scalar(fm, "title"),
       slug: scalar(fm, "slug"),

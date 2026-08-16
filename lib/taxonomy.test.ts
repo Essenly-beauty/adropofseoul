@@ -7,6 +7,7 @@ import {
   getNeighborhood,
   regionForGuide,
   PLACE_TYPE_LABELS,
+  PLACE_TYPE_EMOJI,
   placeCategoryFromType,
   placeTypeSlug,
   SECTIONS,
@@ -20,6 +21,7 @@ import {
   SEOUL_NEIGHBORHOODS,
   type NeighborhoodSection,
   type Neighborhood,
+  type PlaceEntryKind,
 } from "./taxonomy";
 import type { Post } from "@/services/types";
 
@@ -97,6 +99,11 @@ describe("sections", () => {
       "stories",
     ]);
   });
+  it("brands the Seoul section as A Local's Seoul without moving its route", () => {
+    const seoul = SECTIONS.find((s) => s.slug === "seoul");
+    expect(seoul?.label).toBe("A Local's Seoul");
+    expect(seoul?.href).toBe("/seoul");
+  });
   it("has the skincare tabs including Ingredients and Picks", () => {
     expect(SKINCARE_TABS.map((t) => t.key)).toEqual([
       "skincare",
@@ -120,6 +127,10 @@ describe("sectionForCategory", () => {
     expect(sectionForCategory("wellness").href).toBe("/wellness");
     expect(sectionForCategory("places").href).toBe("/seoul");
     expect(sectionForCategory("guides").href).toBe("/seoul");
+  });
+  it("labels the Seoul section with its editorial branding", () => {
+    expect(sectionForCategory("places").label).toBe("A Local's Seoul");
+    expect(sectionForCategory("places").slug).toBe("seoul");
   });
 });
 
@@ -197,12 +208,13 @@ describe("groupPlacesBySection", () => {
 });
 
 describe("seoul neighborhoods", () => {
-  it("exposes the four neighborhoods in order", () => {
+  it("exposes the five neighborhoods in order", () => {
     expect(SEOUL_NEIGHBORHOODS.map((n) => n.slug)).toEqual([
       "seongsu",
       "hongdae",
       "myeongdong",
       "gangnam-cheongdam",
+      "hannam",
     ]);
   });
 
@@ -219,6 +231,10 @@ describe("seoul neighborhoods", () => {
       "Cheongdam",
       "Apgujeong",
       "Garosugil",
+    ]);
+    expect(neighborhoodAreas(getNeighborhood("hannam")!)).toEqual([
+      "Hannam",
+      "Itaewon",
     ]);
   });
 
@@ -247,6 +263,63 @@ describe("seoul neighborhoods", () => {
         expect(known.has(a), `${n.slug} / ${a}`).toBe(true);
     }
   });
+});
+
+// A hub renders only what groupPlacesBySection matches: a published place whose
+// category is in none of its sections is dropped without a trace. This drives
+// the real data so widening `place_category` (or seeding a new area) fails here
+// rather than silently emptying a row off its neighborhood page.
+describe("neighborhood hub coverage", () => {
+  type SourceRow = { slug: string; verified?: boolean };
+  type CurationRow = {
+    category: string;
+    kind: PlaceEntryKind;
+    area: string | null;
+  };
+  const read = <T>(rel: string): T =>
+    JSON.parse(readFileSync(join(__dirname, rel), "utf8")) as T;
+
+  // Mirrors scripts/seed-places.mjs: `excluded` slugs never reach the DB, and
+  // only `verified: true` rows are seeded with is_published true.
+  const source = read<SourceRow[]>("../data/adropofseoul_places.json");
+  const curation = read<{
+    excluded: Record<string, string>;
+    places: Record<string, CurationRow>;
+  }>("../data/places-curation.en.json");
+
+  const published = source
+    .filter((s) => s.verified === true && !curation.excluded[s.slug])
+    .map((s) => {
+      const en = curation.places[s.slug];
+      if (!en) throw new Error(`no curation entry for ${s.slug}`);
+      return {
+        slug: s.slug,
+        category: en.category,
+        entryType: en.kind,
+        area: en.area,
+      };
+    });
+
+  for (const n of SEOUL_NEIGHBORHOODS) {
+    it(`shows every published ${n.slug} place in some section`, () => {
+      const areas = neighborhoodAreas(n);
+      const inHub = published.filter((p) => !!p.area && areas.includes(p.area));
+      expect(inHub.length, `${n.slug} has no published places`).toBeGreaterThan(
+        0
+      );
+
+      const shown = new Set(
+        groupPlacesBySection(inHub, n.sections ?? []).flatMap((g) =>
+          g.places.map((p) => p.slug)
+        )
+      );
+      const dropped = inHub
+        .filter((p) => !shown.has(p.slug))
+        .map((p) => `${p.slug} (${p.category}/${p.entryType})`)
+        .sort();
+      expect(dropped, `${n.slug} hub drops these places`).toEqual([]);
+    });
+  }
 });
 
 describe("sectionDirectoryHref", () => {
@@ -292,5 +365,24 @@ describe("sectionDirectoryHref", () => {
         categories: ["salon", "makeup"],
       })
     ).toBe("/seoul/places");
+  });
+});
+
+describe("place categories — Seoul attractions", () => {
+  const ATTRACTION_CATEGORIES = ["observatory", "market", "mall"] as const;
+
+  it.each(ATTRACTION_CATEGORIES)("has a reader-facing label for %s", (cat) => {
+    expect(PLACE_TYPE_LABELS[cat]).toBeTruthy();
+    expect(PLACE_TYPE_LABELS[cat]).not.toBe(cat);
+  });
+
+  it.each(ATTRACTION_CATEGORIES)("has a card glyph for %s", (cat) => {
+    expect(PLACE_TYPE_EMOJI[cat]).toBeTruthy();
+  });
+
+  it("keeps labels and glyphs in sync — every label has a glyph", () => {
+    for (const key of Object.keys(PLACE_TYPE_LABELS)) {
+      expect(PLACE_TYPE_EMOJI[key], `missing glyph for ${key}`).toBeTruthy();
+    }
   });
 });

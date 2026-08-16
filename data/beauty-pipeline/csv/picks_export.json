@@ -1,0 +1,122 @@
+[
+  {
+    "product_id": "P00249",
+    "slug": "torriden-dive-in-serum-50ml",
+    "brand": "Torriden",
+    "name": "Dive-In Serum 50ml",
+    "tags": [],
+    "award_badge": "Olive Young Awards 2024 · Essence/Serum",
+    "offers": [
+      {
+        "retailer": "oliveyoung_global",
+        "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA210001861"
+      }
+    ],
+    "disclosure_required": true
+  },
+  {
+    "product_id": "P00075",
+    "slug": "anua-pdrn-hyaluronic-capsule-100-serum-30ml",
+    "brand": "ANUA",
+    "name": "PDRN Hyaluronic Capsule 100 Serum 30ml",
+    "tags": [],
+    "award_badge": "UK Beauty Awards 2025 · Skin Hydration Hero",
+    "offers": [
+      {
+        "retailer": "oliveyoung_global",
+        "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA240925558"
+      }
+    ],
+    "disclosure_required": true
+  },
+  {
+    "product_id": "P00256",
+    "slug": "beplain-mung-bean-ph-balanced-cleansing-foam-80ml",
+    "brand": "beplain",
+    "name": "Mung Bean pH-Balanced Cleansing Foam 80ml",
+    "tags": [],
+    "award_badge": "Olive Young Awards 2025",
+    "offers": [
+      {
+        "retailer": "oliveyoung_global",
+        "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA210001977"
+      }
+    ],
+    "disclosure_required": true
+  },
+  {
+    "product_id": "P00097",
+    "slug": "aestura-atobarrier-365-cream-80ml",
+    "brand": "AESTURA",
+    "name": "Atobarrier 365 Cream 80mL",
+    "tags": [],
+    "award_badge": "Olive Young Awards 2025 · Cream · #1",
+    "offers": [
+      {
+        "retailer": "oliveyoung_global",
+        "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA240121573"
+      }
+    ],
+    "disclosure_required": true
+  },
+  {
+    "product_id": "P00017",
+    "slug": "s-nature-aqua-squalane-moisturizing-cream-60ml",
+    "brand": "S.NATURE",
+    "name": "Aqua Squalane Moisturizing Cream 60ml",
+    "tags": [],
+    "award_badge": "Olive Young Awards 2025 · Cream · #3",
+    "offers": [
+      {
+        "retailer": "oliveyoung_global",
+        "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA210610734"
+      }
+    ],
+    "disclosure_required": true
+  },
+  {
+    "product_id": "P00262",
+    "slug": "mixsoon-bean-essence-50ml",
+    "brand": "mixsoon",
+    "name": "Bean Essence 50mL",
+    "tags": [],
+    "award_badge": null,
+    "offers": [
+      {
+        "retailer": "oliveyoung_global",
+        "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA211012101"
+      }
+    ],
+    "disclosure_required": true
+  },
+  {
+    "product_id": "P00348",
+    "slug": "illiyoon-ceramide-ato-concentrate-cream-150ml",
+    "brand": "illiyoon",
+    "name": "Ceramide Ato Concentrate Cream 150mL",
+    "tags": [],
+    "award_badge": null,
+    "offers": [
+      {
+        "retailer": "oliveyoung_global",
+        "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250127973"
+      }
+    ],
+    "disclosure_required": true
+  },
+  {
+    "product_id": "P00172",
+    "slug": "dr-g-red-blemish-clear-soothing-cream-70ml",
+    "brand": "Dr.G",
+    "name": "Red Blemish Clear Soothing Cream 70ml",
+    "tags": [],
+    "award_badge": "Olive Young Awards 2025 · Cream",
+    "offers": [
+      {
+        "retailer": "oliveyoung_global",
+        "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA240222331"
+      }
+    ],
+    "disclosure_required": true
+  }
+]

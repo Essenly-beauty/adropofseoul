@@ -8,13 +8,15 @@ describe("NAV_ITEMS", () => {
       "Skincare",
       "Haircare",
       "Wellness",
-      "Seoul",
+      "A Local's Seoul",
       "Stories",
       "About",
     ]);
   });
   it("maps sections to their routes", () => {
-    expect(NAV_ITEMS.find((i) => i.label === "Seoul")?.href).toBe("/seoul");
+    expect(NAV_ITEMS.find((i) => i.label === "A Local's Seoul")?.href).toBe(
+      "/seoul"
+    );
     expect(NAV_ITEMS.find((i) => i.label === "Haircare")?.href).toBe(
       "/haircare"
     );
@@ -28,7 +30,7 @@ describe("NAV_ITEMS", () => {
       "/beauty-profile/hair"
     );
     expect(haircare?.children?.map((c) => c.label)).toContain("Ingredients");
-    const seoul = NAV_ITEMS.find((i) => i.label === "Seoul");
+    const seoul = NAV_ITEMS.find((i) => i.label === "A Local's Seoul");
     expect(seoul?.children?.map((c) => c.href)).toEqual([
       "/seoul/places",
       "/seoul/neighborhoods",
@@ -42,6 +44,7 @@ describe("NAV_ITEMS", () => {
       "/seoul/neighborhoods/hongdae",
       "/seoul/neighborhoods/myeongdong",
       "/seoul/neighborhoods/gangnam-cheongdam",
+      "/seoul/neighborhoods/hannam",
     ]);
     // Home / About stay flat
     expect(

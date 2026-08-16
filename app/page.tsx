@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+import Image from "next/image";
 import { listPublishedPosts } from "@/services/posts";
 import { listPlaces } from "@/services/places";
 import { listProducts } from "@/services/products";
@@ -11,10 +13,30 @@ import { ProductCard } from "@/components/editorial/ProductCard";
 import { NewsletterForm } from "@/components/editorial/NewsletterForm";
 import { Reveal } from "@/components/editorial/Reveal";
 import { Eyebrow } from "@/components/editorial/Eyebrow";
+import { canonical } from "@/lib/seo";
+import { HOME_TITLE, TAGLINE } from "@/lib/site";
+
+export const metadata: Metadata = {
+  title: { absolute: HOME_TITLE },
+  description: TAGLINE,
+  alternates: { canonical: canonical("/") },
+  openGraph: {
+    title: HOME_TITLE,
+    description: TAGLINE,
+    url: canonical("/"),
+    type: "website",
+  },
+};
 
 // Regenerate public editorial data at most once every five minutes instead of
 // blocking every visitor on three database queries.
 export const revalidate = 300;
+
+// Scrim for the closing band: dark enough at the edges to hold type at AA,
+// thin across the middle so the dusk horizon still glows through. Built from
+// brand ink (#1C1C1C) so the band stays inside the editorial palette.
+const CLOSING_SCRIM =
+  "linear-gradient(180deg, rgba(28,28,28,0.88) 0%, rgba(28,28,28,0.58) 40%, rgba(28,28,28,0.80) 100%)";
 
 // The home page renders gracefully even if the data backend is unreachable:
 // each fetch falls back to an empty list (logged), and the empty-state guards
@@ -138,18 +160,36 @@ export default async function HomePage() {
         </Reveal>
       )}
 
-      <section className="mt-10 border-t border-soft-gray">
-        <div className="mx-auto max-w-content px-6 py-20 text-center md:py-28">
+      {/* Closing band — the page's only dark surface, and the last thing with
+          editorial weight before the porcelain SiteFooter (which layout.tsx
+          appends on every route, so the dark treatment stops here rather than
+          running to the page bottom). Object position parks the dusk horizon
+          behind the headline; the scrim keeps it glowing under the type. */}
+      <section className="relative overflow-hidden bg-text">
+        <Image
+          src="/images/seoul/seoul-skyline-dusk.avif"
+          alt=""
+          aria-hidden
+          fill
+          sizes="100vw"
+          className="object-cover object-[center_38%]"
+        />
+        <div
+          aria-hidden
+          className="absolute inset-0"
+          style={{ background: CLOSING_SCRIM }}
+        />
+        <div className="relative mx-auto max-w-content px-6 py-24 text-center md:py-32">
           <Eyebrow className="mb-5">The List</Eyebrow>
-          <h2 className="font-serif text-4xl leading-tight md:text-5xl">
+          <h2 className="font-serif text-4xl leading-tight text-white md:text-5xl">
             Seoul, <em className="italic text-accent">a drop</em> at a time.
           </h2>
-          <p className="mx-auto mt-4 max-w-[40ch] text-text-muted">
+          <p className="mx-auto mt-4 max-w-[40ch] text-white/70">
             New stories, places, and picks — a few considered emails a month. No
             noise.
           </p>
-          <NewsletterForm />
-          <p className="mt-5 text-[11px] text-text-muted/60">
+          <NewsletterForm surface="dark" />
+          <p className="mt-5 text-[11px] text-white/55">
             Join readers in 40+ countries. Unsubscribe anytime.
           </p>
         </div>

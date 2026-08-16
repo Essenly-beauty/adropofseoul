@@ -9,7 +9,7 @@ seo_title: "Korean 7-Step Evening Skincare Routine for Calm Glass Skin"
 meta_description: "A realistic Korean 7-step night routine: double cleanse, hydrate, treat, mask, moisturize, and protect the skin barrier without overdoing actives."
 author: "A Drop of Seoul Editorial"
 status: "published"
-published_at: "2026-07-12T09:20:00+09:00"
+published_at: "2026-07-12T00:20:00+00:00"
 featured_image: "/images/articles/korean-7-step-evening-skincare-routine.jpg"
 ---
 

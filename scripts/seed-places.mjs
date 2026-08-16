@@ -13,6 +13,13 @@
 //   node scripts/seed-places.mjs             upsert via REST (needs
 //     NEXT_PUBLIC_SUPABASE_URL + SUPABASE_SERVICE_ROLE_KEY; reads .env.local)
 //   node scripts/seed-places.mjs --dry-run   print built rows, no network
+//   node scripts/seed-places.mjs --categories spa,facial,head_spa
+//     restrict the upsert to those place_category values. The directory is
+//     released in stages — the beauty-service categories belong to the
+//     publication's remit, while the observatory/market/mall attractions are a
+//     separate editorial call — and a filtered run keeps that staging
+//     reproducible instead of living in a one-off script. Filtering never
+//     deletes: categories left out are simply not written this time.
 //   node scripts/seed-places.mjs --sql PATH  write an idempotent upsert
 //     migration to PATH instead (for `supabase db push` when no service key
 //     is available locally). The JSON files stay the source of truth.
@@ -22,6 +29,19 @@ import { dirname, join } from "node:path";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const dryRun = process.argv.includes("--dry-run");
+
+const catIdx = process.argv.indexOf("--categories");
+if (catIdx !== -1 && !process.argv[catIdx + 1])
+  throw new Error("--categories requires a comma-separated list");
+const onlyCategories =
+  catIdx === -1
+    ? null
+    : new Set(
+        process.argv[catIdx + 1]
+          .split(",")
+          .map((c) => c.trim())
+          .filter(Boolean)
+      );
 
 function env(key) {
   if (process.env[key]) return process.env[key];
@@ -57,6 +77,7 @@ for (const item of source) {
   if (curation.excluded[item.slug]) continue;
   const en = curation.places[item.slug];
   if (!en) throw new Error(`no curation entry for ${item.slug}`);
+  if (onlyCategories && !onlyCategories.has(en.category)) continue;
   rows.push({
     slug: asciiSlug(item.slug),
     name: en.name,
@@ -82,8 +103,13 @@ for (const item of source) {
 
 const published = rows.filter((r) => r.is_published).length;
 console.log(
-  `${rows.length} rows to upsert (${published} published, ${rows.length - published} unpublished/unverified; ${Object.keys(curation.excluded).length} excluded)`
+  `${rows.length} rows to upsert (${published} published, ${rows.length - published} unpublished/unverified; ${Object.keys(curation.excluded).length} excluded)` +
+    (onlyCategories ? ` — filtered to: ${[...onlyCategories].join(", ")}` : "")
 );
+if (onlyCategories && rows.length === 0)
+  throw new Error(
+    `no rows matched --categories ${[...onlyCategories].join(",")}`
+  );
 
 if (dryRun) {
   console.log(JSON.stringify(rows.slice(0, 2), null, 2));

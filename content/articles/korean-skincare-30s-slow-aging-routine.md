@@ -9,7 +9,7 @@ seo_title: "Korean Skincare Routine in Your 30s: Slow Aging Guide"
 meta_description: "Build a Korean skincare routine in your 30s with sunscreen, vitamin C, retinol, peptides, hydration, and barrier support for a slow-aging approach."
 author: "A Drop of Seoul Editorial"
 status: "published"
-published_at: "2026-07-12T10:30:00+09:00"
+published_at: "2026-07-12T01:30:00+00:00"
 featured_image: "/images/articles/korean-skincare-30s-slow-aging-routine.jpg"
 ---
 

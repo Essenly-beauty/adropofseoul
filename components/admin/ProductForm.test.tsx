@@ -32,6 +32,9 @@ const product: AdminProduct = {
   ingredients: null,
   rating: 4.5,
   disclosureRequired: false,
+  offers: [],
+  tags: [],
+  awardBadge: null,
   isPublished: true,
   updatedAt: "2026-01-01T00:00:00.000Z",
 };

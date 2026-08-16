@@ -1,6 +1,6 @@
 import { cache } from "@/lib/react-cache";
 import { createClient } from "@/lib/supabase/public";
-import type { Product } from "./types";
+import type { Product, ProductOffer } from "./types";
 
 type ProductRow = {
   id: string;
@@ -17,10 +17,15 @@ type ProductRow = {
   ingredients: string | null;
   rating: number | null;
   disclosure_required: boolean;
+  tags: string[] | null;
+  award_badge: string | null;
+  product_offers:
+    | { retailer: string; url: string; is_active: boolean; sort: number }[]
+    | null;
 };
 
 const COLUMNS =
-  "id,name,brand,slug,category,description,price,image,affiliate_url,where_to_buy,best_for,ingredients,rating,disclosure_required";
+  "id,name,brand,slug,category,description,price,image,affiliate_url,where_to_buy,best_for,ingredients,rating,disclosure_required,tags,award_badge,product_offers(retailer,url,is_active,sort)";
 
 export function mapProductRow(row: ProductRow): Product {
   return {
@@ -38,6 +43,12 @@ export function mapProductRow(row: ProductRow): Product {
     ingredients: row.ingredients,
     rating: row.rating,
     disclosureRequired: row.disclosure_required,
+    offers: (row.product_offers ?? [])
+      .filter((o) => o.is_active)
+      .sort((a, b) => a.sort - b.sort)
+      .map((o) => ({ retailer: o.retailer, url: o.url }) as ProductOffer),
+    tags: row.tags ?? [],
+    awardBadge: row.award_badge ?? null,
   };
 }
 

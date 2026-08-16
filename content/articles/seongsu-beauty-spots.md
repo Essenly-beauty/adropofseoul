@@ -16,7 +16,7 @@ seo_title: "Seongsu Beauty Spots: Where to Start a K-Beauty Route"
 meta_description: "A practical Seongsu beauty spots guide: start with one verified anchor, add a product stop, and know which places need map checks before visiting."
 author: "A Drop of Seoul Editorial"
 status: "published"
-published_at: "2026-07-13T00:20:00+09:00"
+published_at: "2026-07-12T15:20:00+00:00"
 featured_image: ""
 ---
 

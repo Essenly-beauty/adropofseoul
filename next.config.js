@@ -54,6 +54,17 @@ const nextConfig = {
       },
       // Stories feed moved off /articles (detail pages stay at /articles/:slug)
       { source: "/articles", destination: "/stories", permanent: true },
+      // Retired article. `seoul-head-spa-ritual` shipped as published but never
+      // got past a two-line stub — 14 words, no tags, no meta, no hero — so it
+      // surfaced on Wellness, Haircare, and Stories as an empty card. It is now
+      // unpublished in the DB; this keeps any inbound link working by sending it
+      // to the finished guide. Do not re-point at a `head_spa` listing: the
+      // reader clicked expecting an article.
+      {
+        source: "/articles/seoul-head-spa-ritual",
+        destination: "/articles/korean-head-spa-first-timer-guide",
+        permanent: true,
+      },
       // Beauty Profile: Hair Profile moved under the Skin+Hair hub
       {
         source: "/hair-profile",

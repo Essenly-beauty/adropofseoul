@@ -9,7 +9,7 @@ seo_title: "What Is Skip-Care? Korean Minimalist Skincare Explained"
 meta_description: "Skip-care is Korean minimalist skincare built around fewer, smarter products. Learn what to keep, what to skip, and how to avoid stripping your barrier."
 author: "A Drop of Seoul Editorial"
 status: "published"
-published_at: "2026-07-12T09:30:00+09:00"
+published_at: "2026-07-12T00:30:00+00:00"
 featured_image: "/images/articles/korean-skip-care-explained.jpg"
 ---
 

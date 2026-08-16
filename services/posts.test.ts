@@ -29,6 +29,30 @@ describe("mapPostRow", () => {
     expect(post.featuredImage).toBe("img.jpg");
     expect(post.tags).toEqual(["k-beauty"]);
   });
+
+  it("uses the local Myeongdong vs Seongsu thumbnail when the post has no image", () => {
+    const post = mapPostRow({
+      ...row,
+      slug: "myeongdong-vs-seongsu-beauty-shopping",
+      featured_image: null,
+    } as never);
+
+    expect(post.featuredImage).toBe(
+      "/images/articles/myeongdong-vs-seongsu-beauty-shopping.png"
+    );
+  });
+
+  it("uses the local thumbnail when featured_image is an empty string", () => {
+    const post = mapPostRow({
+      ...row,
+      slug: "myeongdong-vs-seongsu-beauty-shopping",
+      featured_image: "",
+    } as never);
+
+    expect(post.featuredImage).toBe(
+      "/images/articles/myeongdong-vs-seongsu-beauty-shopping.png"
+    );
+  });
 });
 
 describe("listPublishedPosts", () => {

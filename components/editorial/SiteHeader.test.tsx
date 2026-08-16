@@ -14,7 +14,7 @@ describe("SiteHeader", () => {
       "Skincare",
       "Haircare",
       "Wellness",
-      "Seoul",
+      "A Local's Seoul",
       "Stories",
       "About",
     ]) {

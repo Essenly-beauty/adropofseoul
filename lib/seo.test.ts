@@ -40,6 +40,19 @@ describe("articleJsonLd", () => {
     expect(ld.headline).toBe("Hello");
     expect(ld.datePublished).toBe("2026-01-01T00:00:00Z");
   });
+
+  // dateModified is the freshness signal; it must never go out empty, and an
+  // edited post has to report the edit rather than the original publish date.
+  it("reports dateModified when the post has been edited", () => {
+    const edited = { ...post, updatedAt: "2026-06-02T00:00:00Z" } as Post;
+    const ld = articleJsonLd(edited) as Record<string, unknown>;
+    expect(ld.dateModified).toBe("2026-06-02T00:00:00Z");
+  });
+
+  it("falls back to the publish date when the post is unedited", () => {
+    const ld = articleJsonLd(post) as Record<string, unknown>;
+    expect(ld.dateModified).toBe("2026-01-01T00:00:00Z");
+  });
 });
 
 describe("localBusinessJsonLd", () => {
@@ -48,6 +61,23 @@ describe("localBusinessJsonLd", () => {
     expect(ld["@type"]).toBe("LocalBusiness");
     expect(ld.name).toBe("Sool Loft");
     expect(ld.aggregateRating).toBeUndefined();
+  });
+
+  // The seed writes '' — not null — for a place with no confirmable address
+  // (Jongno 3-ga's stall alley), so the fallback has to treat the empty
+  // string as missing.
+  it("falls back to the area when the address is blank, not just null", () => {
+    expect(
+      (
+        localBusinessJsonLd({ ...place, address: "" }) as Record<
+          string,
+          unknown
+        >
+      ).address
+    ).toBe("Seongsu");
+    expect(
+      (localBusinessJsonLd(place) as Record<string, unknown>).address
+    ).toBe("Seongsu");
   });
 
   it("adds aggregateRating only when rating and review count exist", () => {

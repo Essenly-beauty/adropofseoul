@@ -3,8 +3,10 @@
 // Published articles live in the DB with their original `category` enum value;
 // this module expresses the *presentation* taxonomy (the GNB) in code, so no
 // data migration is needed. The 2026 restructure splits the old "Beauty" into
-// Skincare + Haircare and merges Places + Around Seoul into "Seoul" — all as a
-// code-level remapping over the stable `category` enum (see sectionForCategory).
+// Skincare + Haircare and merges Places + Around Seoul into the Seoul section
+// (display name "A Local's Seoul") — all as a code-level remapping over the
+// stable `category` enum (see sectionForCategory). `label` is editorial
+// branding only: the `seoul` slug and the /seoul route never change with it.
 
 import type { Post } from "@/services/types";
 
@@ -40,10 +42,10 @@ export const SECTIONS: Section[] = [
   },
   {
     slug: "seoul",
-    label: "Seoul",
+    label: "A Local's Seoul",
     href: "/seoul",
     blurb:
-      "Explore the city by what you want to experience — or by neighborhood",
+      "The places, neighborhoods, and little things we'd share with a friend visiting Seoul",
   },
   {
     slug: "stories",
@@ -73,7 +75,7 @@ export function sectionForCategory(category: string): SectionRef {
       return { slug: "wellness", label: "Wellness", href: "/wellness" };
     case "places":
     case "guides":
-      return { slug: "seoul", label: "Seoul", href: "/seoul" };
+      return { slug: "seoul", label: "A Local's Seoul", href: "/seoul" };
     default:
       return { slug: "stories", label: "Stories", href: "/stories" };
   }
@@ -229,6 +231,11 @@ export const SEOUL_NEIGHBORHOODS: Neighborhood[] = [
         blurb: "Scrubs, facials, and skin clinics between the studios.",
         categories: ["spa", "facial", "clinic"],
       },
+      {
+        title: "Eat & drink with a guide",
+        blurb: "Bar and street-food crawls that start here after dark.",
+        categories: ["food_tour"],
+      },
     ],
   },
   {
@@ -257,6 +264,17 @@ export const SEOUL_NEIGHBORHOODS: Neighborhood[] = [
         title: "Personal color",
         blurb: "Quick diagnoses that fit between itinerary stops.",
         categories: ["personal_color"],
+      },
+      {
+        title: "Markets",
+        blurb:
+          "Namdaemun's wholesale rows, and the stalls that set up at dusk.",
+        categories: ["market"],
+      },
+      {
+        title: "Malls & arcades",
+        blurb: "Underground shopping and fashion floors, a few blocks apart.",
+        categories: ["mall"],
       },
     ],
   },
@@ -290,9 +308,70 @@ export const SEOUL_NEIGHBORHOODS: Neighborhood[] = [
         entryType: "experience",
       },
       {
-        title: "Nails & clinics",
-        blurb: "Celebrity nail art and dermatology-grade skin care.",
-        categories: ["nail_lash", "clinic"],
+        title: "Facials, nails & clinics",
+        blurb:
+          "Facial studios, celebrity nail art, and dermatology-grade skin care.",
+        categories: ["facial", "nail_lash", "clinic"],
+      },
+      {
+        title: "Malls",
+        blurb: "Underground complexes big enough to fill a whole afternoon.",
+        categories: ["mall"],
+      },
+    ],
+  },
+  {
+    // Itaewon rides along because Hannam-dong runs the Itaewon–Hangangjin axis
+    // and the walking tours are sold as Itaewon. NOT `Yongsan`: that is the
+    // administrative district, and pulling it in drags N Seoul Tower, IPark
+    // Mall, and Lotte Outlets onto a hillside gallery walk. Most sections
+    // below are empty on purpose; groupPlacesBySection omits them until they
+    // fill.
+    slug: "hannam",
+    label: "Hannam",
+    blurb:
+      "Galleries, fragrance, and independent flagships on a hillside above the river.",
+    heading: "Hannam, unhurried",
+    lede: "If Seongsu shouts, Hannam doesn't feel the need. This is where Seoul's international galleries landed, where independent designers open rooms instead of concessions, and where an afternoon is measured in staircases rather than stops.",
+    areas: ["Hannam", "Itaewon"],
+    sections: [
+      {
+        title: "Fragrance",
+        blurb: "Niche Korean scent, tested slowly rather than sprayed at you.",
+        categories: ["perfume"],
+      },
+      {
+        title: "Shops & flagships",
+        blurb: "Independent Korean labels with rooms of their own.",
+        categories: ["shop"],
+      },
+      {
+        title: "Cafés",
+        blurb: "Where the afternoon ends, on a courtyard if you time it right.",
+        categories: ["cafe"],
+      },
+      {
+        title: "Personal color & makeup",
+        blurb: "Studios on the quieter side of the river.",
+        categories: ["personal_color", "makeup"],
+      },
+      {
+        title: "Spa, skin & wellness",
+        blurb: "Hotel spas on the Namsan side, and the quieter studios below.",
+        categories: [
+          "spa",
+          "wellness",
+          "facial",
+          "head_spa",
+          "salon",
+          "clinic",
+          "nail_lash",
+        ],
+      },
+      {
+        title: "Eat & drink with a guide",
+        blurb: "Crawls that start on the Itaewon side after dark.",
+        categories: ["food_tour"],
       },
     ],
   },
@@ -334,6 +413,9 @@ export const PLACE_TYPE_LABELS: Record<string, string> = {
   perfume: "Perfume Workshop",
   cooking_class: "Cooking Class",
   food_tour: "Food Tour",
+  observatory: "Observatory & Tower",
+  market: "Market",
+  mall: "Shopping Mall",
 };
 
 // Category glyphs for the compact directory cards (mirrors the Seongsu
@@ -353,6 +435,9 @@ export const PLACE_TYPE_EMOJI: Record<string, string> = {
   perfume: "🧴",
   cooking_class: "🍳",
   food_tour: "🥢",
+  observatory: "🔭",
+  market: "🏮",
+  mall: "🛒",
 };
 
 /** URL type-slug ("head-spa") → place category enum ("head_spa"). */

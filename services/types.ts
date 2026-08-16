@@ -12,6 +12,13 @@ export type Post = {
   seoTitle: string | null;
   metaDescription: string | null;
   publishedAt: string | null;
+  /**
+   * Last edit, for schema.org `dateModified` — the freshness signal search and
+   * answer engines lean on more than `datePublished`. Optional because the
+   * code-defined guides and pillars have no row to read it from; consumers fall
+   * back to `publishedAt`.
+   */
+  updatedAt?: string | null;
 };
 
 export type Place = {
@@ -57,6 +64,11 @@ export type Ingredient = {
   metaDescription: string | null;
 };
 
+export type ProductOffer = {
+  retailer: "oliveyoung_global" | "amazon_us";
+  url: string;
+};
+
 export type Product = {
   id: string;
   name: string;
@@ -72,4 +84,7 @@ export type Product = {
   ingredients: string | null;
   rating: number | null;
   disclosureRequired: boolean;
+  offers: ProductOffer[];
+  tags: string[];
+  awardBadge: string | null;
 };

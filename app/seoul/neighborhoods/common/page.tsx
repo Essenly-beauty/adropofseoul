@@ -32,7 +32,7 @@ export default async function AroundSeoulCommonPage() {
 
   return (
     <main className="mx-auto max-w-content px-6 py-16">
-      <SectionHeading title="Neighborhoods" eyebrow="Seoul" />
+      <SectionHeading title="Neighborhoods" eyebrow="A Local's Seoul" />
       <SectionTabs
         label="Neighborhood sections"
         tabs={NEIGHBORHOOD_TABS}

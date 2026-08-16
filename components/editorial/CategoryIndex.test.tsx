@@ -14,7 +14,9 @@ describe("CategoryIndex", () => {
       screen.getByRole("link", { name: /^Wellness/ }).getAttribute("href")
     ).toBe("/wellness");
     expect(
-      screen.getByRole("link", { name: /^Seoul/ }).getAttribute("href")
+      screen
+        .getByRole("link", { name: /^A Local's Seoul/ })
+        .getAttribute("href")
     ).toBe("/seoul");
   });
 });

@@ -9,7 +9,7 @@ seo_title: "Korean Barrier Repair Routine for Irritated Sensitive Skin"
 meta_description: "Repair an irritated skin barrier with a Korean-style routine: gentle cleanser, calming toner, ceramide moisturizer, sunscreen, and a pause on strong actives."
 author: "A Drop of Seoul Editorial"
 status: "published"
-published_at: "2026-07-12T10:00:00+09:00"
+published_at: "2026-07-12T01:00:00+00:00"
 featured_image: "/images/articles/korean-barrier-repair-routine.jpg"
 ---
 
