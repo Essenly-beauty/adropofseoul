@@ -10,7 +10,7 @@ meta_description: "A stop-by-stop K-beauty day in Seoul — Seongsu flagships in
 author: "A Drop of Seoul Editorial"
 status: "published"
 published_at: "2026-08-16T02:30:00+00:00"
-featured_image: ""
+featured_image: "/images/articles/one-day-k-beauty-itinerary-seoul.jpg"
 ---
 
 Most beauty itineraries fail on timing rather than on choices.

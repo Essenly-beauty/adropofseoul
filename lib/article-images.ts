@@ -143,6 +143,64 @@ export const ARTICLE_IMAGE_META: Record<string, ArticleImageMeta> = {
     licenseName: "Original editorial artwork",
     licenseUrl: "/articles/what-to-buy-korean-skincare-skin-type",
   },
+  // Launch-issue heroes. Only articles whose subject a licensed photograph
+  // actually depicts are listed — a generic Seoul street under a piece about a
+  // specific neighborhood argues against its own copy, so those stay empty
+  // until original artwork exists.
+  "slow-sunday-in-seoul": {
+    alt: "People sitting on the terraced riverside steps of the Han River with the Seoul skyline and a bridge behind them",
+    caption:
+      "The Han on a Sunday: nobody is seeing anything, and that is the entire point.",
+    creditName: "Theodore Nguyen",
+    creditUrl: "https://www.pexels.com/photo/32196430/",
+    licenseName: "Pexels License",
+    licenseUrl: "https://www.pexels.com/license/",
+  },
+  "korean-wellness-habits-worth-keeping": {
+    alt: "Korean banchan side dishes in metal bowls on a table — kimchi, seasoned vegetables, and ssamjang beside a grill",
+    caption:
+      "You eat four to six plants without deciding to. Default does the work, not willpower.",
+    creditName: "Anthony Rahayel",
+    creditUrl: "https://www.pexels.com/photo/31150502/",
+    licenseName: "Pexels License",
+    licenseUrl: "https://www.pexels.com/license/",
+  },
+  "slow-aging-korea-meaning": {
+    alt: "A ceramic bowl of Korean multigrain rice with red beans, job's tears, and black sesame on a wooden table",
+    caption:
+      "The whole movement starts here — beans and whole grains in the rice, and nothing else about the day changes.",
+    creditName: "Gu Ko",
+    creditUrl: "https://www.pexels.com/photo/37332347/",
+    licenseName: "Pexels License",
+    licenseUrl: "https://www.pexels.com/license/",
+  },
+  "seoul-souvenirs-worth-bringing-home": {
+    alt: "A Seoul traditional market alley under blue awnings, with Korean shop signs and vegetables stacked in crates",
+    caption:
+      "The test for a souvenir is whether somebody who lives here owns it. This is where they buy it.",
+    creditName: "CK Seng",
+    creditUrl: "https://www.pexels.com/photo/37785270/",
+    licenseName: "Pexels License",
+    licenseUrl: "https://www.pexels.com/license/",
+  },
+  "how-to-use-naver-map": {
+    alt: "A Seoul subway platform with a yellow overhead sign showing exit number 2 in Korean, English, and Chinese",
+    caption:
+      "Exit numbers are the part that decides your walk. Naver tells you which one; Google still won't.",
+    creditName: "Theodore Nguyen",
+    creditUrl: "https://www.pexels.com/photo/31768195/",
+    licenseName: "Pexels License",
+    licenseUrl: "https://www.pexels.com/license/",
+  },
+  "one-day-k-beauty-itinerary-seoul": {
+    alt: "Shoppers on a Myeongdong street past K-beauty storefronts advertising cosmetics, sheet masks, and tax-free sales",
+    caption:
+      "Myeongdong after five, where the buying happens — bags for one hour instead of seven.",
+    creditName: "Theodore Nguyen",
+    creditUrl: "https://www.pexels.com/photo/31925325/",
+    licenseName: "Pexels License",
+    licenseUrl: "https://www.pexels.com/license/",
+  },
 };
 
 export function getArticleImageMeta(

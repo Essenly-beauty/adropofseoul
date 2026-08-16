@@ -10,7 +10,7 @@ meta_description: "What to buy in Seoul that's genuinely worth carrying home —
 author: "A Drop of Seoul Editorial"
 status: "published"
 published_at: "2026-08-16T01:20:00+00:00"
-featured_image: ""
+featured_image: "/images/articles/seoul-souvenirs-worth-bringing-home.jpg"
 ---
 
 The souvenir problem is always the same. You want to bring something back. You don't want it to be a fridge magnet with a palace on it. And you have about forty minutes and a suitcase with a specific amount of room left.

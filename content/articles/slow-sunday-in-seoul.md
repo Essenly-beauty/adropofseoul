@@ -10,7 +10,7 @@ meta_description: "How to spend a slow Sunday in Seoul — the river, a mountain
 author: "A Drop of Seoul Editorial"
 status: "published"
 published_at: "2026-08-16T01:10:00+00:00"
-featured_image: ""
+featured_image: "/images/articles/slow-sunday-in-seoul.jpg"
 ---
 
 Every Seoul itinerary is additive. One more neighborhood, one more café, one more palace, one more thing that closes at six so you'd better hurry.

@@ -10,7 +10,7 @@ meta_description: "Why Google Maps still fails in Korea after the 2026 approval,
 author: "A Drop of Seoul Editorial"
 status: "published"
 published_at: "2026-08-16T00:40:00+00:00"
-featured_image: ""
+featured_image: "/images/articles/how-to-use-naver-map.jpg"
 ---
 
 Every few months someone lands here, opens Google Maps, types in a café, and gets a blue line that stops at the edge of a neighborhood. Then they stand on a corner in Seongsu holding a phone that has confidently told them they've arrived.

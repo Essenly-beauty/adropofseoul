@@ -17,7 +17,7 @@ meta_description: "A practical Seongsu beauty spots guide: start with one verifi
 author: "A Drop of Seoul Editorial"
 status: "published"
 published_at: "2026-07-12T15:20:00+00:00"
-featured_image: ""
+featured_image: "/images/seongsu/seongsu-beauty-and-bites.jpg"
 ---
 
 Seongsu is not a neighborhood where the best beauty day comes from ticking off every store. It works better when you choose **one beauty anchor**, add a practical product stop if you need it, and leave enough room for coffee, design shops, pop-ups, and the slower walk toward Seoul Forest.
