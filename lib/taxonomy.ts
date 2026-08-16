@@ -321,21 +321,19 @@ export const SEOUL_NEIGHBORHOODS: Neighborhood[] = [
     ],
   },
   {
-    // No `Hannam` rows exist in the places source yet, and hub areas must be
-    // real curation values (see taxonomy.test.ts). Hannam-dong runs along the
-    // Itaewon–Hangangjin axis, so the hub borrows `Itaewon` until Hannam
-    // addresses are seeded — add "Hannam" to `areas` at that point. NOT
-    // `Yongsan`: that is the administrative district, and pulling it in drags
-    // N Seoul Tower, IPark Mall, and Lotte Outlets onto a hillside gallery
-    // walk. Most sections below are empty on purpose; groupPlacesBySection
-    // omits them until they fill.
+    // Itaewon rides along because Hannam-dong runs the Itaewon–Hangangjin axis
+    // and the walking tours are sold as Itaewon. NOT `Yongsan`: that is the
+    // administrative district, and pulling it in drags N Seoul Tower, IPark
+    // Mall, and Lotte Outlets onto a hillside gallery walk. Most sections
+    // below are empty on purpose; groupPlacesBySection omits them until they
+    // fill.
     slug: "hannam",
     label: "Hannam",
     blurb:
       "Galleries, fragrance, and independent flagships on a hillside above the river.",
     heading: "Hannam, unhurried",
     lede: "If Seongsu shouts, Hannam doesn't feel the need. This is where Seoul's international galleries landed, where independent designers open rooms instead of concessions, and where an afternoon is measured in staircases rather than stops.",
-    areas: ["Itaewon"],
+    areas: ["Hannam", "Itaewon"],
     sections: [
       {
         title: "Fragrance",

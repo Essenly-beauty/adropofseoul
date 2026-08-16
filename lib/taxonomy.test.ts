@@ -232,7 +232,10 @@ describe("seoul neighborhoods", () => {
       "Apgujeong",
       "Garosugil",
     ]);
-    expect(neighborhoodAreas(getNeighborhood("hannam")!)).toEqual(["Itaewon"]);
+    expect(neighborhoodAreas(getNeighborhood("hannam")!)).toEqual([
+      "Hannam",
+      "Itaewon",
+    ]);
   });
 
   it("only uses known place types in section configs", () => {
