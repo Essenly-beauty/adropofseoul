@@ -125,6 +125,24 @@ export const ARTICLE_IMAGE_META: Record<string, ArticleImageMeta> = {
     licenseName: "Provided artwork",
     licenseUrl: "/articles/myeongdong-vs-seongsu-beauty-shopping",
   },
+  "olive-young-shopping-guide": {
+    alt: "Olive Young shopping bag beside cotton pads, skincare, and a 1+1 offer sign",
+    caption:
+      "The useful shorthand: make one lap, look for the 1+1 tags, and buy for your routine rather than the hype.",
+    creditName: "A Drop of Seoul",
+    creditUrl: "/articles/olive-young-shopping-guide",
+    licenseName: "Original editorial artwork",
+    licenseUrl: "/articles/olive-young-shopping-guide",
+  },
+  "what-to-buy-korean-skincare-skin-type": {
+    alt: "Hands comparing gel and cream skincare beside products organized for dry, oily, combination, and sensitive skin",
+    caption:
+      "Shop for the skin you have: compare texture and purpose before packaging or promotion.",
+    creditName: "A Drop of Seoul",
+    creditUrl: "/articles/what-to-buy-korean-skincare-skin-type",
+    licenseName: "Original editorial artwork",
+    licenseUrl: "/articles/what-to-buy-korean-skincare-skin-type",
+  },
 };
 
 export function getArticleImageMeta(

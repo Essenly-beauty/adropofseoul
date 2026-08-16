@@ -19,8 +19,8 @@ const row = {
   disclosure_required: true,
 };
 
-vi.mock("@/lib/supabase/server", () => ({ createClient: vi.fn() }));
-import { createClient } from "@/lib/supabase/server";
+vi.mock("@/lib/supabase/public", () => ({ createClient: vi.fn() }));
+import { createClient } from "@/lib/supabase/public";
 
 describe("mapProductRow", () => {
   it("maps affiliate + disclosure fields", () => {

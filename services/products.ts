@@ -1,5 +1,5 @@
 import { cache } from "@/lib/react-cache";
-import { createClient } from "@/lib/supabase/server";
+import { createClient } from "@/lib/supabase/public";
 import type { Product, ProductOffer } from "./types";
 
 type ProductRow = {

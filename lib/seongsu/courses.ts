@@ -68,7 +68,7 @@ export const COURSE_1_STOPS: Stop[] = [
     time: "11:00 AM",
     part: "Morning",
     nameEn: "Nonfiction Seongsu",
-    nameKr: "낫픽션 성수",
+    nameKr: "논픽션 성수",
     category: "Fragrance flagship",
     emoji: "🧴",
     rating: 5.0,

@@ -3,7 +3,10 @@ import { Cormorant_Garamond, Inter } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/editorial/SiteHeader";
 import { SiteFooter } from "@/components/editorial/SiteFooter";
-import { SITE_URL } from "@/lib/site";
+import { JsonLd } from "@/components/editorial/JsonLd";
+import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
+import { HOME_TITLE, SITE_NAME, SITE_URL, TAGLINE } from "@/lib/site";
+import { websiteJsonLd } from "@/lib/seo";
 
 const serif = Cormorant_Garamond({
   subsets: ["latin"],
@@ -24,14 +27,14 @@ const OG_IMAGE = "/og.png";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "A Drop of Seoul",
-  description:
-    "A curated guide to Korean beauty, hair rituals, head spas, and places worth knowing.",
+  title: {
+    default: HOME_TITLE,
+    template: `%s | ${SITE_NAME}`,
+  },
+  description: TAGLINE,
   openGraph: {
-    title: "A Drop of Seoul",
-    description:
-      "A curated guide to Korean beauty, hair rituals, head spas, and places worth knowing.",
-    url: "/",
+    title: HOME_TITLE,
+    description: TAGLINE,
     siteName: "A Drop of Seoul",
     type: "website",
     images: [
@@ -45,9 +48,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "A Drop of Seoul",
-    description:
-      "A curated guide to Korean beauty, hair rituals, head spas, and places worth knowing.",
+    title: HOME_TITLE,
+    description: TAGLINE,
     images: [OG_IMAGE],
   },
 };
@@ -60,6 +62,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${serif.variable} ${sans.variable}`}>
       <body className="font-sans antialiased">
+        <JsonLd data={websiteJsonLd()} />
+        <GoogleAnalytics />
         <noscript>
           <style>{`[data-reveal]{opacity:1!important;transform:none!important}`}</style>
         </noscript>

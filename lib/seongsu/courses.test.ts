@@ -47,6 +47,10 @@ describe("course data integrity", () => {
 describe("map links", () => {
   const stop = COURSE_1_STOPS[0];
 
+  it("uses Nonfiction's official Korean name for map searches", () => {
+    expect(stop.nameKr).toBe("논픽션 성수");
+  });
+
   it("builds a Google link pinned by place id + encoded Korean name", () => {
     const url = googleMapsUrl(stop);
     expect(url).toContain("query_place_id=" + stop.placeId);
