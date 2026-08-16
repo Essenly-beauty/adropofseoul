@@ -53,6 +53,18 @@ describe("mapPostRow", () => {
       "/images/articles/myeongdong-vs-seongsu-beauty-shopping.png"
     );
   });
+
+  it("uses the dedicated thumbnail for Seongsu Beauty Spots", () => {
+    const post = mapPostRow({
+      ...row,
+      slug: "seongsu-beauty-spots",
+      featured_image: "",
+    } as never);
+
+    expect(post.featuredImage).toBe(
+      "/images/articles/seongsu-beauty-spots.png"
+    );
+  });
 });
 
 describe("listPublishedPosts", () => {

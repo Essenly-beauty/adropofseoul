@@ -125,6 +125,15 @@ export const ARTICLE_IMAGE_META: Record<string, ArticleImageMeta> = {
     licenseName: "Provided artwork",
     licenseUrl: "/articles/myeongdong-vs-seongsu-beauty-shopping",
   },
+  "seongsu-beauty-spots": {
+    alt: "Shoppers testing skincare inside an industrial-style beauty flagship in Seongsu",
+    caption:
+      "Seongsu's beauty stores reward a slower look: test textures, choose one strong anchor, and leave room to wander.",
+    creditName: "A Drop of Seoul",
+    creditUrl: "/articles/seongsu-beauty-spots",
+    licenseName: "Original editorial artwork",
+    licenseUrl: "/articles/seongsu-beauty-spots",
+  },
   "olive-young-shopping-guide": {
     alt: "Olive Young shopping bag beside cotton pads, skincare, and a 1+1 offer sign",
     caption:
