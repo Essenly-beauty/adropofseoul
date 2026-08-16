@@ -41,6 +41,8 @@ export function mapPostRow(row: PostRow): Post {
     body: row.body,
     category: row.category,
     tags: row.tags ?? [],
+    // `||`, not `??`: the markdown seeder writes featured_image as "" rather
+    // than null, and an empty string has to fall through to the local map.
     featuredImage:
       row.featured_image || LOCAL_FEATURED_IMAGES[row.slug] || null,
     author: row.author,

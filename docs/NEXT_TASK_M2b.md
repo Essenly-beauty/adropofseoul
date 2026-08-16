@@ -124,8 +124,11 @@ idempotency, RLS/service-role usage). Ship as its own PR.
 - Flags default OFF; the live `/beauty-profile/hair` chooser stays the default
   until the quiz engine is flagged on.
 - New migration? Read `supabase/migrations/README.md` (known drift; don't blind push).
-- **Launch checklist (separate):** apply `admin_claim_rls` to prod + stamp the
-  admin claim BEFORE enabling public signup (see `docs/adr/0001` finding).
+- ~~**Launch checklist (separate):** apply `admin_claim_rls` to prod + stamp the
+  admin claim BEFORE enabling public signup~~ — **done.** Verified live 2026-07-31:
+  `is_admin()` exists on prod and `scripts/verify-rls.mjs` reports ALL PASS. See
+  the 2026-07-31 update in `docs/adr/0001`. Re-run that script immediately before
+  enabling signup, since it is a point-in-time check.
 
 ## Start
 

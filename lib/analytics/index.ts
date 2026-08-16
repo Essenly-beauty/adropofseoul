@@ -35,6 +35,14 @@ const FORBIDDEN_PROP_KEYS = new Set([
   "responses",
   "email",
   "free_text",
+  // Raw answer content and ownership secrets must never leave the server as
+  // event props — only controlled taxonomy (buckets, codes) is allowed (H13).
+  "value",
+  "value_code",
+  "label",
+  "text",
+  "token",
+  "token_hash",
 ]);
 
 function assertSafeProps(event: string, props?: EventProps): void {
