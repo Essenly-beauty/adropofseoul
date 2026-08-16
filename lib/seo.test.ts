@@ -40,6 +40,19 @@ describe("articleJsonLd", () => {
     expect(ld.headline).toBe("Hello");
     expect(ld.datePublished).toBe("2026-01-01T00:00:00Z");
   });
+
+  // dateModified is the freshness signal; it must never go out empty, and an
+  // edited post has to report the edit rather than the original publish date.
+  it("reports dateModified when the post has been edited", () => {
+    const edited = { ...post, updatedAt: "2026-06-02T00:00:00Z" } as Post;
+    const ld = articleJsonLd(edited) as Record<string, unknown>;
+    expect(ld.dateModified).toBe("2026-06-02T00:00:00Z");
+  });
+
+  it("falls back to the publish date when the post is unedited", () => {
+    const ld = articleJsonLd(post) as Record<string, unknown>;
+    expect(ld.dateModified).toBe("2026-01-01T00:00:00Z");
+  });
 });
 
 describe("localBusinessJsonLd", () => {
