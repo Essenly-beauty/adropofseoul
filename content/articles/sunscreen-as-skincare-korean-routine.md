@@ -9,7 +9,7 @@ seo_title: "Sunscreen as Skincare: Korean SPF Routine Guide"
 meta_description: "Why sunscreen is central to Korean skincare: how SPF protects tone, texture, acne marks, and slow-aging routines, plus how to apply it comfortably."
 author: "A Drop of Seoul Editorial"
 status: "published"
-published_at: "2026-07-12T10:10:00+09:00"
+published_at: "2026-07-12T01:10:00+00:00"
 featured_image: "/images/articles/sunscreen-as-skincare-korean-routine.jpg"
 ---
 

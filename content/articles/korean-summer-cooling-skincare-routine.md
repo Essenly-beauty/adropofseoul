@@ -9,7 +9,7 @@ seo_title: "Korean Summer Skincare Routine for Humidity, Sweat, and SPF"
 meta_description: "A Korean summer skincare routine for humid weather: light cleansing, cooling toner pads, gel hydration, calming ingredients, and sunscreen that feels wearable."
 author: "A Drop of Seoul Editorial"
 status: "published"
-published_at: "2026-07-12T10:20:00+09:00"
+published_at: "2026-07-12T01:20:00+00:00"
 featured_image: "/images/articles/korean-summer-cooling-skincare-routine.jpg"
 ---
 

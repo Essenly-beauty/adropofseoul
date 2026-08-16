@@ -9,7 +9,7 @@ seo_title: "How to Get Glass Skin Without a 10-Step Korean Routine"
 meta_description: "A realistic guide to glass skin without 10 steps: hydration layering, gentle exfoliation, barrier repair, and daily sunscreen."
 author: "A Drop of Seoul Editorial"
 status: "published"
-published_at: "2026-07-12T09:50:00+09:00"
+published_at: "2026-07-12T00:50:00+00:00"
 featured_image: "/images/articles/glass-skin-without-10-steps.jpg"
 ---
 

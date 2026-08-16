@@ -9,7 +9,7 @@ seo_title: "How to Use Korean Toner Pads as Mini Masks"
 meta_description: "Learn how Korean toner pads are used as mini masks for hydration, calming, pores, and texture, plus when to swipe and when to simply place them."
 author: "A Drop of Seoul Editorial"
 status: "published"
-published_at: "2026-07-12T09:40:00+09:00"
+published_at: "2026-07-12T00:40:00+00:00"
 featured_image: "/images/articles/toner-pads-as-mini-masks.jpg"
 ---
 

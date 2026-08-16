@@ -9,7 +9,7 @@ seo_title: "Korean Post-Treatment Skincare Routine After Laser or Facials"
 meta_description: "A gentle Korean recovery routine after skin treatments: cleanser, calming toner, ceramide moisturizer, sunscreen, and what actives to pause."
 author: "A Drop of Seoul Editorial"
 status: "published"
-published_at: "2026-07-12T10:50:00+09:00"
+published_at: "2026-07-12T01:50:00+00:00"
 featured_image: "/images/articles/korean-post-treatment-recovery-skincare-routine.jpg"
 ---
 

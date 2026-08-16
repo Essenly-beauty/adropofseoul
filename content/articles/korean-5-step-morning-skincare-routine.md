@@ -9,7 +9,7 @@ seo_title: "Korean 5-Step Morning Skincare Routine for Dewy Skin"
 meta_description: "Build a realistic Korean 5-step morning skincare routine: cleanse, hydrating toner, serum, moisturizer, and sunscreen without pilling or heaviness."
 author: "A Drop of Seoul Editorial"
 status: "published"
-published_at: "2026-07-12T09:10:00+09:00"
+published_at: "2026-07-12T00:10:00+00:00"
 featured_image: "/images/articles/korean-5-step-morning-skincare-routine.jpg"
 ---
 

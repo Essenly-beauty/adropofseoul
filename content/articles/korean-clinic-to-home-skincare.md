@@ -9,7 +9,7 @@ seo_title: "Clinic-to-Home Korean Skincare: Treatments, PDRN, and Recovery"
 meta_description: "What clinic-to-home means in Korean skincare: PDRN-inspired products, spicules, post-treatment masks, calming care, and how to use them realistically."
 author: "A Drop of Seoul Editorial"
 status: "published"
-published_at: "2026-07-12T10:40:00+09:00"
+published_at: "2026-07-12T01:40:00+00:00"
 featured_image: "/images/articles/korean-clinic-to-home-skincare.jpg"
 ---
 
