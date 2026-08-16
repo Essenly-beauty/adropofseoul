@@ -30,20 +30,25 @@ Seed content uses no external image URLs, so this is latent until real data
 lands — but it must be resolved before publishing posts/products with
 off-Supabase images.
 
-## When attaching a custom domain
+## Production domain and search setup
 
-The canonical site URL lives in TWO places that must be updated together:
+The canonical site URL is configured once:
 
-1. **`app/layout.tsx` — `metadataBase`** is hardcoded to
-   `https://adropofseoul.vercel.app`. Change it to the new domain. This is
-   what turns relative OG paths (`/og.png`) into absolute `og:image` /
-   `twitter:image` URLs.
-2. **`NEXT_PUBLIC_SITE_URL` (Vercel env, Production)** — set to the new
+1. **`NEXT_PUBLIC_SITE_URL` (Vercel env, Production)** — set to the new
    domain (no trailing slash). It drives `SITE_URL` in `lib/site.ts`, which
    feeds `canonical()` in `lib/seo.ts` (per-page canonical URLs, per-page
    `og:url`/`og:image`, JSON-LD), `app/sitemap.ts`, and `app/robots.ts`.
-   If both aren't updated, canonical/sitemap URLs and OG URLs will point at
-   different hosts.
+   `app/layout.tsx` also derives `metadataBase` from this value.
+
+2. **`NEXT_PUBLIC_GA_MEASUREMENT_ID` (Vercel env, Production)** — add the GA4
+   web stream ID. Analytics remains disabled for invalid IDs, preview deploys,
+   localhost, and non-canonical hostnames.
+
+3. Add the domain property in Google Search Console (DNS TXT verification may
+   be required), then submit `https://adropofseoul.com/sitemap.xml`. Add or
+   import the same property in Bing Webmaster Tools and submit the same sitemap.
+
+See `docs/SEO_PUBLISHING.md` for the per-article publishing checklist.
 
 Also:
 

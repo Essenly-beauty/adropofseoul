@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getPostBySlug } from "@/services/posts";
+import { getPostBySlug, listPublishedPosts } from "@/services/posts";
+import type { Post } from "@/services/types";
 import { sectionForCategory } from "@/lib/taxonomy";
 import { Prose } from "@/components/editorial/Prose";
 import { JsonLd } from "@/components/editorial/JsonLd";
-import { articleJsonLd, breadcrumbJsonLd, canonical } from "@/lib/seo";
+import { articleJsonLd, breadcrumbJsonLd, buildPageMetadata } from "@/lib/seo";
 import { getGuide } from "@/lib/seongsu/guides";
 import { resolveHeroImage } from "@/lib/seongsu/assets";
 import { SeongsuGuide } from "@/components/seongsu/SeongsuGuide";
@@ -15,6 +16,10 @@ import { PillarArticle } from "@/components/editorial/PillarArticle";
 import { ShareButtons } from "@/components/editorial/ShareButtons";
 import { TonalFrame } from "@/components/editorial/TonalFrame";
 import { getArticleImageMeta } from "@/lib/article-images";
+import { Breadcrumbs } from "@/components/editorial/Breadcrumbs";
+import { ArticleViewTracker } from "@/components/analytics/ArticleViewTracker";
+import { RelatedArticles } from "@/components/editorial/RelatedArticles";
+import { rankRelatedPosts } from "@/lib/related-posts";
 
 export async function generateMetadata({
   params,
@@ -25,84 +30,47 @@ export async function generateMetadata({
   const guide = getGuide(params.slug);
   if (guide) {
     const hero = resolveHeroImage(guide);
-    const ogImages = hero ? [canonical(hero)] : undefined;
-    return {
+    return buildPageMetadata({
       title: guide.seoTitle.replace(/\s*\|\s*A Drop of Seoul$/, ""),
       description: guide.metaDescription,
-      alternates: { canonical: canonical(`/articles/${guide.slug}`) },
-      openGraph: {
-        title: guide.title,
-        description: guide.metaDescription,
-        type: "article",
-        url: canonical(`/articles/${guide.slug}`),
-        images: ogImages,
-      },
-      twitter: {
-        card: "summary_large_image",
-        title: guide.title,
-        description: guide.metaDescription,
-        images: ogImages,
-      },
-    };
+      path: `/articles/${guide.slug}`,
+      image: hero,
+      type: "article",
+      publishedTime: guide.publishedAt,
+      authors: [guide.author],
+    });
   }
 
   // Code-defined pillar (hub) articles.
   const pillar = getPillar(params.slug);
   if (pillar) {
     const hero = resolvePillarHero(pillar);
-    const ogImages = hero ? [canonical(hero)] : undefined;
-    return {
+    return buildPageMetadata({
       title: pillar.seoTitle,
       description: pillar.metaDescription,
-      alternates: { canonical: canonical(`/articles/${pillar.slug}`) },
-      openGraph: {
-        title: pillar.ogTitle,
-        description: pillar.ogDescription,
-        type: "article",
-        url: canonical(`/articles/${pillar.slug}`),
-        images: ogImages,
-      },
-      twitter: {
-        card: "summary_large_image",
-        title: pillar.ogTitle,
-        description: pillar.ogDescription,
-        images: ogImages,
-      },
-    };
+      path: `/articles/${pillar.slug}`,
+      image: hero,
+      type: "article",
+      publishedTime: pillar.publishedAt,
+      authors: [pillar.author],
+    });
   }
 
   const post = await getPostBySlug(params.slug);
   if (!post) return { title: "Not found" };
-  const articleUrl = canonical(`/articles/${post.slug}`);
-  const description = post.metaDescription ?? post.excerpt ?? undefined;
-  const ogImages = post.featuredImage
-    ? [
-        post.featuredImage.startsWith("http")
-          ? post.featuredImage
-          : canonical(post.featuredImage),
-      ]
-    : undefined;
-  return {
+  const description =
+    post.metaDescription ?? post.excerpt ?? post.subtitle ?? post.title;
+  return buildPageMetadata({
     title: post.seoTitle ?? post.title,
     description,
-    alternates: { canonical: articleUrl },
-    openGraph: {
-      title: post.title,
-      description,
-      type: "article",
-      url: articleUrl,
-      images: ogImages,
-      publishedTime: post.publishedAt ?? undefined,
-      authors: post.author ? [post.author] : undefined,
-      tags: post.tags,
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: post.title,
-      description,
-      images: ogImages,
-    },
-  };
+    path: `/articles/${post.slug}`,
+    image: post.featuredImage,
+    type: "article",
+    publishedTime: post.publishedAt,
+    modifiedTime: post.updatedAt ?? post.publishedAt,
+    authors: post.author ? [post.author] : undefined,
+    tags: post.tags,
+  });
 }
 
 export default async function ArticlePage({
@@ -120,18 +88,29 @@ export default async function ArticlePage({
   if (!post) notFound();
 
   const section = sectionForCategory(post.category);
+  const crumbs = [
+    { name: "Home", path: "/" },
+    { name: section.label, path: section.href },
+    { name: post.title, path: `/articles/${post.slug}` },
+  ];
+  let related: Post[] = [];
+  try {
+    related = rankRelatedPosts(
+      post,
+      await listPublishedPosts({ limit: 48 }),
+      3
+    );
+  } catch (err) {
+    console.error("article: related posts fetch failed", err);
+  }
 
   return (
     <main className="mx-auto max-w-3xl px-6 py-16">
       <JsonLd data={articleJsonLd(post)} />
-      <JsonLd
-        data={breadcrumbJsonLd([
-          { name: "Home", path: "/" },
-          { name: section.label, path: section.href },
-          { name: post.title, path: `/articles/${post.slug}` },
-        ])}
-      />
+      <JsonLd data={breadcrumbJsonLd(crumbs)} />
+      <ArticleViewTracker slug={post.slug} category={post.category} />
       <article>
+        <Breadcrumbs items={crumbs} />
         <Link
           href={section.href}
           className="text-xs uppercase tracking-widest text-accent transition-colors duration-medium ease-editorial hover:text-accent-hover"
@@ -143,14 +122,28 @@ export default async function ArticlePage({
           <p className="mt-3 text-xl text-text-muted">{post.subtitle}</p>
         )}
         <div className="mt-4 flex items-center justify-between gap-4">
-          {post.author ? (
-            <p className="text-sm text-text-muted">By {post.author}</p>
+          {post.author || post.publishedAt ? (
+            <p className="text-sm text-text-muted">
+              {post.author && <>By {post.author}</>}
+              {post.author && post.publishedAt && " · "}
+              {post.publishedAt && (
+                <time dateTime={post.publishedAt}>
+                  {new Intl.DateTimeFormat("en-US", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                    timeZone: "UTC",
+                  }).format(new Date(post.publishedAt))}
+                </time>
+              )}
+            </p>
           ) : (
             <span aria-hidden />
           )}
           <ShareButtons
             path={`/articles/${post.slug}`}
             title={`${post.title} — A Drop of Seoul`}
+            article={{ slug: post.slug, category: post.category }}
             imageUrl={
               post.featuredImage && /^https?:\/\//.test(post.featuredImage)
                 ? post.featuredImage
@@ -209,6 +202,7 @@ export default async function ArticlePage({
           )}
         </div>
       </article>
+      <RelatedArticles source={post} posts={related} />
     </main>
   );
 }

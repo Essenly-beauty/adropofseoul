@@ -3,17 +3,17 @@ import Link from "next/link";
 import { listPublishedPosts } from "@/services/posts";
 import { ArticleCard } from "@/components/editorial/ArticleCard";
 import { SectionHeading } from "@/components/editorial/SectionHeading";
-import { canonical } from "@/lib/seo";
+import { buildPageMetadata } from "@/lib/seo";
 import { HAIRCARE_CATEGORIES } from "@/lib/taxonomy";
 import { HAIR_PROFILES } from "@/lib/haircare/profiles";
 import type { Post } from "@/services/types";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Haircare",
   description:
     "Start with your hair, not a product. Understand your scalp, strands, damage level, and ideal routine through the lens of Korean hair care.",
-  alternates: { canonical: canonical("/haircare") },
-};
+  path: "/haircare",
+});
 
 export const dynamic = "force-dynamic";
 

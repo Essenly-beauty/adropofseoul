@@ -3,6 +3,7 @@
 import Script from "next/script";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef } from "react";
+import { registerAnalyticsProvider } from "@/lib/analytics";
 
 const measurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 const isValidMeasurementId = /^G-[A-Z0-9]+$/.test(measurementId ?? "");
@@ -42,6 +43,12 @@ export function GoogleAnalytics() {
     if (!initialized.current) {
       window.gtag("js", new Date());
       window.gtag("config", measurementId, { send_page_view: false });
+      registerAnalyticsProvider({
+        track(event, props) {
+          window.gtag?.("event", event, props);
+        },
+        identify() {},
+      });
       initialized.current = true;
     }
 

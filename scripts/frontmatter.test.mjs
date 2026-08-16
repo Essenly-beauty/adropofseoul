@@ -70,13 +70,20 @@ describe("content/articles frontmatter", () => {
   });
 
   for (const file of files) {
-    it(`parses ${file} with a slug, category, and tags`, () => {
+    it(`parses ${file} with publish-ready editorial metadata`, () => {
       const parsed = splitFrontmatter(readFileSync(join(dir, file), "utf8"));
       expect(parsed, "frontmatter block").not.toBeNull();
       const { frontmatter: fm } = parsed;
       expect(scalar(fm, "slug")).toBe(file.replace(/\.md$/, ""));
       expect(scalar(fm, "category")).toBeTruthy();
       expect(listValue(fm, "tags").length, "tags").toBeGreaterThan(0);
+      expect(scalar(fm, "title"), "title").toBeTruthy();
+      expect(scalar(fm, "excerpt"), "excerpt").toBeTruthy();
+      expect(scalar(fm, "seo_title"), "seo_title").toBeTruthy();
+      expect(scalar(fm, "meta_description"), "meta_description").toBeTruthy();
+      expect(scalar(fm, "author"), "author").toBeTruthy();
+      expect(scalar(fm, "status"), "status").toBe("published");
+      expect(scalar(fm, "published_at"), "published_at").toBeTruthy();
     });
   }
 });

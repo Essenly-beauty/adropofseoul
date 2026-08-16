@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { SITE_URL } from "@/lib/site";
 import { SHARE_CHANNELS, withUtm } from "@/lib/share";
 import { ChannelIcon, CopyLinkIcon, NativeShareIcon } from "./ShareIcons";
+import { articleShared } from "@/lib/analytics/events";
 
 const PILL =
   "inline-flex items-center gap-1.5 rounded-full border border-soft-gray px-3 py-1.5 text-[11px] uppercase tracking-label text-text-muted transition-colors duration-medium ease-editorial hover:border-accent hover:text-accent";
@@ -20,12 +21,14 @@ export function ShareButtons({
   imageUrl,
   align = "left",
   className = "",
+  article,
 }: {
   path: string;
   title: string;
   imageUrl?: string;
   align?: "left" | "right";
   className?: string;
+  article?: { slug: string; category: string };
 }) {
   const [open, setOpen] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -72,6 +75,12 @@ export function ShareButtons({
       return;
     }
     setCopied(true);
+    if (article)
+      articleShared({
+        articleSlug: article.slug,
+        articleCategory: article.category,
+        channel: "copy",
+      });
     if (copiedTimeoutRef.current) {
       clearTimeout(copiedTimeoutRef.current);
     }
@@ -80,6 +89,12 @@ export function ShareButtons({
 
   function nativeShare() {
     setOpen(false);
+    if (article)
+      articleShared({
+        articleSlug: article.slug,
+        articleCategory: article.category,
+        channel: "native",
+      });
     navigator.share({ title, url: withUtm(url, "native") }).catch(() => {
       // user dismissed the share sheet — not an error
     });
@@ -133,7 +148,15 @@ export function ShareButtons({
               target="_blank"
               rel="noopener noreferrer"
               className={ITEM}
-              onClick={() => setOpen(false)}
+              onClick={() => {
+                setOpen(false);
+                if (article)
+                  articleShared({
+                    articleSlug: article.slug,
+                    articleCategory: article.category,
+                    channel: c.key,
+                  });
+              }}
             >
               <ChannelIcon channel={c.key} />
               {c.label}

@@ -1,8 +1,72 @@
 import { SITE_URL, SITE_NAME } from "@/lib/site";
 import type { Post, Place, Ingredient } from "@/services/types";
+import type { Metadata } from "next";
+
+const DEFAULT_OG_IMAGE = "/og.png";
 
 export function canonical(path: string): string {
   return `${SITE_URL}${path.startsWith("/") ? path : `/${path}`}`;
+}
+
+export function absoluteImageUrl(image?: string | null): string {
+  if (!image) return canonical(DEFAULT_OG_IMAGE);
+  return /^https?:\/\//.test(image) ? image : canonical(image);
+}
+
+/** One metadata path for every public page, including a guaranteed OG image. */
+export function buildPageMetadata({
+  title,
+  description,
+  path,
+  image,
+  type = "website",
+  publishedTime,
+  modifiedTime,
+  authors,
+  tags,
+}: {
+  title: string;
+  description: string;
+  path: string;
+  image?: string | null;
+  type?: "website" | "article";
+  publishedTime?: string | null;
+  modifiedTime?: string | null;
+  authors?: string[];
+  tags?: string[];
+}): Metadata {
+  const pageTitle = title.replace(/\s*\|\s*A Drop of Seoul$/, "");
+  const url = canonical(path);
+  const imageUrl = absoluteImageUrl(image);
+  const articleFields =
+    type === "article"
+      ? {
+          publishedTime: publishedTime ?? undefined,
+          modifiedTime: modifiedTime ?? undefined,
+          authors,
+          tags,
+        }
+      : {};
+  return {
+    title: pageTitle,
+    description,
+    alternates: { canonical: url },
+    openGraph: {
+      title: pageTitle,
+      description,
+      url,
+      siteName: SITE_NAME,
+      type,
+      images: [{ url: imageUrl, width: 1200, height: 630 }],
+      ...articleFields,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: pageTitle,
+      description,
+      images: [imageUrl],
+    },
+  };
 }
 
 export function articleJsonLd(post: Post): object {
@@ -17,11 +81,7 @@ export function articleJsonLd(post: Post): object {
     // that has not been edited was last modified when it went up.
     dateModified: post.updatedAt ?? post.publishedAt ?? undefined,
     author: post.author ? { "@type": "Person", name: post.author } : undefined,
-    image: post.featuredImage
-      ? post.featuredImage.startsWith("http")
-        ? post.featuredImage
-        : canonical(post.featuredImage)
-      : undefined,
+    image: absoluteImageUrl(post.featuredImage),
     publisher: {
       "@type": "Organization",
       name: SITE_NAME,
