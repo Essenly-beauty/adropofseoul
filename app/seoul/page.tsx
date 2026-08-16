@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SectionHeading } from "@/components/editorial/SectionHeading";
-import { canonical } from "@/lib/seo";
+import { buildPageMetadata } from "@/lib/seo";
 import { SEOUL_NEIGHBORHOODS, PLACE_TYPE_EMOJI } from "@/lib/taxonomy";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   // Reader-facing branding is "A Local's Seoul"; the metadata keeps the plain
   // "Seoul" keywords so search still reads this as the Seoul guide hub.
   title: "A Local's Seoul | Local Guide to Seoul",
   description:
     "Discover Seoul like a local — neighborhoods, beauty spots, shops, cafés, and places we'd genuinely recommend to a friend visiting Seoul.",
-  alternates: { canonical: canonical("/seoul") },
-};
+  path: "/seoul",
+});
 
 // Curated place-type entry points into the directory (the live, best-populated
 // service categories). Each links into /seoul/places with the type filter.

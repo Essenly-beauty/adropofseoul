@@ -9,6 +9,53 @@
 
 import { track } from "./index";
 
+type ArticleContext = { articleSlug: string; articleCategory: string };
+
+export function articleViewed(p: ArticleContext): void {
+  track("article_view", {
+    article_slug: p.articleSlug,
+    article_category: p.articleCategory,
+  });
+}
+
+export function articleShared(p: ArticleContext & { channel: string }): void {
+  track("article_share", {
+    article_slug: p.articleSlug,
+    article_category: p.articleCategory,
+    share_channel: p.channel,
+  });
+}
+
+export function relatedArticleClicked(p: {
+  sourceSlug: string;
+  targetSlug: string;
+  position: number;
+}): void {
+  track("related_article_click", {
+    source_slug: p.sourceSlug,
+    target_slug: p.targetSlug,
+    position: p.position,
+  });
+}
+
+export function categoryClicked(p: { category: string; path: string }): void {
+  track("category_click", { category: p.category, destination_path: p.path });
+}
+
+export function newsletterSignup(p: { source: string }): void {
+  track("newsletter_signup", { source: p.source });
+}
+
+export function outboundLinkClicked(p: {
+  destinationHost: string;
+  sourcePath: string;
+}): void {
+  track("outbound_link_click", {
+    destination_host: p.destinationHost,
+    source_path: p.sourcePath,
+  });
+}
+
 export type ProfileDomain = "skin" | "hair";
 export type AuthState = "anonymous" | "authenticated";
 

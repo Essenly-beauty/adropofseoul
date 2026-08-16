@@ -3,16 +3,16 @@ import { listPublishedPosts } from "@/services/posts";
 import { ArticleCard } from "@/components/editorial/ArticleCard";
 import { SectionHeading } from "@/components/editorial/SectionHeading";
 import { SectionTabs } from "@/components/editorial/SectionTabs";
-import { canonical } from "@/lib/seo";
+import { buildPageMetadata } from "@/lib/seo";
 import { SKINCARE_TABS, isPick } from "@/lib/taxonomy";
 import type { Post } from "@/services/types";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Skincare",
   description:
     "Understand Korean skincare beyond trends — from routines and ingredients to treatments and aftercare.",
-  alternates: { canonical: canonical("/skincare") },
-};
+  path: "/skincare",
+});
 
 export const dynamic = "force-dynamic";
 

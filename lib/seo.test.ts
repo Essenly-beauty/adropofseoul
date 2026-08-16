@@ -6,6 +6,8 @@ import {
   breadcrumbJsonLd,
   definedTermJsonLd,
   definedTermSetJsonLd,
+  absoluteImageUrl,
+  buildPageMetadata,
 } from "./seo";
 import type { Post, Place, Ingredient } from "@/services/types";
 
@@ -30,6 +32,23 @@ const place = {
 describe("canonical", () => {
   it("joins a clean path onto the site base", () => {
     expect(canonical("/articles/hello")).toMatch(/\/articles\/hello$/);
+  });
+});
+
+describe("buildPageMetadata", () => {
+  it("uses the default social image when a page has no hero", () => {
+    const metadata = buildPageMetadata({
+      title: "Skincare",
+      description: "Korean skincare guides.",
+      path: "/skincare",
+    });
+    expect(metadata.openGraph).toMatchObject({
+      url: expect.stringMatching(/\/skincare$/),
+      images: [
+        expect.objectContaining({ url: expect.stringMatching(/\/og\.png$/) }),
+      ],
+    });
+    expect(absoluteImageUrl(null)).toMatch(/\/og\.png$/);
   });
 });
 

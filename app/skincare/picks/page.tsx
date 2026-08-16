@@ -5,16 +5,16 @@ import { ProductCard } from "@/components/editorial/ProductCard";
 import { ArticleCard } from "@/components/editorial/ArticleCard";
 import { SectionHeading } from "@/components/editorial/SectionHeading";
 import { SectionTabs } from "@/components/editorial/SectionTabs";
-import { canonical } from "@/lib/seo";
+import { buildPageMetadata } from "@/lib/seo";
 import { SKINCARE_TABS, isPick } from "@/lib/taxonomy";
 import type { Post } from "@/services/types";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Picks",
   description:
     "Korean skincare and hair products we recommend, plus our reviews and comparisons.",
-  alternates: { canonical: canonical("/skincare/picks") },
-};
+  path: "/skincare/picks",
+});
 
 export const dynamic = "force-dynamic";
 

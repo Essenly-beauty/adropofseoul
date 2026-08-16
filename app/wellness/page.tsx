@@ -2,16 +2,16 @@ import type { Metadata } from "next";
 import { listPublishedPosts } from "@/services/posts";
 import { ArticleCard } from "@/components/editorial/ArticleCard";
 import { SectionHeading } from "@/components/editorial/SectionHeading";
-import { canonical } from "@/lib/seo";
+import { buildPageMetadata } from "@/lib/seo";
 import { WELLNESS_CATEGORIES } from "@/lib/taxonomy";
 import type { Post } from "@/services/types";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Wellness",
   description:
     "Bathhouses, head spas, and the quieter side of Seoul — the rituals worth slowing down for.",
-  alternates: { canonical: canonical("/wellness") },
-};
+  path: "/wellness",
+});
 
 export const dynamic = "force-dynamic";
 

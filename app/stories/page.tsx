@@ -5,16 +5,16 @@ import { listGuidePosts } from "@/lib/seongsu/assets";
 import { listPillarPosts } from "@/lib/articles/assets";
 import { ArticleCard } from "@/components/editorial/ArticleCard";
 import { SectionHeading } from "@/components/editorial/SectionHeading";
-import { canonical } from "@/lib/seo";
+import { buildPageMetadata } from "@/lib/seo";
 import { sectionForCategory } from "@/lib/taxonomy";
 import type { Post } from "@/services/types";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Stories",
   description:
     "Every latest story from A Drop of Seoul in one place — skincare, haircare, wellness, and Seoul.",
-  alternates: { canonical: canonical("/stories") },
-};
+  path: "/stories",
+});
 
 export const dynamic = "force-dynamic";
 

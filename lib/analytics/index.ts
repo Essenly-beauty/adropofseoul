@@ -20,10 +20,16 @@ export interface AnalyticsProvider {
 }
 
 let provider: AnalyticsProvider | null = null;
+const pending: { event: string; props?: EventProps }[] = [];
 
 /** Register the concrete provider (e.g. a PostHog adapter) at app startup. */
 export function registerAnalyticsProvider(p: AnalyticsProvider | null): void {
   provider = p;
+  if (provider) {
+    pending
+      .splice(0)
+      .forEach(({ event, props }) => provider?.track(event, props));
+  }
 }
 
 // A minimal guard so an accidental raw-answer property is caught in review/tests
@@ -59,7 +65,11 @@ function assertSafeProps(event: string, props?: EventProps): void {
 /** Emit an event through the registered provider (no-op until one is set). */
 export function track(event: string, props?: EventProps): void {
   assertSafeProps(event, props);
-  provider?.track(event, props);
+  if (provider) provider.track(event, props);
+  else {
+    pending.push({ event, props });
+    if (pending.length > 100) pending.shift();
+  }
 }
 
 /** Associate the anonymous session with an authenticated user id. */
