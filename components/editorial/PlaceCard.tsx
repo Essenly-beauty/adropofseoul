@@ -15,20 +15,25 @@ export function PlaceCard({ place }: { place: Place }) {
       href={`/seoul/places/${place.slug}`}
       className="group block rounded-lg border border-soft-gray p-5 transition-colors duration-medium ease-editorial hover:border-accent"
     >
-      <div className="flex items-baseline justify-between gap-3">
-        <h3 className="font-serif text-xl leading-snug transition-colors duration-medium ease-editorial group-hover:text-accent">
-          {place.name}{" "}
-          {place.nameKr && (
-            <span className="text-sm text-text-muted">{place.nameKr}</span>
-          )}
-        </h3>
-        {place.area && (
-          <span className="shrink-0 text-[10px] uppercase tracking-label text-accent">
-            {place.area}
-          </span>
-        )}
-      </div>
+      {/* Sans, not the site serif: these are wayfinding labels, and globals.css
+          puts h1–h3 in `font-serif` unless a face is asked for explicitly. */}
+      <h3 className="font-sans text-[19px] font-semibold leading-tight tracking-[-0.01em] transition-colors duration-medium ease-editorial group-hover:text-accent">
+        {place.name}
+      </h3>
+      {place.nameKr && (
+        <p className="mt-0.5 break-keep text-sm text-text-muted">
+          {place.nameKr}
+        </p>
+      )}
       <p className="mt-1.5 text-xs text-text-muted">
+        {place.area && (
+          <>
+            <span className="whitespace-nowrap text-[10px] uppercase tracking-label text-accent">
+              {place.area}
+            </span>{" "}
+            ·{" "}
+          </>
+        )}
         {place.rating != null && (
           <>
             <Stars rating={place.rating} />{" "}

@@ -45,6 +45,38 @@ describe("PlaceCard", () => {
     expect(screen.getByText(/★/)).toBeTruthy();
   });
 
+  it("keeps the Korean name out of the heading", () => {
+    render(<PlaceCard place={{ ...place, nameKr: "술로프트" }} />);
+
+    expect(
+      screen.getByRole("heading", { name: "Sool Loft Head Spa" })
+    ).not.toBeNull();
+    expect(screen.getByText("술로프트")).not.toBeNull();
+  });
+
+  // globals.css sets `h1,h2,h3 { @apply font-serif }` in the base layer, so the
+  // sans face has to be asked for explicitly or it silently reverts.
+  it("sets the place name in the sans face", () => {
+    render(<PlaceCard place={place} />);
+
+    const heading = screen.getByRole("heading", { name: "Sool Loft Head Spa" });
+    expect(heading.className).toContain("font-sans");
+  });
+
+  it("keeps a Korean name from breaking mid-word", () => {
+    render(<PlaceCard place={{ ...place, nameKr: "오오네일 성수" }} />);
+
+    expect(screen.getByText("오오네일 성수").className).toContain("break-keep");
+  });
+
+  it("puts the area in the meta line beside the service", () => {
+    render(<PlaceCard place={place} />);
+
+    const meta = screen.getByText("Seongsu").closest("p");
+    expect(meta).not.toBeNull();
+    expect(meta?.textContent).toContain("Head Spa");
+  });
+
   it("labels experiences and shows the service detail", () => {
     render(
       <PlaceCard

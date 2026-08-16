@@ -46,10 +46,14 @@ export function StopCard({ stop }: { stop: Stop }) {
               {stop.time}
             </p>
           )}
-          <h3 className="mt-0.5 font-serif text-2xl leading-tight">
-            {stop.nameEn}{" "}
-            <span className="text-lg text-text-muted">{stop.nameKr}</span>
+          {/* Sans, not the site serif: these are wayfinding labels, and
+              globals.css puts h1–h3 in `font-serif` unless asked otherwise. */}
+          <h3 className="mt-0.5 font-sans text-xl font-semibold leading-tight tracking-[-0.01em]">
+            {stop.nameEn}
           </h3>
+          <p className="mt-0.5 break-keep text-base text-text-muted">
+            {stop.nameKr}
+          </p>
           <p className="mt-1.5 text-sm text-text-muted">
             <Stars rating={stop.rating} />{" "}
             <span className="font-semibold text-text">

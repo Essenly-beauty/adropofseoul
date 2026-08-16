@@ -116,12 +116,16 @@ export default async function PlacePage({
           {place.entryType === "experience" ? " · Experience" : ""}
           {place.area ? ` · ${place.area}` : ""}
         </p>
-        <h1 className="mt-1 font-serif text-2xl leading-tight md:text-3xl">
-          {place.name}{" "}
-          {place.nameKr && (
-            <span className="text-lg text-text-muted">{place.nameKr}</span>
-          )}
+        {/* Sans, not the site serif: place names are wayfinding labels, and
+            globals.css puts h1–h3 in `font-serif` unless asked otherwise. */}
+        <h1 className="mt-1 font-sans text-xl font-semibold leading-tight tracking-[-0.01em] md:text-2xl">
+          {place.name}
         </h1>
+        {place.nameKr && (
+          <p className="mt-0.5 break-keep text-base text-text-muted">
+            {place.nameKr}
+          </p>
+        )}
         <p className="mt-1.5 text-sm text-text-muted">
           {place.rating != null && (
             <>
