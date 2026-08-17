@@ -2,8 +2,8 @@
 //
 // Published articles live in the DB with their original `category` enum value;
 // this module expresses the *presentation* taxonomy (the GNB) in code, so no
-// data migration is needed. The 2026 restructure splits the old "Beauty" into
-// Skincare + Haircare and merges Places + Around Seoul into the Seoul section
+// data migration is needed. Beauty is the reader-facing umbrella for Skincare
+// and Hair & Scalp, while Places + Around Seoul merge into the Seoul section
 // (display name "A Local's Seoul") — all as a code-level remapping over the
 // stable `category` enum (see sectionForCategory). `label` is editorial
 // branding only: the `seoul` slug and the /seoul route never change with it.
@@ -20,18 +20,11 @@ export type Section = {
 
 export const SECTIONS: Section[] = [
   {
-    slug: "skincare",
-    label: "Skincare",
-    href: "/skincare",
+    slug: "beauty",
+    label: "Beauty",
+    href: "/beauty",
     blurb:
-      "Korean skincare beyond trends — routines, ingredients, treatments, and aftercare",
-  },
-  {
-    slug: "haircare",
-    label: "Haircare",
-    href: "/haircare",
-    blurb:
-      "Start with your hair, not a product — scalp, strands, damage, and your ideal routine",
+      "Skincare, hair and scalp care, and a profile that helps you know where to begin",
   },
   {
     slug: "wellness",
@@ -67,10 +60,9 @@ export function sectionForCategory(category: string): SectionRef {
   switch (category) {
     case "beauty":
     case "products":
-      return { slug: "skincare", label: "Skincare", href: "/skincare" };
     case "hair":
-      return { slug: "haircare", label: "Haircare", href: "/haircare" };
     case "head_spa":
+      return { slug: "beauty", label: "Beauty", href: "/beauty" };
     case "wellness":
       return { slug: "wellness", label: "Wellness", href: "/wellness" };
     case "places":
@@ -82,7 +74,7 @@ export function sectionForCategory(category: string): SectionRef {
 }
 
 // Category unions per section landing page. A category can be surfaced by more
-// than one section (head_spa appears under both Haircare and Wellness).
+// than one subsection (head_spa appears under Hair & Scalp and Wellness).
 export const SKINCARE_CATEGORIES = ["beauty", "products"];
 export const HAIRCARE_CATEGORIES = ["hair", "head_spa"];
 export const WELLNESS_CATEGORIES = ["wellness", "head_spa"];

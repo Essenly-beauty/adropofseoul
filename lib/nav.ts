@@ -14,22 +14,28 @@ export type NavItem = {
   children?: NavChild[];
 };
 
-// Sub-categories per section. The section link itself covers the landing, so
-// children surface the deeper entry points. Haircare leads with the profile
-// quiz; Seoul splits into Places (what to do) and Neighborhoods (where to go),
+// Sub-categories per section. Beauty is the umbrella for editorial topics and
+// the profiling tool; Seoul splits into Places and Neighborhoods,
 // with the individual neighborhoods nested under Neighborhoods.
 const SECTION_CHILDREN: Record<string, NavChild[]> = {
-  skincare: [
-    { label: "Skin Profile", href: "/beauty-profile/skin" },
-    { label: "Ingredients", href: "/ingredients" },
-    { label: "Picks", href: "/skincare/picks" },
-  ],
-  haircare: [
-    { label: "Hair Profile", href: "/beauty-profile/hair" },
-    { label: "Scalp Care", href: "/haircare#scalp-care" },
-    { label: "Treatments & Styling", href: "/haircare#treatments" },
-    { label: "Ingredients", href: "/ingredients" },
-    { label: "Products & Picks", href: "/skincare/picks" },
+  beauty: [
+    {
+      label: "Skincare",
+      href: "/skincare",
+      children: [
+        { label: "Ingredients", href: "/ingredients" },
+        { label: "Skincare Picks", href: "/skincare/picks" },
+      ],
+    },
+    { label: "Hair & Scalp", href: "/haircare" },
+    {
+      label: "Beauty Profile",
+      href: "/beauty-profile",
+      children: [
+        { label: "Skin Profile", href: "/beauty-profile/skin" },
+        { label: "Hair Profile", href: "/beauty-profile/hair" },
+      ],
+    },
   ],
   seoul: [
     { label: "Places", href: "/seoul/places" },

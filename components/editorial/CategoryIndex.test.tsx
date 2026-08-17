@@ -8,8 +8,8 @@ describe("CategoryIndex", () => {
     // Accessible name is "<label> <blurb> Enter →" — anchor to the label so a
     // blurb that mentions another section (Stories mentions "Seoul") is ignored.
     expect(
-      screen.getByRole("link", { name: /^Skincare/ }).getAttribute("href")
-    ).toBe("/skincare");
+      screen.getByRole("link", { name: /^Beauty/ }).getAttribute("href")
+    ).toBe("/beauty");
     expect(
       screen.getByRole("link", { name: /^Wellness/ }).getAttribute("href")
     ).toBe("/wellness");

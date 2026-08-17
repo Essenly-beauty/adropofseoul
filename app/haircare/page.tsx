@@ -9,7 +9,7 @@ import { HAIR_PROFILES } from "@/lib/haircare/profiles";
 import type { Post } from "@/services/types";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Haircare",
+  title: "Hair & Scalp",
   description:
     "Start with your hair, not a product. Understand your scalp, strands, damage level, and ideal routine through the lens of Korean hair care.",
   path: "/haircare",
@@ -31,7 +31,9 @@ export default async function HaircarePage() {
   return (
     <main className="mx-auto max-w-content px-6 py-16">
       {/* Hero — the section leads with diagnosis, not a product. */}
-      <p className="text-xs uppercase tracking-widest text-accent">Haircare</p>
+      <p className="text-xs uppercase tracking-widest text-accent">
+        Beauty · Hair &amp; Scalp
+      </p>
       <h1 className="mt-2 max-w-2xl font-serif text-4xl leading-tight md:text-5xl">
         Start with your hair, not a product.
       </h1>
@@ -82,22 +84,8 @@ export default async function HaircarePage() {
           id="treatments"
           className="-mt-2 mb-8 max-w-2xl scroll-mt-24 text-text-muted"
         >
-          Head spa, scalp health, treatments, and styling — the Korean approach,
-          explained. Explore the{" "}
-          <Link
-            href="/ingredients"
-            className="text-accent transition-colors duration-medium ease-editorial hover:text-accent-hover"
-          >
-            ingredient dictionary
-          </Link>{" "}
-          or our{" "}
-          <Link
-            href="/skincare/picks"
-            className="text-accent transition-colors duration-medium ease-editorial hover:text-accent-hover"
-          >
-            product picks
-          </Link>
-          .
+          Head spa, scalp health, damage, treatments, and styling — the Korean
+          approach, explained without pretending this is a product shelf.
         </p>
         {posts.length === 0 ? (
           <p className="text-text-muted">

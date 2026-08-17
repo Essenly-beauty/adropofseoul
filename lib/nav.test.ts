@@ -5,8 +5,7 @@ describe("NAV_ITEMS", () => {
   it("lists the primary nav in exact order", () => {
     expect(NAV_ITEMS.map((i) => i.label)).toEqual([
       "Home",
-      "Skincare",
-      "Haircare",
+      "Beauty",
       "Wellness",
       "A Local's Seoul",
       "Stories",
@@ -17,23 +16,28 @@ describe("NAV_ITEMS", () => {
     expect(NAV_ITEMS.find((i) => i.label === "A Local's Seoul")?.href).toBe(
       "/seoul"
     );
-    expect(NAV_ITEMS.find((i) => i.label === "Haircare")?.href).toBe(
-      "/haircare"
-    );
+    expect(NAV_ITEMS.find((i) => i.label === "Beauty")?.href).toBe("/beauty");
     expect(NAV_ITEMS.find((i) => i.label === "Wellness")?.href).toBe(
       "/wellness"
     );
   });
   it("exposes sub-categories for the GNB preview", () => {
-    const skincare = NAV_ITEMS.find((i) => i.label === "Skincare");
-    expect(skincare?.children?.map((c) => c.href)).toContain(
-      "/beauty-profile/skin"
-    );
-    const haircare = NAV_ITEMS.find((i) => i.label === "Haircare");
-    expect(haircare?.children?.map((c) => c.href)).toContain(
-      "/beauty-profile/hair"
-    );
-    expect(haircare?.children?.map((c) => c.label)).toContain("Ingredients");
+    const beauty = NAV_ITEMS.find((i) => i.label === "Beauty");
+    expect(beauty?.children?.map((c) => c.href)).toEqual([
+      "/skincare",
+      "/haircare",
+      "/beauty-profile",
+    ]);
+    const skincare = beauty?.children?.find((c) => c.href === "/skincare");
+    expect(skincare?.children?.map((c) => c.href)).toEqual([
+      "/ingredients",
+      "/skincare/picks",
+    ]);
+    const profile = beauty?.children?.find((c) => c.href === "/beauty-profile");
+    expect(profile?.children?.map((c) => c.href)).toEqual([
+      "/beauty-profile/skin",
+      "/beauty-profile/hair",
+    ]);
     const seoul = NAV_ITEMS.find((i) => i.label === "A Local's Seoul");
     expect(seoul?.children?.map((c) => c.href)).toEqual([
       "/seoul/places",

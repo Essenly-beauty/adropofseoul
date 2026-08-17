@@ -11,8 +11,8 @@ describe("SiteFooter", () => {
   it("renders curated column links and copyright", () => {
     render(<SiteFooter />);
     expect(
-      screen.getByRole("link", { name: "Skincare" }).getAttribute("href")
-    ).toBe("/skincare");
+      screen.getByRole("link", { name: "Beauty" }).getAttribute("href")
+    ).toBe("/beauty");
     expect(
       screen.getByRole("link", { name: "A Local's Seoul" }).getAttribute("href")
     ).toBe("/seoul");
