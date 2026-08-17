@@ -118,7 +118,7 @@ export default async function PlacePage({
         </p>
         {/* Sans, not the site serif: place names are wayfinding labels, and
             globals.css puts h1–h3 in `font-serif` unless asked otherwise. */}
-        <h1 className="mt-1 font-sans text-xl font-semibold leading-tight tracking-[-0.01em] md:text-2xl">
+        <h1 className="mt-1 font-sans text-xl font-semibold leading-tight tracking-[-0.01em] text-text-ink md:text-2xl">
           {place.name}
         </h1>
         {place.nameKr && (

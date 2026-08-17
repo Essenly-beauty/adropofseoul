@@ -48,7 +48,7 @@ export function StopCard({ stop }: { stop: Stop }) {
           )}
           {/* Sans, not the site serif: these are wayfinding labels, and
               globals.css puts h1–h3 in `font-serif` unless asked otherwise. */}
-          <h3 className="mt-0.5 font-sans text-xl font-semibold leading-tight tracking-[-0.01em]">
+          <h3 className="mt-0.5 font-sans text-xl font-semibold leading-tight tracking-[-0.01em] text-text-ink">
             {stop.nameEn}
           </h3>
           <p className="mt-0.5 break-keep text-base text-text-muted">

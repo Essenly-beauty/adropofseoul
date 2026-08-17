@@ -11,7 +11,14 @@ const config: Config = {
     extend: {
       colors: {
         bg: "#FAF8F4",
-        text: { DEFAULT: "#1C1C1C", muted: "rgba(28,28,28,0.66)" },
+        // `ink` is the full-strength text color lifted a step toward the warm
+        // ground — for headings set in the sans face, where semibold strokes
+        // lay down more ink than the serif and read harsher at `DEFAULT`.
+        text: {
+          DEFAULT: "#1C1C1C",
+          muted: "rgba(28,28,28,0.66)",
+          ink: "#33312E",
+        },
         accent: { DEFAULT: "#B78B62", hover: "#A2774F" },
         "soft-gray": "#E8E2DA",
         "muted-pink": "#E9D6CF",

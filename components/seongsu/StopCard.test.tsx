@@ -46,6 +46,13 @@ describe("StopCard", () => {
     expect(heading.className).toContain("font-sans");
   });
 
+  it("sets the stop name in ink rather than the full-strength text color", () => {
+    render(<StopCard stop={stop} />);
+
+    const heading = screen.getByRole("heading", { name: "Nonfiction Seongsu" });
+    expect(heading.className).toContain("text-text-ink");
+  });
+
   it("keeps a Korean name from breaking mid-word", () => {
     render(<StopCard stop={{ ...stop, nameKr: "오오네일 성수" }} />);
 

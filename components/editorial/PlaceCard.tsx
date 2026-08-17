@@ -17,7 +17,7 @@ export function PlaceCard({ place }: { place: Place }) {
     >
       {/* Sans, not the site serif: these are wayfinding labels, and globals.css
           puts h1–h3 in `font-serif` unless a face is asked for explicitly. */}
-      <h3 className="font-sans text-[19px] font-semibold leading-tight tracking-[-0.01em] transition-colors duration-medium ease-editorial group-hover:text-accent">
+      <h3 className="font-sans text-[19px] font-semibold leading-tight tracking-[-0.01em] text-text-ink transition-colors duration-medium ease-editorial group-hover:text-accent">
         {place.name}
       </h3>
       {place.nameKr && (
