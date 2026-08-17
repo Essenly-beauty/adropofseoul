@@ -12,6 +12,96 @@ export const metadata: Metadata = {
 
 const bodyCopy = "text-[15px] leading-[1.9] text-text-muted md:text-base";
 
+const memories = [
+  {
+    src: "/images/about/seoul-balloon-clear.png",
+    alt: "A Seoul hot-air balloon glowing in the night sky",
+    className: "-rotate-[3deg] md:translate-y-5",
+    imageClassName: "scale-[1.24] object-cover object-[68%_36%]",
+  },
+  {
+    src: "/images/about/hanok-winter-original.jpeg",
+    alt: "A quiet hanok courtyard in winter",
+    className: "rotate-[2deg]",
+    imageClassName: "object-cover object-center",
+  },
+  {
+    src: "/images/about/korean-desserts-web.png",
+    alt: "Colorful Korean rice cakes and traditional desserts on a wooden table",
+    className: "-rotate-[2deg] md:translate-y-4",
+    imageClassName: "object-cover object-[center_62%]",
+  },
+  {
+    src: "/images/about/seoul-sunset-original.jpeg",
+    alt: "Seoul skyline beneath a pink evening sky",
+    className: "-rotate-1 md:translate-y-4",
+    imageClassName: "object-cover object-[center_56%]",
+  },
+  {
+    src: "/images/about/coffee-and-cake-web.png",
+    alt: "Coffee and cakes shared at a Seoul cafe",
+    className: "rotate-[2deg]",
+    imageClassName: "object-cover object-center",
+  },
+  {
+    src: "/images/about/eomuk-skewers.jpeg",
+    alt: "Assorted eomuk skewers lined up at a Seoul street-food shop",
+    className: "-rotate-[2deg] md:translate-y-4",
+    imageClassName: "object-cover object-[center_58%]",
+  },
+  {
+    src: "/images/about/shared-table.jpeg",
+    alt: "Friends sharing makgeolli and pajeon at a wooden table",
+    className: "rotate-[3deg]",
+    imageClassName: "object-cover object-center",
+  },
+];
+
+const tapeAngles = [
+  "-rotate-[4deg]",
+  "rotate-[2deg]",
+  "-rotate-1",
+  "rotate-[4deg]",
+  "-rotate-[3deg]",
+  "rotate-1",
+  "-rotate-[2deg]",
+];
+
+function MemoryCollage() {
+  return (
+    <figure className="mx-auto mt-14 w-full max-w-[80rem] md:mt-20">
+      <div className="relative pt-5 md:pt-7">
+        <div className="grid grid-cols-2 gap-x-4 gap-y-9 sm:gap-x-6 md:grid-cols-4 md:gap-6 lg:grid-cols-7 lg:gap-6">
+          {memories.map((memory, index) => (
+            <div
+              key={memory.src}
+              className={`relative aspect-[4/5] bg-[#fffdfa] p-1.5 pb-6 shadow-[0_10px_26px_rgba(49,39,30,0.14)] sm:p-2 sm:pb-8 ${memory.className}`}
+            >
+              <span
+                aria-hidden="true"
+                className={`absolute left-1/2 top-[-0.55rem] z-10 h-5 w-[42%] -translate-x-1/2 bg-[#d8c19a]/65 shadow-[0_2px_5px_rgba(92,70,45,0.08)] [clip-path:polygon(3%_7%,97%_0,100%_88%,5%_100%,0_18%)] sm:h-6 ${tapeAngles[index]}`}
+              />
+              <div className="relative h-full w-full overflow-hidden bg-porcelain">
+                <Image
+                  src={memory.src}
+                  alt={memory.alt}
+                  fill
+                  priority={index === 0}
+                  sizes="(min-width: 1024px) 14vw, (min-width: 768px) 24vw, 48vw"
+                  className={`${memory.imageClassName} saturate-[0.92] contrast-[0.97]`}
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <figcaption className="mt-10 text-center font-serif text-base italic leading-relaxed text-text-muted/80 md:mt-12 md:text-lg">
+        Little moments from the Seoul I love.
+      </figcaption>
+    </figure>
+  );
+}
+
 export default function AboutPage() {
   return (
     <main>
@@ -41,7 +131,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-4xl px-6 pb-20 md:pb-32">
+      <section className="mx-auto max-w-6xl px-6 pb-20 md:pb-32">
         <div className="mx-auto max-w-2xl space-y-6">
           <p className={bodyCopy}>
             Not only the well-known sights, but quiet neighborhoods made for
@@ -56,21 +146,7 @@ export default function AboutPage() {
             remember in their own way.
           </p>
         </div>
-
-        <figure className="mx-auto mt-14 w-full max-w-[34rem] md:mt-20">
-          <div className="relative aspect-[3/4] overflow-hidden bg-porcelain">
-            <Image
-              src="/images/about/shared-table.jpeg"
-              alt="Two friends sharing makgeolli over a Korean pancake"
-              fill
-              sizes="(min-width: 768px) 34rem, calc(100vw - 3rem)"
-              className="object-cover object-center"
-            />
-          </div>
-          <figcaption className="mt-3 text-center font-serif text-sm italic text-text-muted/80">
-            A little taste of Seoul, shared with a friend.
-          </figcaption>
-        </figure>
+        <MemoryCollage />
       </section>
 
       <section className="border-y border-soft-gray px-6 py-24 text-center md:py-36">

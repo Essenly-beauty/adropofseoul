@@ -12,7 +12,7 @@ import type { Post } from "@/services/types";
 export const metadata: Metadata = buildPageMetadata({
   title: "Stories",
   description:
-    "Every latest story from A Drop of Seoul in one place — skincare, haircare, wellness, and Seoul.",
+    "The complete A Drop of Seoul journal — every beauty, wellness, and Seoul story, newest first.",
   path: "/stories",
 });
 
@@ -22,8 +22,7 @@ export const dynamic = "force-dynamic";
 // same list to a single section.
 const FILTERS = [
   { key: "all", label: "All" },
-  { key: "skincare", label: "Skincare" },
-  { key: "haircare", label: "Haircare" },
+  { key: "beauty", label: "Beauty" },
   { key: "wellness", label: "Wellness" },
   { key: "seoul", label: "A Local's Seoul" },
 ] as const;
@@ -59,7 +58,8 @@ export default async function StoriesPage({
     <main className="mx-auto max-w-content px-6 py-16">
       <SectionHeading title="Stories" eyebrow="The Journal" />
       <p className="-mt-2 mb-8 max-w-2xl text-text-muted">
-        Every latest story in one place. Filter by what you came for.
+        The complete journal, newest first. Browse everything or filter the
+        archive by section.
       </p>
       <nav aria-label="Filter stories" className="mb-10 flex flex-wrap gap-2.5">
         {FILTERS.map((f) => {

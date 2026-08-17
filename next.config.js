@@ -9,14 +9,15 @@ const nextConfig = {
     remotePatterns: [{ protocol: "https", hostname: "**" }],
   },
   // Permanent (308) redirects from the pre-restructure IA to the new homes.
-  // The 2026 restructure: Beauty → Skincare + Haircare, Places + Around Seoul
-  // → Seoul, /articles → /stories. Old article/place/ingredient detail slugs
+  // Legacy Beauty children still resolve to the current Skincare and Hair &
+  // Scalp routes. Places + Around Seoul → Seoul, /articles → /stories. Old
+  // article/place/ingredient detail slugs
   // are preserved (/articles/:slug, /ingredients/:slug are unchanged); only the
   // section roots move, so every legacy section URL 301s to its new home.
   async redirects() {
     return [
-      // Beauty → Skincare / Haircare
-      { source: "/beauty", destination: "/skincare", permanent: true },
+      // Legacy Beauty children → current subsection routes. /beauty itself is
+      // now the umbrella landing and must not redirect.
       { source: "/beauty/skincare", destination: "/skincare", permanent: true },
       { source: "/beauty/hair", destination: "/haircare", permanent: true },
       {

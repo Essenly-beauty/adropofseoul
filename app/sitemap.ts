@@ -13,6 +13,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "",
     "/stories",
     "/skincare",
+    "/beauty",
     "/skincare/picks",
     "/haircare",
     ...HAIR_PROFILE_SLUGS.map((s) => `/haircare/profiles/${s}`),

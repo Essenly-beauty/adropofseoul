@@ -90,10 +90,9 @@ describe("place types", () => {
 });
 
 describe("sections", () => {
-  it("exposes the five content sections in order", () => {
+  it("exposes the four content sections in order", () => {
     expect(SECTIONS.map((s) => s.slug)).toEqual([
-      "skincare",
-      "haircare",
+      "beauty",
       "wellness",
       "seoul",
       "stories",
@@ -121,9 +120,9 @@ describe("sections", () => {
 
 describe("sectionForCategory", () => {
   it("maps DB categories to their new sections", () => {
-    expect(sectionForCategory("beauty").href).toBe("/skincare");
-    expect(sectionForCategory("hair").href).toBe("/haircare");
-    expect(sectionForCategory("head_spa").href).toBe("/wellness");
+    expect(sectionForCategory("beauty").href).toBe("/beauty");
+    expect(sectionForCategory("hair").href).toBe("/beauty");
+    expect(sectionForCategory("head_spa").href).toBe("/beauty");
     expect(sectionForCategory("wellness").href).toBe("/wellness");
     expect(sectionForCategory("places").href).toBe("/seoul");
     expect(sectionForCategory("guides").href).toBe("/seoul");

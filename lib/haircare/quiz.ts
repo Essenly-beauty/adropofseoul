@@ -1,4 +1,4 @@
-// Version 1 of the Hair Profile quiz (WS-06). 14 closed questions, no info step
+// Version 1 of the Hair Profile quiz (WS-06). 16 closed questions, no info step
 // and no free text, scoring into the six archetypes in ./profiles via ./scoring.
 //
 // Option `key` and `value` are identical and are the canonical codes; labels are
@@ -74,7 +74,7 @@ export const HAIR_QUIZ: QuizDefinition = {
   version: 1,
   title: "Hair Profile",
   description:
-    "Fourteen short questions about your hair, scalp, and routine. Educational, not a medical diagnosis.",
+    "Sixteen short questions about your hair, scalp, and routine. Educational, not a medical diagnosis.",
   questions: [
     single(
       "natural_pattern",

@@ -11,8 +11,7 @@ describe("SiteHeader", () => {
   it("renders every primary nav link", () => {
     render(<SiteHeader />);
     for (const label of [
-      "Skincare",
-      "Haircare",
+      "Beauty",
       "Wellness",
       "A Local's Seoul",
       "Stories",
@@ -20,6 +19,8 @@ describe("SiteHeader", () => {
     ]) {
       expect(screen.getByRole("link", { name: label })).toBeTruthy();
     }
+    expect(screen.getByRole("link", { name: "Skincare" })).toBeTruthy();
+    expect(screen.getByRole("link", { name: "Hair & Scalp" })).toBeTruthy();
   });
   it("renders the My Seoul Drop planning CTA", () => {
     render(<SiteHeader />);
