@@ -37,3 +37,85 @@
     scroll-behavior: auto !important;
   }
 }
+
+@keyframes profile-loader-orbit {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes profile-loader-ripple {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: scale(0.88);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes profile-loader-drop {
+  0%,
+  100% {
+    transform: translateY(2px);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes profile-loader-glint {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes profile-loader-message {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.profile-loader-orbit,
+.profile-loader-ripple,
+.profile-loader-drop,
+.profile-loader-glint {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.profile-loader-orbit {
+  animation: profile-loader-orbit 4.5s linear infinite;
+}
+
+.profile-loader-ripple {
+  animation: profile-loader-ripple 2.8s ease-in-out infinite;
+}
+
+.profile-loader-ripple-two {
+  animation-delay: 0.7s;
+}
+
+.profile-loader-drop {
+  animation: profile-loader-drop 2.2s ease-in-out infinite;
+}
+
+.profile-loader-glint {
+  animation: profile-loader-glint 1.8s ease-in-out infinite;
+}
+
+.profile-loader-message {
+  display: inline-block;
+  animation: profile-loader-message 500ms ease-out both;
+}

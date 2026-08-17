@@ -47,6 +47,107 @@ const REASON_COPY: Record<string, string> = {
 
 type PendingSaves = Map<string, Promise<boolean>>;
 
+const BUILDING_MESSAGES = [
+  "Gathering your skin signals",
+  "Balancing comfort and texture",
+  "Curating your Korean beauty edit",
+  "Adding the final Seoul touch",
+];
+
+function SkinProfileBuilding() {
+  const [messageIndex, setMessageIndex] = useState(0);
+  useEffect(() => {
+    const interval = window.setInterval(
+      () =>
+        setMessageIndex((current) =>
+          current === BUILDING_MESSAGES.length - 1 ? current : current + 1
+        ),
+      2200
+    );
+    return () => window.clearInterval(interval);
+  }, []);
+
+  return (
+    <div
+      className="mx-auto flex min-h-[480px] max-w-2xl flex-col items-center justify-center px-6 py-20 text-center"
+      aria-live="polite"
+      aria-busy="true"
+    >
+      <div className="profile-loader relative h-40 w-40" aria-hidden="true">
+        <svg viewBox="0 0 160 160" className="h-full w-full">
+          <circle
+            className="profile-loader-ripple profile-loader-ripple-one"
+            cx="80"
+            cy="80"
+            r="38"
+            fill="none"
+            stroke="#E9D6CF"
+            strokeWidth="1.5"
+          />
+          <circle
+            className="profile-loader-ripple profile-loader-ripple-two"
+            cx="80"
+            cy="80"
+            r="54"
+            fill="none"
+            stroke="#E8E2DA"
+            strokeWidth="1"
+          />
+          <g className="profile-loader-orbit">
+            <circle cx="80" cy="18" r="4" fill="#B78B62" />
+            <circle cx="124" cy="36" r="2.5" fill="#E9D6CF" />
+            <circle cx="137" cy="80" r="1.75" fill="#B78B62" />
+          </g>
+          <path
+            className="profile-loader-drop"
+            d="M80 47C80 47 57 70.5 57 88.5C57 101.2 67.3 111 80 111C92.7 111 103 101.2 103 88.5C103 70.5 80 47 80 47Z"
+            fill="#F2EDE5"
+            stroke="#B78B62"
+            strokeWidth="2"
+          />
+          <ellipse
+            className="profile-loader-glint"
+            cx="71"
+            cy="78"
+            rx="4"
+            ry="7"
+            fill="#FAF8F4"
+            transform="rotate(30 71 78)"
+          />
+        </svg>
+      </div>
+      <p className="mt-7 text-[11px] uppercase tracking-label text-accent">
+        Your Skin Profile
+      </p>
+      <h1 className="mt-3 font-serif text-3xl md:text-4xl">
+        Your drop is taking shape.
+      </h1>
+      <p className="mt-4 min-h-6 text-sm text-text-muted">
+        <span key={messageIndex} className="profile-loader-message">
+          {BUILDING_MESSAGES[messageIndex]}
+        </span>
+      </p>
+      <div className="mt-6 flex items-center gap-2" aria-hidden="true">
+        {BUILDING_MESSAGES.map((_, index) => (
+          <span
+            key={index}
+            className={`h-1.5 rounded-full transition-all duration-medium ease-editorial ${
+              index === messageIndex
+                ? "w-5 bg-accent"
+                : index < messageIndex
+                  ? "w-1.5 bg-accent/45"
+                  : "w-1.5 bg-soft-gray"
+            }`}
+          />
+        ))}
+      </div>
+      <p className="mt-6 text-xs text-text-muted/70">
+        Saving your answers and preparing your recommendations.
+      </p>
+    </div>
+  );
+}
+
 export function SkinProfileResult({
   result,
   products,
@@ -296,18 +397,7 @@ function SkinQuizFinish({
       }
     })();
   }, [attemptId, pendingSaves, responses, router, savedKeys]);
-  if (!fellBack)
-    return (
-      <div className="mx-auto max-w-2xl px-6 py-20">
-        <p className="text-xs uppercase tracking-widest text-accent">
-          Skin Profile
-        </p>
-        <h1 className="mt-3 font-serif text-3xl">Building your profile…</h1>
-        <p className="mt-3 text-sm text-text-muted">
-          Saving your answers and preparing your recommendations.
-        </p>
-      </div>
-    );
+  if (!fellBack) return <SkinProfileBuilding />;
   return (
     <SkinQuizResult
       responses={responses}
