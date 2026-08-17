@@ -103,10 +103,10 @@ export default async function PlacePage({
       />
 
       <Link
-        href="/seoul/places"
+        href="/seoul"
         className="text-[11px] uppercase tracking-label text-text-muted transition-colors duration-medium ease-editorial hover:text-accent"
       >
-        ← Seoul Directory
+        Explore A Local&apos;s Seoul →
       </Link>
 
       <article className="mt-4 rounded-lg border border-soft-gray bg-porcelain/40 p-5 md:p-7">
