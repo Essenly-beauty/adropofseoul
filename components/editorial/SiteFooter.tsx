@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { SITE_NAME, TAGLINE } from "@/lib/site";
 import { SECTIONS } from "@/lib/taxonomy";
+import { MySeoulDropLink } from "./MySeoulDropLink";
 
 const EXPLORE = SECTIONS.map((s) => ({ label: s.label, href: s.href }));
 
@@ -24,6 +25,12 @@ export function SiteFooter() {
             <p className="mt-3.5 max-w-[34ch] text-sm text-text-muted">
               {TAGLINE}
             </p>
+            <MySeoulDropLink
+              source="site_footer"
+              className="mt-5 inline-block text-[11px] uppercase tracking-label text-accent hover:text-accent-hover"
+            >
+              Continue to My Seoul Drop ↗
+            </MySeoulDropLink>
           </div>
           <FooterColumn title="Explore" items={EXPLORE} />
           <FooterColumn title="More" items={MORE} />

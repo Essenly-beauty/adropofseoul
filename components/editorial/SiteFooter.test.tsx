@@ -22,6 +22,13 @@ describe("SiteFooter", () => {
     expect(
       screen.getByRole("link", { name: "Terms of Use" }).getAttribute("href")
     ).toBe("/terms");
+    const mySeoulDrop = screen.getByRole("link", {
+      name: "Continue to My Seoul Drop ↗",
+    });
+    expect(mySeoulDrop.getAttribute("href")).toContain(
+      "https://myseouldrop.app/"
+    );
+    expect(mySeoulDrop.getAttribute("target")).toBe("_blank");
     expect(screen.getByText(/All rights reserved/)).toBeTruthy();
   });
 });
