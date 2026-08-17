@@ -21,10 +21,12 @@ describe("SiteHeader", () => {
       expect(screen.getByRole("link", { name: label })).toBeTruthy();
     }
   });
-  it("renders the My Beauty Profile CTA", () => {
+  it("renders the My Seoul Drop planning CTA", () => {
     render(<SiteHeader />);
-    const cta = screen.getAllByRole("link", { name: "My Beauty Profile" })[0];
-    expect(cta.getAttribute("href")).toBe("/beauty-profile");
+    const cta = screen.getAllByRole("link", {
+      name: /Plan your Seoul with My Seoul Drop/,
+    })[0];
+    expect(cta.getAttribute("href")).toContain("https://myseouldrop.app/");
   });
   it("toggles the mobile menu panel", () => {
     render(<SiteHeader />);
@@ -42,6 +44,7 @@ describe("SiteHeader", () => {
       a.getAttribute("href")
     );
     expect(hrefs).toContain("/beauty-profile/hair");
+    expect(hrefs).toContain("/beauty-profile/skin");
     expect(hrefs).toContain("/ingredients");
     expect(hrefs).toContain("/seoul/neighborhoods/seongsu");
   });
@@ -53,6 +56,7 @@ describe("SiteHeader", () => {
       a.getAttribute("href")
     );
     expect(hrefs).toContain("/beauty-profile/hair");
+    expect(hrefs).toContain("/beauty-profile/skin");
     expect(hrefs).toContain("/ingredients");
     expect(hrefs).toContain("/seoul/places");
     expect(hrefs).toContain("/seoul/neighborhoods");

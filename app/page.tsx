@@ -73,7 +73,10 @@ export default async function HomePage() {
       )}
 
       <Reveal>
-        <section className="mx-auto max-w-content px-6 py-14 md:py-24">
+        <section
+          id="explore"
+          className="mx-auto max-w-content scroll-mt-20 px-6 py-14 md:py-24"
+        >
           <SectionHeading
             title="Find your way in"
             eyebrow="Explore"

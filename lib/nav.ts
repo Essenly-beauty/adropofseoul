@@ -20,6 +20,7 @@ export type NavItem = {
 // with the individual neighborhoods nested under Neighborhoods.
 const SECTION_CHILDREN: Record<string, NavChild[]> = {
   skincare: [
+    { label: "Skin Profile", href: "/beauty-profile/skin" },
     { label: "Ingredients", href: "/ingredients" },
     { label: "Picks", href: "/skincare/picks" },
   ],
@@ -54,9 +55,13 @@ export const NAV_ITEMS: NavItem[] = [
   { label: "About", href: "/about" },
 ];
 
-// The Hair Profile quiz is the site's flagship interactive feature — surfaced
-// as a distinct CTA rather than a plain nav link.
-export const NAV_CTA = { label: "My Beauty Profile", href: "/beauty-profile" };
+// My Seoul Drop is the companion planning product. Its two-line label explains
+// the job before naming the service, so first-time visitors do not need to infer
+// the relationship from two similar brand names.
+export const NAV_CTA = {
+  eyebrow: "Plan your Seoul",
+  label: "My Seoul Drop",
+};
 
 // Skincare tab set, re-exported for the shared SectionTabs switcher.
 export { SKINCARE_TABS };
