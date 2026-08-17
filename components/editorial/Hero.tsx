@@ -14,30 +14,42 @@ export function Hero() {
       <p className="mx-auto mt-8 max-w-[46ch] text-lg leading-relaxed text-text-muted">
         {HERO_LEDE}
       </p>
-      <div className="mt-11 flex flex-wrap items-center justify-center gap-4">
+      <p className="mx-auto mt-10 max-w-[46ch] text-sm leading-relaxed text-text-muted">
+        Save the places, products, and ideas you want to remember in one
+        personal Seoul list.
+      </p>
+      <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
+        <MySeoulDropLink
+          source="home_hero"
+          className="rounded-full border border-text bg-text px-7 py-3.5 text-[12px] font-medium uppercase tracking-label text-bg transition-colors duration-medium ease-editorial hover:border-accent hover:bg-accent"
+        >
+          Start My Seoul Drop ↗
+        </MySeoulDropLink>
+        <Link
+          href="/beauty-profile"
+          className="rounded-full border border-text px-7 py-3.5 text-[12px] font-medium uppercase tracking-label text-text transition-colors duration-medium ease-editorial hover:border-accent hover:text-accent"
+        >
+          Find My Beauty Profile →
+        </Link>
+      </div>
+      <nav
+        aria-label="Explore A Drop of Seoul"
+        className="mt-7 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-[11px] uppercase tracking-label text-text-muted"
+      >
         <Link
           href="/stories"
-          className="rounded-full border border-text px-7 py-3.5 text-[12.5px] uppercase tracking-label transition-colors duration-medium ease-editorial hover:bg-text hover:text-bg"
+          className="border-b border-transparent pb-1 transition-colors duration-medium ease-editorial hover:border-accent hover:text-text"
         >
-          Explore Guides
+          Read Korean beauty guides →
         </Link>
         <Link
           href="/seoul/places"
-          className="border-b border-transparent pb-1 text-[12.5px] uppercase tracking-label text-text-muted transition-colors duration-medium ease-editorial hover:border-accent hover:text-text"
+          className="border-b border-transparent pb-1 transition-colors duration-medium ease-editorial hover:border-accent hover:text-text"
         >
-          The Seoul Directory →
+          Browse vetted Seoul places →
         </Link>
-      </div>
-      <p className="mt-7 text-sm text-text-muted">
-        Planning a Seoul trip?{" "}
-        <MySeoulDropLink
-          source="home_hero"
-          className="border-b border-accent/50 pb-0.5 text-text transition-colors duration-medium ease-editorial hover:border-accent hover:text-accent"
-        >
-          Build your personal Seoul list in My Seoul Drop ↗
-        </MySeoulDropLink>
-      </p>
-      <p className="mt-16 text-[11px] uppercase tracking-label text-text-muted/60">
+      </nav>
+      <p className="mt-14 text-[11px] uppercase tracking-label text-text-muted/60">
         Scroll ↓
       </p>
     </section>
