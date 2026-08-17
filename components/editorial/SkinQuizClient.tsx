@@ -256,7 +256,8 @@ export function SkinProfileResult({
                 )}
                 {product.disclosureRequired && (
                   <p className="mt-2 text-[10px] text-text-muted">
-                    Affiliate link; we may earn a commission.
+                    Affiliate link. A Drop of Seoul may earn a commission at no
+                    extra cost to you.
                   </p>
                 )}
               </article>
