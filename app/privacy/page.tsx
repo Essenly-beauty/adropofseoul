@@ -79,9 +79,9 @@ export default function PrivacyPage() {
 
       <Section title="Affiliate links">
         <p>
-          Some articles contain affiliate links. Purchases made through them may
-          earn us a commission at no extra cost to you. This never affects what
-          we recommend.
+          Some articles contain affiliate links. The editor of this site may
+          personally earn a commission at no extra cost to you. This never
+          affects what we recommend.
         </p>
       </Section>
 
