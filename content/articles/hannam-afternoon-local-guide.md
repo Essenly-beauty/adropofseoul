@@ -10,7 +10,7 @@ meta_description: "How to spend a half-day in Hannam-dong — Leeum, the interna
 author: "A Drop of Seoul Editorial"
 status: "published"
 published_at: "2026-08-16T03:30:00+00:00"
-featured_image: ""
+featured_image: "/images/articles/hannam-afternoon-local-guide.png"
 ---
 
 Every visitor gets sent to Seongsu, and they should. But there's a specific kind of afternoon Seongsu can't give you, and Hannam can.

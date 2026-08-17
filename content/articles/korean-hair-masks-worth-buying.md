@@ -10,7 +10,7 @@ meta_description: "The Korean hair masks worth carrying home, sorted by hair typ
 author: "A Drop of Seoul Editorial"
 status: "published"
 published_at: "2026-08-16T01:50:00+00:00"
-featured_image: ""
+featured_image: "/images/articles/korean-hair-masks-worth-buying.png"
 ---
 
 Of everything in a Korean beauty haul, hair masks are the item people are most likely to under-buy and most likely to be glad about later.

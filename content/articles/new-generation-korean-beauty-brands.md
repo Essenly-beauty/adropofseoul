@@ -10,7 +10,7 @@ meta_description: "The four strategies defining Korea's new beauty brands — gl
 author: "A Drop of Seoul Editorial"
 status: "published"
 published_at: "2026-08-16T01:00:00+00:00"
-featured_image: ""
+featured_image: "/images/articles/new-generation-korean-beauty-brands.png"
 ---
 
 The generation of Korean brands that went global in the 2010s sold you Korea.

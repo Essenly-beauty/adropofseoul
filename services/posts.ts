@@ -23,13 +23,51 @@ const COLUMNS =
   "id,title,slug,subtitle,excerpt,body,category,tags,featured_image,author,seo_title,meta_description,published_at,updated_at";
 
 const LOCAL_FEATURED_IMAGES: Record<string, string> = {
+  "five-k-beauty-serums": "/images/articles/five-k-beauty-serums.png",
+  "gangnam-beauty-day": "/images/articles/gangnam-beauty-day.png",
+  "hannam-afternoon-local-guide":
+    "/images/articles/hannam-afternoon-local-guide.png",
+  "k-beauty-is-changing": "/images/articles/k-beauty-is-changing.png",
+  "korean-beauty-brands-to-start-with":
+    "/images/articles/korean-beauty-brands-to-start-with.png",
+  "korean-fragrance-seoul": "/images/articles/korean-fragrance-seoul.png",
+  "korean-hair-brands-worth-knowing":
+    "/images/articles/korean-hair-brands-worth-knowing.png",
+  "korean-hair-masks-worth-buying":
+    "/images/articles/korean-hair-masks-worth-buying.png",
+  "korean-haircare-fine-frizzy-hair":
+    "/images/articles/korean-haircare-fine-frizzy-hair.png",
+  "korean-haircare-where-to-start":
+    "/images/articles/korean-haircare-where-to-start.png",
+  "korean-phrases-for-beauty-shopping":
+    "/images/articles/korean-phrases-for-beauty-shopping.png",
+  "korean-skin-texture-meaning":
+    "/images/articles/korean-skin-texture-meaning.png",
+  "korean-skincare-brands-on-our-radar":
+    "/images/articles/korean-skincare-brands-on-our-radar.png",
+  "korean-skincare-labels-explained":
+    "/images/articles/korean-skincare-labels-explained.png",
   "myeongdong-vs-seongsu-beauty-shopping":
     "/images/articles/myeongdong-vs-seongsu-beauty-shopping.png",
   "olive-young-shopping-guide":
     "/images/articles/olive-young-shopping-guide.jpg",
+  "new-generation-korean-beauty-brands":
+    "/images/articles/new-generation-korean-beauty-brands.png",
+  "people-shaping-seoul-beauty":
+    "/images/articles/people-shaping-seoul-beauty.png",
   "seongsu-beauty-spots": "/images/articles/seongsu-beauty-spots.png",
+  "seoul-holistic-beauty-shift":
+    "/images/articles/seoul-holistic-beauty-shift.png",
+  "seoul-scalp-care-culture": "/images/articles/seoul-scalp-care-culture.png",
+  "the-drop-list-august-2026": "/images/articles/the-drop-list-august-2026.png",
+  "what-makes-a-brand-feel-seoul":
+    "/images/articles/what-makes-a-brand-feel-seoul.png",
+  "what-to-buy-at-olive-young":
+    "/images/articles/what-to-buy-at-olive-young.png",
   "what-to-buy-korean-skincare-skin-type":
     "/images/articles/what-to-buy-korean-skincare-skin-type.jpg",
+  "where-to-shop-k-beauty-beyond-olive-young":
+    "/images/articles/where-to-shop-k-beauty-beyond-olive-young.png",
 };
 
 export function mapPostRow(row: PostRow): Post {

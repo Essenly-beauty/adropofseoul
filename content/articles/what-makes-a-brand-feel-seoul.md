@@ -10,7 +10,7 @@ meta_description: "The five design traits Seoul beauty brands share, why the spa
 author: "A Drop of Seoul Editorial"
 status: "published"
 published_at: "2026-08-16T02:10:00+00:00"
-featured_image: ""
+featured_image: "/images/articles/what-makes-a-brand-feel-seoul.png"
 ---
 
 You can walk into a beauty store in six different cities and know instantly which one is trying to be Seoul.

@@ -10,7 +10,7 @@ meta_description: "What 피부결, 속건조, 물광 and 윤광 really mean — 
 author: "A Drop of Seoul Editorial"
 status: "published"
 published_at: "2026-08-16T02:00:00+00:00"
-featured_image: ""
+featured_image: "/images/articles/korean-skin-texture-meaning.png"
 ---
 
 The first time someone here tells you your 피부결 is good, it lands strangely. It sounds like a comment about your pores.

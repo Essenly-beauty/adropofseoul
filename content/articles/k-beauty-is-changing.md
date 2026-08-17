@@ -10,7 +10,7 @@ meta_description: "Korea is now the world's number two cosmetics exporter, drive
 author: "A Drop of Seoul Editorial"
 status: "published"
 published_at: "2026-08-16T04:10:00+00:00"
-featured_image: ""
+featured_image: "/images/articles/k-beauty-is-changing.png"
 ---
 
 If you learned about Korean beauty between roughly 2014 and 2018, you learned a story with three parts: a ten-step routine, a sheet mask, and a snail.
