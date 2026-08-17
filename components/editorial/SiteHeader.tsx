@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { NAV_ITEMS, NAV_CTA } from "@/lib/nav";
 import { SITE_NAME } from "@/lib/site";
+import { MySeoulDropLink } from "./MySeoulDropLink";
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
@@ -73,12 +74,18 @@ export function SiteHeader() {
               )}
             </div>
           ))}
-          <Link
-            href={NAV_CTA.href}
-            className="rounded-full border border-text px-3.5 py-1.5 text-[11px] uppercase tracking-label text-text transition-colors duration-medium ease-editorial hover:border-accent hover:bg-accent hover:text-bg"
+          <MySeoulDropLink
+            source="site_header"
+            ariaLabel="Plan your Seoul with My Seoul Drop (opens in a new tab)"
+            className="flex min-w-[150px] flex-col items-center rounded-full border border-text bg-text px-4 py-1.5 text-bg transition-colors duration-medium ease-editorial hover:border-accent hover:bg-accent"
           >
-            {NAV_CTA.label}
-          </Link>
+            <span className="text-[8px] uppercase tracking-label opacity-65">
+              {NAV_CTA.eyebrow}
+            </span>
+            <span className="text-[10px] uppercase tracking-label">
+              {NAV_CTA.label} ↗
+            </span>
+          </MySeoulDropLink>
         </nav>
         <button
           type="button"
@@ -97,13 +104,19 @@ export function SiteHeader() {
         >
           <ul className="flex flex-col gap-1">
             <li>
-              <Link
-                href={NAV_CTA.href}
+              <MySeoulDropLink
+                source="mobile_menu"
+                ariaLabel="Plan your Seoul with My Seoul Drop (opens in a new tab)"
                 onClick={() => setOpen(false)}
-                className="mb-2 block rounded-full border border-text px-4 py-2.5 text-center text-[12px] uppercase tracking-label text-text transition-colors duration-medium ease-editorial hover:border-accent hover:bg-accent hover:text-bg"
+                className="mb-2 flex flex-col items-center rounded-full border border-text bg-text px-4 py-2.5 text-center text-bg transition-colors duration-medium ease-editorial hover:border-accent hover:bg-accent"
               >
-                {NAV_CTA.label}
-              </Link>
+                <span className="text-[9px] uppercase tracking-label opacity-65">
+                  {NAV_CTA.eyebrow}
+                </span>
+                <span className="text-[12px] uppercase tracking-label">
+                  {NAV_CTA.label} ↗
+                </span>
+              </MySeoulDropLink>
             </li>
             {items.map((item) => (
               <li key={item.href}>

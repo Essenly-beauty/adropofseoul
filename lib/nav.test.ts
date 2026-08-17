@@ -25,6 +25,10 @@ describe("NAV_ITEMS", () => {
     );
   });
   it("exposes sub-categories for the GNB preview", () => {
+    const skincare = NAV_ITEMS.find((i) => i.label === "Skincare");
+    expect(skincare?.children?.map((c) => c.href)).toContain(
+      "/beauty-profile/skin"
+    );
     const haircare = NAV_ITEMS.find((i) => i.label === "Haircare");
     expect(haircare?.children?.map((c) => c.href)).toContain(
       "/beauty-profile/hair"
@@ -51,8 +55,8 @@ describe("NAV_ITEMS", () => {
       NAV_ITEMS.find((i) => i.label === "About")?.children
     ).toBeUndefined();
   });
-  it("exposes the Beauty Profile CTA", () => {
-    expect(NAV_CTA.label).toBe("My Beauty Profile");
-    expect(NAV_CTA.href).toBe("/beauty-profile");
+  it("explains the My Seoul Drop CTA", () => {
+    expect(NAV_CTA.eyebrow).toBe("Plan your Seoul");
+    expect(NAV_CTA.label).toBe("My Seoul Drop");
   });
 });
