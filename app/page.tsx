@@ -13,6 +13,7 @@ import { ProductCard } from "@/components/editorial/ProductCard";
 import { NewsletterForm } from "@/components/editorial/NewsletterForm";
 import { Reveal } from "@/components/editorial/Reveal";
 import { Eyebrow } from "@/components/editorial/Eyebrow";
+import { MySeoulDropLink } from "@/components/editorial/MySeoulDropLink";
 import { canonical } from "@/lib/seo";
 import { HOME_TITLE, TAGLINE } from "@/lib/site";
 
@@ -99,6 +100,15 @@ export default async function HomePage() {
             >
               Discover My Beauty Profile →
             </a>
+            <p className="mt-5 text-xs text-text-muted">
+              Already have your result?{" "}
+              <MySeoulDropLink
+                source="home_beauty_profile"
+                className="text-accent hover:text-accent-hover"
+              >
+                Keep building it in My Seoul Drop ↗
+              </MySeoulDropLink>
+            </p>
           </div>
         </section>
       </Reveal>
@@ -137,6 +147,15 @@ export default async function HomePage() {
                 {places.map((pl) => (
                   <PlaceCard key={pl.id} place={pl} />
                 ))}
+              </div>
+              <div className="mt-10 border-t border-soft-gray pt-6 text-sm text-text-muted">
+                Found somewhere you want to remember?{" "}
+                <MySeoulDropLink
+                  source="home_seoul_directory"
+                  className="font-medium text-text underline decoration-accent/50 underline-offset-4 hover:text-accent"
+                >
+                  Build your saved Seoul list in My Seoul Drop ↗
+                </MySeoulDropLink>
               </div>
             </div>
           </section>

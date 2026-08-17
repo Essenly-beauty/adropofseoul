@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { HERO_KICKER, HERO_LEDE } from "@/lib/site";
 import { Eyebrow } from "./Eyebrow";
+import { MySeoulDropLink } from "./MySeoulDropLink";
 
 export function Hero() {
   return (
@@ -27,6 +28,15 @@ export function Hero() {
           The Seoul Directory →
         </Link>
       </div>
+      <p className="mt-7 text-sm text-text-muted">
+        Planning a Seoul trip?{" "}
+        <MySeoulDropLink
+          source="home_hero"
+          className="border-b border-accent/50 pb-0.5 text-text transition-colors duration-medium ease-editorial hover:border-accent hover:text-accent"
+        >
+          Build your personal Seoul list in My Seoul Drop ↗
+        </MySeoulDropLink>
+      </p>
       <p className="mt-16 text-[11px] uppercase tracking-label text-text-muted/60">
         Scroll ↓
       </p>

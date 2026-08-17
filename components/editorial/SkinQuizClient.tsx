@@ -31,6 +31,7 @@ import {
   getSkinGuideProfile,
   SKIN_GUIDE_PROFILES,
 } from "@/lib/skincare/profiles";
+import { mySeoulDropUrl } from "@/lib/my-seoul-drop";
 
 const REASON_COPY: Record<string, string> = {
   PRIMARY_CONCERN_MATCH: "Matches the main goal you chose.",
@@ -162,10 +163,7 @@ export function SkinProfileResult({
     [products]
   );
 
-  const gateway =
-    process.env.NEXT_PUBLIC_MY_SEOUL_DROP_URL?.trim() ||
-    "https://myseouldrop.app";
-  const destination = `${gateway.replace(/\/$/, "")}?utm_source=adropofseoul&utm_medium=beauty_profile&utm_campaign=skin_profile_v1`;
+  const destination = mySeoulDropUrl("skin_profile_result");
 
   return (
     <div className="mx-auto max-w-3xl px-6 py-16 md:py-24" aria-live="polite">
