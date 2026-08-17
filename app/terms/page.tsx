@@ -64,8 +64,9 @@ export default function TermsPage() {
 
       <Section title="Affiliate links">
         <p>
-          Some links are affiliate links. They may earn us a commission at no
-          extra cost to you and never change our editorial judgment.
+          Some links are affiliate links. The editor of this site may personally
+          earn a commission at no extra cost to you. This never changes our
+          editorial judgment.
         </p>
       </Section>
 
