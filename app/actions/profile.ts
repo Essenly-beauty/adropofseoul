@@ -89,6 +89,18 @@ function logUnavailable(
   return fail(code);
 }
 
+function safePersistenceError(error: unknown): string {
+  if (error instanceof Error) return error.message.slice(0, 240);
+  if (error && typeof error === "object") {
+    const record = error as Record<string, unknown>;
+    const code = typeof record.code === "string" ? record.code : "no-code";
+    const message =
+      typeof record.message === "string" ? record.message : "no-message";
+    return `${code}: ${message}`.slice(0, 240);
+  }
+  return "unknown";
+}
+
 function expiryISO(): string {
   return new Date(Date.now() + ANON_TTL_MS).toISOString();
 }
@@ -304,9 +316,9 @@ export async function startQuizAttempt(
     });
   } catch (e) {
     // The client silently falls back from here, so the reason has to land
-    // somewhere. Message only — no stack, no row ids, no answers.
+    // somewhere. Code/message only — no stack, no row ids, no answers.
     console.error(
-      `[profile] startQuizAttempt threw: ${e instanceof Error ? e.message : "unknown"}`
+      `[profile] startQuizAttempt threw: ${safePersistenceError(e)}`
     );
     return fail("INTERNAL_ERROR");
   }
