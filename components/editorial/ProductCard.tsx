@@ -66,7 +66,8 @@ export function ProductCard({ product }: { product: Product }) {
       </div>
       {product.disclosureRequired && (
         <p className="mt-2 text-[11px] text-text-muted">
-          Contains affiliate links. We may earn a commission.
+          Contains affiliate links. A Drop of Seoul may earn a commission at no
+          extra cost to you.
         </p>
       )}
     </div>
