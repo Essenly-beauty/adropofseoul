@@ -1,8 +1,6 @@
 // The two Beauty Profile domains (Essenly Phase 1). "Beauty Profile" is the
 // umbrella; Skin Profile and Hair Profile are its domains (docs/00 §6.3,
-// docs/04 §8). Hair is live today as a profile chooser (the six hair
-// archetypes in lib/haircare/profiles); Skin's taxonomy is not yet approved,
-// so it renders a "coming soon" state rather than invented content.
+// docs/04 §8). Both domains now have a complete quiz and result flow.
 
 export type BeautyProfileDomainStatus = "available" | "coming_soon";
 
@@ -29,7 +27,7 @@ export const BEAUTY_PROFILE_DOMAINS: BeautyProfileDomain[] = [
     slug: "skin",
     label: "Skin Profile",
     href: "/beauty-profile/skin",
-    status: "coming_soon",
+    status: "available",
     blurb:
       "Your skin's tendencies, sensitivities, and goals — matched to a Korean skincare approach.",
     estimatedTime: "About 2 minutes",

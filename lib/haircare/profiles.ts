@@ -1,5 +1,5 @@
-// The six hair profiles that anchor the Haircare hub and the (forthcoming)
-// Hair Profile quiz. Content is adapted from the restructure spec (§9, §12).
+// The six hair profiles that anchor the Haircare hub and Hair Profile quiz.
+// Content is adapted from the restructure spec (§9, §12).
 // Profiles are code-defined — they're editorial hubs, not DB posts — and each
 // one is a stable SEO landing at /haircare/profiles/<slug>.
 
