@@ -7,8 +7,12 @@ describe("Hero", () => {
     render(<Hero />);
 
     expect(
-      screen.getByText(/A Drop of Seoul is the editorial guide/)
+      screen.getByText(/A considered guide to Korean beauty/)
     ).toBeTruthy();
+    expect(screen.getByText("Discover")).toBeTruthy();
+    expect(screen.getByText("Plan & save")).toBeTruthy();
+    expect(screen.getByText(/Guides and practical information/)).toBeTruthy();
+    expect(screen.getByText(/Your personal space to save/)).toBeTruthy();
     expect(
       screen
         .getByRole("link", { name: "Explore Seoul & Beauty ↓" })

@@ -13,13 +13,28 @@ export function Hero() {
       <p className="mx-auto mt-8 max-w-[46ch] text-lg leading-relaxed text-text-muted">
         {HERO_LEDE}
       </p>
-      <p className="mx-auto mt-7 max-w-[54ch] text-sm leading-relaxed text-text-muted">
-        <span className="text-text">
-          A Drop of Seoul is the editorial guide.
-        </span>{" "}
-        My Seoul Drop is the personal planner for saving what you find and
-        building your trip.
-      </p>
+      <div className="mx-auto mt-9 grid max-w-2xl overflow-hidden rounded-lg border border-soft-gray text-left sm:grid-cols-2">
+        <div className="p-5 sm:p-6">
+          <p className="text-[9px] uppercase tracking-label text-accent">
+            Discover
+          </p>
+          <h2 className="mt-2 font-serif text-xl">A Drop of Seoul</h2>
+          <p className="mt-2 text-sm leading-relaxed text-text-muted">
+            Guides and practical information to help you decide what to try,
+            buy, and experience.
+          </p>
+        </div>
+        <div className="border-t border-soft-gray bg-porcelain/50 p-5 sm:border-l sm:border-t-0 sm:p-6">
+          <p className="text-[9px] uppercase tracking-label text-accent">
+            Plan &amp; save
+          </p>
+          <h2 className="mt-2 font-serif text-xl">My Seoul Drop</h2>
+          <p className="mt-2 text-sm leading-relaxed text-text-muted">
+            Your personal space to save those finds and turn them into your own
+            Seoul plan.
+          </p>
+        </div>
+      </div>
       <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
         <a
           href="#explore"

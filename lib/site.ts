@@ -9,4 +9,4 @@ export const SITE_URL = (
 
 export const HERO_KICKER = "Seoul · Beauty & Ritual";
 export const HERO_LEDE =
-  "An English-language guide to Korean beauty, hair rituals, head spas, and the places worth knowing — for the curious, wherever you are.";
+  "A considered guide to Korean beauty, hair rituals, wellness, and the Seoul places worth knowing.";
