@@ -45,6 +45,8 @@ const REASON_COPY: Record<string, string> = {
   ROUTINE_STEP_MATCH: "Fits the routine step you want help choosing.",
 };
 
+type PendingSaves = Map<string, Promise<boolean>>;
+
 export function SkinProfileResult({
   result,
   products,
@@ -243,6 +245,7 @@ function SkinQuizFinish({
   startedAt,
   attemptId,
   savedKeys,
+  pendingSaves,
   onRetake,
 }: {
   responses: Record<string, QuizResponseValue>;
@@ -250,6 +253,7 @@ function SkinQuizFinish({
   startedAt: number;
   attemptId: string | null;
   savedKeys: Set<string>;
+  pendingSaves: PendingSaves;
   onRetake: () => void;
 }) {
   const router = useRouter();
@@ -261,10 +265,22 @@ function SkinQuizFinish({
     if (!attemptId) return;
     void (async () => {
       try {
-        for (const [key, value] of Object.entries(responses)) {
-          if (savedKeys.has(key)) continue;
-          const saved = await saveQuizResponse(attemptId, key, value);
-          if (!saved.ok) throw new Error(saved.error);
+        // Let autosaves already in flight settle first. Only failed or missing
+        // answers are retried, and independent questions can be saved in
+        // parallel instead of adding one network round trip per question.
+        await Promise.all(Array.from(pendingSaves.values()));
+        const missing = Object.entries(responses).filter(
+          ([key]) => !savedKeys.has(key)
+        );
+        const retries = await Promise.all(
+          missing.map(async ([key, value]) => ({
+            key,
+            result: await saveQuizResponse(attemptId, key, value),
+          }))
+        );
+        for (const retry of retries) {
+          if (!retry.result.ok) throw new Error(retry.result.error);
+          savedKeys.add(retry.key);
         }
         const completed = await completeQuizAttempt(attemptId);
         if (!completed.ok) throw new Error(completed.error);
@@ -279,7 +295,7 @@ function SkinQuizFinish({
         setFellBack(true);
       }
     })();
-  }, [attemptId, responses, router, savedKeys]);
+  }, [attemptId, pendingSaves, responses, router, savedKeys]);
   if (!fellBack)
     return (
       <div className="mx-auto max-w-2xl px-6 py-20">
@@ -287,6 +303,9 @@ function SkinQuizFinish({
           Skin Profile
         </p>
         <h1 className="mt-3 font-serif text-3xl">Building your profile…</h1>
+        <p className="mt-3 text-sm text-text-muted">
+          Saving your answers and preparing your recommendations.
+        </p>
       </div>
     );
   return (
@@ -304,6 +323,7 @@ export function SkinQuizClient({ products }: { products: Product[] }) {
   const reported = useRef(false);
   const attemptId = useRef<string | null>(null);
   const saved = useRef<Set<string>>(new Set());
+  const pending = useRef<PendingSaves>(new Map());
 
   useEffect(() => {
     if (reported.current) return;
@@ -320,10 +340,24 @@ export function SkinQuizClient({ products }: { products: Product[] }) {
 
   function onSaveResponse(questionKey: string, value: QuizResponseValue) {
     const id = attemptId.current;
-    if (id)
-      void saveQuizResponse(id, questionKey, value).then((res) => {
-        if (res.ok) saved.current.add(questionKey);
+    if (id) {
+      // Serialize edits to the same answer while allowing different questions
+      // to save concurrently. The current map entry always represents the
+      // newest value for that question.
+      const previous = pending.current.get(questionKey);
+      const request = (async () => {
+        if (previous) await previous;
+        const result = await saveQuizResponse(id, questionKey, value);
+        return result.ok;
+      })().catch(() => false);
+      pending.current.set(questionKey, request);
+      void request.then((ok) => {
+        if (pending.current.get(questionKey) !== request) return;
+        pending.current.delete(questionKey);
+        if (ok) saved.current.add(questionKey);
+        else saved.current.delete(questionKey);
       });
+    }
     return Promise.resolve({ ok: true as const });
   }
 
@@ -356,6 +390,7 @@ export function SkinQuizClient({ products }: { products: Product[] }) {
           startedAt={startedAt.current}
           attemptId={attemptId.current}
           savedKeys={saved.current}
+          pendingSaves={pending.current}
           onRetake={restart}
         />
       )}

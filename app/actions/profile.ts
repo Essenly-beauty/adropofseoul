@@ -101,16 +101,6 @@ function safePersistenceError(error: unknown): string {
   return "unknown";
 }
 
-function serviceKeyShape(): string {
-  const key = process.env.SUPABASE_SERVICE_ROLE_KEY ?? "";
-  const kind = key.startsWith("sb_secret_")
-    ? "secret"
-    : key.startsWith("eyJ")
-      ? "legacy-jwt"
-      : "unexpected";
-  return `kind=${kind},length=${key.length},whitespace=${/\s/.test(key)},masked=${/[•…]/.test(key)}`;
-}
-
 function expiryISO(): string {
   return new Date(Date.now() + ANON_TTL_MS).toISOString();
 }
@@ -328,7 +318,7 @@ export async function startQuizAttempt(
     // The client silently falls back from here, so the reason has to land
     // somewhere. Code/message only — no stack, no row ids, no answers.
     console.error(
-      `[profile] startQuizAttempt threw: ${safePersistenceError(e)} (${serviceKeyShape()})`
+      `[profile] startQuizAttempt threw: ${safePersistenceError(e)}`
     );
     return fail("INTERNAL_ERROR");
   }
