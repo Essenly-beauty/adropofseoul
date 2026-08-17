@@ -32,6 +32,8 @@ import { normalizeSourceContext } from "@/lib/profile/source-context";
 import { durationBucketFromMs } from "@/lib/analytics/duration";
 import { buildHairSnapshot, readHairSnapshot } from "@/lib/haircare/snapshot";
 import type { HairResultExplanation } from "@/lib/haircare/explain";
+import { buildSkinSnapshot, readSkinSnapshot } from "@/lib/skincare/snapshot";
+import type { SkinProfileV1Result } from "@/lib/skincare/profile-v1";
 import {
   mapQuizDefinition,
   hydrateResponses,
@@ -161,10 +163,10 @@ function toCanonicalResponse(
  * that flipped the status but lost the snapshot write is repaired rather than
  * bricking the attempt (H5; finding: CAS-before-insert brick).
  *
- * Hair-only today, which matches this action's `hair_profile` gate. When the
- * skin quiz lands this becomes a dispatch on `loaded.quizKey`.
+ * Snapshot scoring dispatches from the attempt's stamped quiz domain, so the
+ * client cannot choose a scorer or profile domain.
  */
-async function ensureHairSnapshot(
+async function ensureProfileSnapshot(
   admin: ReturnType<typeof createAdminClient>,
   attemptId: string,
   identityId: string,
@@ -172,7 +174,10 @@ async function ensureHairSnapshot(
 ): Promise<{ id: string; inserted: boolean }> {
   const stored = await repo.findResponsesByAttempt(admin, attemptId);
   const responses = hydrateResponses(loaded, stored);
-  const fields = buildHairSnapshot(responses);
+  const fields =
+    loaded.quizKey === "hair"
+      ? buildHairSnapshot(responses)
+      : buildSkinSnapshot(responses);
   try {
     const snap = await repo.insertSnapshot(admin, {
       quiz_attempt_id: attemptId,
@@ -336,7 +341,8 @@ export async function saveQuizResponse(
   response: unknown,
   idempotencyKey?: string
 ): Promise<ActionResult<{ questionKey: string; status: string }>> {
-  if (!isFlagEnabled("hair_profile")) return fail("FEATURE_DISABLED");
+  if (!isFlagEnabled("hair_profile") && !isFlagEnabled("skin_profile"))
+    return fail("FEATURE_DISABLED");
   if (typeof attemptId !== "string" || !UUID_RE.test(attemptId))
     return fail("VALIDATION_FAILED");
   if (typeof questionKey !== "string" || questionKey.length === 0)
@@ -357,6 +363,8 @@ export async function saveQuizResponse(
 
     const loaded = await loadDefinitionIndex(admin, attempt.quiz_definition_id);
     if (!loaded) return fail("INTERNAL_ERROR");
+    if (!isFlagEnabled(quizFlagForDomain(loaded.quizKey)))
+      return fail("FEATURE_DISABLED");
     if (loaded.status === "retired") return fail("QUIZ_VERSION_RETIRED");
 
     // Resolve the question WITHIN the stamped definition (H6) — never trust the
@@ -419,7 +427,8 @@ export async function updateQuizProgress(
   attemptId: string,
   currentStep: number
 ): Promise<ActionResult<{ currentStep: number }>> {
-  if (!isFlagEnabled("hair_profile")) return fail("FEATURE_DISABLED");
+  if (!isFlagEnabled("hair_profile") && !isFlagEnabled("skin_profile"))
+    return fail("FEATURE_DISABLED");
   if (typeof attemptId !== "string" || !UUID_RE.test(attemptId))
     return fail("VALIDATION_FAILED");
   if (typeof currentStep !== "number" || !Number.isInteger(currentStep))
@@ -438,6 +447,8 @@ export async function updateQuizProgress(
 
     const loaded = await loadDefinitionIndex(admin, attempt.quiz_definition_id);
     if (!loaded) return fail("INTERNAL_ERROR");
+    if (!isFlagEnabled(quizFlagForDomain(loaded.quizKey)))
+      return fail("FEATURE_DISABLED");
     const total = loaded.definition.questions.length;
     if (currentStep < 0 || currentStep > total)
       return fail("VALIDATION_FAILED");
@@ -464,7 +475,8 @@ export async function completeQuizAttempt(
     durationBucket?: string;
   }>
 > {
-  if (!isFlagEnabled("hair_profile")) return fail("FEATURE_DISABLED");
+  if (!isFlagEnabled("hair_profile") && !isFlagEnabled("skin_profile"))
+    return fail("FEATURE_DISABLED");
   if (typeof attemptId !== "string" || !UUID_RE.test(attemptId))
     return fail("VALIDATION_FAILED");
   if (badOptionalIdempotencyKey(idempotencyKey))
@@ -485,6 +497,8 @@ export async function completeQuizAttempt(
     // to know the profile_domain for the snapshot (also on the recovery paths).
     const loaded = await loadDefinitionIndex(admin, attempt.quiz_definition_id);
     if (!loaded) return fail("INTERNAL_ERROR");
+    if (!isFlagEnabled(quizFlagForDomain(loaded.quizKey)))
+      return fail("FEATURE_DISABLED");
 
     // Idempotent replay: already completed → return the same snapshot (H5). If a
     // prior completion flipped the status but failed to write the snapshot, we
@@ -493,7 +507,7 @@ export async function completeQuizAttempt(
       const snap = await repo.findSnapshotByAttempt(admin, attemptId);
       const id =
         snap?.id ??
-        (await ensureHairSnapshot(admin, attemptId, identity.id, loaded)).id;
+        (await ensureProfileSnapshot(admin, attemptId, identity.id, loaded)).id;
       return ok({
         resultId: id,
         status: "completed",
@@ -519,7 +533,7 @@ export async function completeQuizAttempt(
     // Whether we won or a concurrent completer did, ensure exactly one snapshot
     // exists (the unique backstop makes this safe) and return it. firstCompletion
     // is true only for the writer that actually created the snapshot.
-    const ensured = await ensureHairSnapshot(
+    const ensured = await ensureProfileSnapshot(
       admin,
       attemptId,
       identity.id,
@@ -549,7 +563,8 @@ export async function getQuizAttempt(attemptId: string): Promise<
     initialResponses: Record<string, string | string[] | number>;
   }>
 > {
-  if (!isFlagEnabled("hair_profile")) return fail("FEATURE_DISABLED");
+  if (!isFlagEnabled("hair_profile") && !isFlagEnabled("skin_profile"))
+    return fail("FEATURE_DISABLED");
   if (typeof attemptId !== "string" || !UUID_RE.test(attemptId))
     return fail("VALIDATION_FAILED");
   if (!hasServiceRoleKey()) return fail("INTERNAL_ERROR");
@@ -566,6 +581,8 @@ export async function getQuizAttempt(attemptId: string): Promise<
 
     const loaded = await loadDefinitionIndex(admin, attempt.quiz_definition_id);
     if (!loaded) return fail("INTERNAL_ERROR");
+    if (!isFlagEnabled(quizFlagForDomain(loaded.quizKey)))
+      return fail("FEATURE_DISABLED");
     if (loaded.status === "retired") return fail("QUIZ_VERSION_RETIRED");
 
     // Rehydrate stored canonical value_codes back into option keys the renderer
@@ -609,6 +626,7 @@ export async function getProfileSnapshot(snapshotId: string): Promise<
 
     const row = await repo.findOwnedSnapshot(admin, snapshotId, identity.id);
     if (!row) return fail("SNAPSHOT_NOT_FOUND");
+    if (row.profile_domain !== "hair") return fail("SNAPSHOT_NOT_FOUND");
 
     const { profileSlug, explanation } = readHairSnapshot({
       profile_code: row.profile_code,
@@ -617,6 +635,33 @@ export async function getProfileSnapshot(snapshotId: string): Promise<
       confidence_json: row.confidence_json as Json,
     });
     return ok({ profileSlug, explanation });
+  } catch {
+    return fail("INTERNAL_ERROR");
+  }
+}
+
+export async function getSkinProfileSnapshot(
+  snapshotId: string
+): Promise<ActionResult<{ profile: SkinProfileV1Result | null }>> {
+  if (typeof snapshotId !== "string" || !UUID_RE.test(snapshotId))
+    return fail("VALIDATION_FAILED");
+  if (!hasServiceRoleKey()) return fail("INTERNAL_ERROR");
+  try {
+    const admin = createAdminClient();
+    const identity = await resolveIdentity(admin);
+    if (!identity) return fail("SNAPSHOT_NOT_FOUND");
+    const row = await repo.findOwnedSnapshot(admin, snapshotId, identity.id);
+    if (!row || row.profile_domain !== "skin")
+      return fail("SNAPSHOT_NOT_FOUND");
+    return ok({
+      profile: readSkinSnapshot({
+        profile_code: row.profile_code,
+        traits_json: row.traits_json as Json,
+        goals_json: row.goals_json as Json,
+        preferences_json: row.preferences_json as Json,
+        summary_json: row.summary_json as Json,
+      }),
+    });
   } catch {
     return fail("INTERNAL_ERROR");
   }

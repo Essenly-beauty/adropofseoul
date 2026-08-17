@@ -1,0 +1,360 @@
+﻿product_id,brand_ko,brand_en,product_name_ko,product_name_en,category,subcategory,has_hwahae_source,has_any_source,has_skin_type_signal,has_concern_signal,has_texture,has_age_signal,has_ranking,has_award,has_oliveyoung_global_offer,recommendation_review_candidate,commerce_review_candidate,missing_for_review
+P00001,마녀공장,Manyo,퓨어 소이빈 클렌징 오일,,클렌징/필링,클렌징 오일,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00002,헤어플러스,,단백질 본드 샴푸,,헤어케어,샴푸,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00003,에스네이처,S.NATURE,아쿠아 오아시스 토너,,스킨케어,스킨/토너,True,True,True,True,False,True,True,True,False,False,False,product_name_en|texture|oliveyoung_global_offer
+P00004,라운드랩,ROUND LAB,자작나무 수분 선쿠션 [SPF50+/PA++++],,선케어,선쿠션/팩트,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00005,스트라이덱스,Stridex,센시티브 패드,,클렌징/필링,스크럽/필링 패드,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00006,비플레인,beplain,시카테롤 스팟 트리트먼트,,스킨케어,크림,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00007,달바,d'Alba,워터풀 선크림 [SPF50+/PA++++] [톤업/핑크],,선케어,선크림/로션,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00008,에센허브,,티트리 100 오일,,스킨케어,페이스오일,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00009,미쟝센,Mise en scène,퍼펙트 오리지널 세럼 컨디셔너,,헤어케어,린스/컨디셔너,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00010,YBK,,세라마이드 릴리프 하이드레이션 토너,,스킨케어,스킨/토너,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00011,YBK,,세라마이드 릴리프 하이드레이션 에멀젼,,스킨케어,로션/에멀젼,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00012,코스노리,,아보카도 아이크림,,스킨케어,아이케어,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00013,셀리맥스,Cellimax,지우개패드,,클렌징/필링,스크럽/필링 패드,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00014,이즈앤트리,ISNTREE,어니언 뉴페어 클리어 패드,,클렌징/필링,스크럽/필링 패드,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00015,토리든,Torriden,밸런스풀 시카 클렌징 젤,,클렌징/필링,클렌징 젤,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00016,에스네이처,S.NATURE,아쿠아 스쿠알란 세럼,,스킨케어,에센스/앰플/세럼,True,True,True,True,False,True,True,True,False,False,False,product_name_en|texture|oliveyoung_global_offer
+P00017,에스네이처,S.NATURE,아쿠아 스쿠알란 수분크림,Aqua Squalane Moisturizing Cream 60ml,스킨케어,크림,True,True,True,True,False,True,True,True,True,True,True,texture
+P00018,YBK,,어성초 원스텝 포어 패드,,클렌징/필링,스크럽/필링 패드,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00019,파티온,PARTION,노스카나인 스팟 패치,,마스크/팩,패치,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00020,토리든,Torriden,다이브인 저분자 히알루론산 클렌징 폼,,클렌징/필링,클렌징 폼,True,True,True,True,False,True,True,True,False,False,False,product_name_en|texture|oliveyoung_global_offer
+P00021,라비엘,,아세로라 잡티 & 기미 케어 크림,,스킨케어,크림,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00022,에스네이처,S.NATURE,수퍼 아쿠아겔 오아시스 앰플 마스크,,마스크/팩,시트마스크,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00023,에스트라,AESTURA,테라크네365 하이드로 액티브 토너,,스킨케어,스킨/토너,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00024,벨로즈,,유기농 호호바 오일,,스킨케어,페이스오일,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00025,라운드랩,ROUND LAB,자작나무 수분 선스틱 [SPF50+/PA++++],,선케어,선스틱,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00026,라보에이치,LABO-H,두피강화 클리닉 탈모증상완화 샴푸,,헤어케어,샴푸,True,True,True,True,False,False,True,True,False,False,False,product_name_en|texture|oliveyoung_global_offer
+P00027,코스알엑스,COSRX,약산성 나이아신아마이드 미셀라 클렌징 워터,,클렌징/필링,클렌징 워터,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00028,메이크프렘,make p:rem,인테카 수딩 클렌징 폼,,클렌징/필링,클렌징 젤,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00029,토리든,Torriden,밸런스풀 시카 토너 패드,,스킨케어,스킨/토너 패드,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00030,메디필,MEDIPEEL,그린 시카 콜라겐 클리어 젤 클렌저 2.0,,클렌징/필링,클렌징 젤,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00031,에스네이처,S.NATURE,아쿠아 오아시스 수분 젤크림,,스킨케어,젤,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00032,아이레시피,Eye Recipe,아쿠아 피토플렉스 크림 인 젤,,스킨케어,젤,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00033,비플레인,beplain,녹두 밀크 필링 젤,,클렌징/필링,스크럽/필링,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00034,듀이트리,Dewytree,어반 쉐이드 쿨 카밍 선스틱 [SPF50+/PA++++],,선케어,선스틱,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00035,메디힐,MEDIHEAL,블랙헤드 멜팅 클리어 코팩,,마스크/팩,코팩,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00036,프리메이,,올리브 시카 카밍 앰플 마스크,,마스크/팩,시트마스크,True,True,False,True,False,False,True,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00037,토니모리,TONYMOLY,어성초시카 쿨링 수분 크림,,마스크/팩,슬리핑팩,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00038,코스알엑스,COSRX,더 6 펩타이드 스킨 부스터 세럼,,스킨케어,에센스/앰플/세럼,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00039,에스네이처,S.NATURE,호호바오일,,스킨케어,페이스오일,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00040,YBK,,릴리프 하이드레이션 라이트 폼 클렌저,,클렌징/필링,클렌징 폼,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00041,마리엔메이,,트라넥사믹산 글루타티온 아이크림,,스킨케어,아이케어,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00042,비플레인,beplain,시카테롤 블레미쉬 패드,,마스크/팩,부분마스크 패드,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00043,일소,ILSO,슈퍼 멜팅 세범 소프트너,,클렌징/필링,스크럽/필링,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00044,코스알엑스,COSRX,약산성 굿모닝 젤 클렌저,,클렌징/필링,클렌징 젤,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00045,토리든,Torriden,밸런스풀 시카 포어 클렌징 폼,,클렌징/필링,클렌징 폼,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00046,넘버즈인,numbuzin,1번 판토텐산 액티브업 수딩세럼,,스킨케어,에센스/앰플/세럼,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00047,메이크프렘,make p:rem,유브이 디펜스 미 노세범 선크림 [SPF50+/PA++++],,선케어,선크림/로션,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00048,파티온,PARTION,노스카나인 트러블 크림,,스킨케어,크림,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00049,온그리디언츠,On:gredients,스킨 베리어 카밍 로션,,스킨케어,로션/에멀젼,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00050,수올림,,탄닌 시카 투웨이 토너패드,,스킨케어,스킨/토너 패드,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00051,비플레인,beplain,녹두 클렌징 워터,,클렌징/필링,클렌징 워터,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00052,트루스오브뷰티,Truth of Beauty,시카-뮤신 진정 패드,,마스크/팩,부분마스크 패드,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00053,풀리,,그린 토마토 크림,,마스크/팩,슬리핑팩,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00054,메디힐,MEDIHEAL,마데카소사이드 에센셜 마스크 [흔적리페어],,마스크/팩,시트마스크,True,True,True,True,False,True,True,True,False,False,False,product_name_en|texture|oliveyoung_global_offer
+P00055,바노바기,BANOBAGI,젤리 마스크 [하이드레이팅],,마스크/팩,시트마스크,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00056,바노바기,BANOBAGI,젤리 마스크 [시카],,마스크/팩,시트마스크,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00057,이니스프리,innisfree,레티놀 시카 흔적 앰플,,스킨케어,에센스/앰플/세럼,True,True,True,True,False,False,True,True,False,False,False,product_name_en|texture|oliveyoung_global_offer
+P00058,더마펌,Dermafirm,수딩 리페어 토닝 크림 R4,,스킨케어,크림,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00059,토리든,Torriden,밸런스풀 시카 각질 토너,,스킨케어,스킨/토너,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00060,결하우스,,하이드레이션 호호바 에센스,,스킨케어,에센스/앰플/세럼,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00061,엑시스와이,AXIS-Y,비건 콜라겐 아이 세럼,,스킨케어,아이케어,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00062,메디힐,MEDIHEAL,마데카소사이드 흔적 리페어 세럼,,스킨케어,에센스/앰플/세럼,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00063,에스네이처,S.NATURE,아쿠아 스쿠알란 미스트,,스킨케어,미스트,True,True,False,False,True,False,False,True,False,False,False,product_name_en|skin_type_signal|concern_signal|oliveyoung_global_offer
+P00064,아누아,ANUA,라이스 70 글로우 밀키 토너,,스킨케어,스킨/토너,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00065,조선미녀,Beauty of Joseon,맑은쌀 꿀채운 마스크,,마스크/팩,워시오프 팩,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00066,메디힐,MEDIHEAL,하이퍼 마스크 [콜라겐],,마스크/팩,시트마스크,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00067,비플레인,beplain,녹두 모공 클리어링 라하 토너,,스킨케어,스킨/토너,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00068,리브엠,,워터핏 8중 수분착붙 패드,,스킨케어,스킨/토너 패드,True,True,False,True,False,False,True,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00069,빌랑스,,하나린 안티헤어로스 샴푸,,헤어케어,샴푸,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00070,아렌시아,ARENCIA,그린티 + LHA 딥 포어 찹쌀떡솝,,마스크/팩,워시오프 팩,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00071,아렌시아,ARENCIA,클렌저 떡솝 [프레시 로얄 로즈힙],,마스크/팩,워시오프 팩,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00072,비플레인,beplain,녹두 클렌징 오일,,클렌징/필링,클렌징 오일,True,True,True,True,False,True,True,True,False,False,False,product_name_en|texture|oliveyoung_global_offer
+P00073,비플레인,beplain,녹두 모공 타이트업 수딩 크림,,스킨케어,크림,True,True,False,True,False,False,True,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00074,이즈앤트리,ISNTREE,히알루론산 프레쉬 선 세럼 [SPF50+/PA++++],,선케어,선크림/로션,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00075,아누아,ANUA,PDRN 히알루론산 캡슐 100 세럼,PDRN Hyaluronic Capsule 100 Serum 30ml,스킨케어,에센스/앰플/세럼,True,True,True,True,False,True,True,True,True,True,True,texture
+P00076,셀라딕스,,트러블 세범 리밸런싱 131 앰플,,스킨케어,에센스/앰플/세럼,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00077,리브엠,,엔자임 클렌징 파우더,,클렌징/필링,클렌징 파우더,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00078,리브엠,,시카좀 카밍 딥 클렌징폼,,클렌징/필링,클렌징 폼,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00079,션리,,다시마 앰플 클렌징폼,,클렌징/필링,클렌징 폼,True,True,True,True,False,True,True,True,False,False,False,product_name_en|brand_en|texture|oliveyoung_global_offer
+P00080,신스루,,워터리 설퍼 모공 클렌징 파우더,,클렌징/필링,클렌징 파우더,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00081,프레비츠,,에어핏 선 피니싱 스틱 [SPF50+/PA++++] [02 클리어그린],,선케어,선스틱,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00082,아비브,ABIB,어성초 흔적 에센스 패드 클리어 터치,,스킨케어,스킨/토너 패드,True,True,False,True,False,True,True,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00083,세로랩스,,수딩 토너,,스킨케어,스킨/토너,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00084,닥터트웬티프로젝트,,나인 토너,,스킨케어,스킨/토너,True,True,True,True,False,True,True,True,False,False,False,product_name_en|brand_en|texture|oliveyoung_global_offer
+P00085,닥터트웬티프로젝트,,리프덤 오토 아이크림,,스킨케어,아이케어,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00086,아페리레,,비 프로즌 빙하토 모공팩,,마스크/팩,워시오프 팩,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00087,아비브,ABIB,수분초 히알루론 패드 하이드레이팅 터치,,스킨케어,스킨/토너 패드,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00088,셀라딕스,,트러블 클리어 약산성 젤클렌저,,클렌징/필링,클렌징 젤,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00089,스타라이크,,캐모마일 스킨 베리어 토너,,스킨케어,스킨/토너,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00090,니얼지,,에어터치 선스틱 [SPF50+/PA++++],,선케어,선스틱,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00091,소미,,클라우드 딥 아쿠아 마스크,,마스크/팩,시트마스크,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00092,라곰,Lagom,젤 투 워터 클렌저,,클렌징/필링,클렌징 젤,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00093,에스네이처,S.NATURE,아쿠아 라이스 클렌징 밤,,클렌징/필링,클렌징 밤,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00094,프롬랩스,,단백질 트리트먼트,,헤어케어,트리트먼트/팩,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00095,디피어,,프리미엄 퍼퓸 리페어 트리트먼트 헤어팩,,헤어케어,트리트먼트/팩,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00096,이지포뮬라®,,콜라겐 팩,,마스크/팩,필오프 팩,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00097,에스트라,AESTURA,아토베리어365 크림,Atobarrier 365 Cream 80mL,스킨케어,크림,True,True,False,True,False,False,True,True,True,True,True,skin_type_signal|texture
+P00098,에스트라,AESTURA,아토베리어365 로션,,스킨케어,로션/에멀젼,True,True,False,True,False,False,True,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00099,라운드랩,ROUND LAB,동백 딥 콜라겐 젤리 팩 클렌저,,클렌징/필링,클렌징 젤,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00100,아렌시아,ARENCIA,레드 스무디 로션 5,,스킨케어,로션/에멀젼,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00101,쓰리노프,,데일리 컨셔스 크림,,스킨케어,크림,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00102,메디큐브,medicube,제로모공패드 2.0,,스킨케어,스킨/토너 패드,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00103,메디큐브,medicube,PDRN 핑크 펩타이드 앰플,,스킨케어,에센스/앰플/세럼,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00104,YBK,,핑크 글로우 빔 젤리 패드,,스킨케어,스킨/토너 패드,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00105,토미울프,,딥클렌징 두피 브러쉬,,뷰티소품,헤어 소품,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00106,셀라딕스,,히알루로닉 인텐스 토너,,스킨케어,스킨/토너,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00107,에끌라두,,샌달우드 괄사,,뷰티소품,스킨케어 소품,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00108,리더스,Leaders,PDRN 0.5% 앰플 미스트,,스킨케어,미스트,True,True,False,False,True,False,False,True,False,False,False,product_name_en|skin_type_signal|concern_signal|oliveyoung_global_offer
+P00109,일소,ILSO,모공 클렌징 마스터,,뷰티소품,스킨케어 소품,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00110,아렌시아,ARENCIA,클라우드 선 스틱 [SPF50+/PA++++],,선케어,선스틱,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00111,프리메이,,햇쌀 데일리 폼 클렌저,,클렌징/필링,클렌징 폼,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00112,이니스프리,innisfree,그린티 밀크 보습 에센스,,스킨케어,에센스/앰플/세럼,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00113,라보레브,,피치마이크로바이옴 84 이지에프 세럼,,스킨케어,에센스/앰플/세럼,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00114,메디힐,MEDIHEAL,콜라겐 캡슐패치 [레티놀],,마스크/팩,부분마스크/팩,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00115,비햅,,슬로우차가 펩타이드 글로우 랩핑 마스크,,마스크/팩,필오프 팩,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00116,메디섹션넘버,,넘버M 트러블케어 폼클렌저,,클렌징/필링,클렌징 폼,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00117,마리아포사떼,,오로라그린 모델링팩,,마스크/팩,필오프 팩,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00118,블렌드모어,,데이듀 스킨부스팅 젤투폼,,클렌징/필링,클렌징 젤,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00119,론지,,핑크 애플 퓨어 토너,,스킨케어,스킨/토너,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00120,리에종드로렌,,포어 클렌저,,클렌징/필링,클렌징 폼,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00121,아렌시아,ARENCIA,프레시 클렌저 [그린],,클렌징/필링,클렌징 폼,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00122,한율,HANYUL,달빛유자 클렌징 톤업 팩폼,,클렌징/필링,클렌징 폼,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00123,웰라쥬,WELLAGE,리얼 히알루로닉 블루 100 앰플,,스킨케어,에센스/앰플/세럼,True,True,True,True,False,True,True,True,False,False,False,product_name_en|texture|oliveyoung_global_offer
+P00124,쏘내추럴,so natural,올 데이 립 프렙 픽서,,립밤,,True,True,False,True,False,False,False,True,False,False,False,product_name_en|subcategory|skin_type_signal|texture|oliveyoung_global_offer
+P00125,타이디랩,,포어리스 선에센스 [SPF50+/PA++++],,선케어,선크림/로션,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00126,픽셀퓨어,Pixel Pure,래디언스 아쿠아 수딩 크림,,스킨케어,크림,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00127,픽셀퓨어,Pixel Pure,젠틀 젤투폼 클렌저,,클렌징/필링,클렌징 젤,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00128,픽셀퓨어,Pixel Pure,수딩 앰플 토너,,스킨케어,스킨/토너,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00129,아토팜,ATOPALM,징크 마일드 업 선크림 [SPF50+/PA++++],,로션,,True,True,False,True,False,True,True,True,False,False,False,product_name_en|subcategory|skin_type_signal|texture|oliveyoung_global_offer
+P00130,에센시엘,,하이드라 포르테 앰플,,스킨케어,에센스/앰플/세럼,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00131,타이디랩,,퍼플톤업 선크림 [SPF50+/PA++++],,선케어,선크림/로션,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00132,아토팜,ATOPALM,릴렉싱 나이트 밤,,스킨케어,밤/멀티밤,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00133,픽셀퓨어,Pixel Pure,딥 모이스처라이징 컴포트 쉴드 마스크시트,,마스크/팩,시트마스크,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00134,션리,,다시마 콜라겐 퍼밍 마스크,,마스크/팩,시트마스크,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00135,프롬랩스,,프로틴 캡슐 헤어 리페어 샴푸,,헤어케어,샴푸,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00136,리쥬베닐,,리페어 PDRN 1500 크림,,스킨케어,크림,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00137,듀이트리,Dewytree,픽 앤 퀵 뜯어쓰는 더블 패드 [화장발],,마스크/팩,부분마스크 패드,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00138,아누아,ANUA,PDRN 히알루론산 수분 캡슐 미스트,,스킨케어,미스트,True,True,False,False,True,False,False,True,False,False,False,product_name_en|skin_type_signal|concern_signal|oliveyoung_global_offer
+P00139,얼댓,,스트로비 글로우 세럼,,스킨케어,에센스/앰플/세럼,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00140,퍼지티브,,리밸런싱 수분 선크림 [SPF50+/PA++++],,선케어,선크림/로션,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00141,엠디스픽,,테카테카 카밍 젤리 폼 클렌저,,클렌징/필링,클렌징 젤,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00142,리쥬베닐,,아바파하샴페인미스트앰플,,스킨케어,미스트,True,True,False,False,True,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|concern_signal|oliveyoung_global_offer
+P00143,구달,Goodal,맑은 어성초 진정 수분 선크림 [SPF50+/PA++++],,선케어,선크림/로션,True,True,False,True,False,True,True,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00144,퓨어솜,,호호바오일,,스킨케어,페이스오일,True,True,False,False,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|concern_signal|texture|oliveyoung_global_offer
+P00145,카이네,Kaine,애플 사이다 비니거 그라인딩 클렌징 밤,,필링,클렌징 밤,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00146,YBK,,핑크 글로우 페이셜 톤업 썬스크린 [SPF50+/PA++++],,로션,,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|subcategory|skin_type_signal|texture|oliveyoung_global_offer
+P00147,씨엔,,쌀눈 크림,,스킨케어,크림,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00148,토미울프,,블랙밤부 트리트먼트,,헤어케어,트리트먼트/팩,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00149,세로랩스,,딥 포어 클렌징 오일,,클렌징/필링,클렌징 오일,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00150,타이드온스킨,,펩타이드 퍼밍 세럼,,스킨케어,에센스/앰플/세럼,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00151,코스노리,,판테놀 베리어 토너,,스킨케어,스킨/토너,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00152,히즈라팜,,글로우라팜 토너,,스킨케어,스킨/토너,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00153,리뉴랩,,펄 앰플 마스크,,마스크/팩,시트마스크,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00154,토리든,Torriden,다이브인 저분자 히알루론산 클렌징밀크,,클렌징/필링,클렌징 로션/크림,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00155,이즈앤트리,ISNTREE,참마 비건 약산성 클렌저,,필링,클렌징 폼,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00156,라망지우,,스킨 부스팅 앰플,,스킨케어,에센스/앰플/세럼,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00157,12EST,,굿나잇 시카 엑소좀 리커버리 크림,,스킨케어,크림,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00158,라비앙,,엑토덤 액티브 베리어 크림,,스킨케어,크림,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00159,웰라쥬,WELLAGE,리얼 히알루로닉 수딩 크림,,스킨케어,크림,True,True,True,True,False,True,True,True,False,False,False,product_name_en|texture|oliveyoung_global_offer
+P00160,디웨더,,레스쿠쿨 스노우 마스크 패드,,마스크/팩,부분마스크 패드,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00161,에스네이처,S.NATURE,아쿠아 스쿠알란 수분크림 랩핑 마스크,,팩,시트마스크,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00162,큐리즌,,쿨앤딥 페이셜 클렌저,,클렌징/필링,클렌징 폼,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00163,네오베아,,레이어링 크림 미스트,,스킨케어,미스트,True,True,False,False,True,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|concern_signal|oliveyoung_global_offer
+P00164,메디힐,MEDIHEAL,더마 크림 팩 클렌저 [마데카소사이드 진정 장벽],,클렌징/필링,클렌징 폼,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00165,아누아,ANUA,어성초 약산성 딥 클렌징 워터,,클렌징/필링,클렌징 워터,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00166,메디힐,MEDIHEAL,티트리 트러블 진정 패드,,필링,스크럽/필링 패드,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00167,라운드랩,ROUND LAB,소나무 진정 시카 로션,,스킨케어,로션/에멀젼,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00168,메디힐,MEDIHEAL,피디알엔 모공 탄력 패드,,마스크/팩,부분마스크 패드,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00169,궁중비책,,베이비 모이스처 크림,,젤,,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|subcategory|skin_type_signal|texture|oliveyoung_global_offer
+P00170,낫포유,,프레쉬옹 스칼프 미스트,,헤어,헤어미스트,True,True,False,False,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|concern_signal|texture|oliveyoung_global_offer
+P00171,닥터지,Dr.G,브라이트닝 필링 젤,,클렌징/필링,스크럽/필링,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00172,닥터지,Dr.G,레드 블레미쉬 클리어 수딩 크림,Red Blemish Clear Soothing Cream 70ml,스킨케어,크림,True,True,False,True,False,True,True,True,True,True,True,skin_type_signal|texture
+P00173,로티,,리프루미 시트 마스크팩 [수더],,마스크/팩,시트마스크,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00174,로티,,리프루미 시트 마스크팩 [콜라겐],,마스크/팩,시트마스크,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00175,이즈앤트리,ISNTREE,김 PDRN 부스팅 글로우 패드,,팩,부분마스크 패드,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00176,에스트라,AESTURA,아토베리어365 젠틀 포밍클렌저,,워시,,True,True,False,True,False,False,False,True,False,False,False,product_name_en|subcategory|skin_type_signal|texture|oliveyoung_global_offer
+P00177,커버앤커버,,애플민트 히알루론산 PDRN 3분 패드 팩,,스킨케어,스킨/토너 패드,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00178,블루페탈,,콜라겐 볼 패치,,팩,부분마스크/팩,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00179,셀린저,,더마 배리어 P 크림,,스킨케어,크림,True,True,False,False,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|concern_signal|texture|oliveyoung_global_offer
+P00180,퓨리피아,Purifia,메타바이옴 토너 패드,,스킨케어,스킨/토너 패드,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00181,터치인솔,TOUCH IN SOL,노 포어블럼 프라이머 프렙,,베이스메이크업,프라이머,True,True,False,False,False,False,False,True,False,False,False,product_name_en|skin_type_signal|concern_signal|texture|oliveyoung_global_offer
+P00182,궁중비책,,베이비 모이스처 로션,,스킨케어,로션,True,True,False,False,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|concern_signal|texture|oliveyoung_global_offer
+P00183,YBK,,핑크 글로우 듀얼 캡슐 앰플 3X,,스킨케어,에센스/앰플/세럼,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00184,토미울프,,블랙밤부 딥 포어 클렌징 세럼,,필링,클렌징 오일,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00185,인요에,,세라마이드 쌀 그리미 밀크 토너,,스킨케어,스킨/토너,True,True,True,True,False,False,True,True,False,False,False,product_name_en|brand_en|texture|oliveyoung_global_offer
+P00186,스카비올,,탈모증상완화 단백질 샴푸,,헤어케어,샴푸,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00187,마이아비스,,소프트 젤 클렌저,,필링,클렌징 젤,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00188,라셀틱스,,스킨 리커버리 펩타톡스 앰플,,앰플/세럼,,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|subcategory|skin_type_signal|texture|oliveyoung_global_offer
+P00189,결하우스,,스킨 베리어 호호바 오일,,스킨케어,페이스오일,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00190,라움비,,포어 밸런스 수분 패드,,스킨케어,스킨/토너 패드,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00191,디피어,,프리미엄 퍼퓸 리페어 샴푸,,헤어케어,샴푸,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00192,누프,,젤리코 테라피 컬러 샴푸,,헤어케어,샴푸,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00193,누프,,젤리코 테라피 노워시 트리트먼트,,팩,,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|subcategory|skin_type_signal|texture|oliveyoung_global_offer
+P00194,누메,,딥 포어 퍼밍 세럼,,스킨케어,에센스/앰플/세럼,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00195,에코미니멀,Eco Minimal,데일리 페이셜 크림,,스킨케어,크림,True,True,True,True,False,True,True,True,False,False,False,product_name_en|texture|oliveyoung_global_offer
+P00196,아누아,ANUA,PDRN 히알루론산 수분 클렌징 폼,,마스크/팩,워시오프 팩,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00197,헤이글로우,,핑크에너지 피치캄 배리어 바디 로션,,바디,바디로션,True,True,False,False,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|concern_signal|texture|oliveyoung_global_offer
+P00198,아페리레,,비 프로즌 포어 팩 투 폼 클렌저,,필링,클렌징 폼,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00199,눈스업,,스텔라블룸 히알루론산 콜라겐 랩핑 마스크,,팩,필오프 팩,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00200,눈스업,,스텔라블룸 PDRN 콜라겐 랩핑 마스크,,마스크/팩,필오프 팩,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00201,스킨푸드,SKINFOOD,피치뽀송 징크 PCA 패드,,마스크/팩,부분마스크/팩,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00202,팔색미인,,5D 히알루론산 세럼,,앰플/세럼,,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|subcategory|skin_type_signal|texture|oliveyoung_global_offer
+P00203,닥터지,Dr.G,레드 블레미쉬 10-시카 캡슐 수딩 토너,,토너,,True,True,False,True,False,False,False,True,False,False,False,product_name_en|subcategory|skin_type_signal|texture|oliveyoung_global_offer
+P00204,닥터지,Dr.G,레드 블레미쉬 쿨 수딩 젤리 미스트,,스킨케어,미스트,True,True,False,False,False,False,False,True,False,False,False,product_name_en|skin_type_signal|concern_signal|texture|oliveyoung_global_offer
+P00205,익스큐즈마이프랭크,Excuse My Frank,바쿠치올 에이지 디펜스 아이크림,,스킨케어,아이케어,True,True,False,False,False,False,False,True,False,False,False,product_name_en|skin_type_signal|concern_signal|texture|oliveyoung_global_offer
+P00206,브르카,,바디 오일,,에센스,,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|subcategory|skin_type_signal|texture|oliveyoung_global_offer
+P00207,어게인미,,비비 안티헤어로스 샴푸 [두피맑음],,헤어케어,샴푸,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00208,테라비코스,,히알루론산 약산성 클렌징 워터,,클렌징/필링,클렌징 워터,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00209,라보레브,,피치마이크로바이옴 10 엑소좀 크림,,스킨케어,크림,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00210,결하우스,,올리브 앤 레몬 글로우 하이드로겔 마스크,,마스크/팩,시트마스크,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00211,오베드,,브라이트닝 마스크,,마스크/팩,시트마스크,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00212,다이브,,쥬베 립 세럼 [01 쥬 로즈],,립밤,,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|subcategory|skin_type_signal|texture|oliveyoung_global_offer
+P00213,로그비,,모이스처 피니시 마일드 클렌징밀크,,필링,클렌징 로션/크림,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00214,메이크프렘,make p:rem,세이프 미 릴리프 모이스처 클렌징 밀크,,클렌징/필링,클렌징 로션/크림,True,True,True,True,False,True,True,True,False,False,False,product_name_en|texture|oliveyoung_global_offer
+P00215,이니스프리,innisfree,데일리 유브이 노세범 선파우더 [SPF30/PA++],,선케어,선케어 기타,True,True,False,False,False,False,False,True,False,False,False,product_name_en|skin_type_signal|concern_signal|texture|oliveyoung_global_offer
+P00216,벨포,,쌀겨수 딥 클렌징 티슈,,필링,클렌징 티슈/패드,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00217,비마이스킨,Be My Skin,스템셀 엔엠엔 리셋 하이드로겔 마스크,,마스크/팩,시트마스크,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00218,메이크프렘,make p:rem,피디알엔 포어 클레이 클렌징 밀크,,클렌징/필링,클렌징 로션/크림,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00219,로티,,리프루미 하이드레이팅 토너,,스킨케어,스킨/토너,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00220,이옴,,트러블 패치 마스크,,마스크/팩,시트마스크,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00221,메디힐,MEDIHEAL,히알루론산 속보습 패드,,토너 패드,,True,True,False,True,False,False,False,True,False,False,False,product_name_en|subcategory|skin_type_signal|texture|oliveyoung_global_offer
+P00222,라운드랩,ROUND LAB,1025 독도 토너,,,,True,True,True,False,False,True,True,False,False,False,False,product_name_en|category|subcategory|concern_signal|texture|oliveyoung_global_offer
+P00223,일리윤,illiyoon,세라마이드 아토 6.0 탑투토 워시,,,,True,True,False,False,False,True,True,False,False,False,False,product_name_en|category|subcategory|skin_type_signal|concern_signal|texture|oliveyoung_global_offer
+P00224,코스알엑스,COSRX,아하/바하 클래리파잉 토너 미스트,,스킨케어,스킨/토너,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00225,린제이,Lindsay,모델링마스크 컵팩 [쿨티트리],,,,True,True,True,False,False,True,True,False,False,False,False,product_name_en|category|subcategory|concern_signal|texture|oliveyoung_global_offer
+P00226,스킨푸드,SKINFOOD,캐롯 카로틴 카밍 워터 패드,,,,True,True,False,False,False,True,True,False,False,False,False,product_name_en|category|subcategory|skin_type_signal|concern_signal|texture|oliveyoung_global_offer
+P00227,토리든,Torriden,다이브인 저분자 히알루론산 토너,,,,True,True,True,False,False,True,True,False,False,False,False,product_name_en|category|subcategory|concern_signal|texture|oliveyoung_global_offer
+P00228,에스트라,AESTURA,아토베리어365 하이드로 에센스,,,,True,True,False,False,False,False,True,False,False,False,False,product_name_en|category|subcategory|skin_type_signal|concern_signal|texture|oliveyoung_global_offer
+P00229,라운드랩,ROUND LAB,1025 독도 로션,,,,True,True,False,False,False,False,True,False,False,False,False,product_name_en|category|subcategory|skin_type_signal|concern_signal|texture|oliveyoung_global_offer
+P00230,라운드랩,ROUND LAB,자작나무 수분 선크림 [SPF50+/PA++++],,,,True,True,True,False,False,True,True,False,False,False,False,product_name_en|category|subcategory|concern_signal|texture|oliveyoung_global_offer
+P00231,이니스프리,innisfree,(리뉴얼)노세범 미네랄 파우더,,,,True,True,False,False,False,False,True,False,False,False,False,product_name_en|category|subcategory|skin_type_signal|concern_signal|texture|oliveyoung_global_offer
+P00232,토리든,Torriden,다이브인 저분자 히알루론산 수딩 크림,,,,True,True,True,False,False,True,True,False,False,False,False,product_name_en|category|subcategory|concern_signal|texture|oliveyoung_global_offer
+P00233,이수연코스메틱,,인텐시브 팩 2,,마스크/팩,워시오프 팩,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00234,아토팜,ATOPALM,MLE 로션,,,,True,True,False,False,False,True,True,False,False,False,False,product_name_en|category|subcategory|skin_type_signal|concern_signal|texture|oliveyoung_global_offer
+P00235,아토팜,ATOPALM,판테놀 크림,,,,True,True,False,False,False,True,True,False,False,False,False,product_name_en|category|subcategory|skin_type_signal|concern_signal|texture|oliveyoung_global_offer
+P00236,아토팜,ATOPALM,탑투토 워시,,,,True,True,False,False,False,True,True,False,False,False,False,product_name_en|category|subcategory|skin_type_signal|concern_signal|texture|oliveyoung_global_offer
+P00237,빌랑스,,마이티 요거티 핑크 파우더,,,,True,True,True,False,False,True,True,False,False,False,False,product_name_en|brand_en|category|subcategory|concern_signal|texture|oliveyoung_global_offer
+P00238,토리든,Torriden,다이브인 저분자 히알루론산 크림,,,,True,True,True,False,False,True,True,False,False,False,False,product_name_en|category|subcategory|concern_signal|texture|oliveyoung_global_offer
+P00239,에스네이처,S.NATURE,아쿠아 소이 요거 아이크림,,스킨케어,아이케어,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00240,닥터지,Dr.G,그린 마일드 업 선 플러스 [SPF50+/PA++++],,,,True,True,False,False,False,False,True,False,False,False,False,product_name_en|category|subcategory|skin_type_signal|concern_signal|texture|oliveyoung_global_offer
+P00241,빌리프,belif,슈퍼 나이츠 마스크 [멀티 비타민],,마스크/팩,슬리핑팩,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00242,아토팜,ATOPALM,수딩 젤 로션,,,,True,True,True,False,False,True,True,False,False,False,False,product_name_en|category|subcategory|concern_signal|texture|oliveyoung_global_offer
+P00243,토코보,TOCOBO,코튼 소프트 선 스틱 [SPF50+/PA++++],,선케어,선스틱,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00244,리더스,Leaders,스텝솔루션 알로에 수딩 마스크,,,,True,True,False,False,False,False,True,False,False,False,False,product_name_en|category|subcategory|skin_type_signal|concern_signal|texture|oliveyoung_global_offer
+P00245,메디큐브,medicube,콜라겐 나이트 랩핑 마스크,,마스크/팩,필오프 팩,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00246,이니스프리,innisfree,화산송이 바하 모공 폼 클렌징,,,,True,True,False,False,False,False,True,False,False,False,False,product_name_en|category|subcategory|skin_type_signal|concern_signal|texture|oliveyoung_global_offer
+P00247,토리든,Torriden,다이브인 저분자 히알루론산 클렌징 워터,,클렌징/필링,클렌징 워터,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00248,메디힐,MEDIHEAL,마데카소사이드 흔적패드,,마스크/팩,부분마스크 패드,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00249,토리든,Torriden,다이브인 저분자 히알루론산 세럼,Dive-In Serum 50ml,,,True,True,False,False,False,True,True,True,True,False,False,category|subcategory|skin_type_signal|concern_signal|texture
+P00250,토리든,Torriden,밸런스풀 시카 진정 세럼,,스킨케어,에센스/앰플/세럼,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00251,리더스,Leaders,그린 콜라겐 아이크림 포 페이스,,,,True,True,False,False,False,False,True,False,False,False,False,product_name_en|category|subcategory|skin_type_signal|concern_signal|texture|oliveyoung_global_offer
+P00252,예스킨,,닥터 예스키놀 젤 포르테,,스킨케어,젤,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00253,비오레,Bioré,UV 아쿠아 리치 아쿠아 프로텍트 미스트 [SPF50/PA++++],,선케어,선스프레이,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00254,웰라쥬,WELLAGE,리얼 히알루로닉 토너,,,,True,True,False,False,False,False,True,False,False,False,False,product_name_en|category|subcategory|skin_type_signal|concern_signal|texture|oliveyoung_global_offer
+P00255,라보에이치,LABO-H,탈모증상완화 캡슐 트리트먼트,,헤어케어,트리트먼트/팩,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00256,비플레인,beplain,녹두 약산성 클렌징폼,Mung Bean pH-Balanced Cleansing Foam 80ml,,,True,True,True,False,False,True,True,True,True,False,False,category|subcategory|concern_signal|texture
+P00257,트리셀,,안티 댄드러프 샴푸,,,,True,True,False,False,False,False,True,False,False,False,False,product_name_en|brand_en|category|subcategory|skin_type_signal|concern_signal|texture|oliveyoung_global_offer
+P00258,후시다인,,더마 트러블 징크 카밍 선크림 [SPF50+/PA++++],,선케어,선크림/로션,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00259,바닐라코,banila co,클린 잇 제로 클렌징밤 [오리지널],,클렌징/필링,클렌징 밤,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00260,센텔리안24,Centellian24,마데카크림 타임리버스,,스킨케어,크림,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00261,일루미엘,,물결 수분 네모패드,,마스크/팩,부분마스크 패드,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00262,믹순,mixsoon,콩 에센스,Bean Essence 50mL,스킨케어,에센스/앰플/세럼,True,True,False,True,False,False,False,True,True,True,True,skin_type_signal|texture
+P00263,에이프릴스킨,,핑크알로에 머랭솝,,마스크/팩,워시오프 팩,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00264,제로이드,ZEROID,인텐시브 SOS 플러스 밤,,스킨케어,밤/멀티밤,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00265,아임프롬,I'm from,피그 엔자임 파우더 클렌저,,클렌징/필링,클렌징 파우더,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00266,셀인샷,,EGF 알란테놀 리페어 크림,,스킨케어,크림,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00267,더메디닥터,,데이앤블루 UV 선미스트 [SPF50+/PA++++],,선케어,선스프레이,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00268,그린핑거,Green Finger,판테딘 엠디 더마 수딩젤,,스킨케어,젤,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00269,스트라이덱스,Stridex,맥스플러스 패드,,클렌징/필링,스크럽/필링 패드,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00270,볼라보,,피니쉬 랩핑 겔,,마스크/팩,필오프 팩,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00271,롬앤,rom&nd,누 제로 쿠션 [SPF24/PA++] [03 내추럴21],,,,True,True,False,False,False,False,True,False,False,False,False,product_name_en|category|subcategory|skin_type_signal|concern_signal|texture|oliveyoung_global_offer
+P00272,메디큐브,medicube,엑소좀시카 진정 패드,,클렌징/필링,스크럽/필링 패드,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00273,바이오더마,Bioderma,시카비오 크림+,,스킨케어,크림,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00274,르메이엘,,쿨링 앤 카밍 아이싱랩,,마스크/팩,부분마스크 패드,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00275,레이어랩,Layer Lab,니오좀 판테놀 5% 세럼,,스킨케어,에센스/앰플/세럼,True,True,True,True,False,False,True,True,False,False,False,product_name_en|texture|oliveyoung_global_offer
+P00276,아누아,ANUA,어성초 77 수딩 토너,,,,True,True,False,False,False,False,True,False,False,False,False,product_name_en|category|subcategory|skin_type_signal|concern_signal|texture|oliveyoung_global_offer
+P00277,바이오던스,BIODANCE,리프레싱 씨 켈프 리얼 딥 마스크,,마스크/팩,슬리핑팩,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00278,식물나라,,워터프루프 선 스프레이 [SPF50+/PA++++],,선케어,선스프레이,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00279,노일리,,블랙헤드 슬라임 효소클렌저,,클렌징/필링,클렌징 파우더,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00280,피캄,,시카락토 엑소좀 45 슬리핑 마스크,,마스크/팩,슬리핑팩,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00281,텐제로,,핑크 히알루론산 나이아신아마이드 세럼 하트 패드,,스킨케어,스킨/토너 패드,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00282,모토몬트,,밀크티 미스트,,스킨케어,미스트,True,True,False,False,True,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|concern_signal|oliveyoung_global_offer
+P00283,아누아,ANUA,PDRN 히알루론산 100 수분 크림,,,,True,True,True,False,False,True,True,False,False,False,False,product_name_en|category|subcategory|concern_signal|texture|oliveyoung_global_offer
+P00284,파우치24,,퀸즈 밤,,스킨케어,밤/멀티밤,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00285,지피덤,,EGF 스킨 베리어 크림 토너,,스킨케어,스킨/토너,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00286,일리윤,illiyoon,세라마이드 아토 로션,,,,True,True,True,False,False,True,True,True,False,False,False,product_name_en|category|subcategory|concern_signal|texture|oliveyoung_global_offer
+P00287,메디큐브,medicube,PDRN 겔 패드,,마스크/팩,부분마스크 패드,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00288,스탠다드서울,Standard Seoul,배리어 글래스 겔 크림,,스킨케어,젤,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00289,스미브,,락토바이오 염색 샴푸 [블랙],,헤어케어,샴푸,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00290,달바,d'Alba,비타 토닝 세럼 로션,,스킨케어,로션/에멀젼,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00291,낫씨백,,엔에스비케이 핑크 알로에 폼 클렌저,,클렌징/필링,클렌징 젤,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00292,낫씨백,,엔에스비케이 핑크 알로에 수딩 젤,,스킨케어,젤,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00293,시드물,SIDMOOL,알로에 에센셜 수딩 마스크시트팩,,,,True,True,False,False,False,False,True,False,False,False,False,product_name_en|category|subcategory|skin_type_signal|concern_signal|texture|oliveyoung_global_offer
+P00294,비플레인,beplain,녹두 모공 클리어링 필터 패드,,클렌징/필링,스크럽/필링 패드,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00295,식물나라,,뽀얀쌀 생기 톤업 선쿠션 [SPF50+/PA++++] [02 생기 피치],,선케어,선쿠션/팩트,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00296,오르제나,,라하 올 멜팅 클렌징밤,,클렌징/필링,클렌징 밤,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00297,마미케어,,애사비 클렌저,,클렌징/필링,클렌징 폼,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00298,아르히,,스피큘 두피 앰플,,헤어케어,트리트먼트/팩,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00299,말따,,콜라겐 안티세범피 하이드로겔 오버나이트 마스크 앤 부스터샷,,마스크/팩,시트마스크,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00300,큐어알파,,알로에시카 수딩젤,,스킨케어,젤,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00301,풀리,,쌀 반죽 팩 클렌저,,클렌징/필링,클렌징 폼,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00302,바이오던스,BIODANCE,포어 퍼펙팅 콜라겐 펩타이드 세럼,,스킨케어,에센스/앰플/세럼,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00303,아브카,,딥 모이스처 세라마이드 크림 토너,,스킨케어,스킨/토너,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00304,피체,,로즈 립 클레이팩 클렌저,,마스크/팩,워시오프 팩,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00305,브링그린,BRING GREEN,티트리 시카 수딩 토너,,스킨케어,스킨/토너,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00306,힌스,hince,래디언스 메이크업 부스팅 프렙,,베이스메이크업,메이크업베이스,True,True,False,False,False,False,False,True,False,False,False,product_name_en|skin_type_signal|concern_signal|texture|oliveyoung_global_offer
+P00307,토브토브,,퍼펙트 콜라겐 마스크,,마스크/팩,시트마스크,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00308,휩드,,비건 팩클렌저 [무화버터],,마스크/팩,워시오프 팩,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00309,블랑네이처,,5배 고농축 매직 티트리 오일,,스킨케어,페이스오일,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00310,에뛰드,ETUDE,진저슈가 립 세럼 [03 누디 베이지],,립밤,,True,True,False,True,False,False,False,True,False,False,False,product_name_en|subcategory|skin_type_signal|texture|oliveyoung_global_offer
+P00311,더레이디,,포어 타이트닝 핑크톡스 클레이 마스크,,팩,워시오프 팩,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00312,프롬메디,,아줄렌 시카 카밍 마스크,,마스크/팩,시트마스크,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00313,바이오지오,,지오리페어 울트라 퍼밍 크림,,스킨케어,크림,True,True,False,False,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|concern_signal|texture|oliveyoung_global_offer
+P00314,리슬로우,,화이트 로터스 피디알엔 스프레이 세럼,,스킨케어,미스트,True,True,False,False,True,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|concern_signal|oliveyoung_global_offer
+P00315,따띠온,,수분 레시피 저분자 히알루론산 세럼,,스킨케어,에센스/앰플/세럼,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00316,에텔랑,,센텔라 물 쿠션 [SPF50+/PA+++],,베이스메이크업,쿠션,True,True,False,False,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|concern_signal|texture|oliveyoung_global_offer
+P00317,바이오코어,BioCore,피부면역 유산균 캡슐,,위장 건강,,True,True,False,True,False,False,False,True,False,False,False,product_name_en|subcategory|skin_type_signal|texture|oliveyoung_global_offer
+P00318,포썸머,For Summer,오션프루프 선크림 02 선 블러쉬드 [SPF50+/PA++++],,선케어,선크림/로션,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00319,라브리에,,인리치드 크림,,젤,,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|subcategory|skin_type_signal|texture|oliveyoung_global_offer
+P00320,레스케미,,갈락토미세스 더마로션,,에멀젼,,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|subcategory|skin_type_signal|texture|oliveyoung_global_offer
+P00321,마미케어,,바다포도 젤리미스트,,스킨케어,미스트,True,True,False,False,True,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|concern_signal|oliveyoung_global_offer
+P00322,마미케어,,바다포도 스킨팩,,마스크/팩,부분마스크/팩,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00323,ICD,,래디언솜™100 마이크로플루다이저 크림,,스킨케어,크림,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00324,러베,,5중 세라마이드 로션,,스킨케어,로션/에멀젼,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00325,올록담,,올리브3,,이너뷰티,피부 건강,True,True,False,False,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|concern_signal|texture|oliveyoung_global_offer
+P00326,포헤르츠,,히알라겐 버블 세럼,,스킨케어,에센스/앰플/세럼,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00327,퓨로피엘,,마이크로핏 액티브 진정 패치,,팩,패치,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00328,퓨로피엘,,마이크로핏 액티브 톤업패치,,마스크/팩,부분마스크/팩,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00329,퓨로피엘,,마이크로핏 액티브 끌올패치,,마스크/팩,부분마스크/팩,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00330,시카젠,,프레시 시카 90% 앰플,,스킨케어,에센스/앰플/세럼,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00331,바이오더마,Bioderma,포토덤 엑스디펜스 울트라 플루이드 [SPF50+/PA++++],,선케어,선크림/로션,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00332,리타,,사프란온로즈 토너투캄,,토너,,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|subcategory|skin_type_signal|texture|oliveyoung_global_offer
+P00333,리노블,,콜라겐 모이스처라이징 앰플 마스크,,마스크/팩,시트마스크,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00334,리노블,,히알루론산 모이스처라이징 앰플 마스크,,마스크/팩,시트마스크,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00335,그린핑거,Green Finger,판테딘 튼살크림,,임산부케어,임산부화장품,True,True,False,False,False,False,False,True,False,False,False,product_name_en|skin_type_signal|concern_signal|texture|oliveyoung_global_offer
+P00336,플리브미,,비건 키즈 헤어 미스트,,헤어,헤어케어,True,True,False,False,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|concern_signal|texture|oliveyoung_global_offer
+P00337,글로우풀,,시카 바하 카밍 세럼,,스킨케어,에센스/앰플/세럼,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00338,프루티드,,퍼플부스터 양파샴푸,,헤어,샴푸,True,True,False,False,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|concern_signal|texture|oliveyoung_global_offer
+P00339,허니버니,,허니 멜팅 샴푸,,헤어케어,샴푸,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00340,세로랩스,,제로 버블 퓨어 젤 클렌저,,클렌징/필링,클렌징 젤,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00341,오우스킨,,플라노리아 아스타잔틴 & 콜라겐 안티에이징 부스터,,스킨케어,크림,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00342,루나,LUNA,롱래스팅 팁 컨실러 커버 핏 EX [SPF34/PA++] [21N],,베이스메이크업,컨실러,True,True,False,False,False,False,False,True,False,False,False,product_name_en|skin_type_signal|concern_signal|texture|oliveyoung_global_offer
+P00343,제니에,,글로우8 펩타이드 세럼,,오일,,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|subcategory|skin_type_signal|texture|oliveyoung_global_offer
+P00344,아토팜,ATOPALM,이지워시 선스크린 [SPF50+/PA++++],,선케어,선크림/로션,True,True,False,True,False,False,False,True,False,False,False,product_name_en|skin_type_signal|texture|oliveyoung_global_offer
+P00345,에이에스씨이플러스,,카밍앰플 프로,,스킨케어,에센스/앰플/세럼,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00346,에이에스씨이플러스,,더블: 이엑스 시그널 패드 프로,,토너 패드,,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|subcategory|skin_type_signal|texture|oliveyoung_global_offer
+P00347,몽디에스,Mongdies,선크림 [SPF50+/PA++++],,로션,,True,True,False,True,False,False,False,True,False,False,False,product_name_en|subcategory|skin_type_signal|texture|oliveyoung_global_offer
+P00348,일리윤,illiyoon,세라마이드 아토 집중 크림,Ceramide Ato Concentrate Cream 150mL,젤,,True,True,False,True,False,False,False,True,True,True,True,subcategory|skin_type_signal|texture
+P00349,핀브,,오브제 트루베 글로우 파운데이션 [SPF50+ PA++++] [21호 라이트베이지],,베이스메이크업,파운데이션,True,True,False,False,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|concern_signal|texture|oliveyoung_global_offer
+P00350,루온셀,,하이 리프트 겔 마스크,,마스크/팩,시트마스크,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|texture|oliveyoung_global_offer
+P00351,에이에스씨이플러스,,엑소밤-SR2,,멀티밤,,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|subcategory|skin_type_signal|texture|oliveyoung_global_offer
+P00352,닥터지,Dr.G,레드 블레미쉬 클리어 수딩 크림 EX,,,,True,True,False,False,False,False,True,False,False,False,False,product_name_en|category|subcategory|skin_type_signal|concern_signal|texture|oliveyoung_global_offer
+P00353,에스쁘아,espoir,더마 커버 블레미쉬 밤 [SPF50+/PA++++] [10호 애쉬 아이보리],,CC크림,,True,True,False,True,False,False,False,True,False,False,False,product_name_en|subcategory|skin_type_signal|texture|oliveyoung_global_offer
+P00354,토니모리,TONYMOLY,세라마이드 모찌 토너,,,,True,True,True,False,False,True,True,False,False,False,False,product_name_en|category|subcategory|concern_signal|texture|oliveyoung_global_offer
+P00355,벌쓰티,,글로우 핸드 앤 바디 워시 [케이크 프롬 수지],,바디,바디워시,True,True,False,False,False,False,False,True,False,False,False,product_name_en|brand_en|skin_type_signal|concern_signal|texture|oliveyoung_global_offer
+P00356,벌쓰티,,레이어드 핸드 앤 바디 로션 [케이크 프롬 수지],,밤,,True,True,False,True,False,False,False,True,False,False,False,product_name_en|brand_en|subcategory|skin_type_signal|texture|oliveyoung_global_offer
+P00357,,,노마디아블루 진정 판테놀 1% 클렌징 밀크,,,,True,True,True,False,False,False,True,False,False,False,False,product_name_en|brand_en|category|subcategory|concern_signal|texture|oliveyoung_global_offer
+P00358,일리윤,illiyoon,세라마이드 아토 선로션 [SPF50+/PA++++],,,,True,True,False,False,False,False,True,False,False,False,False,product_name_en|category|subcategory|skin_type_signal|concern_signal|texture|oliveyoung_global_offer
+P00359,딕셔니스트,,아미노산 앰플,,,,True,True,False,False,False,False,True,False,False,False,False,product_name_en|brand_en|category|subcategory|skin_type_signal|concern_signal|texture|oliveyoung_global_offer

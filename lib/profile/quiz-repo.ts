@@ -347,13 +347,15 @@ export async function findOwnedSnapshot(
   profile_code: string;
   profile_domain: string;
   traits_json: unknown;
+  goals_json?: unknown;
+  preferences_json?: unknown;
   summary_json: unknown;
   confidence_json: unknown;
 } | null> {
   const { data, error } = await admin
     .from("profile_snapshots")
     .select(
-      "profile_code, profile_domain, traits_json, summary_json, confidence_json"
+      "profile_code, profile_domain, traits_json, goals_json, preferences_json, summary_json, confidence_json"
     )
     .eq("id", snapshotId)
     .eq("anonymous_identity_id", identityId)

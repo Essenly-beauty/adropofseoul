@@ -17,6 +17,8 @@ SCRIPTS = [
     "validate.py",
     "crawler.py",
     "export_picks.py",
+    "coverage_report.py",
+    "build_promotion_queue.py",
 ]
 
 MASTERS = {
