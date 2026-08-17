@@ -65,6 +65,18 @@ describe("mapPostRow", () => {
       "/images/articles/seongsu-beauty-spots.png"
     );
   });
+
+  it("replaces a stale CMS image with the dedicated local thumbnail", () => {
+    const post = mapPostRow({
+      ...row,
+      slug: "seongsu-beauty-spots",
+      featured_image: "/images/seongsu/seongsu-beauty-and-bites.jpg",
+    } as never);
+
+    expect(post.featuredImage).toBe(
+      "/images/articles/seongsu-beauty-spots.png"
+    );
+  });
 });
 
 describe("listPublishedPosts", () => {

@@ -44,8 +44,10 @@ export function mapPostRow(row: PostRow): Post {
     tags: row.tags ?? [],
     // `||`, not `??`: the markdown seeder writes featured_image as "" rather
     // than null, and an empty string has to fall through to the local map.
+    // Curated local heroes are source-of-truth for their registered slugs.
+    // This also replaces stale non-empty CMS paths left from earlier previews.
     featuredImage:
-      row.featured_image || LOCAL_FEATURED_IMAGES[row.slug] || null,
+      LOCAL_FEATURED_IMAGES[row.slug] || row.featured_image || null,
     author: row.author,
     seoTitle: row.seo_title,
     metaDescription: row.meta_description,
