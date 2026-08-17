@@ -41,6 +41,8 @@ const LOCAL_FEATURED_IMAGES: Record<string, string> = {
     "/images/articles/korean-haircare-where-to-start.png",
   "korean-phrases-for-beauty-shopping":
     "/images/articles/korean-phrases-for-beauty-shopping.png",
+  "korean-post-treatment-recovery-skincare-routine":
+    "/images/articles/korean-post-treatment-recovery-skincare-routine.png",
   "korean-skin-texture-meaning":
     "/images/articles/korean-skin-texture-meaning.png",
   "korean-skincare-brands-on-our-radar":

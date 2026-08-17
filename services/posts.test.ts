@@ -90,6 +90,7 @@ describe("mapPostRow", () => {
     "korean-haircare-fine-frizzy-hair",
     "korean-haircare-where-to-start",
     "korean-phrases-for-beauty-shopping",
+    "korean-post-treatment-recovery-skincare-routine",
     "korean-skin-texture-meaning",
     "korean-skincare-brands-on-our-radar",
     "korean-skincare-labels-explained",
