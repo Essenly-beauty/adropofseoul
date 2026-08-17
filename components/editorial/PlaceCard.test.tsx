@@ -63,6 +63,13 @@ describe("PlaceCard", () => {
     expect(heading.className).toContain("font-sans");
   });
 
+  it("sets the place name in ink rather than the full-strength text color", () => {
+    render(<PlaceCard place={place} />);
+
+    const heading = screen.getByRole("heading", { name: "Sool Loft Head Spa" });
+    expect(heading.className).toContain("text-text-ink");
+  });
+
   it("keeps a Korean name from breaking mid-word", () => {
     render(<PlaceCard place={{ ...place, nameKr: "오오네일 성수" }} />);
 
