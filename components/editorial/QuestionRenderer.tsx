@@ -129,7 +129,7 @@ export function QuestionRenderer({
           return (
             <label
               key={opt.key}
-              className={`flex cursor-pointer items-center gap-3 rounded-lg border p-4 text-sm transition-colors duration-medium ease-editorial ${
+              className={`flex cursor-pointer items-center gap-3 rounded-lg border p-4 text-sm transition-colors duration-medium ease-editorial focus-within:outline focus-within:outline-1 focus-within:outline-offset-2 focus-within:outline-accent ${
                 active
                   ? "border-accent bg-porcelain/50"
                   : "border-soft-gray hover:border-accent"
@@ -141,8 +141,33 @@ export function QuestionRenderer({
                 value={opt.key}
                 checked={active}
                 onChange={() => toggle(opt.key)}
-                className="h-4 w-4 accent-accent"
+                className="sr-only"
               />
+              <span
+                aria-hidden="true"
+                className={`flex h-4 w-4 shrink-0 items-center justify-center rounded-full border transition-colors duration-medium ease-editorial ${
+                  active
+                    ? "border-accent bg-accent text-white"
+                    : "border-text-muted bg-transparent"
+                }`}
+              >
+                {active &&
+                  (multiple ? (
+                    <svg
+                      viewBox="0 0 16 16"
+                      className="h-3 w-3"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="m4 8 2.5 2.5L12 5" />
+                    </svg>
+                  ) : (
+                    <span className="h-1.5 w-1.5 rounded-full bg-white" />
+                  ))}
+              </span>
               {opt.label}
             </label>
           );
