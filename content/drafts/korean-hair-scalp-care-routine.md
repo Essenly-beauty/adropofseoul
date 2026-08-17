@@ -16,7 +16,7 @@ seo_title: "Korean Hair Care Routine: How Koreans Actually Treat Their Scalp"
 meta_description: "How often do Koreans wash their hair? A real breakdown of the Korean hair care routine — scalp scaling, tonics, wash frequency, and what's actually worth doing."
 author: "A Drop of Seoul Editorial"
 status: "draft"
-featured_image: ""
+featured_image: "/images/articles/korean-hair-scalp-care-routine.png"
 featured_image_alt: "A minimal bathroom counter with scalp care tonics and a wide-tooth comb"
 related_places: []
 ---

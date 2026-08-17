@@ -9,7 +9,7 @@ seo_title: "Korean Head Spa: What to Expect on Your First Visit (2026)"
 meta_description: "What is a Korean head spa? A first-timer's walkthrough — every step, real cost and timing, how to book in English in Seoul, and whether it's worth it."
 author: "A Drop of Seoul Editorial"
 status: "draft"
-featured_image: ""
+featured_image: "/images/articles/korean-head-spa-first-timer-guide.png"
 featured_image_alt: "A calm Korean head spa room with warm towels and soft lighting"
 related_places: ["sool-loft-head-spa"]
 ---
@@ -78,4 +78,3 @@ Not at the English-friendly studios, but book ahead by DM and bring a translatio
 
 **Will it help with hair loss or dandruff?**
 It can help a flaky or oily scalp feel and look better in the short term. It's care, not a medical treatment — see a dermatologist for persistent hair loss.
-

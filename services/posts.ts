@@ -23,6 +23,8 @@ const COLUMNS =
   "id,title,slug,subtitle,excerpt,body,category,tags,featured_image,author,seo_title,meta_description,published_at,updated_at";
 
 const LOCAL_FEATURED_IMAGES: Record<string, string> = {
+  "glass-skin-without-10-steps":
+    "/images/articles/glass-skin-without-10-steps.png",
   "five-k-beauty-serums": "/images/articles/five-k-beauty-serums.png",
   "gangnam-beauty-day": "/images/articles/gangnam-beauty-day.png",
   "hannam-afternoon-local-guide":
@@ -33,6 +35,10 @@ const LOCAL_FEATURED_IMAGES: Record<string, string> = {
   "korean-fragrance-seoul": "/images/articles/korean-fragrance-seoul.png",
   "korean-hair-brands-worth-knowing":
     "/images/articles/korean-hair-brands-worth-knowing.png",
+  "korean-hair-scalp-care-routine":
+    "/images/articles/korean-hair-scalp-care-routine.png",
+  "korean-head-spa-first-timer-guide":
+    "/images/articles/korean-head-spa-first-timer-guide.png",
   "korean-hair-masks-worth-buying":
     "/images/articles/korean-hair-masks-worth-buying.png",
   "korean-haircare-fine-frizzy-hair":
@@ -41,12 +47,28 @@ const LOCAL_FEATURED_IMAGES: Record<string, string> = {
     "/images/articles/korean-haircare-where-to-start.png",
   "korean-phrases-for-beauty-shopping":
     "/images/articles/korean-phrases-for-beauty-shopping.png",
+  "korean-3-step-skincare-routine":
+    "/images/articles/korean-3-step-skincare-routine.png",
+  "korean-5-step-morning-skincare-routine":
+    "/images/articles/korean-5-step-morning-skincare-routine.png",
+  "korean-barrier-repair-routine":
+    "/images/articles/korean-barrier-repair-routine.png",
+  "korean-clinic-to-home-skincare":
+    "/images/articles/korean-clinic-to-home-skincare.png",
+  "korean-post-treatment-recovery-skincare-routine":
+    "/images/articles/korean-post-treatment-recovery-skincare-routine.png",
+  "korean-skip-care-explained":
+    "/images/articles/korean-skip-care-explained.png",
   "korean-skin-texture-meaning":
     "/images/articles/korean-skin-texture-meaning.png",
   "korean-skincare-brands-on-our-radar":
     "/images/articles/korean-skincare-brands-on-our-radar.png",
   "korean-skincare-labels-explained":
     "/images/articles/korean-skincare-labels-explained.png",
+  "korean-skincare-30s-slow-aging-routine":
+    "/images/articles/korean-skincare-30s-slow-aging-routine.png",
+  "korean-summer-cooling-skincare-routine":
+    "/images/articles/korean-summer-cooling-skincare-routine.png",
   "myeongdong-vs-seongsu-beauty-shopping":
     "/images/articles/myeongdong-vs-seongsu-beauty-shopping.png",
   "olive-young-shopping-guide":
@@ -60,6 +82,7 @@ const LOCAL_FEATURED_IMAGES: Record<string, string> = {
     "/images/articles/seoul-holistic-beauty-shift.png",
   "seoul-scalp-care-culture": "/images/articles/seoul-scalp-care-culture.png",
   "the-drop-list-august-2026": "/images/articles/the-drop-list-august-2026.png",
+  "toner-pads-as-mini-masks": "/images/articles/toner-pads-as-mini-masks.png",
   "what-makes-a-brand-feel-seoul":
     "/images/articles/what-makes-a-brand-feel-seoul.png",
   "what-to-buy-at-olive-young":
@@ -68,6 +91,8 @@ const LOCAL_FEATURED_IMAGES: Record<string, string> = {
     "/images/articles/what-to-buy-korean-skincare-skin-type.jpg",
   "where-to-shop-k-beauty-beyond-olive-young":
     "/images/articles/where-to-shop-k-beauty-beyond-olive-young.png",
+  "sunscreen-as-skincare-korean-routine":
+    "/images/articles/sunscreen-as-skincare-korean-routine.png",
 };
 
 export function mapPostRow(row: PostRow): Post {

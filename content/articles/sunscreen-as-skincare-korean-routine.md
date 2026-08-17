@@ -10,7 +10,7 @@ meta_description: "Why sunscreen is central to Korean skincare: how SPF protects
 author: "A Drop of Seoul Editorial"
 status: "published"
 published_at: "2026-07-12T01:10:00+00:00"
-featured_image: "/images/articles/sunscreen-as-skincare-korean-routine.jpg"
+featured_image: "/images/articles/sunscreen-as-skincare-korean-routine.png"
 ---
 
 If you want to understand Korean skincare quickly, watch how seriously sunscreen is treated. Not as a beach product. Not as something for vacations. As the quiet daily product that keeps tone even, texture smoother, and expensive serums from becoming decorative.
