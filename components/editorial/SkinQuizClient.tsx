@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { QuizShell } from "./QuizShell";
 import type { QuizResponseValue } from "./QuestionRenderer";
 import type { Product } from "@/services/types";
@@ -26,15 +27,10 @@ import {
   startQuizAttempt,
 } from "@/app/actions/profile";
 import type { SkinProfileV1Result } from "@/lib/skincare/profile-v1";
-
-const PROFILE_NAMES: Record<string, string> = {
-  "hydration-seeker": "The Hydration Seeker",
-  "sensitive-comfort": "The Sensitive Comfort Seeker",
-  "oil-water-balancer": "The Oil–Water Balancer",
-  "texture-reset": "The Texture Reset",
-  "steady-radiance": "The Steady Radiance",
-  "balanced-basics": "The Balanced Basics",
-};
+import {
+  getSkinGuideProfile,
+  SKIN_GUIDE_PROFILES,
+} from "@/lib/skincare/profiles";
 
 const REASON_COPY: Record<string, string> = {
   PRIMARY_CONCERN_MATCH: "Matches the main goal you chose.",
@@ -177,7 +173,7 @@ export function SkinProfileResult({
         Your Skin Profile
       </p>
       <h1 className="mt-3 font-serif text-4xl leading-tight md:text-5xl">
-        {PROFILE_NAMES[result.profileSlug]}
+        {getSkinGuideProfile(result.profileSlug)?.name}
       </h1>
       <p className="mt-4 text-lg text-text-muted">
         Your result reflects the balance, goals, and finish preferences you
@@ -261,6 +257,50 @@ export function SkinProfileResult({
                   </p>
                 )}
               </article>
+            );
+          })}
+        </div>
+      </section>
+
+      <section className="mt-14 border-t border-soft-gray pt-10">
+        <p className="text-[11px] uppercase tracking-label text-accent">
+          Explore the profiles
+        </p>
+        <h2 className="mt-2 font-serif text-2xl">
+          Six ways to approach your skin
+        </h2>
+        <p className="mt-2 max-w-2xl text-sm text-text-muted">
+          Your result is personal and can change. Explore the six starting-point
+          guides to understand a different goal or season of your skin.
+        </p>
+        <div className="mt-6 grid gap-4 sm:grid-cols-2">
+          {SKIN_GUIDE_PROFILES.map((profile) => {
+            const current = profile.slug === result.profileSlug;
+            return (
+              <Link
+                key={profile.slug}
+                href={`/skincare/profiles/${profile.slug}`}
+                className={`group rounded-lg border p-5 transition-colors duration-medium ease-editorial hover:border-accent ${
+                  current ? "border-accent bg-porcelain/50" : "border-soft-gray"
+                }`}
+              >
+                <div className="flex items-start justify-between gap-3">
+                  <h3 className="font-serif text-lg leading-snug group-hover:text-accent">
+                    {profile.name}
+                  </h3>
+                  {current && (
+                    <span className="shrink-0 text-[9px] uppercase tracking-label text-accent">
+                      Your result
+                    </span>
+                  )}
+                </div>
+                <p className="mt-2 text-sm text-text-muted">
+                  {profile.tagline}
+                </p>
+                <span className="mt-4 inline-block text-[10px] uppercase tracking-label text-accent">
+                  Read the guide →
+                </span>
+              </Link>
             );
           })}
         </div>
