@@ -59,6 +59,7 @@ import {
   completeQuizAttempt,
   getQuizAttempt,
   getProfileSnapshot,
+  getSkinProfileSnapshot,
 } from "./profile";
 
 // --- Fixtures (mirror the placeholder hair quiz) ---------------------------
@@ -983,5 +984,49 @@ describe("getProfileSnapshot", () => {
     const res = await getProfileSnapshot(SNAPSHOT_ID);
     expect(res).toEqual({ ok: false, error: "INTERNAL_ERROR" });
     expect(repo.findOwnedSnapshot).not.toHaveBeenCalled();
+  });
+});
+
+describe("getSkinProfileSnapshot", () => {
+  const SNAPSHOT_ID = "55555555-5555-4555-8555-555555555555";
+  const storedSnapshot = {
+    profile_code: "hydration-seeker",
+    profile_domain: "skin",
+    traits_json: ["dry", "hydration"],
+    goals_json: {
+      primaryConcern: "hydration",
+      secondaryConcerns: ["soothing"],
+    },
+    preferences_json: {
+      finishPreference: "rich",
+      routineFocus: "moisturizer",
+    },
+    summary_json: {
+      tendency: "dry",
+      sensitiveConsideration: true,
+    },
+    confidence_json: { complete: true },
+  };
+
+  it("serves a parsed skin snapshot to its owner", async () => {
+    vi.mocked(repo.findOwnedSnapshot).mockResolvedValue(storedSnapshot);
+    const res = await getSkinProfileSnapshot(SNAPSHOT_ID);
+    expect(res.ok).toBe(true);
+    if (res.ok) {
+      expect(res.profile?.profileSlug).toBe("hydration-seeker");
+      expect(res.profile?.primaryConcern).toBe("hydration");
+      expect(res.profile?.sensitiveConsideration).toBe(true);
+    }
+  });
+
+  it("does not expose a snapshot from another profile domain", async () => {
+    vi.mocked(repo.findOwnedSnapshot).mockResolvedValue({
+      ...storedSnapshot,
+      profile_domain: "hair",
+    });
+    expect(await getSkinProfileSnapshot(SNAPSHOT_ID)).toEqual({
+      ok: false,
+      error: "SNAPSHOT_NOT_FOUND",
+    });
   });
 });

@@ -56,6 +56,30 @@ export function outboundLinkClicked(p: {
   });
 }
 
+export function productPreviewClicked(p: {
+  productId: string;
+  matchLevel: string;
+  destination: string;
+}): void {
+  track("product_preview_clicked", {
+    product_id: p.productId,
+    match_level: p.matchLevel,
+    destination: p.destination,
+  });
+}
+
+export function passportHandoffClicked(p: {
+  profileDomain: ProfileDomain;
+  profileVersion: number;
+  source: string;
+}): void {
+  track("passport_handoff_clicked", {
+    profile_domain: p.profileDomain,
+    profile_version: p.profileVersion,
+    source: p.source,
+  });
+}
+
 export type ProfileDomain = "skin" | "hair";
 export type AuthState = "anonymous" | "authenticated";
 

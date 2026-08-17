@@ -11,6 +11,8 @@
 - `inventory_raw_values.py` — 크롤 JSON의 skin/concern 원본값을 맵 CSV에 사전 등록
 - `crawler.py` — 글로벌 시딩 수집기 (og:title 기반, brands.csv brand_en 접두 매칭). 국내는 봇 차단으로 수집 안 함(2026-07-21 조사, 이슈 #11)
 - `validate.py` — 마스터 무결성 리포트 (exit 0/1)
+- `coverage_report.py` — 추천 준비 상태 진단용 제품별 CSV 생성. 공개 승격은 하지 않음.
+- `build_promotion_queue.py` — 루틴/고민 커버리지를 고려한 초기 제품 검수 큐 생성. 공개 승인 자동화 아님.
 - `tests/` — pytest. 마스터를 절대 건드리지 않고 tmp 폴더 사본으로 검증.
 
 ## 실행
@@ -18,6 +20,8 @@
 ```bash
 python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
 .venv/bin/python validate.py
+.venv/bin/python coverage_report.py
+.venv/bin/python build_promotion_queue.py
 .venv/bin/python -m pytest tests/ -v
 ```
 
