@@ -77,6 +77,39 @@ describe("mapPostRow", () => {
       "/images/articles/seongsu-beauty-spots.png"
     );
   });
+
+  it.each([
+    "five-k-beauty-serums",
+    "gangnam-beauty-day",
+    "hannam-afternoon-local-guide",
+    "k-beauty-is-changing",
+    "korean-beauty-brands-to-start-with",
+    "korean-fragrance-seoul",
+    "korean-hair-brands-worth-knowing",
+    "korean-hair-masks-worth-buying",
+    "korean-haircare-fine-frizzy-hair",
+    "korean-haircare-where-to-start",
+    "korean-phrases-for-beauty-shopping",
+    "korean-skin-texture-meaning",
+    "korean-skincare-brands-on-our-radar",
+    "korean-skincare-labels-explained",
+    "new-generation-korean-beauty-brands",
+    "people-shaping-seoul-beauty",
+    "seoul-holistic-beauty-shift",
+    "seoul-scalp-care-culture",
+    "the-drop-list-august-2026",
+    "what-makes-a-brand-feel-seoul",
+    "what-to-buy-at-olive-young",
+    "where-to-shop-k-beauty-beyond-olive-young",
+  ])("uses a local Stories thumbnail for %s", (slug) => {
+    const post = mapPostRow({
+      ...row,
+      slug,
+      featured_image: "",
+    } as never);
+
+    expect(post.featuredImage).toBe(`/images/articles/${slug}.png`);
+  });
 });
 
 describe("listPublishedPosts", () => {

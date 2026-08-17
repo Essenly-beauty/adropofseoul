@@ -10,7 +10,7 @@ meta_description: "Ten things from Seoul worth knowing this month — a beauty t
 author: "A Drop of Seoul Editorial"
 status: "published"
 published_at: "2026-08-16T00:00:00+00:00"
-featured_image: ""
+featured_image: "/images/articles/the-drop-list-august-2026.png"
 ---
 
 Not everything worth knowing is a product, and not everything we talk about at dinner makes it into an article.

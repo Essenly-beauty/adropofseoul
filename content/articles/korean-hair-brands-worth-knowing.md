@@ -10,7 +10,7 @@ meta_description: "A guide to the Korean hair brands that matter — UNOVE, LABO
 author: "A Drop of Seoul Editorial"
 status: "published"
 published_at: "2026-08-16T03:10:00+00:00"
-featured_image: ""
+featured_image: "/images/articles/korean-hair-brands-worth-knowing.png"
 ---
 
 Most brand lists in this category are ranked by fame, which is useless, because the four most famous Korean hair brands do four completely different jobs and two of them probably aren't yours.

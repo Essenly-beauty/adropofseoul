@@ -10,7 +10,7 @@ meta_description: "The Korean phrases actually worth knowing for beauty shopping
 author: "A Drop of Seoul Editorial"
 status: "published"
 published_at: "2026-08-16T00:30:00+00:00"
-featured_image: ""
+featured_image: "/images/articles/korean-phrases-for-beauty-shopping.png"
 ---
 
 Let's be honest about what this is for.

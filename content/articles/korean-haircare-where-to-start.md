@@ -10,7 +10,7 @@ meta_description: "Korean haircare is growing faster than skincare right now. Wh
 author: "A Drop of Seoul Editorial"
 status: "published"
 published_at: "2026-08-16T04:00:00+00:00"
-featured_image: ""
+featured_image: "/images/articles/korean-haircare-where-to-start.png"
 ---
 
 You can watch it happen in any large Olive Young. People come in for the skincare wall, photograph it, fill a basket, and walk straight past the aisle where the interesting thing is actually going on.

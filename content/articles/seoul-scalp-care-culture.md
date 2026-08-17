@@ -10,7 +10,7 @@ meta_description: "How scalp care became a young person's category in Korea, why
 author: "A Drop of Seoul Editorial"
 status: "published"
 published_at: "2026-08-16T03:20:00+00:00"
-featured_image: ""
+featured_image: "/images/articles/seoul-scalp-care-culture.png"
 ---
 
 The first time it happens, you assume you've been upsold.

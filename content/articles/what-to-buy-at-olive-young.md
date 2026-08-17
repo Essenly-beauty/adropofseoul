@@ -10,7 +10,7 @@ meta_description: "What to buy at Olive Young, chosen from Korea's real purchase
 author: "A Drop of Seoul Editorial"
 status: "published"
 published_at: "2026-08-16T04:20:00+00:00"
-featured_image: ""
+featured_image: "/images/articles/what-to-buy-at-olive-young.png"
 ---
 
 The screenshot always arrives the same way. Nine products in a grid, a red arrow, someone's phone flash bouncing off a shelf. _Is this list good?_

@@ -10,7 +10,7 @@ meta_description: "A guide to Korean fragrance in Seoul — Nonfiction, Tamburin
 author: "A Drop of Seoul Editorial"
 status: "published"
 published_at: "2026-08-16T02:20:00+00:00"
-featured_image: ""
+featured_image: "/images/articles/korean-fragrance-seoul.png"
 ---
 
 Ten years ago, wearing noticeable perfume in Seoul would have marked you out. Scent was something you got from fabric softener and a hand cream, and anything stronger felt faintly like imposing on people.

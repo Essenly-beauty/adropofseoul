@@ -10,7 +10,7 @@ meta_description: "Korean beauty is expanding past skincare into hair, supplemen
 author: "A Drop of Seoul Editorial"
 status: "published"
 published_at: "2026-08-16T00:50:00+00:00"
-featured_image: ""
+featured_image: "/images/articles/seoul-holistic-beauty-shift.png"
 ---
 
 There's a moment in a large Seoul beauty store where the categories stop making sense.

@@ -10,7 +10,7 @@ meta_description: "What actually works from Korean haircare if you have fine, fr
 author: "A Drop of Seoul Editorial"
 status: "published"
 published_at: "2026-08-16T01:40:00+00:00"
-featured_image: ""
+featured_image: "/images/articles/korean-haircare-fine-frizzy-hair.png"
 ---
 
 A friend came back from Seoul with the famous treatment — the one that wins everything, the one we'd have recommended — and texted three days later to say her hair felt like a curtain.

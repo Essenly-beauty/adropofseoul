@@ -10,7 +10,7 @@ meta_description: "What the Korean words on cosmetics packaging mean — which c
 author: "A Drop of Seoul Editorial"
 status: "published"
 published_at: "2026-08-16T00:20:00+00:00"
-featured_image: ""
+featured_image: "/images/articles/korean-skincare-labels-explained.png"
 ---
 
 You're holding two jars that look identical. One says 기능성화장품 on it. The other says 저자극 in a nicer font.

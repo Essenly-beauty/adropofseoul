@@ -10,7 +10,7 @@ meta_description: "The Korean beauty brands worth knowing first — five picks s
 author: "A Drop of Seoul Editorial"
 status: "published"
 published_at: "2026-08-16T03:50:00+00:00"
-featured_image: ""
+featured_image: "/images/articles/korean-beauty-brands-to-start-with.png"
 ---
 
 Somebody always asks this at a dinner, usually around the second drink. *Okay but which brands. Just tell me which brands.*

@@ -10,7 +10,7 @@ meta_description: "The Seoul beauty shopping worth doing beyond Olive Young — 
 author: "A Drop of Seoul Editorial"
 status: "published"
 published_at: "2026-08-16T03:00:00+00:00"
-featured_image: ""
+featured_image: "/images/articles/where-to-shop-k-beauty-beyond-olive-young.png"
 ---
 
 Olive Young is the right answer to "where do I buy Korean skincare." It is the wrong answer to "where do I see Korean beauty."

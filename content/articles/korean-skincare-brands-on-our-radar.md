@@ -10,7 +10,7 @@ meta_description: "Korean skincare brands with strong domestic records and littl
 author: "A Drop of Seoul Editorial"
 status: "published"
 published_at: "2026-08-16T02:40:00+00:00"
-featured_image: ""
+featured_image: "/images/articles/korean-skincare-brands-on-our-radar.png"
 ---
 
 The most useful thing about living here is knowing what hasn't crossed over yet.

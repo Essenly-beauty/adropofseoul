@@ -10,7 +10,7 @@ meta_description: "How to plan a beauty day in Gangnam — personal color, hair 
 author: "A Drop of Seoul Editorial"
 status: "published"
 published_at: "2026-08-16T02:50:00+00:00"
-featured_image: ""
+featured_image: "/images/articles/gangnam-beauty-day.png"
 ---
 
 Gangnam is not charming, and anyone who tells you otherwise is selling something.

@@ -10,7 +10,7 @@ meta_description: "The six roles that decide what Korean beauty becomes — form
 author: "A Drop of Seoul Editorial"
 status: "published"
 published_at: "2026-08-16T00:10:00+00:00"
-featured_image: ""
+featured_image: "/images/articles/people-shaping-seoul-beauty.png"
 ---
 
 Beauty coverage tends to feature two kinds of people: founders with a good story, and celebrities with a contract.
