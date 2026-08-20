@@ -3,6 +3,7 @@ import Link from "next/link";
 import { SectionHeading } from "@/components/editorial/SectionHeading";
 import { buildPageMetadata } from "@/lib/seo";
 import { SEOUL_NEIGHBORHOODS, PLACE_TYPE_EMOJI } from "@/lib/taxonomy";
+import { PLACES_DIRECTORY_PUBLIC } from "@/lib/publishing";
 
 export const metadata: Metadata = buildPageMetadata({
   // Reader-facing branding is "A Local's Seoul"; the metadata keeps the plain
@@ -37,7 +38,7 @@ export default function SeoulPage() {
       </p>
 
       {/* Explore by place type */}
-      <section>
+      {PLACES_DIRECTORY_PUBLIC && <section>
         <div className="flex items-end justify-between">
           <h2 className="font-serif text-2xl">Explore by place</h2>
           <Link
@@ -66,7 +67,7 @@ export default function SeoulPage() {
             </Link>
           ))}
         </div>
-      </section>
+      </section>}
 
       {/* Explore by neighborhood */}
       <section className="mt-16">

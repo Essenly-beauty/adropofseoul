@@ -33,7 +33,7 @@ export default async function SkincarePicksPage() {
 
   return (
     <main className="mx-auto max-w-content px-6 py-16">
-      <SectionHeading title="Picks" eyebrow="What we love" />
+      <SectionHeading title="Picks" eyebrow="What we love" as="h1" />
       <SectionTabs
         label="Skincare sections"
         tabs={SKINCARE_TABS}
@@ -41,7 +41,7 @@ export default async function SkincarePicksPage() {
       />
 
       {products.length === 0 && reviews.length === 0 ? (
-        <p className="text-text-muted">No picks yet — check back soon.</p>
+        <p className="text-text-muted">No picks are available in this view.</p>
       ) : (
         <div className="space-y-14">
           {products.length > 0 && (

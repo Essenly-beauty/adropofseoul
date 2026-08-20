@@ -1,5 +1,6 @@
 import { cache } from "@/lib/react-cache";
 import { createClient } from "@/lib/supabase/public";
+import { isPostPublic } from "@/lib/publishing";
 import type { Post } from "./types";
 
 type PostRow = {
@@ -134,11 +135,17 @@ export async function listPublishedPosts(
     query = query.in("category", opts.categories);
   const { data, error } = await query;
   if (error) throw error;
-  return (data as PostRow[] | null)?.map(mapPostRow) ?? [];
+  return (
+    (data as PostRow[] | null)
+      ?.map(mapPostRow)
+      .filter((post) => isPostPublic(post.slug)) ?? []
+  );
 }
 
 export const getPostBySlug = cache(
   async (slug: string): Promise<Post | null> => {
+    if (!isPostPublic(slug)) return null;
+
     const supabase = await createClient();
     const { data, error } = await supabase
       .from("posts")

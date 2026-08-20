@@ -32,7 +32,11 @@ export default async function AroundSeoulCommonPage() {
 
   return (
     <main className="mx-auto max-w-content px-6 py-16">
-      <SectionHeading title="Neighborhoods" eyebrow="A Local's Seoul" />
+      <SectionHeading
+        title="Neighborhoods"
+        eyebrow="A Local's Seoul"
+        as="h1"
+      />
       <SectionTabs
         label="Neighborhood sections"
         tabs={NEIGHBORHOOD_TABS}
@@ -40,8 +44,7 @@ export default async function AroundSeoulCommonPage() {
       />
       {posts.length === 0 ? (
         <p className="max-w-xl text-text-muted">
-          City-wide Seoul guides are on the way. In the meantime, explore our
-          neighborhood walks under{" "}
+          Explore our neighborhood walks under{" "}
           <a
             href="/seoul/neighborhoods"
             className="text-accent hover:text-accent-hover"

@@ -28,14 +28,14 @@ export default async function WellnessPage() {
 
   return (
     <main className="mx-auto max-w-content px-6 py-16">
-      <SectionHeading title="Wellness" eyebrow="The Journal" />
+      <SectionHeading title="Wellness" eyebrow="The Journal" as="h1" />
       <p className="-mt-2 mb-8 max-w-2xl text-text-muted">
         The rituals, spaces, and practices that shape everyday well-being in
         Korea — bathhouses, saunas, head spas, and slower days.
       </p>
       {posts.length === 0 ? (
         <p className="text-text-muted">
-          No wellness stories yet — check back soon.
+          No wellness stories are available in this view.
         </p>
       ) : (
         <div className="grid gap-8 md:grid-cols-3">

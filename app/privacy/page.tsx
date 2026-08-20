@@ -31,7 +31,7 @@ export default function PrivacyPage() {
     <main className="mx-auto max-w-3xl px-6 py-16">
       <h1 className="font-serif text-4xl">Privacy Policy</h1>
       <p className="mt-3 text-sm text-text-muted">
-        Last updated: July 21, 2026
+        Last updated: August 20, 2026
       </p>
 
       <Section title="What we collect">
@@ -63,17 +63,51 @@ export default function PrivacyPage() {
       <Section title="What we don't do">
         <p>
           We do not sell personal data. We do not republish other people&apos;s
-          reviews or private content. We collect nothing beyond what the
-          features above need.
+          reviews or private content. We limit our own collection to what the
+          features above need; analytics, advertising, hosting, and
+          authentication providers may process the technical information
+          described in this policy when those services are active.
         </p>
       </Section>
 
       <Section title="Cookies, analytics, and ads">
         <p>
-          We may use privacy-respecting analytics to understand which pages are
-          useful. If we show ads (such as Google AdSense) in the future, the ad
-          provider may set cookies to serve and measure ads; where required, we
-          will ask for your consent first.
+          We may use analytics to understand which pages are useful. When we use
+          Google AdSense, third-party vendors, including Google, use cookies and
+          similar identifiers to serve and measure ads based on a visitor&apos;s
+          prior visits to this site or other websites. Google&apos;s use of
+          advertising cookies enables Google and its partners to show
+          personalized advertising where the visitor has consented.
+        </p>
+        <p>
+          Visitors can opt out of personalized advertising through{" "}
+          <a
+            href="https://adssettings.google.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-accent hover:text-accent-hover"
+          >
+            Google Ads Settings
+          </a>
+          . If additional advertising vendors or networks serve ads here, we
+          will identify them and provide links to their privacy and opt-out
+          choices. Visitors can also review industry opt-out choices at{" "}
+          <a
+            href="https://www.aboutads.info/choices/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-accent hover:text-accent-hover"
+          >
+            YourAdChoices
+          </a>
+          .
+        </p>
+        <p>
+          For visitors in the EEA, the United Kingdom, and Switzerland, we use a
+          Google-certified consent management platform before requesting
+          consent for personalized advertising where required. Visitors can
+          revisit or change their privacy choices through the consent controls
+          shown on the site.
         </p>
       </Section>
 

@@ -20,6 +20,7 @@ export function generateMetadata({
   return {
     title,
     description: profile.tagline,
+    robots: { index: false, follow: true },
     alternates: { canonical: canonical(`/haircare/profiles/${profile.slug}`) },
     openGraph: {
       title,
@@ -107,24 +108,16 @@ export default function HairProfilePage({
 
       <section className="mt-10 rounded-lg border border-soft-gray bg-porcelain/40 p-6">
         <h2 className="text-[11px] uppercase tracking-label text-accent">
-          Read your full guide
+          How to use this profile
         </h2>
-        <p className="mt-2 font-serif text-xl leading-snug">
-          {profile.pillarGuide}
+        <p className="mt-2 text-sm leading-relaxed text-text-muted">
+          Treat this as a starting point, not a diagnosis or a shopping list.
+          Change one part of your routine at a time, then watch how your scalp
+          and lengths respond before adding another product.
         </p>
-        <ul className="mt-4 space-y-1.5 text-sm text-text-muted">
-          {profile.guides.map((g) => (
-            <li key={g} className="flex gap-2">
-              <span aria-hidden className="text-accent">
-                →
-              </span>
-              {g}
-            </li>
-          ))}
-        </ul>
-        <p className="mt-4 text-xs text-text-muted/70">
-          These guides are being written — the profile is live so you can start
-          with the right approach today.
+        <p className="mt-3 text-sm leading-relaxed text-text-muted">
+          Persistent itching, pain, sudden shedding, or scalp inflammation needs
+          a qualified professional rather than a profile result.
         </p>
       </section>
 

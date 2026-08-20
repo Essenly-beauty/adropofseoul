@@ -1,12 +1,12 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/site";
 import { SEOUL_NEIGHBORHOODS } from "@/lib/taxonomy";
-import { HAIR_PROFILE_SLUGS } from "@/lib/haircare/profiles";
 import { listPublishedPosts } from "@/services/posts";
 import { listPlaces } from "@/services/places";
 import { listIngredients } from "@/services/ingredients";
 import { GUIDE_SLUGS } from "@/lib/seongsu/guides";
 import { PILLAR_SLUGS } from "@/lib/articles/pillars";
+import { PLACES_DIRECTORY_PUBLIC } from "@/lib/publishing";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticPaths = [
@@ -16,18 +16,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/beauty",
     "/skincare/picks",
     "/haircare",
-    ...HAIR_PROFILE_SLUGS.map((s) => `/haircare/profiles/${s}`),
     "/beauty-profile",
     "/beauty-profile/hair",
     "/beauty-profile/skin",
     "/ingredients",
     "/wellness",
     "/seoul",
-    "/seoul/places",
+    ...(PLACES_DIRECTORY_PUBLIC ? ["/seoul/places"] : []),
     "/seoul/neighborhoods",
     "/seoul/neighborhoods/common",
     ...SEOUL_NEIGHBORHOODS.map((n) => `/seoul/neighborhoods/${n.slug}`),
     "/about",
+    "/editorial-standards",
     "/contact",
     "/privacy",
     "/terms",
@@ -41,7 +41,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   try {
     [posts, places, ingredients] = await Promise.all([
       listPublishedPosts({ limit: 1000 }),
-      listPlaces({ limit: 1000 }),
+      PLACES_DIRECTORY_PUBLIC
+        ? listPlaces({ limit: 1000 })
+        : Promise.resolve([]),
       listIngredients({ limit: 1000 }),
     ]);
   } catch {

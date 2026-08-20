@@ -56,7 +56,7 @@ export default async function StoriesPage({
 
   return (
     <main className="mx-auto max-w-content px-6 py-16">
-      <SectionHeading title="Stories" eyebrow="The Journal" />
+      <SectionHeading title="Stories" eyebrow="The Journal" as="h1" />
       <p className="-mt-2 mb-8 max-w-2xl text-text-muted">
         The complete journal, newest first. Browse everything or filter the
         archive by section.
@@ -81,9 +81,7 @@ export default async function StoriesPage({
         })}
       </nav>
       {posts.length === 0 ? (
-        <p className="text-text-muted">
-          No stories here yet — check back soon.
-        </p>
+        <p className="text-text-muted">No stories match this filter.</p>
       ) : (
         <div className="grid gap-8 md:grid-cols-3">
           {posts.map((p) => (

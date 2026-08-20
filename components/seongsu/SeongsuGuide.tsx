@@ -14,6 +14,10 @@ import type { Guide } from "@/lib/seongsu/guides";
 import { SeongsuMap } from "./SeongsuMap";
 import { StopSection } from "./StopSection";
 import { WaitlistForm } from "./WaitlistForm";
+import {
+  AuthorByline,
+  EditorialNote,
+} from "@/components/editorial/AuthorByline";
 
 export function SeongsuGuide({ guide }: { guide: Guide }) {
   const course = getCourse(guide.courseId);
@@ -38,7 +42,7 @@ export function SeongsuGuide({ guide }: { guide: Guide }) {
         <h1 className="mt-2 font-serif text-4xl md:text-5xl">{guide.title}</h1>
         <p className="mt-3 text-xl text-text-muted">{guide.subtitle}</p>
         <div className="mt-4 flex items-center justify-between gap-4">
-          <p className="text-sm text-text-muted">By {guide.author}</p>
+          <AuthorByline author={guide.author} />
           <ShareButtons
             path={`/articles/${guide.slug}`}
             title={`${guide.title} — A Drop of Seoul`}
@@ -113,6 +117,7 @@ export function SeongsuGuide({ guide }: { guide: Guide }) {
         <p className="mt-10 border-t border-soft-gray pt-4 text-xs text-text-muted">
           {guide.footnote}
         </p>
+        <EditorialNote />
       </article>
     </main>
   );

@@ -20,6 +20,11 @@ describe("SiteFooter", () => {
       screen.getByRole("link", { name: "Privacy Policy" }).getAttribute("href")
     ).toBe("/privacy");
     expect(
+      screen
+        .getByRole("link", { name: "Editorial Standards" })
+        .getAttribute("href")
+    ).toBe("/editorial-standards");
+    expect(
       screen.getByRole("link", { name: "Terms of Use" }).getAttribute("href")
     ).toBe("/terms");
     const mySeoulDrop = screen.getByRole("link", {

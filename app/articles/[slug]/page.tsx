@@ -20,6 +20,10 @@ import { Breadcrumbs } from "@/components/editorial/Breadcrumbs";
 import { ArticleViewTracker } from "@/components/analytics/ArticleViewTracker";
 import { RelatedArticles } from "@/components/editorial/RelatedArticles";
 import { rankRelatedPosts } from "@/lib/related-posts";
+import {
+  AuthorByline,
+  EditorialNote,
+} from "@/components/editorial/AuthorByline";
 
 export async function generateMetadata({
   params,
@@ -122,24 +126,10 @@ export default async function ArticlePage({
           <p className="mt-3 text-xl text-text-muted">{post.subtitle}</p>
         )}
         <div className="mt-4 flex items-center justify-between gap-4">
-          {post.author || post.publishedAt ? (
-            <p className="text-sm text-text-muted">
-              {post.author && <>By {post.author}</>}
-              {post.author && post.publishedAt && " · "}
-              {post.publishedAt && (
-                <time dateTime={post.publishedAt}>
-                  {new Intl.DateTimeFormat("en-US", {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                    timeZone: "UTC",
-                  }).format(new Date(post.publishedAt))}
-                </time>
-              )}
-            </p>
-          ) : (
-            <span aria-hidden />
-          )}
+          <AuthorByline
+            author={post.author}
+            publishedAt={post.publishedAt}
+          />
           <ShareButtons
             path={`/articles/${post.slug}`}
             title={`${post.title} — A Drop of Seoul`}
@@ -201,6 +191,7 @@ export default async function ArticlePage({
             <p className="text-text-muted">{post.excerpt}</p>
           )}
         </div>
+        <EditorialNote />
       </article>
       <RelatedArticles source={post} posts={related} />
     </main>

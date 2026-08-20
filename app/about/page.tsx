@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Eyebrow } from "@/components/editorial/Eyebrow";
 import { SITE_NAME } from "@/lib/site";
 import { canonical } from "@/lib/seo";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "About",
@@ -182,9 +183,20 @@ export default function AboutPage() {
           <div className={`mt-6 space-y-5 ${bodyCopy}`}>
             <p>We believe the best recommendations feel personal.</p>
             <p>
-              Rather than following every trend, we look for experiences with a
-              distinct point of view—places and rituals we have genuinely tried,
-              enjoyed, and would want to share with a friend.
+              Rather than following every trend, we distinguish firsthand
+              recommendations from researched guides and explain the basis for
+              each recommendation.
+            </p>
+            <p>
+              Articles carrying the “A Drop of Seoul Editorial” byline are
+              produced under the publication&apos;s responsibility. Read our{" "}
+              <Link
+                href="/editorial-standards"
+                className="text-accent hover:text-accent-hover"
+              >
+                editorial standards
+              </Link>
+              .
             </p>
           </div>
         </div>

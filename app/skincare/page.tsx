@@ -29,7 +29,7 @@ export default async function SkincarePage() {
 
   return (
     <main className="mx-auto max-w-content px-6 py-16">
-      <SectionHeading title="Skincare" eyebrow="The Journal" />
+      <SectionHeading title="Skincare" eyebrow="The Journal" as="h1" />
       <p className="-mt-2 mb-8 max-w-2xl text-text-muted">
         Korean skincare beyond trends — routines, ingredients, treatments, and
         the aftercare that holds it all together.
@@ -40,9 +40,7 @@ export default async function SkincarePage() {
         active="skincare"
       />
       {articles.length === 0 ? (
-        <p className="text-text-muted">
-          No skincare stories yet — check back soon.
-        </p>
+        <p className="text-text-muted">No skincare stories match this view.</p>
       ) : (
         <div className="grid gap-8 md:grid-cols-3">
           {articles.map((p) => (

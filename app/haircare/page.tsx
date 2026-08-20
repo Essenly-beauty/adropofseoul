@@ -89,7 +89,7 @@ export default async function HaircarePage() {
         </p>
         {posts.length === 0 ? (
           <p className="text-text-muted">
-            Haircare stories are on the way — check back soon.
+            No haircare stories are available in this section.
           </p>
         ) : (
           <div className="grid gap-8 md:grid-cols-3">

@@ -7,6 +7,7 @@ import { pillarToPost, resolvePillarHero } from "@/lib/articles/assets";
 import type { Pillar } from "@/lib/articles/pillars";
 import { ShareButtons } from "@/components/editorial/ShareButtons";
 import { WaitlistForm } from "@/components/seongsu/WaitlistForm";
+import { AuthorByline, EditorialNote } from "./AuthorByline";
 
 export function PillarArticle({ pillar }: { pillar: Pillar }) {
   const post = pillarToPost(pillar);
@@ -31,7 +32,7 @@ export function PillarArticle({ pillar }: { pillar: Pillar }) {
         <h1 className="mt-2 font-serif text-4xl md:text-5xl">{pillar.title}</h1>
         <p className="mt-3 text-xl text-text-muted">{pillar.dek}</p>
         <div className="mt-4 flex items-center justify-between gap-4">
-          <p className="text-sm text-text-muted">By {pillar.author}</p>
+          <AuthorByline author={pillar.author} />
           <ShareButtons
             path={`/articles/${pillar.slug}`}
             title={`${pillar.title} — A Drop of Seoul`}
@@ -63,6 +64,8 @@ export function PillarArticle({ pillar }: { pillar: Pillar }) {
           body={pillar.cta.body}
           button={pillar.cta.button}
         />
+
+        <EditorialNote />
 
         {pillar.seriesLinks.length > 0 && (
           <nav

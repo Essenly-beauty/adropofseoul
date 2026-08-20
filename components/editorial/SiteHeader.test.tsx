@@ -59,7 +59,7 @@ describe("SiteHeader", () => {
     expect(hrefs).toContain("/beauty-profile/hair");
     expect(hrefs).toContain("/beauty-profile/skin");
     expect(hrefs).toContain("/ingredients");
-    expect(hrefs).toContain("/seoul/places");
+    expect(hrefs).not.toContain("/seoul/places");
     expect(hrefs).toContain("/seoul/neighborhoods");
   });
 });

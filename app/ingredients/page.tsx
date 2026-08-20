@@ -45,6 +45,7 @@ export default async function IngredientsPage({
       <SectionHeading
         title="Ingredient Dictionary"
         eyebrow="Know your actives"
+        as="h1"
       />
       <SectionTabs
         label="Skincare sections"
@@ -60,9 +61,7 @@ export default async function IngredientsPage({
         />
       )}
       {visible.length === 0 ? (
-        <p className="text-text-muted">
-          Ingredients are being added — check back soon.
-        </p>
+        <p className="text-text-muted">No ingredients match this filter.</p>
       ) : (
         <div className="grid gap-6 border-b border-soft-gray md:grid-cols-3 md:border-b-0">
           {visible.map((i) => (
