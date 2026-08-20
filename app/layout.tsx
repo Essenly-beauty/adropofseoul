@@ -7,6 +7,7 @@ import { JsonLd } from "@/components/editorial/JsonLd";
 import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 import { HOME_TITLE, SITE_NAME, SITE_URL, TAGLINE } from "@/lib/site";
 import { websiteJsonLd } from "@/lib/seo";
+import { normalizeAdsenseAccount } from "@/lib/adsense";
 
 const serif = Cormorant_Garamond({
   subsets: ["latin"],
@@ -24,6 +25,9 @@ const sans = Inter({
 // When replacing the OG image, rename the file (e.g. /og-v2.png) and update
 // this path — scraper caches key on the URL, so a new name busts them reliably.
 const OG_IMAGE = "/og.png";
+const adsenseAccount = normalizeAdsenseAccount(
+  process.env.GOOGLE_ADSENSE_ACCOUNT
+);
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -52,6 +56,9 @@ export const metadata: Metadata = {
     description: TAGLINE,
     images: [OG_IMAGE],
   },
+  other: adsenseAccount
+    ? { "google-adsense-account": adsenseAccount }
+    : undefined,
 };
 
 export default function RootLayout({
