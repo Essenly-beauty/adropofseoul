@@ -8,6 +8,135 @@ export type ArticleImageMeta = {
 };
 
 export const ARTICLE_IMAGE_META: Record<string, ArticleImageMeta> = {
+  "how-to-use-naver-map": {
+    alt: "A Korean man checking a navigation route on his phone while walking along a Seoul street",
+    caption:
+      "A local map app makes Seoul's walking routes, transit connections, and street-level details much easier to navigate.",
+    creditName: "A Drop of Seoul",
+    creditUrl: "https://adropofseoul.com/",
+    licenseName: "Original AI-generated image",
+    licenseUrl: "https://openai.com/policies/service-terms/",
+  },
+  "korean-wellness-habits-worth-keeping": {
+    alt: "People climbing a wooded hillside trail above the city in Seoul",
+    caption:
+      "A weekend walk up one of Seoul's neighborhood mountains turns ordinary movement into a social wellness habit.",
+    creditName: "Theodore Nguyen",
+    creditUrl:
+      "https://www.pexels.com/photo/scenic-hike-in-seoul-with-city-view-31872718/",
+    licenseName: "Pexels License",
+    licenseUrl: "https://www.pexels.com/license/",
+  },
+  "toner-pads-as-mini-masks": {
+    alt: "A serum-soaked gel toner pad being lifted from its jar with skincare tweezers",
+    caption:
+      "A well-saturated toner pad can be placed on a targeted area as a quick mini mask instead of swiped across the whole face.",
+    creditName: "Violet",
+    creditUrl:
+      "https://www.pexels.com/photo/biodance-gel-toner-pads-in-skincare-routine-36822283/",
+    licenseName: "Pexels License",
+    licenseUrl: "https://www.pexels.com/license/",
+  },
+  "yeonnam-by-day-hongdae-by-night": {
+    alt: "Hongdae's Hongik-ro 3-gil at dusk as storefront signs begin to glow",
+    caption:
+      "As daylight fades around Hongdae, neighborhood streets shift from daytime wandering into evening energy.",
+    creditName: "Rebecca Clarke",
+    creditUrl:
+      "https://unsplash.com/photos/a-city-street-lined-with-tall-buildings-and-lots-of-wires-3qmJ7x1jkkc",
+    licenseName: "Unsplash License",
+    licenseUrl: "https://unsplash.com/license",
+  },
+  "seoul-coffee-and-architecture": {
+    alt: "The tiled roof and wooden facade of Cafe Onion Anguk, a hanok cafe in Seoul",
+    caption:
+      "At Cafe Onion Anguk, coffee culture meets the structure and material character of a traditional Seoul hanok.",
+    creditName: "CK Seng",
+    creditUrl:
+      "https://www.pexels.com/photo/traditional-korean-architecture-with-modern-cafe-35396693/",
+    licenseName: "Pexels License",
+    licenseUrl: "https://www.pexels.com/license/",
+  },
+  "korean-convenience-store-first-timers": {
+    alt: "Customers browsing the outdoor freezers and entrance of a GS25 convenience store in South Korea",
+    caption:
+      "A Korean convenience store packs drinks, snacks, quick meals, and everyday services into a compact neighborhood stop.",
+    creditName: "Polina Kneis",
+    creditUrl:
+      "https://unsplash.com/photos/people-entering-a-gs25-convenience-store-PrqlDA95v3s",
+    licenseName: "Unsplash License",
+    licenseUrl: "https://unsplash.com/license",
+  },
+  "five-days-in-seoul-without-rushing": {
+    alt: "A quiet stone lane winding between traditional hanok homes in Bukchon, Seoul",
+    caption:
+      "A slower Seoul itinerary leaves time for quiet neighborhood lanes as well as the city's headline sights.",
+    creditName: "Rüveyda Akkaya",
+    creditUrl:
+      "https://www.pexels.com/photo/traditional-alley-in-bukchon-hanok-village-seoul-37841631/",
+    licenseName: "Pexels License",
+    licenseUrl: "https://www.pexels.com/license/",
+  },
+  "seoul-forest-seongsu-walking-guide": {
+    alt: "The broad green lawn and trees of Seoul Forest with Seongsu high-rises beyond",
+    caption:
+      "Seoul Forest opens into broad lawns and shaded paths before the walk continues into urban Seongsu.",
+    creditName: "Yonghyun Lee",
+    creditUrl:
+      "https://unsplash.com/photos/green-grass-field-with-trees-and-high-rise-buildings-in-distance-JQC6_cyrGhI",
+    licenseName: "Unsplash License",
+    licenseUrl: "https://unsplash.com/license",
+  },
+  "han-river-picnic-like-a-local": {
+    alt: "Groups of people picnicking on the grass beside Seoul's Han River at sunset",
+    caption:
+      "As the sun drops, riverside lawns fill with picnic mats, folding chairs, and relaxed groups of friends.",
+    creditName: "HANVIN CHEONG",
+    creditUrl:
+      "https://unsplash.com/photos/people-enjoying-a-sunset-picnic-by-the-river-vb4hxZV3vyo",
+    licenseName: "Unsplash License",
+    licenseUrl: "https://unsplash.com/license",
+  },
+  "myeongdong-to-namsan-sunset": {
+    alt: "A Seoul neighborhood street at dusk with Namsan Seoul Tower rising between city buildings",
+    caption:
+      "As evening settles over the streets below Namsan, shop lights come on and the tower stays in view.",
+    creditName: "CK Seng",
+    creditUrl:
+      "https://www.pexels.com/photo/seoul-street-scene-at-dusk-featuring-namsan-tower-35396689/",
+    licenseName: "Pexels License",
+    licenseUrl: "https://www.pexels.com/license/",
+  },
+  "coex-bongeunsa-apgujeong-day": {
+    alt: "Snow-covered Bongeunsa temple roofs framed by the modern Gangnam skyline in Seoul",
+    caption:
+      "Bongeunsa's traditional roofs sit in striking contrast to the towers of the COEX district nearby.",
+    creditName: "Fili Santillán",
+    creditUrl:
+      "https://unsplash.com/photos/a-view-of-a-city-from-a-park-nMj1eO1hnlw",
+    licenseName: "Unsplash License",
+    licenseUrl: "https://unsplash.com/license",
+  },
+  "how-to-use-seoul-public-transport": {
+    alt: "Passengers navigating signs, gates, and exits inside a busy Seoul subway station",
+    caption:
+      "Clear bilingual signs and numbered exits make Seoul's subway easier to use once you know what to look for.",
+    creditName: "Huy Phan",
+    creditUrl:
+      "https://www.pexels.com/photo/subway-station-in-seoul-19271594/",
+    licenseName: "Pexels License",
+    licenseUrl: "https://www.pexels.com/license/",
+  },
+  "seoul-for-design-lovers": {
+    alt: "A lone visitor walking through the sweeping concrete passageways of Dongdaemun Design Plaza in Seoul",
+    caption:
+      "Dongdaemun Design Plaza turns a public walkway into one of Seoul's most recognizable architectural experiences.",
+    creditName: "Andrea De Santis",
+    creditUrl:
+      "https://www.pexels.com/photo/futuristic-architecture-at-dongdaemun-design-plaza-30522773/",
+    licenseName: "Pexels License",
+    licenseUrl: "https://www.pexels.com/license/",
+  },
   "korean-3-step-skincare-routine": {
     alt: "Woman rinsing her face at a bathroom sink for a simple Korean skincare routine",
     caption:
@@ -44,15 +173,6 @@ export const ARTICLE_IMAGE_META: Record<string, ArticleImageMeta> = {
     licenseName: "Pexels License",
     licenseUrl: "https://www.pexels.com/license/",
   },
-  "toner-pads-as-mini-masks": {
-    alt: "Person wearing a sheet mask as a targeted skincare mini mask ritual",
-    caption:
-      "Toner pads and small masks work best when they are used by zone, not dragged across every concern.",
-    creditName: "Polina Kovaleva",
-    creditUrl: "https://www.pexels.com/photo/6619517/",
-    licenseName: "Pexels License",
-    licenseUrl: "https://www.pexels.com/license/",
-  },
   "glass-skin-without-10-steps": {
     alt: "Close-up of serum being dropped into hands against a peach background",
     caption:
@@ -81,13 +201,13 @@ export const ARTICLE_IMAGE_META: Record<string, ArticleImageMeta> = {
     licenseUrl: "https://www.pexels.com/license/",
   },
   "korean-summer-cooling-skincare-routine": {
-    alt: "Beach towel, sun hat, sunglasses, and sunscreen arranged for a hot summer day",
+    alt: "A Korean woman refreshing overheated skin with a fine facial mist beside a Seoul apartment window",
     caption:
-      "Summer skincare has to account for heat, sweat, sunscreen, and humidity before adding glow.",
-    creditName: "Helloaesthe",
-    creditUrl: "https://www.pexels.com/photo/16770366/",
-    licenseName: "Pexels License",
-    licenseUrl: "https://www.pexels.com/license/",
+      "In humid Seoul summers, a light cooling step can refresh hot skin without turning the routine heavy.",
+    creditName: "A Drop of Seoul",
+    creditUrl: "https://adropofseoul.com/",
+    licenseName: "Original AI-generated image",
+    licenseUrl: "https://openai.com/policies/service-terms/",
   },
   "korean-skincare-30s-slow-aging-routine": {
     alt: "Hands applying skincare serum from a dropper on a warm peach background",
@@ -165,15 +285,6 @@ export const ARTICLE_IMAGE_META: Record<string, ArticleImageMeta> = {
     licenseName: "Pexels License",
     licenseUrl: "https://www.pexels.com/license/",
   },
-  "korean-wellness-habits-worth-keeping": {
-    alt: "Korean banchan side dishes in metal bowls on a table — kimchi, seasoned vegetables, and ssamjang beside a grill",
-    caption:
-      "You eat four to six plants without deciding to. Default does the work, not willpower.",
-    creditName: "Anthony Rahayel",
-    creditUrl: "https://www.pexels.com/photo/31150502/",
-    licenseName: "Pexels License",
-    licenseUrl: "https://www.pexels.com/license/",
-  },
   "slow-aging-korea-meaning": {
     alt: "A ceramic bowl of Korean multigrain rice with red beans, job's tears, and black sesame on a wooden table",
     caption:
@@ -189,15 +300,6 @@ export const ARTICLE_IMAGE_META: Record<string, ArticleImageMeta> = {
       "The test for a souvenir is whether somebody who lives here owns it. This is where they buy it.",
     creditName: "CK Seng",
     creditUrl: "https://www.pexels.com/photo/37785270/",
-    licenseName: "Pexels License",
-    licenseUrl: "https://www.pexels.com/license/",
-  },
-  "how-to-use-naver-map": {
-    alt: "A Seoul subway platform with a yellow overhead sign showing exit number 2 in Korean, English, and Chinese",
-    caption:
-      "Exit numbers are the part that decides your walk. Naver tells you which one; Google still won't.",
-    creditName: "Theodore Nguyen",
-    creditUrl: "https://www.pexels.com/photo/31768195/",
     licenseName: "Pexels License",
     licenseUrl: "https://www.pexels.com/license/",
   },

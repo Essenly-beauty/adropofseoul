@@ -23,6 +23,29 @@ const COLUMNS =
   "id,title,slug,subtitle,excerpt,body,category,tags,featured_image,author,seo_title,meta_description,published_at,updated_at";
 
 const LOCAL_FEATURED_IMAGES: Record<string, string> = {
+  "seoul-for-design-lovers":
+    "/images/articles/seoul-for-design-lovers.jpg",
+  "how-to-use-seoul-public-transport":
+    "/images/articles/how-to-use-seoul-public-transport.jpg",
+  "coex-bongeunsa-apgujeong-day":
+    "/images/articles/coex-bongeunsa-apgujeong-day.jpg",
+  "myeongdong-to-namsan-sunset":
+    "/images/articles/myeongdong-to-namsan-sunset.jpg",
+  "han-river-picnic-like-a-local":
+    "/images/articles/han-river-picnic-like-a-local.jpg",
+  "seoul-forest-seongsu-walking-guide":
+    "/images/articles/seoul-forest-seongsu-walking-guide.jpg",
+  "five-days-in-seoul-without-rushing":
+    "/images/articles/five-days-in-seoul-without-rushing.jpg",
+  "korean-convenience-store-first-timers":
+    "/images/articles/korean-convenience-store-first-timers.jpg",
+  "seoul-coffee-and-architecture":
+    "/images/articles/seoul-coffee-and-architecture.jpg",
+  "yeonnam-by-day-hongdae-by-night":
+    "/images/articles/yeonnam-by-day-hongdae-by-night.jpg",
+  "korean-wellness-habits-worth-keeping":
+    "/images/articles/korean-wellness-habits-worth-keeping.jpg",
+  "how-to-use-naver-map": "/images/articles/how-to-use-naver-map.jpg",
   "glass-skin-without-10-steps":
     "/images/articles/glass-skin-without-10-steps.png",
   "five-k-beauty-serums": "/images/articles/five-k-beauty-serums.png",
@@ -68,7 +91,7 @@ const LOCAL_FEATURED_IMAGES: Record<string, string> = {
   "korean-skincare-30s-slow-aging-routine":
     "/images/articles/korean-skincare-30s-slow-aging-routine.png",
   "korean-summer-cooling-skincare-routine":
-    "/images/articles/korean-summer-cooling-skincare-routine.png",
+    "/images/articles/korean-summer-cooling-skincare-routine.jpg",
   "myeongdong-vs-seongsu-beauty-shopping":
     "/images/articles/myeongdong-vs-seongsu-beauty-shopping.png",
   "olive-young-shopping-guide":
@@ -82,7 +105,7 @@ const LOCAL_FEATURED_IMAGES: Record<string, string> = {
     "/images/articles/seoul-holistic-beauty-shift.png",
   "seoul-scalp-care-culture": "/images/articles/seoul-scalp-care-culture.png",
   "the-drop-list-august-2026": "/images/articles/the-drop-list-august-2026.png",
-  "toner-pads-as-mini-masks": "/images/articles/toner-pads-as-mini-masks.png",
+  "toner-pads-as-mini-masks": "/images/articles/toner-pads-as-mini-masks.jpg",
   "what-makes-a-brand-feel-seoul":
     "/images/articles/what-makes-a-brand-feel-seoul.png",
   "what-to-buy-at-olive-young":
