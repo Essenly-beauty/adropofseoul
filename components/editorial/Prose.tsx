@@ -37,7 +37,7 @@ export function Prose({
   anchors?: boolean;
 }) {
   return (
-    <div className="prose prose-neutral max-w-none prose-headings:font-serif prose-a:text-accent">
+    <div className="prose prose-neutral max-w-none prose-headings:font-serif prose-a:text-accent prose-img:mx-auto prose-img:mt-8 prose-img:mb-2 prose-img:max-h-[32rem] prose-img:w-auto prose-img:max-w-full prose-img:rounded-sm prose-img:border prose-img:border-soft-gray prose-img:bg-white prose-img:object-contain prose-img:p-4">
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeSanitize]}

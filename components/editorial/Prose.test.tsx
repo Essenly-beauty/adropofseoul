@@ -14,4 +14,21 @@ describe("Prose", () => {
     );
     expect(container.querySelector("script")).toBeNull();
   });
+
+  it("renders local editorial images with accessible alt text", () => {
+    render(
+      <Prose
+        markdown={
+          "![Torriden DIVE-IN Serum](/images/articles/five-k-beauty-serums/torriden-dive-in-serum.jpg)"
+        }
+      />
+    );
+
+    const image = screen.getByRole("img", {
+      name: "Torriden DIVE-IN Serum",
+    });
+    expect(image.getAttribute("src")).toBe(
+      "/images/articles/five-k-beauty-serums/torriden-dive-in-serum.jpg"
+    );
+  });
 });

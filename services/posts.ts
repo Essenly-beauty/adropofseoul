@@ -56,7 +56,7 @@ const LOCAL_FEATURED_IMAGES: Record<string, string> = {
   "how-to-use-naver-map": "/images/articles/how-to-use-naver-map.jpg",
   "glass-skin-without-10-steps":
     "/images/articles/glass-skin-without-10-steps.png",
-  "five-k-beauty-serums": "/images/articles/five-k-beauty-serums.png",
+  "five-k-beauty-serums": "/images/articles/five-k-beauty-serums.jpg",
   "gangnam-beauty-day": "/images/articles/gangnam-beauty-day.png",
   "hannam-afternoon-local-guide":
     "/images/articles/hannam-afternoon-local-guide.png",

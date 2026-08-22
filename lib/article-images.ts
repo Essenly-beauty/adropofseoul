@@ -8,6 +8,15 @@ export type ArticleImageMeta = {
 };
 
 export const ARTICLE_IMAGE_META: Record<string, ArticleImageMeta> = {
+  "five-k-beauty-serums": {
+    alt: "Five unbranded glass serum bottles in muted colors on a warm stone surface",
+    caption:
+      "The useful serum edit is not five versions of the same promise, but five formulas with clearly different jobs.",
+    creditName: "A Drop of Seoul",
+    creditUrl: "https://adropofseoul.com/",
+    licenseName: "Original AI-generated image",
+    licenseUrl: "https://openai.com/policies/service-terms/",
+  },
   "seoul-rainy-day": {
     alt: "Pedestrians carrying umbrellas across a rain-soaked street in central Seoul",
     caption:

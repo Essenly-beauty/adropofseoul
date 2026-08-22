@@ -5,7 +5,7 @@
  */
 export const PLACES_DIRECTORY_PUBLIC = false;
 
-const HIDDEN_POST_SLUGS = new Set(["five-k-beauty-serums"]);
+const HIDDEN_POST_SLUGS = new Set<string>();
 
 export function isPostPublic(slug: string): boolean {
   return !HIDDEN_POST_SLUGS.has(slug);

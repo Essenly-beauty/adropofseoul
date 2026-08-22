@@ -2,8 +2,8 @@ import { describe, expect, it } from "vitest";
 import { isPostPublic, PLACES_DIRECTORY_PUBLIC } from "./publishing";
 
 describe("publishing gates", () => {
-  it("keeps the thin serum placeholder out of public feeds", () => {
-    expect(isPostPublic("five-k-beauty-serums")).toBe(false);
+  it("publishes the completed serum guide", () => {
+    expect(isPostPublic("five-k-beauty-serums")).toBe(true);
     expect(isPostPublic("olive-young-shopping-guide")).toBe(true);
   });
 
