@@ -23,6 +23,16 @@ const COLUMNS =
   "id,title,slug,subtitle,excerpt,body,category,tags,featured_image,author,seo_title,meta_description,published_at,updated_at";
 
 const LOCAL_FEATURED_IMAGES: Record<string, string> = {
+  "seoul-rainy-day": "/images/articles/seoul-rainy-day.jpg",
+  "free-things-to-do-seoul":
+    "/images/articles/free-things-to-do-seoul.jpg",
+  "quiet-side-of-seoul": "/images/articles/quiet-side-of-seoul.jpg",
+  "best-time-to-visit-seoul":
+    "/images/articles/best-time-to-visit-seoul.jpg",
+  "seoul-etiquette-visitors-need":
+    "/images/articles/seoul-etiquette-visitors-need.jpg",
+  "where-to-stay-seoul-neighborhoods":
+    "/images/articles/where-to-stay-seoul-neighborhoods.jpg",
   "seoul-for-design-lovers":
     "/images/articles/seoul-for-design-lovers.jpg",
   "how-to-use-seoul-public-transport":

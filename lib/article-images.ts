@@ -8,6 +8,66 @@ export type ArticleImageMeta = {
 };
 
 export const ARTICLE_IMAGE_META: Record<string, ArticleImageMeta> = {
+  "seoul-rainy-day": {
+    alt: "Pedestrians carrying umbrellas across a rain-soaked street in central Seoul",
+    caption:
+      "Rain changes the pace of Seoul, but covered markets, museums, cafes, and short neighborhood walks keep the day moving.",
+    creditName: "Huy Phan",
+    creditUrl:
+      "https://www.pexels.com/photo/buildings-and-street-in-a-south-korean-city-on-a-rainy-day-19271600/",
+    licenseName: "Pexels License",
+    licenseUrl: "https://www.pexels.com/license/",
+  },
+  "free-things-to-do-seoul": {
+    alt: "The Han River and Seoul skyline glowing at night from Maebong Mountain Park",
+    caption:
+      "Some of Seoul's best views cost nothing, including the city panorama from neighborhood mountain parks.",
+    creditName: "O-seop Sim",
+    creditUrl:
+      "https://www.pexels.com/photo/maebong-mountain-park-in-seoul-15375761/",
+    licenseName: "Pexels License",
+    licenseUrl: "https://www.pexels.com/license/",
+  },
+  "quiet-side-of-seoul": {
+    alt: "A secluded traditional pavilion reflected in a calm pond at Gyeongbokgung Palace",
+    caption:
+      "Even in central Seoul, palace gardens and still water offer a quieter rhythm away from the busiest streets.",
+    creditName: "Polina Barutkina",
+    creditUrl:
+      "https://www.pexels.com/photo/gyeongbokgung-palace-in-south-korea-20329128/",
+    licenseName: "Pexels License",
+    licenseUrl: "https://www.pexels.com/license/",
+  },
+  "best-time-to-visit-seoul": {
+    alt: "White spring blossoms filling the branches of a tree in Seoul under a clear blue sky",
+    caption:
+      "Spring brings bright skies and blossoms to Seoul, while every season offers a different tradeoff in weather and crowds.",
+    creditName: "Theodore Nguyen",
+    creditUrl:
+      "https://www.pexels.com/photo/springtime-cherry-blossoms-in-seoul-korea-32001138/",
+    licenseName: "Pexels License",
+    licenseUrl: "https://www.pexels.com/license/",
+  },
+  "seoul-etiquette-visitors-need": {
+    alt: "Commuters standing and sitting inside a busy Seoul subway carriage",
+    caption:
+      "Useful Seoul etiquette is mostly about reading shared spaces, especially on public transport and in crowded places.",
+    creditName: "wal_ 172619",
+    creditUrl:
+      "https://www.pexels.com/photo/commuters-in-seoul-metro-subway-carriage-36621878/",
+    licenseName: "Pexels License",
+    licenseUrl: "https://www.pexels.com/license/",
+  },
+  "where-to-stay-seoul-neighborhoods": {
+    alt: "A dense hillside residential neighborhood spreading across Seoul in warm evening light",
+    caption:
+      "Where you stay shapes the daily rhythm of the trip as much as the hotel itself, from hillside neighborhoods to central transit hubs.",
+    creditName: "Junsu Park",
+    creditUrl:
+      "https://www.pexels.com/photo/residential-district-in-seoul-south-korea-20306045/",
+    licenseName: "Pexels License",
+    licenseUrl: "https://www.pexels.com/license/",
+  },
   "how-to-use-naver-map": {
     alt: "A Korean man checking a navigation route on his phone while walking along a Seoul street",
     caption:
