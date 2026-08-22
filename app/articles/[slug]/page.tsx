@@ -21,6 +21,10 @@ import { ArticleViewTracker } from "@/components/analytics/ArticleViewTracker";
 import { RelatedArticles } from "@/components/editorial/RelatedArticles";
 import { rankRelatedPosts } from "@/lib/related-posts";
 
+// Supabase content is updated outside Next.js as part of editorial publishing.
+// Keep article pages fresh instead of retaining the first fetched CMS response.
+export const revalidate = 300;
+
 export async function generateMetadata({
   params,
 }: {

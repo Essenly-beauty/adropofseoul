@@ -79,7 +79,6 @@ describe("mapPostRow", () => {
   });
 
   it.each([
-    "five-k-beauty-serums",
     "gangnam-beauty-day",
     "glass-skin-without-10-steps",
     "hannam-afternoon-local-guide",
@@ -123,6 +122,7 @@ describe("mapPostRow", () => {
   });
 
   it.each([
+    "five-k-beauty-serums",
     "korean-summer-cooling-skincare-routine",
     "toner-pads-as-mini-masks",
   ])("uses the curated JPG thumbnail for %s", (slug) => {
@@ -147,14 +147,17 @@ describe("listPublishedPosts", () => {
     expect(theFake.calls).toContain("limit");
   });
 
-  it("filters posts hidden by the publication gate", async () => {
+  it("includes the completed serum guide in published lists", async () => {
     const theFake = fakeClient({
       data: [{ ...row, slug: "five-k-beauty-serums" }, row],
       error: null,
     });
     (createClient as ReturnType<typeof vi.fn>).mockResolvedValue(theFake);
     const result = await listPublishedPosts();
-    expect(result.map((post) => post.slug)).toEqual(["hello"]);
+    expect(result.map((post) => post.slug)).toEqual([
+      "five-k-beauty-serums",
+      "hello",
+    ]);
   });
 });
 
@@ -174,10 +177,14 @@ describe("getPostBySlug", () => {
     expect(post).toBeNull();
   });
 
-  it("does not query the database for a hidden post", async () => {
-    (createClient as ReturnType<typeof vi.fn>).mockClear();
+  it("returns the completed serum guide", async () => {
+    (createClient as ReturnType<typeof vi.fn>).mockResolvedValue(
+      fakeClient({
+        data: { ...row, slug: "five-k-beauty-serums" },
+        error: null,
+      })
+    );
     const post = await getPostBySlug("five-k-beauty-serums");
-    expect(post).toBeNull();
-    expect(createClient).not.toHaveBeenCalled();
+    expect(post?.slug).toBe("five-k-beauty-serums");
   });
 });
