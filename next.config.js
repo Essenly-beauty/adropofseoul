@@ -28,6 +28,11 @@ const nextConfig = {
       // Places → Seoul › Places (og image route first — more specific)
       { source: "/places", destination: "/seoul/places", permanent: true },
       {
+        source: "/places/sool-loft-head-spa",
+        destination: "/articles/korean-head-spa-first-timer-guide",
+        permanent: true,
+      },
+      {
         source: "/places/:slug/og",
         destination: "/seoul/places/:slug/og",
         permanent: true,
@@ -88,6 +93,11 @@ const nextConfig = {
       {
         source: "/guides/seongsu",
         destination: "/seoul/neighborhoods/seongsu",
+        permanent: true,
+      },
+      {
+        source: "/guides/seongsu-beauty-guide",
+        destination: "/articles/seongsu-seoul-beauty-guide",
         permanent: true,
       },
     ];

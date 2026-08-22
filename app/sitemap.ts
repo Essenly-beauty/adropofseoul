@@ -7,6 +7,7 @@ import { listPlaces } from "@/services/places";
 import { listIngredients } from "@/services/ingredients";
 import { GUIDE_SLUGS } from "@/lib/seongsu/guides";
 import { PILLAR_SLUGS } from "@/lib/articles/pillars";
+import { PLACES_DIRECTORY_PUBLIC } from "@/lib/publishing";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticPaths = [
@@ -23,7 +24,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/ingredients",
     "/wellness",
     "/seoul",
-    "/seoul/places",
+    ...(PLACES_DIRECTORY_PUBLIC ? ["/seoul/places"] : []),
     "/seoul/neighborhoods",
     "/seoul/neighborhoods/common",
     ...SEOUL_NEIGHBORHOODS.map((n) => `/seoul/neighborhoods/${n.slug}`),
@@ -41,7 +42,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   try {
     [posts, places, ingredients] = await Promise.all([
       listPublishedPosts({ limit: 1000 }),
-      listPlaces({ limit: 1000 }),
+      PLACES_DIRECTORY_PUBLIC
+        ? listPlaces({ limit: 1000 })
+        : Promise.resolve([]),
       listIngredients({ limit: 1000 }),
     ]);
   } catch {

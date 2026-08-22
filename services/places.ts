@@ -1,5 +1,6 @@
 import { cache } from "@/lib/react-cache";
 import { createClient } from "@/lib/supabase/public";
+import { PLACES_DIRECTORY_PUBLIC } from "@/lib/publishing";
 import type { Place } from "./types";
 
 type PlaceRow = {
@@ -72,6 +73,8 @@ export async function listPlaces(
     areas?: string[];
   } = {}
 ): Promise<Place[]> {
+  if (!PLACES_DIRECTORY_PUBLIC) return [];
+
   const supabase = await createClient();
   let query = supabase
     .from("places")
@@ -89,6 +92,8 @@ export async function listPlaces(
 
 export const getPlaceBySlug = cache(
   async (slug: string): Promise<Place | null> => {
+    if (!PLACES_DIRECTORY_PUBLIC) return null;
+
     const supabase = await createClient();
     const { data, error } = await supabase
       .from("places")

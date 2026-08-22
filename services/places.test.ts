@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from "vitest";
-import { mapPlaceRow, getPlaceBySlug } from "./places";
+import { mapPlaceRow, getPlaceBySlug, listPlaces } from "./places";
 import { fakeClient } from "./_fake-supabase";
 
 const row = {
@@ -54,10 +54,17 @@ describe("mapPlaceRow", () => {
 });
 
 describe("getPlaceBySlug", () => {
-  it("returns null when not found", async () => {
-    (createClient as ReturnType<typeof vi.fn>).mockResolvedValue(
-      fakeClient({ data: null, error: null })
-    );
-    expect(await getPlaceBySlug("nope")).toBeNull();
+  it("does not query the database while the directory is private", async () => {
+    (createClient as ReturnType<typeof vi.fn>).mockClear();
+    expect(await getPlaceBySlug("sool-loft")).toBeNull();
+    expect(createClient).not.toHaveBeenCalled();
+  });
+});
+
+describe("listPlaces", () => {
+  it("returns an empty list without querying while the directory is private", async () => {
+    (createClient as ReturnType<typeof vi.fn>).mockClear();
+    expect(await listPlaces()).toEqual([]);
+    expect(createClient).not.toHaveBeenCalled();
   });
 });

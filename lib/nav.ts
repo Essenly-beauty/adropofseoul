@@ -1,4 +1,5 @@
 import { SECTIONS, SKINCARE_TABS, SEOUL_NEIGHBORHOODS } from "@/lib/taxonomy";
+import { PLACES_DIRECTORY_PUBLIC } from "@/lib/publishing";
 
 /** A GNB entry; children may nest one further level (e.g. Neighborhoods → areas). */
 export type NavChild = {
@@ -38,7 +39,9 @@ const SECTION_CHILDREN: Record<string, NavChild[]> = {
     },
   ],
   seoul: [
-    { label: "Places", href: "/seoul/places" },
+    ...(PLACES_DIRECTORY_PUBLIC
+      ? [{ label: "Places", href: "/seoul/places" }]
+      : []),
     {
       label: "Neighborhoods",
       href: "/seoul/neighborhoods",

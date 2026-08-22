@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import { listPlaces } from "@/services/places";
 import { PlaceCard } from "@/components/editorial/PlaceCard";
 import { SectionHeading } from "@/components/editorial/SectionHeading";
@@ -14,12 +15,14 @@ import {
   placeCategoryFromType,
   placeTypeSlug,
 } from "@/lib/taxonomy";
+import { PLACES_DIRECTORY_PUBLIC } from "@/lib/publishing";
 
 export const metadata: Metadata = {
   title: "Seoul Directory",
   description:
     "Head spas, salons, clinics, cafes, and wellness spots worth knowing in Seoul.",
   alternates: { canonical: canonical("/seoul/places") },
+  robots: { index: false, follow: false },
 };
 
 export const dynamic = "force-dynamic";
@@ -29,6 +32,8 @@ export default async function PlacesPage({
 }: {
   searchParams: { area?: string; type?: string; kind?: string };
 }) {
+  if (!PLACES_DIRECTORY_PUBLIC) redirect("/seoul");
+
   let places: Awaited<ReturnType<typeof listPlaces>> = [];
   try {
     places = await listPlaces({ limit: 300 });

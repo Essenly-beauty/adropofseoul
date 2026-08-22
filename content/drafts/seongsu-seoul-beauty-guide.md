@@ -44,7 +44,7 @@ Seongsu has one of the highest concentrations of destination cafés in Seoul —
 
 ## Stop 3: the head spa, to close the day
 
-By the time you've walked the concept-store loop and queued for coffee twice, your feet and your scalp both need it. [Sool Loft Head Spa](/places/sool-loft-head-spa) is a minimalist scalp-care studio based right in Seongsu — a genuinely good way to end a walking day rather than starting one, since a head-spa session is designed to have you sit still for an hour or more. If you haven't done a head spa before, our [first-timer's guide to Korean head spas](/articles/korean-head-spa-first-timer-guide) walks through exactly what the session involves, what it costs, and how to book.
+By the time you've walked the concept-store loop and queued for coffee twice, your feet and your scalp both need it. Sool Loft Head Spa is a minimalist scalp-care studio based right in Seongsu — a genuinely good way to end a walking day rather than starting one, since a head-spa session is designed to have you sit still for an hour or more. If you haven't done a head spa before, our [first-timer's guide to Korean head spas](/articles/korean-head-spa-first-timer-guide) walks through exactly what the session involves, what it costs, and how to book.
 
 ## A half-day route
 

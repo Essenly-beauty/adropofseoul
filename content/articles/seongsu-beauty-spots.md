@@ -24,7 +24,7 @@ Seongsu is not a neighborhood where the best beauty day comes from ticking off e
 
 This is the first A Drop of Seoul beauty-spots shortlist for Seongsu. It is intentionally conservative: places move in and out of this neighborhood quickly, so we are separating stronger anchors from locations that still need a fresh map or official-page check.
 
-For the full neighborhood route, start with [Where to Go in Seongsu: Beauty, Coffee & Concept Stores](/guides/seongsu-beauty-guide).
+For the full neighborhood route, start with [Where to Go in Seongsu: Beauty, Coffee & Concept Stores](/articles/seongsu-seoul-beauty-guide).
 
 ## Quick answer
 
@@ -124,7 +124,7 @@ When those checks are complete, the strongest candidates can move from article m
 
 ## Read next
 
-Read the full [Seongsu neighborhood guide](/guides/seongsu-beauty-guide) for the route. Then watch for the next pieces in this series: Seongsu cafes for a beauty break, Seongsu concept stores and pop-ups, and a monthly "what's new" update.
+Read the full [Seongsu neighborhood guide](/articles/seongsu-seoul-beauty-guide) for the route. Then watch for the next pieces in this series: Seongsu cafes for a beauty break, Seongsu concept stores and pop-ups, and a monthly "what's new" update.
 
 ## FAQ
 

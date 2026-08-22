@@ -3,6 +3,7 @@ import Link from "next/link";
 import { SectionHeading } from "@/components/editorial/SectionHeading";
 import { buildPageMetadata } from "@/lib/seo";
 import { SEOUL_NEIGHBORHOODS, PLACE_TYPE_EMOJI } from "@/lib/taxonomy";
+import { PLACES_DIRECTORY_PUBLIC } from "@/lib/publishing";
 
 export const metadata: Metadata = buildPageMetadata({
   // Reader-facing branding is "A Local's Seoul"; the metadata keeps the plain
@@ -37,36 +38,38 @@ export default function SeoulPage() {
       </p>
 
       {/* Explore by place type */}
-      <section>
-        <div className="flex items-end justify-between">
-          <h2 className="font-serif text-2xl">Explore by place</h2>
-          <Link
-            href="/seoul/places"
-            className="text-sm text-text-muted transition-colors duration-medium ease-editorial hover:text-accent"
-          >
-            Full directory →
-          </Link>
-        </div>
-        <p className="mt-1.5 max-w-2xl text-sm text-text-muted">
-          Specific spots, ready to book — by service and neighborhood.
-        </p>
-        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {PLACE_TYPES.map((t) => (
+      {PLACES_DIRECTORY_PUBLIC && (
+        <section>
+          <div className="flex items-end justify-between">
+            <h2 className="font-serif text-2xl">Explore by place</h2>
             <Link
-              key={t.type}
-              href={`/seoul/places?type=${t.type}`}
-              className="group flex items-center gap-3 rounded-lg border border-soft-gray p-5 transition-colors duration-medium ease-editorial hover:border-accent"
+              href="/seoul/places"
+              className="text-sm text-text-muted transition-colors duration-medium ease-editorial hover:text-accent"
             >
-              <span aria-hidden className="text-2xl">
-                {PLACE_TYPE_EMOJI[t.cat]}
-              </span>
-              <span className="font-serif text-xl transition-colors duration-medium ease-editorial group-hover:text-accent">
-                {t.label}
-              </span>
+              Full directory →
             </Link>
-          ))}
-        </div>
-      </section>
+          </div>
+          <p className="mt-1.5 max-w-2xl text-sm text-text-muted">
+            Specific spots, ready to book — by service and neighborhood.
+          </p>
+          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {PLACE_TYPES.map((t) => (
+              <Link
+                key={t.type}
+                href={`/seoul/places?type=${t.type}`}
+                className="group flex items-center gap-3 rounded-lg border border-soft-gray p-5 transition-colors duration-medium ease-editorial hover:border-accent"
+              >
+                <span aria-hidden className="text-2xl">
+                  {PLACE_TYPE_EMOJI[t.cat]}
+                </span>
+                <span className="font-serif text-xl transition-colors duration-medium ease-editorial group-hover:text-accent">
+                  {t.label}
+                </span>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Explore by neighborhood */}
       <section className="mt-16">

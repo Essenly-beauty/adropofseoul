@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { getPlaceBySlug } from "@/services/places";
 import { JsonLd } from "@/components/editorial/JsonLd";
 import { Stars } from "@/components/editorial/Stars";
@@ -8,12 +8,17 @@ import { localBusinessJsonLd, breadcrumbJsonLd, canonical } from "@/lib/seo";
 import { PLACE_TYPE_EMOJI, PLACE_TYPE_LABELS } from "@/lib/taxonomy";
 import { ShareButtons } from "@/components/editorial/ShareButtons";
 import { placeShareImage } from "@/lib/og";
+import { PLACES_DIRECTORY_PUBLIC } from "@/lib/publishing";
 
 export async function generateMetadata({
   params,
 }: {
   params: { slug: string };
 }): Promise<Metadata> {
+  if (!PLACES_DIRECTORY_PUBLIC) {
+    return { title: "Seoul", robots: { index: false, follow: false } };
+  }
+
   const place = await getPlaceBySlug(params.slug);
   if (!place) return { title: "Not found" };
   return {
@@ -77,6 +82,8 @@ export default async function PlacePage({
 }: {
   params: { slug: string };
 }) {
+  if (!PLACES_DIRECTORY_PUBLIC) redirect("/seoul");
+
   const place = await getPlaceBySlug(params.slug);
   if (!place) notFound();
 

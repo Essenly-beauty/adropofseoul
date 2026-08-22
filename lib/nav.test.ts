@@ -40,7 +40,6 @@ describe("NAV_ITEMS", () => {
     ]);
     const seoul = NAV_ITEMS.find((i) => i.label === "A Local's Seoul");
     expect(seoul?.children?.map((c) => c.href)).toEqual([
-      "/seoul/places",
       "/seoul/neighborhoods",
     ]);
     // Individual neighborhoods nest one level under "Neighborhoods".

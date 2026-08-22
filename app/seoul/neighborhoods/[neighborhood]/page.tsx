@@ -16,6 +16,7 @@ import { SeongsuMap } from "@/components/seongsu/SeongsuMap";
 import { NeighborhoodDirectory } from "@/components/seoul/NeighborhoodDirectory";
 import { WaitlistForm } from "@/components/seongsu/WaitlistForm";
 import type { Post, Place } from "@/services/types";
+import { PLACES_DIRECTORY_PUBLIC } from "@/lib/publishing";
 
 // Rendered on demand: the hub pulls DB `guides` posts (via cookies), so it can't
 // be statically prerendered. `notFound()` still guards unknown neighborhoods.
@@ -132,21 +133,23 @@ export default async function NeighborhoodPage({
         </div>
       )}
 
-      <aside className="mt-16 border-t border-soft-gray pt-8">
-        <p className="text-text-muted">
-          Looking for a specific spot in {n.label}?{" "}
-          <Link
-            href={
-              n.areas
-                ? "/seoul/places"
-                : `/seoul/places?area=${encodeURIComponent(n.label)}`
-            }
-            className="text-accent transition-colors duration-medium ease-editorial hover:text-accent-hover"
-          >
-            Browse the {n.label} directory →
-          </Link>
-        </p>
-      </aside>
+      {PLACES_DIRECTORY_PUBLIC && (
+        <aside className="mt-16 border-t border-soft-gray pt-8">
+          <p className="text-text-muted">
+            Looking for a specific spot in {n.label}?{" "}
+            <Link
+              href={
+                n.areas
+                  ? "/seoul/places"
+                  : `/seoul/places?area=${encodeURIComponent(n.label)}`
+              }
+              className="text-accent transition-colors duration-medium ease-editorial hover:text-accent-hover"
+            >
+              Browse the {n.label} directory →
+            </Link>
+          </p>
+        </aside>
+      )}
     </main>
   );
 }

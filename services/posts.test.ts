@@ -103,13 +103,11 @@ describe("mapPostRow", () => {
     "korean-skincare-brands-on-our-radar",
     "korean-skincare-labels-explained",
     "korean-skincare-30s-slow-aging-routine",
-    "korean-summer-cooling-skincare-routine",
     "new-generation-korean-beauty-brands",
     "people-shaping-seoul-beauty",
     "seoul-holistic-beauty-shift",
     "seoul-scalp-care-culture",
     "the-drop-list-august-2026",
-    "toner-pads-as-mini-masks",
     "what-makes-a-brand-feel-seoul",
     "what-to-buy-at-olive-young",
     "where-to-shop-k-beauty-beyond-olive-young",
@@ -123,6 +121,19 @@ describe("mapPostRow", () => {
 
     expect(post.featuredImage).toBe(`/images/articles/${slug}.png`);
   });
+
+  it.each([
+    "korean-summer-cooling-skincare-routine",
+    "toner-pads-as-mini-masks",
+  ])("uses the curated JPG thumbnail for %s", (slug) => {
+    const post = mapPostRow({
+      ...row,
+      slug,
+      featured_image: "",
+    } as never);
+
+    expect(post.featuredImage).toBe(`/images/articles/${slug}.jpg`);
+  });
 });
 
 describe("listPublishedPosts", () => {
@@ -134,6 +145,16 @@ describe("listPublishedPosts", () => {
     expect(result[0].slug).toBe("hello");
     expect(result[0].featuredImage).toBe("img.jpg");
     expect(theFake.calls).toContain("limit");
+  });
+
+  it("filters posts hidden by the publication gate", async () => {
+    const theFake = fakeClient({
+      data: [{ ...row, slug: "five-k-beauty-serums" }, row],
+      error: null,
+    });
+    (createClient as ReturnType<typeof vi.fn>).mockResolvedValue(theFake);
+    const result = await listPublishedPosts();
+    expect(result.map((post) => post.slug)).toEqual(["hello"]);
   });
 });
 
@@ -151,5 +172,12 @@ describe("getPostBySlug", () => {
     );
     const post = await getPostBySlug("nope");
     expect(post).toBeNull();
+  });
+
+  it("does not query the database for a hidden post", async () => {
+    (createClient as ReturnType<typeof vi.fn>).mockClear();
+    const post = await getPostBySlug("five-k-beauty-serums");
+    expect(post).toBeNull();
+    expect(createClient).not.toHaveBeenCalled();
   });
 });

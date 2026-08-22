@@ -1,5 +1,6 @@
 import { cache } from "@/lib/react-cache";
 import { createClient } from "@/lib/supabase/public";
+import { isPostPublic } from "@/lib/publishing";
 import type { Post } from "./types";
 
 type PostRow = {
@@ -24,17 +25,14 @@ const COLUMNS =
 
 const LOCAL_FEATURED_IMAGES: Record<string, string> = {
   "seoul-rainy-day": "/images/articles/seoul-rainy-day.jpg",
-  "free-things-to-do-seoul":
-    "/images/articles/free-things-to-do-seoul.jpg",
+  "free-things-to-do-seoul": "/images/articles/free-things-to-do-seoul.jpg",
   "quiet-side-of-seoul": "/images/articles/quiet-side-of-seoul.jpg",
-  "best-time-to-visit-seoul":
-    "/images/articles/best-time-to-visit-seoul.jpg",
+  "best-time-to-visit-seoul": "/images/articles/best-time-to-visit-seoul.jpg",
   "seoul-etiquette-visitors-need":
     "/images/articles/seoul-etiquette-visitors-need.jpg",
   "where-to-stay-seoul-neighborhoods":
     "/images/articles/where-to-stay-seoul-neighborhoods.jpg",
-  "seoul-for-design-lovers":
-    "/images/articles/seoul-for-design-lovers.jpg",
+  "seoul-for-design-lovers": "/images/articles/seoul-for-design-lovers.jpg",
   "how-to-use-seoul-public-transport":
     "/images/articles/how-to-use-seoul-public-transport.jpg",
   "coex-bongeunsa-apgujeong-day":
@@ -167,11 +165,17 @@ export async function listPublishedPosts(
     query = query.in("category", opts.categories);
   const { data, error } = await query;
   if (error) throw error;
-  return (data as PostRow[] | null)?.map(mapPostRow) ?? [];
+  return (
+    (data as PostRow[] | null)
+      ?.map(mapPostRow)
+      .filter((post) => isPostPublic(post.slug)) ?? []
+  );
 }
 
 export const getPostBySlug = cache(
   async (slug: string): Promise<Post | null> => {
+    if (!isPostPublic(slug)) return null;
+
     const supabase = await createClient();
     const { data, error } = await supabase
       .from("posts")
