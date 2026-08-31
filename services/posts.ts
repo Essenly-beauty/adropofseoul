@@ -40,7 +40,7 @@ const LOCAL_FEATURED_IMAGES: Record<string, string> = {
   "myeongdong-to-namsan-sunset":
     "/images/articles/myeongdong-to-namsan-sunset.jpg",
   "han-river-picnic-like-a-local":
-    "/images/articles/han-river-picnic-like-a-local.jpg",
+    "https://yisdsaetxgrboqlirvgb.supabase.co/storage/v1/object/public/media/articles/han-river-picnic-thumbnail.png",
   "seoul-forest-seongsu-walking-guide":
     "/images/articles/seoul-forest-seongsu-walking-guide.jpg",
   "five-days-in-seoul-without-rushing":

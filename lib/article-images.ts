@@ -157,14 +157,13 @@ export const ARTICLE_IMAGE_META: Record<string, ArticleImageMeta> = {
     licenseUrl: "https://unsplash.com/license",
   },
   "han-river-picnic-like-a-local": {
-    alt: "Groups of people picnicking on the grass beside Seoul's Han River at sunset",
+    alt: "Korean fried chicken and bowls of ramyeon arranged for a picnic beside the Han River",
     caption:
-      "As the sun drops, riverside lawns fill with picnic mats, folding chairs, and relaxed groups of friends.",
-    creditName: "HANVIN CHEONG",
-    creditUrl:
-      "https://unsplash.com/photos/people-enjoying-a-sunset-picnic-by-the-river-vb4hxZV3vyo",
-    licenseName: "Unsplash License",
-    licenseUrl: "https://unsplash.com/license",
+      "A Han River evening needs one park, something simple to eat and enough time for the light.",
+    creditName: "A Drop of Seoul",
+    creditUrl: "/about",
+    licenseName: "AI-assisted editorial composite from supplied photographs",
+    licenseUrl: "/about",
   },
   "myeongdong-to-namsan-sunset": {
     alt: "A Seoul neighborhood street at dusk with Namsan Seoul Tower rising between city buildings",
