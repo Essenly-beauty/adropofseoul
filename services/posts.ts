@@ -24,6 +24,8 @@ const COLUMNS =
   "id,title,slug,subtitle,excerpt,body,category,tags,featured_image,author,seo_title,meta_description,published_at,updated_at";
 
 const LOCAL_FEATURED_IMAGES: Record<string, string> = {
+  "daiso-korea-guide":
+    "/images/articles/daiso-korea-guide/hero-v2.png",
   "seoul-rainy-day": "/images/articles/seoul-rainy-day.jpg",
   "free-things-to-do-seoul": "/images/articles/free-things-to-do-seoul.jpg",
   "quiet-side-of-seoul": "/images/articles/quiet-side-of-seoul.jpg",

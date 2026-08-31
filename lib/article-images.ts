@@ -8,6 +8,15 @@ export type ArticleImageMeta = {
 };
 
 export const ARTICLE_IMAGE_META: Record<string, ArticleImageMeta> = {
+  "daiso-korea-guide": {
+    alt: "Editorial illustration representing a Daiso Korea shopping basket and familiar low price points",
+    caption:
+      "The local logic of Daiso: solve something small, then discover something fun.",
+    creditName: "A Drop of Seoul",
+    creditUrl: "https://adropofseoul.com/",
+    licenseName: "Original editorial image",
+    licenseUrl: "https://adropofseoul.com/articles/daiso-korea-guide",
+  },
   "five-k-beauty-serums": {
     alt: "Five unbranded glass serum bottles in muted colors on a warm stone surface",
     caption:
