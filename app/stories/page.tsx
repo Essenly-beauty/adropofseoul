@@ -3,6 +3,7 @@ import Link from "next/link";
 import { listPublishedPosts } from "@/services/posts";
 import { listGuidePosts } from "@/lib/seongsu/assets";
 import { listPillarPosts } from "@/lib/articles/assets";
+import { DAISO_GUIDE_POST } from "@/lib/articles/daiso";
 import { ArticleCard } from "@/components/editorial/ArticleCard";
 import { SectionHeading } from "@/components/editorial/SectionHeading";
 import { buildPageMetadata } from "@/lib/seo";
@@ -39,7 +40,11 @@ export default async function StoriesPage({
     console.error("stories: posts fetch failed", err);
   }
   // Merge in the code-defined guides + pillar articles, deduped, newest first.
-  const codePosts = [...listGuidePosts(), ...listPillarPosts()];
+  const codePosts = [
+    DAISO_GUIDE_POST,
+    ...listGuidePosts(),
+    ...listPillarPosts(),
+  ];
   const codeSlugs = new Set(codePosts.map((p) => p.slug));
   const all: Post[] = [
     ...codePosts,

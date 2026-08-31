@@ -8,6 +8,7 @@ import { listIngredients } from "@/services/ingredients";
 import { GUIDE_SLUGS } from "@/lib/seongsu/guides";
 import { PILLAR_SLUGS } from "@/lib/articles/pillars";
 import { PLACES_DIRECTORY_PUBLIC } from "@/lib/publishing";
+import { DAISO_GUIDE_POST } from "@/lib/articles/daiso";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticPaths = [
@@ -34,6 +35,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/terms",
     ...GUIDE_SLUGS.map((s) => `/articles/${s}`),
     ...PILLAR_SLUGS.map((s) => `/articles/${s}`),
+    `/articles/${DAISO_GUIDE_POST.slug}`,
   ];
 
   let posts: { slug: string }[] = [];

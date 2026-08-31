@@ -20,6 +20,7 @@ import { Breadcrumbs } from "@/components/editorial/Breadcrumbs";
 import { ArticleViewTracker } from "@/components/analytics/ArticleViewTracker";
 import { RelatedArticles } from "@/components/editorial/RelatedArticles";
 import { rankRelatedPosts } from "@/lib/related-posts";
+import { DAISO_GUIDE_POST } from "@/lib/articles/daiso";
 
 // Supabase content is updated outside Next.js as part of editorial publishing.
 // Keep article pages fresh instead of retaining the first fetched CMS response.
@@ -60,7 +61,10 @@ export async function generateMetadata({
     });
   }
 
-  const post = await getPostBySlug(params.slug);
+  const post =
+    params.slug === DAISO_GUIDE_POST.slug
+      ? DAISO_GUIDE_POST
+      : await getPostBySlug(params.slug);
   if (!post) return { title: "Not found" };
   const description =
     post.metaDescription ?? post.excerpt ?? post.subtitle ?? post.title;
@@ -88,7 +92,10 @@ export default async function ArticlePage({
   const pillar = getPillar(params.slug);
   if (pillar) return <PillarArticle pillar={pillar} />;
 
-  const post = await getPostBySlug(params.slug);
+  const post =
+    params.slug === DAISO_GUIDE_POST.slug
+      ? DAISO_GUIDE_POST
+      : await getPostBySlug(params.slug);
   if (!post) notFound();
 
   const section = sectionForCategory(post.category);
