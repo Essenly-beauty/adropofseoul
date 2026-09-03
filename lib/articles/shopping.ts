@@ -71,7 +71,7 @@ export const SHOPPING_ARTICLES: ShoppingArticle[] = [
     publishedAt: "2026-09-02",
     excerpt:
       "Beauty, travel fixes, small gifts and genuinely useful finds — chosen for what’s actually worth the suitcase space.",
-    heroImage: "/images/articles/daiso-korea-guide/hero-v2.png",
+    heroImage: "/images/articles/daiso-korea-must-buys/hero.png",
     heroAlt:
       "Editorial illustration of useful beauty, travel and souvenir finds from Daiso Korea",
     series: {
