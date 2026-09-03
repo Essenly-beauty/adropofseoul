@@ -79,6 +79,41 @@ describe("mapPostRow", () => {
   });
 
   it.each([
+    ["coex-bongeunsa-apgujeong-day", "/images/articles/gangnam-beauty-day.png"],
+    [
+      "five-days-in-seoul-without-rushing",
+      "/images/seoul/seoul-neighborhoods-guide.png",
+    ],
+    [
+      "how-to-use-seoul-public-transport",
+      "/images/articles/how-to-use-naver-map.jpg",
+    ],
+    [
+      "korean-convenience-store-first-timers",
+      "/images/about/eomuk-skewers.jpeg",
+    ],
+    [
+      "myeongdong-to-namsan-sunset",
+      "/images/articles/one-day-k-beauty-itinerary-seoul.jpg",
+    ],
+    ["seoul-coffee-and-architecture", "/images/about/coffee-and-cake-web.png"],
+    ["seoul-for-design-lovers", "/images/seongsu/seongsu-warehouse-cafes.jpg"],
+    [
+      "seoul-forest-seongsu-walking-guide",
+      "/images/seongsu/seongsu-beauty-and-bites.jpg",
+    ],
+    ["yeonnam-by-day-hongdae-by-night", "/images/about/seoul-courtyard.jpeg"],
+  ])("replaces the stale CMS thumbnail for %s", (slug, expected) => {
+    const post = mapPostRow({
+      ...row,
+      slug,
+      featured_image: `/images/articles/${slug}.jpg`,
+    } as never);
+
+    expect(post.featuredImage).toBe(expected);
+  });
+
+  it.each([
     "five-k-beauty-serums",
     "gangnam-beauty-day",
     "glass-skin-without-10-steps",

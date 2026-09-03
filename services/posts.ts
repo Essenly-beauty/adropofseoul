@@ -25,6 +25,22 @@ const COLUMNS =
 const LOCAL_FEATURED_IMAGES: Record<string, string> = {
   "glass-skin-without-10-steps":
     "/images/articles/glass-skin-without-10-steps.png",
+  "coex-bongeunsa-apgujeong-day": "/images/articles/gangnam-beauty-day.png",
+  "five-days-in-seoul-without-rushing":
+    "/images/seoul/seoul-neighborhoods-guide.png",
+  "five-seoul-sunset-plans": "/images/about/seoul-sunset-original.jpeg",
+  "how-to-use-seoul-public-transport":
+    "/images/articles/how-to-use-naver-map.jpg",
+  "korean-convenience-store-first-timers": "/images/about/eomuk-skewers.jpeg",
+  "myeongdong-to-namsan-sunset":
+    "/images/articles/one-day-k-beauty-itinerary-seoul.jpg",
+  "one-perfect-day-old-seoul": "/images/about/hanok-winter-original.jpeg",
+  "seoul-coffee-and-architecture": "/images/about/coffee-and-cake-web.png",
+  "seoul-for-design-lovers": "/images/seongsu/seongsu-warehouse-cafes.jpg",
+  "seoul-forest-seongsu-walking-guide":
+    "/images/seongsu/seongsu-beauty-and-bites.jpg",
+  "what-to-eat-first-trip-seoul": "/images/about/shared-table.jpeg",
+  "yeonnam-by-day-hongdae-by-night": "/images/about/seoul-courtyard.jpeg",
   "han-river-picnic-like-a-local":
     "https://yisdsaetxgrboqlirvgb.supabase.co/storage/v1/object/public/media/articles/han-river-picnic-thumbnail.png",
   "five-k-beauty-serums": "/images/articles/five-k-beauty-serums.png",
