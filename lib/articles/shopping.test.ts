@@ -22,6 +22,20 @@ describe("Shopping editorial registry", () => {
     expect(second?.series.number).toBe("02");
     expect(second?.seoTitle).toBe("20 Best Daiso Korea Must-Buys (2026)");
     expect(second?.body).not.toContain("IMAGE SLOT");
-    expect(listShoppingPosts()).toHaveLength(2);
+    expect(listShoppingPosts()).toHaveLength(3);
+  });
+
+  it("registers Article 03 without exposing production notes", () => {
+    const article = getShoppingArticle("daiso-korea-beauty");
+    expect(article?.series.number).toBe("03");
+    expect(article?.seoTitle).toBe(
+      "Daiso Korea Beauty: Why ₩5,000 K-Beauty Is Getting Good"
+    );
+    expect(article?.body).toContain("](/articles/daiso-korea-guide)");
+    expect(article?.body).not.toContain("IMAGE SLOT");
+    expect(article?.body).not.toContain("Item No.");
+    expect(article?.heroImage).toBe(
+      "/images/articles/daiso-korea-beauty/hero.png"
+    );
   });
 });

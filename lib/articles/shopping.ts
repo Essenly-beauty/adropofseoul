@@ -83,6 +83,30 @@ export const SHOPPING_ARTICLES: ShoppingArticle[] = [
     },
     body: articleBody("daiso-korea-must-buys.md"),
   },
+  {
+    slug: "daiso-korea-beauty",
+    category: "shopping",
+    title: "Daiso Beauty Is Actually Good Now — Here’s Why",
+    dek: "From Amorepacific to LG H&H, major Korean beauty companies are building products for Daiso. Here’s why ₩5,000 K-beauty suddenly makes a lot more sense.",
+    seoTitle: "Daiso Korea Beauty: Why ₩5,000 K-Beauty Is Getting Good",
+    metaDescription:
+      "Why is Daiso Korea beauty suddenly so good? A closer look at the major K-beauty companies, smaller formats and low-risk discovery behind the ₩5,000 aisle.",
+    author: "A Drop of Seoul Editorial",
+    publishedAt: "2026-09-03",
+    excerpt:
+      "Major Korean beauty companies are building products for Daiso. Here’s why ₩5,000 K-beauty has become a serious discovery channel.",
+    heroImage: "/images/articles/daiso-korea-beauty/hero.png",
+    heroAlt:
+      "VT PDRN toner and sheet mask, BONCEPT vitamin C ampoule, and ZOOM makeup fixer arranged in warm sunlight",
+    series: {
+      name: "The Daiso Edit",
+      displayName: "THE DAISO EDIT",
+      number: "03",
+      descriptor:
+        "A local look at what’s actually worth buying at Daiso Korea.",
+    },
+    body: articleBody("daiso-korea-beauty.md"),
+  },
 ];
 
 export const SHOPPING_ARTICLE_SLUGS = SHOPPING_ARTICLES.map(
