@@ -7,11 +7,13 @@ import { listPlaces } from "@/services/places";
 import { listIngredients } from "@/services/ingredients";
 import { GUIDE_SLUGS } from "@/lib/seongsu/guides";
 import { PILLAR_SLUGS } from "@/lib/articles/pillars";
+import { SHOPPING_ARTICLE_SLUGS } from "@/lib/articles/shopping";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticPaths = [
     "",
     "/stories",
+    "/stories/shopping",
     "/skincare",
     "/beauty",
     "/skincare/picks",
@@ -33,6 +35,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/terms",
     ...GUIDE_SLUGS.map((s) => `/articles/${s}`),
     ...PILLAR_SLUGS.map((s) => `/articles/${s}`),
+    ...SHOPPING_ARTICLE_SLUGS.map((s) => `/articles/${s}`),
   ];
 
   let posts: { slug: string }[] = [];

@@ -16,6 +16,15 @@
   }
 }
 
+/* The review prototype carries its own navigation and footer. */
+body:has(.proto-page) > header,
+body:has(.proto-page) > footer {
+  display: none;
+}
+body:has(.proto-page) > div.min-h-screen {
+  min-height: 0;
+}
+
 @layer base {
   ::selection {
     background: #e9d6cf;

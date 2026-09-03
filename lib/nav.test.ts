@@ -54,6 +54,9 @@ describe("NAV_ITEMS", () => {
       "/seoul/neighborhoods/gangnam-cheongdam",
       "/seoul/neighborhoods/hannam",
     ]);
+    expect(NAV_ITEMS.find((i) => i.label === "Stories")?.children).toEqual([
+      { label: "Shopping", href: "/stories/shopping" },
+    ]);
     // Home / About stay flat
     expect(
       NAV_ITEMS.find((i) => i.label === "About")?.children

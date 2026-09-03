@@ -4,7 +4,7 @@ slug: "how-to-use-naver-map"
 subtitle: "The law changed in February. Your phone did not get the memo."
 excerpt: "Why Google Maps can't route you through Seoul, what the February 2026 approval actually changed, and how to use Naver Map — including the address problem and the subway trick locals rely on."
 category: "guides"
-tags: ["naver map", "seoul", "korea travel", "getting around", "region:common"]
+tags: ["naver map", "seoul", "korea travel", "getting around", "region:common", "format:how-to", "interest:transport", "audience:first-trip", "season:all-year"]
 seo_title: "How to Use Naver Map in Seoul (2026)"
 meta_description: "Why Google Maps still fails in Korea after the 2026 approval, and how to actually use Naver Map for walking, subway, and bus directions in Seoul."
 author: "A Drop of Seoul Editorial"

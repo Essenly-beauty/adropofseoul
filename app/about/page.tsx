@@ -6,40 +6,54 @@ import { canonical } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "About",
-  description: `${SITE_NAME} is an independent guide to the beauty, places, and everyday rituals that shape life in Seoul.`,
+  description: `${SITE_NAME} is a Seoul-based editorial and discovery platform exploring Korean beauty, wellness, and everyday life in Seoul.`,
   alternates: { canonical: canonical("/about") },
+  openGraph: {
+    title: "About A Drop of Seoul | Beauty, Care & Life in Seoul",
+    description:
+      "Discover the products we use, the ways we care, and the places we love—shared from Seoul with a personal point of view.",
+    url: canonical("/about"),
+    siteName: SITE_NAME,
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About A Drop of Seoul | Beauty, Care & Life in Seoul",
+    description:
+      "Discover the products we use, the ways we care, and the places we love—shared from Seoul with a personal point of view.",
+  },
 };
 
 const bodyCopy = "text-[15px] leading-[1.9] text-text-muted md:text-base";
 
 const memories = [
   {
-    src: "/images/about/seoul-balloon-clear.png",
-    alt: "A Seoul hot-air balloon glowing in the night sky",
+    src: "/images/articles/korean-skincare-brands-on-our-radar.png",
+    alt: "Two women looking at skincare products in a small Seoul studio",
     className: "-rotate-[3deg] md:translate-y-5",
-    imageClassName: "scale-[1.24] object-cover object-[68%_36%]",
-  },
-  {
-    src: "/images/about/hanok-winter-original.jpeg",
-    alt: "A quiet hanok courtyard in winter",
-    className: "rotate-[2deg]",
     imageClassName: "object-cover object-center",
   },
   {
-    src: "/images/about/korean-desserts-web.png",
-    alt: "Colorful Korean rice cakes and traditional desserts on a wooden table",
-    className: "-rotate-[2deg] md:translate-y-4",
-    imageClassName: "object-cover object-[center_62%]",
-  },
-  {
     src: "/images/about/seoul-sunset-original.jpeg",
-    alt: "Seoul skyline beneath a pink evening sky",
-    className: "-rotate-1 md:translate-y-4",
+    alt: "Seoul buildings beneath a pink evening sky",
+    className: "rotate-[2deg]",
     imageClassName: "object-cover object-[center_56%]",
   },
   {
-    src: "/images/about/coffee-and-cake-web.png",
-    alt: "Coffee and cakes shared at a Seoul cafe",
+    src: "/images/articles/korean-head-spa-first-timer-guide.png",
+    alt: "A head spa practitioner massaging a client's scalp",
+    className: "-rotate-[2deg] md:translate-y-4",
+    imageClassName: "object-cover object-center",
+  },
+  {
+    src: "/images/articles/seoul-holistic-beauty-shift.png",
+    alt: "A woman stretching beside her bed during a quiet evening in Seoul",
+    className: "-rotate-1 md:translate-y-4",
+    imageClassName: "object-cover object-center",
+  },
+  {
+    src: "/images/about/hanok-winter-original.jpeg",
+    alt: "A quiet hanok courtyard in Seoul after snowfall",
     className: "rotate-[2deg]",
     imageClassName: "object-cover object-center",
   },
@@ -96,7 +110,7 @@ function MemoryCollage() {
         </div>
       </div>
       <figcaption className="mt-10 text-center font-serif text-base italic leading-relaxed text-text-muted/80 md:mt-12 md:text-lg">
-        Little moments from the Seoul I love.
+        Little moments from the Seoul I know.
       </figcaption>
     </figure>
   );
@@ -111,11 +125,11 @@ export default function AboutPage() {
           <h1 className="max-w-[9ch] font-serif text-5xl leading-[0.95] tracking-[-0.035em] sm:text-6xl md:text-7xl lg:text-[5.5rem]">
             A love letter
             <br />
-            <em className="font-normal text-accent">to Seoul.</em>
+            <em className="font-normal text-accent">to Seoul</em>
           </h1>
           <p className="mt-8 max-w-[34ch] text-lg leading-[1.75] text-text-muted md:mt-10 md:text-xl">
-            Whenever friends from abroad came to visit, I found myself gathering
-            the places I wanted to share with them.
+            It started with questions from friends abroad—what I use, how we
+            care for ourselves, and where we actually go.
           </p>
         </div>
 
@@ -134,16 +148,21 @@ export default function AboutPage() {
       <section className="mx-auto max-w-6xl px-6 pb-20 md:pb-32">
         <div className="mx-auto max-w-2xl space-y-6">
           <p className={bodyCopy}>
-            Not only the well-known sights, but quiet neighborhoods made for
-            wandering, small spaces that invite you to stay a little longer, and
-            places where you can feel the seasons and spirit of Seoul.
+            Their questions were rarely only about what to see. They wanted to
+            know which Korean beauty products were genuinely worth trying, how
+            people in Seoul cared for their skin and hair, where we went to
+            recharge, and which corners of the city we returned to again and
+            again.
           </p>
           <p className={bodyCopy}>
-            Watching my friends experience the city I love—and discover moments
-            of their own within it—made me wish that more people could
-            experience Seoul, and Korea, not simply as a list of
-            recommendations, but as something they could feel, enjoy, and
-            remember in their own way.
+            I found myself sharing the everyday Seoul I knew: the products we
+            trust, the rituals that help us feel like ourselves, and the places
+            that make the city feel like home.
+          </p>
+          <p className={bodyCopy}>
+            A Drop of Seoul grew from a desire to bring those recommendations
+            together—not as a list of everything trending, but as a personal and
+            considered view of beauty, care, and life in Seoul.
           </p>
         </div>
         <MemoryCollage />
@@ -151,10 +170,14 @@ export default function AboutPage() {
 
       <section className="border-y border-soft-gray px-6 py-24 text-center md:py-36">
         <p className="mx-auto max-w-[27ch] font-serif text-3xl leading-[1.25] tracking-[-0.02em] sm:text-4xl md:text-5xl">
-          a drop of seoul began with a simple desire:
+          A Drop of Seoul began with a simple desire:
           <br />
           <em className="font-normal text-accent">
-            to share a small piece of the Seoul I love.
+            to share what we use,
+            <br />
+            how we care,
+            <br />
+            and where we go
           </em>
         </p>
       </section>
@@ -165,13 +188,14 @@ export default function AboutPage() {
           <h2 className="font-serif text-3xl md:text-4xl">What we share</h2>
           <div className={`mt-6 space-y-5 ${bodyCopy}`}>
             <p>
-              A Drop of Seoul is an independent guide to the beauty, places, and
-              everyday rituals that shape life in Seoul.
+              A Drop of Seoul is a Seoul-based editorial and discovery platform
+              exploring the beauty, wellness, and everyday culture that shape
+              life in the city.
             </p>
             <p>
-              From skincare and hair rituals to head spas, wellness, food, and
-              neighborhoods worth exploring, everything begins with a genuine
-              sense of curiosity.
+              From skincare ingredients and hair rituals to head spas,
+              neighborhood finds, food, and experiences, we look beyond what is
+              simply trending to share what feels genuinely worth knowing.
             </p>
           </div>
         </div>
@@ -182,9 +206,9 @@ export default function AboutPage() {
           <div className={`mt-6 space-y-5 ${bodyCopy}`}>
             <p>We believe the best recommendations feel personal.</p>
             <p>
-              Rather than following every trend, we look for experiences with a
-              distinct point of view—places and rituals we have genuinely tried,
-              enjoyed, and would want to share with a friend.
+              Rather than following every trend, we look for products, rituals,
+              and places with a distinct point of view—things we have genuinely
+              tried, considered, and would want to share with a friend.
             </p>
           </div>
         </div>
@@ -194,17 +218,17 @@ export default function AboutPage() {
         <div className="mx-auto max-w-3xl px-6 py-20 text-center md:py-28">
           <Eyebrow className="mb-5">A note from the founder</Eyebrow>
           <h2 className="font-serif text-3xl leading-tight md:text-4xl">
-            Seoul is best shared personally.
+            Seoul is best shared personally
           </h2>
           <div className={`mx-auto mt-7 max-w-2xl space-y-5 ${bodyCopy}`}>
             <p>
-              I&apos;m the person behind a drop of seoul—a curious local who
-              loves discovering places worth sharing and experiencing Seoul
-              through beauty, wellness, food, and everyday rituals.
+              I&apos;m the person behind A Drop of Seoul—a curious local
+              exploring the products we use, the ways we care for ourselves, and
+              the places that make everyday life in Seoul feel special.
             </p>
             <p>
-              Think of a drop of seoul as a recommendation from a friend who
-              wants you to see a little more of the city they love.
+              Think of A Drop of Seoul as a note from a friend: personal,
+              considered, and always shared with genuine affection for the city.
             </p>
           </div>
           <p className="mt-9 font-serif text-xl italic text-accent">
@@ -215,11 +239,11 @@ export default function AboutPage() {
 
       <section className="mx-auto max-w-2xl px-6 py-14 text-center md:py-20">
         <p className="text-xs leading-6 text-text-muted/75">
-          A Drop of Seoul is created by Essenly,
-          <br /> a Seoul-based hair care brand guided by the philosophy of
-          “Essentials Only.”
-          <br /> While this is a brand-owned publication, its recommendations
-          and editorial point of view remain independently considered.
+          A Drop of Seoul is published by Essenly Co., Ltd., a Seoul-based
+          beauty and lifestyle company guided by a simple idea: Essentials Only.
+          <br />
+          <br /> Our stories and recommendations are shaped by thoughtful
+          research, personal experience, and genuine curiosity.
         </p>
       </section>
     </main>

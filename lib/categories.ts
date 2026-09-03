@@ -10,6 +10,7 @@ const CATEGORY_LABELS: Record<string, string> = {
   guides: "A Local's Seoul",
   places: "A Local's Seoul",
   products: "Picks",
+  shopping: "Shopping",
 };
 
 export function categoryLabel(value: string): string {

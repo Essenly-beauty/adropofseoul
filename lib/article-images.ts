@@ -8,6 +8,177 @@ export type ArticleImageMeta = {
 };
 
 export const ARTICLE_IMAGE_META: Record<string, ArticleImageMeta> = {
+  "five-days-in-seoul-without-rushing": {
+    alt: "Seoul City Hall plaza and the city skyline in warm afternoon light",
+    caption:
+      "Five days work best when each day stays inside one coherent part of Seoul.",
+    creditName: "A Drop of Seoul",
+    creditUrl: "/about",
+    licenseName: "Original editorial photograph",
+    licenseUrl: "/about",
+  },
+  "where-to-stay-seoul-neighborhoods": {
+    alt: "Seoul neighborhoods with hanok roofs, low-rise homes and towers at blue hour",
+    caption:
+      "The right Seoul base is the one that matches the evenings you actually want.",
+    creditName: "A Drop of Seoul",
+    creditUrl: "/about",
+    licenseName: "Original AI-assisted editorial artwork",
+    licenseUrl: "/about",
+  },
+  "one-perfect-day-old-seoul": {
+    alt: "Traditional hanok building and tiled roof in a quiet Seoul winter courtyard",
+    caption:
+      "Old Seoul works as a day of palaces, markets and lived-in traditional architecture.",
+    creditName: "A Drop of Seoul",
+    creditUrl: "/about",
+    licenseName: "Original editorial photograph",
+    licenseUrl: "/about",
+  },
+  "yeonnam-by-day-hongdae-by-night": {
+    alt: "People gathered outside a red-brick cafe beneath a large green tree in Seoul",
+    caption:
+      "Yeonnam is the daylight half of the day: green, social and built for lingering.",
+    creditName: "A Drop of Seoul",
+    creditUrl: "/about",
+    licenseName: "Original editorial photograph",
+    licenseUrl: "/about",
+  },
+  "seoul-forest-seongsu-walking-guide": {
+    alt: "A Seongsu street where a modern glass flagship meets older brick shops and local eateries",
+    caption:
+      "Seongsu makes sense as one linear walk from the park through its old-and-new streets.",
+    creditName: "A Drop of Seoul",
+    creditUrl: "/seoul/neighborhoods/seongsu",
+    licenseName: "Original editorial artwork",
+    licenseUrl: "/seoul/neighborhoods/seongsu",
+  },
+  "han-river-picnic-like-a-local": {
+    alt: "Korean fried chicken and bowls of ramyeon arranged for a picnic beside the Han River",
+    caption:
+      "A Han River evening needs one park, something simple to eat and enough time for the light.",
+    creditName: "A Drop of Seoul",
+    creditUrl: "/about",
+    licenseName: "AI-assisted editorial composite from supplied photographs",
+    licenseUrl: "/about",
+  },
+  "myeongdong-to-namsan-sunset": {
+    alt: "Shoppers walking past cosmetics and tax-free storefronts on a busy Myeongdong street",
+    caption:
+      "Myeongdong is the bright commercial beginning of a route that ends above the city.",
+    creditName: "Theodore Nguyen",
+    creditUrl: "https://www.pexels.com/photo/31925325/",
+    licenseName: "Pexels License",
+    licenseUrl: "https://www.pexels.com/license/",
+  },
+  "coex-bongeunsa-apgujeong-day": {
+    alt: "Editorial view of contemporary beauty and shopping culture in Gangnam, Seoul",
+    caption:
+      "South of the river works as two clusters: COEX and Bongeunsa, then Apgujeong and Cheongdam.",
+    creditName: "A Drop of Seoul",
+    creditUrl: "/articles/gangnam-beauty-day",
+    licenseName: "Original editorial artwork",
+    licenseUrl: "/articles/gangnam-beauty-day",
+  },
+  "how-to-use-seoul-public-transport": {
+    alt: "Seoul subway platform sign showing exit number 2 in Korean, English and Chinese",
+    caption:
+      "The card gets you through the gate; the correct exit gets you to the actual street.",
+    creditName: "Theodore Nguyen",
+    creditUrl: "https://www.pexels.com/photo/31768195/",
+    licenseName: "Pexels License",
+    licenseUrl: "https://www.pexels.com/license/",
+  },
+  "seoul-etiquette-visitors-need": {
+    alt: "Passengers leaving priority seats open inside a quiet Seoul subway carriage",
+    caption:
+      "Useful etiquette begins with recognizing when a beautiful Seoul space is also someone else's home.",
+    creditName: "A Drop of Seoul",
+    creditUrl: "/about",
+    licenseName: "Original AI-assisted editorial artwork",
+    licenseUrl: "/about",
+  },
+  "best-time-to-visit-seoul": {
+    alt: "People walking beneath golden ginkgo trees with Seoul and its mountains beyond",
+    caption:
+      "Seoul's best season is the one that gives you the kind of days you want to spend outside.",
+    creditName: "A Drop of Seoul",
+    creditUrl: "/about",
+    licenseName: "Original AI-assisted editorial artwork",
+    licenseUrl: "/about",
+  },
+  "what-to-eat-first-trip-seoul": {
+    alt: "Friends raising bowls of makgeolli over a freshly cooked Korean pajeon",
+    caption:
+      "The most memorable first meals in Seoul are eating situations, not a checklist of dishes.",
+    creditName: "A Drop of Seoul",
+    creditUrl: "/about",
+    licenseName: "Original editorial photograph",
+    licenseUrl: "/about",
+  },
+  "korean-convenience-store-first-timers": {
+    alt: "Assorted eomuk fish-cake skewers arranged at a Seoul street-food counter",
+    caption:
+      "A good convenience-store meal is edited like any other Seoul meal: one main, one extra and a drink.",
+    creditName: "A Drop of Seoul",
+    creditUrl: "/about",
+    licenseName: "Original editorial photograph",
+    licenseUrl: "/about",
+  },
+  "seoul-for-design-lovers": {
+    alt: "Converted brick industrial building on a Seongsu street in Seoul",
+    caption:
+      "Seoul design becomes clearer when you compare reuse, spectacle and the streets around each building.",
+    creditName: "A Drop of Seoul",
+    creditUrl: "/seoul/neighborhoods/seongsu",
+    licenseName: "Original editorial artwork",
+    licenseUrl: "/seoul/neighborhoods/seongsu",
+  },
+  "quiet-side-of-seoul": {
+    alt: "A monk sweeping a peaceful Seoul temple courtyard beneath old pine trees",
+    caption:
+      "Quiet Seoul is found through considerate timing, not by arriving before residents wake up.",
+    creditName: "A Drop of Seoul",
+    creditUrl: "/about",
+    licenseName: "Original AI-assisted editorial artwork",
+    licenseUrl: "/about",
+  },
+  "free-things-to-do-seoul": {
+    alt: "People picnicking and cycling in a broad Han River park on a clear afternoon",
+    caption:
+      "Seoul's strongest free days pair one public space with the neighborhood around it.",
+    creditName: "A Drop of Seoul",
+    creditUrl: "/about",
+    licenseName: "Original AI-assisted editorial artwork",
+    licenseUrl: "/about",
+  },
+  "seoul-rainy-day": {
+    alt: "Rainy Seoul pavement and umbrellas seen from a warm indoor window",
+    caption:
+      "A rainy Seoul day works when one indoor anchor replaces a scattered list of stops.",
+    creditName: "A Drop of Seoul",
+    creditUrl: "/about",
+    licenseName: "Original AI-assisted editorial artwork",
+    licenseUrl: "/about",
+  },
+  "five-seoul-sunset-plans": {
+    alt: "Seoul skyline beneath a broad pink and blue evening sky",
+    caption:
+      "The best Seoul sunset is the one that already belongs to the geography of your day.",
+    creditName: "A Drop of Seoul",
+    creditUrl: "/about",
+    licenseName: "Original editorial photograph",
+    licenseUrl: "/about",
+  },
+  "seoul-coffee-and-architecture": {
+    alt: "Coffee and slices of cake shared on a table inside a Seoul cafe",
+    caption:
+      "In Seoul, the room often explains why the coffee stop belongs to the neighborhood.",
+    creditName: "A Drop of Seoul",
+    creditUrl: "/about",
+    licenseName: "Original editorial photograph",
+    licenseUrl: "/about",
+  },
   "korean-3-step-skincare-routine": {
     alt: "Woman rinsing her face at a bathroom sink for a simple Korean skincare routine",
     caption:
@@ -156,6 +327,15 @@ export const ARTICLE_IMAGE_META: Record<string, ArticleImageMeta> = {
   // actually depicts are listed — a generic Seoul street under a piece about a
   // specific neighborhood argues against its own copy, so those stay empty
   // until original artwork exists.
+  "daiso-korea-guide": {
+    alt: "A red shopping basket filled with unbranded travel essentials, stationery and small skincare items on a warm peach and ivory set",
+    caption:
+      "The local logic of Daiso: solve something small, then discover something fun.",
+    creditName: "A Drop of Seoul",
+    creditUrl: "/about",
+    licenseName: "Original AI-assisted editorial artwork",
+    licenseUrl: "/about",
+  },
   "slow-sunday-in-seoul": {
     alt: "People sitting on the terraced riverside steps of the Han River with the Seoul skyline and a bridge behind them",
     caption:

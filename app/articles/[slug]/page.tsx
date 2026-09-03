@@ -20,6 +20,8 @@ import { Breadcrumbs } from "@/components/editorial/Breadcrumbs";
 import { ArticleViewTracker } from "@/components/analytics/ArticleViewTracker";
 import { RelatedArticles } from "@/components/editorial/RelatedArticles";
 import { rankRelatedPosts } from "@/lib/related-posts";
+import { getShoppingArticle } from "@/lib/articles/shopping";
+import { ShoppingArticle } from "@/components/editorial/ShoppingArticle";
 
 export async function generateMetadata({
   params,
@@ -56,6 +58,20 @@ export async function generateMetadata({
     });
   }
 
+  const shoppingArticle = getShoppingArticle(params.slug);
+  if (shoppingArticle) {
+    return buildPageMetadata({
+      title: shoppingArticle.seoTitle,
+      description: shoppingArticle.metaDescription,
+      path: `/articles/${shoppingArticle.slug}`,
+      image: shoppingArticle.heroImage,
+      type: "article",
+      publishedTime: shoppingArticle.publishedAt,
+      authors: [shoppingArticle.author],
+      tags: ["Daiso Korea", "Daiso Seoul", "Korean Daiso", "Seoul shopping"],
+    });
+  }
+
   const post = await getPostBySlug(params.slug);
   if (!post) return { title: "Not found" };
   const description =
@@ -83,6 +99,9 @@ export default async function ArticlePage({
 
   const pillar = getPillar(params.slug);
   if (pillar) return <PillarArticle pillar={pillar} />;
+
+  const shoppingArticle = getShoppingArticle(params.slug);
+  if (shoppingArticle) return <ShoppingArticle article={shoppingArticle} />;
 
   const post = await getPostBySlug(params.slug);
   if (!post) notFound();

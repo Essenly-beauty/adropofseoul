@@ -19,6 +19,9 @@ export type Post = {
    * back to `publishedAt`.
    */
   updatedAt?: string | null;
+  /** Optional editorial franchise identity, independent of category. */
+  seriesLabel?: string | null;
+  seriesNumber?: string | null;
 };
 
 export type Place = {

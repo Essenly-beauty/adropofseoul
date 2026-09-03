@@ -13,13 +13,21 @@ export function ArticleCard({ post }: { post: Post }) {
       <TonalFrame
         src={post.featuredImage}
         alt={imageMeta?.alt ?? post.title}
-        label={categoryLabel(post.category)}
+        label={
+          post.seriesLabel
+            ? `${post.seriesLabel}${post.seriesNumber ? ` · ${post.seriesNumber}` : ""}`
+            : categoryLabel(post.category)
+        }
         ratio="aspect-[3/2]"
         sizes="(max-width: 768px) 100vw, 33vw"
         branded
       />
       <div className="mt-4 flex items-center gap-2.5 text-[11px] uppercase tracking-label text-text-muted">
-        <span>{categoryLabel(post.category)}</span>
+        <span>
+          {post.seriesLabel
+            ? `${post.seriesLabel}${post.seriesNumber ? ` · ${post.seriesNumber}` : ""}`
+            : categoryLabel(post.category)}
+        </span>
         {minutes && (
           <>
             <span className="h-[3px] w-[3px] rounded-full bg-text/40" />

@@ -14,4 +14,21 @@ describe("Prose", () => {
     );
     expect(container.querySelector("script")).toBeNull();
   });
+
+  it("gives shopping picks, metadata and verdicts distinct hierarchy", () => {
+    render(
+      <Prose
+        shoppingEdit
+        markdown={
+          "## 3. Boncept Ampoule\n\n**₩5,000 · Item No. 1061918**\n\n**ADoS VERDICT — TRY**"
+        }
+      />
+    );
+    expect(
+      screen.getByRole("heading", { name: "3. Boncept Ampoule" })
+    ).toBeTruthy();
+    expect(screen.getByText("₩5,000 · Item No. 1061918")).toBeTruthy();
+    expect(screen.getByText("ADoS verdict")).toBeTruthy();
+    expect(screen.getByText("TRY")).toBeTruthy();
+  });
 });

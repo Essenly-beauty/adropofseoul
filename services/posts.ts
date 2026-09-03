@@ -25,6 +25,8 @@ const COLUMNS =
 const LOCAL_FEATURED_IMAGES: Record<string, string> = {
   "glass-skin-without-10-steps":
     "/images/articles/glass-skin-without-10-steps.png",
+  "han-river-picnic-like-a-local":
+    "https://yisdsaetxgrboqlirvgb.supabase.co/storage/v1/object/public/media/articles/han-river-picnic-thumbnail.png",
   "five-k-beauty-serums": "/images/articles/five-k-beauty-serums.png",
   "gangnam-beauty-day": "/images/articles/gangnam-beauty-day.png",
   "hannam-afternoon-local-guide":

@@ -4,7 +4,7 @@ slug: "hannam-afternoon-local-guide"
 subtitle: "If Seongsu shouts, Hannam doesn't feel the need. Half a day on a hill."
 excerpt: "Leeum, the gallery row, the Korean designer flagships, and Sounds Hannam — an unhurried half-day in the neighborhood where Seoul keeps its taste, plus the practical warnings nobody mentions."
 category: "guides"
-tags: ["hannam", "seoul", "leeum", "seoul neighborhoods", "region:hannam"]
+tags: ["hannam", "seoul", "leeum", "seoul neighborhoods", "region:hannam", "format:neighborhood-guide", "interest:art", "interest:design", "mood:quiet", "audience:return-trip", "season:all-year"]
 seo_title: "A Local's Afternoon in Hannam, Seoul"
 meta_description: "How to spend a half-day in Hannam-dong — Leeum, the international galleries, Korean designer flagships, and Sounds Hannam, with practical notes."
 author: "A Drop of Seoul Editorial"

@@ -48,6 +48,7 @@ const SECTION_CHILDREN: Record<string, NavChild[]> = {
       })),
     },
   ],
+  stories: [{ label: "Shopping", href: "/stories/shopping" }],
 };
 
 // Primary GNB: Home + the content sections + About.

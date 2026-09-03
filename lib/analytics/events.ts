@@ -38,8 +38,44 @@ export function relatedArticleClicked(p: {
   });
 }
 
+export function daisoEditRelatedClicked(p: {
+  articleNumber: string;
+  articleSlug: string;
+  linkDestination: string;
+  placement: string;
+  series: string;
+  category: string;
+}): void {
+  track("daiso_edit_related_click", {
+    article_number: p.articleNumber,
+    article_slug: p.articleSlug,
+    link_destination: p.linkDestination,
+    placement: p.placement,
+    series: p.series,
+    category: p.category,
+  });
+}
+
 export function categoryClicked(p: { category: string; path: string }): void {
   track("category_click", { category: p.category, destination_path: p.path });
+}
+
+export function mySeoulDropCtaClicked(p: {
+  articleNumber: string;
+  articleSlug: string;
+  linkDestination: string;
+  placement: string;
+  series: string;
+  category: string;
+}): void {
+  track("my_seoul_drop_cta_click", {
+    article_number: p.articleNumber,
+    article_slug: p.articleSlug,
+    link_destination: p.linkDestination,
+    placement: p.placement,
+    series: p.series,
+    category: p.category,
+  });
 }
 
 export function newsletterSignup(p: { source: string }): void {

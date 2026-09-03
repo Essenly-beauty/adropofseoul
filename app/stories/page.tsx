@@ -3,6 +3,7 @@ import Link from "next/link";
 import { listPublishedPosts } from "@/services/posts";
 import { listGuidePosts } from "@/lib/seongsu/assets";
 import { listPillarPosts } from "@/lib/articles/assets";
+import { listShoppingPosts } from "@/lib/articles/shopping";
 import { ArticleCard } from "@/components/editorial/ArticleCard";
 import { SectionHeading } from "@/components/editorial/SectionHeading";
 import { buildPageMetadata } from "@/lib/seo";
@@ -25,6 +26,7 @@ const FILTERS = [
   { key: "beauty", label: "Beauty" },
   { key: "wellness", label: "Wellness" },
   { key: "seoul", label: "A Local's Seoul" },
+  { key: "shopping", label: "Shopping" },
 ] as const;
 
 export default async function StoriesPage({
@@ -39,7 +41,11 @@ export default async function StoriesPage({
     console.error("stories: posts fetch failed", err);
   }
   // Merge in the code-defined guides + pillar articles, deduped, newest first.
-  const codePosts = [...listGuidePosts(), ...listPillarPosts()];
+  const codePosts = [
+    ...listGuidePosts(),
+    ...listPillarPosts(),
+    ...listShoppingPosts(),
+  ];
   const codeSlugs = new Set(codePosts.map((p) => p.slug));
   const all: Post[] = [
     ...codePosts,
@@ -67,7 +73,13 @@ export default async function StoriesPage({
           return (
             <Link
               key={f.key}
-              href={f.key === "all" ? "/stories" : `/stories?filter=${f.key}`}
+              href={
+                f.key === "all"
+                  ? "/stories"
+                  : f.key === "shopping"
+                    ? "/stories/shopping"
+                    : `/stories?filter=${f.key}`
+              }
               aria-current={isActive ? "page" : undefined}
               className={`rounded-full border px-4 py-2 text-[11px] uppercase tracking-label transition-colors duration-medium ease-editorial ${
                 isActive

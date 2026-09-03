@@ -68,6 +68,8 @@ export function sectionForCategory(category: string): SectionRef {
     case "places":
     case "guides":
       return { slug: "seoul", label: "A Local's Seoul", href: "/seoul" };
+    case "shopping":
+      return { slug: "shopping", label: "Shopping", href: "/stories/shopping" };
     default:
       return { slug: "stories", label: "Stories", href: "/stories" };
   }

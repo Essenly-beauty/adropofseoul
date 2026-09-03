@@ -24,11 +24,18 @@ function env(key) {
 
 const URL = env("NEXT_PUBLIC_SUPABASE_URL");
 const SRK = env("SUPABASE_SERVICE_ROLE_KEY");
-const dir = join(root, "content/articles");
+const contentDirs = [
+  join(root, "content/articles"),
+  join(root, "content/drafts"),
+];
 
-const rows = readdirSync(dir)
-  .filter((file) => file.endsWith(".md"))
-  .map((file) => {
+const rows = contentDirs
+  .flatMap((dir) =>
+    readdirSync(dir)
+      .filter((file) => file.endsWith(".md"))
+      .map((file) => ({ dir, file }))
+  )
+  .map(({ dir, file }) => {
     const text = readFileSync(join(dir, file), "utf8");
     const parsed = splitFrontmatter(text);
     if (!parsed) throw new Error(`missing frontmatter: ${file}`);
@@ -48,7 +55,10 @@ const rows = readdirSync(dir)
       status: scalar(fm, "status") || "draft",
       published_at: scalar(fm, "published_at"),
     };
-  });
+  })
+  // Published drafts stay in content/drafts until their first successful
+  // production upsert. Unpublished editorial drafts are never sent remotely.
+  .filter((row) => row.status === "published");
 
 const res = await fetch(`${URL}/rest/v1/posts?on_conflict=slug`, {
   method: "POST",

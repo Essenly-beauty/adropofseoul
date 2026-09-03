@@ -1414,7 +1414,8 @@ export type Database = {
         | "places"
         | "wellness"
         | "products"
-        | "guides";
+        | "guides"
+        | "shopping";
       post_status:
         "draft" | "published" | "research" | "ai_review" | "ready" | "archived";
       profile_domain: "skin" | "hair";
@@ -1578,6 +1579,7 @@ export const Constants = {
         "wellness",
         "products",
         "guides",
+        "shopping",
       ],
       post_status: [
         "draft",
