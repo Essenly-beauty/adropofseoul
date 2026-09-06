@@ -22,7 +22,7 @@ describe("Shopping editorial registry", () => {
     expect(second?.series.number).toBe("02");
     expect(second?.seoTitle).toBe("20 Best Daiso Korea Must-Buys (2026)");
     expect(second?.body).not.toContain("IMAGE SLOT");
-    expect(listShoppingPosts()).toHaveLength(3);
+    expect(listShoppingPosts()).toHaveLength(4);
   });
 
   it("registers Article 03 without exposing production notes", () => {
@@ -37,5 +37,18 @@ describe("Shopping editorial registry", () => {
     expect(article?.heroImage).toBe(
       "/images/articles/daiso-korea-beauty/hero.png"
     );
+  });
+
+  it("publishes Article 05 as a clean Daiso versus Olive Young comparison", () => {
+    const article = getShoppingArticle("daiso-vs-olive-young-korea");
+    expect(article?.series.number).toBe("05");
+    expect(article?.heroImage).toBe(
+      "/images/articles/daiso-vs-olive-young-korea/hero.png"
+    );
+    expect(article?.body).toContain("| Best for |");
+    expect(article?.body).toContain("](/articles/daiso-korea-beauty)");
+    expect(article?.body).not.toContain("IMAGE SLOT");
+    expect(article?.body).not.toContain("IMPLEMENTATION NOTES");
+    expect(article?.body).not.toContain("33% of offline sales");
   });
 });

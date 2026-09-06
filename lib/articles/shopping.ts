@@ -107,6 +107,30 @@ export const SHOPPING_ARTICLES: ShoppingArticle[] = [
     },
     body: articleBody("daiso-korea-beauty.md"),
   },
+  {
+    slug: "daiso-vs-olive-young-korea",
+    category: "shopping",
+    title: "Daiso vs Olive Young: Where Should You Buy K-Beauty?",
+    dek: "They both sell K-beauty, but they are not the same shopping experience. If your time in Seoul is limited, here's what to buy where.",
+    seoTitle: "Daiso vs Olive Young: Where to Buy K-Beauty in Korea",
+    metaDescription:
+      "Daiso or Olive Young for K-beauty in Korea? Compare skincare, makeup, tools, gifts and prices to decide what to buy at each store.",
+    author: "A Drop of Seoul Editorial",
+    publishedAt: "2026-09-06",
+    excerpt:
+      "Daiso is for discovery; Olive Young is for selection. Here's what to buy at each when your time in Seoul is limited.",
+    heroImage: "/images/articles/daiso-vs-olive-young-korea/hero.png",
+    heroAlt:
+      "Daiso beauty discoveries beside an Olive Young shopping selection on a warm retail counter",
+    series: {
+      name: "The Daiso Edit",
+      displayName: "THE DAISO EDIT",
+      number: "05",
+      descriptor:
+        "A local look at what’s actually worth buying at Daiso Korea.",
+    },
+    body: articleBody("daiso-vs-olive-young-korea.md"),
+  },
 ];
 
 export const SHOPPING_ARTICLE_SLUGS = SHOPPING_ARTICLES.map(
