@@ -10,14 +10,18 @@ describe("SiteHeader", () => {
   });
   it("renders every primary nav link", () => {
     render(<SiteHeader />);
-    for (const label of [
-      "Beauty",
-      "Wellness",
-      "A Local's Seoul",
-      "Stories",
-      "About",
+    for (const [label, href] of [
+      ["Beauty", "/beauty"],
+      ["Wellness", "/wellness"],
+      ["A Local's Seoul", "/seoul"],
+      ["Stories", "/stories"],
+      ["About", "/about"],
     ]) {
-      expect(screen.getByRole("link", { name: label })).toBeTruthy();
+      expect(
+        screen
+          .getAllByRole("link", { name: label })
+          .some((link) => link.getAttribute("href") === href)
+      ).toBe(true);
     }
     expect(screen.getByRole("link", { name: "Skincare" })).toBeTruthy();
     expect(screen.getByRole("link", { name: "Hair & Scalp" })).toBeTruthy();

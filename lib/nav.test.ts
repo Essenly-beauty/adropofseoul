@@ -55,6 +55,10 @@ describe("NAV_ITEMS", () => {
       "/seoul/neighborhoods/hannam",
     ]);
     expect(NAV_ITEMS.find((i) => i.label === "Stories")?.children).toEqual([
+      { label: "All", href: "/stories" },
+      { label: "Beauty", href: "/stories?filter=beauty" },
+      { label: "Wellness", href: "/stories?filter=wellness" },
+      { label: "Seoul", href: "/stories?filter=seoul" },
       { label: "Shopping", href: "/stories/shopping" },
     ]);
     // Home / About stay flat

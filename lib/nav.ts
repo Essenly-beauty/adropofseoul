@@ -48,7 +48,13 @@ const SECTION_CHILDREN: Record<string, NavChild[]> = {
       })),
     },
   ],
-  stories: [{ label: "Shopping", href: "/stories/shopping" }],
+  stories: [
+    { label: "All", href: "/stories" },
+    { label: "Beauty", href: "/stories?filter=beauty" },
+    { label: "Wellness", href: "/stories?filter=wellness" },
+    { label: "Seoul", href: "/stories?filter=seoul" },
+    { label: "Shopping", href: "/stories/shopping" },
+  ],
 };
 
 // Primary GNB: Home + the content sections + About.
