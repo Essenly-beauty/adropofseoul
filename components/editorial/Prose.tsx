@@ -23,11 +23,48 @@ const anchorComponents: Components = {
       {children}
     </h2>
   ),
-  h3: ({ children }) => (
-    <h3 id={slugify(toText(children))} className="scroll-mt-24">
+  h3: ({ children }) => renderEditorialH3(children, true),
+};
+
+function renderEditorialH3(children: ReactNode, anchored = false) {
+  const label = toText(children).trim();
+  if (/^ADoS VERDICT$/i.test(label)) {
+    return (
+      <h3
+        id={anchored ? slugify(label) : undefined}
+        className="not-prose mt-10 inline-flex scroll-mt-24 items-center rounded-full bg-porcelain px-3 py-2 text-[11px] font-semibold uppercase tracking-label text-accent"
+      >
+        ADoS verdict
+      </h3>
+    );
+  }
+
+  return (
+    <h3 id={anchored ? slugify(label) : undefined} className="scroll-mt-24">
       {children}
     </h3>
-  ),
+  );
+}
+
+function renderEditorialParagraph(children: ReactNode) {
+  const label = toText(children).trim();
+  const verdict = label.match(/^ADoS VERDICT\s+—\s+(.+)$/i);
+  if (verdict) {
+    return (
+      <p className="not-prose mt-5 inline-flex items-center gap-2 rounded-full bg-porcelain px-3 py-2 text-[11px] font-semibold uppercase tracking-label text-text">
+        <span className="text-accent">ADoS verdict</span>
+        <span aria-hidden className="h-3 w-px bg-soft-gray" />
+        <span>{verdict[1]}</span>
+      </p>
+    );
+  }
+
+  return <p>{children}</p>;
+}
+
+const editorialComponents: Components = {
+  h3: ({ children }) => renderEditorialH3(children),
+  p: ({ children }) => renderEditorialParagraph(children),
 };
 
 const shoppingEditComponents: Components = {
@@ -70,11 +107,7 @@ const shoppingEditComponents: Components = {
       </div>
     );
   },
-  h3: ({ children }) => (
-    <h3 id={slugify(toText(children))} className="scroll-mt-24">
-      {children}
-    </h3>
-  ),
+  h3: ({ children }) => renderEditorialH3(children, true),
   p: ({ children }) => {
     const label = toText(children).trim();
     const productMeta = /^(₩|Around ₩|From ₩|Price varies)/.test(label);
@@ -82,17 +115,6 @@ const shoppingEditComponents: Components = {
       return (
         <p className="not-prose mt-4 text-sm font-medium tracking-[0.01em] text-text-muted md:text-[15px]">
           {children}
-        </p>
-      );
-    }
-
-    const verdict = label.match(/^ADoS VERDICT\s+—\s+(.+)$/);
-    if (verdict) {
-      return (
-        <p className="not-prose mt-5 inline-flex items-center gap-2 rounded-full bg-porcelain px-3 py-2 text-[11px] font-semibold uppercase tracking-label text-text">
-          <span className="text-accent">ADoS verdict</span>
-          <span aria-hidden className="h-3 w-px bg-soft-gray" />
-          <span>{verdict[1]}</span>
         </p>
       );
     }
@@ -117,7 +139,7 @@ const shoppingEditComponents: Components = {
       );
     }
 
-    return <p>{children}</p>;
+    return renderEditorialParagraph(children);
   },
 };
 
@@ -139,8 +161,8 @@ export function Prose({
           shoppingEdit
             ? shoppingEditComponents
             : anchors
-              ? anchorComponents
-              : undefined
+              ? { ...editorialComponents, ...anchorComponents }
+              : editorialComponents
         }
       >
         {markdown}

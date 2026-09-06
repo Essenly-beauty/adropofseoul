@@ -31,4 +31,20 @@ describe("Prose", () => {
     expect(screen.getByText("ADoS verdict")).toBeTruthy();
     expect(screen.getByText("TRY")).toBeTruthy();
   });
+
+  it("styles standalone ADoS verdict headings for every article", () => {
+    render(
+      <Prose
+        markdown={
+          "### ADoS VERDICT\n\n**Daiso Beauty is best understood as low-risk discovery.**"
+        }
+      />
+    );
+
+    const verdict = screen.getByRole("heading", { name: "ADoS verdict" });
+    expect(verdict.className).toContain("bg-porcelain");
+    expect(
+      screen.getByText("Daiso Beauty is best understood as low-risk discovery.")
+    ).toBeTruthy();
+  });
 });

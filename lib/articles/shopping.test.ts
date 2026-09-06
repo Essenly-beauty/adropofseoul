@@ -39,9 +39,9 @@ describe("Shopping editorial registry", () => {
     );
   });
 
-  it("publishes Article 05 as a clean Daiso versus Olive Young comparison", () => {
+  it("publishes Article 04 as a clean Daiso versus Olive Young comparison", () => {
     const article = getShoppingArticle("daiso-vs-olive-young-korea");
-    expect(article?.series.number).toBe("05");
+    expect(article?.series.number).toBe("04");
     expect(article?.heroImage).toBe(
       "/images/articles/daiso-vs-olive-young-korea/hero.png"
     );

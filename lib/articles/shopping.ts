@@ -125,7 +125,7 @@ export const SHOPPING_ARTICLES: ShoppingArticle[] = [
     series: {
       name: "The Daiso Edit",
       displayName: "THE DAISO EDIT",
-      number: "05",
+      number: "04",
       descriptor:
         "A local look at what’s actually worth buying at Daiso Korea.",
     },
