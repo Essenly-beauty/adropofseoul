@@ -15,6 +15,22 @@ function toText(node: ReactNode): string {
   return "";
 }
 
+// Authors may write a verdict as a heading followed by one bold statement.
+// Normalize that editorial form into the same inline verdict token used by
+// product reviews so every article receives one consistent visual treatment.
+function normalizeEditorialMarkdown(markdown: string): string {
+  return markdown.replace(
+    /(^|\n)###\s+ADoS VERDICT\s*\n+\*\*([\s\S]*?)\*\*/gi,
+    (_match, prefix: string, verdict: string) => {
+      const statement = verdict
+        .replace(/\\\s*\n/g, " ")
+        .replace(/\s*\n\s*/g, " ")
+        .trim();
+      return `${prefix}**ADoS VERDICT — ${statement}**`;
+    }
+  );
+}
+
 // Add stable, anchor-able ids to headings (added at the React layer, so
 // rehype-sanitize never strips them). `scroll-mt` clears the sticky header.
 const anchorComponents: Components = {
@@ -51,10 +67,12 @@ function renderEditorialParagraph(children: ReactNode) {
   const verdict = label.match(/^ADoS VERDICT\s+—\s+(.+)$/i);
   if (verdict) {
     return (
-      <p className="not-prose mt-5 inline-flex items-center gap-2 rounded-full bg-porcelain px-3 py-2 text-[11px] font-semibold uppercase tracking-label text-text">
-        <span className="text-accent">ADoS verdict</span>
+      <p className="not-prose mt-5 inline-flex max-w-full flex-wrap items-center gap-2 rounded-[2rem] bg-porcelain px-4 py-2.5 text-[11px] font-semibold text-text">
+        <span className="uppercase tracking-label text-accent">
+          ADoS verdict
+        </span>
         <span aria-hidden className="h-3 w-px bg-soft-gray" />
-        <span>{verdict[1]}</span>
+        <span className="text-xs tracking-[0.08em]">{verdict[1]}</span>
       </p>
     );
   }
@@ -165,7 +183,7 @@ export function Prose({
               : editorialComponents
         }
       >
-        {markdown}
+        {normalizeEditorialMarkdown(markdown)}
       </ReactMarkdown>
     </div>
   );
