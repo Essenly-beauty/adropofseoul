@@ -28,7 +28,9 @@ describe("Prose", () => {
       screen.getByRole("heading", { name: "3. Boncept Ampoule" })
     ).toBeTruthy();
     expect(screen.getByText("₩5,000 · Item No. 1061918")).toBeTruthy();
-    expect(screen.getByText("ADoS verdict")).toBeTruthy();
+    const label = screen.getByText("ADoS verdict");
+    expect(label).toBeTruthy();
+    expect(label.className).not.toContain("uppercase");
     expect(screen.getByText("TRY")).toBeTruthy();
   });
 

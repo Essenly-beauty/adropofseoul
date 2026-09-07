@@ -48,7 +48,7 @@ function renderEditorialH3(children: ReactNode, anchored = false) {
     return (
       <h3
         id={anchored ? slugify(label) : undefined}
-        className="not-prose mt-10 inline-flex scroll-mt-24 items-center rounded-full bg-porcelain px-3 py-2 text-[11px] font-semibold uppercase tracking-label text-accent"
+        className="not-prose mt-10 inline-flex scroll-mt-24 items-center rounded-full bg-porcelain px-3 py-2 text-[11px] font-semibold tracking-label text-accent"
       >
         ADoS verdict
       </h3>
@@ -68,9 +68,7 @@ function renderEditorialParagraph(children: ReactNode) {
   if (verdict) {
     return (
       <p className="not-prose mt-5 inline-flex max-w-full flex-wrap items-center gap-2 rounded-[2rem] bg-porcelain px-4 py-2.5 text-[11px] font-semibold text-text">
-        <span className="uppercase tracking-label text-accent">
-          ADoS verdict
-        </span>
+        <span className="tracking-label text-accent">ADoS verdict</span>
         <span aria-hidden className="h-3 w-px bg-soft-gray" />
         <span className="text-xs tracking-[0.08em]">{verdict[1]}</span>
       </p>
