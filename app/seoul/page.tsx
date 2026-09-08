@@ -5,16 +5,12 @@ import { buildPageMetadata } from "@/lib/seo";
 import { SEOUL_NEIGHBORHOODS, PLACE_TYPE_EMOJI } from "@/lib/taxonomy";
 
 export const metadata: Metadata = buildPageMetadata({
-  // Reader-facing branding is "A Local's Seoul"; the metadata keeps the plain
-  // "Seoul" keywords so search still reads this as the Seoul guide hub.
   title: "A Local's Seoul | Local Guide to Seoul",
   description:
     "Discover Seoul like a local — neighborhoods, beauty spots, shops, cafés, and places we'd genuinely recommend to a friend visiting Seoul.",
   path: "/seoul",
 });
 
-// Curated place-type entry points into the directory (the live, best-populated
-// service categories). Each links into /seoul/places with the type filter.
 const PLACE_TYPES = [
   { type: "head-spa", label: "Head Spas", cat: "head_spa" },
   { type: "salon", label: "Salons", cat: "salon" },
@@ -36,7 +32,6 @@ export default function SeoulPage() {
         friend visiting Seoul.
       </p>
 
-      {/* Explore by place type */}
       <section>
         <div className="flex items-end justify-between">
           <h2 className="font-serif text-2xl">Explore by place</h2>
@@ -68,7 +63,6 @@ export default function SeoulPage() {
         </div>
       </section>
 
-      {/* Explore by neighborhood */}
       <section className="mt-16">
         <div className="flex items-end justify-between">
           <h2 className="font-serif text-2xl">Explore by neighborhood</h2>

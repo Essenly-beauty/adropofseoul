@@ -16,8 +16,7 @@
   }
 }
 
-/* The review prototype carries its own navigation and footer. */
-body:has(.proto-page) > header,
+/* The review prototype uses the live site header but keeps its own ending. */
 body:has(.proto-page) > footer {
   display: none;
 }

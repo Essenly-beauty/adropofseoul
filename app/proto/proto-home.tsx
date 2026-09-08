@@ -84,20 +84,6 @@ export function ProtoHome() {
 
   return (
     <main className={`${styles.proto} proto-page`}>
-      <header className={styles.header}>
-        <Link href="/proto" className={styles.wordmark}>
-          a drop of seoul
-        </Link>
-        <div className={styles.headerMeta}>
-          <span>SEOUL</span>
-          <span>37.5665° N</span>
-        </div>
-        <button className={styles.menu} aria-label="Open menu">
-          <span />
-          <span />
-        </button>
-      </header>
-
       <section className={styles.hero}>
         <Image
           src="/images/articles/hannam-afternoon-local-guide.png"

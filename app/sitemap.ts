@@ -5,9 +5,9 @@ import { HAIR_PROFILE_SLUGS } from "@/lib/haircare/profiles";
 import { listPublishedPosts } from "@/services/posts";
 import { listPlaces } from "@/services/places";
 import { listIngredients } from "@/services/ingredients";
-import { GUIDE_SLUGS } from "@/lib/seongsu/guides";
-import { PILLAR_SLUGS } from "@/lib/articles/pillars";
-import { SHOPPING_ARTICLE_SLUGS } from "@/lib/articles/shopping";
+import { GUIDES } from "@/lib/seongsu/guides";
+import { PILLARS } from "@/lib/articles/pillars";
+import { SHOPPING_SITEMAP_ARTICLES } from "@/lib/articles/shopping-sitemap";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticPaths = [
@@ -33,12 +33,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/contact",
     "/privacy",
     "/terms",
-    ...GUIDE_SLUGS.map((s) => `/articles/${s}`),
-    ...PILLAR_SLUGS.map((s) => `/articles/${s}`),
-    ...SHOPPING_ARTICLE_SLUGS.map((s) => `/articles/${s}`),
   ];
 
-  let posts: { slug: string }[] = [];
+  let posts: {
+    slug: string;
+    publishedAt: string | null;
+    updatedAt?: string | null;
+  }[] = [];
   let places: { slug: string }[] = [];
   let ingredients: { slug: string }[] = [];
   try {
@@ -55,8 +56,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...staticPaths.map((p) => ({
       url: `${SITE_URL}${p}`,
     })),
+    ...GUIDES.map((guide) => ({
+      url: `${SITE_URL}/articles/${guide.slug}`,
+      lastModified: guide.publishedAt,
+    })),
+    ...PILLARS.map((pillar) => ({
+      url: `${SITE_URL}/articles/${pillar.slug}`,
+      lastModified: pillar.publishedAt,
+    })),
+    ...SHOPPING_SITEMAP_ARTICLES.map((article) => ({
+      url: `${SITE_URL}/articles/${article.slug}`,
+      lastModified: article.publishedAt,
+    })),
     ...posts.map((p) => ({
       url: `${SITE_URL}/articles/${p.slug}`,
+      lastModified: p.updatedAt ?? p.publishedAt ?? undefined,
     })),
     ...places.map((pl) => ({
       url: `${SITE_URL}/seoul/places/${pl.slug}`,
