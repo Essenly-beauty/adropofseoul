@@ -1,5 +1,12 @@
 import { describe, it, expect, vi } from "vitest";
-import { mapPostRow, getPostBySlug, listPublishedPosts } from "./posts";
+import { existsSync } from "node:fs";
+import { join } from "node:path";
+import {
+  LOCAL_FEATURED_IMAGES,
+  mapPostRow,
+  getPostBySlug,
+  listPublishedPosts,
+} from "./posts";
 import { fakeClient } from "./_fake-supabase";
 
 const row = {
@@ -24,6 +31,18 @@ vi.mock("@/lib/supabase/public", () => ({
 import { createClient } from "@/lib/supabase/public";
 
 describe("mapPostRow", () => {
+  it("keeps every local featured image in the repository checkout", () => {
+    const localImages = Object.values(LOCAL_FEATURED_IMAGES).filter((path) =>
+      path.startsWith("/images/")
+    );
+
+    for (const image of localImages) {
+      expect(existsSync(join(process.cwd(), "public", image)), image).toBe(
+        true
+      );
+    }
+  });
+
   it("maps snake_case row to camelCase Post", () => {
     const post = mapPostRow(row as never);
     expect(post.featuredImage).toBe("img.jpg");

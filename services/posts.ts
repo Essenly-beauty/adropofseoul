@@ -22,7 +22,7 @@ type PostRow = {
 const COLUMNS =
   "id,title,slug,subtitle,excerpt,body,category,tags,featured_image,author,seo_title,meta_description,published_at,updated_at";
 
-const LOCAL_FEATURED_IMAGES: Record<string, string> = {
+export const LOCAL_FEATURED_IMAGES: Record<string, string> = {
   "glass-skin-without-10-steps":
     "/images/articles/glass-skin-without-10-steps.png",
   "coex-bongeunsa-apgujeong-day": "/images/articles/gangnam-beauty-day.png",
