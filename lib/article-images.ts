@@ -8,6 +8,15 @@ export type ArticleImageMeta = {
 };
 
 export const ARTICLE_IMAGE_META: Record<string, ArticleImageMeta> = {
+  "the-2000-won-coffee-that-powers-seoul": {
+    alt: "Mega Coffee, Compose Coffee, Paik’s Coffee, theVenti and Mammoth Coffee packed side by side in one imagined Seoul building",
+    caption:
+      "A coffee shop next to a coffee shop next to another coffee shop. An imagined Seoul streetscape.",
+    creditName: "A Drop of Seoul",
+    creditUrl: "/about",
+    licenseName: "AI-generated editorial illustration",
+    licenseUrl: "/about",
+  },
   "five-days-in-seoul-without-rushing": {
     alt: "Seoul City Hall plaza and the city skyline in warm afternoon light",
     caption:
