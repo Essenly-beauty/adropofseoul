@@ -79,7 +79,7 @@ And these five are only the beginning. Walk around Seoul long enough and you'll 
 
 There's another interesting shift happening inside Korea's budget coffee shops. **They're becoming places to grab a quick meal, too.**
 
-![A large iced Americano beside a small bowl of tteokbokki on a cafe counter](https://yisdsaetxgrboqlirvgb.supabase.co/storage/v1/object/public/media/articles/the-2000-won-coffee-that-powers-seoul/coffee-and-a-quick-bite.jpg)
+![A large iced Americano beside a small bowl of tteokbokki on a cafe counter](https://yisdsaetxgrboqlirvgb.supabase.co/storage/v1/object/public/media/articles/the-2000-won-coffee-that-powers-seoul/coffee-and-a-quick-bite-v2.jpg)
 
 *Coffee and a quick bite: the everyday cafe stop is becoming a small meal, too. AI-generated editorial illustration; not a specific chain’s menu item.*
 
