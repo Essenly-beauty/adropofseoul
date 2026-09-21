@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Prose } from "@/components/editorial/Prose";
 import { TonalFrame } from "@/components/editorial/TonalFrame";
 import { JsonLd } from "@/components/editorial/JsonLd";
-import { articleJsonLd, breadcrumbJsonLd, canonical } from "@/lib/seo";
+import { articleJsonLd, breadcrumbJsonLd } from "@/lib/seo";
 import { ShareButtons } from "@/components/editorial/ShareButtons";
 import {
   getCourse,
@@ -40,7 +40,7 @@ export function SeongsuGuide({ guide }: { guide: Guide }) {
           <ShareButtons
             path={`/articles/${guide.slug}`}
             title={`${guide.title} — A Drop of Seoul`}
-            imageUrl={hero ? canonical(hero) : undefined}
+            imageUrl={hero}
             align="right"
           />
         </div>

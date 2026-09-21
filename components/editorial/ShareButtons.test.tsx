@@ -2,6 +2,8 @@ import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { ShareButtons } from "./ShareButtons";
 import { SITE_URL } from "@/lib/site";
+import { DEFAULT_SHARE_IMAGE } from "@/lib/social-image";
+import { placeShareImage } from "@/lib/og";
 
 const ALL_CHANNELS = [
   "WhatsApp",
@@ -20,8 +22,46 @@ function openMenu() {
 }
 
 describe("ShareButtons", () => {
+  it.each([
+    ["/images/story.jpg", `${SITE_URL}/images/story.jpg`],
+    [
+      "https://cdn.example.com/story.jpg?a=1&b=2",
+      "https://cdn.example.com/story.jpg?a=1&b=2",
+    ],
+    [null, DEFAULT_SHARE_IMAGE.url],
+    [
+      placeShareImage({
+        slug: "soo",
+        images: ["https://cdn.example.com/soo.jpg"],
+      }),
+      "https://cdn.example.com/soo.jpg",
+    ],
+    [
+      placeShareImage({ slug: "soo", images: [] }),
+      `${SITE_URL}/seoul/places/soo/og`,
+    ],
+  ])(
+    "passes the absolute hero or fallback to Pinterest: %s",
+    (imageUrl, expected) => {
+      render(
+        <ShareButtons
+          path="/articles/story"
+          title="Story"
+          imageUrl={imageUrl}
+        />
+      );
+      openMenu();
+      const href = screen
+        .getByRole("menuitem", { name: "Pinterest" })
+        .getAttribute("href")!;
+      expect(new URL(href).searchParams.get("media")).toBe(expected);
+    }
+  );
+
   it("renders only the Share trigger until clicked", () => {
-    render(<ShareButtons path="/places/soo" title="Soo Head Spa" />);
+    render(
+      <ShareButtons path="/places/soo" title="Soo Head Spa" imageUrl={null} />
+    );
     expect(screen.getByRole("button", { name: "Share" })).toBeTruthy();
     expect(screen.queryByRole("menu")).toBe(null);
     expect(screen.queryByText("WhatsApp")).toBe(null);
@@ -29,7 +69,9 @@ describe("ShareButtons", () => {
   });
 
   it("opens a menu listing copy + every channel", () => {
-    render(<ShareButtons path="/places/soo" title="Soo Head Spa" />);
+    render(
+      <ShareButtons path="/places/soo" title="Soo Head Spa" imageUrl={null} />
+    );
     openMenu();
     expect(screen.getByRole("menu")).toBeTruthy();
     expect(screen.getByText("Copy Link")).toBeTruthy();
@@ -39,7 +81,9 @@ describe("ShareButtons", () => {
   });
 
   it("every menu item carries an icon", () => {
-    render(<ShareButtons path="/places/soo" title="Soo Head Spa" />);
+    render(
+      <ShareButtons path="/places/soo" title="Soo Head Spa" imageUrl={null} />
+    );
     openMenu();
     for (const item of screen.getAllByRole("menuitem")) {
       expect(item.querySelector("svg")).toBeTruthy();
@@ -47,7 +91,9 @@ describe("ShareButtons", () => {
   });
 
   it("channel links are absolute, UTM-tagged, and open in a new tab", () => {
-    render(<ShareButtons path="/places/soo" title="Soo Head Spa" />);
+    render(
+      <ShareButtons path="/places/soo" title="Soo Head Spa" imageUrl={null} />
+    );
     openMenu();
     const wa = screen.getByText("WhatsApp").closest("a")!;
     expect(wa.getAttribute("target")).toBe("_blank");
@@ -60,7 +106,9 @@ describe("ShareButtons", () => {
   it("copies a UTM-tagged link and shows Copied state", async () => {
     const writeText = vi.fn().mockResolvedValue(undefined);
     Object.assign(navigator, { clipboard: { writeText } });
-    render(<ShareButtons path="/places/soo" title="Soo Head Spa" />);
+    render(
+      <ShareButtons path="/places/soo" title="Soo Head Spa" imageUrl={null} />
+    );
     openMenu();
     fireEvent.click(screen.getByText("Copy Link"));
     expect(writeText).toHaveBeenCalledTimes(1);
@@ -73,6 +121,7 @@ describe("ShareButtons", () => {
       <ShareButtons
         path="/places/soo"
         title="Soo Head Spa"
+        imageUrl={null}
         align="right"
         className="mt-4"
       />
@@ -83,7 +132,9 @@ describe("ShareButtons", () => {
   });
 
   it("closes on Escape and on outside click", () => {
-    render(<ShareButtons path="/places/soo" title="Soo Head Spa" />);
+    render(
+      <ShareButtons path="/places/soo" title="Soo Head Spa" imageUrl={null} />
+    );
     openMenu();
     expect(screen.getByRole("menu")).toBeTruthy();
     fireEvent.keyDown(document, { key: "Escape" });
@@ -96,7 +147,9 @@ describe("ShareButtons", () => {
   it("shows the native share item only when navigator.share exists", async () => {
     const share = vi.fn().mockResolvedValue(undefined);
     Object.assign(navigator, { share });
-    render(<ShareButtons path="/places/soo" title="Soo Head Spa" />);
+    render(
+      <ShareButtons path="/places/soo" title="Soo Head Spa" imageUrl={null} />
+    );
     openMenu();
     const item = await screen.findByText("Share via…");
     fireEvent.click(item);

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Prose } from "@/components/editorial/Prose";
 import { TonalFrame } from "@/components/editorial/TonalFrame";
 import { JsonLd } from "@/components/editorial/JsonLd";
-import { articleJsonLd, breadcrumbJsonLd, canonical } from "@/lib/seo";
+import { articleJsonLd, breadcrumbJsonLd } from "@/lib/seo";
 import { pillarToPost, resolvePillarHero } from "@/lib/articles/assets";
 import type { Pillar } from "@/lib/articles/pillars";
 import { ShareButtons } from "@/components/editorial/ShareButtons";
@@ -32,7 +32,7 @@ export function PillarArticle({ pillar }: { pillar: Pillar }) {
           <ShareButtons
             path={`/articles/${pillar.slug}`}
             title={`${pillar.title} — A Drop of Seoul`}
-            imageUrl={hero ? canonical(hero) : undefined}
+            imageUrl={hero}
             align="right"
           />
         </div>

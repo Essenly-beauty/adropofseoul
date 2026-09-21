@@ -162,11 +162,7 @@ export default async function ArticlePage({
             path={`/articles/${post.slug}`}
             title={`${post.title} — A Drop of Seoul`}
             article={{ slug: post.slug, category: post.category }}
-            imageUrl={
-              post.featuredImage && /^https?:\/\//.test(post.featuredImage)
-                ? post.featuredImage
-                : undefined
-            }
+            imageUrl={post.featuredImage}
             align="right"
           />
         </div>

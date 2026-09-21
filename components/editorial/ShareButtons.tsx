@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { SITE_URL } from "@/lib/site";
+import { absoluteImageUrl } from "@/lib/seo";
 import { SHARE_CHANNELS, withUtm } from "@/lib/share";
 import { ChannelIcon, CopyLinkIcon, NativeShareIcon } from "./ShareIcons";
 import { articleShared } from "@/lib/analytics/events";
@@ -25,7 +26,9 @@ export function ShareButtons({
 }: {
   path: string;
   title: string;
-  imageUrl?: string;
+  // Required so new callers explicitly choose their hero (or null for the
+  // site's default preview). Resolve relative paths once for every page type.
+  imageUrl: string | null;
   align?: "left" | "right";
   className?: string;
   article?: { slug: string; category: string };
@@ -36,6 +39,7 @@ export function ShareButtons({
   const rootRef = useRef<HTMLDivElement>(null);
   const copiedTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const url = `${SITE_URL}${path}`;
+  const shareImage = absoluteImageUrl(imageUrl);
 
   useEffect(() => {
     setCanNativeShare(typeof navigator.share === "function");
@@ -144,7 +148,7 @@ export function ShareButtons({
             <a
               key={c.key}
               role="menuitem"
-              href={c.href(url, title, imageUrl)}
+              href={c.href(url, title, shareImage)}
               target="_blank"
               rel="noopener noreferrer"
               className={ITEM}

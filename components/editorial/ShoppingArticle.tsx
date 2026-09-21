@@ -55,6 +55,7 @@ export function ShoppingArticle({ article }: { article: ShoppingArticleData }) {
           <ShareButtons
             path={`/articles/${article.slug}`}
             title={`${article.title} — A Drop of Seoul`}
+            imageUrl={article.heroImage}
             article={{ slug: article.slug, category: article.category }}
             align="right"
           />
