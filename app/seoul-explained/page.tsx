@@ -10,7 +10,7 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = buildPageMetadata({
   title: "Seoul, Explained",
   description:
-    "Everyday life, food, and shopping — with a little local context.",
+    "The habits, food, and shopping that shape Korean life — explained from Seoul.",
   path: "/seoul-explained",
 });
 export default async function ExplainedPage({
@@ -21,7 +21,7 @@ export default async function ExplainedPage({
   return (
     <EditorialArchive
       title="Seoul, Explained"
-      description="Everyday life, food, and shopping — with a little local context."
+      description="The habits, food, and shopping that shape Korean life — explained from Seoul."
       basePath="/seoul-explained"
       section="explained"
       posts={await listEditorialPosts()}

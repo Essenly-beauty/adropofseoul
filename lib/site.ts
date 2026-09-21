@@ -1,8 +1,7 @@
 export const SITE_NAME = "A Drop of Seoul";
-export const HOME_TITLE =
-  "A Drop of Seoul | Korean Beauty, Wellness & Seoul Finds";
+export const HOME_TITLE = "A Drop of Seoul | Korean Life, Culture & Beauty";
 export const TAGLINE =
-  "Discover Korean beauty, haircare, skincare, wellness, places and experiences — curated from Seoul for a global audience.";
+  "Small stories about Korean life, culture and beauty, seen from Seoul.";
 export const SITE_URL = (
   process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"
 ).replace(/\/$/, "");

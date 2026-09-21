@@ -5,6 +5,7 @@
 /coverage
 
 /.next/
+/.next-home-preview/
 /out/
 /build
 

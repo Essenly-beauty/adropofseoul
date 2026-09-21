@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Inter } from "next/font/google";
+import { Caveat, Cormorant_Garamond, Inter } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/editorial/SiteHeader";
 import { SiteFooter } from "@/components/editorial/SiteFooter";
@@ -19,6 +19,14 @@ const sans = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
   display: "swap",
+});
+
+const handwritten = Caveat({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-handwritten",
+  display: "swap",
+  preload: false,
 });
 
 // When replacing the OG image, rename the file (e.g. /og-v2.png) and update
@@ -60,7 +68,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${serif.variable} ${sans.variable}`}>
+    <html
+      lang="en"
+      className={`${serif.variable} ${sans.variable} ${handwritten.variable}`}
+    >
       <body className="font-sans antialiased">
         <JsonLd data={websiteJsonLd()} />
         <GoogleAnalytics />

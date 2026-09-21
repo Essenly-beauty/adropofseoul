@@ -27,3 +27,53 @@ export const NAV_SECONDARY: NavItem[] = [
 ];
 export const NAV_CTA = { eyebrow: "Plan your Seoul", label: "My Seoul Drop" };
 export { SKINCARE_TABS };
+
+/** Group by the reader's task while preserving every existing destination. */
+export const BEAUTY_NAV_GROUPS = [
+  {
+    label: "Read & discover",
+    items: [
+      {
+        label: "The Edit",
+        href: "/beauty/the-edit",
+        description: "All our Korean beauty stories and perspectives",
+      },
+    ],
+  },
+  {
+    label: "Build your routine",
+    items: [
+      {
+        label: "Skincare",
+        href: "/skincare",
+        description: "Start simple, from cleansing to everyday care",
+      },
+      {
+        label: "Hair & Scalp",
+        href: "/haircare",
+        description: "Care for your texture, scalp and everyday needs",
+      },
+      {
+        label: "Ingredients",
+        href: "/ingredients",
+        description: "Make sense of what is in your products",
+      },
+    ],
+  },
+  {
+    label: "Find your fit",
+    items: [
+      {
+        label: "Picks",
+        href: "/skincare/picks",
+        description: "Product edits and comparisons to help you choose",
+      },
+      {
+        label: "Beauty Profile",
+        href: "/beauty-profile",
+        description:
+          "Find a starting point for your skin or hair — no signup needed",
+      },
+    ],
+  },
+] as const;

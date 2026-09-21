@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { SITE_NAME, TAGLINE } from "@/lib/site";
+import { SITE_NAME } from "@/lib/site";
 import { SECTIONS } from "@/lib/taxonomy";
 import { MySeoulDropLink } from "./MySeoulDropLink";
 
@@ -16,15 +16,16 @@ const MORE = [
 
 export function SiteFooter() {
   return (
-    <footer className="mt-10 border-t border-soft-gray bg-porcelain">
-      <div className="mx-auto max-w-content px-6">
+    <footer className="border-t border-soft-gray bg-bg">
+      <div className="mx-auto max-w-[1376px] px-5 md:px-12">
         <div className="grid grid-cols-1 gap-10 py-14 md:grid-cols-[1.6fr_1fr_1fr]">
           <div>
             <Link href="/" className="font-serif text-2xl">
               {SITE_NAME}
             </Link>
             <p className="mt-3.5 max-w-[34ch] text-sm text-text-muted">
-              {TAGLINE}
+              A local perspective on Korean life, culture and beauty, shared
+              from Seoul
             </p>
             <MySeoulDropLink
               source="site_footer"

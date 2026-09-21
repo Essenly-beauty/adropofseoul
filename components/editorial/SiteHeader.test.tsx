@@ -1,69 +1,116 @@
 import { describe, it, expect } from "vitest";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, within } from "@testing-library/react";
 import { SiteHeader } from "./SiteHeader";
 
 describe("SiteHeader", () => {
-  it("renders the wordmark linking home", () => {
+  it("previews secondary destinations on hover and toggle while retaining direct links", () => {
     render(<SiteHeader />);
-    const home = screen.getByRole("link", { name: "A Drop of Seoul" });
-    expect(home.getAttribute("href")).toBe("/");
+    const stories = screen.getByRole("button", { name: "All Stories preview" });
+    fireEvent.mouseEnter(stories.parentElement!.parentElement!);
+    fireEvent.click(stories);
+    expect(stories.getAttribute("aria-expanded")).toBe("true");
+    expect(
+      screen
+        .getByRole("link", { name: "All Stories", exact: true })
+        .getAttribute("href")
+    ).toBe("/stories");
+    expect(
+      screen
+        .getByRole("link", { name: /Browse all stories/ })
+        .getAttribute("href")
+    ).toBe("/stories");
+    const about = screen.getByRole("button", { name: "About preview" });
+    fireEvent.click(about);
+    expect(stories.getAttribute("aria-expanded")).toBe("false");
+    expect(
+      screen.getByRole("link", { name: /Read our story/ }).getAttribute("href")
+    ).toBe("/about");
+    fireEvent.keyDown(document, { key: "Escape" });
+    expect(about.getAttribute("aria-expanded")).toBe("false");
+    expect(document.activeElement).toBe(about);
   });
-  it("renders every primary nav link", () => {
+  it("toggles mobile previews independently of destination links", () => {
     render(<SiteHeader />);
-    for (const [label, href] of [
-      ["Beauty", "/beauty"],
+    fireEvent.click(screen.getByRole("button", { name: "Open menu" }));
+    const mobile = within(screen.getByRole("navigation", { name: "Mobile" }));
+    fireEvent.click(mobile.getByRole("button", { name: "About preview" }));
+    expect(
+      mobile.getByRole("link", { name: /Read our story/ }).getAttribute("href")
+    ).toBe("/about");
+    fireEvent.click(
+      mobile.getByRole("button", { name: "All Stories preview" })
+    );
+    expect(mobile.queryByRole("link", { name: /Read our story/ })).toBeNull();
+    expect(
+      mobile.getByRole("link", { name: /Browse all stories/ })
+    ).toBeTruthy();
+  });
+  it("retains the primary landing routes and home wordmark", () => {
+    render(<SiteHeader />);
+    expect(
+      screen.getByRole("link", { name: "A Drop of Seoul" }).getAttribute("href")
+    ).toBe("/");
+    const nav = within(screen.getByRole("navigation", { name: "Primary" }));
+    for (const [name, href] of [
       ["Seoul, Explained", "/seoul-explained"],
       ["Places", "/seoul"],
-      ["All Stories", "/stories"],
-      ["About", "/about"],
+      ["Beauty", "/beauty"],
     ]) {
       expect(
-        screen
-          .getAllByRole("link", { name: label })
-          .some((link) => link.getAttribute("href") === href)
-      ).toBe(true);
+        nav.getByRole("link", { name, exact: true }).getAttribute("href")
+      ).toBe(href);
     }
-    expect(screen.getByRole("link", { name: "Skincare" })).toBeTruthy();
-    expect(screen.getByRole("link", { name: "Hair & Scalp" })).toBeTruthy();
   });
-  it("renders the My Seoul Drop planning CTA", () => {
+  it("keeps the submenu open when clicking after hover, and closes on Escape", () => {
     render(<SiteHeader />);
-    const cta = screen.getAllByRole("link", {
-      name: /Plan your Seoul with My Seoul Drop/,
-    })[0];
-    expect(cta.getAttribute("href")).toContain("https://myseouldrop.app/");
+    const trigger = screen.getByRole("button", { name: "Beauty submenu" });
+    fireEvent.mouseEnter(trigger.parentElement!.parentElement!);
+    expect(trigger.getAttribute("aria-expanded")).toBe("true");
+    fireEvent.click(trigger);
+    expect(trigger.getAttribute("aria-expanded")).toBe("true");
+    expect(
+      screen.getByRole("link", { name: /The Edit/ }).getAttribute("href")
+    ).toBe("/beauty/the-edit");
+    fireEvent.keyDown(document, { key: "Escape" });
+    expect(trigger.getAttribute("aria-expanded")).toBe("false");
+    expect(document.activeElement).toBe(trigger);
   });
-  it("toggles the mobile menu panel", () => {
+  it("dismisses the submenu with an outside click", () => {
     render(<SiteHeader />);
-    expect(screen.queryByRole("navigation", { name: "Mobile" })).toBe(null);
-    const button = screen.getByRole("button", { name: /menu/i });
-    expect(button.getAttribute("aria-expanded")).toBe("false");
-    fireEvent.click(button);
-    expect(screen.getByRole("navigation", { name: "Mobile" })).toBeTruthy();
-    expect(button.getAttribute("aria-expanded")).toBe("true");
+    const trigger = screen.getByRole("button", { name: "Places submenu" });
+    fireEvent.click(trigger);
+    expect(trigger.getAttribute("aria-expanded")).toBe("true");
+    fireEvent.pointerDown(document.body);
+    expect(trigger.getAttribute("aria-expanded")).toBe("false");
   });
-  it("shows sub-categories in the desktop dropdown markup", () => {
+  it("expands mobile topics one section at a time", () => {
     render(<SiteHeader />);
-    const primary = screen.getByRole("navigation", { name: "Primary" });
-    const hrefs = Array.from(primary.querySelectorAll("a")).map((a) =>
-      a.getAttribute("href")
-    );
-    expect(hrefs).toContain("/beauty/the-edit");
-    expect(hrefs).toContain("/beauty-profile");
-    expect(hrefs).toContain("/ingredients");
-    expect(hrefs).not.toContain("/seoul/neighborhoods/seongsu");
+    fireEvent.click(screen.getByRole("button", { name: "Open menu" }));
+    const mobile = within(screen.getByRole("navigation", { name: "Mobile" }));
+    expect(mobile.queryByRole("link", { name: "The Edit" })).toBeNull();
+    fireEvent.click(mobile.getByRole("button", { name: "Beauty topics" }));
+    expect(
+      mobile.getByRole("link", { name: "The Edit" }).getAttribute("href")
+    ).toBe("/beauty/the-edit");
+    fireEvent.click(mobile.getByRole("button", { name: "Places topics" }));
+    expect(mobile.queryByRole("link", { name: "The Edit" })).toBeNull();
+    expect(
+      mobile.getByRole("link", { name: "All Places" }).getAttribute("href")
+    ).toBe("/seoul/places");
+    fireEvent.keyDown(document, { key: "Escape" });
+    expect(screen.queryByRole("navigation", { name: "Mobile" })).toBeNull();
   });
-  it("lists sub-categories up front in the toggled mobile menu", () => {
+  it("opens an accessible search form using the existing archive query", () => {
     render(<SiteHeader />);
-    fireEvent.click(screen.getByRole("button", { name: /menu/i }));
-    const mobile = screen.getByRole("navigation", { name: "Mobile" });
-    const hrefs = Array.from(mobile.querySelectorAll("a")).map((a) =>
-      a.getAttribute("href")
-    );
-    expect(hrefs).toContain("/beauty/the-edit");
-    expect(hrefs).toContain("/beauty-profile");
-    expect(hrefs).toContain("/ingredients");
-    expect(hrefs).toContain("/seoul/places");
-    expect(hrefs).toContain("/seoul/neighborhoods");
+    const trigger = screen.getByRole("button", { name: "Search stories" });
+    fireEvent.click(trigger);
+    const form = screen.getByRole("search");
+    expect(form.getAttribute("action")).toBe("/stories");
+    const input = screen.getByRole("searchbox", { name: "Search all stories" });
+    expect(input.getAttribute("name")).toBe("q");
+    expect(document.activeElement).toBe(input);
+    fireEvent.keyDown(document, { key: "Escape" });
+    expect(screen.queryByRole("search")).toBeNull();
+    expect(document.activeElement).toBe(trigger);
   });
 });

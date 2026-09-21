@@ -6,21 +6,21 @@ import { canonical } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "About",
-  description: `${SITE_NAME} is a Seoul-based editorial and discovery platform exploring Korean beauty, wellness, and everyday life in Seoul.`,
+  description: `${SITE_NAME} shares a local perspective on Korean life, culture, and beauty, seen from Seoul.`,
   alternates: { canonical: canonical("/about") },
   openGraph: {
-    title: "About A Drop of Seoul | Beauty, Care & Life in Seoul",
+    title: "About A Drop of Seoul | Korean Life, Seen from Seoul",
     description:
-      "Discover the products we use, the ways we care, and the places we love—shared from Seoul with a personal point of view.",
+      "Explore Korean life, culture, and beauty through small observations and personal recommendations from Seoul.",
     url: canonical("/about"),
     siteName: SITE_NAME,
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "About A Drop of Seoul | Beauty, Care & Life in Seoul",
+    title: "About A Drop of Seoul | Korean Life, Seen from Seoul",
     description:
-      "Discover the products we use, the ways we care, and the places we love—shared from Seoul with a personal point of view.",
+      "Explore Korean life, culture, and beauty through small observations and personal recommendations from Seoul.",
   },
 };
 
@@ -148,6 +148,12 @@ export default function AboutPage() {
       <section className="mx-auto max-w-6xl px-6 pb-20 md:pb-32">
         <div className="mx-auto max-w-2xl space-y-6">
           <p className={bodyCopy}>
+            Seoul is where these stories begin. From here, we explore Korean
+            life: the meals we share, the habits we grow up with, and the ways
+            we care for ourselves. The city is our point of view, and the
+            stories reach into everyday life across Korea.
+          </p>
+          <p className={bodyCopy}>
             Their questions were rarely only about what to see. They wanted to
             know which Korean beauty products were genuinely worth trying, how
             people in Seoul cared for their skin and hair, where we went to
@@ -162,7 +168,7 @@ export default function AboutPage() {
           <p className={bodyCopy}>
             A Drop of Seoul grew from a desire to bring those recommendations
             together—not as a list of everything trending, but as a personal and
-            considered view of beauty, care, and life in Seoul.
+            considered view of Korean life, culture, and beauty.
           </p>
         </div>
         <MemoryCollage />
@@ -189,8 +195,7 @@ export default function AboutPage() {
           <div className={`mt-6 space-y-5 ${bodyCopy}`}>
             <p>
               A Drop of Seoul is a Seoul-based editorial and discovery platform
-              exploring the beauty, wellness, and everyday culture that shape
-              life in the city.
+              exploring Korean life, culture, and beauty through a local lens.
             </p>
             <p>
               From skincare ingredients and hair rituals to head spas,

@@ -71,8 +71,9 @@ export default async function BeautyPage() {
       <section className="mx-auto max-w-content px-6 py-16 md:py-24">
         <SectionHeading title="Beauty" eyebrow="Where to begin" as="h1" />
         <p className="-mt-2 max-w-2xl text-lg text-text-muted">
-          Skin, hair, and scalp belong to one conversation. Choose what you want
-          to understand, or start with a profile if you are not sure yet.
+          Korean beauty is part of everyday life, from the products we choose to
+          the ways we care for skin, hair, and scalp. Find a story, explore a
+          routine, or start with your Beauty Profile.
         </p>
 
         <div className="mt-10 grid gap-5 md:grid-cols-2">
