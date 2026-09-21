@@ -1,21 +1,18 @@
 // Server-only helpers for the Seongsu guides: image resolution + Post-shaped
 // adapters so the code-defined guides appear in the Stories index, the Guides
 // category page, and the sitemap alongside DB-backed posts.
-// (Imported only from server components; the node:fs import keeps it off the client.)
-import fs from "node:fs";
-import path from "node:path";
+import "server-only";
+import publicAssets from "@/data/public-assets.json";
 import type { Post } from "@/services/types";
 import { GUIDES, type Guide } from "./guides";
 
-/** True if a /public-relative asset actually exists on disk. */
+const assetPaths = new Set(publicAssets);
+
+/** Checked against the public files indexed at build time, without runtime fs. */
 export function publicFileExists(relPath: string): boolean {
   if (!relPath) return false;
   const clean = relPath.replace(/^\/+/, "");
-  try {
-    return fs.existsSync(path.join(process.cwd(), "public", clean));
-  } catch {
-    return false;
-  }
+  return assetPaths.has(clean);
 }
 
 /** Hero image path if the file exists, otherwise null (renders a placeholder). */
