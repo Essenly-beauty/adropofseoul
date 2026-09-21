@@ -1,3 +1,6 @@
+import { ArticleKeywords } from "@/components/editorial/ArticleKeywords";
+import { articleBreadcrumbs } from "@/lib/editorial-taxonomy";
+import { Breadcrumbs } from "@/components/editorial/Breadcrumbs";
 import Link from "next/link";
 import { Prose } from "@/components/editorial/Prose";
 import { TonalFrame } from "@/components/editorial/TonalFrame";
@@ -23,17 +26,12 @@ export function SeongsuGuide({ guide }: { guide: Guide }) {
   return (
     <main className="mx-auto max-w-3xl px-6 py-16">
       <JsonLd data={articleJsonLd(post)} />
-      <JsonLd
-        data={breadcrumbJsonLd([
-          { name: "Home", path: "/" },
-          { name: "Stories", path: "/stories" },
-          { name: guide.title, path: `/articles/${guide.slug}` },
-        ])}
-      />
+      <JsonLd data={breadcrumbJsonLd(articleBreadcrumbs(post))} />
 
       <article>
+        <Breadcrumbs items={articleBreadcrumbs(post)} />
         <p className="text-xs uppercase tracking-widest text-accent">
-          Seongsu series · Ep. {guide.episode}
+          Places · Seongsu
         </p>
         <h1 className="mt-2 font-serif text-4xl md:text-5xl">{guide.title}</h1>
         <p className="mt-3 text-xl text-text-muted">{guide.subtitle}</p>
@@ -113,6 +111,7 @@ export function SeongsuGuide({ guide }: { guide: Guide }) {
         <p className="mt-10 border-t border-soft-gray pt-4 text-xs text-text-muted">
           {guide.footnote}
         </p>
+        <ArticleKeywords post={post} />
       </article>
     </main>
   );

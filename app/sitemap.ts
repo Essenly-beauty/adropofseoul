@@ -2,18 +2,24 @@ import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/site";
 import { SEOUL_NEIGHBORHOODS } from "@/lib/taxonomy";
 import { HAIR_PROFILE_SLUGS } from "@/lib/haircare/profiles";
-import { listPublishedPosts } from "@/services/posts";
-import { listPlaces } from "@/services/places";
-import { listIngredients } from "@/services/ingredients";
+import { listSitemapContent } from "@/services/sitemap";
 import { GUIDES } from "@/lib/seongsu/guides";
 import { PILLARS } from "@/lib/articles/pillars";
 import { SHOPPING_SITEMAP_ARTICLES } from "@/lib/articles/shopping-sitemap";
+
+// Refresh published URLs without requiring a deployment. A failed regeneration
+// must retain the last complete sitemap, not cache a successful partial one.
+export const revalidate = 3600;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticPaths = [
     "",
     "/stories",
-    "/stories/shopping",
+    "/seoul-explained",
+    "/seoul-explained/everyday-life",
+    "/seoul-explained/food-drink",
+    "/seoul-explained/shopping",
+    "/beauty/the-edit",
     "/skincare",
     "/beauty",
     "/skincare/picks",
@@ -23,7 +29,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/beauty-profile/hair",
     "/beauty-profile/skin",
     "/ingredients",
-    "/wellness",
     "/seoul",
     "/seoul/places",
     "/seoul/neighborhoods",
@@ -35,24 +40,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/terms",
   ];
 
-  let posts: {
-    slug: string;
-    publishedAt: string | null;
-    updatedAt?: string | null;
-  }[] = [];
-  let places: { slug: string }[] = [];
-  let ingredients: { slug: string }[] = [];
-  try {
-    [posts, places, ingredients] = await Promise.all([
-      listPublishedPosts({ limit: 1000 }),
-      listPlaces({ limit: 1000 }),
-      listIngredients({ limit: 1000 }),
-    ]);
-  } catch {
-    // No live DB yet (or transient failure): still emit the static routes.
-  }
+  const { posts, places, ingredients } = await listSitemapContent();
 
-  return [
+  const entries: MetadataRoute.Sitemap = [
     ...staticPaths.map((p) => ({
       url: `${SITE_URL}${p}`,
     })),
@@ -79,4 +69,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: `${SITE_URL}/ingredients/${i.slug}`,
     })),
   ];
+
+  // Code-defined articles take priority in the page renderer too. Preserve
+  // their metadata when a legacy database row has the same slug.
+  const seen = new Set<string>();
+  return entries.filter(({ url }) => {
+    if (seen.has(url)) return false;
+    seen.add(url);
+    return true;
+  });
 }

@@ -1,3 +1,6 @@
+import { listEditorialPosts } from "@/services/editorial";
+import { filterEditorialPosts } from "@/lib/editorial-taxonomy";
+import { ArticleCard } from "@/components/editorial/ArticleCard";
 import type { Metadata } from "next";
 import { listIngredients } from "@/services/ingredients";
 import { IngredientCard } from "@/components/editorial/IngredientCard";
@@ -30,6 +33,10 @@ export default async function IngredientsPage({
     console.error("ingredients: fetch failed", err);
   }
 
+  const articles = filterEditorialPosts(await listEditorialPosts(), {
+    topic: "ingredients",
+  });
+
   const skinValues = SKIN_TYPES.map((t) => t.value);
   const active =
     searchParams.skin && skinValues.includes(searchParams.skin)
@@ -45,9 +52,10 @@ export default async function IngredientsPage({
       <SectionHeading
         title="Ingredient Dictionary"
         eyebrow="Know your actives"
+        as="h1"
       />
       <SectionTabs
-        label="Skincare sections"
+        label="Beauty sections"
         tabs={SKINCARE_TABS}
         active="ingredients"
       />
@@ -69,6 +77,19 @@ export default async function IngredientsPage({
             <IngredientCard key={i.id} ingredient={i} />
           ))}
         </div>
+      )}
+      {articles.length > 0 && (
+        <section className="mt-14">
+          <SectionHeading
+            title="Ingredient stories"
+            eyebrow="From the journal"
+          />
+          <div className="grid gap-8 md:grid-cols-3">
+            {articles.map((post) => (
+              <ArticleCard key={post.slug} post={post} />
+            ))}
+          </div>
+        </section>
       )}
     </main>
   );

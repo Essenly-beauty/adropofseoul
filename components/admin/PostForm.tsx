@@ -2,6 +2,12 @@
 
 import { useFormState } from "react-dom";
 import Link from "next/link";
+import {
+  EDITORIAL_TOPICS,
+  KEYWORDS,
+  topicForPost,
+  keywordsForPost,
+} from "@/lib/editorial-taxonomy";
 import { POST_CATEGORIES, POST_STATUSES } from "@/lib/taxonomy";
 import type { AdminPost } from "@/services/admin/posts";
 import {
@@ -64,13 +70,52 @@ export function PostForm({
           defaultValue={post?.excerpt ?? ""}
         />
         <SelectField
-          label="Category"
+          label="Storage category"
           name="category"
           defaultValue={post?.category ?? "beauty"}
           options={POST_CATEGORIES}
           error={e.category}
         />
-        <ListField label="Tags" name="tags" defaultValue={post?.tags} />
+        <SelectField
+          label="Editorial home"
+          name="editorialTopic"
+          defaultValue={post ? topicForPost(post).key : "skincare"}
+          options={EDITORIAL_TOPICS.map((t) => ({
+            value: t.key,
+            label: `${t.section === "explained" ? "Seoul, Explained" : t.section === "beauty" ? "Beauty" : "Places"} / ${t.label}`,
+          }))}
+          error={e.editorialTopic}
+        />
+        <fieldset className="rounded border border-soft-gray p-4">
+          <legend className="px-1 text-sm">Related keywords</legend>
+          <input type="hidden" name="keywordsProvided" value="true" />
+          <div className="grid gap-2 sm:grid-cols-2">
+            {KEYWORDS.map((k) => (
+              <label key={k.key} className="flex items-center gap-2 text-sm">
+                <input
+                  type="checkbox"
+                  name="editorialKeywords"
+                  value={k.key}
+                  defaultChecked={
+                    post
+                      ? keywordsForPost(post).some(
+                          (existing) => existing.key === k.key
+                        )
+                      : false
+                  }
+                />
+                {k.label}
+              </label>
+            ))}
+          </div>
+        </fieldset>
+        <ListField
+          label="Additional tags"
+          name="tags"
+          defaultValue={post?.tags.filter(
+            (t) => !/^(topic:|keyword:|keywords:)/.test(t)
+          )}
+        />
         <UrlField
           label="Featured image"
           name="featuredImage"

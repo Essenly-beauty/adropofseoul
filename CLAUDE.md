@@ -33,12 +33,15 @@ add tests beside new logic (`*.test.ts` / `*.test.tsx`).
 
 ## Product & IA
 
-Editorial-first publication. Top nav: **Skincare / Haircare / Wellness / Seoul /
-Stories / About**, plus a **My Hair Profile** CTA. The GNB is a presentation-layer
-mapping over a stable DB `category` enum (`lib/taxonomy.ts` → `sectionForCategory`) —
-re-homing content is a code change, not a data migration. Articles live at
-`/articles/[slug]` regardless of section; legacy section URLs 308-redirect
-(`next.config.js`). Places directory is under `/seoul/places`.
+Editorial-first publication. Top nav: **Seoul, Explained / Places / Beauty**;
+secondary links: **All Stories / About**, plus the **Plan your Seoul** CTA.
+Beauty's **The Edit** collects every beauty article; focused topics and Picks
+are narrower entrances. Article intent and shared keyword rules are documented
+in `docs/EDITORIAL_RULES.md`; use `lib/editorial-taxonomy.ts` for article UI.
+The GNB maps over a stable DB category enum. Re-homing existing content is a
+presentation change, not a database migration. `services/editorial.ts` merges
+all published CMS and code articles with renderer precedence and no archive cap.
+Articles retain `/articles/[slug]`; Places retains `/seoul` and `/seoul/places`.
 
 Content model is hybrid: Supabase `posts` / `places` / `ingredients` / `products`
 (+ an admin CRUD editor under `/admin`, gated by Supabase Auth `is_admin()` /

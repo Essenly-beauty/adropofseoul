@@ -9,9 +9,12 @@ import {
   neighborhoodAreas,
   regionForGuide,
 } from "@/lib/taxonomy";
-import { listPublishedPosts } from "@/services/posts";
+import { listEditorialPosts } from "@/services/editorial";
+import {
+  filterEditorialPosts,
+  keywordsForPost,
+} from "@/lib/editorial-taxonomy";
 import { listPlaces } from "@/services/places";
-import { listGuidePosts } from "@/lib/seongsu/assets";
 import { SeongsuMap } from "@/components/seongsu/SeongsuMap";
 import { NeighborhoodDirectory } from "@/components/seoul/NeighborhoodDirectory";
 import { WaitlistForm } from "@/components/seongsu/WaitlistForm";
@@ -61,16 +64,21 @@ async function neighborhoodPlaces(areas: string[]): Promise<Place[]> {
 async function neighborhoodPosts(slug: string): Promise<Post[]> {
   let db: Post[] = [];
   try {
-    db = await listPublishedPosts({ limit: 96, category: "guides" });
+    db = filterEditorialPosts(await listEditorialPosts(), {
+      section: "places",
+    });
   } catch (err) {
     console.error("around-seoul: guides fetch failed", err);
   }
   const seen = new Set<string>();
-  return [...listGuidePosts(), ...db]
+  return db
     .filter((p) => {
       if (seen.has(p.slug)) return false;
       seen.add(p.slug);
-      return regionForGuide(p) === slug;
+      return (
+        regionForGuide(p) === slug ||
+        keywordsForPost(p).some((k) => k.key === slug)
+      );
     })
     .sort((a, b) => (b.publishedAt ?? "").localeCompare(a.publishedAt ?? ""));
 }
@@ -93,7 +101,7 @@ export default async function NeighborhoodPage({
       <JsonLd
         data={breadcrumbJsonLd([
           { name: "Home", path: "/" },
-          { name: "A Local's Seoul", path: "/seoul" },
+          { name: "Places", path: "/seoul" },
           { name: "Neighborhoods", path: "/seoul/neighborhoods" },
           { name: n.label, path: `/seoul/neighborhoods/${n.slug}` },
         ])}

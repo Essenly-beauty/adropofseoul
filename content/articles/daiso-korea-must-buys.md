@@ -4,8 +4,6 @@ slug: "daiso-korea-must-buys"
 subtitle: "Beauty, travel fixes, small gifts and genuinely useful finds — chosen not because they’re cheap, but because they’re actually worth making room for."
 excerpt: "Beauty, travel fixes, small gifts and genuinely useful finds — chosen for what’s actually worth the suitcase space."
 category: "shopping"
-series: "The Daiso Edit"
-series_number: "02"
 article_type: "editorial"
 tags: ["daiso korea must buy", "what to buy at daiso korea", "daiso korea shopping", "daiso korea souvenirs", "daiso korea beauty"]
 featured_image: null
@@ -50,7 +48,7 @@ Our rule for this list:
 
 **Cheap isn't enough. It has to be worth the suitcase space.**
 
-### How to read The Daiso Edit
+### How to use this guide
 
 Throughout this story, A Drop of Seoul uses four recurring editorial
 markers:

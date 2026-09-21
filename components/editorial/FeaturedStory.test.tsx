@@ -22,8 +22,8 @@ const post = {
 describe("FeaturedStory", () => {
   it("shows the category tag, title, excerpt, and a read link", () => {
     render(<FeaturedStory post={post} />);
-    // head-spa articles surface under the Wellness label in the new IA.
-    expect(screen.getAllByText("Wellness").length).toBeGreaterThan(0);
+    // head-spa articles surface under the Hair & Scalp label in the new IA.
+    expect(screen.getAllByText("Hair & Scalp").length).toBeGreaterThan(0);
     expect(screen.getByText(/Seoul Head Spa Ritual/)).toBeTruthy();
     const read = screen.getByRole("link", { name: /Read the story/ });
     expect(read.getAttribute("href")).toBe("/articles/seoul-head-spa-ritual");

@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import { listPublishedPosts } from "@/services/posts";
+import { listEditorialPosts } from "@/services/editorial";
+import { filterEditorialPosts } from "@/lib/editorial-taxonomy";
 import { ArticleCard } from "@/components/editorial/ArticleCard";
 import { SectionHeading } from "@/components/editorial/SectionHeading";
 import { SectionTabs } from "@/components/editorial/SectionTabs";
 import { buildPageMetadata } from "@/lib/seo";
-import { SKINCARE_TABS, isPick } from "@/lib/taxonomy";
+import { SKINCARE_TABS } from "@/lib/taxonomy";
 import type { Post } from "@/services/types";
 
 export const metadata: Metadata = buildPageMetadata({
@@ -19,17 +20,19 @@ export const dynamic = "force-dynamic";
 export default async function SkincarePage() {
   let posts: Post[] = [];
   try {
-    posts = await listPublishedPosts({ limit: 96, category: "beauty" });
+    posts = filterEditorialPosts(await listEditorialPosts(), {
+      topic: "skincare",
+    });
   } catch (err) {
     console.error("skincare: posts fetch failed", err);
   }
   // Skincare = routine / actives / treatment articles; review-type "Picks"
   // live under their own tab.
-  const articles = posts.filter((p) => !isPick(p));
+  const articles = posts;
 
   return (
     <main className="mx-auto max-w-content px-6 py-16">
-      <SectionHeading title="Skincare" eyebrow="The Journal" />
+      <SectionHeading title="Skincare" eyebrow="The Journal" as="h1" />
       <p className="-mt-2 mb-8 max-w-2xl text-text-muted">
         Korean skincare beyond trends — routines, ingredients, treatments, and
         the aftercare that holds it all together.

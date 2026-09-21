@@ -11,12 +11,12 @@ describe("CategoryIndex", () => {
       screen.getByRole("link", { name: /^Beauty/ }).getAttribute("href")
     ).toBe("/beauty");
     expect(
-      screen.getByRole("link", { name: /^Wellness/ }).getAttribute("href")
-    ).toBe("/wellness");
-    expect(
       screen
-        .getByRole("link", { name: /^A Local's Seoul/ })
+        .getByRole("link", { name: /^Seoul, Explained/ })
         .getAttribute("href")
+    ).toBe("/seoul-explained");
+    expect(
+      screen.getByRole("link", { name: /^Places/ }).getAttribute("href")
     ).toBe("/seoul");
   });
 });

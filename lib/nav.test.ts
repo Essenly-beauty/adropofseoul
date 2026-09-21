@@ -1,72 +1,32 @@
 import { describe, it, expect } from "vitest";
-import { NAV_ITEMS, NAV_CTA } from "./nav";
-
-describe("NAV_ITEMS", () => {
-  it("lists the primary nav in exact order", () => {
+import { NAV_ITEMS, NAV_SECONDARY, NAV_CTA } from "./nav";
+describe("approved navigation", () => {
+  it("separates the three primary sections from archive and about", () => {
     expect(NAV_ITEMS.map((i) => i.label)).toEqual([
-      "Home",
+      "Seoul, Explained",
+      "Places",
       "Beauty",
-      "Wellness",
-      "A Local's Seoul",
-      "Stories",
-      "About",
     ]);
+    expect(NAV_SECONDARY.map((i) => i.label)).toEqual(["All Stories", "About"]);
+    expect(NAV_SECONDARY.every((i) => !i.children)).toBe(true);
   });
-  it("maps sections to their routes", () => {
-    expect(NAV_ITEMS.find((i) => i.label === "A Local's Seoul")?.href).toBe(
-      "/seoul"
-    );
-    expect(NAV_ITEMS.find((i) => i.label === "Beauty")?.href).toBe("/beauty");
-    expect(NAV_ITEMS.find((i) => i.label === "Wellness")?.href).toBe(
-      "/wellness"
-    );
-  });
-  it("exposes sub-categories for the GNB preview", () => {
-    const beauty = NAV_ITEMS.find((i) => i.label === "Beauty");
-    expect(beauty?.children?.map((c) => c.href)).toEqual([
-      "/skincare",
-      "/haircare",
-      "/beauty-profile",
+  it("offers the complete beauty journal before focused topics and the profile tool", () => {
+    expect(NAV_ITEMS[2].children?.map((c) => c.label)).toEqual([
+      "The Edit",
+      "Skincare",
+      "Hair & Scalp",
+      "Ingredients",
+      "Picks",
+      "Beauty Profile",
     ]);
-    const skincare = beauty?.children?.find((c) => c.href === "/skincare");
-    expect(skincare?.children?.map((c) => c.href)).toEqual([
-      "/ingredients",
-      "/skincare/picks",
-    ]);
-    const profile = beauty?.children?.find((c) => c.href === "/beauty-profile");
-    expect(profile?.children?.map((c) => c.href)).toEqual([
-      "/beauty-profile/skin",
-      "/beauty-profile/hair",
-    ]);
-    const seoul = NAV_ITEMS.find((i) => i.label === "A Local's Seoul");
-    expect(seoul?.children?.map((c) => c.href)).toEqual([
-      "/seoul/places",
-      "/seoul/neighborhoods",
-    ]);
-    // Individual neighborhoods nest one level under "Neighborhoods".
-    const hoods = seoul?.children?.find(
-      (c) => c.href === "/seoul/neighborhoods"
-    );
-    expect(hoods?.children?.map((c) => c.href)).toEqual([
-      "/seoul/neighborhoods/seongsu",
-      "/seoul/neighborhoods/hongdae",
-      "/seoul/neighborhoods/myeongdong",
-      "/seoul/neighborhoods/gangnam-cheongdam",
-      "/seoul/neighborhoods/hannam",
-    ]);
-    expect(NAV_ITEMS.find((i) => i.label === "Stories")?.children).toEqual([
-      { label: "All", href: "/stories" },
-      { label: "Beauty", href: "/stories?filter=beauty" },
-      { label: "Wellness", href: "/stories?filter=wellness" },
-      { label: "Seoul", href: "/stories?filter=seoul" },
-      { label: "Shopping", href: "/stories/shopping" },
-    ]);
-    // Home / About stay flat
+    expect(NAV_ITEMS[2].children?.at(-1)?.divider).toBe(true);
     expect(
-      NAV_ITEMS.find((i) => i.label === "About")?.children
-    ).toBeUndefined();
+      NAV_ITEMS.flatMap((i) => i.children ?? []).every(
+        (c) => !("children" in c)
+      )
+    ).toBe(true);
   });
-  it("explains the My Seoul Drop CTA", () => {
+  it("retains the companion planning CTA", () => {
     expect(NAV_CTA.eyebrow).toBe("Plan your Seoul");
     expect(NAV_CTA.label).toBe("My Seoul Drop");
   });

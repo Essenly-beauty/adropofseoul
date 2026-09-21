@@ -1,3 +1,4 @@
+import { sectionForPost, topicForPost } from "@/lib/editorial-taxonomy";
 import Link from "next/link";
 import { listAllPosts } from "@/services/admin/posts";
 
@@ -39,6 +40,7 @@ export default async function AdminPostsPage({
         <thead>
           <tr className="border-b border-soft-gray text-left text-text-muted">
             <th className="py-2">Title</th>
+            <th className="py-2">Editorial home</th>
             <th className="py-2">Status</th>
             <th className="py-2">Updated</th>
             <th className="py-2"></th>
@@ -48,6 +50,9 @@ export default async function AdminPostsPage({
           {posts.map((p) => (
             <tr key={p.id} className="border-b border-soft-gray/60">
               <td className="py-2">{p.title}</td>
+              <td className="py-2 text-text-muted">
+                {sectionForPost(p).label} / {topicForPost(p).label}
+              </td>
               <td className="py-2">{p.status}</td>
               <td className="py-2">{p.updatedAt?.slice(0, 10)}</td>
               <td className="py-2 text-right">

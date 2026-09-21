@@ -1,3 +1,6 @@
+import { ArticleKeywords } from "@/components/editorial/ArticleKeywords";
+import { articleBreadcrumbs, topicForPost } from "@/lib/editorial-taxonomy";
+import { Breadcrumbs } from "@/components/editorial/Breadcrumbs";
 import Link from "next/link";
 import { Prose } from "@/components/editorial/Prose";
 import { TonalFrame } from "@/components/editorial/TonalFrame";
@@ -15,18 +18,12 @@ export function PillarArticle({ pillar }: { pillar: Pillar }) {
   return (
     <main className="mx-auto max-w-3xl px-6 py-16">
       <JsonLd data={articleJsonLd(post)} />
-      <JsonLd
-        data={breadcrumbJsonLd([
-          { name: "Home", path: "/" },
-          { name: "A Local's Seoul", path: "/seoul" },
-          { name: "Neighborhoods", path: "/seoul/neighborhoods" },
-          { name: pillar.title, path: `/articles/${pillar.slug}` },
-        ])}
-      />
+      <JsonLd data={breadcrumbJsonLd(articleBreadcrumbs(post))} />
 
       <article>
+        <Breadcrumbs items={articleBreadcrumbs(post)} />
         <p className="text-xs uppercase tracking-widest text-accent">
-          {pillar.seriesLabel}
+          {topicForPost(post).label}
         </p>
         <h1 className="mt-2 font-serif text-4xl md:text-5xl">{pillar.title}</h1>
         <p className="mt-3 text-xl text-text-muted">{pillar.dek}</p>
@@ -83,6 +80,7 @@ export function PillarArticle({ pillar }: { pillar: Pillar }) {
             </ul>
           </nav>
         )}
+        <ArticleKeywords post={post} />
       </article>
     </main>
   );

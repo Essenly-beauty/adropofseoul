@@ -4,8 +4,6 @@ slug: "daiso-vs-olive-young-korea"
 subtitle: "They both sell K-beauty, but they are not the same shopping experience. If your time in Seoul is limited, here's what to buy where."
 excerpt: "Daiso is for discovery; Olive Young is for selection. Here's what to buy at each when your time in Seoul is limited."
 category: "shopping"
-series: "The Daiso Edit"
-series_number: "04"
 article_type: "editorial"
 tags: ["daiso vs olive young", "daiso korea beauty", "olive young korea", "k-beauty shopping seoul", "where to buy k-beauty in korea"]
 featured_image: "/images/articles/daiso-vs-olive-young-korea/hero.png"
@@ -208,7 +206,7 @@ Before crossing Seoul for a famous flagship, read our [local guide to Daiso Kore
 
 **→ Find a Daiso near you with My Seoul Drop**
 
-## Next in The Daiso Edit
+## More on Daiso
 
 → **Wait, Daiso Korea Sells Supplements Now?**\
 Yes. Here's why --- and what travelers should know before buying them.

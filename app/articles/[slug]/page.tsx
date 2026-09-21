@@ -1,9 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getPostBySlug, listPublishedPosts } from "@/services/posts";
+import { getPostBySlug } from "@/services/posts";
 import type { Post } from "@/services/types";
-import { sectionForCategory } from "@/lib/taxonomy";
+import {
+  sectionForPost,
+  topicForPost,
+  articleBreadcrumbs,
+} from "@/lib/editorial-taxonomy";
+import { listEditorialPosts } from "@/services/editorial";
+import { ArticleKeywords } from "@/components/editorial/ArticleKeywords";
 import { Prose } from "@/components/editorial/Prose";
 import { JsonLd } from "@/components/editorial/JsonLd";
 import { articleJsonLd, breadcrumbJsonLd, buildPageMetadata } from "@/lib/seo";
@@ -106,19 +112,12 @@ export default async function ArticlePage({
   const post = await getPostBySlug(params.slug);
   if (!post) notFound();
 
-  const section = sectionForCategory(post.category);
-  const crumbs = [
-    { name: "Home", path: "/" },
-    { name: section.label, path: section.href },
-    { name: post.title, path: `/articles/${post.slug}` },
-  ];
+  const section = sectionForPost(post);
+  const topic = topicForPost(post);
+  const crumbs = articleBreadcrumbs(post);
   let related: Post[] = [];
   try {
-    related = rankRelatedPosts(
-      post,
-      await listPublishedPosts({ limit: 48 }),
-      3
-    );
+    related = rankRelatedPosts(post, await listEditorialPosts(), 3);
   } catch (err) {
     console.error("article: related posts fetch failed", err);
   }
@@ -131,10 +130,10 @@ export default async function ArticlePage({
       <article>
         <Breadcrumbs items={crumbs} />
         <Link
-          href={section.href}
+          href={topic.href}
           className="text-xs uppercase tracking-widest text-accent transition-colors duration-medium ease-editorial hover:text-accent-hover"
         >
-          {section.label}
+          {section.label} · {topic.label}
         </Link>
         <h1 className="mt-2 font-serif text-4xl md:text-5xl">{post.title}</h1>
         {post.subtitle && (
@@ -188,7 +187,7 @@ export default async function ArticlePage({
                   <figcaption className="mt-2 text-center text-xs text-text-muted">
                     {imageMeta.caption}{" "}
                     <span className="whitespace-nowrap">
-                      Photo:{" "}
+                      Image:{" "}
                       <a
                         href={imageMeta.creditUrl}
                         target="_blank"
@@ -220,6 +219,7 @@ export default async function ArticlePage({
             <p className="text-text-muted">{post.excerpt}</p>
           )}
         </div>
+        <ArticleKeywords post={post} />
       </article>
       <RelatedArticles source={post} posts={related} />
     </main>

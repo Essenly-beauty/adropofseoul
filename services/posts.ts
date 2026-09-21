@@ -138,7 +138,12 @@ export function mapPostRow(row: PostRow): Post {
 }
 
 export async function listPublishedPosts(
-  opts: { limit?: number; category?: string; categories?: string[] } = {}
+  opts: {
+    limit?: number;
+    category?: string;
+    categories?: string[];
+    tag?: string;
+  } = {}
 ): Promise<Post[]> {
   const supabase = await createClient();
   let query = supabase
@@ -150,9 +155,30 @@ export async function listPublishedPosts(
   if (opts.category) query = query.eq("category", opts.category);
   if (opts.categories && opts.categories.length > 0)
     query = query.in("category", opts.categories);
+  if (opts.tag) query = query.contains("tags", [opts.tag]);
   const { data, error } = await query;
   if (error) throw error;
   return (data as PostRow[] | null)?.map(mapPostRow) ?? [];
+}
+
+// Archives must include every published row, including beyond the API page cap.
+export async function listAllPublishedPosts(): Promise<Post[]> {
+  const supabase = await createClient();
+  const posts: Post[] = [];
+  const pageSize = 500;
+  for (let offset = 0; ; offset += pageSize) {
+    const { data, error } = await supabase
+      .from("posts")
+      .select(COLUMNS)
+      .eq("status", "published")
+      .order("published_at", { ascending: false })
+      .order("id", { ascending: true })
+      .range(offset, offset + pageSize - 1);
+    if (error) throw error;
+    const page = (data ?? []) as PostRow[];
+    posts.push(...page.map(mapPostRow));
+    if (page.length < pageSize) return posts;
+  }
 }
 
 export const getPostBySlug = cache(

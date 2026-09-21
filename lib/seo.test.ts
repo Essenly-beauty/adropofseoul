@@ -53,6 +53,26 @@ describe("buildPageMetadata", () => {
 });
 
 describe("articleJsonLd", () => {
+  it("identifies the publication's editorial byline as an organization", () => {
+    const ld = articleJsonLd({
+      ...post,
+      author: "A Drop of Seoul Editorial",
+    }) as Record<string, unknown>;
+    expect(ld.author).toEqual({
+      "@type": "Organization",
+      name: "A Drop of Seoul Editorial",
+      url: expect.stringMatching(/\/about$/),
+    });
+  });
+
+  it("keeps an individual byline as a person", () => {
+    const ld = articleJsonLd({ ...post, author: "Jane Kim" }) as Record<
+      string,
+      unknown
+    >;
+    expect(ld.author).toEqual({ "@type": "Person", name: "Jane Kim" });
+  });
+
   it("builds an Article schema with headline + datePublished", () => {
     const ld = articleJsonLd(post) as Record<string, unknown>;
     expect(ld["@type"]).toBe("Article");

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { Post } from "@/services/types";
 import { getArticleImageMeta } from "@/lib/article-images";
-import { categoryLabel } from "@/lib/categories";
+import { topicForPost } from "@/lib/editorial-taxonomy";
 import { readingTime } from "@/lib/reading-time";
 import { TonalFrame } from "./TonalFrame";
 
@@ -13,21 +13,13 @@ export function ArticleCard({ post }: { post: Post }) {
       <TonalFrame
         src={post.featuredImage}
         alt={imageMeta?.alt ?? post.title}
-        label={
-          post.seriesLabel
-            ? `${post.seriesLabel}${post.seriesNumber ? ` · ${post.seriesNumber}` : ""}`
-            : categoryLabel(post.category)
-        }
+        label={topicForPost(post).label}
         ratio="aspect-[3/2]"
         sizes="(max-width: 768px) 100vw, 33vw"
         branded
       />
       <div className="mt-4 flex items-center gap-2.5 text-[11px] uppercase tracking-label text-text-muted">
-        <span>
-          {post.seriesLabel
-            ? `${post.seriesLabel}${post.seriesNumber ? ` · ${post.seriesNumber}` : ""}`
-            : categoryLabel(post.category)}
-        </span>
+        <span>{topicForPost(post).label}</span>
         {minutes && (
           <>
             <span className="h-[3px] w-[3px] rounded-full bg-text/40" />

@@ -4,8 +4,6 @@ slug: "daiso-korea-guide"
 subtitle: "From ₩1,000 K-beauty finds and tiny Korean souvenirs to the everyday things you suddenly need while traveling, here’s how to shop Daiso Korea like a local."
 excerpt: "From ₩1,000 K-beauty to everyday travel fixes, here’s what Daiso means in Korea — and how to shop it like a local."
 category: "shopping"
-series: "The Daiso Edit"
-series_number: "01"
 article_type: "pillar"
 tags: ["daiso korea", "daiso seoul", "shopping", "souvenirs", "k-beauty", "guide"]
 featured_image: null
@@ -30,7 +28,7 @@ Calling Daiso simply **“Korea’s dollar store”** misses the point. It remai
 
 Price is usually the first surprise. You’ll see the same numbers again and again: **₩1,000 / ₩2,000 / ₩3,000 / ₩5,000.** There are ₩500 beauty products, ₩1,000 makeup tools and full 200ml bottles of toner for ₩5,000. That makes filling a basket dangerously easy.
 
-But cheap and worth buying are not the same thing. Ten ₩1,000 items are still ten things you have to take home. Throughout The Daiso Edit, we use one simple rule: **cheap isn’t enough; it has to be worth the suitcase space.**
+But cheap and worth buying are not the same thing. Ten ₩1,000 items are still ten things you have to take home. When choosing Daiso finds, we use one simple rule: **cheap isn’t enough; it has to be worth the suitcase space.**
 
 ---
 

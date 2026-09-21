@@ -1,10 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { listPublishedPosts } from "@/services/posts";
+import { listEditorialPosts } from "@/services/editorial";
+import {
+  filterEditorialPosts,
+  topicForPost,
+  keywordsForPost,
+} from "@/lib/editorial-taxonomy";
+import { SectionTabs } from "@/components/editorial/SectionTabs";
 import { ArticleCard } from "@/components/editorial/ArticleCard";
 import { SectionHeading } from "@/components/editorial/SectionHeading";
 import { buildPageMetadata } from "@/lib/seo";
-import { HAIRCARE_CATEGORIES } from "@/lib/taxonomy";
+import { SKINCARE_TABS } from "@/lib/taxonomy";
 import { HAIR_PROFILES } from "@/lib/haircare/profiles";
 import type { Post } from "@/services/types";
 
@@ -20,10 +26,13 @@ export const dynamic = "force-dynamic";
 export default async function HaircarePage() {
   let posts: Post[] = [];
   try {
-    posts = await listPublishedPosts({
-      limit: 96,
-      categories: HAIRCARE_CATEGORIES,
-    });
+    posts = filterEditorialPosts(await listEditorialPosts(), {
+      section: "beauty",
+    }).filter(
+      (p) =>
+        topicForPost(p).key === "hair-scalp" ||
+        keywordsForPost(p).some((k) => k.key === "haircare")
+    );
   } catch (err) {
     console.error("haircare: posts fetch failed", err);
   }
@@ -47,6 +56,14 @@ export default async function HaircarePage() {
       >
         Discover My Hair Profile →
       </Link>
+
+      <div className="mt-8">
+        <SectionTabs
+          label="Beauty sections"
+          tabs={SKINCARE_TABS}
+          active="hair-scalp"
+        />
+      </div>
 
       {/* Start With Your Profile — the six profiles. */}
       <section className="mt-16">

@@ -29,8 +29,11 @@ declare global {
 
 export function ensureGtag(target: Window): NonNullable<Window["gtag"]> {
   target.dataLayer ||= [];
-  target.gtag ||= function gtag(...args: unknown[]) {
-    target.dataLayer.push(args);
+  target.gtag ||= function gtag() {
+    // Google dispatches Arguments objects as commands, not plain arrays.
+    // Keep this identical to the official bootstrap's queue format.
+    // eslint-disable-next-line prefer-rest-params
+    target.dataLayer.push(arguments);
   };
   return target.gtag;
 }

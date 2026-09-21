@@ -8,6 +8,24 @@ export type ArticleImageMeta = {
 };
 
 export const ARTICLE_IMAGE_META: Record<string, ArticleImageMeta> = {
+  "rumi-jinu-romance-korean-storytelling": {
+    alt: "Two hands reaching toward each other, fingertips almost touching, against a softly lit Seoul skyline at dusk.",
+    caption:
+      "An imagined almost-touching moment inspired by Rumi and Jinu’s restrained romance. AI-generated editorial illustration by A Drop of Seoul.",
+    creditName: "A Drop of Seoul",
+    creditUrl: "/about",
+    licenseName: "AI-generated editorial illustration",
+    licenseUrl: "/about",
+  },
+  "kpop-demon-hunters-gimbap-ramyeon": {
+    alt: "Sliced gimbap on an ivory plate beside a bowl of ramyeon with egg and green onion",
+    caption:
+      "A roll of gimbap and a bowl of ramyeon: an everyday Korean lunch. AI-generated editorial illustration.",
+    creditName: "A Drop of Seoul",
+    creditUrl: "/about",
+    licenseName: "AI-generated editorial illustration",
+    licenseUrl: "/about",
+  },
   "the-2000-won-coffee-that-powers-seoul": {
     alt: "Mega Coffee, Compose Coffee, Paik’s Coffee, theVenti and Mammoth Coffee packed side by side in one imagined Seoul building",
     caption:

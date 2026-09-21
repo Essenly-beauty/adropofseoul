@@ -4,8 +4,6 @@ slug: "daiso-korea-beauty"
 subtitle: "From Amorepacific to LG H&H, major Korean beauty companies are building products for Daiso. Here’s why ₩5,000 K-beauty suddenly makes a lot more sense."
 excerpt: "Major Korean beauty companies are building products for Daiso. Here’s why ₩5,000 K-beauty has become a serious discovery channel."
 category: "shopping"
-series: "The Daiso Edit"
-series_number: "03"
 article_type: "editorial"
 tags: ["daiso korea beauty", "daiso skincare", "daiso korea cosmetics", "daiso beauty products", "korean daiso beauty"]
 featured_image: "/images/articles/daiso-korea-beauty/hero.png"
@@ -163,7 +161,7 @@ That may be the most interesting thing Daiso is changing about K-beauty shopping
 
 ---
 
-## Next in The Daiso Edit
+## More on Daiso
 
 **We Tried Daiso Beauty: What’s Actually Worth Buying?**
 

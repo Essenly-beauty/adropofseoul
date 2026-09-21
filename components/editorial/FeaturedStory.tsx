@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Post } from "@/services/types";
-import { categoryLabel } from "@/lib/categories";
+import { topicForPost } from "@/lib/editorial-taxonomy";
 import { readingTime } from "@/lib/reading-time";
 import { TonalFrame } from "./TonalFrame";
 
@@ -17,7 +17,7 @@ export function FeaturedStory({ post }: { post: Post }) {
         <TonalFrame
           src={post.featuredImage}
           alt={post.title}
-          label={categoryLabel(post.category)}
+          label={topicForPost(post).label}
           ratio="aspect-[5/6]"
           sizes="(max-width: 768px) 100vw, 55vw"
           priority
@@ -27,7 +27,7 @@ export function FeaturedStory({ post }: { post: Post }) {
       <div>
         <div className="mb-4 flex items-center gap-3.5">
           <span className="rounded-full border border-soft-gray px-3 py-1.5 text-[11px] uppercase tracking-label">
-            {categoryLabel(post.category)}
+            {topicForPost(post).label}
           </span>
           {minutes && (
             <span className="text-[11px] uppercase tracking-label text-text-muted">

@@ -16,6 +16,14 @@ const nextConfig = {
   // section roots move, so every legacy section URL 301s to its new home.
   async redirects() {
     return [
+      // The old public host must consolidate to the editorial domain. Preview
+      // deployment hosts are intentionally not matched by this exact rule.
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "adropofseoul.vercel.app" }],
+        destination: "https://adropofseoul.com/:path*",
+        permanent: true,
+      },
       // Legacy Beauty children → current subsection routes. /beauty itself is
       // now the umbrella landing and must not redirect.
       { source: "/beauty/skincare", destination: "/skincare", permanent: true },

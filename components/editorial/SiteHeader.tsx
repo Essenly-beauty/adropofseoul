@@ -2,13 +2,13 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { NAV_ITEMS, NAV_CTA } from "@/lib/nav";
+import { NAV_ITEMS, NAV_SECONDARY, NAV_CTA } from "@/lib/nav";
 import { SITE_NAME } from "@/lib/site";
 import { MySeoulDropLink } from "./MySeoulDropLink";
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
-  const items = NAV_ITEMS.filter((i) => i.label !== "Home");
+  const items = NAV_ITEMS;
 
   return (
     <header className="sticky top-0 z-40 border-b border-soft-gray bg-bg/80 backdrop-blur supports-[backdrop-filter]:bg-bg/60">
@@ -19,8 +19,7 @@ export function SiteHeader() {
         >
           {SITE_NAME}
         </Link>
-        {/* "A Local's Seoul" is long for a nav row: keep every label on one
-            line and tighten the gap until there's room for the wide spacing. */}
+
         <nav
           aria-label="Primary"
           className="hidden items-center gap-4 whitespace-nowrap lg:flex xl:gap-7"
@@ -46,27 +45,20 @@ export function SiteHeader() {
                 <div className="invisible absolute left-1/2 top-full z-50 -translate-x-1/2 pt-4 opacity-0 transition-all duration-fast ease-editorial group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
                   <ul className="min-w-[180px] rounded-md border border-soft-gray bg-bg px-1.5 py-2 shadow-sm">
                     {item.children.map((child) => (
-                      <li key={child.href}>
+                      <li
+                        key={child.href}
+                        className={
+                          child.divider
+                            ? "mt-2 border-t border-soft-gray pt-2"
+                            : undefined
+                        }
+                      >
                         <Link
                           href={child.href}
                           className="block rounded-sm px-3 py-2 text-xs uppercase tracking-label text-text-muted transition-colors duration-medium ease-editorial hover:bg-porcelain hover:text-text"
                         >
                           {child.label}
                         </Link>
-                        {child.children && (
-                          <ul className="mb-1 ml-3 border-l border-soft-gray pl-2">
-                            {child.children.map((grand) => (
-                              <li key={grand.href}>
-                                <Link
-                                  href={grand.href}
-                                  className="block rounded-sm px-3 py-1.5 text-[11px] uppercase tracking-label text-text-muted/90 transition-colors duration-medium ease-editorial hover:bg-porcelain hover:text-text"
-                                >
-                                  {grand.label}
-                                </Link>
-                              </li>
-                            ))}
-                          </ul>
-                        )}
                       </li>
                     ))}
                   </ul>
@@ -74,6 +66,17 @@ export function SiteHeader() {
               )}
             </div>
           ))}
+          <div className="flex items-center gap-4 border-l border-soft-gray pl-4">
+            {NAV_SECONDARY.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="text-xs text-text-muted hover:text-text"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </div>
           <MySeoulDropLink
             source="site_header"
             ariaLabel="Plan your Seoul with My Seoul Drop (opens in a new tab)"
@@ -131,7 +134,14 @@ export function SiteHeader() {
                   // Sub-categories visible up front — no extra tap needed.
                   <ul className="mb-2 flex flex-col border-l border-soft-gray pl-4">
                     {item.children.map((child) => (
-                      <li key={child.href}>
+                      <li
+                        key={child.href}
+                        className={
+                          child.divider
+                            ? "mt-2 border-t border-soft-gray pt-2"
+                            : undefined
+                        }
+                      >
                         <Link
                           href={child.href}
                           onClick={() => setOpen(false)}
@@ -139,27 +149,24 @@ export function SiteHeader() {
                         >
                           {child.label}
                         </Link>
-                        {child.children && (
-                          <ul className="flex flex-col border-l border-soft-gray pl-4">
-                            {child.children.map((grand) => (
-                              <li key={grand.href}>
-                                <Link
-                                  href={grand.href}
-                                  onClick={() => setOpen(false)}
-                                  className="block py-1.5 text-[11px] uppercase tracking-label text-text-muted/90 transition-colors duration-medium ease-editorial hover:text-accent"
-                                >
-                                  {grand.label}
-                                </Link>
-                              </li>
-                            ))}
-                          </ul>
-                        )}
                       </li>
                     ))}
                   </ul>
                 )}
               </li>
             ))}
+            <li className="mt-3 flex gap-6 border-t border-soft-gray pt-4">
+              {NAV_SECONDARY.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setOpen(false)}
+                  className="text-sm text-text-muted hover:text-accent"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </li>
           </ul>
         </nav>
       )}

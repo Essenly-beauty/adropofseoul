@@ -4,11 +4,11 @@
 // preserving the legacy DB category values.
 const CATEGORY_LABELS: Record<string, string> = {
   beauty: "Skincare",
-  hair: "Haircare",
-  head_spa: "Wellness",
-  wellness: "Wellness",
-  guides: "A Local's Seoul",
-  places: "A Local's Seoul",
+  hair: "Hair & Scalp",
+  head_spa: "Hair & Scalp",
+  wellness: "Everyday Life",
+  guides: "Places",
+  places: "Places",
   products: "Picks",
   shopping: "Shopping",
 };

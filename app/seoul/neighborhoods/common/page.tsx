@@ -4,8 +4,8 @@ import { SectionTabs } from "@/components/editorial/SectionTabs";
 import { NEIGHBORHOOD_TABS } from "@/lib/seoul-tabs";
 import { ArticleCard } from "@/components/editorial/ArticleCard";
 import { canonical } from "@/lib/seo";
-import { listPublishedPosts } from "@/services/posts";
-import { listPillarPosts } from "@/lib/articles/assets";
+import { listEditorialPosts } from "@/services/editorial";
+import { filterEditorialPosts } from "@/lib/editorial-taxonomy";
 import { regionForGuide } from "@/lib/taxonomy";
 import type { Post } from "@/services/types";
 
@@ -23,16 +23,18 @@ export default async function AroundSeoulCommonPage() {
   // guides posts explicitly tagged region:common.
   let dbPosts: Post[] = [];
   try {
-    const guides = await listPublishedPosts({ limit: 96, category: "guides" });
+    const guides = filterEditorialPosts(await listEditorialPosts(), {
+      section: "places",
+    });
     dbPosts = guides.filter((p) => regionForGuide(p) === "common");
   } catch (err) {
     console.error("around-seoul/common: fetch failed", err);
   }
-  const posts: Post[] = [...listPillarPosts({ region: "common" }), ...dbPosts];
+  const posts = dbPosts;
 
   return (
     <main className="mx-auto max-w-content px-6 py-16">
-      <SectionHeading title="Neighborhoods" eyebrow="A Local's Seoul" />
+      <SectionHeading title="Neighborhoods" eyebrow="Places" as="h1" />
       <SectionTabs
         label="Neighborhood sections"
         tabs={NEIGHBORHOOD_TABS}

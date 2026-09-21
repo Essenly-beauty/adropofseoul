@@ -12,9 +12,9 @@ describe("SiteHeader", () => {
     render(<SiteHeader />);
     for (const [label, href] of [
       ["Beauty", "/beauty"],
-      ["Wellness", "/wellness"],
-      ["A Local's Seoul", "/seoul"],
-      ["Stories", "/stories"],
+      ["Seoul, Explained", "/seoul-explained"],
+      ["Places", "/seoul"],
+      ["All Stories", "/stories"],
       ["About", "/about"],
     ]) {
       expect(
@@ -48,10 +48,10 @@ describe("SiteHeader", () => {
     const hrefs = Array.from(primary.querySelectorAll("a")).map((a) =>
       a.getAttribute("href")
     );
-    expect(hrefs).toContain("/beauty-profile/hair");
-    expect(hrefs).toContain("/beauty-profile/skin");
+    expect(hrefs).toContain("/beauty/the-edit");
+    expect(hrefs).toContain("/beauty-profile");
     expect(hrefs).toContain("/ingredients");
-    expect(hrefs).toContain("/seoul/neighborhoods/seongsu");
+    expect(hrefs).not.toContain("/seoul/neighborhoods/seongsu");
   });
   it("lists sub-categories up front in the toggled mobile menu", () => {
     render(<SiteHeader />);
@@ -60,8 +60,8 @@ describe("SiteHeader", () => {
     const hrefs = Array.from(mobile.querySelectorAll("a")).map((a) =>
       a.getAttribute("href")
     );
-    expect(hrefs).toContain("/beauty-profile/hair");
-    expect(hrefs).toContain("/beauty-profile/skin");
+    expect(hrefs).toContain("/beauty/the-edit");
+    expect(hrefs).toContain("/beauty-profile");
     expect(hrefs).toContain("/ingredients");
     expect(hrefs).toContain("/seoul/places");
     expect(hrefs).toContain("/seoul/neighborhoods");

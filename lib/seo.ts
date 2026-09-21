@@ -71,6 +71,8 @@ export function buildPageMetadata({
 
 export function articleJsonLd(post: Post): object {
   const articleUrl = canonical(`/articles/${post.slug}`);
+  const isEditorialTeam =
+    post.author === SITE_NAME || post.author === `${SITE_NAME} Editorial`;
   return {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -80,7 +82,15 @@ export function articleJsonLd(post: Post): object {
     // Falls back to the publish date so the field is never absent: an article
     // that has not been edited was last modified when it went up.
     dateModified: post.updatedAt ?? post.publishedAt ?? undefined,
-    author: post.author ? { "@type": "Person", name: post.author } : undefined,
+    author: post.author
+      ? isEditorialTeam
+        ? {
+            "@type": "Organization",
+            name: post.author,
+            url: canonical("/about"),
+          }
+        : { "@type": "Person", name: post.author }
+      : undefined,
     image: absoluteImageUrl(post.featuredImage),
     publisher: {
       "@type": "Organization",

@@ -6,6 +6,7 @@ import { MySeoulDropLink } from "./MySeoulDropLink";
 const EXPLORE = SECTIONS.map((s) => ({ label: s.label, href: s.href }));
 
 const MORE = [
+  { label: "All Stories", href: "/stories" },
   { label: "My Beauty Profile", href: "/beauty-profile" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },

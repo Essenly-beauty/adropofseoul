@@ -5,8 +5,8 @@ import { BeautyProfileEntryCard } from "@/components/editorial/BeautyProfileEntr
 import { SectionHeading } from "@/components/editorial/SectionHeading";
 import { BEAUTY_PROFILE_DOMAINS } from "@/lib/beauty-profile/domains";
 import { buildPageMetadata } from "@/lib/seo";
-import { HAIRCARE_CATEGORIES, SKINCARE_CATEGORIES } from "@/lib/taxonomy";
-import { listPublishedPosts } from "@/services/posts";
+import { filterEditorialPosts } from "@/lib/editorial-taxonomy";
+import { listEditorialPosts } from "@/services/editorial";
 import type { Post } from "@/services/types";
 
 export const metadata: Metadata = buildPageMetadata({
@@ -20,6 +20,22 @@ export const dynamic = "force-dynamic";
 
 const PATHS = [
   {
+    eyebrow: "The journal",
+    title: "The Edit",
+    description:
+      "All our beauty stories — ideas, trends, routines, and the people behind them.",
+    href: "/beauty/the-edit",
+    links: [],
+  },
+  {
+    eyebrow: "Our selection",
+    title: "Picks",
+    description:
+      "Considered skincare and hair products, with reviews and comparisons to help you choose.",
+    href: "/skincare/picks",
+    links: [],
+  },
+  {
     eyebrow: "Skin",
     title: "Skincare",
     description:
@@ -27,7 +43,7 @@ const PATHS = [
     href: "/skincare",
     links: [
       { label: "Ingredients", href: "/ingredients" },
-      { label: "Skincare Picks", href: "/skincare/picks" },
+      { label: "Picks", href: "/skincare/picks" },
     ],
   },
   {
@@ -43,10 +59,9 @@ const PATHS = [
 export default async function BeautyPage() {
   let posts: Post[] = [];
   try {
-    posts = await listPublishedPosts({
-      limit: 6,
-      categories: [...SKINCARE_CATEGORIES, ...HAIRCARE_CATEGORIES],
-    });
+    posts = filterEditorialPosts(await listEditorialPosts(), {
+      section: "beauty",
+    }).slice(0, 6);
   } catch (err) {
     console.error("beauty: posts fetch failed", err);
   }
@@ -54,7 +69,7 @@ export default async function BeautyPage() {
   return (
     <main>
       <section className="mx-auto max-w-content px-6 py-16 md:py-24">
-        <SectionHeading title="Beauty" eyebrow="Where to begin" />
+        <SectionHeading title="Beauty" eyebrow="Where to begin" as="h1" />
         <p className="-mt-2 max-w-2xl text-lg text-text-muted">
           Skin, hair, and scalp belong to one conversation. Choose what you want
           to understand, or start with a profile if you are not sure yet.
@@ -117,7 +132,7 @@ export default async function BeautyPage() {
           <SectionHeading
             title="Latest in Beauty"
             eyebrow="From the journal"
-            href="/stories?filter=beauty"
+            href="/beauty/the-edit"
           />
           <div className="grid gap-8 md:grid-cols-3">
             {posts.map((post) => (

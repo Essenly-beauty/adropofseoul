@@ -24,8 +24,8 @@ describe("ArticleCard", () => {
     render(<ArticleCard post={post} />);
     const link = screen.getByRole("link", { name: /Seoul Head Spa Ritual/ });
     expect(link.getAttribute("href")).toBe("/articles/seoul-head-spa-ritual");
-    // head-spa articles surface under the Wellness label in the new IA.
-    expect(screen.getAllByText("Wellness").length).toBeGreaterThan(0);
+    // head-spa articles surface under the Hair & Scalp label in the new IA.
+    expect(screen.getAllByText("Hair & Scalp").length).toBeGreaterThan(0);
     expect(screen.getByText(/slow world of scalp care/)).toBeTruthy();
   });
 });

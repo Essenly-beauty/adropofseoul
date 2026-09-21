@@ -90,22 +90,23 @@ describe("place types", () => {
 });
 
 describe("sections", () => {
-  it("exposes the four content sections in order", () => {
+  it("exposes the three primary content sections in order", () => {
     expect(SECTIONS.map((s) => s.slug)).toEqual([
+      "explained",
+      "places",
       "beauty",
-      "wellness",
-      "seoul",
-      "stories",
     ]);
   });
   it("brands the Seoul section as A Local's Seoul without moving its route", () => {
-    const seoul = SECTIONS.find((s) => s.slug === "seoul");
-    expect(seoul?.label).toBe("A Local's Seoul");
+    const seoul = SECTIONS.find((s) => s.slug === "places");
+    expect(seoul?.label).toBe("Places");
     expect(seoul?.href).toBe("/seoul");
   });
   it("has the skincare tabs including Ingredients and Picks", () => {
     expect(SKINCARE_TABS.map((t) => t.key)).toEqual([
+      "edit",
       "skincare",
+      "hair-scalp",
       "ingredients",
       "picks",
     ]);
@@ -123,13 +124,13 @@ describe("sectionForCategory", () => {
     expect(sectionForCategory("beauty").href).toBe("/beauty");
     expect(sectionForCategory("hair").href).toBe("/beauty");
     expect(sectionForCategory("head_spa").href).toBe("/beauty");
-    expect(sectionForCategory("wellness").href).toBe("/wellness");
+    expect(sectionForCategory("wellness").href).toBe("/seoul-explained");
     expect(sectionForCategory("places").href).toBe("/seoul");
     expect(sectionForCategory("guides").href).toBe("/seoul");
   });
   it("labels the Seoul section with its editorial branding", () => {
-    expect(sectionForCategory("places").label).toBe("A Local's Seoul");
-    expect(sectionForCategory("places").slug).toBe("seoul");
+    expect(sectionForCategory("places").label).toBe("Places");
+    expect(sectionForCategory("places").slug).toBe("places");
   });
 });
 
@@ -143,6 +144,7 @@ describe("post taxonomy", () => {
       "wellness",
       "products",
       "guides",
+      "shopping",
     ]);
   });
   it("lists the post_status enum values", () => {

@@ -1,3 +1,6 @@
+import { listEditorialPosts } from "@/services/editorial";
+import { filterEditorialPosts } from "@/lib/editorial-taxonomy";
+import { ArticleCard } from "@/components/editorial/ArticleCard";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SectionHeading } from "@/components/editorial/SectionHeading";
@@ -5,13 +8,15 @@ import { buildPageMetadata } from "@/lib/seo";
 import { SEOUL_NEIGHBORHOODS, PLACE_TYPE_EMOJI } from "@/lib/taxonomy";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "A Local's Seoul | Local Guide to Seoul",
+  title: "Places | A Local’s Seoul",
   description:
     "Discover Seoul like a local — neighborhoods, beauty spots, shops, cafés, and places we'd genuinely recommend to a friend visiting Seoul.",
   path: "/seoul",
 });
 
 const PLACE_TYPES = [
+  { type: "cafe", label: "Cafés", cat: "cafe" },
+  { type: "shop", label: "Shops", cat: "shop" },
   { type: "head-spa", label: "Head Spas", cat: "head_spa" },
   { type: "salon", label: "Salons", cat: "salon" },
   { type: "clinic", label: "Skin Clinics", cat: "clinic" },
@@ -23,10 +28,15 @@ const PLACE_TYPES = [
   { type: "mall", label: "Shopping Malls", cat: "mall" },
 ];
 
-export default function SeoulPage() {
+export const dynamic = "force-dynamic";
+
+export default async function SeoulPage() {
+  const posts = filterEditorialPosts(await listEditorialPosts(), {
+    section: "places",
+  });
   return (
     <main className="mx-auto max-w-content px-6 py-16">
-      <SectionHeading title="A Local's Seoul" eyebrow="The City" as="h1" />
+      <SectionHeading title="Places" eyebrow="A Local’s Seoul" as="h1" />
       <p className="-mt-2 mb-10 max-w-2xl text-text-muted">
         The places, neighborhoods, and little things we&apos;d share with a
         friend visiting Seoul.
@@ -94,6 +104,20 @@ export default function SeoulPage() {
           ))}
         </div>
       </section>
+      {posts.length > 0 && (
+        <section className="mt-16">
+          <SectionHeading
+            title="Places, walks & local guides"
+            eyebrow="From the journal"
+            href="/stories?filter=places"
+          />
+          <div className="grid gap-8 md:grid-cols-3">
+            {posts.map((post) => (
+              <ArticleCard key={post.slug} post={post} />
+            ))}
+          </div>
+        </section>
+      )}
     </main>
   );
 }

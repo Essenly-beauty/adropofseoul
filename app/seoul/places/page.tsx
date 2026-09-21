@@ -75,7 +75,7 @@ export default async function PlacesPage({
 
   return (
     <main className="mx-auto max-w-content px-6 py-16">
-      <SectionHeading title="Places" eyebrow="A Local's Seoul" as="h1" />
+      <SectionHeading title="Places" eyebrow="Places" as="h1" />
       <div className="-mt-2 mb-8 max-w-2xl">
         <p className="text-text-muted">
           Specific spots, ready to book — by service and neighborhood.

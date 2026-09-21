@@ -1,3 +1,8 @@
+import {
+  keywordsForPost,
+  topicForPost,
+  sectionForPost,
+} from "@/lib/editorial-taxonomy";
 import type { Post } from "@/services/types";
 
 export function rankRelatedPosts(
@@ -5,15 +10,15 @@ export function rankRelatedPosts(
   candidates: Post[],
   limit = 3
 ): Post[] {
-  const currentTags = new Set(current.tags.map((tag) => tag.toLowerCase()));
+  const currentTags = new Set(keywordsForPost(current).map((k) => k.key));
   return candidates
     .filter((post) => post.slug !== current.slug)
     .map((post) => ({
       post,
       score:
-        (post.category === current.category ? 10 : 0) +
-        post.tags.filter((tag) => currentTags.has(tag.toLowerCase())).length *
-          3,
+        (topicForPost(post).key === topicForPost(current).key ? 4 : 0) +
+        (sectionForPost(post).slug === sectionForPost(current).slug ? 1 : 0) +
+        keywordsForPost(post).filter((k) => currentTags.has(k.key)).length * 8,
     }))
     .sort(
       (a, b) =>

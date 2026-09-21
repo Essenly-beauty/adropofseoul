@@ -1,0 +1,2535 @@
+{
+  "checkedAt": "2026-09-21T01:03:35.978Z",
+  "completedAt": "2026-09-21T01:14:25.975Z",
+  "productionArticles": 81,
+  "newArticles": 81,
+  "cmsArticles": 75,
+  "codeArticles": 7,
+  "missingArticles": [],
+  "archivePages": [
+    {
+      "page": 1,
+      "status": 200,
+      "cards": 24
+    },
+    {
+      "page": 2,
+      "status": 200,
+      "cards": 24
+    },
+    {
+      "page": 3,
+      "status": 200,
+      "cards": 24
+    },
+    {
+      "page": 4,
+      "status": 200,
+      "cards": 9
+    }
+  ],
+  "archiveIssues": {
+    "missing": [],
+    "duplicates": [],
+    "withoutImage": []
+  },
+  "articlesWithoutThumbnail": [],
+  "missingLocalImageFiles": [],
+  "uniqueThumbnailFiles": 75,
+  "changedThumbnailFiles": [],
+  "bodyDifferences": [
+    {
+      "slug": "daiso-vs-olive-young-korea",
+      "productionStatus": 200,
+      "newStatus": 200,
+      "productionCharacters": 10291,
+      "newCharacters": 10282,
+      "identical": false,
+      "productionHash": "1d6dcf4d5ec14ad5cf60299e93e6b5f06d66f736219ca102e39ee0cb81084b4d",
+      "newHash": "455181904736eaab97c3c132eb16b798aea2a07c1b0a8796de1e46c8484b0f6b",
+      "reviewedChange": {
+        "before": "Next in The Daiso Edit",
+        "after": "More on Daiso",
+        "otherProseUnchanged": true
+      }
+    },
+    {
+      "slug": "daiso-korea-beauty",
+      "productionStatus": 200,
+      "newStatus": 200,
+      "productionCharacters": 10037,
+      "newCharacters": 10028,
+      "identical": false,
+      "productionHash": "a33c39479450554ff46eaeb34791357807597bf72bafaa5dab430bf9b5f6d589",
+      "newHash": "97c1d2a86692cf6271f140f92c7c146bfba3bbc9bd95323b70975ac9369318a4",
+      "reviewedChange": {
+        "before": "Next in The Daiso Edit",
+        "after": "More on Daiso",
+        "otherProseUnchanged": true
+      }
+    },
+    {
+      "slug": "daiso-korea-must-buys",
+      "productionStatus": 200,
+      "newStatus": 200,
+      "productionCharacters": 16789,
+      "newCharacters": 16784,
+      "identical": false,
+      "productionHash": "9ab69a589d4eea92c2e905c0f4781dbd9c96fed6af8aa42d51e6847829287e11",
+      "newHash": "c7ec1f996b29471b99eb940771dd0bceed96d7352ac0a513de99de981af4e00e",
+      "reviewedChange": {
+        "before": "How to read The Daiso Edit",
+        "after": "How to use this guide",
+        "otherProseUnchanged": true
+      }
+    },
+    {
+      "slug": "daiso-korea-guide",
+      "productionStatus": 200,
+      "newStatus": 200,
+      "productionCharacters": 10561,
+      "newCharacters": 10561,
+      "identical": false,
+      "productionHash": "2d05ddad7b34e9291db3f707cff4dcb40b6e188e91134d4a5178eadcaf97a050",
+      "newHash": "da3454b3df8914b5a3358d56d6f6f1ea3e13d9bc254e93368f64528d531fc4bb",
+      "reviewedChange": {
+        "before": "Throughout The Daiso Edit, we use one simple rule:",
+        "after": "When choosing Daiso finds, we use one simple rule:",
+        "otherProseUnchanged": true
+      }
+    }
+  ],
+  "articles": [
+    {
+      "slug": "rumi-jinu-romance-korean-storytelling",
+      "title": "Why Rumi and Jinu Don’t Kiss in KPop Demon Hunters",
+      "section": "explained",
+      "topic": "everyday-life",
+      "image": "/images/articles/rumi-jinu-romance-korean-storytelling/hero.jpg",
+      "status": 200,
+      "h1": "Why Rumi and Jinu Don’t Kiss in KPop Demon Hunters",
+      "displayedHero": "/images/articles/rumi-jinu-romance-korean-storytelling/hero.jpg",
+      "cardImage": "/images/articles/rumi-jinu-romance-korean-storytelling/hero.jpg",
+      "liveImage": "/images/articles/rumi-jinu-romance-korean-storytelling/hero.jpg",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "ccac52eee616669bdfc6030d4a581a81511c490b5668b5bfdddae6f2e6c4a8be",
+      "productionImageHash": "ccac52eee616669bdfc6030d4a581a81511c490b5668b5bfdddae6f2e6c4a8be",
+      "imageDimensions": {
+        "width": 1200,
+        "height": 630
+      },
+      "body": {
+        "slug": "rumi-jinu-romance-korean-storytelling",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 6461,
+        "newCharacters": 6461,
+        "identical": true,
+        "productionHash": "3621a283080136e0ff7cf6ae41da674c0a1c76172e8707294cd79f9be12f5ddd",
+        "newHash": "3621a283080136e0ff7cf6ae41da674c0a1c76172e8707294cd79f9be12f5ddd"
+      }
+    },
+    {
+      "slug": "kpop-demon-hunters-gimbap-ramyeon",
+      "title": "A Roll of Gimbap, a Bowl of Ramyeon, and a Moment Offstage",
+      "section": "explained",
+      "topic": "food-drink",
+      "image": "https://yisdsaetxgrboqlirvgb.supabase.co/storage/v1/object/public/media/articles/kpop-demon-hunters-gimbap-ramyeon/hero.jpg",
+      "status": 200,
+      "h1": "A Roll of Gimbap, a Bowl of Ramyeon, and a Moment Offstage",
+      "displayedHero": "https://yisdsaetxgrboqlirvgb.supabase.co/storage/v1/object/public/media/articles/kpop-demon-hunters-gimbap-ramyeon/hero.jpg",
+      "cardImage": "https://yisdsaetxgrboqlirvgb.supabase.co/storage/v1/object/public/media/articles/kpop-demon-hunters-gimbap-ramyeon/hero.jpg",
+      "liveImage": "https://yisdsaetxgrboqlirvgb.supabase.co/storage/v1/object/public/media/articles/kpop-demon-hunters-gimbap-ramyeon/hero.jpg",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "ba07a91c7dab94226903f466b11933c000d4b9a9a2cb64c9bf92b2dd0e5dda88",
+      "productionImageHash": "ba07a91c7dab94226903f466b11933c000d4b9a9a2cb64c9bf92b2dd0e5dda88",
+      "imageDimensions": {
+        "width": 1200,
+        "height": 630
+      },
+      "body": {
+        "slug": "kpop-demon-hunters-gimbap-ramyeon",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 5128,
+        "newCharacters": 5128,
+        "identical": true,
+        "productionHash": "89e78225cb87ed1b2a816fb65e865fb3eeb60a420a7a8acf555025e9119b006c",
+        "newHash": "89e78225cb87ed1b2a816fb65e865fb3eeb60a420a7a8acf555025e9119b006c"
+      }
+    },
+    {
+      "slug": "the-2000-won-coffee-that-powers-seoul",
+      "title": "The ₩2,000 Coffee That Powers Seoul",
+      "section": "explained",
+      "topic": "food-drink",
+      "image": "https://yisdsaetxgrboqlirvgb.supabase.co/storage/v1/object/public/media/articles/the-2000-won-coffee-that-powers-seoul/hero-v4.jpg",
+      "status": 200,
+      "h1": "The ₩2,000 Coffee That Powers Seoul",
+      "displayedHero": "https://yisdsaetxgrboqlirvgb.supabase.co/storage/v1/object/public/media/articles/the-2000-won-coffee-that-powers-seoul/hero-v4.jpg",
+      "cardImage": "https://yisdsaetxgrboqlirvgb.supabase.co/storage/v1/object/public/media/articles/the-2000-won-coffee-that-powers-seoul/hero-v4.jpg",
+      "liveImage": "https://yisdsaetxgrboqlirvgb.supabase.co/storage/v1/object/public/media/articles/the-2000-won-coffee-that-powers-seoul/hero-v4.jpg",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "dd75b5b80347d01a54a24fc11040a0a4f11708956670db8bba0db27096999cfd",
+      "productionImageHash": "dd75b5b80347d01a54a24fc11040a0a4f11708956670db8bba0db27096999cfd",
+      "imageDimensions": {
+        "width": 1584,
+        "height": 993
+      },
+      "body": {
+        "slug": "the-2000-won-coffee-that-powers-seoul",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 10690,
+        "newCharacters": 10690,
+        "identical": true,
+        "productionHash": "b97aedd2b2d622ec7a0b8834395bc65423e7bac6cc33571c4e80d35f2f20fa03",
+        "newHash": "b97aedd2b2d622ec7a0b8834395bc65423e7bac6cc33571c4e80d35f2f20fa03"
+      }
+    },
+    {
+      "slug": "daiso-vs-olive-young-korea",
+      "title": "Daiso vs Olive Young: Where Should You Buy K-Beauty?",
+      "section": "explained",
+      "topic": "shopping",
+      "image": "/images/articles/daiso-vs-olive-young-korea/hero.png",
+      "status": 200,
+      "h1": "Daiso vs Olive Young: Where Should You Buy K-Beauty?",
+      "displayedHero": "/images/articles/daiso-vs-olive-young-korea/hero.png",
+      "cardImage": "/images/articles/daiso-vs-olive-young-korea/hero.png",
+      "liveImage": "/images/articles/daiso-vs-olive-young-korea/hero.png",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "a782072d61a1dffa34d60a1d7ba6a0383c4b948514f1b4001538edf410648738",
+      "productionImageHash": "a782072d61a1dffa34d60a1d7ba6a0383c4b948514f1b4001538edf410648738",
+      "imageDimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "body": {
+        "slug": "daiso-vs-olive-young-korea",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 10291,
+        "newCharacters": 10282,
+        "identical": false,
+        "productionHash": "1d6dcf4d5ec14ad5cf60299e93e6b5f06d66f736219ca102e39ee0cb81084b4d",
+        "newHash": "455181904736eaab97c3c132eb16b798aea2a07c1b0a8796de1e46c8484b0f6b"
+      }
+    },
+    {
+      "slug": "daiso-korea-beauty",
+      "title": "Daiso Beauty Is Actually Good Now — Here’s Why",
+      "section": "beauty",
+      "topic": "edit",
+      "image": "/images/articles/daiso-korea-beauty/hero.png",
+      "status": 200,
+      "h1": "Daiso Beauty Is Actually Good Now — Here’s Why",
+      "displayedHero": "/images/articles/daiso-korea-beauty/hero.png",
+      "cardImage": "/images/articles/daiso-korea-beauty/hero.png",
+      "liveImage": "/images/articles/daiso-korea-beauty/hero.png",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "0557ed30e7ff432305e44a7174a35ca78437c87b088dc7db9c6ee7bebd5c5c25",
+      "productionImageHash": "0557ed30e7ff432305e44a7174a35ca78437c87b088dc7db9c6ee7bebd5c5c25",
+      "imageDimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "body": {
+        "slug": "daiso-korea-beauty",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 10037,
+        "newCharacters": 10028,
+        "identical": false,
+        "productionHash": "a33c39479450554ff46eaeb34791357807597bf72bafaa5dab430bf9b5f6d589",
+        "newHash": "97c1d2a86692cf6271f140f92c7c146bfba3bbc9bd95323b70975ac9369318a4"
+      }
+    },
+    {
+      "slug": "daiso-korea-must-buys",
+      "title": "20 Things Actually Worth Buying at Daiso Korea",
+      "section": "explained",
+      "topic": "shopping",
+      "image": "/images/articles/daiso-korea-must-buys/hero.png",
+      "status": 200,
+      "h1": "20 Things Actually Worth Buying at Daiso Korea",
+      "displayedHero": "/images/articles/daiso-korea-must-buys/hero.png",
+      "cardImage": "/images/articles/daiso-korea-must-buys/hero.png",
+      "liveImage": "/images/articles/daiso-korea-must-buys/hero.png",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "f3265ed7686042476d40c8f2f65d497ca7644899fe2dde4c489b283103ba2146",
+      "productionImageHash": "f3265ed7686042476d40c8f2f65d497ca7644899fe2dde4c489b283103ba2146",
+      "imageDimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "body": {
+        "slug": "daiso-korea-must-buys",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 16789,
+        "newCharacters": 16784,
+        "identical": false,
+        "productionHash": "9ab69a589d4eea92c2e905c0f4781dbd9c96fed6af8aa42d51e6847829287e11",
+        "newHash": "c7ec1f996b29471b99eb940771dd0bceed96d7352ac0a513de99de981af4e00e"
+      }
+    },
+    {
+      "slug": "daiso-korea-guide",
+      "title": "Daiso Korea: A Local’s Guide to Shopping Like a Korean",
+      "section": "explained",
+      "topic": "shopping",
+      "image": "/images/articles/daiso-korea-guide/hero-v2.png",
+      "status": 200,
+      "h1": "Daiso Korea: A Local’s Guide to Shopping Like a Korean",
+      "displayedHero": "/images/articles/daiso-korea-guide/hero-v2.png",
+      "cardImage": "/images/articles/daiso-korea-guide/hero-v2.png",
+      "liveImage": "/images/articles/daiso-korea-guide/hero-v2.png",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "0b8af600caf4263c2e55277dadd50b5de02526598720605a821dfc8f4609e9cd",
+      "productionImageHash": "0b8af600caf4263c2e55277dadd50b5de02526598720605a821dfc8f4609e9cd",
+      "imageDimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "body": {
+        "slug": "daiso-korea-guide",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 10561,
+        "newCharacters": 10561,
+        "identical": false,
+        "productionHash": "2d05ddad7b34e9291db3f707cff4dcb40b6e188e91134d4a5178eadcaf97a050",
+        "newHash": "da3454b3df8914b5a3358d56d6f6f1ea3e13d9bc254e93368f64528d531fc4bb"
+      }
+    },
+    {
+      "slug": "han-river-picnic-like-a-local",
+      "title": "How to Have a Han River Picnic Like a Local",
+      "section": "places",
+      "topic": "place-guides",
+      "image": "https://yisdsaetxgrboqlirvgb.supabase.co/storage/v1/object/public/media/articles/han-river-picnic-thumbnail.png",
+      "status": 200,
+      "h1": "How to Have a Han River Picnic Like a Local",
+      "displayedHero": "https://yisdsaetxgrboqlirvgb.supabase.co/storage/v1/object/public/media/articles/han-river-picnic-thumbnail.png",
+      "cardImage": "https://yisdsaetxgrboqlirvgb.supabase.co/storage/v1/object/public/media/articles/han-river-picnic-thumbnail.png",
+      "liveImage": "https://yisdsaetxgrboqlirvgb.supabase.co/storage/v1/object/public/media/articles/han-river-picnic-thumbnail.png",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "9319a3be49844a3e82b6b6aa17a90cb9320d54a2bd01aaa3cfb6d58dbf058ac5",
+      "productionImageHash": "9319a3be49844a3e82b6b6aa17a90cb9320d54a2bd01aaa3cfb6d58dbf058ac5",
+      "imageDimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "body": {
+        "slug": "han-river-picnic-like-a-local",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 11215,
+        "newCharacters": 11215,
+        "identical": true,
+        "productionHash": "127014000b9e978419eaa2aca6d3f23ade4d5daa799e978a9046c43340272412",
+        "newHash": "127014000b9e978419eaa2aca6d3f23ade4d5daa799e978a9046c43340272412"
+      }
+    },
+    {
+      "slug": "five-k-beauty-serums",
+      "title": "Five K-Beauty Serums Worth the Hype",
+      "section": "beauty",
+      "topic": "picks",
+      "image": "/images/articles/five-k-beauty-serums.png",
+      "status": 200,
+      "h1": "Five K-Beauty Serums Worth the Hype",
+      "displayedHero": "/images/articles/five-k-beauty-serums.png",
+      "cardImage": "/images/articles/five-k-beauty-serums.png",
+      "liveImage": "/images/articles/five-k-beauty-serums.png",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "61a3cbe12d899f590d7606bd714553667915e7a007f3c0c269e0e34622f9a662",
+      "productionImageHash": "61a3cbe12d899f590d7606bd714553667915e7a007f3c0c269e0e34622f9a662",
+      "imageDimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "body": {
+        "slug": "five-k-beauty-serums",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 11720,
+        "newCharacters": 11720,
+        "identical": true,
+        "productionHash": "e17443eceeb5143c06b7ff9b923427028ca5e983e1109026a372ae0ee746e166",
+        "newHash": "e17443eceeb5143c06b7ff9b923427028ca5e983e1109026a372ae0ee746e166"
+      }
+    },
+    {
+      "slug": "seoul-coffee-and-architecture",
+      "title": "Seoul for Coffee and Architecture",
+      "section": "places",
+      "topic": "place-guides",
+      "image": "/images/about/coffee-and-cake-web.png",
+      "status": 200,
+      "h1": "Seoul for Coffee and Architecture",
+      "displayedHero": "/images/about/coffee-and-cake-web.png",
+      "cardImage": "/images/about/coffee-and-cake-web.png",
+      "liveImage": "/images/about/coffee-and-cake-web.png",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "bca515d9c1621bec441c1865d563cfe85ffac94286fb44552d17317bc07a8f05",
+      "productionImageHash": "bca515d9c1621bec441c1865d563cfe85ffac94286fb44552d17317bc07a8f05",
+      "imageDimensions": {
+        "width": 1350,
+        "height": 1800
+      },
+      "body": {
+        "slug": "seoul-coffee-and-architecture",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 3741,
+        "newCharacters": 3741,
+        "identical": true,
+        "productionHash": "5d34202a333a3b6496774228c8d7b1426f6898098781c047774a368e1440a9be",
+        "newHash": "5d34202a333a3b6496774228c8d7b1426f6898098781c047774a368e1440a9be"
+      }
+    },
+    {
+      "slug": "five-seoul-sunset-plans",
+      "title": "Five Seoul Sunset Plans",
+      "section": "places",
+      "topic": "place-guides",
+      "image": "/images/about/seoul-sunset-original.jpeg",
+      "status": 200,
+      "h1": "Five Seoul Sunset Plans",
+      "displayedHero": "/images/about/seoul-sunset-original.jpeg",
+      "cardImage": "/images/about/seoul-sunset-original.jpeg",
+      "liveImage": "/images/about/seoul-sunset-original.jpeg",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "c7d1d4b80fa38f93840e3b8dcadf65d7c769c51c3bb02cd00093dd76ccf938b6",
+      "productionImageHash": "c7d1d4b80fa38f93840e3b8dcadf65d7c769c51c3bb02cd00093dd76ccf938b6",
+      "imageDimensions": {
+        "width": 4032,
+        "height": 3024
+      },
+      "body": {
+        "slug": "five-seoul-sunset-plans",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 3589,
+        "newCharacters": 3589,
+        "identical": true,
+        "productionHash": "707a3d24f42a561426e27cdb4d1e6cfa359f853579006b8fc36a0014e2eee554",
+        "newHash": "707a3d24f42a561426e27cdb4d1e6cfa359f853579006b8fc36a0014e2eee554"
+      }
+    },
+    {
+      "slug": "seoul-rainy-day",
+      "title": "Seoul on a Rainy Day",
+      "section": "places",
+      "topic": "place-guides",
+      "image": "/images/articles/seoul-rainy-day.png",
+      "status": 200,
+      "h1": "Seoul on a Rainy Day",
+      "displayedHero": "/images/articles/seoul-rainy-day.png",
+      "cardImage": "/images/articles/seoul-rainy-day.png",
+      "liveImage": "/images/articles/seoul-rainy-day.png",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "46dc42cd86f05f9efbb6480ed267d1bd7c716de1daccfa661436ac18cfe16709",
+      "productionImageHash": "46dc42cd86f05f9efbb6480ed267d1bd7c716de1daccfa661436ac18cfe16709",
+      "imageDimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "body": {
+        "slug": "seoul-rainy-day",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 3558,
+        "newCharacters": 3558,
+        "identical": true,
+        "productionHash": "239949360c90d178256000811a2398894476d4c7e36e41ea2251b89d646e90d7",
+        "newHash": "239949360c90d178256000811a2398894476d4c7e36e41ea2251b89d646e90d7"
+      }
+    },
+    {
+      "slug": "free-things-to-do-seoul",
+      "title": "The Best Free Things to Do in Seoul",
+      "section": "places",
+      "topic": "place-guides",
+      "image": "/images/articles/free-things-to-do-seoul.png",
+      "status": 200,
+      "h1": "The Best Free Things to Do in Seoul",
+      "displayedHero": "/images/articles/free-things-to-do-seoul.png",
+      "cardImage": "/images/articles/free-things-to-do-seoul.png",
+      "liveImage": "/images/articles/free-things-to-do-seoul.png",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "a2b9d45b0441e0f94b2b38d5d896f6e41fb9c5c9bff718831a132f2076bf10d6",
+      "productionImageHash": "a2b9d45b0441e0f94b2b38d5d896f6e41fb9c5c9bff718831a132f2076bf10d6",
+      "imageDimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "body": {
+        "slug": "free-things-to-do-seoul",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 3541,
+        "newCharacters": 3541,
+        "identical": true,
+        "productionHash": "19350cd278899559c8da592d763ead9c4cb7cfa55086fdafe7977b17eb91fe47",
+        "newHash": "19350cd278899559c8da592d763ead9c4cb7cfa55086fdafe7977b17eb91fe47"
+      }
+    },
+    {
+      "slug": "quiet-side-of-seoul",
+      "title": "The Quiet Side of Seoul",
+      "section": "places",
+      "topic": "place-guides",
+      "image": "/images/articles/quiet-side-of-seoul.png",
+      "status": 200,
+      "h1": "The Quiet Side of Seoul",
+      "displayedHero": "/images/articles/quiet-side-of-seoul.png",
+      "cardImage": "/images/articles/quiet-side-of-seoul.png",
+      "liveImage": "/images/articles/quiet-side-of-seoul.png",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "296727b103fc8cd81cc702f632b9f6f8991190e24b7fe9a84f0eafe33d511eb4",
+      "productionImageHash": "296727b103fc8cd81cc702f632b9f6f8991190e24b7fe9a84f0eafe33d511eb4",
+      "imageDimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "body": {
+        "slug": "quiet-side-of-seoul",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 3622,
+        "newCharacters": 3622,
+        "identical": true,
+        "productionHash": "1d21d236e8a6ec94b89847f669310f77da36d16d397f7e0ca2bd96c5294a8b73",
+        "newHash": "1d21d236e8a6ec94b89847f669310f77da36d16d397f7e0ca2bd96c5294a8b73"
+      }
+    },
+    {
+      "slug": "seoul-for-design-lovers",
+      "title": "Seoul for Design Lovers",
+      "section": "places",
+      "topic": "place-guides",
+      "image": "/images/seongsu/seongsu-warehouse-cafes.jpg",
+      "status": 200,
+      "h1": "Seoul for Design Lovers",
+      "displayedHero": "/images/seongsu/seongsu-warehouse-cafes.jpg",
+      "cardImage": "/images/seongsu/seongsu-warehouse-cafes.jpg",
+      "liveImage": "/images/seongsu/seongsu-warehouse-cafes.jpg",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "3d4e8bf44c525c248d856b5246871538ed21d1f00db25ca5f56e615c04aa3045",
+      "productionImageHash": "3d4e8bf44c525c248d856b5246871538ed21d1f00db25ca5f56e615c04aa3045",
+      "imageDimensions": {
+        "width": 1506,
+        "height": 941
+      },
+      "body": {
+        "slug": "seoul-for-design-lovers",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 3672,
+        "newCharacters": 3672,
+        "identical": true,
+        "productionHash": "559ca4c2bc282979b9d93d972f15ffd0ebb3844b4747ab33cbb1b524a9a686a7",
+        "newHash": "559ca4c2bc282979b9d93d972f15ffd0ebb3844b4747ab33cbb1b524a9a686a7"
+      }
+    },
+    {
+      "slug": "korean-convenience-store-first-timers",
+      "title": "Korean Convenience Stores for First-Timers",
+      "section": "explained",
+      "topic": "food-drink",
+      "image": "/images/about/eomuk-skewers.jpeg",
+      "status": 200,
+      "h1": "Korean Convenience Stores for First-Timers",
+      "displayedHero": "/images/about/eomuk-skewers.jpeg",
+      "cardImage": "/images/about/eomuk-skewers.jpeg",
+      "liveImage": "/images/about/eomuk-skewers.jpeg",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "ba7216ae18f1cb6b37ac28796e9bc291fb95ff75d9e1c167c6fcbe374bca9221",
+      "productionImageHash": "ba7216ae18f1cb6b37ac28796e9bc291fb95ff75d9e1c167c6fcbe374bca9221",
+      "imageDimensions": {
+        "width": 4032,
+        "height": 3024
+      },
+      "body": {
+        "slug": "korean-convenience-store-first-timers",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 3901,
+        "newCharacters": 3901,
+        "identical": true,
+        "productionHash": "de7259f6dd0860c3bdeee339e0c3ecc9837310b657987b47568024bb764dae63",
+        "newHash": "de7259f6dd0860c3bdeee339e0c3ecc9837310b657987b47568024bb764dae63"
+      }
+    },
+    {
+      "slug": "what-to-eat-first-trip-seoul",
+      "title": "What to Eat on Your First Trip to Seoul",
+      "section": "explained",
+      "topic": "food-drink",
+      "image": "/images/about/shared-table.jpeg",
+      "status": 200,
+      "h1": "What to Eat on Your First Trip to Seoul",
+      "displayedHero": "/images/about/shared-table.jpeg",
+      "cardImage": "/images/about/shared-table.jpeg",
+      "liveImage": "/images/about/shared-table.jpeg",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "4adf0eb749e3aea34c6219d7cca0020b29a1296a49b604155714ec9e4733ae8e",
+      "productionImageHash": "4adf0eb749e3aea34c6219d7cca0020b29a1296a49b604155714ec9e4733ae8e",
+      "imageDimensions": {
+        "width": 4032,
+        "height": 3024
+      },
+      "body": {
+        "slug": "what-to-eat-first-trip-seoul",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 4051,
+        "newCharacters": 4051,
+        "identical": true,
+        "productionHash": "bfd156a69c51297e30b895666691c3e085df230bc56a1e3a1485b2d7ae8874e1",
+        "newHash": "bfd156a69c51297e30b895666691c3e085df230bc56a1e3a1485b2d7ae8874e1"
+      }
+    },
+    {
+      "slug": "best-time-to-visit-seoul",
+      "title": "When Is the Best Time to Visit Seoul?",
+      "section": "explained",
+      "topic": "everyday-life",
+      "image": "/images/articles/best-time-to-visit-seoul.png",
+      "status": 200,
+      "h1": "When Is the Best Time to Visit Seoul?",
+      "displayedHero": "/images/articles/best-time-to-visit-seoul.png",
+      "cardImage": "/images/articles/best-time-to-visit-seoul.png",
+      "liveImage": "/images/articles/best-time-to-visit-seoul.png",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "ad965da52930ab0c7f336f7cf19155579123a4f7ffea17f3471154daf793fc50",
+      "productionImageHash": "ad965da52930ab0c7f336f7cf19155579123a4f7ffea17f3471154daf793fc50",
+      "imageDimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "body": {
+        "slug": "best-time-to-visit-seoul",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 4196,
+        "newCharacters": 4196,
+        "identical": true,
+        "productionHash": "c3ba9f8e69eb5bc201be38e863f8c8651e99856c46251e8ef998272f2a360ff5",
+        "newHash": "c3ba9f8e69eb5bc201be38e863f8c8651e99856c46251e8ef998272f2a360ff5"
+      }
+    },
+    {
+      "slug": "seoul-etiquette-visitors-need",
+      "title": "Seoul Etiquette Visitors Actually Need to Know",
+      "section": "explained",
+      "topic": "everyday-life",
+      "image": "/images/articles/seoul-etiquette-visitors-need.png",
+      "status": 200,
+      "h1": "Seoul Etiquette Visitors Actually Need to Know",
+      "displayedHero": "/images/articles/seoul-etiquette-visitors-need.png",
+      "cardImage": "/images/articles/seoul-etiquette-visitors-need.png",
+      "liveImage": "/images/articles/seoul-etiquette-visitors-need.png",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "3cd114a1c8aee8a2b1bb586830fbbb1ad5beb41ea2f86a8b539eb9c67ca68010",
+      "productionImageHash": "3cd114a1c8aee8a2b1bb586830fbbb1ad5beb41ea2f86a8b539eb9c67ca68010",
+      "imageDimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "body": {
+        "slug": "seoul-etiquette-visitors-need",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 4237,
+        "newCharacters": 4237,
+        "identical": true,
+        "productionHash": "2281f132307149d92ffa132285088f3e9cbff3dc93f335aa8cec8c2d3c9ddd62",
+        "newHash": "2281f132307149d92ffa132285088f3e9cbff3dc93f335aa8cec8c2d3c9ddd62"
+      }
+    },
+    {
+      "slug": "how-to-use-seoul-public-transport",
+      "title": "How to Use Seoul Public Transport",
+      "section": "explained",
+      "topic": "everyday-life",
+      "image": "/images/articles/how-to-use-naver-map.jpg",
+      "status": 200,
+      "h1": "How to Use Seoul Public Transport",
+      "displayedHero": "/images/articles/how-to-use-naver-map.jpg",
+      "cardImage": "/images/articles/how-to-use-naver-map.jpg",
+      "liveImage": "/images/articles/how-to-use-naver-map.jpg",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "bc227c71e862920ec90b2ad2e40fe0bab446accfa86ee01721e0e8349d2314db",
+      "productionImageHash": "bc227c71e862920ec90b2ad2e40fe0bab446accfa86ee01721e0e8349d2314db",
+      "imageDimensions": {
+        "width": 1600,
+        "height": 1067
+      },
+      "body": {
+        "slug": "how-to-use-seoul-public-transport",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 4375,
+        "newCharacters": 4375,
+        "identical": true,
+        "productionHash": "3fe90bd10acebb19b59fe3b1bb4b38b2c4d606603223924c76ce9553380a213f",
+        "newHash": "3fe90bd10acebb19b59fe3b1bb4b38b2c4d606603223924c76ce9553380a213f"
+      }
+    },
+    {
+      "slug": "coex-bongeunsa-apgujeong-day",
+      "title": "COEX, Bongeunsa and Apgujeong: A Day in Modern Seoul",
+      "section": "places",
+      "topic": "neighborhoods",
+      "image": "/images/articles/gangnam-beauty-day.png",
+      "status": 200,
+      "h1": "COEX, Bongeunsa and Apgujeong: A Day in Modern Seoul",
+      "displayedHero": "/images/articles/gangnam-beauty-day.png",
+      "cardImage": "/images/articles/gangnam-beauty-day.png",
+      "liveImage": "/images/articles/gangnam-beauty-day.png",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "aac0c1d47094e8822435837d9096ce56425d4f6aad2fb3ba1ba8a75f94495ba1",
+      "productionImageHash": "aac0c1d47094e8822435837d9096ce56425d4f6aad2fb3ba1ba8a75f94495ba1",
+      "imageDimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "body": {
+        "slug": "coex-bongeunsa-apgujeong-day",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 4144,
+        "newCharacters": 4144,
+        "identical": true,
+        "productionHash": "f03e32b0faa400f9841dd6136ac7808d516ad721966b30ef3fb5546f81ce2513",
+        "newHash": "f03e32b0faa400f9841dd6136ac7808d516ad721966b30ef3fb5546f81ce2513"
+      }
+    },
+    {
+      "slug": "myeongdong-to-namsan-sunset",
+      "title": "Myeongdong to Namsan at Sunset",
+      "section": "places",
+      "topic": "neighborhoods",
+      "image": "/images/articles/one-day-k-beauty-itinerary-seoul.jpg",
+      "status": 200,
+      "h1": "Myeongdong to Namsan at Sunset",
+      "displayedHero": "/images/articles/one-day-k-beauty-itinerary-seoul.jpg",
+      "cardImage": "/images/articles/one-day-k-beauty-itinerary-seoul.jpg",
+      "liveImage": "/images/articles/one-day-k-beauty-itinerary-seoul.jpg",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "0ac02d5604eaf7ad865ae2107c73249a15054ed539cac566b616c3fa692e7ac7",
+      "productionImageHash": "0ac02d5604eaf7ad865ae2107c73249a15054ed539cac566b616c3fa692e7ac7",
+      "imageDimensions": {
+        "width": 1600,
+        "height": 1067
+      },
+      "body": {
+        "slug": "myeongdong-to-namsan-sunset",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 4296,
+        "newCharacters": 4296,
+        "identical": true,
+        "productionHash": "173414ff4df90c5635573ff91d170f550a468caf74941626fdc370970d1ee8ee",
+        "newHash": "173414ff4df90c5635573ff91d170f550a468caf74941626fdc370970d1ee8ee"
+      }
+    },
+    {
+      "slug": "seoul-forest-seongsu-walking-guide",
+      "title": "Seoul Forest and Seongsu, Stop by Stop",
+      "section": "places",
+      "topic": "neighborhoods",
+      "image": "/images/seongsu/seongsu-beauty-and-bites.jpg",
+      "status": 200,
+      "h1": "Seoul Forest and Seongsu, Stop by Stop",
+      "displayedHero": "/images/seongsu/seongsu-beauty-and-bites.jpg",
+      "cardImage": "/images/seongsu/seongsu-beauty-and-bites.jpg",
+      "liveImage": "/images/seongsu/seongsu-beauty-and-bites.jpg",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "c984c74cf236f3f90765b2623ed287102d68daba3766b55b12e382b8056410fd",
+      "productionImageHash": "c984c74cf236f3f90765b2623ed287102d68daba3766b55b12e382b8056410fd",
+      "imageDimensions": {
+        "width": 1506,
+        "height": 941
+      },
+      "body": {
+        "slug": "seoul-forest-seongsu-walking-guide",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 4298,
+        "newCharacters": 4298,
+        "identical": true,
+        "productionHash": "c4941496029caed1ee5af43cd375249f0f02ff123ed6301aadd96ca34d5f7830",
+        "newHash": "c4941496029caed1ee5af43cd375249f0f02ff123ed6301aadd96ca34d5f7830"
+      }
+    },
+    {
+      "slug": "yeonnam-by-day-hongdae-by-night",
+      "title": "Yeonnam by Day, Hongdae by Night",
+      "section": "places",
+      "topic": "neighborhoods",
+      "image": "/images/about/seoul-courtyard.jpeg",
+      "status": 200,
+      "h1": "Yeonnam by Day, Hongdae by Night",
+      "displayedHero": "/images/about/seoul-courtyard.jpeg",
+      "cardImage": "/images/about/seoul-courtyard.jpeg",
+      "liveImage": "/images/about/seoul-courtyard.jpeg",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "c9d7066474a1e6ea6a18d3a5c4d1ff1f987453d77b67f313a1d9c71e0cafde99",
+      "productionImageHash": "c9d7066474a1e6ea6a18d3a5c4d1ff1f987453d77b67f313a1d9c71e0cafde99",
+      "imageDimensions": {
+        "width": 4032,
+        "height": 3024
+      },
+      "body": {
+        "slug": "yeonnam-by-day-hongdae-by-night",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 4299,
+        "newCharacters": 4299,
+        "identical": true,
+        "productionHash": "4e5c9e7c5f3efc4e5252c6d753dec1a36137349d3632215491dd623f089c209e",
+        "newHash": "4e5c9e7c5f3efc4e5252c6d753dec1a36137349d3632215491dd623f089c209e"
+      }
+    },
+    {
+      "slug": "one-perfect-day-old-seoul",
+      "title": "One Perfect Day in Old Seoul",
+      "section": "places",
+      "topic": "place-guides",
+      "image": "/images/about/hanok-winter-original.jpeg",
+      "status": 200,
+      "h1": "One Perfect Day in Old Seoul",
+      "displayedHero": "/images/about/hanok-winter-original.jpeg",
+      "cardImage": "/images/about/hanok-winter-original.jpeg",
+      "liveImage": "/images/about/hanok-winter-original.jpeg",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "4aba4266d447b69a47dcaaf373971a4cc8402c720a9e3c884af43e857762bcf6",
+      "productionImageHash": "4aba4266d447b69a47dcaaf373971a4cc8402c720a9e3c884af43e857762bcf6",
+      "imageDimensions": {
+        "width": 4032,
+        "height": 3024
+      },
+      "body": {
+        "slug": "one-perfect-day-old-seoul",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 4540,
+        "newCharacters": 4540,
+        "identical": true,
+        "productionHash": "2e8df02cf973ec25488c282c1d277d181d2b6e10edc8c230c4d0abcab02c0736",
+        "newHash": "2e8df02cf973ec25488c282c1d277d181d2b6e10edc8c230c4d0abcab02c0736"
+      }
+    },
+    {
+      "slug": "where-to-stay-seoul-neighborhoods",
+      "title": "Where to Stay in Seoul, by the Trip You Want",
+      "section": "places",
+      "topic": "neighborhoods",
+      "image": "/images/articles/where-to-stay-seoul-neighborhoods.png",
+      "status": 200,
+      "h1": "Where to Stay in Seoul, by the Trip You Want",
+      "displayedHero": "/images/articles/where-to-stay-seoul-neighborhoods.png",
+      "cardImage": "/images/articles/where-to-stay-seoul-neighborhoods.png",
+      "liveImage": "/images/articles/where-to-stay-seoul-neighborhoods.png",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "589a860aabd2cc6b86decd0f407a76717349c9d12a3522a96e847b98c5e98a34",
+      "productionImageHash": "589a860aabd2cc6b86decd0f407a76717349c9d12a3522a96e847b98c5e98a34",
+      "imageDimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "body": {
+        "slug": "where-to-stay-seoul-neighborhoods",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 5591,
+        "newCharacters": 5591,
+        "identical": true,
+        "productionHash": "42d83187e6aff303956b36980a04cb2078e6857385c94b46698c4920d0c300c7",
+        "newHash": "42d83187e6aff303956b36980a04cb2078e6857385c94b46698c4920d0c300c7"
+      }
+    },
+    {
+      "slug": "five-days-in-seoul-without-rushing",
+      "title": "Five Days in Seoul Without Rushing",
+      "section": "places",
+      "topic": "place-guides",
+      "image": "/images/seoul/seoul-neighborhoods-guide.png",
+      "status": 200,
+      "h1": "Five Days in Seoul Without Rushing",
+      "displayedHero": "/images/seoul/seoul-neighborhoods-guide.png",
+      "cardImage": "/images/seoul/seoul-neighborhoods-guide.png",
+      "liveImage": "/images/seoul/seoul-neighborhoods-guide.png",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "bdf08fad00e62f8a8753da6e0bcdc1e939f0d3eeeb26fdc9fe34c512b3571ef0",
+      "productionImageHash": "bdf08fad00e62f8a8753da6e0bcdc1e939f0d3eeeb26fdc9fe34c512b3571ef0",
+      "imageDimensions": {
+        "width": 1672,
+        "height": 941
+      },
+      "body": {
+        "slug": "five-days-in-seoul-without-rushing",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 5162,
+        "newCharacters": 5162,
+        "identical": true,
+        "productionHash": "191b5a3513076a5f4c3cf35531ab538ead775f622b7dc67e0469ca3cbac4f24e",
+        "newHash": "191b5a3513076a5f4c3cf35531ab538ead775f622b7dc67e0469ca3cbac4f24e"
+      }
+    },
+    {
+      "slug": "what-to-buy-at-olive-young",
+      "title": "What We'd Actually Buy at Olive Young Right Now",
+      "section": "beauty",
+      "topic": "picks",
+      "image": "/images/articles/what-to-buy-at-olive-young.png",
+      "status": 200,
+      "h1": "What We'd Actually Buy at Olive Young Right Now",
+      "displayedHero": "/images/articles/what-to-buy-at-olive-young.png",
+      "cardImage": "/images/articles/what-to-buy-at-olive-young.png",
+      "liveImage": "/images/articles/what-to-buy-at-olive-young.png",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "4d7c255929dca27528597a78bf1f58b69af0a11e879917f2cbe7bd2d5a3d10fa",
+      "productionImageHash": "4d7c255929dca27528597a78bf1f58b69af0a11e879917f2cbe7bd2d5a3d10fa",
+      "imageDimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "body": {
+        "slug": "what-to-buy-at-olive-young",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 10358,
+        "newCharacters": 10358,
+        "identical": true,
+        "productionHash": "99429d687a0fb848c6b9bdfb5bf6062c9b4bf02fee652762168f9cc6c981166a",
+        "newHash": "99429d687a0fb848c6b9bdfb5bf6062c9b4bf02fee652762168f9cc6c981166a"
+      }
+    },
+    {
+      "slug": "k-beauty-is-changing",
+      "title": "Why Everyone Is Looking at Korean Beauty Differently Now",
+      "section": "beauty",
+      "topic": "edit",
+      "image": "/images/articles/k-beauty-is-changing.png",
+      "status": 200,
+      "h1": "Why Everyone Is Looking at Korean Beauty Differently Now",
+      "displayedHero": "/images/articles/k-beauty-is-changing.png",
+      "cardImage": "/images/articles/k-beauty-is-changing.png",
+      "liveImage": "/images/articles/k-beauty-is-changing.png",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "086106b67e31516130cdd18d56c90318703b13981349a8748657f94c8cd2a96a",
+      "productionImageHash": "086106b67e31516130cdd18d56c90318703b13981349a8748657f94c8cd2a96a",
+      "imageDimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "body": {
+        "slug": "k-beauty-is-changing",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 7186,
+        "newCharacters": 7186,
+        "identical": true,
+        "productionHash": "10362f6cb222ab9de53a444bd4021f1cde5e07fa5b7ddc79705f6ab56795c66a",
+        "newHash": "10362f6cb222ab9de53a444bd4021f1cde5e07fa5b7ddc79705f6ab56795c66a"
+      }
+    },
+    {
+      "slug": "korean-haircare-where-to-start",
+      "title": "Korean Haircare Is Having a Moment — Here's Where We'd Start",
+      "section": "beauty",
+      "topic": "hair-scalp",
+      "image": "/images/articles/korean-haircare-where-to-start.png",
+      "status": 200,
+      "h1": "Korean Haircare Is Having a Moment — Here's Where We'd Start",
+      "displayedHero": "/images/articles/korean-haircare-where-to-start.png",
+      "cardImage": "/images/articles/korean-haircare-where-to-start.png",
+      "liveImage": "/images/articles/korean-haircare-where-to-start.png",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "68227ab922c14ec1480ab7bbaf2831deaaa3e16dfe37e933470d04b5c25f934a",
+      "productionImageHash": "68227ab922c14ec1480ab7bbaf2831deaaa3e16dfe37e933470d04b5c25f934a",
+      "imageDimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "body": {
+        "slug": "korean-haircare-where-to-start",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 7457,
+        "newCharacters": 7457,
+        "identical": true,
+        "productionHash": "35c417a0a82af72c1d63c363e1e475424e15737f641052b72826da977175b535",
+        "newHash": "35c417a0a82af72c1d63c363e1e475424e15737f641052b72826da977175b535"
+      }
+    },
+    {
+      "slug": "korean-beauty-brands-to-start-with",
+      "title": "The Korean Beauty Brands We'd Tell a Friend About First",
+      "section": "beauty",
+      "topic": "picks",
+      "image": "/images/articles/korean-beauty-brands-to-start-with.png",
+      "status": 200,
+      "h1": "The Korean Beauty Brands We'd Tell a Friend About First",
+      "displayedHero": "/images/articles/korean-beauty-brands-to-start-with.png",
+      "cardImage": "/images/articles/korean-beauty-brands-to-start-with.png",
+      "liveImage": "/images/articles/korean-beauty-brands-to-start-with.png",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "a366855ebf7f3cb51cbad2b0edfa8f466e2fcd7227312cd470c587da92f405c4",
+      "productionImageHash": "a366855ebf7f3cb51cbad2b0edfa8f466e2fcd7227312cd470c587da92f405c4",
+      "imageDimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "body": {
+        "slug": "korean-beauty-brands-to-start-with",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 7620,
+        "newCharacters": 7620,
+        "identical": true,
+        "productionHash": "42624bff4f405c1b2a5bb7d19786328aafc798a304de483d9eeb57cbc203272f",
+        "newHash": "42624bff4f405c1b2a5bb7d19786328aafc798a304de483d9eeb57cbc203272f"
+      }
+    },
+    {
+      "slug": "slow-aging-korea-meaning",
+      "title": "What \\\"Slow Aging\\\" Means in Korea",
+      "section": "explained",
+      "topic": "everyday-life",
+      "image": "/images/articles/slow-aging-korea-meaning.jpg",
+      "status": 200,
+      "h1": "What \\\"Slow Aging\\\" Means in Korea",
+      "displayedHero": "/images/articles/slow-aging-korea-meaning.jpg",
+      "cardImage": "/images/articles/slow-aging-korea-meaning.jpg",
+      "liveImage": "/images/articles/slow-aging-korea-meaning.jpg",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "534a99d72b55c0b5ee885b7a6d676467a825232274546077aa932f39b324eda8",
+      "productionImageHash": "534a99d72b55c0b5ee885b7a6d676467a825232274546077aa932f39b324eda8",
+      "imageDimensions": {
+        "width": 1600,
+        "height": 1067
+      },
+      "body": {
+        "slug": "slow-aging-korea-meaning",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 7461,
+        "newCharacters": 7461,
+        "identical": true,
+        "productionHash": "090e87ceee336d32bc41729b76883123d42e6f6c8ef3e741eac70cb8371b1ca4",
+        "newHash": "090e87ceee336d32bc41729b76883123d42e6f6c8ef3e741eac70cb8371b1ca4"
+      }
+    },
+    {
+      "slug": "hannam-afternoon-local-guide",
+      "title": "A Local's Afternoon in Hannam",
+      "section": "places",
+      "topic": "neighborhoods",
+      "image": "/images/articles/hannam-afternoon-local-guide.png",
+      "status": 200,
+      "h1": "A Local's Afternoon in Hannam",
+      "displayedHero": "/images/articles/hannam-afternoon-local-guide.png",
+      "cardImage": "/images/articles/hannam-afternoon-local-guide.png",
+      "liveImage": "/images/articles/hannam-afternoon-local-guide.png",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "c1f260a033dadacf955bfb5e34983eaae2d3f89ad461f509d8574572dd102d07",
+      "productionImageHash": "c1f260a033dadacf955bfb5e34983eaae2d3f89ad461f509d8574572dd102d07",
+      "imageDimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "body": {
+        "slug": "hannam-afternoon-local-guide",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 7959,
+        "newCharacters": 7959,
+        "identical": true,
+        "productionHash": "25d5155eb66665ac50c3173f132c7b0e8e0238162c118aae4f9ea7b748f8e14e",
+        "newHash": "25d5155eb66665ac50c3173f132c7b0e8e0238162c118aae4f9ea7b748f8e14e"
+      }
+    },
+    {
+      "slug": "seoul-scalp-care-culture",
+      "title": "Why Seoul Is Taking Scalp Care Seriously",
+      "section": "beauty",
+      "topic": "hair-scalp",
+      "image": "/images/articles/seoul-scalp-care-culture.png",
+      "status": 200,
+      "h1": "Why Seoul Is Taking Scalp Care Seriously",
+      "displayedHero": "/images/articles/seoul-scalp-care-culture.png",
+      "cardImage": "/images/articles/seoul-scalp-care-culture.png",
+      "liveImage": "/images/articles/seoul-scalp-care-culture.png",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "d541fdccaea0c0e9e925333b8acef1b46ced6f103d60e64962829cedfbf9257f",
+      "productionImageHash": "d541fdccaea0c0e9e925333b8acef1b46ced6f103d60e64962829cedfbf9257f",
+      "imageDimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "body": {
+        "slug": "seoul-scalp-care-culture",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 7777,
+        "newCharacters": 7777,
+        "identical": true,
+        "productionHash": "189b2b364cfd89426cea5d99b49d49244df1001e1487f1bea775c5a98c8f6251",
+        "newHash": "189b2b364cfd89426cea5d99b49d49244df1001e1487f1bea775c5a98c8f6251"
+      }
+    },
+    {
+      "slug": "korean-hair-brands-worth-knowing",
+      "title": "The Korean Hair Brands Worth Knowing",
+      "section": "beauty",
+      "topic": "picks",
+      "image": "/images/articles/korean-hair-brands-worth-knowing.png",
+      "status": 200,
+      "h1": "The Korean Hair Brands Worth Knowing",
+      "displayedHero": "/images/articles/korean-hair-brands-worth-knowing.png",
+      "cardImage": "/images/articles/korean-hair-brands-worth-knowing.png",
+      "liveImage": "/images/articles/korean-hair-brands-worth-knowing.png",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "ad408862631f48bedd8a0ed238dcc31d553b9a546e806351d0d2e8e6e04e98f2",
+      "productionImageHash": "ad408862631f48bedd8a0ed238dcc31d553b9a546e806351d0d2e8e6e04e98f2",
+      "imageDimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "body": {
+        "slug": "korean-hair-brands-worth-knowing",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 7637,
+        "newCharacters": 7637,
+        "identical": true,
+        "productionHash": "e701459a70776d590f96f43c63dd68559398d482377448e809a3dfc4aee43c8e",
+        "newHash": "e701459a70776d590f96f43c63dd68559398d482377448e809a3dfc4aee43c8e"
+      }
+    },
+    {
+      "slug": "where-to-shop-k-beauty-beyond-olive-young",
+      "title": "Where We'd Shop for Korean Beauty Beyond Olive Young",
+      "section": "places",
+      "topic": "place-guides",
+      "image": "/images/articles/where-to-shop-k-beauty-beyond-olive-young.png",
+      "status": 200,
+      "h1": "Where We'd Shop for Korean Beauty Beyond Olive Young",
+      "displayedHero": "/images/articles/where-to-shop-k-beauty-beyond-olive-young.png",
+      "cardImage": "/images/articles/where-to-shop-k-beauty-beyond-olive-young.png",
+      "liveImage": "/images/articles/where-to-shop-k-beauty-beyond-olive-young.png",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "ea89015c453eadc8ad191e54d807c9e5575da4dd0d74c46d0cff4403d209e48b",
+      "productionImageHash": "ea89015c453eadc8ad191e54d807c9e5575da4dd0d74c46d0cff4403d209e48b",
+      "imageDimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "body": {
+        "slug": "where-to-shop-k-beauty-beyond-olive-young",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 7908,
+        "newCharacters": 7908,
+        "identical": true,
+        "productionHash": "86e99531e0831d88d3e65a1a4137d0a0878e6fee8d0a20fa36c5314e817b4248",
+        "newHash": "86e99531e0831d88d3e65a1a4137d0a0878e6fee8d0a20fa36c5314e817b4248"
+      }
+    },
+    {
+      "slug": "gangnam-beauty-day",
+      "title": "A Beauty Lover's Day in Gangnam",
+      "section": "places",
+      "topic": "neighborhoods",
+      "image": "/images/articles/gangnam-beauty-day.png",
+      "status": 200,
+      "h1": "A Beauty Lover's Day in Gangnam",
+      "displayedHero": "/images/articles/gangnam-beauty-day.png",
+      "cardImage": "/images/articles/gangnam-beauty-day.png",
+      "liveImage": "/images/articles/gangnam-beauty-day.png",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "aac0c1d47094e8822435837d9096ce56425d4f6aad2fb3ba1ba8a75f94495ba1",
+      "productionImageHash": "aac0c1d47094e8822435837d9096ce56425d4f6aad2fb3ba1ba8a75f94495ba1",
+      "imageDimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "body": {
+        "slug": "gangnam-beauty-day",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 8765,
+        "newCharacters": 8765,
+        "identical": true,
+        "productionHash": "dddb83fe53da04a089b5bf01535390e2d8561febe664163d6ffbf425d12146fb",
+        "newHash": "dddb83fe53da04a089b5bf01535390e2d8561febe664163d6ffbf425d12146fb"
+      }
+    },
+    {
+      "slug": "korean-skincare-brands-on-our-radar",
+      "title": "5 Korean Skincare Brands On Our Radar",
+      "section": "beauty",
+      "topic": "picks",
+      "image": "/images/articles/korean-skincare-brands-on-our-radar.png",
+      "status": 200,
+      "h1": "5 Korean Skincare Brands On Our Radar",
+      "displayedHero": "/images/articles/korean-skincare-brands-on-our-radar.png",
+      "cardImage": "/images/articles/korean-skincare-brands-on-our-radar.png",
+      "liveImage": "/images/articles/korean-skincare-brands-on-our-radar.png",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "fb3bd837d91af8e6e3d369b72e756c87ac97434842cae37949dd135d2e838307",
+      "productionImageHash": "fb3bd837d91af8e6e3d369b72e756c87ac97434842cae37949dd135d2e838307",
+      "imageDimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "body": {
+        "slug": "korean-skincare-brands-on-our-radar",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 8250,
+        "newCharacters": 8250,
+        "identical": true,
+        "productionHash": "9b97dad6f2e9700d3fbd9a6e36bafa5e4034abf52a8fc161384843d5fe7a5a65",
+        "newHash": "9b97dad6f2e9700d3fbd9a6e36bafa5e4034abf52a8fc161384843d5fe7a5a65"
+      }
+    },
+    {
+      "slug": "one-day-k-beauty-itinerary-seoul",
+      "title": "The One-Day K-Beauty Itinerary, Stop by Stop",
+      "section": "places",
+      "topic": "place-guides",
+      "image": "/images/articles/one-day-k-beauty-itinerary-seoul.jpg",
+      "status": 200,
+      "h1": "The One-Day K-Beauty Itinerary, Stop by Stop",
+      "displayedHero": "/images/articles/one-day-k-beauty-itinerary-seoul.jpg",
+      "cardImage": "/images/articles/one-day-k-beauty-itinerary-seoul.jpg",
+      "liveImage": "/images/articles/one-day-k-beauty-itinerary-seoul.jpg",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "0ac02d5604eaf7ad865ae2107c73249a15054ed539cac566b616c3fa692e7ac7",
+      "productionImageHash": "0ac02d5604eaf7ad865ae2107c73249a15054ed539cac566b616c3fa692e7ac7",
+      "imageDimensions": {
+        "width": 1600,
+        "height": 1067
+      },
+      "body": {
+        "slug": "one-day-k-beauty-itinerary-seoul",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 8487,
+        "newCharacters": 8487,
+        "identical": true,
+        "productionHash": "6daea4b35817b40c15c90517c0f04b543cd710cdbdd151dc508f41a343f99600",
+        "newHash": "6daea4b35817b40c15c90517c0f04b543cd710cdbdd151dc508f41a343f99600"
+      }
+    },
+    {
+      "slug": "korean-fragrance-seoul",
+      "title": "Where to Discover Korean Fragrance in Seoul",
+      "section": "places",
+      "topic": "place-guides",
+      "image": "/images/articles/korean-fragrance-seoul.png",
+      "status": 200,
+      "h1": "Where to Discover Korean Fragrance in Seoul",
+      "displayedHero": "/images/articles/korean-fragrance-seoul.png",
+      "cardImage": "/images/articles/korean-fragrance-seoul.png",
+      "liveImage": "/images/articles/korean-fragrance-seoul.png",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "a20959ff13dbdf15272dd8fe8147ca56d4670823e5592a9a01448726051b9092",
+      "productionImageHash": "a20959ff13dbdf15272dd8fe8147ca56d4670823e5592a9a01448726051b9092",
+      "imageDimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "body": {
+        "slug": "korean-fragrance-seoul",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 7880,
+        "newCharacters": 7880,
+        "identical": true,
+        "productionHash": "f1bc6b0f6c1c7736055f374cbe24b1b9237ba408ed43fa41d295fc3899bf4ccd",
+        "newHash": "f1bc6b0f6c1c7736055f374cbe24b1b9237ba408ed43fa41d295fc3899bf4ccd"
+      }
+    },
+    {
+      "slug": "what-makes-a-brand-feel-seoul",
+      "title": "What Makes a Beauty Brand Feel \\\"Seoul\\\" Right Now?",
+      "section": "beauty",
+      "topic": "edit",
+      "image": "/images/articles/what-makes-a-brand-feel-seoul.png",
+      "status": 200,
+      "h1": "What Makes a Beauty Brand Feel \\\"Seoul\\\" Right Now?",
+      "displayedHero": "/images/articles/what-makes-a-brand-feel-seoul.png",
+      "cardImage": "/images/articles/what-makes-a-brand-feel-seoul.png",
+      "liveImage": "/images/articles/what-makes-a-brand-feel-seoul.png",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "4d813152e48690adab0d5d56243e5f9c9eca8b8254d27ecae09bb57803f96890",
+      "productionImageHash": "4d813152e48690adab0d5d56243e5f9c9eca8b8254d27ecae09bb57803f96890",
+      "imageDimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "body": {
+        "slug": "what-makes-a-brand-feel-seoul",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 8143,
+        "newCharacters": 8143,
+        "identical": true,
+        "productionHash": "7fc3b50505c9a94b441446cc12caeae995d404e99ab79caa17fbdab8d7e19a36",
+        "newHash": "7fc3b50505c9a94b441446cc12caeae995d404e99ab79caa17fbdab8d7e19a36"
+      }
+    },
+    {
+      "slug": "korean-skin-texture-meaning",
+      "title": "What Korean Women Actually Mean by \\\"Skin Texture\\\"",
+      "section": "beauty",
+      "topic": "skincare",
+      "image": "/images/articles/korean-skin-texture-meaning.png",
+      "status": 200,
+      "h1": "What Korean Women Actually Mean by \\\"Skin Texture\\\"",
+      "displayedHero": "/images/articles/korean-skin-texture-meaning.png",
+      "cardImage": "/images/articles/korean-skin-texture-meaning.png",
+      "liveImage": "/images/articles/korean-skin-texture-meaning.png",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "7acc8935a90a7ab4d59fc63475c86770488c6717216d815b9e5318a785fc6d33",
+      "productionImageHash": "7acc8935a90a7ab4d59fc63475c86770488c6717216d815b9e5318a785fc6d33",
+      "imageDimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "body": {
+        "slug": "korean-skin-texture-meaning",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 7810,
+        "newCharacters": 7810,
+        "identical": true,
+        "productionHash": "c11439fbc784780dcaa834ad8c6739e170bc6857fff94dbc02f12b23f7bc06f8",
+        "newHash": "c11439fbc784780dcaa834ad8c6739e170bc6857fff94dbc02f12b23f7bc06f8"
+      }
+    },
+    {
+      "slug": "korean-hair-masks-worth-buying",
+      "title": "Korean Hair Masks Worth Bringing Home",
+      "section": "beauty",
+      "topic": "picks",
+      "image": "/images/articles/korean-hair-masks-worth-buying.png",
+      "status": 200,
+      "h1": "Korean Hair Masks Worth Bringing Home",
+      "displayedHero": "/images/articles/korean-hair-masks-worth-buying.png",
+      "cardImage": "/images/articles/korean-hair-masks-worth-buying.png",
+      "liveImage": "/images/articles/korean-hair-masks-worth-buying.png",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "deeeef3029d1304f45ddf851befa07f7f47dd2eeca2c239cf3a13895517452a2",
+      "productionImageHash": "deeeef3029d1304f45ddf851befa07f7f47dd2eeca2c239cf3a13895517452a2",
+      "imageDimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "body": {
+        "slug": "korean-hair-masks-worth-buying",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 8001,
+        "newCharacters": 8001,
+        "identical": true,
+        "productionHash": "c5dc2b26ca44062e2d6dd688848d4020e5aaaadf9d63f89d452ee65ac4fd78be",
+        "newHash": "c5dc2b26ca44062e2d6dd688848d4020e5aaaadf9d63f89d452ee65ac4fd78be"
+      }
+    },
+    {
+      "slug": "korean-haircare-fine-frizzy-hair",
+      "title": "Korean Haircare for Fine, Frizzy Hair: What We'd Try",
+      "section": "beauty",
+      "topic": "hair-scalp",
+      "image": "/images/articles/korean-haircare-fine-frizzy-hair.png",
+      "status": 200,
+      "h1": "Korean Haircare for Fine, Frizzy Hair: What We'd Try",
+      "displayedHero": "/images/articles/korean-haircare-fine-frizzy-hair.png",
+      "cardImage": "/images/articles/korean-haircare-fine-frizzy-hair.png",
+      "liveImage": "/images/articles/korean-haircare-fine-frizzy-hair.png",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "22d600a0a0c5f5aca2e1e4ee9d903f6bad5c7c9dc8d0afd42f4e49dedd70e42d",
+      "productionImageHash": "22d600a0a0c5f5aca2e1e4ee9d903f6bad5c7c9dc8d0afd42f4e49dedd70e42d",
+      "imageDimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "body": {
+        "slug": "korean-haircare-fine-frizzy-hair",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 7507,
+        "newCharacters": 7507,
+        "identical": true,
+        "productionHash": "2c24e82bd0114e45ebbb15c0f93a8c1e3b7078b28775ef6f95e8be60cb2ac448",
+        "newHash": "2c24e82bd0114e45ebbb15c0f93a8c1e3b7078b28775ef6f95e8be60cb2ac448"
+      }
+    },
+    {
+      "slug": "korean-wellness-habits-worth-keeping",
+      "title": "The Korean Wellness Habits We'd Actually Take Home",
+      "section": "explained",
+      "topic": "everyday-life",
+      "image": "/images/articles/korean-wellness-habits-worth-keeping.jpg",
+      "status": 200,
+      "h1": "The Korean Wellness Habits We'd Actually Take Home",
+      "displayedHero": "/images/articles/korean-wellness-habits-worth-keeping.jpg",
+      "cardImage": "/images/articles/korean-wellness-habits-worth-keeping.jpg",
+      "liveImage": "/images/articles/korean-wellness-habits-worth-keeping.jpg",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "c9f85c9b1c532ab886c84f2cfb86a3620719502b00764630bf1522ae4b637a08",
+      "productionImageHash": "c9f85c9b1c532ab886c84f2cfb86a3620719502b00764630bf1522ae4b637a08",
+      "imageDimensions": {
+        "width": 1600,
+        "height": 900
+      },
+      "body": {
+        "slug": "korean-wellness-habits-worth-keeping",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 7722,
+        "newCharacters": 7722,
+        "identical": true,
+        "productionHash": "ff61d62bb6cb1e5faa96c584182e39a46ad37d1e606b9a9bc5c17e59c205d719",
+        "newHash": "ff61d62bb6cb1e5faa96c584182e39a46ad37d1e606b9a9bc5c17e59c205d719"
+      }
+    },
+    {
+      "slug": "seoul-souvenirs-worth-bringing-home",
+      "title": "The Seoul Souvenirs We'd Actually Bring Home",
+      "section": "explained",
+      "topic": "shopping",
+      "image": "/images/articles/seoul-souvenirs-worth-bringing-home.jpg",
+      "status": 200,
+      "h1": "The Seoul Souvenirs We'd Actually Bring Home",
+      "displayedHero": "/images/articles/seoul-souvenirs-worth-bringing-home.jpg",
+      "cardImage": "/images/articles/seoul-souvenirs-worth-bringing-home.jpg",
+      "liveImage": "/images/articles/seoul-souvenirs-worth-bringing-home.jpg",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "e8dc7a5b3598c08acd7f9b5a251076155ebd2995ecfa6c9b87f7bcc2ecb7fede",
+      "productionImageHash": "e8dc7a5b3598c08acd7f9b5a251076155ebd2995ecfa6c9b87f7bcc2ecb7fede",
+      "imageDimensions": {
+        "width": 1600,
+        "height": 1065
+      },
+      "body": {
+        "slug": "seoul-souvenirs-worth-bringing-home",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 8066,
+        "newCharacters": 8066,
+        "identical": true,
+        "productionHash": "5155da060b801467b435bbe707537b94c89c413fe7efc403c735f83c5b8c4663",
+        "newHash": "5155da060b801467b435bbe707537b94c89c413fe7efc403c735f83c5b8c4663"
+      }
+    },
+    {
+      "slug": "slow-sunday-in-seoul",
+      "title": "A Slow Sunday in Seoul",
+      "section": "places",
+      "topic": "place-guides",
+      "image": "/images/articles/slow-sunday-in-seoul.jpg",
+      "status": 200,
+      "h1": "A Slow Sunday in Seoul",
+      "displayedHero": "/images/articles/slow-sunday-in-seoul.jpg",
+      "cardImage": "/images/articles/slow-sunday-in-seoul.jpg",
+      "liveImage": "/images/articles/slow-sunday-in-seoul.jpg",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "dd55474e3c703867421f43438b1b5c792d2655ae670f66bba78aa5cb7c624510",
+      "productionImageHash": "dd55474e3c703867421f43438b1b5c792d2655ae670f66bba78aa5cb7c624510",
+      "imageDimensions": {
+        "width": 1600,
+        "height": 1067
+      },
+      "body": {
+        "slug": "slow-sunday-in-seoul",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 7875,
+        "newCharacters": 7875,
+        "identical": true,
+        "productionHash": "08eb2fe3be26c8787bd66cb8ad031d6c2131e06e792c291c351cce9968c4b40a",
+        "newHash": "08eb2fe3be26c8787bd66cb8ad031d6c2131e06e792c291c351cce9968c4b40a"
+      }
+    },
+    {
+      "slug": "new-generation-korean-beauty-brands",
+      "title": "The New Generation of Korean Beauty Brands We're Watching",
+      "section": "beauty",
+      "topic": "edit",
+      "image": "/images/articles/new-generation-korean-beauty-brands.png",
+      "status": 200,
+      "h1": "The New Generation of Korean Beauty Brands We're Watching",
+      "displayedHero": "/images/articles/new-generation-korean-beauty-brands.png",
+      "cardImage": "/images/articles/new-generation-korean-beauty-brands.png",
+      "liveImage": "/images/articles/new-generation-korean-beauty-brands.png",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "881ca798fe0c7e1ffbc6c6cb4ccb9e64812ae29a0579d558d52f093cd36a2fbb",
+      "productionImageHash": "881ca798fe0c7e1ffbc6c6cb4ccb9e64812ae29a0579d558d52f093cd36a2fbb",
+      "imageDimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "body": {
+        "slug": "new-generation-korean-beauty-brands",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 8563,
+        "newCharacters": 8563,
+        "identical": true,
+        "productionHash": "443afae6e7bcf59af2b11f0219173521b3480d6f27b6d147ccd92dfcb572362b",
+        "newHash": "443afae6e7bcf59af2b11f0219173521b3480d6f27b6d147ccd92dfcb572362b"
+      }
+    },
+    {
+      "slug": "seoul-holistic-beauty-shift",
+      "title": "Beyond Skincare: Why Beauty in Seoul Is Becoming More Holistic",
+      "section": "beauty",
+      "topic": "edit",
+      "image": "/images/articles/seoul-holistic-beauty-shift.png",
+      "status": 200,
+      "h1": "Beyond Skincare: Why Beauty in Seoul Is Becoming More Holistic",
+      "displayedHero": "/images/articles/seoul-holistic-beauty-shift.png",
+      "cardImage": "/images/articles/seoul-holistic-beauty-shift.png",
+      "liveImage": "/images/articles/seoul-holistic-beauty-shift.png",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "6a0c1d74e5e91dd4a243398a10e45cebab6a61ffb2ab8883718e1bb9c4886830",
+      "productionImageHash": "6a0c1d74e5e91dd4a243398a10e45cebab6a61ffb2ab8883718e1bb9c4886830",
+      "imageDimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "body": {
+        "slug": "seoul-holistic-beauty-shift",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 7402,
+        "newCharacters": 7402,
+        "identical": true,
+        "productionHash": "6e79a52041202ed9204d61d27af6f7761f09f2ad43363f608681a681e6ca8ce4",
+        "newHash": "6e79a52041202ed9204d61d27af6f7761f09f2ad43363f608681a681e6ca8ce4"
+      }
+    },
+    {
+      "slug": "how-to-use-naver-map",
+      "title": "How to Use Naver Map (and Why Google Still Isn't Enough)",
+      "section": "explained",
+      "topic": "everyday-life",
+      "image": "/images/articles/how-to-use-naver-map.jpg",
+      "status": 200,
+      "h1": "How to Use Naver Map (and Why Google Still Isn't Enough)",
+      "displayedHero": "/images/articles/how-to-use-naver-map.jpg",
+      "cardImage": "/images/articles/how-to-use-naver-map.jpg",
+      "liveImage": "/images/articles/how-to-use-naver-map.jpg",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "bc227c71e862920ec90b2ad2e40fe0bab446accfa86ee01721e0e8349d2314db",
+      "productionImageHash": "bc227c71e862920ec90b2ad2e40fe0bab446accfa86ee01721e0e8349d2314db",
+      "imageDimensions": {
+        "width": 1600,
+        "height": 1067
+      },
+      "body": {
+        "slug": "how-to-use-naver-map",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 7795,
+        "newCharacters": 7795,
+        "identical": true,
+        "productionHash": "e5e43acedd9b1c9b78afe26b83d1fa0e925fd23ecbd9c941651bbcd316f55311",
+        "newHash": "e5e43acedd9b1c9b78afe26b83d1fa0e925fd23ecbd9c941651bbcd316f55311"
+      }
+    },
+    {
+      "slug": "korean-phrases-for-beauty-shopping",
+      "title": "Korean Phrases for Beauty Shopping (and Salons)",
+      "section": "explained",
+      "topic": "shopping",
+      "image": "/images/articles/korean-phrases-for-beauty-shopping.png",
+      "status": 200,
+      "h1": "Korean Phrases for Beauty Shopping (and Salons)",
+      "displayedHero": "/images/articles/korean-phrases-for-beauty-shopping.png",
+      "cardImage": "/images/articles/korean-phrases-for-beauty-shopping.png",
+      "liveImage": "/images/articles/korean-phrases-for-beauty-shopping.png",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "bf8983e6dd8bedb32aff59c96f23c9e2827e9f4e910d6633422cfd046b9d4b34",
+      "productionImageHash": "bf8983e6dd8bedb32aff59c96f23c9e2827e9f4e910d6633422cfd046b9d4b34",
+      "imageDimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "body": {
+        "slug": "korean-phrases-for-beauty-shopping",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 8109,
+        "newCharacters": 8109,
+        "identical": true,
+        "productionHash": "afafd9f9acd26d748c801a6dc0b7303a9f4f73356b445aa67770ca9f60937ca5",
+        "newHash": "afafd9f9acd26d748c801a6dc0b7303a9f4f73356b445aa67770ca9f60937ca5"
+      }
+    },
+    {
+      "slug": "korean-skincare-labels-explained",
+      "title": "Reading Korean Skincare Labels",
+      "section": "beauty",
+      "topic": "skincare",
+      "image": "/images/articles/korean-skincare-labels-explained.png",
+      "status": 200,
+      "h1": "Reading Korean Skincare Labels",
+      "displayedHero": "/images/articles/korean-skincare-labels-explained.png",
+      "cardImage": "/images/articles/korean-skincare-labels-explained.png",
+      "liveImage": "/images/articles/korean-skincare-labels-explained.png",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "0ae1f525e6897ad62ac723c0b531967b7185a864a81f0bf8990f2b3a58f3127a",
+      "productionImageHash": "0ae1f525e6897ad62ac723c0b531967b7185a864a81f0bf8990f2b3a58f3127a",
+      "imageDimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "body": {
+        "slug": "korean-skincare-labels-explained",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 8874,
+        "newCharacters": 8874,
+        "identical": true,
+        "productionHash": "349f427203f7f1e797a6d7ab1ed6c7cba3b947f76d895e22ed061ea8678f7f27",
+        "newHash": "349f427203f7f1e797a6d7ab1ed6c7cba3b947f76d895e22ed061ea8678f7f27"
+      }
+    },
+    {
+      "slug": "people-shaping-seoul-beauty",
+      "title": "Meet the People Shaping Seoul Beauty",
+      "section": "beauty",
+      "topic": "edit",
+      "image": "/images/articles/people-shaping-seoul-beauty.png",
+      "status": 200,
+      "h1": "Meet the People Shaping Seoul Beauty",
+      "displayedHero": "/images/articles/people-shaping-seoul-beauty.png",
+      "cardImage": "/images/articles/people-shaping-seoul-beauty.png",
+      "liveImage": "/images/articles/people-shaping-seoul-beauty.png",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "21c1d562e440986d92db7f13b80e6ad04c8220a24087bd4f4ae6244e1f0c15e4",
+      "productionImageHash": "21c1d562e440986d92db7f13b80e6ad04c8220a24087bd4f4ae6244e1f0c15e4",
+      "imageDimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "body": {
+        "slug": "people-shaping-seoul-beauty",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 7592,
+        "newCharacters": 7592,
+        "identical": true,
+        "productionHash": "42053b9c59bbcecaa58693ee46d97bc1ffde21e16443e218767fbdef0d2bc8bb",
+        "newHash": "42053b9c59bbcecaa58693ee46d97bc1ffde21e16443e218767fbdef0d2bc8bb"
+      }
+    },
+    {
+      "slug": "the-drop-list-august-2026",
+      "title": "The Things From Seoul We Can't Stop Talking About",
+      "section": "explained",
+      "topic": "shopping",
+      "image": "/images/articles/the-drop-list-august-2026.png",
+      "status": 200,
+      "h1": "The Things From Seoul We Can't Stop Talking About",
+      "displayedHero": "/images/articles/the-drop-list-august-2026.png",
+      "cardImage": "/images/articles/the-drop-list-august-2026.png",
+      "liveImage": "/images/articles/the-drop-list-august-2026.png",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "2a95b5d5d188fef9bf7e0958bcf795c95c04182317e8f74b0e22178566264ff8",
+      "productionImageHash": "2a95b5d5d188fef9bf7e0958bcf795c95c04182317e8f74b0e22178566264ff8",
+      "imageDimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "body": {
+        "slug": "the-drop-list-august-2026",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 7330,
+        "newCharacters": 7330,
+        "identical": true,
+        "productionHash": "62914a2b3ed995796bf409ffb84541fb9bc672e7658253815574f7aed5d4cdda",
+        "newHash": "62914a2b3ed995796bf409ffb84541fb9bc672e7658253815574f7aed5d4cdda"
+      }
+    },
+    {
+      "slug": "myeongdong-vs-seongsu-beauty-shopping",
+      "title": "Myeongdong or Seongsu: Where to Actually Spend Your Beauty Afternoon",
+      "section": "places",
+      "topic": "neighborhoods",
+      "image": "/images/articles/myeongdong-vs-seongsu-beauty-shopping.png",
+      "status": 200,
+      "h1": "Myeongdong or Seongsu: Where to Actually Spend Your Beauty Afternoon",
+      "displayedHero": "/images/articles/myeongdong-vs-seongsu-beauty-shopping.png",
+      "cardImage": "/images/articles/myeongdong-vs-seongsu-beauty-shopping.png",
+      "liveImage": "/images/articles/myeongdong-vs-seongsu-beauty-shopping.png",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "9348b2a5182b30cffd39b1a057676ce71ed1098a2207676a4a32f5366d4d1b22",
+      "productionImageHash": "9348b2a5182b30cffd39b1a057676ce71ed1098a2207676a4a32f5366d4d1b22",
+      "imageDimensions": {
+        "width": 1586,
+        "height": 992
+      },
+      "body": {
+        "slug": "myeongdong-vs-seongsu-beauty-shopping",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 6743,
+        "newCharacters": 6743,
+        "identical": true,
+        "productionHash": "2e585ae5e2a87e3b54bb02203af033ef9bd3515b4d909351b0297ea9547d5558",
+        "newHash": "2e585ae5e2a87e3b54bb02203af033ef9bd3515b4d909351b0297ea9547d5558"
+      }
+    },
+    {
+      "slug": "olive-young-shopping-guide",
+      "title": "Olive Young, Explained by People Who Shop There for Cotton Pads",
+      "section": "explained",
+      "topic": "shopping",
+      "image": "/images/articles/olive-young-shopping-guide.jpg",
+      "status": 200,
+      "h1": "Olive Young, Explained by People Who Shop There for Cotton Pads",
+      "displayedHero": "/images/articles/olive-young-shopping-guide.jpg",
+      "cardImage": "/images/articles/olive-young-shopping-guide.jpg",
+      "liveImage": "/images/articles/olive-young-shopping-guide.jpg",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "52aa3f53a2e2854092710e8f5045c9de1bcada77339391c7cfe1266de67e215c",
+      "productionImageHash": "52aa3f53a2e2854092710e8f5045c9de1bcada77339391c7cfe1266de67e215c",
+      "imageDimensions": {
+        "width": 1506,
+        "height": 941
+      },
+      "body": {
+        "slug": "olive-young-shopping-guide",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 7901,
+        "newCharacters": 7901,
+        "identical": true,
+        "productionHash": "2445a66a10fe508f3c85bb400913a50e6ab1599338514bdb5357c364b16f29b0",
+        "newHash": "2445a66a10fe508f3c85bb400913a50e6ab1599338514bdb5357c364b16f29b0"
+      }
+    },
+    {
+      "slug": "what-to-buy-korean-skincare-skin-type",
+      "title": "What to Buy for Your Skin Type, from the Aisle",
+      "section": "beauty",
+      "topic": "picks",
+      "image": "/images/articles/what-to-buy-korean-skincare-skin-type.jpg",
+      "status": 200,
+      "h1": "What to Buy for Your Skin Type, from the Aisle",
+      "displayedHero": "/images/articles/what-to-buy-korean-skincare-skin-type.jpg",
+      "cardImage": "/images/articles/what-to-buy-korean-skincare-skin-type.jpg",
+      "liveImage": "/images/articles/what-to-buy-korean-skincare-skin-type.jpg",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "3adfa7723f1408e20a0f195b89e6b68f781f81400055d78edafdcefb844a8f98",
+      "productionImageHash": "3adfa7723f1408e20a0f195b89e6b68f781f81400055d78edafdcefb844a8f98",
+      "imageDimensions": {
+        "width": 1506,
+        "height": 941
+      },
+      "body": {
+        "slug": "what-to-buy-korean-skincare-skin-type",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 7660,
+        "newCharacters": 7660,
+        "identical": true,
+        "productionHash": "5bea94da9e1dcd5925ad8a51654f0132826c489b45ee138904f5e6678c61a014",
+        "newHash": "5bea94da9e1dcd5925ad8a51654f0132826c489b45ee138904f5e6678c61a014"
+      }
+    },
+    {
+      "slug": "seongsu-beauty-and-bites",
+      "title": "Eat Like a Local in Seongsu: The Beauty-and-Bites Walk",
+      "section": "places",
+      "topic": "neighborhoods",
+      "image": "/images/seongsu/seongsu-beauty-and-bites.jpg",
+      "status": 200,
+      "h1": "Eat Like a Local in Seongsu: The Beauty-and-Bites Walk",
+      "displayedHero": "/images/seongsu/seongsu-beauty-and-bites.jpg",
+      "cardImage": "/images/seongsu/seongsu-beauty-and-bites.jpg",
+      "liveImage": "/images/seongsu/seongsu-beauty-and-bites.jpg",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "c984c74cf236f3f90765b2623ed287102d68daba3766b55b12e382b8056410fd",
+      "productionImageHash": "c984c74cf236f3f90765b2623ed287102d68daba3766b55b12e382b8056410fd",
+      "imageDimensions": {
+        "width": 1506,
+        "height": 941
+      },
+      "body": {
+        "slug": "seongsu-beauty-and-bites",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 3989,
+        "newCharacters": 3989,
+        "identical": true,
+        "productionHash": "aa1eb58b5db2a882c125a4e83352f41d462f7f6fad9f5256f2cc30eeb37b6c5d",
+        "newHash": "aa1eb58b5db2a882c125a4e83352f41d462f7f6fad9f5256f2cc30eeb37b6c5d"
+      }
+    },
+    {
+      "slug": "seongsu-warehouse-cafes",
+      "title": "Seongsu's Warehouse District: A Café-and-Dessert Crawl",
+      "section": "places",
+      "topic": "neighborhoods",
+      "image": "/images/seongsu/seongsu-warehouse-cafes.jpg",
+      "status": 200,
+      "h1": "Seongsu's Warehouse District: A Café-and-Dessert Crawl",
+      "displayedHero": "/images/seongsu/seongsu-warehouse-cafes.jpg",
+      "cardImage": "/images/seongsu/seongsu-warehouse-cafes.jpg",
+      "liveImage": "/images/seongsu/seongsu-warehouse-cafes.jpg",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "3d4e8bf44c525c248d856b5246871538ed21d1f00db25ca5f56e615c04aa3045",
+      "productionImageHash": "3d4e8bf44c525c248d856b5246871538ed21d1f00db25ca5f56e615c04aa3045",
+      "imageDimensions": {
+        "width": 1506,
+        "height": 941
+      },
+      "body": {
+        "slug": "seongsu-warehouse-cafes",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 2959,
+        "newCharacters": 2959,
+        "identical": true,
+        "productionHash": "9757cb11212e5adab8ac52ab1078b7e78cca3b3025aa282c1091b6e7b3c2fccb",
+        "newHash": "9757cb11212e5adab8ac52ab1078b7e78cca3b3025aa282c1091b6e7b3c2fccb"
+      }
+    },
+    {
+      "slug": "seoul-neighborhoods-guide",
+      "title": "Seoul by Neighborhood: How to Choose Where to Go (and Where to Stay)",
+      "section": "places",
+      "topic": "neighborhoods",
+      "image": "/images/seoul/seoul-neighborhoods-guide.png",
+      "status": 200,
+      "h1": "Seoul by Neighborhood: How to Choose Where to Go (and Where to Stay)",
+      "displayedHero": "/images/seoul/seoul-neighborhoods-guide.png",
+      "cardImage": "/images/seoul/seoul-neighborhoods-guide.png",
+      "liveImage": "/images/seoul/seoul-neighborhoods-guide.png",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "bdf08fad00e62f8a8753da6e0bcdc1e939f0d3eeeb26fdc9fe34c512b3571ef0",
+      "productionImageHash": "bdf08fad00e62f8a8753da6e0bcdc1e939f0d3eeeb26fdc9fe34c512b3571ef0",
+      "imageDimensions": {
+        "width": 1672,
+        "height": 941
+      },
+      "body": {
+        "slug": "seoul-neighborhoods-guide",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 7398,
+        "newCharacters": 7398,
+        "identical": true,
+        "productionHash": "430211bbaa00e338a0f9e148a6cdfbf401bc27d5b3fe56f54f4a531448cf59ec",
+        "newHash": "430211bbaa00e338a0f9e148a6cdfbf401bc27d5b3fe56f54f4a531448cf59ec"
+      }
+    },
+    {
+      "slug": "seongsu-beauty-spots",
+      "title": "Seongsu Beauty Spots to Start With",
+      "section": "places",
+      "topic": "neighborhoods",
+      "image": "/images/articles/seongsu-beauty-spots.png",
+      "status": 200,
+      "h1": "Seongsu Beauty Spots to Start With",
+      "displayedHero": "/images/articles/seongsu-beauty-spots.png",
+      "cardImage": "/images/articles/seongsu-beauty-spots.png",
+      "liveImage": "/images/articles/seongsu-beauty-spots.png",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "c4f5fa26649167a1ddc38d988c2717d5070b08109874e6fc4ba1620aaba391d3",
+      "productionImageHash": "c4f5fa26649167a1ddc38d988c2717d5070b08109874e6fc4ba1620aaba391d3",
+      "imageDimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "body": {
+        "slug": "seongsu-beauty-spots",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 7142,
+        "newCharacters": 7142,
+        "identical": true,
+        "productionHash": "0ba8a2f7ec1fdbb0d906ddd5ac5c9519945e8823540298371051a4717ac0f0a4",
+        "newHash": "0ba8a2f7ec1fdbb0d906ddd5ac5c9519945e8823540298371051a4717ac0f0a4"
+      }
+    },
+    {
+      "slug": "korean-post-treatment-recovery-skincare-routine",
+      "title": "What to Use After Laser or Skin Treatments: A Gentle Korean Recovery Routine",
+      "section": "beauty",
+      "topic": "skincare",
+      "image": "/images/articles/korean-post-treatment-recovery-skincare-routine.png",
+      "status": 200,
+      "h1": "What to Use After Laser or Skin Treatments: A Gentle Korean Recovery Routine",
+      "displayedHero": "/images/articles/korean-post-treatment-recovery-skincare-routine.png",
+      "cardImage": "/images/articles/korean-post-treatment-recovery-skincare-routine.png",
+      "liveImage": "/images/articles/korean-post-treatment-recovery-skincare-routine.png",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "1093b2898d51991ca622d3219eddc4a7e592e5be91ee03ba664fbb8bc981d310",
+      "productionImageHash": "1093b2898d51991ca622d3219eddc4a7e592e5be91ee03ba664fbb8bc981d310",
+      "imageDimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "body": {
+        "slug": "korean-post-treatment-recovery-skincare-routine",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 4423,
+        "newCharacters": 4423,
+        "identical": true,
+        "productionHash": "c4e44ec02a7149245f6081bfabf18d605bd2067b763acdf96b81bc8f2b6d6480",
+        "newHash": "c4e44ec02a7149245f6081bfabf18d605bd2067b763acdf96b81bc8f2b6d6480"
+      }
+    },
+    {
+      "slug": "korean-clinic-to-home-skincare",
+      "title": "Clinic-to-Home Skincare: Why Korean Products Borrow From Treatments",
+      "section": "beauty",
+      "topic": "skincare",
+      "image": "/images/articles/korean-clinic-to-home-skincare.png",
+      "status": 200,
+      "h1": "Clinic-to-Home Skincare: Why Korean Products Borrow From Treatments",
+      "displayedHero": "/images/articles/korean-clinic-to-home-skincare.png",
+      "cardImage": "/images/articles/korean-clinic-to-home-skincare.png",
+      "liveImage": "/images/articles/korean-clinic-to-home-skincare.png",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "ade190e6c99ee56617c4ccab93ee9e9b0029e1beb57c356180db6be3c9c17053",
+      "productionImageHash": "ade190e6c99ee56617c4ccab93ee9e9b0029e1beb57c356180db6be3c9c17053",
+      "imageDimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "body": {
+        "slug": "korean-clinic-to-home-skincare",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 4528,
+        "newCharacters": 4528,
+        "identical": true,
+        "productionHash": "50a04b429964fb4ae3548204a722b0485d2029089380df715603addb17529835",
+        "newHash": "50a04b429964fb4ae3548204a722b0485d2029089380df715603addb17529835"
+      }
+    },
+    {
+      "slug": "korean-skincare-30s-slow-aging-routine",
+      "title": "Korean Skincare in Your 30s: The Slow-Aging Routine",
+      "section": "beauty",
+      "topic": "skincare",
+      "image": "/images/articles/korean-skincare-30s-slow-aging-routine.png",
+      "status": 200,
+      "h1": "Korean Skincare in Your 30s: The Slow-Aging Routine",
+      "displayedHero": "/images/articles/korean-skincare-30s-slow-aging-routine.png",
+      "cardImage": "/images/articles/korean-skincare-30s-slow-aging-routine.png",
+      "liveImage": "/images/articles/korean-skincare-30s-slow-aging-routine.png",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "9b8b1ed2e7258a36f619bdf8712bda6a971ab621977b32bf1c4e12cbaab91f50",
+      "productionImageHash": "9b8b1ed2e7258a36f619bdf8712bda6a971ab621977b32bf1c4e12cbaab91f50",
+      "imageDimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "body": {
+        "slug": "korean-skincare-30s-slow-aging-routine",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 4001,
+        "newCharacters": 4001,
+        "identical": true,
+        "productionHash": "7fe726e9dc6ce49659132ec4d9e817180c00be1e6742ba877dfd53779dfae0c5",
+        "newHash": "7fe726e9dc6ce49659132ec4d9e817180c00be1e6742ba877dfd53779dfae0c5"
+      }
+    },
+    {
+      "slug": "korean-summer-cooling-skincare-routine",
+      "title": "Korean Summer Skincare: Cooling, Sweat, Sunscreen, Toner Pads",
+      "section": "beauty",
+      "topic": "skincare",
+      "image": "/images/articles/korean-summer-cooling-skincare-routine.png",
+      "status": 200,
+      "h1": "Korean Summer Skincare: Cooling, Sweat, Sunscreen, Toner Pads",
+      "displayedHero": "/images/articles/korean-summer-cooling-skincare-routine.png",
+      "cardImage": "/images/articles/korean-summer-cooling-skincare-routine.png",
+      "liveImage": "/images/articles/korean-summer-cooling-skincare-routine.png",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "1acc20db0876890c623ad1031ec289ce7ff3613244d9d3bee28de13c3180dc86",
+      "productionImageHash": "1acc20db0876890c623ad1031ec289ce7ff3613244d9d3bee28de13c3180dc86",
+      "imageDimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "body": {
+        "slug": "korean-summer-cooling-skincare-routine",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 4337,
+        "newCharacters": 4337,
+        "identical": true,
+        "productionHash": "1126acd3b6a64b4f5c3680fe21f784f2b875cf1259896d6928437109c14e706d",
+        "newHash": "1126acd3b6a64b4f5c3680fe21f784f2b875cf1259896d6928437109c14e706d"
+      }
+    },
+    {
+      "slug": "sunscreen-as-skincare-korean-routine",
+      "title": "Sunscreen as Skincare: The Korean Routine Step That Does the Most",
+      "section": "beauty",
+      "topic": "skincare",
+      "image": "/images/articles/sunscreen-as-skincare-korean-routine.png",
+      "status": 200,
+      "h1": "Sunscreen as Skincare: The Korean Routine Step That Does the Most",
+      "displayedHero": "/images/articles/sunscreen-as-skincare-korean-routine.png",
+      "cardImage": "/images/articles/sunscreen-as-skincare-korean-routine.png",
+      "liveImage": "/images/articles/sunscreen-as-skincare-korean-routine.png",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "6bc2eab6e8e47c016077a10c411f1f524767121d780df842009cce75cbb439db",
+      "productionImageHash": "6bc2eab6e8e47c016077a10c411f1f524767121d780df842009cce75cbb439db",
+      "imageDimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "body": {
+        "slug": "sunscreen-as-skincare-korean-routine",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 4225,
+        "newCharacters": 4225,
+        "identical": true,
+        "productionHash": "96fae599e7a599cb674a9b7c470c3e79d2ecf994eb31c82c5fd3c424c0bbe258",
+        "newHash": "96fae599e7a599cb674a9b7c470c3e79d2ecf994eb31c82c5fd3c424c0bbe258"
+      }
+    },
+    {
+      "slug": "korean-barrier-repair-routine",
+      "title": "A Korean Barrier-Repair Routine for Irritated Skin",
+      "section": "beauty",
+      "topic": "skincare",
+      "image": "/images/articles/korean-barrier-repair-routine.png",
+      "status": 200,
+      "h1": "A Korean Barrier-Repair Routine for Irritated Skin",
+      "displayedHero": "/images/articles/korean-barrier-repair-routine.png",
+      "cardImage": "/images/articles/korean-barrier-repair-routine.png",
+      "liveImage": "/images/articles/korean-barrier-repair-routine.png",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "ac4a4e094d389dfb1bbbfa4c95c586853c296a597b95a07af1773df335aea969",
+      "productionImageHash": "ac4a4e094d389dfb1bbbfa4c95c586853c296a597b95a07af1773df335aea969",
+      "imageDimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "body": {
+        "slug": "korean-barrier-repair-routine",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 4166,
+        "newCharacters": 4166,
+        "identical": true,
+        "productionHash": "8c781451376db5a198e1ee328b38016e2f09e6d881983398a01166ee9b3a0831",
+        "newHash": "8c781451376db5a198e1ee328b38016e2f09e6d881983398a01166ee9b3a0831"
+      }
+    },
+    {
+      "slug": "glass-skin-without-10-steps",
+      "title": "Glass Skin Without 10 Steps",
+      "section": "beauty",
+      "topic": "skincare",
+      "image": "/images/articles/glass-skin-without-10-steps.png",
+      "status": 200,
+      "h1": "Glass Skin Without 10 Steps",
+      "displayedHero": "/images/articles/glass-skin-without-10-steps.png",
+      "cardImage": "/images/articles/glass-skin-without-10-steps.png",
+      "liveImage": "/images/articles/glass-skin-without-10-steps.png",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "d1850f70d3f1f9d17a4d50040fa5f4c5fbdabbc595808aad7bf9adecfd95d17b",
+      "productionImageHash": "d1850f70d3f1f9d17a4d50040fa5f4c5fbdabbc595808aad7bf9adecfd95d17b",
+      "imageDimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "body": {
+        "slug": "glass-skin-without-10-steps",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 4458,
+        "newCharacters": 4458,
+        "identical": true,
+        "productionHash": "d2aced9f2749bcfb21ed36e9371d26864e014fde3bdb35c7b8610ec7f1813f13",
+        "newHash": "d2aced9f2749bcfb21ed36e9371d26864e014fde3bdb35c7b8610ec7f1813f13"
+      }
+    },
+    {
+      "slug": "toner-pads-as-mini-masks",
+      "title": "Toner Pads as Mini Masks: The Seoul Way to Use Them",
+      "section": "beauty",
+      "topic": "skincare",
+      "image": "/images/articles/toner-pads-as-mini-masks.png",
+      "status": 200,
+      "h1": "Toner Pads as Mini Masks: The Seoul Way to Use Them",
+      "displayedHero": "/images/articles/toner-pads-as-mini-masks.png",
+      "cardImage": "/images/articles/toner-pads-as-mini-masks.png",
+      "liveImage": "/images/articles/toner-pads-as-mini-masks.png",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "c02cf3138ecf8275ca2f72e76cf307b3b8d5a2636db8dea36dc060400060eff4",
+      "productionImageHash": "c02cf3138ecf8275ca2f72e76cf307b3b8d5a2636db8dea36dc060400060eff4",
+      "imageDimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "body": {
+        "slug": "toner-pads-as-mini-masks",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 4654,
+        "newCharacters": 4654,
+        "identical": true,
+        "productionHash": "359623b9d2abe3e501045878234bdc2ac0d4e71421f8c213937a05d5489b811c",
+        "newHash": "359623b9d2abe3e501045878234bdc2ac0d4e71421f8c213937a05d5489b811c"
+      }
+    },
+    {
+      "slug": "korean-skip-care-explained",
+      "title": "Skip-Care Explained: The Korean Minimalist Routine That Still Feels Considered",
+      "section": "beauty",
+      "topic": "skincare",
+      "image": "/images/articles/korean-skip-care-explained.png",
+      "status": 200,
+      "h1": "Skip-Care Explained: The Korean Minimalist Routine That Still Feels Considered",
+      "displayedHero": "/images/articles/korean-skip-care-explained.png",
+      "cardImage": "/images/articles/korean-skip-care-explained.png",
+      "liveImage": "/images/articles/korean-skip-care-explained.png",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "067b314ec16a8b6f816c7b9f212013bec1d9572680ab46919f8ab68f67160377",
+      "productionImageHash": "067b314ec16a8b6f816c7b9f212013bec1d9572680ab46919f8ab68f67160377",
+      "imageDimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "body": {
+        "slug": "korean-skip-care-explained",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 4510,
+        "newCharacters": 4510,
+        "identical": true,
+        "productionHash": "553e41fc7e4bddc54e3fe6a0eb4665b07e5c648906d6ea0ed003e07146dac149",
+        "newHash": "553e41fc7e4bddc54e3fe6a0eb4665b07e5c648906d6ea0ed003e07146dac149"
+      }
+    },
+    {
+      "slug": "korean-7-step-evening-skincare-routine",
+      "title": "The 7-Step Korean Evening Routine for Calm, Glossy Skin",
+      "section": "beauty",
+      "topic": "skincare",
+      "image": "/images/articles/korean-7-step-evening-skincare-routine.jpg",
+      "status": 200,
+      "h1": "The 7-Step Korean Evening Routine for Calm, Glossy Skin",
+      "displayedHero": "/images/articles/korean-7-step-evening-skincare-routine.jpg",
+      "cardImage": "/images/articles/korean-7-step-evening-skincare-routine.jpg",
+      "liveImage": "/images/articles/korean-7-step-evening-skincare-routine.jpg",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "b89ec410ba7b3fd69d6ab329e71a81c09409dc8d1dff49e910cda9deb7822aeb",
+      "productionImageHash": "b89ec410ba7b3fd69d6ab329e71a81c09409dc8d1dff49e910cda9deb7822aeb",
+      "imageDimensions": {
+        "width": 1200,
+        "height": 1800
+      },
+      "body": {
+        "slug": "korean-7-step-evening-skincare-routine",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 4442,
+        "newCharacters": 4442,
+        "identical": true,
+        "productionHash": "938b86d12073e52f421e25a48fcb238592e080898bf56a0d5b56368d7b3c4d48",
+        "newHash": "938b86d12073e52f421e25a48fcb238592e080898bf56a0d5b56368d7b3c4d48"
+      }
+    },
+    {
+      "slug": "korean-5-step-morning-skincare-routine",
+      "title": "The 5-Step Seoul Morning Skincare Routine",
+      "section": "beauty",
+      "topic": "skincare",
+      "image": "/images/articles/korean-5-step-morning-skincare-routine.png",
+      "status": 200,
+      "h1": "The 5-Step Seoul Morning Skincare Routine",
+      "displayedHero": "/images/articles/korean-5-step-morning-skincare-routine.png",
+      "cardImage": "/images/articles/korean-5-step-morning-skincare-routine.png",
+      "liveImage": "/images/articles/korean-5-step-morning-skincare-routine.png",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "59d618511b284a4cbe10765bb5d6a708ec5805e1dea8e7f56ef1c01f637f0321",
+      "productionImageHash": "59d618511b284a4cbe10765bb5d6a708ec5805e1dea8e7f56ef1c01f637f0321",
+      "imageDimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "body": {
+        "slug": "korean-5-step-morning-skincare-routine",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 4825,
+        "newCharacters": 4825,
+        "identical": true,
+        "productionHash": "ebab2e1c16c0bfb71cccf72d51a9bbc50ccc3433b8b79f3c34ac0123b2678749",
+        "newHash": "ebab2e1c16c0bfb71cccf72d51a9bbc50ccc3433b8b79f3c34ac0123b2678749"
+      }
+    },
+    {
+      "slug": "korean-3-step-skincare-routine",
+      "title": "The Korean 3-Step Skincare Routine for People Who Hate Long Routines",
+      "section": "beauty",
+      "topic": "skincare",
+      "image": "/images/articles/korean-3-step-skincare-routine.png",
+      "status": 200,
+      "h1": "The Korean 3-Step Skincare Routine for People Who Hate Long Routines",
+      "displayedHero": "/images/articles/korean-3-step-skincare-routine.png",
+      "cardImage": "/images/articles/korean-3-step-skincare-routine.png",
+      "liveImage": "/images/articles/korean-3-step-skincare-routine.png",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "2e1e21f84e1cb3e83a1849d7e93a065a361277f9fb64a5d3c64e7fb354fe1fbf",
+      "productionImageHash": "2e1e21f84e1cb3e83a1849d7e93a065a361277f9fb64a5d3c64e7fb354fe1fbf",
+      "imageDimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "body": {
+        "slug": "korean-3-step-skincare-routine",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 5125,
+        "newCharacters": 5125,
+        "identical": true,
+        "productionHash": "c6c6aebb87b740a48fb24b4df7a7f735084a5a3d55d4a62d7792fe86246acfb4",
+        "newHash": "c6c6aebb87b740a48fb24b4df7a7f735084a5a3d55d4a62d7792fe86246acfb4"
+      }
+    },
+    {
+      "slug": "best-korean-serums-skin-type",
+      "title": "Best Korean Serums for Every Skin Type (Tested)",
+      "section": "beauty",
+      "topic": "picks",
+      "image": "https://images.unsplash.com/photo-1573461160327-b450ce3d8e7f?w=1600&q=80&auto=format&fit=crop",
+      "status": 200,
+      "h1": "Best Korean Serums for Every Skin Type (Tested)",
+      "displayedHero": "https://images.unsplash.com/photo-1573461160327-b450ce3d8e7f?w=1600&q=80&auto=format&fit=crop",
+      "cardImage": "https://images.unsplash.com/photo-1573461160327-b450ce3d8e7f?w=1600&q=80&auto=format&fit=crop",
+      "liveImage": "https://images.unsplash.com/photo-1573461160327-b450ce3d8e7f?w=1600&q=80&auto=format&fit=crop",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "c8e031f1d1d5bc869ffa3f7d2a190fb9da1197e3178cd2ebeb098c0828864604",
+      "productionImageHash": "c8e031f1d1d5bc869ffa3f7d2a190fb9da1197e3178cd2ebeb098c0828864604",
+      "imageDimensions": {
+        "width": 1600,
+        "height": 2000
+      },
+      "body": {
+        "slug": "best-korean-serums-skin-type",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 7077,
+        "newCharacters": 7077,
+        "identical": true,
+        "productionHash": "4d4d80f7700ef71ab92a3a08635086a55d96cf5c28eb0eebe1b203d746131ba7",
+        "newHash": "4d4d80f7700ef71ab92a3a08635086a55d96cf5c28eb0eebe1b203d746131ba7"
+      }
+    },
+    {
+      "slug": "glass-skin-what-works",
+      "title": "Glass Skin, Realistically — What Works and What's Hype",
+      "section": "beauty",
+      "topic": "skincare",
+      "image": "https://images.unsplash.com/photo-1552046122-03184de85e08?w=1600&q=80&auto=format&fit=crop",
+      "status": 200,
+      "h1": "Glass Skin, Realistically — What Works and What's Hype",
+      "displayedHero": "https://images.unsplash.com/photo-1552046122-03184de85e08?w=1600&q=80&auto=format&fit=crop",
+      "cardImage": "https://images.unsplash.com/photo-1552046122-03184de85e08?w=1600&q=80&auto=format&fit=crop",
+      "liveImage": "https://images.unsplash.com/photo-1552046122-03184de85e08?w=1600&q=80&auto=format&fit=crop",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "0e9312d6814866f444cfd5eaf5d4e2be6e411425d50b72789f87a42138bbf252",
+      "productionImageHash": "0e9312d6814866f444cfd5eaf5d4e2be6e411425d50b72789f87a42138bbf252",
+      "imageDimensions": {
+        "width": 1600,
+        "height": 2400
+      },
+      "body": {
+        "slug": "glass-skin-what-works",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 6197,
+        "newCharacters": 6197,
+        "identical": true,
+        "productionHash": "d46996f2b95594fd26ee0e8c71b6f97a3c9e576fd71420a1c05106654f990592",
+        "newHash": "d46996f2b95594fd26ee0e8c71b6f97a3c9e576fd71420a1c05106654f990592"
+      }
+    },
+    {
+      "slug": "best-korean-sunscreens-skin-type",
+      "title": "Korean Sunscreens Worth Buying (Oily, Dry, Sensitive)",
+      "section": "beauty",
+      "topic": "picks",
+      "image": "https://images.unsplash.com/photo-1555820585-c5ae44394b79?w=1600&q=80&auto=format&fit=crop",
+      "status": 200,
+      "h1": "Korean Sunscreens Worth Buying (Oily, Dry, Sensitive)",
+      "displayedHero": "https://images.unsplash.com/photo-1555820585-c5ae44394b79?w=1600&q=80&auto=format&fit=crop",
+      "cardImage": "https://images.unsplash.com/photo-1555820585-c5ae44394b79?w=1600&q=80&auto=format&fit=crop",
+      "liveImage": "https://images.unsplash.com/photo-1555820585-c5ae44394b79?w=1600&q=80&auto=format&fit=crop",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "e5dd51a05fe52654a8641505d655f24b179a474cfddd106b01ea5c353e310062",
+      "productionImageHash": "e5dd51a05fe52654a8641505d655f24b179a474cfddd106b01ea5c353e310062",
+      "imageDimensions": {
+        "width": 1600,
+        "height": 2185
+      },
+      "body": {
+        "slug": "best-korean-sunscreens-skin-type",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 7381,
+        "newCharacters": 7381,
+        "identical": true,
+        "productionHash": "e04affcbd13e9386261456c0fa80856610824ac83ae24e6a2092a6e6d6746c4f",
+        "newHash": "e04affcbd13e9386261456c0fa80856610824ac83ae24e6a2092a6e6d6746c4f"
+      }
+    },
+    {
+      "slug": "korean-skincare-routine-by-skin-type",
+      "title": "The Korean Skincare Routine, Simplified — by Skin Type",
+      "section": "beauty",
+      "topic": "skincare",
+      "image": "https://images.unsplash.com/photo-1580870069867-74c57ee1bb07?w=1600&q=80&auto=format&fit=crop",
+      "status": 200,
+      "h1": "The Korean Skincare Routine, Simplified — by Skin Type",
+      "displayedHero": "https://images.unsplash.com/photo-1580870069867-74c57ee1bb07?w=1600&q=80&auto=format&fit=crop",
+      "cardImage": "https://images.unsplash.com/photo-1580870069867-74c57ee1bb07?w=1600&q=80&auto=format&fit=crop",
+      "liveImage": "https://images.unsplash.com/photo-1580870069867-74c57ee1bb07?w=1600&q=80&auto=format&fit=crop",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "3012f41cccad5024c1d16e42530d1e435149184344366d2e96ce43088ce0c2a7",
+      "productionImageHash": "3012f41cccad5024c1d16e42530d1e435149184344366d2e96ce43088ce0c2a7",
+      "imageDimensions": {
+        "width": 1600,
+        "height": 2133
+      },
+      "body": {
+        "slug": "korean-skincare-routine-by-skin-type",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 6493,
+        "newCharacters": 6493,
+        "identical": true,
+        "productionHash": "083cbcd8446a066d88a0d33987ffc35a4601dbfa3822abe868103ebfa9b34855",
+        "newHash": "083cbcd8446a066d88a0d33987ffc35a4601dbfa3822abe868103ebfa9b34855"
+      }
+    },
+    {
+      "slug": "korean-hair-scalp-care-routine",
+      "title": "How Koreans Actually Care for Their Hair & Scalp",
+      "section": "beauty",
+      "topic": "hair-scalp",
+      "image": "/images/articles/korean-hair-scalp-care-routine.png",
+      "status": 200,
+      "h1": "How Koreans Actually Care for Their Hair & Scalp",
+      "displayedHero": "/images/articles/korean-hair-scalp-care-routine.png",
+      "cardImage": "/images/articles/korean-hair-scalp-care-routine.png",
+      "liveImage": "/images/articles/korean-hair-scalp-care-routine.png",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "82686265aa11da7b76f19bc117de5a1d00a64116f6946de5d2fb88f2d3cace67",
+      "productionImageHash": "82686265aa11da7b76f19bc117de5a1d00a64116f6946de5d2fb88f2d3cace67",
+      "imageDimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "body": {
+        "slug": "korean-hair-scalp-care-routine",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 6854,
+        "newCharacters": 6854,
+        "identical": true,
+        "productionHash": "79b4b3f1cf00314cbfd72762738e634dc782da7adf3e23d96ed83d465426dfec",
+        "newHash": "79b4b3f1cf00314cbfd72762738e634dc782da7adf3e23d96ed83d465426dfec"
+      }
+    },
+    {
+      "slug": "korean-head-spa-first-timer-guide",
+      "title": "What Really Happens at a Korean Head Spa (A First-Timer's Guide)",
+      "section": "beauty",
+      "topic": "hair-scalp",
+      "image": "/images/articles/korean-head-spa-first-timer-guide.png",
+      "status": 200,
+      "h1": "What Really Happens at a Korean Head Spa (A First-Timer's Guide)",
+      "displayedHero": "/images/articles/korean-head-spa-first-timer-guide.png",
+      "cardImage": "/images/articles/korean-head-spa-first-timer-guide.png",
+      "liveImage": "/images/articles/korean-head-spa-first-timer-guide.png",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "fdce2c66577b309e5226f3632a5437702cf8b0cd58d6c7221e163c15f4aad2ea",
+      "productionImageHash": "fdce2c66577b309e5226f3632a5437702cf8b0cd58d6c7221e163c15f4aad2ea",
+      "imageDimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "body": {
+        "slug": "korean-head-spa-first-timer-guide",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 4707,
+        "newCharacters": 4707,
+        "identical": true,
+        "productionHash": "3328c56793d7b40586764ae0423329a47592344ef18f7a545dbedae24e4b368f",
+        "newHash": "3328c56793d7b40586764ae0423329a47592344ef18f7a545dbedae24e4b368f"
+      }
+    },
+    {
+      "slug": "korean-bathhouse-jjimjilbang-guide",
+      "title": "The Korean Bathhouse (Jjimjilbang), Explained",
+      "section": "explained",
+      "topic": "everyday-life",
+      "image": "https://yisdsaetxgrboqlirvgb.supabase.co/storage/v1/object/public/media/articles/korean-bathhouse-jjimjilbang-guide/hero-v5.jpg",
+      "status": 200,
+      "h1": "The Korean Bathhouse (Jjimjilbang), Explained",
+      "displayedHero": "https://yisdsaetxgrboqlirvgb.supabase.co/storage/v1/object/public/media/articles/korean-bathhouse-jjimjilbang-guide/hero-v5.jpg",
+      "cardImage": "https://yisdsaetxgrboqlirvgb.supabase.co/storage/v1/object/public/media/articles/korean-bathhouse-jjimjilbang-guide/hero-v5.jpg",
+      "liveImage": "https://yisdsaetxgrboqlirvgb.supabase.co/storage/v1/object/public/media/articles/korean-bathhouse-jjimjilbang-guide/hero-v5.jpg",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "ef3e00a9c7ad4cb39d29c807f14b6cf2e45bb19ac582eef822c26c9fa8dc2d15",
+      "productionImageHash": "ef3e00a9c7ad4cb39d29c807f14b6cf2e45bb19ac582eef822c26c9fa8dc2d15",
+      "imageDimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "body": {
+        "slug": "korean-bathhouse-jjimjilbang-guide",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 6038,
+        "newCharacters": 6038,
+        "identical": true,
+        "productionHash": "bf4bee8ccb5845151c863ec0fbc17d050ece9ae507063c274d74c328e653d8c5",
+        "newHash": "bf4bee8ccb5845151c863ec0fbc17d050ece9ae507063c274d74c328e653d8c5"
+      }
+    },
+    {
+      "slug": "seongsu-seoul-beauty-guide",
+      "title": "Where to Go in Seongsu: Beauty, Coffee & Concept Stores",
+      "section": "places",
+      "topic": "neighborhoods",
+      "image": "https://images.unsplash.com/photo-1622517806875-92161d3fd09d?w=1600&q=80&auto=format&fit=crop",
+      "status": 200,
+      "h1": "Where to Go in Seongsu: Beauty, Coffee & Concept Stores",
+      "displayedHero": "https://images.unsplash.com/photo-1622517806875-92161d3fd09d?w=1600&q=80&auto=format&fit=crop",
+      "cardImage": "https://images.unsplash.com/photo-1622517806875-92161d3fd09d?w=1600&q=80&auto=format&fit=crop",
+      "liveImage": "https://images.unsplash.com/photo-1622517806875-92161d3fd09d?w=1600&q=80&auto=format&fit=crop",
+      "originalImageStatus": 200,
+      "optimizedImageStatus": 200,
+      "originalImageHash": "bd654e4fb5e5eb24947f0c884f5ffc1310b049fde255afc9e27f57384957924f",
+      "productionImageHash": "bd654e4fb5e5eb24947f0c884f5ffc1310b049fde255afc9e27f57384957924f",
+      "imageDimensions": {
+        "width": 1600,
+        "height": 2133
+      },
+      "body": {
+        "slug": "seongsu-seoul-beauty-guide",
+        "productionStatus": 200,
+        "newStatus": 200,
+        "productionCharacters": 5866,
+        "newCharacters": 5866,
+        "identical": true,
+        "productionHash": "addd20bcf9c597f1ee3ff8528655a62eb2cf3a85698d35e575a291a2ba0a4cc4",
+        "newHash": "addd20bcf9c597f1ee3ff8528655a62eb2cf3a85698d35e575a291a2ba0a4cc4"
+      }
+    }
+  ],
+  "unexplainedBodyDifferences": []
+}

@@ -6,6 +6,7 @@ import {
   mapPostRow,
   getPostBySlug,
   listPublishedPosts,
+  listAllPublishedPosts,
 } from "./posts";
 import { fakeClient } from "./_fake-supabase";
 
@@ -180,6 +181,25 @@ describe("mapPostRow", () => {
 });
 
 describe("listPublishedPosts", () => {
+  it("filters Culture Edit in the database alongside published status", async () => {
+    const query = {
+      select: vi.fn().mockReturnThis(),
+      eq: vi.fn().mockReturnThis(),
+      order: vi.fn().mockReturnThis(),
+      limit: vi.fn().mockReturnThis(),
+      contains: vi.fn().mockReturnThis(),
+      then: (resolve: (value: unknown) => unknown) =>
+        Promise.resolve({ data: [], error: null }).then(resolve),
+    };
+    (createClient as ReturnType<typeof vi.fn>).mockResolvedValue({
+      from: () => query,
+    });
+    await listPublishedPosts({ category: "guides", tag: "Culture Edit" });
+    expect(query.eq).toHaveBeenCalledWith("status", "published");
+    expect(query.eq).toHaveBeenCalledWith("category", "guides");
+    expect(query.contains).toHaveBeenCalledWith("tags", ["Culture Edit"]);
+  });
+
   it("returns mapped rows and records a .limit() call", async () => {
     const theFake = fakeClient({ data: [row], error: null });
     (createClient as ReturnType<typeof vi.fn>).mockResolvedValue(theFake);
@@ -205,5 +225,50 @@ describe("getPostBySlug", () => {
     );
     const post = await getPostBySlug("nope");
     expect(post).toBeNull();
+  });
+});
+
+describe("complete published catalog", () => {
+  it("reads past the first page and keeps published status on every request", async () => {
+    const pages = [
+      Array.from({ length: 500 }, (_, i) => ({
+        ...row,
+        id: String(i),
+        slug: `p-${i}`,
+      })),
+      [{ ...row, slug: "last" }],
+    ];
+    const query = {
+      select: vi.fn().mockReturnThis(),
+      eq: vi.fn().mockReturnThis(),
+      order: vi.fn().mockReturnThis(),
+      range: vi
+        .fn()
+        .mockImplementation(() =>
+          Promise.resolve({ data: pages.shift(), error: null })
+        ),
+    };
+    vi.mocked(createClient).mockResolvedValue({ from: () => query } as never);
+    const posts = await listAllPublishedPosts();
+    expect(posts).toHaveLength(501);
+    expect(posts.at(-1)?.slug).toBe("last");
+    expect(query.range.mock.calls).toEqual([
+      [0, 499],
+      [500, 999],
+    ]);
+    expect(query.eq).toHaveBeenCalledTimes(2);
+    expect(query.eq).toHaveBeenCalledWith("status", "published");
+  });
+  it("fails instead of silently returning a partial archive", async () => {
+    const query = {
+      select: vi.fn().mockReturnThis(),
+      eq: vi.fn().mockReturnThis(),
+      order: vi.fn().mockReturnThis(),
+      range: vi
+        .fn()
+        .mockResolvedValue({ data: null, error: new Error("unavailable") }),
+    };
+    vi.mocked(createClient).mockResolvedValue({ from: () => query } as never);
+    await expect(listAllPublishedPosts()).rejects.toThrow("unavailable");
   });
 });

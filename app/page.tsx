@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { listPublishedPosts } from "@/services/posts";
+import { listEditorialPosts } from "@/services/editorial";
 import { listPlaces } from "@/services/places";
 import { listProducts } from "@/services/products";
 import { Hero } from "@/components/editorial/Hero";
@@ -53,11 +53,11 @@ async function safe<T>(p: Promise<T[]>, label: string): Promise<T[]> {
 
 export default async function HomePage() {
   const [posts, places, products] = await Promise.all([
-    safe(listPublishedPosts({ limit: 7 }), "posts"),
+    safe(listEditorialPosts(), "posts"),
     safe(listPlaces({ limit: 3 }), "places"),
     safe(listProducts({ limit: 4 }), "products"),
   ]);
-  const [featured, ...latest] = posts;
+  const [featured, ...latest] = posts.slice(0, 7);
 
   return (
     <main>

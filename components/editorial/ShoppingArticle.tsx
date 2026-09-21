@@ -1,3 +1,9 @@
+import { ArticleKeywords } from "@/components/editorial/ArticleKeywords";
+import {
+  articleBreadcrumbs,
+  topicForPost,
+  sectionForPost,
+} from "@/lib/editorial-taxonomy";
 import Link from "next/link";
 import { Prose } from "@/components/editorial/Prose";
 import { JsonLd } from "@/components/editorial/JsonLd";
@@ -6,7 +12,6 @@ import { Breadcrumbs } from "@/components/editorial/Breadcrumbs";
 import { ArticleViewTracker } from "@/components/analytics/ArticleViewTracker";
 import { ShoppingCta } from "@/components/editorial/ShoppingCta";
 import { TonalFrame } from "@/components/editorial/TonalFrame";
-import { DaisoSeriesLink } from "@/components/editorial/DaisoSeriesLink";
 import { articleJsonLd, breadcrumbJsonLd } from "@/lib/seo";
 import {
   shoppingArticleToPost,
@@ -15,12 +20,7 @@ import {
 
 export function ShoppingArticle({ article }: { article: ShoppingArticleData }) {
   const post = shoppingArticleToPost(article);
-  const crumbs = [
-    { name: "Home", path: "/" },
-    { name: "Stories", path: "/stories" },
-    { name: "Shopping", path: "/stories/shopping" },
-    { name: article.title, path: `/articles/${article.slug}` },
-  ];
+  const crumbs = articleBreadcrumbs(post);
 
   return (
     <main className="mx-auto max-w-3xl px-6 py-16">
@@ -31,10 +31,10 @@ export function ShoppingArticle({ article }: { article: ShoppingArticleData }) {
       <article>
         <Breadcrumbs items={crumbs} />
         <Link
-          href="/stories/shopping"
+          href={topicForPost(post).href}
           className="text-xs uppercase tracking-widest text-accent transition-colors duration-medium ease-editorial hover:text-accent-hover"
         >
-          {article.series.displayName} · {article.series.number}
+          {sectionForPost(post).label} · {topicForPost(post).label}
         </Link>
         <h1 className="mt-2 font-serif text-4xl md:text-5xl">
           {article.title}
@@ -79,40 +79,18 @@ export function ShoppingArticle({ article }: { article: ShoppingArticleData }) {
           <Prose
             markdown={article.body}
             anchors
-            shoppingEdit={article.series.number === "02"}
+            shoppingEdit={article.slug === "daiso-korea-must-buys"}
           />
         </div>
 
         <ShoppingCta
-          articleNumber={article.series.number}
+          articleNumber={article.trackingNumber}
           articleSlug={article.slug}
-          series={article.series.name}
+          series="Daiso"
           category={article.category}
         />
 
-        <footer className="mt-14 border-t border-soft-gray pt-8">
-          <p className="text-[11px] uppercase tracking-label text-accent">
-            {article.series.displayName}
-          </p>
-          <p className="mt-2 font-serif text-2xl">
-            {article.series.descriptor}
-          </p>
-          {article.series.number === "02" && (
-            <div className="mt-6">
-              <p className="text-[11px] uppercase tracking-label text-text-muted">
-                Start with the bigger picture
-              </p>
-              <DaisoSeriesLink
-                articleNumber={article.series.number}
-                articleSlug={article.slug}
-              />
-            </div>
-          )}
-          <p className="mt-4 text-sm italic text-text-muted">
-            A Drop of Seoul looks beyond what’s trending to find what’s actually
-            worth discovering.
-          </p>
-        </footer>
+        <ArticleKeywords post={post} />
       </article>
     </main>
   );

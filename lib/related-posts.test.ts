@@ -21,7 +21,7 @@ function post(slug: string, category: string, tags: string[]): Post {
 }
 
 describe("rankRelatedPosts", () => {
-  it("excludes the current article and prioritizes category plus shared tags", () => {
+  it("excludes the current article and links shared keywords across sections before generic category matches", () => {
     const current = post("current", "beauty", ["olive young", "picks"]);
     const ranked = rankRelatedPosts(current, [
       current,
@@ -29,8 +29,8 @@ describe("rankRelatedPosts", () => {
       post("same-category", "beauty", ["picks"]),
     ]);
     expect(ranked.map((item) => item.slug)).toEqual([
-      "same-category",
       "other-category",
+      "same-category",
     ]);
   });
 });

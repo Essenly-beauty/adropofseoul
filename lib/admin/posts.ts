@@ -1,3 +1,4 @@
+import { EDITORIAL_TOPICS, KEYWORDS } from "@/lib/editorial-taxonomy";
 import { slugify } from "@/lib/slug";
 import { POST_CATEGORIES, POST_STATUSES } from "@/lib/taxonomy";
 
@@ -53,6 +54,26 @@ export function parsePostForm(
     errors.category = "Pick a category.";
   }
 
+  const editorialTopic = str(fd, "editorialTopic");
+  if (editorialTopic && !EDITORIAL_TOPICS.some((t) => t.key === editorialTopic))
+    errors.editorialTopic = "Pick an editorial home.";
+  const keywordSelection = fd.getAll("editorialKeywords").map(String);
+  if (keywordSelection.some((k) => !KEYWORDS.some((known) => known.key === k)))
+    errors.editorialKeywords = "Pick known keywords.";
+  let tags = lines(fd, "tags");
+  if (editorialTopic)
+    tags = [
+      ...tags.filter((t) => !t.startsWith("topic:")),
+      `topic:${editorialTopic}`,
+    ];
+  if (str(fd, "keywordsProvided") === "true")
+    tags = [
+      ...tags.filter((t) => !/^(keyword:|keywords:)/.test(t)),
+      "keywords:manual",
+      ...keywordSelection.map((k) => `keyword:${k}`),
+    ];
+  tags = Array.from(new Set(tags));
+
   const statusRaw = str(fd, "status");
   const status = statusRaw || "draft";
   if (!POST_STATUSES.some((s) => s.value === status)) {
@@ -87,7 +108,7 @@ export function parsePostForm(
       excerpt: nullable(fd, "excerpt"),
       body: nullable(fd, "body"),
       category,
-      tags: lines(fd, "tags"),
+      tags,
       featuredImage: urls.featuredImage,
       author: nullable(fd, "author"),
       seoTitle: nullable(fd, "seoTitle"),

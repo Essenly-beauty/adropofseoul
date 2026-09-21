@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import { listProducts } from "@/services/products";
-import { listPublishedPosts } from "@/services/posts";
+import { listEditorialPosts } from "@/services/editorial";
+import { filterEditorialPosts } from "@/lib/editorial-taxonomy";
 import { ProductCard } from "@/components/editorial/ProductCard";
 import { ArticleCard } from "@/components/editorial/ArticleCard";
 import { SectionHeading } from "@/components/editorial/SectionHeading";
 import { SectionTabs } from "@/components/editorial/SectionTabs";
 import { buildPageMetadata } from "@/lib/seo";
-import { SKINCARE_TABS, isPick } from "@/lib/taxonomy";
+import { SKINCARE_TABS } from "@/lib/taxonomy";
 import type { Post } from "@/services/types";
 
 export const metadata: Metadata = buildPageMetadata({
@@ -24,18 +25,18 @@ export default async function SkincarePicksPage() {
   try {
     [products, beautyPosts] = await Promise.all([
       listProducts({ limit: 96 }),
-      listPublishedPosts({ limit: 96, category: "beauty" }),
+      listEditorialPosts(),
     ]);
   } catch (err) {
     console.error("skincare/picks: fetch failed", err);
   }
-  const reviews = beautyPosts.filter((p) => isPick(p));
+  const reviews = filterEditorialPosts(beautyPosts, { topic: "picks" });
 
   return (
     <main className="mx-auto max-w-content px-6 py-16">
-      <SectionHeading title="Picks" eyebrow="What we love" />
+      <SectionHeading title="Picks" eyebrow="What we love" as="h1" />
       <SectionTabs
-        label="Skincare sections"
+        label="Beauty sections"
         tabs={SKINCARE_TABS}
         active="picks"
       />

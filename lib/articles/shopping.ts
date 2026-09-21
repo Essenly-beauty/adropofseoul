@@ -15,12 +15,8 @@ export type ShoppingArticle = {
   excerpt: string;
   heroImage: string | null;
   heroAlt: string;
-  series: {
-    name: string;
-    displayName: string;
-    number: string;
-    descriptor: string;
-  };
+  /** Stable attribution for existing CTA analytics; not an editorial series. */
+  trackingNumber: string;
   body: string;
 };
 
@@ -50,13 +46,7 @@ export const SHOPPING_ARTICLES: ShoppingArticle[] = [
     heroImage: "/images/articles/daiso-korea-guide/hero-v2.png",
     heroAlt:
       "Editorial illustration representing a Daiso Korea shopping basket and familiar low price points",
-    series: {
-      name: "The Daiso Edit",
-      displayName: "THE DAISO EDIT",
-      number: "01",
-      descriptor:
-        "A local look at what’s actually worth buying at Daiso Korea.",
-    },
+    trackingNumber: "01",
     body: articleBody("daiso-korea-guide.md"),
   },
   {
@@ -74,13 +64,7 @@ export const SHOPPING_ARTICLES: ShoppingArticle[] = [
     heroImage: "/images/articles/daiso-korea-must-buys/hero.png",
     heroAlt:
       "Editorial illustration of useful beauty, travel and souvenir finds from Daiso Korea",
-    series: {
-      name: "The Daiso Edit",
-      displayName: "THE DAISO EDIT",
-      number: "02",
-      descriptor:
-        "A local look at what’s actually worth buying at Daiso Korea.",
-    },
+    trackingNumber: "02",
     body: articleBody("daiso-korea-must-buys.md"),
   },
   {
@@ -98,13 +82,7 @@ export const SHOPPING_ARTICLES: ShoppingArticle[] = [
     heroImage: "/images/articles/daiso-korea-beauty/hero.png",
     heroAlt:
       "VT PDRN toner and sheet mask, BONCEPT vitamin C ampoule, and ZOOM makeup fixer arranged in warm sunlight",
-    series: {
-      name: "The Daiso Edit",
-      displayName: "THE DAISO EDIT",
-      number: "03",
-      descriptor:
-        "A local look at what’s actually worth buying at Daiso Korea.",
-    },
+    trackingNumber: "03",
     body: articleBody("daiso-korea-beauty.md"),
   },
   {
@@ -122,13 +100,7 @@ export const SHOPPING_ARTICLES: ShoppingArticle[] = [
     heroImage: "/images/articles/daiso-vs-olive-young-korea/hero.png",
     heroAlt:
       "Daiso beauty discoveries beside an Olive Young shopping selection on a warm retail counter",
-    series: {
-      name: "The Daiso Edit",
-      displayName: "THE DAISO EDIT",
-      number: "04",
-      descriptor:
-        "A local look at what’s actually worth buying at Daiso Korea.",
-    },
+    trackingNumber: "04",
     body: articleBody("daiso-vs-olive-young-korea.md"),
   },
 ];
@@ -150,14 +122,15 @@ export function shoppingArticleToPost(article: ShoppingArticle): Post {
     excerpt: article.excerpt,
     body: article.body,
     category: article.category,
-    tags: ["shopping", "daiso korea", "daiso seoul", "k-beauty", "souvenirs"],
+    tags: [
+      "keyword:daiso",
+      ...(article.slug.includes("olive-young") ? ["keyword:olive-young"] : []),
+    ],
     featuredImage: article.heroImage,
     author: article.author,
     seoTitle: article.seoTitle,
     metaDescription: article.metaDescription,
     publishedAt: article.publishedAt,
-    seriesLabel: article.series.displayName,
-    seriesNumber: article.series.number,
   };
 }
 

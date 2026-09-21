@@ -1,112 +1,81 @@
-// Single source of truth for the site's information architecture.
-//
-// Published articles live in the DB with their original `category` enum value;
-// this module expresses the *presentation* taxonomy (the GNB) in code, so no
-// data migration is needed. Beauty is the reader-facing umbrella for Skincare
-// and Hair & Scalp, while Places + Around Seoul merge into the Seoul section
-// (display name "A Local's Seoul") — all as a code-level remapping over the
-// stable `category` enum (see sectionForCategory). `label` is editorial
-// branding only: the `seoul` slug and the /seoul route never change with it.
-
+// Reader-facing navigation over stable CMS categories. Article-level intent
+// and keywords live in editorial-taxonomy.ts; never infer an article's home
+// from a brand name or a raw database category alone.
 import type { Post } from "@/services/types";
 
-/** Top-level content sections — drives nav, footer, and the home index. */
 export type Section = {
   slug: string;
   label: string;
   href: string;
   blurb: string;
 };
-
 export const SECTIONS: Section[] = [
+  {
+    slug: "explained",
+    label: "Seoul, Explained",
+    href: "/seoul-explained",
+    blurb: "Everyday life, food, and shopping — with a little local context",
+  },
+  {
+    slug: "places",
+    label: "Places",
+    href: "/seoul",
+    blurb: "The spaces, neighborhoods, and walks we'd share with a friend",
+  },
   {
     slug: "beauty",
     label: "Beauty",
     href: "/beauty",
-    blurb:
-      "Skincare, hair and scalp care, and a profile that helps you know where to begin",
-  },
-  {
-    slug: "wellness",
-    label: "Wellness",
-    href: "/wellness",
-    blurb:
-      "Bathhouses, saunas, and the rituals that shape everyday well-being in Korea",
-  },
-  {
-    slug: "seoul",
-    label: "A Local's Seoul",
-    href: "/seoul",
-    blurb:
-      "The places, neighborhoods, and little things we'd share with a friend visiting Seoul",
-  },
-  {
-    slug: "stories",
-    label: "Stories",
-    href: "/stories",
-    blurb:
-      "Every latest story in one place — skincare, haircare, wellness, Seoul",
+    blurb: "Korean beauty stories, considered picks, and care that fits you",
   },
 ];
-
-// --- Category → section mapping ------------------------------------------
-// Which top-level section a DB `category` belongs to, for breadcrumbs, the
-// article eyebrow link, and the Stories filter. head_spa maps to Wellness (a
-// head spa reads as a spa ritual) but is *also* surfaced under Haircare's
-// Scalp Care via HAIRCARE_CATEGORIES — surfacing is separate from the primary.
 export type SectionRef = { slug: string; label: string; href: string };
-
+/** Legacy category fallback. Use sectionForPost for all article UI. */
 export function sectionForCategory(category: string): SectionRef {
-  switch (category) {
-    case "beauty":
-    case "products":
-    case "hair":
-    case "head_spa":
-      return { slug: "beauty", label: "Beauty", href: "/beauty" };
-    case "wellness":
-      return { slug: "wellness", label: "Wellness", href: "/wellness" };
-    case "places":
-    case "guides":
-      return { slug: "seoul", label: "A Local's Seoul", href: "/seoul" };
-    case "shopping":
-      return { slug: "shopping", label: "Shopping", href: "/stories/shopping" };
-    default:
-      return { slug: "stories", label: "Stories", href: "/stories" };
-  }
+  const slug = ["beauty", "products", "hair", "head_spa"].includes(category)
+    ? "beauty"
+    : ["wellness", "shopping"].includes(category)
+      ? "explained"
+      : ["places", "guides"].includes(category)
+        ? "places"
+        : "stories";
+  return (
+    SECTIONS.find((s) => s.slug === slug) ?? {
+      slug: "stories",
+      label: "All Stories",
+      href: "/stories",
+    }
+  );
 }
-
-// Category unions per section landing page. A category can be surfaced by more
-// than one subsection (head_spa appears under Hair & Scalp and Wellness).
 export const SKINCARE_CATEGORIES = ["beauty", "products"];
 export const HAIRCARE_CATEGORIES = ["hair", "head_spa"];
 export const WELLNESS_CATEGORIES = ["wellness", "head_spa"];
-
-// --- Section tabs ---------------------------------------------------------
-// Ingredients is a dictionary shared by Skincare and Haircare; Picks lives
-// under Skincare. Each set drives the shared SectionTabs chip switcher.
 export const SKINCARE_TABS = [
+  { key: "edit", label: "The Edit", href: "/beauty/the-edit" },
   { key: "skincare", label: "Skincare", href: "/skincare" },
+  { key: "hair-scalp", label: "Hair & Scalp", href: "/haircare" },
   { key: "ingredients", label: "Ingredients", href: "/ingredients" },
   { key: "picks", label: "Picks", href: "/skincare/picks" },
 ] as const;
 export type SkincareTabKey = (typeof SKINCARE_TABS)[number]["key"];
-
-/**
- * Review / comparison "Picks" articles. Currently stored as `category='beauty'`;
- * we separate them here. Extensible without code changes: any beauty post tagged
- * `review` or `picks` in the admin also counts.
- */
-export const PICKS_SLUGS = new Set<string>([
+export const PICKS_SLUGS = new Set([
   "five-k-beauty-serums",
   "best-korean-serums-skin-type",
   "best-korean-sunscreens-skin-type",
+  "korean-hair-brands-worth-knowing",
+  "korean-hair-masks-worth-buying",
+  "what-to-buy-at-olive-young",
+  "what-to-buy-korean-skincare-skin-type",
 ]);
-
-const PICK_TAGS = new Set(["review", "picks"]);
-
 export function isPick(post: Pick<Post, "slug" | "tags">): boolean {
-  if (PICKS_SLUGS.has(post.slug)) return true;
-  return (post.tags ?? []).some((t) => PICK_TAGS.has(t.toLowerCase()));
+  return (
+    PICKS_SLUGS.has(post.slug) ||
+    (post.tags ?? []).some((t) =>
+      ["review", "picks", "product picks", "topic:picks"].includes(
+        t.toLowerCase()
+      )
+    )
+  );
 }
 
 // --- Seoul: neighborhoods -------------------------------------------------
@@ -381,13 +350,15 @@ export function neighborhoodAreas(n: Neighborhood): string[] {
 }
 
 /**
- * Which neighborhood a `guides`-category post belongs to. All current guides
- * are Seongsu; new neighborhoods add a case (or tag posts `region:<slug>`).
+ * Primary neighborhood for an article. Untagged citywide stories stay common;
+ * legacy Seongsu guides can still be recognized by their slug or tag.
  */
 export function regionForGuide(post: Pick<Post, "slug" | "tags">): string {
   const tagged = (post.tags ?? []).find((t) => t.startsWith("region:"));
   if (tagged) return tagged.slice("region:".length);
-  return "seongsu";
+  return post.slug.startsWith("seongsu-") || post.tags.includes("seongsu")
+    ? "seongsu"
+    : "common";
 }
 
 // --- Seoul: places --------------------------------------------------------
@@ -507,6 +478,7 @@ export const POST_CATEGORIES: { value: string; label: string }[] = [
   { value: "wellness", label: "Wellness" },
   { value: "products", label: "Products" },
   { value: "guides", label: "Guides" },
+  { value: "shopping", label: "Shopping" },
 ];
 
 export const POST_STATUSES: { value: string; label: string }[] = [
