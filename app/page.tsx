@@ -1,3 +1,4 @@
+import { DEFAULT_SHARE_IMAGE } from "@/lib/social-image";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -21,6 +22,7 @@ export const metadata: Metadata = {
   description,
   alternates: { canonical: canonical("/") },
   openGraph: {
+    images: [DEFAULT_SHARE_IMAGE],
     title: HOME_TITLE,
     description,
     url: canonical("/"),

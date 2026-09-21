@@ -1,3 +1,4 @@
+import { DEFAULT_SHARE_IMAGE } from "@/lib/social-image";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import {
@@ -28,6 +29,7 @@ export async function generateMetadata({
     description,
     alternates: { canonical: canonical(`/ingredients/${ing.slug}`) },
     openGraph: {
+      images: [DEFAULT_SHARE_IMAGE],
       title: ing.name,
       description,
       type: "article",

@@ -1,3 +1,4 @@
+import { DEFAULT_SHARE_IMAGE } from "@/lib/social-image";
 import type { Metadata } from "next";
 import Image from "next/image";
 import { Eyebrow } from "@/components/editorial/Eyebrow";
@@ -9,6 +10,7 @@ export const metadata: Metadata = {
   description: `${SITE_NAME} shares a local perspective on Korean life, culture, and beauty, seen from Seoul.`,
   alternates: { canonical: canonical("/about") },
   openGraph: {
+    images: [DEFAULT_SHARE_IMAGE],
     title: "About A Drop of Seoul | Korean Life, Seen from Seoul",
     description:
       "Explore Korean life, culture, and beauty through small observations and personal recommendations from Seoul.",
@@ -17,6 +19,7 @@ export const metadata: Metadata = {
     type: "website",
   },
   twitter: {
+    images: [DEFAULT_SHARE_IMAGE.url],
     card: "summary_large_image",
     title: "About A Drop of Seoul | Korean Life, Seen from Seoul",
     description:

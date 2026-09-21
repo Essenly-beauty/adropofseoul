@@ -1,3 +1,4 @@
+import { DEFAULT_SHARE_IMAGE } from "@/lib/social-image";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -40,6 +41,7 @@ export async function generateMetadata({
     description,
     alternates: { canonical: canonical(`/seoul/neighborhoods/${n.slug}`) },
     openGraph: {
+      images: [DEFAULT_SHARE_IMAGE],
       title,
       description,
       type: "website",

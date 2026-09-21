@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { DEFAULT_SHARE_IMAGE } from "@/lib/social-image";
 import { Caveat, Cormorant_Garamond, Inter } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/editorial/SiteHeader";
@@ -29,10 +30,6 @@ const handwritten = Caveat({
   preload: false,
 });
 
-// When replacing the OG image, rename the file (e.g. /og-v2.png) and update
-// this path — scraper caches key on the URL, so a new name busts them reliably.
-const OG_IMAGE = "/og.png";
-
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
@@ -45,20 +42,13 @@ export const metadata: Metadata = {
     description: TAGLINE,
     siteName: "A Drop of Seoul",
     type: "website",
-    images: [
-      {
-        url: OG_IMAGE,
-        width: 1200,
-        height: 630,
-        alt: "A Drop of Seoul",
-      },
-    ],
+    images: [DEFAULT_SHARE_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
     title: HOME_TITLE,
     description: TAGLINE,
-    images: [OG_IMAGE],
+    images: [DEFAULT_SHARE_IMAGE.url],
   },
 };
 

@@ -1,3 +1,4 @@
+import { DEFAULT_SHARE_IMAGE } from "@/lib/social-image";
 import type { Metadata } from "next";
 import { canonical } from "@/lib/seo";
 import { BEAUTY_PROFILE_DOMAINS } from "@/lib/beauty-profile/domains";
@@ -9,6 +10,7 @@ export const metadata: Metadata = {
     "A short, private profile of your skin and hair — texture, needs, and an ideal routine, through the lens of Korean beauty. Guidance, not a diagnosis.",
   alternates: { canonical: canonical("/beauty-profile") },
   openGraph: {
+    images: [DEFAULT_SHARE_IMAGE],
     title: "My Beauty Profile",
     description:
       "Understand your skin and hair, then decide — a short, private profile through the lens of Korean beauty.",

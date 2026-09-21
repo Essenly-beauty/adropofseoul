@@ -1,3 +1,4 @@
+import { DEFAULT_SHARE_IMAGE } from "@/lib/social-image";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -22,6 +23,7 @@ export function generateMetadata({
     description: profile.tagline,
     alternates: { canonical: canonical(`/haircare/profiles/${profile.slug}`) },
     openGraph: {
+      images: [DEFAULT_SHARE_IMAGE],
       title,
       description: profile.tagline,
       type: "article",

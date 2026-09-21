@@ -2,14 +2,14 @@ import { SITE_URL, SITE_NAME } from "@/lib/site";
 import type { Post, Place, Ingredient } from "@/services/types";
 import type { Metadata } from "next";
 
-const DEFAULT_OG_IMAGE = "/og.png";
+import { DEFAULT_SHARE_IMAGE } from "@/lib/social-image";
 
 export function canonical(path: string): string {
   return `${SITE_URL}${path.startsWith("/") ? path : `/${path}`}`;
 }
 
 export function absoluteImageUrl(image?: string | null): string {
-  if (!image) return canonical(DEFAULT_OG_IMAGE);
+  if (!image) return DEFAULT_SHARE_IMAGE.url;
   return /^https?:\/\//.test(image) ? image : canonical(image);
 }
 
@@ -57,7 +57,11 @@ export function buildPageMetadata({
       url,
       siteName: SITE_NAME,
       type,
-      images: [{ url: imageUrl, width: 1200, height: 630 }],
+      images: [
+        image
+          ? { url: imageUrl, width: 1200, height: 630 }
+          : DEFAULT_SHARE_IMAGE,
+      ],
       ...articleFields,
     },
     twitter: {

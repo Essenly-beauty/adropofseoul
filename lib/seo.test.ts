@@ -36,6 +36,23 @@ describe("canonical", () => {
 });
 
 describe("buildPageMetadata", () => {
+  it.each([
+    [
+      "https://images.example.com/article.jpg",
+      "https://images.example.com/article.jpg",
+    ],
+    ["/images/articles/story.jpg", canonical("/images/articles/story.jpg")],
+  ])("preserves an article's own thumbnail: %s", (image, expected) => {
+    const metadata = buildPageMetadata({
+      title: "A story",
+      description: "An article",
+      path: "/articles/story",
+      image,
+      type: "article",
+    });
+    expect(metadata.openGraph).toMatchObject({ images: [{ url: expected }] });
+    expect(metadata.twitter).toMatchObject({ images: [expected] });
+  });
   it("uses the default social image when a page has no hero", () => {
     const metadata = buildPageMetadata({
       title: "Skincare",
@@ -45,10 +62,22 @@ describe("buildPageMetadata", () => {
     expect(metadata.openGraph).toMatchObject({
       url: expect.stringMatching(/\/skincare$/),
       images: [
-        expect.objectContaining({ url: expect.stringMatching(/\/og\.png$/) }),
+        expect.objectContaining({
+          url: expect.stringMatching(
+            /\/images\/home\/seoul-neighborhood-hero\.png$/
+          ),
+        }),
       ],
     });
-    expect(absoluteImageUrl(null)).toMatch(/\/og\.png$/);
+    expect(absoluteImageUrl(null)).toMatch(
+      /\/images\/home\/seoul-neighborhood-hero\.png$/
+    );
+    expect(metadata.openGraph).toMatchObject({
+      images: [{ width: 1672, height: 941 }],
+    });
+    expect(metadata.twitter).toMatchObject({
+      images: [absoluteImageUrl(null)],
+    });
   });
 });
 

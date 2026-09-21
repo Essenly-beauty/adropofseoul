@@ -1,3 +1,4 @@
+import { DEFAULT_SHARE_IMAGE } from "@/lib/social-image";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { canonical } from "@/lib/seo";
@@ -8,6 +9,7 @@ export const metadata: Metadata = {
     "A short guide to your hair texture, scalp condition, damage level, and ideal care routine.",
   alternates: { canonical: canonical("/beauty-profile/hair") },
   openGraph: {
+    images: [DEFAULT_SHARE_IMAGE],
     title: "Hair Profile — What Does Your Hair Actually Need?",
     description:
       "A short guide to your hair texture, scalp condition, damage level, and ideal care routine.",
