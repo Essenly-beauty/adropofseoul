@@ -49,4 +49,21 @@ describe("Prose", () => {
       screen.getByText("Daiso Beauty is best understood as low-risk discovery.")
     ).toBeTruthy();
   });
+
+  it("renders the personal color directory link as a prominent CTA card", () => {
+    render(
+      <Prose
+        markdown={
+          "[Explore personal color studios →](/seoul/places?type=personal-color)"
+        }
+      />
+    );
+
+    const link = screen.getByRole("link", {
+      name: /Explore personal color studios/i,
+    });
+    expect(link.getAttribute("href")).toBe("/seoul/places?type=personal-color");
+    expect(screen.getByText("Explore personal color studios")).toBeTruthy();
+    expect(link.closest("section")?.className).toContain("bg-[#ead6ce]");
+  });
 });

@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { Children, isValidElement, type ReactNode } from "react";
 import Image from "next/image";
 import ReactMarkdown, { type Components } from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -64,6 +64,50 @@ function renderEditorialH3(children: ReactNode, anchored = false) {
 
 function renderEditorialParagraph(children: ReactNode) {
   const label = toText(children).trim();
+  const paragraphChildren = Children.toArray(children).filter(
+    (child) => typeof child !== "string" || child.trim()
+  );
+  const standaloneLink =
+    paragraphChildren.length === 1 &&
+    isValidElement<{ href?: string; children?: ReactNode }>(
+      paragraphChildren[0]
+    ) &&
+    paragraphChildren[0].type === "a"
+      ? paragraphChildren[0]
+      : null;
+
+  if (
+    standaloneLink?.props.href?.startsWith("/seoul/places?type=personal-color")
+  ) {
+    const ctaLabel = label.replace(/\s*→\s*$/, "");
+    return (
+      <section className="not-prose my-8 overflow-hidden rounded-lg border border-[#dfc5bb] bg-[#ead6ce] shadow-[0_16px_40px_rgba(58,45,33,0.10)]">
+        <a
+          href={standaloneLink.props.href}
+          className="group flex items-center justify-between gap-6 px-6 py-6 no-underline transition-colors duration-medium ease-editorial hover:bg-[#e0c5ba] md:px-8 md:py-7"
+        >
+          <span>
+            <span className="block text-[10px] font-semibold uppercase tracking-label text-accent">
+              Find your studio
+            </span>
+            <span className="mt-1.5 block font-serif text-2xl leading-tight text-text md:text-[1.75rem]">
+              {ctaLabel}
+            </span>
+            <span className="mt-2 block text-sm leading-relaxed text-text-muted">
+              Compare neighborhoods, languages and booking details.
+            </span>
+          </span>
+          <span
+            aria-hidden
+            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-text text-lg text-bg transition-transform duration-medium ease-editorial group-hover:translate-x-1 group-hover:bg-accent"
+          >
+            →
+          </span>
+        </a>
+      </section>
+    );
+  }
+
   const verdict = label.match(/^ADoS VERDICT\s+—\s+(.+)$/i);
   if (verdict) {
     return (
