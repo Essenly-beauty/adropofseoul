@@ -11,6 +11,8 @@ import { describe, it, expect } from "vitest";
 
 const SQL_PATH =
   "supabase/migrations/20260731100000_seed_seoul_attractions.sql";
+const PERSONAL_COLOR_SQL_PATH =
+  "supabase/migrations/20260926120000_upsert_personal_color_places.sql";
 const source = JSON.parse(
   readFileSync("data/adropofseoul_places.json", "utf8")
 );
@@ -18,10 +20,19 @@ const curation = JSON.parse(
   readFileSync("data/places-curation.en.json", "utf8")
 );
 const sqlText = readFileSync(SQL_PATH, "utf8");
-
+const personalColorSqlText = readFileSync(PERSONAL_COLOR_SQL_PATH, "utf8");
+const NEW_PERSONAL_COLOR_SLUGS = [
+  "colorholic-myeongdong",
+  "korea-fashion-psychology-institute-cheongdam",
+  "colorlover-seongsu",
+  "colorga-sanda-hongdae-donggyo",
+];
 // Mirrors seed-places.mjs: excluded slugs never reach the DB, and slugs are
 // ASCII-folded on the way in (mércdi → mercdi).
 const seeded = source.filter((r) => !curation.excluded[r.slug]);
+const baselineSeeded = seeded.filter(
+  (row) => !NEW_PERSONAL_COLOR_SLUGS.includes(row.slug)
+);
 const asciiSlug = (slug) => slug.normalize("NFD").replace(/[̀-ͯ]/g, "");
 
 const HELD_BY_VERIFICATION = [
@@ -67,6 +78,7 @@ function parseTuples(sql) {
   let fields = null;
   let cur = "";
   let inStr = false;
+  let bracketDepth = 0;
   for (let i = 0; i < block.length; i++) {
     const c = block[i];
     if (fields === null) {
@@ -89,7 +101,13 @@ function parseTuples(sql) {
     if (c === "'") {
       inStr = true;
       cur += c;
-    } else if (c === ",") {
+    } else if (c === "[") {
+      bracketDepth++;
+      cur += c;
+    } else if (c === "]") {
+      bracketDepth--;
+      cur += c;
+    } else if (c === "," && bracketDepth === 0) {
       fields.push(cur.trim());
       cur = "";
     } else if (c === ")") {
@@ -115,6 +133,14 @@ const sqlRows = tuples.map((t) => ({
   address: unquote(t[6]),
   isPublished: t[18] === "true",
 }));
+const personalColorTuples = parseTuples(personalColorSqlText);
+const personalColorRows = personalColorTuples.map((t) => ({
+  slug: unquote(t[0]),
+  address: unquote(t[6]),
+  bookingUrl: unquote(t[18]),
+  priceRange: unquote(t[19]),
+  isPublished: t[21] === "true",
+}));
 
 describe("publish gate — data/adropofseoul_places.json", () => {
   it("holds back exactly the expected slugs", () => {
@@ -122,9 +148,9 @@ describe("publish gate — data/adropofseoul_places.json", () => {
     expect(held.sort()).toEqual([...UNPUBLISHED].sort());
   });
 
-  it("seeds 205 rows, 191 published and 14 held", () => {
-    expect(seeded).toHaveLength(205);
-    expect(seeded.filter((r) => r.verified === true)).toHaveLength(191);
+  it("seeds 209 rows, 195 published and 14 held", () => {
+    expect(seeded).toHaveLength(209);
+    expect(seeded.filter((r) => r.verified === true)).toHaveLength(195);
     expect(seeded.filter((r) => r.verified !== true)).toHaveLength(14);
   });
 
@@ -159,7 +185,7 @@ describe(`generated migration — ${SQL_PATH}`, () => {
 
   it("agrees with the JSON row for row on is_published", () => {
     const expected = Object.fromEntries(
-      seeded.map((r) => [asciiSlug(r.slug), r.verified === true])
+      baselineSeeded.map((r) => [asciiSlug(r.slug), r.verified === true])
     );
     const actual = Object.fromEntries(
       sqlRows.map((r) => [r.slug, r.isPublished])
@@ -178,5 +204,23 @@ describe(`generated migration — ${SQL_PATH}`, () => {
     expect(blank.sort()).toEqual([...NO_ADDRESS].sort());
     for (const slug of NO_ADDRESS)
       expect(source.find((r) => r.slug === slug).address, slug).toBe("");
+  });
+});
+
+describe(`personal-color supplement — ${PERSONAL_COLOR_SQL_PATH}`, () => {
+  it("contains every newly added place with the expanded place fields", () => {
+    expect(personalColorTuples.every((tuple) => tuple.length === 22)).toBe(
+      true
+    );
+    const rows = Object.fromEntries(
+      personalColorRows.map((row) => [row.slug, row])
+    );
+    for (const slug of NEW_PERSONAL_COLOR_SLUGS) {
+      expect(rows[slug], slug).toBeDefined();
+      expect(rows[slug].address, slug).toBeTruthy();
+      expect(rows[slug].bookingUrl, slug).toBeTruthy();
+      expect(rows[slug].priceRange, slug).toBeTruthy();
+      expect(rows[slug].isPublished, slug).toBe(true);
+    }
   });
 });

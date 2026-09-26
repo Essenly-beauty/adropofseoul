@@ -97,6 +97,9 @@ for (const item of source) {
     instagram_url: instagramUrl(item.instagram),
     google_map_url: item.googleMaps,
     naver_map_url: item.naverMap,
+    booking_url: item.bookingUrl ?? null,
+    price_range: item.priceRange ?? null,
+    languages: Array.isArray(item.languages) ? item.languages : [],
     is_published: item.verified === true,
   });
 }
@@ -147,6 +150,9 @@ if (sqlIdx !== -1) {
     "instagram_url",
     "google_map_url",
     "naver_map_url",
+    "booking_url",
+    "price_range",
+    "languages",
     "is_published",
   ];
   const val = (r) =>
@@ -170,6 +176,9 @@ if (sqlIdx !== -1) {
       q(r.instagram_url),
       q(r.google_map_url),
       q(r.naver_map_url),
+      q(r.booking_url),
+      q(r.price_range),
+      `array[${r.languages.map(q).join(", ")}]::text[]`,
       r.is_published ? "true" : "false",
     ].join(", ") +
     ")";
