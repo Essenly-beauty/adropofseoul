@@ -1,15 +1,17 @@
 import photoManifest from "@/data/place-photos.json";
+import { mergeFillOnlyPhotos } from "@/lib/place-fill-only";
 
 type PlacePhoto = { src: string; alt: string };
 type PhotoEntry = { commonId: string; photos: PlacePhoto[] };
 
 const photosBySlug: Record<string, PhotoEntry> = photoManifest;
 
-/** Admin-managed images take precedence over the collected photo fallback. */
+/** Existing admin images stay first; reviewed photos only fill empty slots. */
 export function resolvePlaceImages(slug: string, images: string[]): string[] {
-  return images.length > 0
-    ? images
-    : (photosBySlug[slug]?.photos.map((photo) => photo.src) ?? []);
+  return mergeFillOnlyPhotos(
+    images,
+    photosBySlug[slug]?.photos.map((photo) => photo.src) ?? []
+  );
 }
 
 export function placeImageAlt(

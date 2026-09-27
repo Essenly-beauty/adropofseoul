@@ -17,9 +17,17 @@ describe("collected place photos", () => {
     }
   });
 
-  it("keeps admin-managed images and their order", () => {
+  it("keeps admin-managed images first and only appends reviewed gap photos", () => {
     const images = ["https://example.com/new-cover.jpg", "/uploads/new.jpg"];
-    expect(resolvePlaceImages("juno-hair-garosugil", images)).toEqual(images);
+    const resolved = resolvePlaceImages("juno-hair-garosugil", images);
+    expect(resolved.slice(0, images.length)).toEqual(images);
+    expect(resolved).toHaveLength(4);
+    expect(new Set(resolved).size).toBe(resolved.length);
+  });
+
+  it("never truncates an existing gallery or appends past the normal maximum", () => {
+    const existing = ["1", "2", "3", "4", "5", "6"];
+    expect(resolvePlaceImages("juno-hair-garosugil", existing)).toEqual(existing);
   });
 
   it("does not infer a branch match or borrow another place's photos", () => {
