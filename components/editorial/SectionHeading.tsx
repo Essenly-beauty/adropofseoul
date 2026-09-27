@@ -20,7 +20,7 @@ export function SectionHeading({
             {eyebrow}
           </p>
         )}
-        <Tag className="font-serif text-3xl">{title}</Tag>
+        <Tag className="font-serif text-3xl lining-nums">{title}</Tag>
       </div>
       {href && (
         <Link href={href} className="text-sm text-text-muted hover:text-accent">

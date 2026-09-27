@@ -10,6 +10,8 @@ import { buildPageMetadata } from "@/lib/seo";
 export const dynamic = "force-dynamic";
 const topics = EDITORIAL_TOPICS.filter((t) => t.section === "explained");
 const descriptions: Record<string, string> = {
+  "seoul-101":
+    "Practical answers for your first days in Seoul, explained by a local friend.",
   "everyday-life":
     "The habits, relationships, rituals, and everyday details that make Korea make sense.",
   "food-drink": "What we eat and drink, and the everyday stories behind it.",

@@ -9,6 +9,8 @@ import { BeautyNavContent } from "./BeautyNavContent";
 import styles from "./SiteHeader.module.css";
 
 const DESCRIPTIONS: Record<string, string> = {
+  "/seoul-explained/seoul-101":
+    "Practical answers for your first days in Seoul",
   "/seoul-explained/everyday-life": "The small habits that shape Korean life",
   "/seoul-explained/food-drink": "The food and rituals around the Korean table",
   "/seoul-explained/shopping": "Local finds and a little shopping know-how",

@@ -4,6 +4,12 @@ import assignments from "@/data/editorial-classification.json";
 
 export const EDITORIAL_TOPICS = [
   {
+    key: "seoul-101",
+    section: "explained",
+    label: "Seoul 101",
+    href: "/seoul-explained/seoul-101",
+  },
+  {
     key: "everyday-life",
     section: "explained",
     label: "Everyday Life",
@@ -83,7 +89,10 @@ export function topicForPost(post: ArticleInput) {
             ? "everyday-life"
             : "place-guides";
   }
-  return EDITORIAL_TOPICS.find((t) => t.key === key) ?? EDITORIAL_TOPICS[3];
+  return (
+    EDITORIAL_TOPICS.find((t) => t.key === key) ??
+    EDITORIAL_TOPICS.find((t) => t.key === "place-guides")!
+  );
 }
 
 export function sectionForPost(post: ArticleInput) {

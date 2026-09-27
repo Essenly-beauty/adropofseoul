@@ -16,6 +16,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "",
     "/stories",
     "/seoul-explained",
+    "/seoul-explained/seoul-101",
     "/seoul-explained/everyday-life",
     "/seoul-explained/food-drink",
     "/seoul-explained/shopping",
