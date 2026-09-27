@@ -1,6 +1,11 @@
 import { cache } from "@/lib/react-cache";
 import { createClient } from "@/lib/supabase/public";
 import type { Place } from "./types";
+import { resolvePlaceImages } from "@/lib/place-images";
+import {
+  getCollectedPlace,
+  mergeCollectedPlaces,
+} from "@/lib/collected-places";
 
 type PlaceRow = {
   id: string;
@@ -56,7 +61,10 @@ export function mapPlaceRow(row: PlaceRow): Place {
     googleMapUrl: row.google_map_url,
     bookingUrl: row.booking_url,
     languages: row.languages ?? [],
-    images: Array.isArray(row.images) ? row.images : [],
+    images: resolvePlaceImages(
+      row.slug,
+      Array.isArray(row.images) ? row.images : []
+    ),
   };
 }
 
@@ -84,7 +92,10 @@ export async function listPlaces(
   if (opts.areas?.length) query = query.in("area", opts.areas);
   const { data, error } = await query;
   if (error) throw error;
-  return (data as PlaceRow[] | null)?.map(mapPlaceRow) ?? [];
+  return mergeCollectedPlaces(
+    (data as PlaceRow[] | null)?.map(mapPlaceRow) ?? [],
+    opts
+  );
 }
 
 export const getPlaceBySlug = cache(
@@ -97,6 +108,6 @@ export const getPlaceBySlug = cache(
       .eq("is_published", true)
       .maybeSingle();
     if (error) throw error;
-    return data ? mapPlaceRow(data as PlaceRow) : null;
+    return data ? mapPlaceRow(data as PlaceRow) : getCollectedPlace(slug);
   }
 );

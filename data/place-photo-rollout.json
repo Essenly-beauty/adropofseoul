@@ -1,0 +1,136 @@
+{
+  "inventoryDate": "2026-09-26",
+  "reviewedAt": "2026-09-27",
+  "collectedFolders": 230,
+  "collectedPhotos": 846,
+  "includedPlaces": 216,
+  "includedPhotos": 787,
+  "newPlaces": 93,
+  "heldPlaces": [
+    {
+      "commonId": "198",
+      "name": "Bamboo Therapy",
+      "reason": "source_place_unpublished",
+      "files": 5
+    },
+    {
+      "commonId": "207",
+      "name": "Hokutosichisei",
+      "reason": "source_place_unpublished",
+      "files": 3
+    },
+    {
+      "commonId": "210",
+      "name": "Hwangjok Massage",
+      "reason": "source_place_unpublished",
+      "files": 5
+    },
+    {
+      "commonId": "208",
+      "name": "O2 Body & Foot",
+      "reason": "source_place_unpublished",
+      "files": 3
+    },
+    {
+      "commonId": "196",
+      "name": "Asuca",
+      "reason": "source_place_unpublished",
+      "files": 4
+    },
+    {
+      "commonId": "190",
+      "name": "Stone House Head Spa",
+      "reason": "source_place_unpublished",
+      "files": 5
+    },
+    {
+      "commonId": "131",
+      "name": "As Blanc (Lotte Hotel Seoul)",
+      "reason": "source_place_unpublished",
+      "files": 4
+    },
+    {
+      "commonId": "188",
+      "name": "2s Apgujeong",
+      "reason": "source_place_unpublished",
+      "files": 5
+    },
+    {
+      "commonId": "185",
+      "name": "Dolce Far Niente",
+      "reason": "source_place_unpublished",
+      "files": 5
+    },
+    {
+      "commonId": "209",
+      "name": "Eco Jardin",
+      "reason": "source_place_unpublished",
+      "files": 3
+    },
+    {
+      "commonId": "048",
+      "name": "BOBORIS Total Beauty Salon",
+      "reason": "source_place_unpublished",
+      "files": 4
+    },
+    {
+      "commonId": "063",
+      "name": "Shop Vivian (Eyelash Extension)",
+      "reason": "source_place_unpublished",
+      "files": 3
+    },
+    {
+      "commonId": "036",
+      "name": "Mércdi Hair Salon",
+      "reason": "source_place_unpublished",
+      "files": 3
+    }
+  ],
+  "excludedPhotos": [
+    {
+      "driveFileId": "15p1FkWmAZy_WFKmQFBsCikbUmCZ85Qfg",
+      "commonId": "001",
+      "reason": "Mirror selfie; excluded in initial review"
+    },
+    {
+      "driveFileId": "1zC6H4faNekJlgfqRALikgkiqchY6asdv",
+      "commonId": "025",
+      "reason": "Identical source file assigned to different places; branch association needs review"
+    },
+    {
+      "driveFileId": "1MqI1zXuA4ENsGn8UUTI0Q0xF2lf2SxUw",
+      "commonId": "034",
+      "reason": "Duplicate view of ARGYOL Seongsu reception; retained reviewed higher-resolution 321_04 image"
+    },
+    {
+      "driveFileId": "1HFGRQVCRLIHK87uc2J6EIaCHjysMOtwd",
+      "commonId": "135",
+      "reason": "LEE CHUL HAIR KERKER signage in the WENEEDBLACK set; wrong brand"
+    },
+    {
+      "driveFileId": "1eGd1P7or-7P2pRrJbss80PJYTiuyw79-",
+      "commonId": "183",
+      "reason": "Same interior appears in two differently named place sets; venue association needs confirmation"
+    },
+    {
+      "driveFileId": "129IQJ-pMvC3fcpr5PmUHWFP7gxY1x_y6",
+      "commonId": "195",
+      "reason": "Same interior appears in two differently named place sets; venue association needs confirmation"
+    },
+    {
+      "driveFileId": "1mfuOQ9_C_FK_s5kwekkJaHQjhWmo2HBB",
+      "commonId": "199",
+      "reason": "Identical source file assigned to different places; branch association needs review"
+    }
+  ],
+  "mergedCommonIds": [
+    {
+      "commonIds": [
+        "034",
+        "321"
+      ],
+      "slug": "argyol-seongsu",
+      "evidence": "Both records explicitly name the Seongsu branch; matching photographed reception and styling room. The newer source records Sangwon 4-gil 9, 2F."
+    }
+  ]
+}

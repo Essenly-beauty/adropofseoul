@@ -1,4 +1,5 @@
 import { createClient } from "@/lib/supabase/public";
+import { collectedPlaces } from "@/lib/collected-places";
 
 /** Public URL inventory: no session cookies, article bodies, or image payloads. */
 export async function listSitemapContent() {
@@ -32,7 +33,12 @@ export async function listSitemapContent() {
       publishedAt: p.published_at as string | null,
       updatedAt: p.updated_at as string | null,
     })),
-    places: (places.data ?? []) as { slug: string }[],
+    places: Array.from(
+      new Set([
+        ...(places.data ?? []).map((place) => place.slug as string),
+        ...collectedPlaces.map((place) => place.slug),
+      ])
+    ).map((slug) => ({ slug })),
     ingredients: (ingredients.data ?? []) as { slug: string }[],
   };
 }

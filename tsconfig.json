@@ -15,7 +15,13 @@
     "plugins": [{ "name": "next" }],
     "paths": { "@/*": ["./*"] }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    ".next-places-preview/types/**/*.ts"
+  ],
   // scripts/ are operational one-shots run directly by node (which requires the
   // .ts import extension that this config's module settings reject, and allows
   // the top-level await they use). The rest of scripts/ is .mjs and was never

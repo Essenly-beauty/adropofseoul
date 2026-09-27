@@ -8,6 +8,8 @@ import { localBusinessJsonLd, breadcrumbJsonLd, canonical } from "@/lib/seo";
 import { PLACE_TYPE_EMOJI, PLACE_TYPE_LABELS } from "@/lib/taxonomy";
 import { ShareButtons } from "@/components/editorial/ShareButtons";
 import { placeShareImage } from "@/lib/og";
+import { placeImageAlt } from "@/lib/place-images";
+import { PlaceGallery } from "@/components/editorial/PlaceGallery";
 
 export async function generateMetadata({
   params,
@@ -79,6 +81,7 @@ export default async function PlacePage({
 }) {
   const place = await getPlaceBySlug(params.slug);
   if (!place) notFound();
+  const hasPhotos = place.images.length > 0;
 
   const service =
     place.serviceDetail ??
@@ -91,7 +94,9 @@ export default async function PlacePage({
     .filter(Boolean);
 
   return (
-    <main className="mx-auto max-w-2xl px-6 py-12 md:py-16">
+    <main
+      className={`mx-auto px-6 py-12 md:py-16 ${hasPhotos ? "max-w-4xl" : "max-w-2xl"}`}
+    >
       <JsonLd data={localBusinessJsonLd(place)} />
       <JsonLd
         data={breadcrumbJsonLd([
@@ -103,13 +108,19 @@ export default async function PlacePage({
       />
 
       <Link
-        href="/seoul"
+        href="/seoul/places"
         className="text-[11px] uppercase tracking-label text-text-muted transition-colors duration-medium ease-editorial hover:text-accent"
       >
-        Explore Places →
+        ← Back to Places
       </Link>
 
-      <article className="mt-4 rounded-lg border border-soft-gray bg-porcelain/40 p-5 md:p-7">
+      <article
+        className={
+          hasPhotos
+            ? "mt-6"
+            : "mt-4 rounded-lg border border-soft-gray bg-porcelain/40 p-5 md:p-7"
+        }
+      >
         <p className="text-[11px] uppercase tracking-label text-text-muted">
           {PLACE_TYPE_LABELS[place.category] ??
             place.category.replace(/_/g, " ")}
@@ -118,7 +129,9 @@ export default async function PlacePage({
         </p>
         {/* Sans, not the site serif: place names are wayfinding labels, and
             globals.css puts h1–h3 in `font-serif` unless asked otherwise. */}
-        <h1 className="mt-1 font-sans text-xl font-semibold leading-tight tracking-[-0.01em] text-text-ink md:text-2xl">
+        <h1
+          className={`mt-1 font-sans font-semibold leading-tight tracking-[-0.01em] text-text-ink ${hasPhotos ? "text-2xl md:text-3xl" : "text-xl md:text-2xl"}`}
+        >
           {place.name}
         </h1>
         {place.nameKr && (
@@ -142,67 +155,87 @@ export default async function PlacePage({
           <span aria-hidden>{PLACE_TYPE_EMOJI[place.category]}</span> {service}
         </p>
 
-        {verdict && (
-          <p className="mt-4 border-l-2 border-accent pl-3 text-[15px] italic text-text">
-            {verdict}
-          </p>
-        )}
+        <PlaceGallery
+          key={place.slug}
+          name={place.name}
+          photos={place.images.map((src, index) => ({
+            src,
+            alt: placeImageAlt(place.slug, src, place.name, index),
+          }))}
+        />
 
-        <div className="mt-4 grid gap-2 sm:grid-cols-2">
-          <Field icon="📍" label="Neighborhood" value={place.area} />
-          <Field icon="👍" label="Best for" value={place.bestFor} />
-          <Field icon="💰" label="Price" value={place.priceRange} />
-          <Field
-            icon="📷"
-            label="Instagram"
-            value={
-              place.instagramUrl ? (
-                <a
-                  href={place.instagramUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-accent transition-colors duration-medium ease-editorial hover:text-accent-hover"
-                >
-                  @{instagramHandle(place.instagramUrl)}
-                </a>
-              ) : null
-            }
-          />
-          <Field icon="🧭" label="Address" value={place.address} />
-        </div>
-
-        {about && about.length > 0 && (
-          <div className="mt-4 space-y-2 text-sm leading-relaxed text-text-muted">
-            <p>
-              <span className="font-medium text-text">About: </span>
-              {about[0]}
+        <div className={hasPhotos ? "mt-8 border-t border-soft-gray pt-5" : ""}>
+          {verdict && (
+            <p className="mt-4 border-l-2 border-accent pl-3 text-[15px] italic text-text">
+              {verdict}
             </p>
-            {about.slice(1).map((p) => (
-              <p key={p.slice(0, 24)}>{p}</p>
+          )}
+
+          <div className="mt-4 grid gap-2 sm:grid-cols-2">
+            <Field icon="📍" label="Neighborhood" value={place.area} />
+            <Field icon="👍" label="Best for" value={place.bestFor} />
+            <Field icon="💰" label="Price" value={place.priceRange} />
+            <Field
+              icon="💬"
+              label="Languages"
+              value={
+                place.languages.length > 0
+                  ? place.languages.join(", ")
+                  : null
+              }
+            />
+            <Field
+              icon="📷"
+              label="Instagram"
+              value={
+                place.instagramUrl ? (
+                  <a
+                    href={place.instagramUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-accent transition-colors duration-medium ease-editorial hover:text-accent-hover"
+                  >
+                    @{instagramHandle(place.instagramUrl)}
+                  </a>
+                ) : null
+              }
+            />
+            <Field icon="🧭" label="Address" value={place.address} />
+          </div>
+
+          {about && about.length > 0 && (
+            <div className="mt-4 space-y-2 text-sm leading-relaxed text-text-muted">
+              <p>
+                <span className="font-medium text-text">About: </span>
+                {about[0]}
+              </p>
+              {about.slice(1).map((p) => (
+                <p key={p.slice(0, 24)}>{p}</p>
+              ))}
+            </div>
+          )}
+
+          <div className="mt-5 flex flex-wrap gap-3">
+            {LINKS.filter((l) => place[l.key]).map((l) => (
+              <a
+                key={l.key}
+                href={place[l.key] as string}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full border border-text px-4 py-1.5 text-xs font-medium uppercase tracking-label transition-colors duration-medium ease-editorial hover:border-accent hover:text-accent"
+              >
+                {l.label}
+              </a>
             ))}
           </div>
-        )}
 
-        <div className="mt-5 flex flex-wrap gap-3">
-          {LINKS.filter((l) => place[l.key]).map((l) => (
-            <a
-              key={l.key}
-              href={place[l.key] as string}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-full border border-text px-4 py-1.5 text-xs font-medium uppercase tracking-label transition-colors duration-medium ease-editorial hover:border-accent hover:text-accent"
-            >
-              {l.label}
-            </a>
-          ))}
+          <ShareButtons
+            path={`/seoul/places/${place.slug}`}
+            title={`${place.name} — A Drop of Seoul`}
+            imageUrl={placeShareImage(place)}
+            className="mt-5"
+          />
         </div>
-
-        <ShareButtons
-          path={`/seoul/places/${place.slug}`}
-          title={`${place.name} — A Drop of Seoul`}
-          imageUrl={placeShareImage(place)}
-          className="mt-5"
-        />
       </article>
     </main>
   );

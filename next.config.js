@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  ...(process.env.PREVIEW_DIST_DIR
+    ? { distDir: process.env.PREVIEW_DIST_DIR }
+    : {}),
   images: {
     // Allow next/image to load images served over HTTPS from any host —
     // Supabase Storage, brand sites, and affiliate CDNs alike. This is broad by
