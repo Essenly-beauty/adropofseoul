@@ -158,20 +158,26 @@ export default async function HomePage() {
                     sizes="(max-width: 767px) calc(100vw - 40px), 33vw"
                     style={{ objectPosition: category.position }}
                   />
-                  <h3 className={styles.categoryTitle}>{nav.label}</h3>
-                  <span className={styles.categoryArrow} aria-hidden="true">
-                    ⟶
-                  </span>
+                  <div className={styles.categoryImageHeader}>
+                    <h3 className={styles.categoryTitle}>{nav.label}</h3>
+                    <span className={styles.categoryArrow} aria-hidden="true">
+                      ⟶
+                    </span>
+                  </div>
+                  <p className={styles.categoryDescription}>
+                    {category.description}
+                  </p>
                 </Link>
-                <p className={styles.categoryDescription}>
-                  {category.description}
-                </p>
                 <nav
                   className={styles.categoryLinks}
                   aria-label={`${nav.label} topics`}
                 >
                   {nav.children?.map((child) => (
-                    <Link key={child.href} href={child.href}>
+                    <Link
+                      key={child.href}
+                      href={child.href}
+                      aria-label={child.label}
+                    >
                       {child.label}
                     </Link>
                   ))}

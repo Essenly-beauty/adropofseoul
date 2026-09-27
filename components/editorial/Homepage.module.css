@@ -253,10 +253,14 @@
   gap: 25px;
   margin-top: 27px;
 }
+.categoryGrid > article {
+  display: flex;
+  flex-direction: column;
+}
 .categoryImage {
   position: relative;
   display: flex;
-  align-items: flex-end;
+  flex-direction: column;
   justify-content: space-between;
   min-width: 0;
   aspect-ratio: 2.05;
@@ -276,13 +280,21 @@
   inset: 0;
   z-index: -1;
   background: linear-gradient(
-    0deg,
-    rgba(15, 20, 14, 0.76),
-    rgba(15, 20, 14, 0) 90%
+    180deg,
+    rgba(15, 20, 14, 0.63) 0%,
+    rgba(15, 20, 14, 0) 44%,
+    rgba(15, 20, 14, 0.12) 60%,
+    rgba(15, 20, 14, 0.78) 100%
   );
 }
 .categoryImage:hover img {
   transform: scale(1.03);
+}
+.categoryImageHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
 }
 .categoryTitle {
   font-size: clamp(25px, 2.5vw, 35px);
@@ -295,7 +307,6 @@
   flex-shrink: 0;
   height: 36px;
   width: 36px;
-  margin-left: 8px;
   border: 1px solid rgba(255, 255, 255, 0.8);
   border-radius: 50%;
   font-size: 22px;
@@ -305,16 +316,17 @@
   background: rgba(255, 255, 255, 0.2);
 }
 .categoryDescription {
-  margin: 14px 0 4px;
-  color: #6e685f;
+  margin: 0;
+  max-width: 37ch;
+  color: rgba(255, 255, 255, 0.95);
   font-size: 14px;
-  line-height: 1.65;
+  line-height: 1.5;
 }
 .categoryLinks {
   display: flex;
   flex-wrap: wrap;
-  gap: 0 18px;
-  padding-top: 7px;
+  align-content: flex-start;
+  padding-top: 8px;
 }
 .categoryLinks a {
   display: inline-flex;
@@ -322,6 +334,19 @@
   min-height: 44px;
   font-size: 12px;
   color: #514c45;
+}
+.categoryLinks a:not(:last-child)::after {
+  content: "|";
+  margin-inline: 12px;
+  color: #bcb3a7;
+  font-weight: 400;
+}
+.categoryLinks[aria-label="Beauty topics"] {
+  display: grid;
+  grid-template-columns: repeat(3, max-content);
+}
+.categoryLinks[aria-label="Beauty topics"] a:nth-child(3)::after {
+  display: none;
 }
 .categoryLinks a:hover {
   text-decoration: underline;
@@ -467,20 +492,29 @@
   }
   .categoryGrid {
     grid-template-columns: 1fr;
-    gap: 26px;
+    gap: 28px;
     margin-top: 24px;
   }
   .categoryImage {
     aspect-ratio: 1.9;
+    padding: 18px;
   }
   .categoryTitle {
-    font-size: 33px;
+    font-size: 27px;
+  }
+  .categoryArrow {
+    display: none;
   }
   .categoryLinks {
-    gap: 0 20px;
+    padding-top: 8px;
   }
   .categoryLinks a {
-    font-size: 13px;
+    min-height: 36px;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+  .categoryLinks a:not(:last-child)::after {
+    margin-inline: 7px;
   }
   .closingInner {
     flex-direction: column;

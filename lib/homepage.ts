@@ -29,9 +29,9 @@ export const HOMEPAGE = {
     {
       href: "/beauty",
       description: "Korean beauty, from everyday rituals to your own routine",
-      src: "/images/articles/korean-skip-care-explained.jpg",
-      alt: "A glass skincare dropper and amber bottle on a pale stone surface",
-      position: "center 61%",
+      src: "/images/articles/korean-skincare-30s-slow-aging-routine.png",
+      alt: "Five Korean skincare products arranged beside pearls on sunlit beige stone",
+      position: "center 50%",
     },
   ],
 } as const;
