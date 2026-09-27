@@ -571,12 +571,21 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 15px;
-  font-size: 12px;
+  margin-bottom: 16px;
+  color: #393530;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.23em;
+  text-transform: uppercase;
 }
 .starterLabel > span {
   font-family: var(--font-serif), Georgia, serif;
-  font-size: 26px;
+  font-size: 21px;
+  font-weight: 500;
+  font-variant-numeric: lining-nums tabular-nums;
+  line-height: 1;
+  letter-spacing: 0.01em;
   color: #a2774f;
 }
 .starterImage {
