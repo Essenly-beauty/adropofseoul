@@ -29,6 +29,8 @@ import { rankRelatedPosts } from "@/lib/related-posts";
 import { getShoppingArticle } from "@/lib/articles/shopping";
 import { ShoppingArticle } from "@/components/editorial/ShoppingArticle";
 
+export const revalidate = 0;
+
 export async function generateMetadata({
   params,
 }: {
