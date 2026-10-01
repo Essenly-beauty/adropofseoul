@@ -31,6 +31,15 @@ vi.mock("@/lib/supabase/public", () => ({ createClient: vi.fn() }));
 import { createClient } from "@/lib/supabase/public";
 
 describe("mapPlaceRow", () => {
+  it("uses reviewed photos for the exact place when the DB has none", () => {
+    const p = mapPlaceRow({
+      ...row,
+      slug: "juno-hair-garosugil",
+      images: [],
+    } as never);
+    expect(p.images[0]).toMatch(/^\/images\/places\/juno-hair-garosugil\//);
+  });
+
   it("maps row and coerces images to array", () => {
     const p = mapPlaceRow(row as never);
     expect(p.shortDescription).toBe("x");
@@ -54,6 +63,15 @@ describe("mapPlaceRow", () => {
 });
 
 describe("getPlaceBySlug", () => {
+  it("resolves a photo-collected place before it has a CMS row", async () => {
+    vi.mocked(createClient).mockResolvedValue(
+      fakeClient({ data: null, error: null }) as unknown as ReturnType<typeof createClient>
+    );
+    const place = await getPlaceBySlug("gyeongbokgung-palace");
+    expect(place?.name).toBe("Gyeongbokgung Palace");
+    expect(place?.images.length).toBeGreaterThan(0);
+  });
+
   it("returns null when not found", async () => {
     (createClient as ReturnType<typeof vi.fn>).mockResolvedValue(
       fakeClient({ data: null, error: null })

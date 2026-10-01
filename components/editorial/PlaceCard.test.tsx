@@ -30,6 +30,21 @@ const place = {
 } as Place;
 
 describe("PlaceCard", () => {
+  it("shows the first photo as the cover with accessible text", () => {
+    render(<PlaceCard place={{ ...place, images: ["/images/cover.jpg"] }} />);
+    expect(
+      screen.getByRole("img", { name: "Sool Loft Head Spa — photo 1" })
+    ).toBeTruthy();
+  });
+
+  it("keeps a place without photos usable without an empty image", () => {
+    render(<PlaceCard place={place} />);
+    expect(screen.queryByRole("img")).toBeNull();
+    expect(
+      screen.getByRole("link", { name: /Sool Loft Head Spa/ })
+    ).toBeTruthy();
+  });
+
   it("links to the place and shows name, area, description", () => {
     render(<PlaceCard place={place} />);
     const link = screen.getByRole("link", { name: /Sool Loft Head Spa/ });

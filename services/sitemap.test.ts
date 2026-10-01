@@ -51,6 +51,12 @@ it("uses explicit publish filters for all three public content types", async () 
     updatedAt: "2026-09-20",
   });
   expect(inventory.places[0].slug).toBe("places-sample");
+  expect(
+    inventory.places.some((place) => place.slug === "gyeongbokgung-palace")
+  ).toBe(true);
+  expect(new Set(inventory.places.map((place) => place.slug)).size).toBe(
+    inventory.places.length
+  );
   expect(inventory.ingredients[0].slug).toBe("ingredients-sample");
 });
 

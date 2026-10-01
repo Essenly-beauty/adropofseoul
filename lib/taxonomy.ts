@@ -381,6 +381,12 @@ export const PLACE_TYPE_LABELS: Record<string, string> = {
   observatory: "Observatory & Tower",
   market: "Market",
   mall: "Shopping Mall",
+  palace: "Palace & Heritage",
+  museum: "Museum & Gallery",
+  park: "Park & Nature",
+  theater: "Theater & Arts",
+  landmark: "Landmark & Neighborhood",
+  theme_park: "Theme Park",
 };
 
 // Category glyphs for the compact directory cards (mirrors the Seongsu
@@ -403,6 +409,12 @@ export const PLACE_TYPE_EMOJI: Record<string, string> = {
   observatory: "🔭",
   market: "🏮",
   mall: "🛒",
+  palace: "🏯",
+  museum: "🏛️",
+  park: "🌿",
+  theater: "🎭",
+  landmark: "📍",
+  theme_park: "🎡",
 };
 
 /** URL type-slug ("head-spa") → place category enum ("head_spa"). */

@@ -18,7 +18,7 @@ import {
 export const metadata: Metadata = {
   title: "Seoul Directory",
   description:
-    "Head spas, salons, clinics, cafes, and wellness spots worth knowing in Seoul.",
+    "Salons, cafés, markets, museums, and green spaces worth knowing in Seoul.",
   alternates: { canonical: canonical("/seoul/places") },
 };
 
@@ -66,19 +66,22 @@ export default async function PlacesPage({
     ? placeCategoryFromType(activeType)
     : undefined;
 
-  const visible = places.filter(
-    (p) =>
-      (!activeKind || p.entryType === activeKind) &&
-      (!activeArea || p.area === activeArea) &&
-      (!activeCategory || p.category === activeCategory)
-  );
+  const visible = places
+    .filter(
+      (p) =>
+        (!activeKind || p.entryType === activeKind) &&
+        (!activeArea || p.area === activeArea) &&
+        (!activeCategory || p.category === activeCategory)
+    )
+    .sort((a, b) => Number(b.images.length > 0) - Number(a.images.length > 0));
 
   return (
     <main className="mx-auto max-w-content px-6 py-16">
       <SectionHeading title="Places" eyebrow="Places" as="h1" />
       <div className="-mt-2 mb-8 max-w-2xl">
         <p className="text-text-muted">
-          Specific spots, ready to book — by service and neighborhood.
+          Find your next Seoul stop — from salons and cafés to markets, museums,
+          and parks.
         </p>
         <p className="mt-1.5 text-sm text-text-muted">
           Want the bigger picture first?{" "}
@@ -105,7 +108,7 @@ export default async function PlacesPage({
           No places listed yet — check back soon.
         </p>
       ) : (
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid items-start gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {visible.map((pl) => (
             <PlaceCard key={pl.id} place={pl} />
           ))}

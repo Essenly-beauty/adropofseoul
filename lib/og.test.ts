@@ -18,10 +18,18 @@ describe("placeShareImage", () => {
     );
   });
 
-  it("falls back when the first image is a relative path", () => {
+  it("makes a site-root photo absolute for link previews", () => {
     expect(placeShareImage({ slug: "soo", images: ["/uploads/a.jpg"] })).toBe(
-      `${SITE_URL}/seoul/places/soo/og`
+      `${SITE_URL}/uploads/a.jpg`
     );
+  });
+
+  it("keeps the generated card for ambiguous relative or protocol-relative paths", () => {
+    for (const src of ["a.jpg", "//example.com/a.jpg"]) {
+      expect(placeShareImage({ slug: "soo", images: [src] })).toBe(
+        `${SITE_URL}/seoul/places/soo/og`
+      );
+    }
   });
 });
 

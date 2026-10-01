@@ -28,3 +28,7 @@ next-env.d.ts
 .vscode/
 .env*
 .gstack/
+
+/.next-places-preview/
+/work/places-rollout/originals/
+/work/places-rollout/sheets/
