@@ -322,36 +322,6 @@
   font-size: 14px;
   line-height: 1.5;
 }
-.categoryLinks {
-  display: flex;
-  flex-wrap: wrap;
-  align-content: flex-start;
-  padding-top: 8px;
-}
-.categoryLinks a {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  font-size: 12px;
-  color: #514c45;
-}
-.categoryLinks a:not(:last-child)::after {
-  content: "|";
-  margin-inline: 12px;
-  color: #bcb3a7;
-  font-weight: 400;
-}
-.categoryLinks[aria-label="Beauty topics"] {
-  display: grid;
-  grid-template-columns: repeat(3, max-content);
-}
-.categoryLinks[aria-label="Beauty topics"] a:nth-child(3)::after {
-  display: none;
-}
-.categoryLinks a:hover {
-  text-decoration: underline;
-  text-underline-offset: 4px;
-}
 .closing {
   background: #eadbd4;
 }
@@ -504,17 +474,6 @@
   }
   .categoryArrow {
     display: none;
-  }
-  .categoryLinks {
-    padding-top: 8px;
-  }
-  .categoryLinks a {
-    min-height: 36px;
-    font-size: 12px;
-    white-space: nowrap;
-  }
-  .categoryLinks a:not(:last-child)::after {
-    margin-inline: 7px;
   }
   .closingInner {
     flex-direction: column;

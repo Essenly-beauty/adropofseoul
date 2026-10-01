@@ -168,20 +168,6 @@ export default async function HomePage() {
                     {category.description}
                   </p>
                 </Link>
-                <nav
-                  className={styles.categoryLinks}
-                  aria-label={`${nav.label} topics`}
-                >
-                  {nav.children?.map((child) => (
-                    <Link
-                      key={child.href}
-                      href={child.href}
-                      aria-label={child.label}
-                    >
-                      {child.label}
-                    </Link>
-                  ))}
-                </nav>
               </article>
             );
           })}
