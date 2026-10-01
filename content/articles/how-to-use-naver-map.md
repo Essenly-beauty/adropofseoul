@@ -10,7 +10,7 @@ meta_description: "Set up Naver Map in English, confirm the right branch, read S
 author: "A Drop of Seoul Editorial"
 status: "published"
 published_at: "2026-08-16T00:40:00+00:00"
-featured_image: "/images/articles/how-to-use-naver-map-publish-v6.png"
+featured_image: "/images/articles/how-to-use-naver-map-publish-v9.png"
 ---
 
 If you’re choosing one map app for a first trip to Seoul, Naver Map is a practical place to start. It combines detailed local place listings with public-transport and walking directions, and its English version translates many reviews and place filters. This guide focuses on the simplest task: setting it up and using it to get from a search result to the correct entrance.
