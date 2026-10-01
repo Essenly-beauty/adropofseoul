@@ -400,13 +400,22 @@ export const ARTICLE_IMAGE_META: Record<string, ArticleImageMeta> = {
     licenseUrl: "https://www.pexels.com/license/",
   },
   "how-to-use-naver-map": {
-    alt: "A Seoul subway platform with a yellow overhead sign showing exit number 2 in Korean, English, and Chinese",
+    alt: "Editorial illustration of a smartphone route connecting a Seoul subway station to a nearby building entrance",
     caption:
-      "Exit numbers are the part that decides your walk. Naver tells you which one; Google still won't.",
-    creditName: "Theodore Nguyen",
-    creditUrl: "https://www.pexels.com/photo/31768195/",
-    licenseName: "Pexels License",
-    licenseUrl: "https://www.pexels.com/license/",
+      "The last few minutes matter: check the station exit and the building entrance before you start walking.",
+    creditName: "A Drop of Seoul",
+    creditUrl: "/about",
+    licenseName: "AI-generated editorial illustration",
+    licenseUrl: "/about",
+  },
+  "apps-to-install-before-visiting-seoul": {
+    alt: "Editorial illustration of a smartphone over a Seoul transit map surrounded by icons for maps, taxis, restaurant bookings, translation, and saved places",
+    caption:
+      "One app does not need to do every job. Build a small Seoul travel toolkit before you arrive.",
+    creditName: "A Drop of Seoul",
+    creditUrl: "/about",
+    licenseName: "AI-generated editorial illustration",
+    licenseUrl: "/about",
   },
   "one-day-k-beauty-itinerary-seoul": {
     alt: "Shoppers on a Myeongdong street past K-beauty storefronts advertising cosmetics, sheet masks, and tax-free sales",
