@@ -409,12 +409,12 @@ export const ARTICLE_IMAGE_META: Record<string, ArticleImageMeta> = {
     licenseUrl: "/about",
   },
   "apps-to-install-before-visiting-seoul": {
-    alt: "Editorial illustration of a smartphone over a Seoul transit map surrounded by icons for maps, taxis, restaurant bookings, translation, and saved places",
+    alt: "Naver Map, k.ride, Catchtable Global, and Papago app icons against a softly blurred Seoul background",
     caption:
-      "One app does not need to do every job. Build a small Seoul travel toolkit before you arrive.",
+      "Four core apps cover navigation, taxis, restaurant bookings, and translation for a first Seoul trip.",
     creditName: "A Drop of Seoul",
     creditUrl: "/about",
-    licenseName: "AI-generated editorial illustration",
+    licenseName: "AI-generated editorial composite with official app icons",
     licenseUrl: "/about",
   },
   "one-day-k-beauty-itinerary-seoul": {

@@ -10,7 +10,7 @@ meta_description: "The essential apps for a first Seoul trip: Naver Map, k.ride,
 author: "A Drop of Seoul Editorial"
 status: "published"
 published_at: "2026-10-01T00:00:00+09:00"
-featured_image: "/images/articles/seoul-essential-apps.png"
+featured_image: "/images/articles/seoul-essential-apps-v2.png"
 ---
 
 You do not need a folder full of unfamiliar apps to travel well in Seoul. Before you arrive, install one strong local map, one taxi app, one restaurant-booking app, and a translator you trust. Add a backup map only if it helps you feel more comfortable.
